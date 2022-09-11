@@ -95,8 +95,9 @@ gem 'ddtrace'
 # Phone verification
 gem 'twilio-ruby'
 
-# Add users to Mailchimp list
+# Mailing list
 gem 'MailchimpMarketing'
+gem 'mailkick'
 
 # Gibberish detection
 gem 'gibberish_detector'
