@@ -269,6 +269,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    mailkick (1.0.1)
+      activesupport (>= 5.2)
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
@@ -620,6 +622,7 @@ DEPENDENCIES
   listen
   lograge
   lograge-sql
+  mailkick
   mini_portile2
   nokogiri
   oj
