@@ -1,0 +1,5 @@
+<%= form_with(model: current_user.relationships.find_by(section_id: section.id),
+              html: { method: :delete },
+              remote: true) do |f| %>
+  <%= f.button('Unfollow', type: :submit, class: 'button-secondary') %>
+<% end %>

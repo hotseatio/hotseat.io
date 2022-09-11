@@ -1,0 +1,9 @@
+<%# The buttons used to answer questions. %>
+<div class="max-w-xl mx-auto flex justify-between">
+  <% question_type.value_range.each do |i| %>
+    <div class="flex-1 flex flex-col items-center text-center text-sm">
+      <%= f.radio_button(question_id, i, class: 'rating-radio', required:) %>
+      <%= f.label("#{question_id}_#{i}".to_sym, question_type.label_for_value(i)) %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,17 @@
+<% provide(:title, 'Courses') %>
+
+<%= render 'shared/page_header',
+           title: 'Courses',
+           breadcrumbs: [{ name: 'Home', link: '/' }, { name: 'Courses', link: courses_path }] %>
+
+<div class="shadow overflow-hidden sm:rounded-md my-4">
+  <%= render 'shared/list', collection: @courses do |course| %>
+    <% badge_label = course_badge_label(course) %>
+    <%= render 'shared/list_item',
+               link: course,
+               title: course.title,
+               subtitle: course.short_title,
+               badge_label:,
+               badge_color: course_badge_color(badge_label) %>
+  <% end %>
+</div>

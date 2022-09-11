@@ -1,0 +1,13 @@
+<div class="mt-32 lg:mt-20 mx-auto max-w-md px-4 flex flex-col-reverse sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24 lg:items-center">
+  <div class="mt-6 lg:mt-0">
+    <h2 class="text-3xl font-extrabold text-gray-900 dark:text-gray-50 tracking-tight sm:text-4xl">
+      <%= title %>
+    </h2>
+    <p class="mt-6 max-w-3xl text-lg leading-7 text-gray-500 dark:text-gray-400">
+    <%= body %>
+    </p>
+  </div>
+  <div class="lg:mt-12">
+    <%= yield %>
+  </div>
+</div>

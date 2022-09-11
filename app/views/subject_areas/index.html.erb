@@ -1,0 +1,12 @@
+<% provide(:title, 'Subject Areas') %>
+
+<%= render 'shared/page_header', title: 'Subject Areas', breadcrumbs: [{ name: 'Home', link: '/' }, { name: 'Subject Areas', link: subject_areas_path }] %>
+
+<div class="shadow overflow-hidden sm:rounded-md my-4">
+  <%= render 'shared/list', collection: @subject_areas do |subject_area| %>
+    <%= render 'shared/list_item',
+               link: subject_area,
+               title: subject_area.name,
+               subtitle: subject_area.code %>
+  <% end %>
+</div>

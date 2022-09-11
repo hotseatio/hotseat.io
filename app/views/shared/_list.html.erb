@@ -1,0 +1,11 @@
+<% should_paginate = local_assigns.fetch(:paginate, true) %>
+
+<ul class="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
+  <% collection.each do |item| %>
+    <%= yield item %>
+  <% end %>
+</ul>
+
+<% if should_paginate %>
+  <%= render 'shared/pagination', collection: %>
+<% end %>

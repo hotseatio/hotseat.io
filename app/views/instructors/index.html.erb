@@ -1,0 +1,11 @@
+<% provide(:title, 'Instructors') %>
+
+<%= render 'shared/page_header', title: 'Instructors', breadcrumbs: [{ name: 'Home', link: '/' }, { name: 'Instructors', link: instructors_path }] %>
+
+<div class="shadow overflow-hidden sm:rounded-md my-4">
+  <%= render 'shared/list', collection: @instructors do |instructor| %>
+    <%= render 'shared/list_item',
+               link: instructor,
+               title: instructor.full_label %>
+<% end %>
+</div>

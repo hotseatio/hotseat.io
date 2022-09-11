@@ -1,0 +1,30 @@
+<div id="instructor-nav" role="presentation">
+  <nav class="sm:hidden" aria-label="Instructors">
+    <label for="instructor-selector" class="sr-only">Select an instructor</label>
+
+    <select id="instructor-selector" name="instructor-selector" onchange="location = this.value" class="block w-full pl-3 pr-10 py-2 my-2 rounded-md base-input">
+      <% if @instructor.nil? %>
+        <option disabled value="" selected></option>
+        <% end %>
+      <% @instructors_and_latest_term.each do |instructor, term| %>
+        <option value="<%= course_instructor_path(@course, instructor) %>" <%= instructor == @instructor ? 'selected' : '' %>>
+          <%= instructor.full_label %> (<%= term.readable %>)
+        </option>
+      <% end %>
+    </select>
+  </nav>
+  <div class="hidden sm:block border-b border-gray-200 dark:border-gray-700">
+    <nav class="-mb-px flex space-x-8 overflow-x-auto" aria-label="Instructors">
+      <% @instructors_and_latest_term.each do |instructor, term| %>
+        <%= link_to course_instructor_path(@course, instructor), class: "course-instructor-tab #{instructor == @instructor ? 'tab-selected' : ''}" do %>
+          <%= instructor.full_label %>
+          <%= render 'shared/badge',
+                     classes: 'ml-1',
+                     label: term.short_readable,
+                     shade: 200,
+                     color: term_badge_color(term, @term, @upcoming_terms) %>
+        <% end %>
+      <% end %>
+    </nav>
+  </div>
+</div>

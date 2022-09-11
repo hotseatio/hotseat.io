@@ -1,0 +1,6 @@
+{
+  "app/javascript/components/*.tsx": { "alternate": "spec/javascript/{}.spec.tsx" },
+  "spec/javascript/*.spec.tsx": { "alternate": "app/javascript/components/{}.tsx" },
+  "lambdas/*.go": { "alternate": "lambdas/{}_test.go" },
+  "lambdas/*_test.go": { "alternate": "lambdas/{}.go" }
+}

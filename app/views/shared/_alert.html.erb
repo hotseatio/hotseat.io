@@ -1,0 +1,30 @@
+<% color = get_alert_color(type) %>
+<% title = type.titleize if local_assigns[:title].nil? %>
+
+<div class="rounded-md <%= bg50(color) %> p-4 mb-4">
+  <div class="flex">
+    <div class="flex-shrink-0">
+      <%= render("icons/#{get_alert_symbol(type)}") %>
+    </div>
+    <div class="ml-3">
+      <h3 class="text-sm font-medium <%= text800(color) %>">
+        <%= title %>
+      </h3>
+      <div class="mt-2 text-sm <%= text700(color) %>">
+        <p>
+          <% if local_assigns[:message] %>
+            <%= message %>
+          <% else %>
+            <%= yield %>
+          <% end %>
+
+          <% if local_assigns[:link] && local_assigns[:link_title] %>
+            <%= link_to link_title, link, class: 'underline' %>
+          <% end %>
+
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,158 @@
+{
+  "1-Freshman Computer Science Seminar": {
+    "subjectAreaId": 42,
+    "title": "Freshman Computer Science Seminar",
+    "number": "1",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0001    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0001\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDAwMSAgICBDT01TQ0kwMDAx\"}"
+  },
+  "111-Operating Systems Principles": {
+    "subjectAreaId": 42,
+    "title": "Operating Systems Principles",
+    "number": "111",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0111    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0111\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDExMSAgICBDT01TQ0kwMTEx\"}"
+  },
+  "118-Computer Network Fundamentals": {
+    "subjectAreaId": 42,
+    "title": "Computer Network Fundamentals",
+    "number": "118",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0118    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0118\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDExOCAgICBDT01TQ0kwMTE4\"}"
+  },
+  "130-Software Engineering": {
+    "subjectAreaId": 42,
+    "title": "Software Engineering",
+    "number": "130",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0130    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0130\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDEzMCAgICBDT01TQ0kwMTMw\"}"
+  },
+  "131-Programming Languages": {
+    "subjectAreaId": 42,
+    "title": "Programming Languages",
+    "number": "131",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0131    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0131\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDEzMSAgICBDT01TQ0kwMTMx\"}"
+  },
+  "132-Compiler Construction": {
+    "subjectAreaId": 42,
+    "title": "Compiler Construction",
+    "number": "132",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0132    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0132\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDEzMiAgICBDT01TQ0kwMTMy\"}"
+  },
+  "143-Database Systems": {
+    "subjectAreaId": 42,
+    "title": "Database Systems",
+    "number": "143",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0143    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0143\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDE0MyAgICBDT01TQ0kwMTQz\"}"
+  },
+  "145-Introduction to Data Mining": {
+    "subjectAreaId": 42,
+    "title": "Introduction to Data Mining",
+    "number": "145",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0145    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0145\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDE0NSAgICBDT01TQ0kwMTQ1\"}"
+  },
+  "152B-Digital Design Project Laboratory": {
+    "subjectAreaId": 42,
+    "title": "Digital Design Project Laboratory",
+    "number": "152B",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0152B   \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0152B\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDE1MkIgICBDT01TQ0kwMTUyQg==\"}"
+  },
+  "161-Fundamentals of Artificial Intelligence": {
+    "subjectAreaId": 42,
+    "title": "Fundamentals of Artificial Intelligence",
+    "number": "161",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0161    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0161\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDE2MSAgICBDT01TQ0kwMTYx\"}"
+  },
+  "174A-Introduction to Computer Graphics": {
+    "subjectAreaId": 42,
+    "title": "Introduction to Computer Graphics",
+    "number": "174A",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0174A   \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0174A\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDE3NEEgICBDT01TQ0kwMTc0QQ==\"}"
+  },
+  "180-Introduction to Algorithms and Complexity": {
+    "subjectAreaId": 42,
+    "title": "Introduction to Algorithms and Complexity",
+    "number": "180",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0180    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0180\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDE4MCAgICBDT01TQ0kwMTgw\"}"
+  },
+  "181-Introduction to Formal Languages and Automata Theory": {
+    "subjectAreaId": 42,
+    "title": "Introduction to Formal Languages and Automata Theory",
+    "number": "181",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0181    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0181\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDE4MSAgICBDT01TQ0kwMTgx\"}"
+  },
+  "19-From Impossible to I'm Possible: Analysis of Impostor Phenomenon": {
+    "subjectAreaId": 42,
+    "title": "From Impossible to I'm Possible: Analysis of Impostor Phenomenon",
+    "number": "19",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0019    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\" 001  \",\"SequenceNumber\":null,\"Path\":\"COMSCI0019001\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDAxOSAgICBDT01TQ0kwMDE5MDAx\"}",
+    "sectionIndices": [
+      " 001  "
+    ]
+  },
+  "30-Principles and Practices of Computing": {
+    "subjectAreaId": 42,
+    "title": "Principles and Practices of Computing",
+    "number": "30",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0030    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0030\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDAzMCAgICBDT01TQ0kwMDMw\"}"
+  },
+  "31-Introduction to Computer Science I": {
+    "subjectAreaId": 42,
+    "title": "Introduction to Computer Science I",
+    "number": "31",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0031    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0031\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDAzMSAgICBDT01TQ0kwMDMx\"}"
+  },
+  "33-Introduction to Computer Organization": {
+    "subjectAreaId": 42,
+    "title": "Introduction to Computer Organization",
+    "number": "33",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0033    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0033\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDAzMyAgICBDT01TQ0kwMDMz\"}"
+  },
+  "35L-Software Construction Laboratory": {
+    "subjectAreaId": 42,
+    "title": "Software Construction Laboratory",
+    "number": "35L",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0035L   \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0035L\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDAzNUwgICBDT01TQ0kwMDM1TA==\"}"
+  },
+  "97-Variable Topics in Computer Science: Software Construction Projects": {
+    "subjectAreaId": 42,
+    "title": "Variable Topics in Computer Science: Software Construction Projects",
+    "number": "97",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0097    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\" 001  \",\"SequenceNumber\":null,\"Path\":\"COMSCI0097001\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDA5NyAgICBDT01TQ0kwMDk3MDAx\"}",
+    "sectionIndices": [
+      " 001  "
+    ]
+  },
+  "CM121-Introduction to Bioinformatics": {
+    "subjectAreaId": 42,
+    "title": "Introduction to Bioinformatics",
+    "number": "CM121",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0121  CM\",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0121CM\",\"MultiListedClassFlag\":\"y\",\"Token\":\"MDEyMSAgQ01DT01TQ0kwMTIxQ00=\"}"
+  },
+  "M146-Introduction to Machine Learning": {
+    "subjectAreaId": 42,
+    "title": "Introduction to Machine Learning",
+    "number": "M146",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0146  M \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0146M\",\"MultiListedClassFlag\":\"y\",\"Token\":\"MDE0NiAgTSBDT01TQ0kwMTQ2TQ==\"}"
+  },
+  "M151B-Computer Systems Architecture": {
+    "subjectAreaId": 42,
+    "title": "Computer Systems Architecture",
+    "number": "M151B",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0151B M \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0151BM\",\"MultiListedClassFlag\":\"y\",\"Token\":\"MDE1MUIgTSBDT01TQ0kwMTUxQk0=\"}"
+  },
+  "M152A-Introductory Digital Design Laboratory": {
+    "subjectAreaId": 42,
+    "title": "Introductory Digital Design Laboratory",
+    "number": "M152A",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0152A M \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0152AM\",\"MultiListedClassFlag\":\"y\",\"Token\":\"MDE1MkEgTSBDT01TQ0kwMTUyQU0=\"}"
+  },
+  "M182-Dynamic Biosystem Modeling and Simulation Methodology": {
+    "subjectAreaId": 42,
+    "title": "Dynamic Biosystem Modeling and Simulation Methodology",
+    "number": "M182",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0182  M \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0182M\",\"MultiListedClassFlag\":\"y\",\"Token\":\"MDE4MiAgTSBDT01TQ0kwMTgyTQ==\"}"
+  },
+  "M51A-Logic Design of Digital Systems": {
+    "subjectAreaId": 42,
+    "title": "Logic Design of Digital Systems",
+    "number": "M51A",
+    "model": "{\"Term\":\"20F\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0051A M \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0051AM\",\"MultiListedClassFlag\":\"y\",\"Token\":\"MDA1MUEgTSBDT01TQ0kwMDUxQU0=\"}"
+  }
+}

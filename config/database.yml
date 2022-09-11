@@ -1,0 +1,20 @@
+# This file only specifies connection options.
+# The actual host, port, and DB name information is merged in
+# from the DATABASE_URL environment variable.
+# See [1], .env.development, and .env.test.
+#
+# [1]: https://guides.rubyonrails.org/v7.0/configuring.html
+
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

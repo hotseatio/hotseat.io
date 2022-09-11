@@ -1,0 +1,143 @@
+service: ucla-registrar-scraper
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: go1.x
+  timeout: 120
+  region: 'us-east-1'
+  versionFunctions: false
+  vpc:
+    securityGroupIds:
+      - ${env:AWS_SECURITY_GROUP_ID}
+    subnetIds:
+      - ${env:AWS_SUBNET_ID_1}
+      - ${env:AWS_SUBNET_ID_2}
+      - ${env:AWS_SUBNET_ID_3}
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - lambda:InvokeFunction
+            - lambda:InvokeAsync
+            - xray:PutTraceSegments
+            - xray:PutTelemetryRecords
+          Resource: '*'
+  tracing:
+    lambda: true
+  environment:
+    LOGGING: ${env:LOGGING, ''}
+    LOG_LEVEL: ${env:LOG_LEVEL, 'info'}
+    DB_USER: ${env:DB_USER, 'postgres'}
+    DB_PASS: ${env:DB_PASS, ''}
+    DB_HOST: ${env:DB_HOST, ''}
+    DB_NAME: ${env:DB_NAME, 'hotseat_dev'}
+    DB_PORT: ${env:DB_PORT, 5432}
+    DB_SSL_MODE: ${env:DB_SSL_MODE, 'disable'}
+    BATCH_SIZE: ${env:BATCH_SIZE, 200}
+    MAX_GOROUTINES: ${env:MAX_GOROUTINES, 20}
+    DD_FLUSH_TO_LOG: ${env:DD_FLUSH_TO_LOG, false}
+    DD_TRACE_ENABLED: ${env:DD_TRACE_ENABLED, false}
+    DD_MERGE_XRAY_TRACES: ${env:DD_MERGE_XRAY_TRACES, false}
+    DRY_RUN: ${env:DRY_RUN, true}
+    USE_PREPARED_STATEMENTS: ${env:USE_PREPARED_STATEMENTS, false}
+    LAMBDA_INVOKE_DELAY_MS: ${env:LAMBDA_INVOKE_DELAY_MS, 50}
+    TWILIO_SID: ${env:TWILIO_SID}
+    TWILIO_AUTH_TOKEN: ${env:TWILIO_AUTH_TOKEN}
+    TWILIO_SENDER_NUMBER: ${env:TWILIO_SENDER_NUMBER}
+
+package:
+  patterns:
+    - '!./**'
+    - './bin/**'
+
+custom:
+  # Payloads
+  currentTerm:
+    term:
+      term: '22F'
+      id: 72
+    shouldInsertEnrollmentData: true
+  summerTerm:
+    term:
+      term: '221'
+      id: 111
+    shouldInsertEnrollmentData: true
+
+functions:
+  FetchSubjectAreas:
+    name: fetch-subject-areas
+    handler: bin/fetch-subject-areas
+    events:
+      # Top of every month at 11:15pm UTC
+      - schedule:
+          rate: cron(15 23 1 * ? *)
+          input: ${self:custom.currentTerm}
+      - schedule:
+          rate: cron(15 23 1 * ? *)
+          input: ${self:custom.summerTerm}
+
+  TriggerCourses:
+    name: trigger-courses
+    handler: bin/trigger-courses
+    events:
+      # Every day at 11:45pm UTC
+      - schedule:
+          rate: cron(45 23 * * ? *)
+          input: ${self:custom.currentTerm}
+      # Every day at 11:50pm UTC
+      - schedule:
+          rate: cron(50 23 * * ? *)
+          input: ${self:custom.summerTerm}
+  FetchCourses:
+    name: fetch-courses
+    handler: bin/fetch-courses
+
+  TriggerSections:
+    name: trigger-sections
+    handler: bin/trigger-sections
+    timeout: 420 # 7 minutes
+    events:
+      # Every hour at XX:25
+      - schedule:
+          rate: cron(25 * * * ? *)
+          input: ${self:custom.currentTerm}
+      # Every hour at XX:35
+      - schedule:
+          rate: cron(35 * * * ? *)
+          input: ${self:custom.summerTerm}
+  FetchSections:
+    name: fetch-sections
+    handler: bin/fetch-sections
+
+  TriggerTextbooks:
+    name: trigger-textbooks
+    handler: bin/trigger-textbooks
+    events:
+      # # Top of every month at 11:50pm UTC
+      # - schedule:
+      #     rate: cron(50 23 1 * ? *)
+      #     input: ${self:custom.currentTerm}
+    environment:
+      BATCH_SIZE: 400
+  FetchTextbooks:
+    name: fetch-textbooks
+    handler: bin/fetch-textbooks
+    events:
+      # Top of every month at 11:50pm UTC
+      - schedule:
+          rate: cron(50 23 1 * ? *)
+          input: {}
+
+  TriggerCourseDescriptions:
+    name: trigger-course-descriptions
+    handler: bin/trigger-course-descriptions
+    events:
+      # Top of every month at 11:40pm UTC
+      - schedule:
+          rate: cron(40 23 1 * ? *)
+          input: {}
+  FetchCourseDescriptions:
+    name: fetch-course-descriptions
+    handler: bin/fetch-course-descriptions

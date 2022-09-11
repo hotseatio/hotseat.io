@@ -1,0 +1,14 @@
+{
+  "Parameters": {
+    "LOGGING": "",
+    "LOG_LEVEL": "info",
+    "DB_USER": "timothy-gu",
+    "DB_PASS": "",
+    "DB_HOST": "172.17.0.1",
+    "DB_PORT": "5432",
+    "DB_NAME": "hotseat_dev",
+    "DB_SSL_MODE": "disable",
+    "DRY_RUN": true,
+    "DB_MAX_CONNECTIONS": 20
+  }
+}

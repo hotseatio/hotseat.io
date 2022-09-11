@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
+  </head>
+  <body>
+    <p>Welcome to Hotseat!</p>
+
+    <p>You're getting this email because you signed up for a Hotseat account. Hotseat is the premier way to get all the info on UCLA courses, from enrollment to previous grades. An account enables you to write reviews for the classes you've taken at UCLA.</p>
+
+    <p>You can confirm your Hotseat account through the following link: <%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), class: 'font-medium underline' %>.</p>
+
+    <p>If you didn't sign up for a Hotseat account, you can ignore this email. We do hope you check out Hotseat if it sounds cool to you though!</p>
+
+    <p>Welcome aboard! If you have any questions or suggestions, let us know at <%= mail_to 'feedback@hotseat.io', class: 'font-medium underline' %>.</p>
+  </body>
+</html>

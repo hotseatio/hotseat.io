@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:true}};(window.NREUM||(NREUM={})).loader_config={licenseKey:"NRJS-7be76d7c7bc415dd4df",applicationID:"1468364564"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<title>Summer Session Calendar | UCLA Registrar’s Office</title>
+<link rel="stylesheet" href="/themes/custom/ucla_sa/fonts/proximanova.css?v=20210416041846">
+<link rel="stylesheet" href="/themes/custom/ucla_sa/css/ucla_sa.css??v=20210416041846">
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-74929151-1']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowHash', true]);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<style type="text/css">
+.col-1-50wide tr td:nth-child(1) {
+  width: 50%;
+}
+.col-1-40wide tr td:nth-child(1) {
+  width: 40%;
+}
+table.col-1-left tr td:nth-child(1),
+table.col-1-left tr th:nth-child(1) {
+  text-align: left;
+}
+table.col-2-left tr td:nth-child(2),
+table.col-2-left tr th:nth-child(2) {
+  text-align: left;
+}
+table.col-3-left tr td:nth-child(3),
+table.col-3-left tr th:nth-child(3) {
+  text-align: left;
+}
+table.col-4-left tr td:nth-child(4),
+table.col-4-left tr th:nth-child(4) {
+  text-align: left;
+}
+table.col-5-left tr td:nth-child(5),
+table.col-5-left tr th:nth-child(5) {
+  text-align: left;
+}
+table.col-6-left tr td:nth-child(6),
+table.col-6-left tr th:nth-child(6) {
+  text-align: left;
+}
+table.col-last-left tr td:last-child,
+table.col-last-left tr th:last-child {
+  text-align: left;
+}
+
+table.col-1-right tr td:nth-child(1),
+table.col-1-right tr th:nth-child(1) {
+  text-align: right;
+}
+table.col-2-right tr td:nth-child(2),
+table.col-2-right tr th:nth-child(2) {
+  text-align: right;
+}
+table.col-3-right tr td:nth-child(3),
+table.col-3-right tr th:nth-child(3) {
+  text-align: right;
+}
+table.col-4-right tr td:nth-child(4),
+table.col-4-right tr th:nth-child(4) {
+  text-align: right;
+}
+table.col-5-right tr td:nth-child(5),
+table.col-5-right tr th:nth-child(5) {
+  text-align: right;
+}
+table.col-6-right tr td:nth-child(6),
+table.col-6-right tr th:nth-child(6) {
+  text-align: right;
+}
+table.col-last-right tr td:last-child,
+table.col-last-right tr th:last-child {
+  text-align: right;
+}
+
+table.col-last-nowrap tr td:last-child,
+table.col-last-nowrap tr th:last-child {
+  white-space: nowrap;
+}
+
+
+</style>
+<script type="text/javascript">
+(function() {
+    if(!window.location.pathname.match(/^\/academics\/course-descriptions/)) {
+        return;
+    }
+
+    function initCourseDescriptionsMenu() {
+        if(!window.location.pathname.match(/^\/academics\/course-descriptions/)) {
+           return;
+        }
+        var menuNode = document.querySelector('.page .page-menu');
+        if(!menuNode) {
+            return;
+        }
+
+        if(menuNode.innerText.trim() == '') {
+            menuNode.innerHTML = '<nav aria-labelledby="section-menu-title" class="section-menu"><h2 id="section-menu-title" class="section-menu-title"><a href="/academics" data-drupal-link-system-path="node/4">Academics</a></h2><ul><li class="section-menu-item"><a href="https://catalog.registrar.ucla.edu/">General Catalog</a></li><li class="section-menu-item section-menu-item-active"><a href="/academics/course-descriptions" data-drupal-link-system-path="node/30" aria-current="page">Course Descriptions</a></li><li class="section-menu-item"><a href="/academics/diversity-requirement" data-drupal-link-system-path="node/16">Diversity Requirement</a></li><li class="section-menu-item"><a href="/academics/foreign-language-requirement" data-drupal-link-system-path="node/135">Foreign Language Requirement</a></li><li class="section-menu-item"><a href="/academics/ge-requirement" data-drupal-link-system-path="node/14">GE Requirement</a></li><li class="section-menu-item"><a href="/academics/writing-ii-requirement" data-drupal-link-system-path="node/5">Writing II Requirement</a></li><li class="section-menu-item"><a href="/academics/departments-programs-and-freestanding-minors" data-drupal-link-system-path="node/229">Departments, Programs, and Freestanding Minors</a></li><li class="section-menu-item"><a href="/academics/academic-counseling" data-drupal-link-system-path="node/138">Academic Counseling</a></li></ul></nav>';
+        }
+    }
+
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        // Document is already ready to go.
+        setTimeout(initCourseDescriptionsMenu, 1);
+    } else {
+        document.addEventListener('DOMContentLoaded', function (event) {
+            initCourseDescriptionsMenu();
+        });
+    }
+})();
+</script>
+</head>
+<body data-ucla-ref="registrar/calendars/summer-session-calendar" data-ucla-path="/calendars/summer-session-calendar" data-ucla-origin="https://registrar.ucla.edu" class="no-js">
+<script>document.body.classList.remove('no-js'); document.body.classList.add('js');</script>
+<header class="header">
+    <div class="skip-to-main">
+    <a href="#main">Skip to Main Content</a>
+    </div>
+            <div class="broadcast-message">
+      <div class="container">
+        <p>For coronavirus information for the UCLA community, please visit the <a href="https://www.studenthealth.ucla.edu/covid19">Ashe Center website</a> and <a href="https://newsroom.ucla.edu/stories/coronavirus-information-for-the-ucla-campus-community">UCLA’s information page</a>.</p>
+      </div>
+    </div>
+        <div class="nav-topbar desktop-only">
+    <nav aria-label="Secondary Top" class="nav-secondary container">
+    <ul>
+  <li><a href="/forms">Forms</a></li>
+  <li><a href="/archives">Archives</a></li>
+</ul>
+    </nav>
+    </div>
+    <div class="headerbar container">
+          <a href="/" class="site-name"><img src="/sites/default/files/UCLA_Logo_Registrars.fw_.png" height="70" width="780" alt="UCLA Registrar&#039;s Office"></a>
+          <div class="header-right">
+      <button class="mobile-only" aria-haspopup="true" aria-controls="menus" aria-expanded="false" aria-label="Main Menus"></button>
+      <form action="/search" method="GET" class="site-search desktop-only">
+      <label for="header-search-headerbar">Search Website</label><input name="keys" type="search" placeholder="Search..." id="header-search-headerbar"><button type="submit">Search</button>
+      </form>
+      </div>
+    </div>
+    <div id="menus">
+    <form action="/search" method="GET" class="site-search mobile-only">
+      <label for="header-search-mobile-only">Search Website</label><input name="keys" type="search" placeholder="Search..." id="header-search-mobile-only"><button type="submit">Search</button>
+    </form>
+    <nav aria-label="Main" class="nav-main container">
+    <ul>
+  <li><a href="/registration-classes">Registration &amp; Classes</a>
+    <ul>
+      <li><a href="/registration-classes" aria-label="Overview of Registration and Classes">Overview</a></li>
+      <li><a href="/registration-classes/registration-and-payment">Registration and Payment</a></li>
+      <li><a href="https://sa.ucla.edu/ro/public/soc">Schedule of Classes</a></li>
+      <li><a href="/registration-classes/enrollment-policies">Enrollment Policies</a></li>
+      <li><a href="/registration-classes/enrollment-appointments">Enrollment Appointments and Passes</a></li>
+      <li><a href="/registration-classes/study-list">Study List</a></li>
+      <li><a href="/registration-classes/examinations">Examinations</a></li>
+      <li><a href="/registration-classes/absences-and-readmission">Absences and Readmission</a></li>
+      <li><a href="/registration-classes/graduation">Graduation</a></li>
+    </ul>
+</li>
+  <li><a href="/fees-residence">Fees &amp; Residence</a>
+    <ul>
+      <li><a href="/fees-residence" aria-label="Overview of Fees and Residence">Overview</a></li>
+      <li><a href="/fees-residence/residence-requirements">Residence Requirements</a></li>
+      <li><a href="https://sa.ucla.edu/RO/Fees/Public/public-fees">Annual and Term Student Fees</a></li>
+      <li><a href="/fees-residence/graduate-student-in-absentia-fees">Graduate Student in Absentia Fees</a></li>
+      <li><a href="/fees-residence/health-sciences-summer-fees-medicine-dentistry">Health Sciences Summer Fees (Medicine, Dentistry)</a></li>
+      <li><a href="/fees-residence/self-supporting-degrees">Self-Supporting Degree Fees</a></li>
+      <li><a href="/fees-residence/course-and-study-list-fees">Course and Study List Fees</a></li>
+      <li><a href="/fees-residence/document-and-service-fees">Document and Service Fees</a></li>
+      <li><a href="/fees-residence/transcript-related-fees">Transcript-Related Fees</a></li>
+      <li><a href="/fees-residence/degree-and-diploma-fees">Degree and Diploma Fees</a></li>
+      <li><a href="/fees-residence/fee-descriptions">Fee Descriptions</a></li>
+    </ul>
+</li>
+  <li><a href="/academics">Academics</a>
+    <ul>
+      <li><a href="/academics" aria-label="Overview of Academics">Overview</a></li>
+      <li><a href="http://catalog.registrar.ucla.edu/">General Catalog</a></li>
+      <li><a href="/academics/course-descriptions">Course Descriptions</a></li>
+      <li><a href="/academics/diversity-requirement">Diversity Requirement</a></li>
+      <li><a href="/academics/foreign-language-requirement">Foreign Language Requirement</a></li>
+      <li><a href="/academics/ge-requirement">GE Requirement</a></li>
+      <li><a href="/academics/writing-ii-requirement">Writing II Requirement</a></li>
+      <li><a href="/academics/departments-programs-and-freestanding-minors">Departments, Programs, and Freestanding Minors</a></li>
+      <li><a href="/academics/academic-counseling">Academic Counseling</a></li>
+    </ul>
+</li>
+  <li><a href="/student-records">Student Records</a>
+    <ul>
+      <li><a href="/student-records" aria-label="Overview of Student Records">Overview</a></li>
+      <li><a href="/student-records/personal-information">Personal Information</a></li>
+      <li><a href="/student-records/academic-transcript">Academic Transcript</a></li>
+      <li><a href="/student-records/verification-transcript">Verification Transcript</a></li>
+      <li><a href="/student-records/transfer-credit-processing">Transfer Credit Processing</a></li>
+      <li><a href="/student-records/grades-and-academic-revisions">Grades and Academic Revisions</a></li>
+      <li><a href="/student-records/student-rights-privacy">Student Rights and Privacy</a></li>
+      <li><a href="/student-records/closure-of-student-record">Closure of Student Record</a></li>
+      <li><a href="/student-records/diplomas">Diplomas</a></li>
+      <li><a href="/student-records/notary-services">Notary Services</a></li>
+      <li><a href="/student-records/veteran-services">Veteran Services</a></li>
+      <li><a href="/student-records/professional-school-and-extension-transcripts">Professional School and Extension Transcripts</a></li>
+    </ul>
+</li>
+  <li><a href="/calendars">Calendars</a>
+    <ul>
+      <li><a href="/calendars" aria-label="Overview of Calendars">Overview</a></li>
+      <li><a href="/calendars/annual-academic-calendar">Annual Academic Calendar</a></li>
+      <li><a href="/term-calendar">Term Calendar</a></li>
+      <li><a href="/calendars/professional-school-calendars">Professional School Calendars</a></li>
+      <li><a href="/calendars/summer-session-calendar">Summer Session Calendar</a></li>
+    </ul>
+</li>
+  <li><a href="/faculty-staff">Faculty &amp; Staff</a>
+    <ul>
+      <li><a href="/faculty-staff" aria-label="Overview of Faculty and Staff">Overview</a></li>
+      <li><a href="/faculty-staff/classrooms-and-scheduling">Classrooms and Scheduling</a></li>
+      <li><a href="/faculty-staff/courses-and-programs">Courses and Programs</a></li>
+      <li><a href="/faculty-staff/accessing-student-data">Accessing Student Data</a></li>
+      <li><a href="/faculty-staff/grade-submission-deadlines">Grade Submission Deadlines</a></li>
+      <li><a href="/faculty-staff/ferpa">FERPA</a></li>
+    </ul>
+</li>
+</ul>
+    </nav>
+    <nav aria-label="Secondary Menu" class="nav-secondary container mobile-only">
+    <ul>
+  <li><a href="/forms">Forms</a></li>
+  <li><a href="/archives">Archives</a></li>
+</ul>
+    </nav>
+    </div>
+</header>
+<main id="main">
+  <div class="container">
+    <div class="page page-has-menu">
+<div class="page-header">
+  <div id="block-breadcrumbs">
+
+
+        <nav aria-labelledby="system-breadcrumb">
+    <h2 id="system-breadcrumb" class="visually-hidden">Breadcrumb</h2>
+    <ol>
+          <li>
+                            <a href="https://registrar.ucla.edu/">Home</a>
+                        </li>
+          <li>
+                            <a href="https://registrar.ucla.edu/calendars">Calendars</a>
+                        </li>
+          <li>
+                            <a href="https://registrar.ucla.edu/calendars/summer-session-calendar">Summer Session Calendar</a>
+                        </li>
+        </ol>
+  </nav>
+
+  </div>
+<div id="block-ucla-sa-page-title">
+
+
+
+  <h1>Summer Session Calendar</h1>
+
+
+  </div>
+
+
+</div>
+<div class="page-content">
+  <div data-ucla-node-id="170">
+
+
+
+
+
+<div class="body-content body--section">
+
+<p class="lead">Summer classes are offered in nine sessions that differ in length, plus a variable session in which dates are specific to an individual program.</p> <p>Summer classes are published in the <a href="https://sa.ucla.edu/ro/public/soc">Schedule of Classes</a>. Detailed dates and deadlines for current-year summer sessions can be viewed on the <a href="http://www.summer.ucla.edu/calendar">Summer Sessions website</a>. <a href="https://summer.ucla.edu/PrecollegeInstitutes">Summer Institute</a>, <a href="https://ieo.ucla.edu/travelstudy/">Travel Study</a>, and <a href="https://ieo.ucla.edu/globalinternships/">Global Internship</a> programs are considered session V (as in <em>variable</em>); their dates are specific to each program.</p> <div data-custom-embed-id="439" data-custom-embed-title="Summer Session Calendar Table">
+
+<table><thead><tr><th colspan="4">Summer Sessions 2021</th></tr> <tr><th>Session</th> <th>Weeks</th> <th>Start Date</th> <th>End Date</th></tr></thead> <tbody><tr><td>A</td> <td>3</td> <td>June 21</td> <td>July 9</td></tr> <tr><td>A</td> <td>6</td> <td>June 21</td> <td>July 30</td></tr> <tr><td>A</td> <td>8</td> <td>June 21</td> <td>August 13</td></tr> <tr><td>A</td> <td>9</td> <td>June 21</td> <td>August 20</td></tr> <tr><td>A</td> <td>10</td> <td>June 21</td> <td>August 27</td></tr> <tr><td colspan="2">Independence Day holiday</td> <td colspan="2">July 5</td></tr> <tr><td>B</td> <td>3</td> <td>July 12</td> <td>July 30</td></tr> <tr><td>C</td> <td>3</td> <td>August 2</td> <td>August 20</td></tr> <tr><td>C</td> <td>6</td> <td>August 2</td> <td>September 10</td></tr> <tr><td>D</td> <td>3</td> <td>August 23</td> <td>September 10</td></tr> <tr><td colspan="2">Labor Day holiday</td> <td colspan="2">September 6</td></tr></tbody></table>
+
+</div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+</div>
+<div class="page-menu">
+  <nav aria-labelledby="section-menu-title" class="section-menu">
+<h2 id="section-menu-title" class="section-menu-title"><a href="/calendars" data-drupal-link-system-path="node/166">Calendars</a></h2>
+<ul>
+<li class="section-menu-item"><a href="/calendars/annual-academic-calendar" data-drupal-link-system-path="node/167">Annual Academic Calendar</a></li>
+<li class="section-menu-item"><a href="/term-calendar" data-drupal-link-system-path="node/208">Term Calendar</a></li>
+<li class="section-menu-item"><a href="/calendars/professional-school-calendars" data-drupal-link-system-path="node/169">Professional School Calendars</a></li>
+<li class="section-menu-item section-menu-item-active"><a href="/calendars/summer-session-calendar" data-drupal-link-system-path="node/170" class="is-active">Summer Session Calendar</a></li>
+</ul>
+</nav>
+
+
+
+</div>
+</div>
+
+
+      </div>
+</main>
+<footer>
+<div class="container">
+<nav class="nav-footer" aria-label="Footer">
+  <ul>
+  <li><a href="/about-the-registrars-office">About</a></li>
+  <li><a href="/contacts-location-hours">Contacts/Hours</a></li>
+  <li><a href="http://my.ucla.edu/">MyUCLA</a></li>
+  <li><a href="http://www.studentaffairs.ucla.edu/">Student Affairs</a></li>
+  <li><a href="http://www.ucla.edu/">UCLA.edu</a></li>
+  <li><a href="/voter-information">Register to Vote</a></li>
+</ul>
+</nav>
+</div>
+</footer>
+<script src="/themes/custom/ucla_sa/js/ucla_sa.js??v=20210416041846" async></script>
+<script type="text/javascript">
+(function() {
+  if(document.querySelector('[data-ucla]')) {
+    var embed = document.createElement('script'); embed.type = 'text/javascript'; embed.async = true;
+    embed.src = '/themes/custom/ucla_sa/js/ucla_embed.js?v=20210416041846';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(embed, s);
+  }
+})();
+</script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"NRJS-7be76d7c7bc415dd4df","applicationID":"1468364564","transactionName":"MlxTZhRUCxJYB0cLCQsWcFESXAoPFhRSBQM6WlBRDlA=","queueTime":0,"applicationTime":10,"atts":"HhtQEFxOGBw=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

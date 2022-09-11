@@ -1,0 +1,45 @@
+<% title = full_title(yield(:title)).sub('&amp;', '&') %>
+<% description = full_description(yield(:description)).sub('&amp;', '&') %>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title><%= title %></title>
+  <meta name="description" content="<%= description %>">
+
+  <%= favicon_link_tag 'favicon.svg', type: 'image/svg+xml', skip_pipeline: true %>
+  <%= favicon_link_tag 'favicon.ico', rel: 'alternate icon', skip_pipeline: true %>
+  <%= favicon_link_tag 'favicon.svg', rel: 'mask-icon', skip_pipeline: true %>
+
+  <!-- Facebook -->
+  <meta property="og:title" content="<%= title %>">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="<%= request.original_url %>">
+  <meta property="og:image" content="<%= image_url 'logo.png', skip_pipeline: true %>">
+  <meta property="og:description" content="<%= description %>">
+  <meta property="og:site_name" content="<%= title %>">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@hotseatio">
+  <meta name="twitter:title" content="<%= title %>">
+  <meta name="twitter:description" content="<%= description %>">
+  <meta name="twitter:image:src" content="<%= image_url 'logo.png', skip_pipeline: true %>">
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QMXHM0BW9X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QMXHM0BW9X');
+  </script>
+
+  <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true %>
+</head>

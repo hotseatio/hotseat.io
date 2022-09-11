@@ -1,0 +1,7 @@
+<% provide(:title, 'Log in') %>
+
+<%= render 'devise/form_wrapper', title: 'Log in to your account' do %>
+  <div class="flex items-center justify-center">
+  <%= button_to 'Log in via Google', user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: 'button-primary' %>
+  </div>
+<% end %>

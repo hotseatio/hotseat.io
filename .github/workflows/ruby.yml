@@ -1,0 +1,117 @@
+name: Ruby
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    paths:
+      - .github/workflows/ruby.yml
+      - '**.rb'
+      - '**.rake'
+      - '**.ru'
+      - 'Gemfile'
+      - 'Gemfile.lock'
+      - '**.js'
+      - '**.jsx'
+      - '**.ts'
+      - '**.tsx'
+      - 'package.json'
+      - 'yarn.lock'
+      - '**.html.erb'
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    env:
+      DD_TRACE_ENABLED: false
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: hotseat_test
+          POSTGRES_PASSWORD: 'test-password'
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+
+      - name: Setup Elasticsearch
+        uses: ankane/setup-opensearch@v1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.node-version'
+
+      - name: Get system info
+        id: sysinfo
+        run: |
+          echo "::set-output name=yarn-cache-dir::$(yarn cache dir)"
+          echo "::set-output name=node-version::$(node --version | sed 's/\..*//')"
+          if cat /etc/*release 2>/dev/null
+          then
+            echo "::set-output name=os-version::$(cat /etc/*release | grep DISTRIB_RELEASE | sed 's/.*=//')"
+          else
+            echo "::set-output name=os-version::"
+          fi
+
+      - name: Ruby gem cache
+        uses: actions/cache@v1
+        with:
+          path: ../vendor/bundle
+          key: ${{ runner.os }}-${{ steps.sysinfo.outputs.os-version }}-ruby-${{ hashFiles('**/Gemfile.lock') }}
+
+      - name: Install gems
+        run: |
+          # We have to put it outside the repo file structure due to
+          # https://github.com/sorbet/sorbet/issues/1744.
+          bundle config path ../vendor/bundle
+          jobs=$(($(nproc)+2))
+          echo "$(nproc) processors available; using $jobs"
+          bundle install --jobs $jobs --retry 3
+
+      - name: JS package cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.sysinfo.outputs.yarn-cache-dir }}
+          key: ${{ runner.os }}-${{ steps.sysinfo.outputs.node-version }}-${{ steps.sysinfo.outputs.os-version }}-yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install Yarn packages
+        run: |
+          yarn install --pure-lockfile
+
+      - name: Run RuboCop
+        run: bundle exec rubocop --parallel
+
+      - name: Run erblint
+        run: bundle exec erblint --lint-all
+
+      - name: Run Sorbet
+        run: bundle exec srb tc
+
+      - name: Compile Assets
+        run: bundle exec rake assets:precompile
+
+      - name: Run tests
+        run: bin/rspec
+        env:
+          COVERAGE: 1
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: coverage/coverage.xml
+          flags: ruby
+          fail_ci_if_error: true

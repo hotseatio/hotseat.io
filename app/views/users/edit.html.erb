@@ -1,0 +1,13 @@
+<% provide(:title, 'Settings') %>
+
+<%= render 'devise/form_wrapper', title: 'Account Settings' do %>
+  <%= react_component_transparent('SettingsForm',
+                                  props: {
+                                    updateURL: user_path(current_user),
+                                    name: current_user.name,
+                                    email: current_user.email,
+                                    phoneNumber: current_user.formatted_phone,
+                                    betaTester: current_user.beta_tester,
+                                    referralLink: referral_url(current_user),
+                                  }) %>
+<% end %>

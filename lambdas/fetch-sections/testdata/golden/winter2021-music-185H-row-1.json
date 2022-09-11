@@ -1,0 +1,38 @@
+{
+  "registrarId": "431822200",
+  "termId": 36,
+  "courseId": 4222,
+  "format": "ACT",
+  "index": 1,
+  "days": [
+    "T",
+    "R",
+    "F"
+  ],
+  "times": [
+    "5pm-6:50pm",
+    "4pm-5:50pm",
+    "3pm-4:50pm"
+  ],
+  "locations": [
+    "Online - Recorded",
+    "Online - Recorded",
+    "Online - Recorded"
+  ],
+  "instructors": [
+    "Mckeown, K.O.",
+    "Ordonez, A.C.",
+    "Alam, T.Y."
+  ],
+  "enrollmentStatus": "Open",
+  "enrollmentCount": 0,
+  "enrollmentCapacity": 200,
+  "waitlistStatus": "None",
+  "waitlistCount": 0,
+  "waitlistCapacity": 0,
+  "website": "",
+  "finalStart": "0001-01-01T00:00:00Z",
+  "finalEnd": "0001-01-01T00:00:00Z",
+  "summerSession": "",
+  "summerDurationWeeks": 0
+}

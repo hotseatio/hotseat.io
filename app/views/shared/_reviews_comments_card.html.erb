@@ -1,0 +1,22 @@
+<% if comments.length > 0 %>
+  <%= render 'shared/card', id: 'reviews', title: 'Reviews' do %>
+    <%= render 'shared/list', collection: comments do |review| %>
+      <div class="px-2 py-4 sm:px-6">
+        <div class="w-full text-sm font-light text-gray-500 dark:text-gray-400">
+          <div>
+            Quarter Taken: <%= review.quarter_taken %>
+            <span class="ml-1 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+              <%= review.location_type.serialize %>
+            </span>
+          </div>
+          <div>
+            Grade: <%= Review.grades.fetch(review.grade, 'N/A') %>
+          </div>
+        </div>
+        <div class="py-3 text-base text-gray-700 dark:text-gray-200 prose">
+          <%= simple_format review.comments %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

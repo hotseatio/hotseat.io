@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ -z "$NODE_ENV" -a -n "$RAILS_ENV" ]
+then
+  export NODE_ENV="$RAILS_ENV"
+fi
+exec $@
