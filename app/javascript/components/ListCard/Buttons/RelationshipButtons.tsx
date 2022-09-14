@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useState } from 'react'
 import RequestButton from '../../RequestButton'
 import ConfirmModal from '../../ConfirmModal'
+import GetMoreTokensModal from '../../GetTokensButton/GetMoreTokensModal'
 import { StarIcon as StarIconSolid, BellIcon as BellIconSolid } from '@heroicons/react/solid'
 import { StarIcon as StarIconOutline, BellIcon as BellIconOutline } from '@heroicons/react/outline'
 
@@ -68,9 +69,6 @@ function UntoggledSubscribeButton({ sectionId, onClick }: ButtonProps): JSX.Elem
   if (phone === null) {
     description = "You don't currently have a phone number set. Go over to Settings to add your number!"
     subscribeDisabled = true
-  } else if (subscribeDisabled) {
-    description = 'You currently have 0 notification tokens. Try writing some reviews to gain notification tokens!'
-    subscribeDisabled = true
   } else {
     description = `You will receive text message alerts to ${phone} about enrollment changes to this class. Message and data rates may apply. You may unsubscribe at any time in your settings page. This subscription will use one of your ${notificationTokens} notification tokens. To obtain more notification tokens, write reviews for classes you've taken.`
   }
@@ -86,21 +84,25 @@ function UntoggledSubscribeButton({ sectionId, onClick }: ButtonProps): JSX.Elem
       >
         <BellIconOutline className="h-5 w-5" />
       </RequestButton>
-      <ConfirmModal
-        title="Confirm subscription"
-        description={description}
-        isOpen={isModalOpen}
-        Icon={BellIconOutline}
-        onConfirm={onConfirm}
-        onCancel={() => setIsModalOpen(false)}
-        confirmDisabled={subscribeDisabled}
-        confirmLabel="Subscribe"
-        confirmRequest={{
-          method: 'POST',
-          resource: '/relationships',
-          body: { section_id: sectionId, subscribe: true },
-        }}
-      />
+      {subscribeDisabled ? (
+        <GetMoreTokensModal open={isModalOpen} setOpen={setIsModalOpen} />
+      ) : (
+        <ConfirmModal
+          title="Confirm subscription"
+          description={description}
+          isOpen={isModalOpen}
+          Icon={BellIconOutline}
+          onConfirm={onConfirm}
+          onCancel={() => setIsModalOpen(false)}
+          confirmDisabled={subscribeDisabled}
+          confirmLabel="Subscribe"
+          confirmRequest={{
+            method: 'POST',
+            resource: '/relationships',
+            body: { section_id: sectionId, subscribe: true },
+          }}
+        />
+      )}
     </>
   )
 }
