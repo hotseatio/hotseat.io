@@ -64,8 +64,9 @@ function UntoggledSubscribeButton({ sectionId, onClick }: ButtonProps): JSX.Elem
     if (onClick) onClick()
   }
 
-  let subscribeDisabled = notificationTokens === 0
-  let description
+  const showGetMoreTokensModal = notificationTokens === 0
+  let subscribeDisabled = false
+  let description: string | null = null
   if (phone === null) {
     description = "You don't currently have a phone number set. Go over to Settings to add your number!"
     subscribeDisabled = true
@@ -84,7 +85,7 @@ function UntoggledSubscribeButton({ sectionId, onClick }: ButtonProps): JSX.Elem
       >
         <BellIconOutline className="h-5 w-5" />
       </RequestButton>
-      {subscribeDisabled ? (
+      {showGetMoreTokensModal ? (
         <GetMoreTokensModal open={isModalOpen} setOpen={setIsModalOpen} />
       ) : (
         <ConfirmModal
