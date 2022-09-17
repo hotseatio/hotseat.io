@@ -1,11 +1,14 @@
 import * as React from 'react'
 import { useMemo, useState } from 'react'
-import { TermSelectCard } from '../Card'
+import { CheckIcon } from '@heroicons/react/outline'
+
+
 import SectionRow from './SectionRow'
 import type { Section } from './SectionRow'
 import { IsBetaTesterContext } from './context'
-import { CheckIcon } from '@heroicons/react/outline'
 import { ReviewButton, RegistrarButton, FollowButton, SubscribeButton } from './Buttons'
+
+import { TermSelectCard } from 'components/Card'
 
 type EnrollmentPeriod = 'pre' | 'current' | 'post'
 

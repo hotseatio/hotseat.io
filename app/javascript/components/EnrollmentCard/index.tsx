@@ -1,11 +1,12 @@
 import * as React from 'react'
 import { useMemo, useState } from 'react'
-import { Card } from '../Card'
-import Select from '../Select'
 import { compact } from 'lodash-es'
 
 import EnrollmentChart from './EnrollmentChart'
 import type { Marker, EnrollmentDatumJSON } from './EnrollmentChart'
+
+import Select from 'components/Select'
+import { Card } from 'components/Card'
 
 type TermEnrollmentSection = {
   label: string

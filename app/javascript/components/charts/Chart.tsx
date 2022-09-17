@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { createContext, useContext } from 'react'
+
 import { defaultDimensions, Dimensions } from './hooks/useChartDimensions'
 
 const ChartContext = createContext(defaultDimensions)

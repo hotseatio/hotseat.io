@@ -6,12 +6,12 @@ import { scaleTime, scaleLinear } from 'd3-scale'
 import { timeDay } from 'd3-time'
 import { line } from 'd3-shape'
 
-import { add, sub, earliest, HOUR } from '../../utilities/date'
-import { useChartDimensions } from '../charts/hooks/useChartDimensions'
-import XAxis from '../charts/axis/XAxis'
-import YAxis from '../charts/axis/YAxis'
-import Chart from '../charts/Chart'
-import { RedGradient, redGradientId } from '../charts/Gradient'
+import { add, sub, earliest, HOUR } from 'utilities/date'
+import { useChartDimensions } from 'components/charts/hooks/useChartDimensions'
+import XAxis from 'components/charts/axis/XAxis'
+import YAxis from 'components/charts/axis/YAxis'
+import Chart from 'components/charts/Chart'
+import { RedGradient, redGradientId } from 'components/charts/Gradient'
 
 type EnrollmentDatumNonDate = {
   enrollmentCapacity: number
@@ -123,9 +123,10 @@ export default function EnrollmentChart({
     () => sectionData.map((data) => fillOmittedData(data, { enrollmentEnd: new Date(enrollmentEnd), isLive })),
     [sectionData, enrollmentEnd, isLive]
   )
-  const latestSectionData = useMemo(() => sanitizedSectionData.map((data) => data[data.length - 1]), [
-    sanitizedSectionData,
-  ])
+  const latestSectionData = useMemo(
+    () => sanitizedSectionData.map((data) => data[data.length - 1]),
+    [sanitizedSectionData]
+  )
   const legendSectionData = highlightedDataPoints ?? latestSectionData
 
   const yMax = useMemo(

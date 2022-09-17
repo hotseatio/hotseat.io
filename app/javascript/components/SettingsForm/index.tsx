@@ -2,11 +2,13 @@ import * as React from 'react'
 import { useState } from 'react'
 import { Switch } from '@headlessui/react'
 import classNames from 'classnames'
-import LoadingCircle from '../icons/LoadingCircle'
-import Alert from '../Alert'
+
 import CopyToClipboardInput from './CopyToClipboardInput'
 import PhoneInput from './PhoneInput'
-import type { AlertType } from '../Alert'
+
+import LoadingCircle from 'components/icons/LoadingCircle'
+import Alert from 'components/Alert'
+import type { AlertType } from 'components/Alert'
 import { authenticityHeaders } from 'utilities/authenticityHeaders'
 
 type Props = {

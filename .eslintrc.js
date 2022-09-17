@@ -49,6 +49,19 @@ module.exports = {
     'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
   },
   rules: {
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'always',
+      },
+    ],
+    'import/no-named-as-default-member': 0,
     'import/namespace': 0,
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: ['..*'],
+      },
+    ],
   },
 }

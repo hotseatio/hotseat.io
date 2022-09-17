@@ -4,8 +4,8 @@
 
 import * as React from 'react'
 import { render } from '@testing-library/react'
-import { EnrollmentDatumJSON } from 'components/EnrollmentCard/EnrollmentChart'
-import EnrollmentChart from 'components/EnrollmentCard/EnrollmentChart'
+
+import EnrollmentChart, { EnrollmentDatumJSON } from 'components/EnrollmentCard/EnrollmentChart'
 import { add, HOUR } from 'utilities/date'
 
 test('loads lectures', async () => {

@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { Fragment, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import RequestButton from './RequestButton'
+
+import RequestButton from 'components/RequestButton'
 
 type Props = {
   isOpen: boolean
