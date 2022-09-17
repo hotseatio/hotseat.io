@@ -1,7 +1,7 @@
 import '@hotwired/turbo-rails'
 import * as React from 'react'
 import { createRoot } from 'react-dom/client'
-import ahoy from 'ahoy.js'
+import { configure, trackView, trackClicks, trackSubmits } from 'ahoy.js'
 
 // React components
 import Search from 'components/Search'
@@ -38,10 +38,10 @@ document.addEventListener('turbo:load', () => {
 })
 
 // Ahoy
-ahoy.configure({
+configure({
   visitsUrl: '/hotcount/visits',
   eventsUrl: '/hotcount/events',
 })
-ahoy.trackView()
-ahoy.trackClicks('a, button, input[type=submit]')
-ahoy.trackSubmits('form')
+trackView()
+trackClicks('a, button, input[type=submit]')
+trackSubmits('form')
