@@ -3,11 +3,11 @@ import { useState } from 'react'
 import { scaleBand, scaleLinear } from 'd3-scale'
 import { max } from 'd3-array'
 
-import Chart from '../charts/Chart'
-import XAxis from '../charts/axis/XAxis'
-import YAxis from '../charts/axis/YAxis'
-import { RedGradient, redGradientId } from '../charts/Gradient'
-import { useChartDimensions } from '../charts/hooks/useChartDimensions'
+import Chart from 'components/charts/Chart'
+import XAxis from 'components/charts/axis/XAxis'
+import YAxis from 'components/charts/axis/YAxis'
+import { RedGradient, redGradientId } from 'components/charts/Gradient'
+import { useChartDimensions } from 'components/charts/hooks/useChartDimensions'
 
 const POSSIBLE_GRADES = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F']
 const GAP_SIZE = 2

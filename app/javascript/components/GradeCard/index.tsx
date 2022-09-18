@@ -1,7 +1,10 @@
 import * as React from 'react'
 import { useMemo, useState } from 'react'
-import { TermSelectCard } from '../Card'
+
 import GradeChart from './GradeChart'
+
+import { TermSelectCard } from 'components/Card'
+
 
 type TermGradeDatum = {
   term: string

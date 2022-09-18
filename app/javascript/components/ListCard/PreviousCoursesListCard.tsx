@@ -1,10 +1,13 @@
 import * as React from 'react'
-import { Card } from '../Card'
+import { CheckIcon } from '@heroicons/react/outline'
+
+
 import CourseRow from './CourseRow'
 import type { Section } from './SectionRow'
-import { CheckIcon } from '@heroicons/react/outline'
 import { ReviewButton, DetailsButton } from './Buttons'
 import { IsBetaTesterContext } from './context'
+
+import { Card } from 'components/Card'
 
 type Props = {
   isBetaTester: boolean

@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { useState } from 'react'
 import classNames from 'classnames'
-import AutocompletableInput from './AutocompletableInput'
-import { Course, Instructor } from './types'
+
+import AutocompletableInput from 'components/AutocompletableInput'
+import { Course, Instructor } from 'api'
 
 export type CourseSearchSuggestion = {
   id: string

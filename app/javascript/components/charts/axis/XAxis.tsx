@@ -1,7 +1,8 @@
 import * as React from 'react'
-import { useChartDimensions } from '../Chart'
 import { ScaleTime, ScaleBand } from 'd3-scale'
 import { timeDay } from 'd3-time'
+
+import { useChartDimensions } from 'components/charts/Chart'
 
 interface CommonProps {
   label?: string

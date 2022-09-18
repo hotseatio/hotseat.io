@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { ClockIcon, LocationMarkerIcon, UserIcon, UsersIcon, CalendarIcon } from '@heroicons/react/outline'
-import Badge from '../Badge'
-import type { BadgeColor } from '../Badge'
+
+import Badge from 'components/Badge'
+import type { BadgeColor } from 'components/Badge'
 
 export type Section = {
   id: number

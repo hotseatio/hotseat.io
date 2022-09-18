@@ -1,7 +1,10 @@
 import * as React from 'react'
 import { UserIcon, UsersIcon, CalendarIcon } from '@heroicons/react/outline'
-import Badge from '../Badge'
+
 import type { Section } from './SectionRow'
+
+import Badge from 'components/Badge'
+
 
 export type CourseRowProps = {
   section: Section

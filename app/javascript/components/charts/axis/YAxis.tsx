@@ -1,6 +1,7 @@
 import * as React from 'react'
-import { useChartDimensions } from '../Chart'
 import { ScaleLinear } from 'd3-scale'
+
+import { useChartDimensions } from 'components/charts/Chart'
 
 type Props = {
   scale: ScaleLinear<number, number, never>

@@ -1,11 +1,13 @@
 import * as React from 'react'
 import { useMemo, useState } from 'react'
+
 import ReviewClassPicker, { InitialSuggestion } from './ReviewClassPicker'
-import Alert from '../Alert'
-import Select from '../Select'
-import LoadingCircle from '../icons/LoadingCircle'
 import Question from './Question'
 import type { QuestionType } from './Question'
+
+import Alert from 'components/Alert'
+import Select from 'components/Select'
+import LoadingCircle from 'components/icons/LoadingCircle'
 import { authenticityHeaders } from 'utilities/authenticityHeaders'
 
 type QuestionData = {

@@ -2,7 +2,8 @@ import * as React from 'react'
 import { useMemo } from 'react'
 import type { ReactNode } from 'react'
 import classNames from 'classnames'
-import Select from './Select'
+
+import Select from 'components/Select'
 
 type Props = {
   id: string

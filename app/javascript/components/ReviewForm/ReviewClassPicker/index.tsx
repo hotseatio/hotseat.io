@@ -1,12 +1,11 @@
 import * as React from 'react'
 import { useMemo, useState, useEffect } from 'react'
 
-import Alert from '../../Alert'
-import AutocompletableInput from '../../AutocompletableInput'
-import LoadingCircle from '../../icons/LoadingCircle'
-import { renderCourse } from '../../AutocompletableInput'
-import Select, { SelectItem } from '../../Select'
-import { Course, Term, Section } from '../../types'
+import Alert from 'components/Alert'
+import AutocompletableInput, { renderCourse } from 'components/AutocompletableInput'
+import LoadingCircle from 'components/icons/LoadingCircle'
+import Select, { SelectItem } from 'components/Select'
+import { Course, Term, Section } from 'api'
 
 export type TermReviewSuggestion = {
   terms: Term[]
