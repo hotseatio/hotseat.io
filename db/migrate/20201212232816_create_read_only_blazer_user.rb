@@ -1,15 +1,15 @@
-# typed: false
+# typed: true
 # frozen_string_literal: true
 
 class CreateReadOnlyBlazerUser < ActiveRecord::Migration[6.0]
   def up
     execute <<~SQL.squish
-      CREATE ROLE blazer LOGIN PASSWORD 'c44jbR3qFYhsBXM8FKFrkm';
+      CREATE ROLE blazer LOGIN PASSWORD '#{ENV.fetch('BLAZER_PASSWORD')}';
     SQL
 
-    if Rails.env.production?
+    if T.unsafe(Rails.env).production?
       execute 'GRANT CONNECT ON DATABASE hotseat TO blazer;'
-    elsif Rails.env.test?
+    elsif T.unsafe(Rails.env).test?
       execute 'GRANT CONNECT ON DATABASE hotseat_test TO blazer;'
     else
       execute 'GRANT CONNECT ON DATABASE hotseat_dev TO blazer;'
