@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { useState } from 'react'
 import classNames from 'classnames'
-import LoadingCircle from './icons/LoadingCircle'
+
+import LoadingCircle from 'components/icons/LoadingCircle'
 import { authenticityHeaders } from 'utilities/authenticityHeaders'
 
 type Props = {

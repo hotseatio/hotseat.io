@@ -1,13 +1,16 @@
 import * as React from 'react'
 import { useState } from 'react'
 import { AcademicCapIcon } from '@heroicons/react/outline'
-import type { SubjectArea } from '../types'
-import { Card } from '../Card'
+
+
 import CourseRow from './CourseRow'
 import type { Section } from './SectionRow'
 import { DetailsButton, FollowButton, SubscribeButton } from './Buttons'
-import { GetMoreTokensButton } from '../GetTokensButton'
 import { IsBetaTesterContext } from './context'
+
+import { GetMoreTokensButton } from 'components/GetTokensButton'
+import { Card } from 'components/Card'
+import type { SubjectArea } from 'api'
 
 type Props = {
   isBetaTester: boolean

@@ -2,8 +2,9 @@ import * as React from 'react'
 import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { PhoneIcon } from '@heroicons/react/solid'
-import ConfirmModal from '../ConfirmModal'
-import RequestButton from '../RequestButton'
+
+import ConfirmModal from 'components/ConfirmModal'
+import RequestButton from 'components/RequestButton'
 
 type PhoneModalProps = {
   isOpen: boolean

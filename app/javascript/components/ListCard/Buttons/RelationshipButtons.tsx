@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { useState } from 'react'
-import RequestButton from '../../RequestButton'
-import ConfirmModal from '../../ConfirmModal'
-import GetMoreTokensModal from '../../GetTokensButton/GetMoreTokensModal'
 import { StarIcon as StarIconSolid, BellIcon as BellIconSolid } from '@heroicons/react/solid'
 import { StarIcon as StarIconOutline, BellIcon as BellIconOutline } from '@heroicons/react/outline'
+
+import RequestButton from 'components/RequestButton'
+import ConfirmModal from 'components/ConfirmModal'
+import GetMoreTokensModal from 'components/GetTokensButton/GetMoreTokensModal'
 
 type ButtonProps = {
   sectionId: number

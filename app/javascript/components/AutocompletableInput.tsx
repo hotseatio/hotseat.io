@@ -4,7 +4,8 @@ import { useCombobox } from 'downshift'
 import { useDebounceCallback } from '@react-hook/debounce'
 import { SearchIcon } from '@heroicons/react/solid'
 import classNames from 'classnames'
-import { Course } from './types'
+
+import { Course } from 'api'
 
 interface IdObj {
   id: string | number
