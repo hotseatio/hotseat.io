@@ -21,9 +21,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Ensure .node-version and .nvmrc are identical
-        run: diff -su .node-version .nvmrc
-
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -93,11 +90,3 @@ jobs:
 
       - name: Run tests
         run: yarn test --coverage
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          directory: js-coverage
-          flags: javascript
-          fail_ci_if_error: true
