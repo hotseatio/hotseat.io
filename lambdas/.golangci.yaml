@@ -1,0 +1,41 @@
+linters:
+  # In addition to default linters
+  # https://golangci-lint.run/usage/linters/
+  enable:
+    - asciicheck
+    - bodyclose
+    - depguard
+    - dogsled
+    - dupl
+    - exhaustive
+    - exportloopref
+    - goconst
+    - gocritic
+    - gocyclo
+    - godot
+    - goerr113
+    - gofmt
+    - goheader
+    - goimports
+    - revive
+    - gomodguard
+    - goprintffuncname
+    - gosec
+    - nestif
+    # TODO: Enable this
+    # - noctx
+    - nolintlint
+    - prealloc
+    - rowserrcheck
+    - sqlclosecheck
+    - stylecheck
+    - unconvert
+    - unparam
+  disable:
+    # TODO: Enable when we can get it to ignore pgx tx.Rollback
+    - errcheck
+
+linters-settings:
+  gocritic:
+    disabled-checks:
+      - appendAssign

@@ -1,0 +1,28 @@
+<% provide(:title, course_title(@course, @instructor)) %>
+<% provide(:description, course_description(@course, @instructor)) %>
+<% provide(:large_container, true) %>
+
+<%= render 'show_header' %>
+
+<div class="mt-2 lg:flex lg:space-x-4">
+  <div class="flex-1">
+    <%= render 'shared/reviews_summary_card',
+               reviews: @reviews,
+               course_id: @course.id %>
+    <%= render 'enrollment', enrollment_data: @enrollment_data %>
+    <%= render 'section_list', section_list: @section_list %>
+    <%= render 'shared/reviews_comments_card', comments: @comments %>
+  </div>
+  <div class="w-full lg:max-w-sm">
+    <%= render 'course_info',
+               instructor: @instructor,
+               course: @course,
+               preceding_course: @preceding_course,
+               terms: @previous_terms,
+               current_term: @term,
+               upcoming_terms: @upcoming_terms %>
+    <%= render 'grade_info', reviews: @reviews %>
+    <%= render 'grades', grade_data: @grade_data %>
+    <%= render 'textbooks', textbooks: @textbooks %>
+  </div>
+</div>

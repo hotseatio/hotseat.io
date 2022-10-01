@@ -1,0 +1,12 @@
+<div class="sm:grid sm:grid-cols-3 sm:gap-4">
+  <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
+    <%= label %>
+  </dt>
+  <dd class="mt-1 text-sm text-gray-900 dark:text-gray-50 sm:mt-0 sm:col-span-2">
+    <% if local_assigns[:value].present? %>
+      <%= value %>
+    <% else %>
+      <%= yield %>
+    <% end %>
+  </dd>
+</div>

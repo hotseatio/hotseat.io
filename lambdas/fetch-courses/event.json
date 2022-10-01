@@ -1,0 +1,11 @@
+{
+  "subjectArea": {
+    "id": 42,
+    "name": "Computer Science",
+    "code": "COM SCI"
+  },
+  "term": {
+    "term": "22S",
+    "id": 71
+  }
+}

@@ -1,0 +1,56 @@
+<div class="relative mt-24 sm:mt-20 sm:py-16">
+  <div aria-hidden="true" class="hidden sm:block">
+    <div class="absolute inset-y-0 left-0 w-1/2 bg-gray-50 dark:bg-gray-700 rounded-r-3xl"></div>
+    <%= render 'dots_pattern', classes: 'absolute top-8 left-1/2 -ml-3', width: 404, height: 392 %>
+  </div>
+  <div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
+    <div class="relative rounded-2xl px-6 py-10 bg-red-500 dark:bg-red-600 overflow-hidden shadow-xl sm:px-12 sm:py-20">
+      <div aria-hidden="true" class="absolute inset-0 -mt-72 sm:-mt-20 md:mt-0">
+        <svg class="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1463 360">
+          <path class="text-red-400 text-opacity-40" fill="currentColor" d="M-82.673 72l1761.849 472.086-134.327 501.315-1761.85-472.086z" />
+          <path class="text-red-600 text-opacity-40" fill="currentColor" d="M-217.088 544.086L1544.761 72l134.327 501.316-1761.849 472.086z" />
+        </svg>
+      </div>
+      <div class="relative">
+        <div class="sm:text-center">
+          <h2 class="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
+            Available now. Free for all UCLA students.
+          </h2>
+          <div class="w-full flex justify-center">
+            <%= button_to 'Sign up', user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: 'cursor-pointer mt-6 mx-auto block rounded-md border border-transparent px-5 py-3 bg-gray-900 text-base font-medium text-white shadow hover:bg-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-red-500 sm:px-10' %>
+          </div>
+
+          <p class="mt-6 mb-4 mx-auto text-lg text-gray-100 font-bold">
+          Not ready to sign up? Search for classes and instructors commitment-free.
+          </p>
+        </div>
+
+        <div class="flex justify-center w-full sm:w-3/5 mx-auto" id="home-search">
+          <%= react_component_transparent('Search',
+                                          html_options: { class: 'w-full' },
+                                          props: {
+                                            id: 'home_search',
+                                            searchURL: search_url,
+                                            suggestionURL: search_suggestions_url,
+                                          }) %>
+        </div>
+
+        <div class="w-2/3 mx-auto mt-2 text-center">
+          <p class="text-gray-100 mb-6">Or, select a popular subject to get started.</p>
+          <ul class="grid gap-y-2 gap-x-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+            <% subject_areas.each do |subject_area| %>
+              <div>
+                <%= link_to subject_area do %>
+                  <li class="inline-flex items-center px-3 py-0.5 rounded-lg text-sm font-medium bg-red-100 text-red-800 hover:bg-red-200">
+                    <%= subject_area.name %>
+                  </li>
+                <% end %>
+              </div>
+            <% end %>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

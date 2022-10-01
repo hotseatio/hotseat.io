@@ -1,0 +1,14 @@
+<div class="mb-4">
+  <%= render 'shared/breadcrumbs', path: breadcrumbs %>
+
+  <div class="flex flex-wrap items-baseline">
+    <h2 class="mt-2 text-2xl font-bold leading-7 text-gray-900 dark:text-gray-50 sm:text-3xl sm:truncate">
+      <%= title %>
+    </h2>
+    <% if local_assigns[:subtitle] %>
+      <p class="ml-2 mt-1 text-sm text-gray-500 truncate">
+      <%= subtitle %>
+      </p>
+    <% end %>
+  </div>
+</div>

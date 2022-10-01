@@ -1,0 +1,39 @@
+<body class="bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white flex flex-col">
+  <%= render 'layouts/navbar' %>
+  <main class="flex-grow">
+    <% if yield(:large_container).present? %>
+    <div class="max-w-screen-xl mx-auto px-2 flex-grow">
+    <% else %>
+    <div class="max-w-screen-lg mx-auto px-2 flex-grow">
+    <% end %>
+
+      <% if show_ads? %>
+        <div align="center" class="mb-4">
+          <%= render 'layouts/header_ad' %>
+        </div>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <% unless current_user.phone? || current_page?(settings_path) %>
+          <%= render 'shared/alert', type: 'warn', title: 'Phone not set' do %>
+            You haven't set your phone number yet, so you can't get text notifications. <a class="underline" href="<%= settings_path %>" target="_blank">Set your phone now ➡️</a>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% flash.each do |type, message| %>
+        <% if message.is_a?(Hash) %>
+          <%= render 'shared/alert',
+                     type:,
+                     title: message[:title],
+                     message: message[:message],
+                     link: message[:link],
+                     link_title: message[:link_title] %>
+        <% else %>
+          <%= render 'shared/alert', type:, message: %>
+        <% end %>
+      <% end %>
+      <%= yield %>
+    </div>
+  </main>
+  <%= render 'layouts/footer' %>
+</body>

@@ -1,0 +1,28 @@
+<% badge_label = T.let(local_assigns[:badge_label], T.nilable(String)) %>
+<% badge_color = T.let(local_assigns[:badge_color], T.nilable(ColorHelper::Color)) %>
+<% subtitle = local_assigns.fetch(:subtitle, nil) %>
+
+<li>
+  <%= link_to link, class: 'm-0 block hover:bg-gray-50 dark:hover:bg-gray-700' do %>
+    <div class="p-2 flex items-center sm:px-6">
+      <div class="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">
+        <div class="sm:flex-1 min-w-0">
+          <p class="text-base font-medium text-gray-700 dark:text-gray-200 truncate">
+          <%= title %>
+          </p>
+          <% unless subtitle.blank? %>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+            <%= subtitle %>
+            </p>
+          <% end %>
+        </div>
+        <% if badge_label && badge_color %>
+          <%= render 'shared/badge', label: badge_label, color: badge_color, classes: 'my-4' %>
+        <% end %>
+      </div>
+      <div class="ml-1 flex-shrink-0">
+        <%= render 'icons/chevron-right', classes: 'h-5 w-5 text-gray-400' %>
+      </div>
+    </div>
+  <% end %>
+</li>

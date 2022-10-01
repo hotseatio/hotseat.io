@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["es2019", "dom"],
+    "jsx": "react",
+    "module": "es6",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["node_modules/*", "app/javascript/*"]
+    },
+    "sourceMap": true,
+    "target": "es2019",
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": ["app/javascript/"],
+  "exclude": ["node_modules", "**/*.test.tsx?"],
+  "compileOnSave": false
+}

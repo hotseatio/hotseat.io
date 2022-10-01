@@ -1,0 +1,16 @@
+.aws-sam/
+.serverless/
+.env.production
+bin/
+node_modules/
+yarn-error.log
+packaged.yaml
+fetch-subject-areas/fetch-subject-areas
+trigger-courses/trigger-courses
+fetch-courses/fetch-courses
+trigger-sections/trigger-sections
+fetch-sections/fetch-sections
+trigger-textbooks/trigger-textbooks
+fetch-textbooks/fetch-textbooks
+trigger-instructors/trigger-instructors
+fetch-instructors/fetch-instructors

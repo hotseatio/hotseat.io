@@ -1,0 +1,30 @@
+{
+  "registrarId": "187096200",
+  "termId": 42,
+  "courseId": 3365,
+  "format": "LEC",
+  "index": 1,
+  "days": [
+    "MW"
+  ],
+  "times": [
+    "10am-11:50am"
+  ],
+  "locations": [
+    "Online - Recorded"
+  ],
+  "instructors": [
+    "Nachenberg, C.S."
+  ],
+  "enrollmentStatus": "Full",
+  "enrollmentCount": 195,
+  "enrollmentCapacity": 195,
+  "waitlistStatus": "None",
+  "waitlistCount": 0,
+  "waitlistCapacity": 0,
+  "website": "",
+  "finalStart": "0001-01-01T00:00:00Z",
+  "finalEnd": "0001-01-01T00:00:00Z",
+  "summerSession": "",
+  "summerDurationWeeks": 0
+}

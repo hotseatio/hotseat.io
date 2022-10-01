@@ -1,0 +1,734 @@
+[
+  {
+    "name": "Aerospace Studies",
+    "code": "AERO ST"
+  },
+  {
+    "name": "African American Studies",
+    "code": "AF AMER"
+  },
+  {
+    "name": "African Studies",
+    "code": "AFRC ST"
+  },
+  {
+    "name": "American Indian Studies",
+    "code": "AM IND"
+  },
+  {
+    "name": "American Sign Language",
+    "code": "ASL"
+  },
+  {
+    "name": "Ancient Near East",
+    "code": "AN N EA"
+  },
+  {
+    "name": "Anesthesiology",
+    "code": "ANES"
+  },
+  {
+    "name": "Anthropology",
+    "code": "ANTHRO"
+  },
+  {
+    "name": "Applied Linguistics",
+    "code": "APPLING"
+  },
+  {
+    "name": "Arabic",
+    "code": "ARABIC"
+  },
+  {
+    "name": "Archaeology",
+    "code": "ARCHEOL"
+  },
+  {
+    "name": "Architecture and Urban Design",
+    "code": "ARCH\u0026UD"
+  },
+  {
+    "name": "Armenian",
+    "code": "ARMENIA"
+  },
+  {
+    "name": "Art",
+    "code": "ART"
+  },
+  {
+    "name": "Art History",
+    "code": "ART HIS"
+  },
+  {
+    "name": "Arts and Architecture",
+    "code": "ART\u0026ARC"
+  },
+  {
+    "name": "Arts Education",
+    "code": "ARTS ED"
+  },
+  {
+    "name": "Asian",
+    "code": "ASIAN"
+  },
+  {
+    "name": "Asian American Studies",
+    "code": "ASIA AM"
+  },
+  {
+    "name": "Astronomy",
+    "code": "ASTR"
+  },
+  {
+    "name": "Atmospheric and Oceanic Sciences",
+    "code": "A\u0026O SCI"
+  },
+  {
+    "name": "Bioengineering",
+    "code": "BIOENGR"
+  },
+  {
+    "name": "Bioinformatics (Graduate)",
+    "code": "BIOINFO"
+  },
+  {
+    "name": "Bioinformatics (Undergraduate)",
+    "code": "BIOINFR"
+  },
+  {
+    "name": "Biological Chemistry",
+    "code": "BIOL CH"
+  },
+  {
+    "name": "Biomathematics",
+    "code": "BIOMATH"
+  },
+  {
+    "name": "Biomedical Research",
+    "code": "BMD RES"
+  },
+  {
+    "name": "Biostatistics",
+    "code": "BIOSTAT"
+  },
+  {
+    "name": "Central and East European Studies",
+    "code": "C\u0026EE ST"
+  },
+  {
+    "name": "Chemical Engineering",
+    "code": "CH ENGR"
+  },
+  {
+    "name": "Chemistry and Biochemistry",
+    "code": "CHEM"
+  },
+  {
+    "name": "Chicana and Chicano Studies",
+    "code": "CHICANO"
+  },
+  {
+    "name": "Chinese",
+    "code": "CHIN"
+  },
+  {
+    "name": "Civil and Environmental Engineering",
+    "code": "C\u0026EE"
+  },
+  {
+    "name": "Classics",
+    "code": "CLASSIC"
+  },
+  {
+    "name": "Clusters",
+    "code": "CLUSTER"
+  },
+  {
+    "name": "Communication",
+    "code": "COMM"
+  },
+  {
+    "name": "Community Engagement and Social Change",
+    "code": "CESC"
+  },
+  {
+    "name": "Community Health Sciences",
+    "code": "COM HLT"
+  },
+  {
+    "name": "Comparative Literature",
+    "code": "COM LIT"
+  },
+  {
+    "name": "Computational and Systems Biology",
+    "code": "C\u0026S BIO"
+  },
+  {
+    "name": "Computer Science",
+    "code": "COM SCI"
+  },
+  {
+    "name": "Conservation of Archaeological and Ethnographic Materials",
+    "code": "CAEM"
+  },
+  {
+    "name": "Dance",
+    "code": "DANCE"
+  },
+  {
+    "name": "Dentistry",
+    "code": "DENT"
+  },
+  {
+    "name": "Design / Media Arts",
+    "code": "DESMA"
+  },
+  {
+    "name": "Digital Humanities",
+    "code": "DGT HUM"
+  },
+  {
+    "name": "Disability Studies",
+    "code": "DIS STD"
+  },
+  {
+    "name": "Dutch",
+    "code": "DUTCH"
+  },
+  {
+    "name": "Earth, Planetary, and Space Sciences",
+    "code": "EPS SCI"
+  },
+  {
+    "name": "Ecology and Evolutionary Biology",
+    "code": "EE BIOL"
+  },
+  {
+    "name": "Economics",
+    "code": "ECON"
+  },
+  {
+    "name": "Education",
+    "code": "EDUC"
+  },
+  {
+    "name": "Electrical and Computer Engineering",
+    "code": "EC ENGR"
+  },
+  {
+    "name": "Engineering",
+    "code": "ENGR"
+  },
+  {
+    "name": "English",
+    "code": "ENGL"
+  },
+  {
+    "name": "English as A Second Language",
+    "code": "ESL"
+  },
+  {
+    "name": "English Composition",
+    "code": "ENGCOMP"
+  },
+  {
+    "name": "Environment",
+    "code": "ENVIRON"
+  },
+  {
+    "name": "Environmental Health Sciences",
+    "code": "ENV HLT"
+  },
+  {
+    "name": "Epidemiology",
+    "code": "EPIDEM"
+  },
+  {
+    "name": "Ethnomusicology",
+    "code": "ETHNMUS"
+  },
+  {
+    "name": "Filipino",
+    "code": "FILIPNO"
+  },
+  {
+    "name": "Film and Television",
+    "code": "FILM TV"
+  },
+  {
+    "name": "Food Studies",
+    "code": "FOOD ST"
+  },
+  {
+    "name": "French",
+    "code": "FRNCH"
+  },
+  {
+    "name": "Gender Studies",
+    "code": "GENDER"
+  },
+  {
+    "name": "Geography",
+    "code": "GEOG"
+  },
+  {
+    "name": "German",
+    "code": "GERMAN"
+  },
+  {
+    "name": "Gerontology",
+    "code": "GRNTLGY"
+  },
+  {
+    "name": "Global Health",
+    "code": "GLB HLT"
+  },
+  {
+    "name": "Global Jazz Studies",
+    "code": "GJ STDS"
+  },
+  {
+    "name": "Global Studies",
+    "code": "GLBL ST"
+  },
+  {
+    "name": "Graduate Student Professional Development",
+    "code": "GRAD PD"
+  },
+  {
+    "name": "Greek",
+    "code": "GREEK"
+  },
+  {
+    "name": "Health Policy and Management",
+    "code": "HLT POL"
+  },
+  {
+    "name": "Hebrew",
+    "code": "HEBREW"
+  },
+  {
+    "name": "Hindi-Urdu",
+    "code": "HIN-URD"
+  },
+  {
+    "name": "History",
+    "code": "HIST"
+  },
+  {
+    "name": "Honors Collegium",
+    "code": "HNRS"
+  },
+  {
+    "name": "Human Genetics",
+    "code": "HUM GEN"
+  },
+  {
+    "name": "Hungarian",
+    "code": "HNGAR"
+  },
+  {
+    "name": "Indigenous Languages of the Americas",
+    "code": "IL AMER"
+  },
+  {
+    "name": "Indo-European Studies",
+    "code": "I E STD"
+  },
+  {
+    "name": "Indonesian",
+    "code": "INDO"
+  },
+  {
+    "name": "Information Studies",
+    "code": "INF STD"
+  },
+  {
+    "name": "International and Area Studies",
+    "code": "I A STD"
+  },
+  {
+    "name": "International Development Studies",
+    "code": "INTL DV"
+  },
+  {
+    "name": "International Migration Studies",
+    "code": "I M STD"
+  },
+  {
+    "name": "Iranian",
+    "code": "IRANIAN"
+  },
+  {
+    "name": "Islamic Studies",
+    "code": "ISLM ST"
+  },
+  {
+    "name": "Italian",
+    "code": "ITALIAN"
+  },
+  {
+    "name": "Japanese",
+    "code": "JAPAN"
+  },
+  {
+    "name": "Jewish Studies",
+    "code": "JEWISH"
+  },
+  {
+    "name": "Korean",
+    "code": "KOREA"
+  },
+  {
+    "name": "Labor Studies",
+    "code": "LBR STD"
+  },
+  {
+    "name": "Latin",
+    "code": "LATIN"
+  },
+  {
+    "name": "Latin American Studies",
+    "code": "LATN AM"
+  },
+  {
+    "name": "Law",
+    "code": "LAW"
+  },
+  {
+    "name": "Law (Undergraduate)",
+    "code": "UG-LAW"
+  },
+  {
+    "name": "Lesbian, Gay, Bisexual, Transgender, and Queer Studies",
+    "code": "LGBTQS"
+  },
+  {
+    "name": "Life Sciences",
+    "code": "LIFESCI"
+  },
+  {
+    "name": "Linguistics",
+    "code": "LING"
+  },
+  {
+    "name": "Management",
+    "code": "MGMT"
+  },
+  {
+    "name": "Management-Executive MBA",
+    "code": "MGMTEX"
+  },
+  {
+    "name": "Management-Full-Time MBA",
+    "code": "MGMTFT"
+  },
+  {
+    "name": "Management-Fully Employed MBA",
+    "code": "MGMTFE"
+  },
+  {
+    "name": "Management-Global Executive MBA Asia Pacific",
+    "code": "MGMTGEX"
+  },
+  {
+    "name": "Management-Master of Financial Engineering",
+    "code": "MGMTMFE"
+  },
+  {
+    "name": "Management-Master of Science in Business Analytics",
+    "code": "MGMTMSA"
+  },
+  {
+    "name": "Management-PhD",
+    "code": "MGMTPHD"
+  },
+  {
+    "name": "Materials Science and Engineering",
+    "code": "MAT SCI"
+  },
+  {
+    "name": "Mathematics",
+    "code": "MATH"
+  },
+  {
+    "name": "Mechanical and Aerospace Engineering",
+    "code": "MECH\u0026AE"
+  },
+  {
+    "name": "Medicine",
+    "code": "MED"
+  },
+  {
+    "name": "Microbiology, Immunology, and Molecular Genetics",
+    "code": "MIMG"
+  },
+  {
+    "name": "Middle Eastern Studies",
+    "code": "M E STD"
+  },
+  {
+    "name": "Military Science",
+    "code": "MIL SCI"
+  },
+  {
+    "name": "Molecular and Medical Pharmacology",
+    "code": "M PHARM"
+  },
+  {
+    "name": "Molecular Biology",
+    "code": "MOL BIO"
+  },
+  {
+    "name": "Molecular Toxicology",
+    "code": "MOL TOX"
+  },
+  {
+    "name": "Molecular, Cell, and Developmental Biology",
+    "code": "MCD BIO"
+  },
+  {
+    "name": "Molecular, Cellular, and Integrative Physiology",
+    "code": "MC\u0026IP"
+  },
+  {
+    "name": "Music",
+    "code": "MUSC"
+  },
+  {
+    "name": "Music Industry",
+    "code": "MSC IND"
+  },
+  {
+    "name": "Musicology",
+    "code": "MUSCLG"
+  },
+  {
+    "name": "Naval Science",
+    "code": "NAV SCI"
+  },
+  {
+    "name": "Near Eastern Languages",
+    "code": "NR EAST"
+  },
+  {
+    "name": "Neurobiology",
+    "code": "NEURBIO"
+  },
+  {
+    "name": "Neurology",
+    "code": "NEURLGY"
+  },
+  {
+    "name": "Neuroscience (Graduate)",
+    "code": "NEURO"
+  },
+  {
+    "name": "Neuroscience",
+    "code": "NEUROSC"
+  },
+  {
+    "name": "Neurosurgery",
+    "code": "NEURSGY"
+  },
+  {
+    "name": "Nursing",
+    "code": "NURSING"
+  },
+  {
+    "name": "Obstetrics and Gynecology",
+    "code": "OBGYN"
+  },
+  {
+    "name": "Ophthalmology",
+    "code": "OPTH"
+  },
+  {
+    "name": "Oral Biology",
+    "code": "ORL BIO"
+  },
+  {
+    "name": "Orthopaedic Surgery",
+    "code": "ORTHPDC"
+  },
+  {
+    "name": "Pathology and Laboratory Medicine",
+    "code": "PATH"
+  },
+  {
+    "name": "Pediatrics",
+    "code": "PEDS"
+  },
+  {
+    "name": "Philosophy",
+    "code": "PHILOS"
+  },
+  {
+    "name": "Physics",
+    "code": "PHYSICS"
+  },
+  {
+    "name": "Physics and Biology in Medicine",
+    "code": "PBMED"
+  },
+  {
+    "name": "Physiological Science",
+    "code": "PHYSCI"
+  },
+  {
+    "name": "Physiology",
+    "code": "PHYSIOL"
+  },
+  {
+    "name": "Polish",
+    "code": "POLSH"
+  },
+  {
+    "name": "Political Science",
+    "code": "POL SCI"
+  },
+  {
+    "name": "Portuguese",
+    "code": "PORTGSE"
+  },
+  {
+    "name": "Program in Computing",
+    "code": "COMPTNG"
+  },
+  {
+    "name": "Psychiatry and Biobehavioral Sciences",
+    "code": "PSYCTRY"
+  },
+  {
+    "name": "Psychology",
+    "code": "PSYCH"
+  },
+  {
+    "name": "Public Affairs",
+    "code": "PUB AFF"
+  },
+  {
+    "name": "Public Health",
+    "code": "PUB HLT"
+  },
+  {
+    "name": "Public Policy",
+    "code": "PUB PLC"
+  },
+  {
+    "name": "Radiation Oncology",
+    "code": "RAD ONC"
+  },
+  {
+    "name": "Religion, Study of",
+    "code": "RELIGN"
+  },
+  {
+    "name": "Romanian",
+    "code": "ROMANIA"
+  },
+  {
+    "name": "Russian",
+    "code": "RUSSN"
+  },
+  {
+    "name": "Scandinavian",
+    "code": "SCAND"
+  },
+  {
+    "name": "Science Education",
+    "code": "SCI EDU"
+  },
+  {
+    "name": "Semitic",
+    "code": "SEMITIC"
+  },
+  {
+    "name": "Serbian/Croatian",
+    "code": "SRB CRO"
+  },
+  {
+    "name": "Slavic",
+    "code": "SLAVC"
+  },
+  {
+    "name": "Social Science",
+    "code": "SOC SC"
+  },
+  {
+    "name": "Social Thought",
+    "code": "SOC THT"
+  },
+  {
+    "name": "Social Welfare",
+    "code": "SOC WLF"
+  },
+  {
+    "name": "Society and Genetics",
+    "code": "SOC GEN"
+  },
+  {
+    "name": "Sociology",
+    "code": "SOCIOL"
+  },
+  {
+    "name": "South Asian",
+    "code": "S ASIAN"
+  },
+  {
+    "name": "Southeast Asian",
+    "code": "SEASIAN"
+  },
+  {
+    "name": "Spanish",
+    "code": "SPAN"
+  },
+  {
+    "name": "Statistics",
+    "code": "STATS"
+  },
+  {
+    "name": "Surgery",
+    "code": "SURGERY"
+  },
+  {
+    "name": "Swahili",
+    "code": "SWAHILI"
+  },
+  {
+    "name": "Thai",
+    "code": "THAI"
+  },
+  {
+    "name": "Theater",
+    "code": "THEATER"
+  },
+  {
+    "name": "Turkic Languages",
+    "code": "TURKIC"
+  },
+  {
+    "name": "University Studies",
+    "code": "UNIV ST"
+  },
+  {
+    "name": "Urban Planning",
+    "code": "URBN PL"
+  },
+  {
+    "name": "Urology",
+    "code": "UROLOGY"
+  },
+  {
+    "name": "Vietnamese",
+    "code": "VIETMSE"
+  },
+  {
+    "name": "World Arts and Cultures",
+    "code": "WL ARTS"
+  },
+  {
+    "name": "Yiddish",
+    "code": "YIDDSH"
+  }
+]

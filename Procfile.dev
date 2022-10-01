@@ -1,0 +1,5 @@
+# You can run these commands in separate shells
+web: rails s -p 3000
+js: yarn dev
+css: yarn build:css --watch --verbose
+stripe: stripe listen --forward-to localhost:3000/pay/webhooks/stripe

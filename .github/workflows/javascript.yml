@@ -1,0 +1,103 @@
+name: JavaScript
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    paths:
+      - .github/workflows/javascript.yml
+      - '**.js'
+      - '**.jsx'
+      - '**.ts'
+      - '**.tsx'
+      - 'tsconfig.json'
+      - 'package.json'
+      - 'yarn.lock'
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Ensure .node-version and .nvmrc are identical
+        run: diff -su .node-version .nvmrc
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.node-version'
+
+      - name: Get system info
+        id: sysinfo
+        run: |
+          echo "::set-output name=yarn-cache-dir::$(yarn cache dir)"
+          echo "::set-output name=node-version::$(node --version | sed 's/\..*//')"
+          if cat /etc/*release 2>/dev/null
+          then
+            echo "::set-output name=os-version::$(cat /etc/*release | grep DISTRIB_RELEASE | sed 's/.*=//')"
+          else
+            echo "::set-output name=os-version::"
+          fi
+
+      - name: JS package cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.sysinfo.outputs.yarn-cache-dir }}
+          key: ${{ runner.os }}-${{ steps.sysinfo.outputs.node-version }}-${{ steps.sysinfo.outputs.os-version }}-yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install packages
+        run: |
+          yarn install --pure-lockfile
+
+      - name: Run eslint
+        run: yarn eslint
+
+      - name: Run typescript
+        run: yarn tsc
+
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.node-version'
+
+      - name: Get system info
+        id: sysinfo
+        run: |
+          echo "::set-output name=yarn-cache-dir::$(yarn cache dir)"
+          echo "::set-output name=node-version::$(node --version | sed 's/\..*//')"
+          if cat /etc/*release 2>/dev/null
+          then
+            echo "::set-output name=os-version::$(cat /etc/*release | grep DISTRIB_RELEASE | sed 's/.*=//')"
+          else
+            echo "::set-output name=os-version::"
+          fi
+
+      - name: JS package cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.sysinfo.outputs.yarn-cache-dir }}
+          key: ${{ runner.os }}-${{ steps.sysinfo.outputs.node-version }}-${{ steps.sysinfo.outputs.os-version }}-yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install packages
+        run: |
+          yarn install --pure-lockfile
+
+      - name: Run tests
+        run: yarn test --coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: js-coverage
+          flags: javascript
+          fail_ci_if_error: true

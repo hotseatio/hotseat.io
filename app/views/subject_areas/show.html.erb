@@ -1,0 +1,45 @@
+<% provide(:title, @subject_area.name) %>
+<% provide(:description, subject_area_description(@subject_area)) %>
+
+<%= render 'shared/page_header',
+           title: @subject_area.name,
+           subtitle: @subject_area.code,
+           breadcrumbs: [{ name: 'Home', link: '/' }, { name: 'Subject Areas', link: subject_areas_path }, { name: @subject_area.name, path: subject_area_path(@subject_area) }] %>
+
+<% unless @subject_area.superseding_subject_area.nil? %>
+  <%= render 'shared/alert', type: 'warn', title: 'Inactive Subject' do %>
+    This subject is not active and has been replaced by <%= link_to @subject_area.superseding_subject_area.name_and_code, @subject_area.superseding_subject_area, class: 'font-medium underline hover:text-yellow-600' %>.
+  <% end %>
+<% end %>
+
+<div class="bg-white dark:bg-gray-900 overflow-hidden shadow rounded-lg my-4">
+  <div class="px-4 py-5 border-b border-gray-200 dark:border-gray-700 sm:px-6">
+    <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-nowrap">
+      <div class="ml-4 mt-2">
+        <h3 class="header-3">
+          Courses
+        </h3>
+      </div>
+      <div class="ml-4 mt-2 flex-shrink-0">
+        <%= react_component_transparent('FilterButton',
+                                        props: {
+                                          links: SubjectAreaHelper.filter_links(@subject_area, @filter_option, @filter_options),
+                                        }) %>
+      </div>
+    </div>
+  </div>
+  <% term_color = if @filter_option.is_a?(Term)
+                    term_badge_color(@filter_option, @term, @upcoming_terms)
+                  else
+                    ColorHelper::Color::Green
+                  end %>
+  <%= render 'shared/list', collection: @courses do |course| %>
+    <% badge_label = course_badge_label(course) %>
+    <%= render 'shared/list_item',
+               link: course,
+               title: course.title,
+               subtitle: course.number,
+               badge_label:,
+               badge_color: course_badge_color(badge_label, term_color:) %>
+  <% end %>
+</div>

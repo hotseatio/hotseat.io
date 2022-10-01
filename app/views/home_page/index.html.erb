@@ -1,0 +1,36 @@
+<main>
+  <%= render 'header' %>
+
+  <!-- Testimonial/stats section -->
+  <div class="relative">
+    <%= render 'feature_image_left', title: 'Class full? Get a text if it opens up.', body: "Hotseat scans the UCLA Registrar every hour for changes in classes. If there's a new spot, you'll be the first to know." do %>
+      <div>
+        <div class="imessage">
+          <p class="from-them">
+          Hotseat Alert: <%= @course.short_title %> enrollment status changed from Full to Open
+          <br><br>
+          <% section = @sections_by_term.first.second.first %>
+          Enroll now: <%= link_to enroll_url(section), enroll_url(section) %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+
+    <%= render 'feature_image_right', title: 'Be confident in your enrollment passes.', body: "We've been tracking enrollment trends at UCLA for over 2 years, so you can see which classes will fill up the fastest." do %>
+      <%= react_component_transparent('EnrollmentCard',
+                                      props: {
+                                        id: 'enrollment-progress',
+                                        termEnrollmentData: generate_enrollment_data(@sections_by_term),
+                                      }) %>
+                                  <% end %>
+
+                                  <%= render 'feature_image_left', title: 'Reviews. By students, for students.', body: "Reviewers are incentivized to write new reviews every quarter, giving Hotseat the most up-to-date info. Reviews detail not just the pros and cons of a class but also important information about grading and tests. All reviews are written by verified students, so you'll never see spam or fake reviews." do %>
+                                    <div>
+                                      <%= render 'shared/reviews_summary_card', reviews: @reviews %>
+                                      <%= render 'courses/grade_info', reviews: @reviews %>
+                                    </div>
+                                  <% end %>
+  </div>
+
+  <%= render 'call_to_action', subject_areas: @subject_areas %>
+</main>

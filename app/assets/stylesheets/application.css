@@ -1,0 +1,74 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import './buttons';
+@import './course-show.css';
+@import './footer';
+@import './forms';
+@import './navbar';
+@import './pagination';
+
+.badge {
+  @apply mt-2 flex-shrink-0 sm:mt-0 sm:ml-4 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+svg text {
+  user-select: none;
+}
+svg text::selection {
+  background: none;
+}
+
+.imessage {
+  @apply font-sans text-xl py-2 px-6;
+
+  p {
+    @apply rounded-r-2xl rounded-tl-2xl leading-5 py-2 px-3.5 relative break-words;
+    max-width: 80%;
+
+    &::before,
+    &::after {
+      bottom: -0.1rem;
+      content: '';
+      height: 1rem;
+      position: absolute;
+    }
+
+    &.from-them {
+      align-items: flex-start;
+      @apply text-black dark:text-gray-50;
+
+      background-color: #e5e5ea;
+      @media (prefers-color-scheme: dark) {
+        background-color: #6b6b6d;
+      }
+
+      &::before {
+        border-bottom-right-radius: 0.8rem 0.7rem;
+        border-left: 1rem solid #e5e5ea;
+        left: -0.35rem;
+        transform: translate(0, -0.1rem);
+        @media (prefers-color-scheme: dark) {
+          border-color: #6b6b6d;
+        }
+      }
+
+      &::after {
+        @apply bg-gray-50 dark:bg-gray-800 dark:sm:bg-gray-700 rounded-br-lg;
+        left: 20px;
+        transform: translate(-30px, -2px);
+        width: 10px;
+      }
+    }
+  }
+
+  a {
+    color: #06c;
+    @media (prefers-color-scheme: dark) {
+      color: #3b82f7;
+    }
+
+    @apply underline;
+  }
+}

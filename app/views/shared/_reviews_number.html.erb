@@ -1,0 +1,25 @@
+<div>
+  <div class="px-4 py-5 sm:p-6">
+    <dt class="text-base truncate font-normal text-gray-900 dark:text-gray-50">
+      <%= label %>
+    </dt>
+    <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
+      <div class="flex flex-wrap items-baseline text-2xl font-semibold text-red-600">
+        <% if value.nil? %>
+          N/A
+        <% else %>
+          <span class="mr-1">
+            <%= value %>
+          </span>
+          <span class="text-sm font-medium text-gray-500">
+            <% if time %>
+              hrs/week
+            <% else %>
+              / 10
+            <% end %>
+          </span>
+        <% end %>
+      </div>
+    </dd>
+  </div>
+</div>

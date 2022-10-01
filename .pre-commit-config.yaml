@@ -1,0 +1,58 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: check-yaml
+        args: ['--unsafe']
+      - id: check-json
+      - id: check-toml
+      - id: trailing-whitespace
+        exclude: testdata/
+
+  - repo: local
+    hooks:
+      - id: eslint
+        name: eslint
+        entry: yarn eslint
+        language: system
+        files: '\.(ts|tsx|js|jsx)$'
+
+      - id: typescript
+        name: typescript
+        entry: yarn tsc
+        language: system
+        pass_filenames: false
+        files: '\.(ts|tsx)$'
+
+      - id: prettier
+        name: prettier
+        entry: yarn prettier --write --list-different --ignore-unknown
+        exclude: testdata
+        language: system
+        files: '\.(ts|tsx|js|jsx|json|yaml|css)$'
+
+      - id: golangci-lint
+        name: golangci-lint
+        language: system
+        entry: bash -c 'cd lambdas/ && exec golangci-lint run --fix'
+        types: [go]
+        pass_filenames: false
+
+      - id: rubocop
+        name: rubocop
+        language: system
+        files: '\.(rb|rbs|rake|jbuilder)$|Gemfile$'
+        entry: 'bundle exec rubocop --auto-correct'
+
+      - id: erblint
+        name: erblint
+        language: system
+        files: '\.html\.erb$'
+        entry: 'bundle exec erblint --autocorrect'
+
+      - id: sorbet
+        name: sorbet
+        language: system
+        pass_filenames: false
+        files: '^sorbet\/|\.(rb|rbi|rbs|rake|jbuilder)$|Gemfile$'
+        entry: 'bundle exec srb tc'

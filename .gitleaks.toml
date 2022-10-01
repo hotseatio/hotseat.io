@@ -1,0 +1,14 @@
+title = "Hotseat gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+paths = [
+  '''go\.mod''',
+  '''go\.sum''',
+  '''sorbet''',
+  '''lambdas/.*/testdata/fixtures''',
+  '''lib/tasks/scrapedata''',
+]
+

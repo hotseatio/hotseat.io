@@ -1,0 +1,13 @@
+{
+  "Parameters": {
+    "LOGGING": "",
+    "LOG_LEVEL": "info",
+    "DB_USER": "nathan",
+    "DB_PASS": "",
+    "DB_HOST": "host.docker.internal",
+    "DB_PORT": "5432",
+    "DB_NAME": "hotseat_dev",
+    "DB_SSL_MODE": "disable",
+    "DRY_RUN": true
+  }
+}

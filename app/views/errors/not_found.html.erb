@@ -1,0 +1,8 @@
+<%= render 'shared/page_header',
+           title: 'Page Not Found',
+           breadcrumbs: [{ name: 'Home', link: '/' }, { name: '404', link: '/404' }] %>
+
+<div>
+  <p>Whoops, we couldn't find the page you were looking for.</p>
+  <p>Try our search up above or head back to the <%= link_to 'home page', root_path, class: 'underline' %>.</p>
+</div>

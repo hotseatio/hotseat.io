@@ -1,0 +1,27 @@
+.header-nav details > summary::-webkit-details-marker {
+  @apply hidden;
+}
+
+.header-nav details > summary {
+  @apply list-none;
+}
+
+.header-nav .mobile-dropdown-link {
+  @apply block px-4 py-2
+         text-base font-medium
+         text-gray-500 dark:text-gray-400
+         hover:text-gray-800 hover:bg-gray-100
+         dark:hover:text-gray-100 dark:hover:bg-gray-800;
+}
+
+.header-nav .desktop-link {
+  @apply inline-flex items-center
+         px-1 pt-1
+         border-b-2 border-transparent
+         text-sm font-medium text-gray-500 dark:text-gray-400
+         hover:text-gray-700 dark:hover:text-gray-200 hover:border-gray-300 dark:hover:border-gray-600;
+}
+
+.desktop-link.current {
+  @apply border-red-500 text-gray-900 dark:text-white;
+}

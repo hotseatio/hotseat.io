@@ -1,0 +1,22 @@
+.pagination {
+  @apply relative z-0 inline-flex shadow-sm -space-x-px;
+}
+
+.pagination .page {
+  @apply relative inline-flex items-center px-4 py-2
+         text-sm
+         border border-gray-300 dark:border-gray-600
+         text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-800;
+}
+
+.pagination .page:first-child {
+  @apply rounded-l-md;
+}
+
+.pagination .page:last-child {
+  @apply rounded-r-md;
+}
+
+.page.current {
+  @apply font-bold;
+}

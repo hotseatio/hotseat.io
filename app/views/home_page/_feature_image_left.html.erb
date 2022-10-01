@@ -1,0 +1,24 @@
+<div class="mt-20 lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+  <div class="relative sm:py-16 lg:py-0">
+    <div aria-hidden="true" class="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen">
+      <div class="absolute inset-y-0 right-1/2 w-full bg-gray-50 dark:bg-gray-700 rounded-r-3xl lg:right-72"></div>
+      <%= render 'dots_pattern', classes: 'absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12', width: 304, height: 310 %>
+    </div>
+    <div class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 lg:max-w-none lg:py-20">
+      <!-- custom content -->
+      <%= yield %>
+    </div>
+  </div>
+
+  <div class="relative mx-auto max-w-md px-4 pt-6 lg:pt-20 sm:max-w-3xl sm:px-6 lg:px-0">
+    <h2 class="text-3xl text-gray-900 dark:text-gray-50 font-extrabold tracking-tight sm:text-4xl">
+      <%= title %>
+    </h2>
+    <div class="mt-6 space-y-6">
+      <p class="text-lg text-gray-500 dark:text-gray-400">
+      <%= body %>
+      </p>
+    </div>
+  </div>
+</div>
+</div>

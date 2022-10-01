@@ -1,0 +1,22 @@
+<% provide(:title, "#{@query} | Search") %>
+
+<%= render 'shared/page_header',
+           title: 'Search',
+           subtitle: @query,
+           breadcrumbs: [{ name: 'Home', link: '/' }, { name: 'Search', link: search_path(q: @query) }] %>
+
+<div class="shadow overflow-hidden sm:rounded-md my-4">
+  <%= render 'shared/list', collection: @results do |result| %>
+    <% case result.class.name
+       when "Course" %>
+      <%= render 'shared/list_item',
+                 link: result,
+                 title: result.title,
+                 subtitle: result.short_title %>
+    <% when "Instructor" %>
+      <%= render 'shared/list_item',
+                 link: result,
+                 title: result.full_label %>
+    <% end %>
+  <% end %>
+</div>
