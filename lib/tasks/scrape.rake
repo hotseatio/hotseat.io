@@ -64,6 +64,7 @@ summer_session_dates_map = T.let(
     '2019' => 'lib/tasks/scrapedata/summer_session_dates/summer-calendar-2019-2020.html',
     '2020' => 'lib/tasks/scrapedata/summer_session_dates/summer-calendar-2019-2020.html',
     '2021' => 'lib/tasks/scrapedata/summer_session_dates/summer-calendar-2021.html',
+    '2022' => 'lib/tasks/scrapedata/summer_session_dates/summer-calendar-2022.html',
   },
   T::Hash[String, String],
 )
