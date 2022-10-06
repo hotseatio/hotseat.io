@@ -135,6 +135,8 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
+    css_parser (1.12.0)
+      addressable
     cssbundling-rails (1.1.1)
       railties (>= 6.0.0)
     ddtrace (1.2.0)
@@ -215,6 +217,7 @@ GEM
     high_voltage (3.1.2)
     highline (2.0.3)
     html_tokenizer (0.0.7)
+    htmlentities (4.3.4)
     httparty (0.20.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -355,6 +358,13 @@ GEM
     pg (1.4.1)
     phonelib (0.7.0)
     polyfill (1.9.0)
+    premailer (1.17.0)
+      addressable
+      css_parser (>= 1.12.0)
+      htmlentities (>= 4.0.0)
+    premailer-rails (1.11.1)
+      actionmailer (>= 3)
+      premailer (~> 1.7, >= 1.7.9)
     propshaft (0.6.4)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -633,6 +643,7 @@ DEPENDENCIES
   pdf-reader
   pg
   phonelib
+  premailer-rails
   propshaft
   pry
   pry-rails

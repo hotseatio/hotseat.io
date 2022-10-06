@@ -98,6 +98,7 @@ gem 'twilio-ruby'
 # Mailing list
 gem 'MailchimpMarketing'
 gem 'mailkick'
+gem 'premailer-rails'
 
 # Gibberish detection
 gem 'gibberish_detector'
