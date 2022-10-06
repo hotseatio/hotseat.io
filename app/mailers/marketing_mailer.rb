@@ -11,8 +11,8 @@ class MarketingMailer < ApplicationMailer
   end
 
   sig { void }
-  def september2022
+  def october2022
     @user = params[:user]
-    mail(to: @user.email, subject: 'Hotseat: Looking for developers, designers, product managers, and marketers!')
+    mail(to: @user.email, subject: 'Hotseat: Looking for developers, marketers, PMs, and designers!')
   end
 end
