@@ -3,13 +3,10 @@ package main
 import (
 	"context"
 	"fmt"
-	"net/http"
-	"net/url"
-	"os"
-	"strings"
 
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/service/sns"
 	"github.com/nathunsmitty/hotseat.io/lambdas/envutil"
-	"github.com/nathunsmitty/hotseat.io/lambdas/fetchutil"
 	"github.com/nathunsmitty/hotseat.io/lambdas/registrar"
 )
 
@@ -52,22 +49,6 @@ func FormatMessage(
 	return message
 }
 
-func TwilioSenderNumber() string {
-	return os.Getenv("TWILIO_SENDER_NUMBER")
-}
-
-func TwilioSID() string {
-	return os.Getenv("TWILIO_SID")
-}
-
-func TwilioAuthToken() string {
-	return os.Getenv("TWILIO_AUTH_TOKEN")
-}
-
-func TwilioRequestURL() string {
-	return "https://api.twilio.com/2010-04-01/Accounts/" + TwilioSID() + "/Messages.json"
-}
-
 func SendNotificationToUser(
 	ctx context.Context,
 	user registrar.User,
@@ -78,30 +59,16 @@ func SendNotificationToUser(
 	logger = logger.WithField("user", user.ID)
 	logger.Info("Sending notification to user")
 
-	msgData := url.Values{}
-	msgData.Set("To", user.Phone)
-	msgData.Set("From", TwilioSenderNumber())
-	msgData.Set("Body", message)
-	req, err := http.NewRequestWithContext(ctx, http.MethodPost, TwilioRequestURL(), strings.NewReader(msgData.Encode()))
+	client := envutil.CreateAWSClient()
+	input := &sns.PublishInput{
+		Message:     aws.String(message),
+		PhoneNumber: aws.String(user.Phone),
+	}
+	output, err := client.PublishWithContext(ctx, input)
 	if err != nil {
 		return err
 	}
-
-	req.SetBasicAuth(TwilioSID(), TwilioAuthToken())
-	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
-
-	// Make HTTP POST request and return message SID
-	response, err := fetchutil.Client.Do(req)
-	if err != nil {
-		return err
-	}
-	if response.StatusCode != http.StatusOK {
-		return fetchutil.ErrStatusCode
-	}
-	defer response.Body.Close()
-
-	logger.Info("Notification successful!")
+	logger.WithField("messageID", *output.MessageId).Info("Notification successful!")
 
 	return nil
 }
