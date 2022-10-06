@@ -1,4 +1,10 @@
-# Preview all emails at http://localhost:3000/rails/mailers/marketing
-class MarketingPreview < ActionMailer::Preview
+# typed: true
+# frozen_string_literal: true
 
+class MarketingMailerPreview < ActionMailer::Preview
+  extend T::Sig
+
+  def october2022
+    MarketingMailer.with(user: User.first).october2022
+  end
 end
