@@ -231,7 +231,7 @@ class Term < ApplicationRecord
   def end_of_week_two_time
     return nil if start_date.nil?
 
-    (T.must(start_date) + (zero_week? ? 2.weeks : 1.week)).next_occurring(:friday).at_end_of_day
+    (T.must(start_date) + T.unsafe(zero_week? ? 2.weeks : 1.week)).next_occurring(:friday).at_end_of_day
   end
 
   # Returns true if it is currently during the first two weeks of the quarter.
@@ -287,7 +287,7 @@ class Term < ApplicationRecord
   def quarter_start_markers
     week1_start = T.must(start_date)
     week1_start = T.must(start_date).next_occurring(:monday) if zero_week?
-    week2_start = week1_start + 1.week
+    week2_start = week1_start + T.unsafe(1.week)
 
     [
       EnrollmentChartMarker.new(
