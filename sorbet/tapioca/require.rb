@@ -1,4 +1,21 @@
 # typed: true
 # frozen_string_literal: true
 
-# Add your extra requires here (`bin/tapioca require` can be used to boostrap this list)
+require "aws-sdk-lambda"
+require "aws-sdk-s3"
+require "base64"
+require "bootsnap/setup"
+require "bundler/setup"
+require "capybara/rspec"
+require "csv"
+require "ddtrace"
+require "devise/orm/active_record"
+require "faker"
+require "lograge/sql/extension"
+require "rails/all"
+require "redcarpet"
+require "rspec/rails"
+require "simplecov"
+require "simplecov-cobertura"
+require "twilio-ruby"
+require "webmock/rspec"
