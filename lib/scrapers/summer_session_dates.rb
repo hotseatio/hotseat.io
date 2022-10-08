@@ -7,7 +7,7 @@ module SummerSessionDatesScraper
   sig { params(file: String, year: String).void }
   def self.scrape(file, year)
     # Read file
-    raw_input = File.read(Rails.root.join(file))
+    raw_input = Rails.root.join(file).read
     doc = Nokogiri.HTML(raw_input)
 
     if year < '2021'

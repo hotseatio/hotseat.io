@@ -7,7 +7,7 @@
 require 'csv'
 
 def read_csv(file_name, &)
-  csv_text = File.read(Rails.root.join('lib', 'seeds', file_name))
+  csv_text = Rails.root.join('lib', 'seeds', file_name).read
   csv = CSV.parse(csv_text, headers: true)
   csv.each(&)
 end
