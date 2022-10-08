@@ -7,11 +7,8 @@
 module Course::ActiveRecord_Relation; end
 module Course::RelationType; end
 module CoursesController::TypedParams; end
-module Devise::OmniauthCallbacksController; end
-module Devise::SessionsController; end
 module Instructor::ActiveRecord_Relation; end
 module InstructorsController::TypedParams; end
-module Pay::Customer; end
 module RSpec::Matchers; end
 module RelationshipsController::TypedParams; end
 module Review::RelationType; end
@@ -26,5 +23,5 @@ module SubjectArea::RelationType; end
 module SubjectAreasController::TypedParams; end
 module Term::RelationType; end
 module Textbook::RelationType; end
-module UserHelper::GeneratedUrlHelpers; end
+module Turbo::Streams::ActionHelper; end
 module UsersController::TypedParams; end
