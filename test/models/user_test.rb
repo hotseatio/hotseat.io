@@ -49,12 +49,15 @@ class UserTest < ActiveSupport::TestCase
 
     it 'removes a relationship' do
       @user.unfollow(T.must(@sections.second))
-      assert_equal(@user.sections, @sections.first)
+      assert_equal(1, @user.sections.size)
+      assert_includes(@user.sections, @sections.first)
+      assert_not_includes(@user.sections, @sections.second)
     end
 
     it 'does not remove a relationship when it is reviewed' do
       assert_raises(ActiveRecord::RecordNotDestroyed) { @user.unfollow(T.must(@sections.first)) }
-      assert_equal(@user.sections, @sections.first)
+      assert_equal(2, @user.sections.size)
+      assert_includes(@user.sections, @sections.first)
     end
   end
 
