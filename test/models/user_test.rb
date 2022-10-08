@@ -39,23 +39,22 @@ class UserTest < ActiveSupport::TestCase
   end
 
   describe 'unfollow' do
-    let(:term) { create :term }
-    let(:user) { create :user }
-    let(:sections) do
-      sections = create_list :section, 2, term: term
-      create :relationship, :with_review, user: user, section: sections.first
-      create :relationship, user: user, section: sections.second
-      sections
+    before do
+      @term = T.let(create(:term), Term)
+      @user = T.let(create(:user), User)
+      @sections = T.let(create_list(:section, 2, term: @term), T::Array[Section])
+      create :relationship, :with_review, user: @user, section: @sections.first
+      create :relationship, user: @user, section: @sections.second
     end
 
     it 'removes a relationship' do
-      user.unfollow sections.second
-      expect(user.sections).to match_array [sections.first]
+      @user.unfollow(T.must(@sections.second))
+      assert_equal(@user.sections, @sections.first)
     end
 
     it 'does not remove a relationship when it is reviewed' do
-      expect { user.unfollow sections.first }.to raise_error(ActiveRecord::RecordNotDestroyed)
-      expect(user.sections).to match_array sections
+      assert_raises(ActiveRecord::RecordNotDestroyed) { @user.unfollow(T.must(@sections.first)) }
+      assert_equal(@user.sections, @sections.first)
     end
   end
 
@@ -135,10 +134,10 @@ class UserTest < ActiveSupport::TestCase
 
     it 'raises an error if it cannot generate a referral code for some reason' do
       referral_code = 'test-code'
-      allow(SecureRandom).to receive(:hex) { referral_code }
+      T.unsafe(SecureRandom).stubs(:hex).returns(referral_code)
       create :user, referral_code: referral_code
       user = build :user
-      expect { user.set_referral_code }.to raise_error(ActiveRecord::ActiveRecordError)
+      assert_raises(ActiveRecord::ActiveRecordError) { user.set_referral_code }
     end
   end
 end

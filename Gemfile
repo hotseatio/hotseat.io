@@ -141,6 +141,10 @@ end
 
 group :test do
   gem 'minitest-spec-rails'
+
+  # Mocking
+  gem 'mocha'
+
   # Fake values
   gem 'faker'
   # Adds support for Capybara system testing and selenium driver
