@@ -4,6 +4,7 @@
 class User < ApplicationRecord
   extend T::Sig
   extend Pay::Attributes::ClassMethods
+  extend Devise::Models
   include Pay::Attributes::CustomerExtension
 
   VALID_UCLA_EMAIL_REGEX = T.let(/\A.+@g\.ucla\.edu\z/i, Regexp)
