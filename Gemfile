@@ -28,8 +28,8 @@ gem 'jbuilder'
 # gem 'redis', '~> 4.0'
 # Use Postgres as database
 gem 'pg'
+
 # Sorbet
-gem 'sorbet-rails'
 gem 'sorbet-runtime'
 
 # Pagination
@@ -129,7 +129,9 @@ group :development do
   gem 'erb_lint', require: false
   # Sorbet
   gem 'sorbet'
+  gem 'spoom', require: false
   gem 'tapioca', require: false
+
   # Diagrams
   gem 'rails-erd'
   # Pry
