@@ -145,6 +145,9 @@ group :test do
   # Mocking
   gem 'mocha'
 
+  # Stub ENV
+  gem 'climate_control'
+
   # Fake values
   gem 'faker'
   # Adds support for Capybara system testing and selenium driver
