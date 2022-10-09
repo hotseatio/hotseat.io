@@ -3,13 +3,9 @@
 
 require 'rails_helper'
 
-RSpec.describe NotifyOnNewReviewJob, type: :job do
+class NotifyOnNewReviewJobTest < ActiveJob::TestCase
   it 'posts the review to slack' do
-    allow(Rails).to receive(:env).and_return(ActiveSupport::StringInquirer.new('production'))
-    allow(ENV).to receive(:fetch).with('SLACK_WEBHOOK_URL').and_return('https://slack.com/secret-webhook')
-    stub_request(:post, 'https://slack.com/secret-webhook')
-      .to_return(status: 200, body: '', headers: {})
-
+    T.unsafe(Rails).stubs(:env).returns(ActiveSupport::StringInquirer.new('production'))
     user = create(:user)
     review = create(:review,
                     user:,
@@ -23,6 +19,11 @@ RSpec.describe NotifyOnNewReviewJob, type: :job do
                     midterm_count: 2,
                     final: 'finals',
                     offers_extra_credit: true)
-    described_class.perform_now(review)
+    stub_request(:post, 'https://slack.com/secret-webhook')
+      .to_return(status: 200, body: '', headers: {})
+
+    ClimateControl.modify SLACK_WEBHOOK_URL: 'https://slack.com/secret-webhook' do
+      described_class.perform_now(review)
+    end
   end
 end
