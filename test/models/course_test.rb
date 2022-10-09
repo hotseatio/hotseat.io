@@ -1,11 +1,9 @@
-# typed: false
+# typed: strict
 # frozen_string_literal: true
 
 require 'rails_helper'
 
-RSpec.describe Course, type: :model do
-  include FactoryBot::Syntax::Methods
-
+class CourseTest < ActiveSupport::TestCase
   before do
     create :term
   end
@@ -14,13 +12,13 @@ RSpec.describe Course, type: :model do
     it 'returns true if the course is offered during the term' do
       term = build(:term)
       course = build(:course, terms: [term])
-      expect(course.offered_for_term?(term)).to be(true)
+      assert_equal(true, course.offered_for_term?(term))
     end
 
     it 'returns false if the course not is offered during the term' do
       term = build(:term)
       course = build(:course, terms: [])
-      expect(course.offered_for_term?(term)).to be(false)
+      assert_equal(false, course.offered_for_term?(term))
     end
   end
 
@@ -33,34 +31,34 @@ RSpec.describe Course, type: :model do
           create(:course, subject_area:, number:)
         end
       end
-      expect(described_class.all.order_by_number.map(&:number)).to eq(expected_order)
+      assert_equal(expected_order, Course.all.order_by_number.map(&:number))
     end
   end
 
   describe 'catalog number' do
     it 'pads a course number with leading zeroes' do
       course = build(:course, number: '136')
-      expect(course.catalog_number).to eq('0136')
+      assert_equal('0136', course.catalog_number)
     end
 
     it 'puts the leading characters at the end' do
       course = build(:course, number: 'M117')
-      expect(course.catalog_number).to eq('0117  M')
+      assert_equal('0117  M', course.catalog_number)
     end
 
     it 'puts the trailing characters after the number' do
       course = build(:course, number: '460AW')
-      expect(course.catalog_number).to eq('0460AW')
+      assert_equal('0460AW', course.catalog_number)
     end
 
     it 'can handle both leading and trailing characters' do
       course = build(:course, number: 'M151B')
-      expect(course.catalog_number).to eq('0151B M')
+      assert_equal('0151B M', course.catalog_number)
     end
 
     it "can handle numbers like 'Z'" do
       course = build(:course, number: 'Z')
-      expect(course.catalog_number).to eq('0000Z')
+      assert_equal('0000Z', course.catalog_number)
     end
   end
 end

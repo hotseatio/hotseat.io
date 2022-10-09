@@ -1,12 +1,10 @@
-# typed: false
+# typed: strict
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'test_helper'
 
-RSpec.describe SubjectArea, type: :model do
-  include FactoryBot::Syntax::Methods
-
-  describe 'most popular' do
+class SubjectAreaTest < ActiveSupport::TestCase
+  describe '#most_popular' do
     it 'returns Computer Science as a popular course' do
       prev_term = create :term, term: '80F'
       term = create :term, term: '81W'
@@ -20,9 +18,9 @@ RSpec.describe SubjectArea, type: :model do
       create_list(:section, 2, course: prev_psych_course, term: prev_term, instructor:)
       create_list(:section, 2, course: current_psych_course, term:, instructor:)
 
-      popular_courses = described_class.most_popular
-      expect(popular_courses).to include(current_psychology)
-      expect(popular_courses).not_to include(prev_psychology)
+      popular_courses = SubjectArea.most_popular
+      assert_includes(popular_courses, current_psychology)
+      assert_not_includes(popular_courses, prev_psychology)
     end
   end
 end

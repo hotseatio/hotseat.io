@@ -1,128 +1,128 @@
-# typed: false
+# typed: strict
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'test_helper'
 
-all_terms = [
-  'Winter 1999',
-  'Spring 1999',
-  'Summer 1999',
-  'Fall 1999',
-  'Winter 2000',
-  'Spring 2000',
-  'Summer 2000',
-  'Fall 2000',
-  'Winter 2001',
-  'Spring 2001',
-  'Summer 2001',
-  'Fall 2001',
-  'Winter 2002',
-  'Spring 2002',
-  'Summer 2002',
-  'Fall 2002',
-  'Winter 2003',
-  'Spring 2003',
-  'Summer 2003',
-  'Fall 2003',
-  'Winter 2004',
-  'Spring 2004',
-  'Summer 2004',
-  'Fall 2004',
-  'Winter 2005',
-  'Spring 2005',
-  'Summer 2005',
-  'Fall 2005',
-  'Winter 2006',
-  'Spring 2006',
-  'Summer 2006',
-  'Fall 2006',
-  'Winter 2007',
-  'Spring 2007',
-  'Summer 2007',
-  'Fall 2007',
-  'Winter 2008',
-  'Spring 2008',
-  'Summer 2008',
-  'Fall 2008',
-  'Winter 2009',
-  'Spring 2009',
-  'Summer 2009',
-  'Fall 2009',
-  'Winter 2010',
-  'Spring 2010',
-  'Summer 2010',
-  'Fall 2010',
-  'Winter 2011',
-  'Spring 2011',
-  'Summer 2011',
-  'Fall 2011',
-  'Winter 2012',
-  'Spring 2012',
-  'Summer 2012',
-  'Fall 2012',
-  'Winter 2013',
-  'Spring 2013',
-  'Summer 2013',
-  'Fall 2013',
-  'Winter 2014',
-  'Spring 2014',
-  'Summer 2014',
-  'Fall 2014',
-  'Winter 2015',
-  'Spring 2015',
-  'Summer 2015',
-  'Fall 2015',
-  'Winter 2016',
-  'Spring 2016',
-  'Summer 2016',
-  'Fall 2016',
-  'Winter 2017',
-  'Spring 2017',
-  'Summer 2017',
-  'Fall 2017',
-  'Winter 2018',
-  'Spring 2018',
-  'Summer 2018',
-  'Fall 2018',
-  'Winter 2019',
-  'Spring 2019',
-  'Summer 2019',
-  'Fall 2019',
-  'Winter 2020',
-  'Spring 2020',
-  'Summer 2020',
-  'Fall 2020',
-  'Winter 2021',
-  'Spring 2021',
-  'Summer 2021',
-  'Fall 2021',
-  'Winter 2022',
-  'Spring 2022',
-  'Summer 2022',
-  'Fall 2022',
-  'Winter 2023',
-  'Spring 2023',
-  'Summer 2023',
-  'Fall 2023',
-  'Winter 2024',
-  'Spring 2024',
-  'Summer 2024',
-  'Fall 2024',
-  'Winter 2025',
-  'Spring 2025',
-  'Summer 2025',
-  'Fall 2025',
-  'Winter 2026',
-  'Spring 2026',
-  'Summer 2026',
-  'Fall 2026',
-  'Winter 2027',
-  'Spring 2027',
-  'Summer 2027',
-  'Fall 2027',
-]
+class TermTest < ActiveSupport::TestCase
+  ALL_TERMS = T.let([
+    'Winter 1999',
+    'Spring 1999',
+    'Summer 1999',
+    'Fall 1999',
+    'Winter 2000',
+    'Spring 2000',
+    'Summer 2000',
+    'Fall 2000',
+    'Winter 2001',
+    'Spring 2001',
+    'Summer 2001',
+    'Fall 2001',
+    'Winter 2002',
+    'Spring 2002',
+    'Summer 2002',
+    'Fall 2002',
+    'Winter 2003',
+    'Spring 2003',
+    'Summer 2003',
+    'Fall 2003',
+    'Winter 2004',
+    'Spring 2004',
+    'Summer 2004',
+    'Fall 2004',
+    'Winter 2005',
+    'Spring 2005',
+    'Summer 2005',
+    'Fall 2005',
+    'Winter 2006',
+    'Spring 2006',
+    'Summer 2006',
+    'Fall 2006',
+    'Winter 2007',
+    'Spring 2007',
+    'Summer 2007',
+    'Fall 2007',
+    'Winter 2008',
+    'Spring 2008',
+    'Summer 2008',
+    'Fall 2008',
+    'Winter 2009',
+    'Spring 2009',
+    'Summer 2009',
+    'Fall 2009',
+    'Winter 2010',
+    'Spring 2010',
+    'Summer 2010',
+    'Fall 2010',
+    'Winter 2011',
+    'Spring 2011',
+    'Summer 2011',
+    'Fall 2011',
+    'Winter 2012',
+    'Spring 2012',
+    'Summer 2012',
+    'Fall 2012',
+    'Winter 2013',
+    'Spring 2013',
+    'Summer 2013',
+    'Fall 2013',
+    'Winter 2014',
+    'Spring 2014',
+    'Summer 2014',
+    'Fall 2014',
+    'Winter 2015',
+    'Spring 2015',
+    'Summer 2015',
+    'Fall 2015',
+    'Winter 2016',
+    'Spring 2016',
+    'Summer 2016',
+    'Fall 2016',
+    'Winter 2017',
+    'Spring 2017',
+    'Summer 2017',
+    'Fall 2017',
+    'Winter 2018',
+    'Spring 2018',
+    'Summer 2018',
+    'Fall 2018',
+    'Winter 2019',
+    'Spring 2019',
+    'Summer 2019',
+    'Fall 2019',
+    'Winter 2020',
+    'Spring 2020',
+    'Summer 2020',
+    'Fall 2020',
+    'Winter 2021',
+    'Spring 2021',
+    'Summer 2021',
+    'Fall 2021',
+    'Winter 2022',
+    'Spring 2022',
+    'Summer 2022',
+    'Fall 2022',
+    'Winter 2023',
+    'Spring 2023',
+    'Summer 2023',
+    'Fall 2023',
+    'Winter 2024',
+    'Spring 2024',
+    'Summer 2024',
+    'Fall 2024',
+    'Winter 2025',
+    'Spring 2025',
+    'Summer 2025',
+    'Fall 2025',
+    'Winter 2026',
+    'Spring 2026',
+    'Summer 2026',
+    'Fall 2026',
+    'Winter 2027',
+    'Spring 2027',
+    'Summer 2027',
+    'Fall 2027',
+  ].freeze, T::Array[String])
 
-RSpec.describe Term, type: :model do
   it 'has an enrollment start time' do
     start_time = Time.zone.now
     term = create :term
@@ -132,7 +132,7 @@ RSpec.describe Term, type: :model do
            first: start_time,
            last: start_time + 3.days)
 
-    expect(term.enrollment_start).to be_the_same_time_as start_time
+    assert_in_delta start_time, term.enrollment_start, 1
   end
 
   it 'has an enrollment end time' do
@@ -145,7 +145,7 @@ RSpec.describe Term, type: :model do
            first: end_time - 3.days,
            last: end_time)
 
-    expect(term.enrollment_end).to be_the_same_time_as((end_time + 10.days).at_end_of_day)
+    assert_in_delta((end_time + 10.days).at_end_of_day, term.enrollment_end, 1)
   end
 
   it 'returns a hash of enrollment pass start times' do
@@ -169,12 +169,12 @@ RSpec.describe Term, type: :model do
            first: second_pass_start_time,
            last: second_pass_start_time + 1.day)
 
-    expect(term.enrollment_period_markers[0].time).to be_the_same_time_as priority_start_time
-    expect(term.enrollment_period_markers[0].label).to eq('Priority pass')
-    expect(term.enrollment_period_markers[1].time).to be_the_same_time_as first_pass_start_time
-    expect(term.enrollment_period_markers[1].label).to eq('First pass')
-    expect(term.enrollment_period_markers[2].time).to be_the_same_time_as second_pass_start_time
-    expect(term.enrollment_period_markers[2].label).to eq('Second pass')
+    assert_in_delta( priority_start_time, term.enrollment_period_markers[0].time)
+    assert_equal('Priority pass', term.enrollment_period_markers[0].label)
+    assert_in_delta( first_pass_start_time, term.enrollment_period_markers[1].time)
+    assert_equal('First pass', term.enrollment_period_markers[1].label)
+    assert_in_delta( second_pass_start_time, term.enrollment_period_markers[2].time)
+    assert_equal('Second pass', term.enrollment_period_markers[2].label)
   end
 
   describe 'current' do
@@ -189,33 +189,33 @@ RSpec.describe Term, type: :model do
                     start_date: Date.new(2021, 6, 21),
                     end_date: Date.new(2021, 9, 10)
       travel_to Time.zone.local(2021, 6, 14)
-      expect(described_class.current.term).to eq '21S'
+      assert_equal('21S', Term.current.term)
     end
   end
 
   it 'can order terms chronologically ascending' do
     Rails.application.load_seed
-    terms = described_class.all.order_chronologically_asc.map(&:readable)
-    expect(terms).to eq all_terms
+    terms = Term.all.order_chronologically_asc.map(&:readable)
+    assert_equal(ALL_TERMS, terms)
   end
 
   it 'can order terms chronologically descending' do
     Rails.application.load_seed
-    terms = described_class.all.order_chronologically_desc.map(&:readable)
-    expect(terms).to eq all_terms.reverse
+    terms = Term.all.order_chronologically_desc.map(&:readable)
+    assert_equal(ALL_TERMS.reverse, terms)
   end
 
   describe 'Comparison operations' do
     it 'can determine if one term is less than another' do
       term1 = build :term, term: '18F'
       term2 = build :term, term: '19S'
-      expect(term1).to be < term2
+      assert_operator term1, :<, term2
     end
 
     it 'can determine if one term is greater than another' do
       term1 = build :term, term: '181'
       term2 = build :term, term: '18W'
-      expect(term1).to be > term2
+      assert_operator term1, :>, term2
     end
   end
 
@@ -225,7 +225,7 @@ RSpec.describe Term, type: :model do
                           start_date: Date.new(2021, 3, 29),
                           end_date: Date.new(2021, 6, 11)
       travel_to Time.zone.local(2021, 4, 20)
-      expect(term.current_week).to be 4
+      assert_equal(4, term.current_week)
     end
 
     it 'returns nil if the date is before the start date' do
@@ -233,7 +233,7 @@ RSpec.describe Term, type: :model do
                           start_date: Date.new(2021, 3, 29),
                           end_date: Date.new(2021, 6, 11)
       travel_to Time.zone.local(2021, 2, 20)
-      expect(term.current_week).to be_nil
+      assert_nil(term.current_week)
     end
 
     it 'returns a number if the date is after the end date' do
@@ -241,13 +241,13 @@ RSpec.describe Term, type: :model do
                           start_date: Date.new(2021, 3, 29),
                           end_date: Date.new(2021, 6, 11)
       travel_to Time.zone.local(2021, 7, 20)
-      expect(term.current_week).to be 17
+      assert_equal(17, term.current_week)
     end
 
     it 'returns nil if there is no start date' do
       term = build :term, term: '19S'
       travel_to Time.zone.local(2021, 7, 20)
-      expect(term.current_week).to be_nil
+      assert_nil(term.current_week)
     end
 
     it 'returns 11 for finals week' do
@@ -255,7 +255,7 @@ RSpec.describe Term, type: :model do
                           start_date: Date.new(2021, 3, 29),
                           end_date: Date.new(2021, 6, 11)
       travel_to Time.zone.local(2021, 6, 11)
-      expect(term.current_week).to be 11
+      assert_equal(11, term.current_week)
     end
 
     it 'returns 0 if there is a zero week' do
@@ -263,7 +263,7 @@ RSpec.describe Term, type: :model do
                           start_date: Date.new(2020, 10, 1),
                           end_date: Date.new(2020, 12, 18)
       travel_to Time.zone.local(2020, 10, 2)
-      expect(term.current_week).to be 0
+      assert_equal(0, term.current_week)
     end
   end
 
@@ -273,7 +273,7 @@ RSpec.describe Term, type: :model do
                           start_date: Date.new(2021, 3, 29),
                           end_date: Date.new(2021, 6, 11)
       travel_to Time.zone.local(2021, 4, 20)
-      expect(term.current_week_label).to eq 'Week 4'
+      assert_equal('Week 4', term.current_week_label)
     end
 
     it 'Can handle terms with a zero week' do
@@ -281,7 +281,7 @@ RSpec.describe Term, type: :model do
                           start_date: Date.new(2020, 10, 1),
                           end_date: Date.new(2020, 12, 18)
       travel_to Time.zone.local(2020, 10, 2)
-      expect(term.current_week_label).to eq 'Week 0'
+      assert_equal('Week 0', term.current_week_label)
     end
 
     it 'Can handle finals week' do
@@ -289,13 +289,13 @@ RSpec.describe Term, type: :model do
                           start_date: Date.new(2020, 10, 1),
                           end_date: Date.new(2020, 12, 18)
       travel_to Time.zone.local(2020, 12, 18)
-      expect(term.current_week_label).to eq 'Finals Week'
+      assert_equal('Finals Week', term.current_week_label)
     end
 
     it 'Returns nil if the term does not have a start date' do
       term = build :term, term: '20F'
       travel_to Time.zone.local(2020, 10, 2)
-      expect(term.current_week_label).to be_nil
+      assert_nil(term.current_week_label)
     end
 
     it 'Returns nil if the date is before the start date' do
@@ -303,7 +303,7 @@ RSpec.describe Term, type: :model do
                           start_date: Date.new(2020, 10, 1),
                           end_date: Date.new(2020, 12, 18)
       travel_to Time.zone.local(2020, 9, 29)
-      expect(term.current_week_label).to be_nil
+      assert_nil(term.current_week_label)
     end
 
     it 'Returns nil for summer terms' do
@@ -311,7 +311,7 @@ RSpec.describe Term, type: :model do
                           start_date: Date.new(2020, 6, 22),
                           end_date: Date.new(2020, 9, 11)
       travel_to Time.zone.local(2020, 7, 4)
-      expect(term.current_week_label).to be_nil
+      assert_nil(term.current_week_label)
     end
   end
 
@@ -330,7 +330,7 @@ RSpec.describe Term, type: :model do
                                       last: Date.new(2021, 6, 30),
                                       term: term
       travel_to Time.zone.local(2021, 6, 18)
-      expect(term.live_enrollment?).to be true
+      assert_equal(true, term.live_enrollment?)
     end
 
     it 'returns false if the current date is not during the enrollment times' do
@@ -347,7 +347,7 @@ RSpec.describe Term, type: :model do
                                       last: Date.new(2021, 6, 30),
                                       term: term
       travel_to Time.zone.local(2021, 7, 12)
-      expect(term.live_enrollment?).to be false
+      assert_equal(false, term.live_enrollment?)
     end
   end
 
@@ -361,8 +361,8 @@ RSpec.describe Term, type: :model do
                                end_date: Date.new(2022, 3, 18)
 
       travel_to Time.zone.local(2021, 10, 4)
-      expect(described_class.upcoming.length).to be(1)
-      expect(described_class.upcoming.first.term).to eq(upcoming.term)
+      assert_equal(1, Term.upcoming.length)
+      assert_equal(upcoming.term, T.must(Term.upcoming.first).term)
     end
 
     it 'returns spring and summer when the current term is winter' do
@@ -377,9 +377,9 @@ RSpec.describe Term, type: :model do
                              end_date: Date.new(2022, 9, 9)
 
       travel_to Time.zone.local(2022, 2, 4)
-      expect(described_class.upcoming.length).to be(2)
-      expect(described_class.upcoming.first.term).to eq(spring.term)
-      expect(described_class.upcoming.second.term).to eq(summer.term)
+      assert_equal(2, Term.upcoming.length)
+      assert_equal(spring.term, T.must(Term.upcoming.first).term)
+      assert_equal(summer.term, T.must(Term.upcoming.second).term)
     end
 
     it 'returns summer and fall when the current term is spring' do
@@ -394,9 +394,9 @@ RSpec.describe Term, type: :model do
                            end_date: Date.new(2022, 12, 9)
 
       travel_to Time.zone.local(2022, 5, 4)
-      expect(described_class.upcoming.length).to be(2)
-      expect(described_class.upcoming.first.term).to eq(summer.term)
-      expect(described_class.upcoming.second.term).to eq(fall.term)
+      assert_equal(2, Term.upcoming.length)
+      assert_equal(summer.term, T.must(Term.upcoming.first).term)
+      assert_equal(fall.term, T.must(Term.upcoming.second).term)
     end
 
     it 'returns fall when the current term is summer' do
@@ -408,8 +408,8 @@ RSpec.describe Term, type: :model do
                            end_date: Date.new(2022, 12, 9)
 
       travel_to Time.zone.local(2022, 8, 4)
-      expect(described_class.upcoming.length).to be(1)
-      expect(described_class.upcoming.first.term).to eq(fall.term)
+      assert_equal(1, Term.upcoming.length)
+      assert_equal(fall.term, T.must(Term.upcoming.first).term)
     end
   end
 end
