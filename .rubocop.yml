@@ -51,6 +51,7 @@ RSpec/MultipleExpectations:
   Enabled: false
 RSpec/ExampleLength:
   Enabled: false
-
+RSpec/NoExpectationExample:
+  Enabled: false
 RSpec/Capybara/FeatureMethods:
   Enabled: false
