@@ -1,7 +1,7 @@
 # typed: strict
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'test_helper'
 
 class CourseTest < ActiveSupport::TestCase
   before do

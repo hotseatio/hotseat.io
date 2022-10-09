@@ -17,7 +17,7 @@ class ReviewTest < ActiveSupport::TestCase
     assert_equal(valid_review.valid?, true)
 
     invalid_review = build :review, clarity: 100
-    assert_equal(invalid_review.valid?, true)
+    assert_equal(invalid_review.valid?, false)
   end
 
   it 'accepts overall ratings only between 1 and 7' do

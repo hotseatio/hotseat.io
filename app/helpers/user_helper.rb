@@ -3,7 +3,6 @@
 
 module UserHelper
   extend T::Sig
-  include GeneratedUrlHelpers
 
   sig { params(user: User).returns(String) }
   def referral_url(user)
