@@ -1,19 +1,11 @@
-# typed: false
+# typed: strict
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'test_helper'
 
-# Specs in this file have access to a helper object that includes
-# the TermHelper. For example:
-#
-# describe TermHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
-RSpec.describe TermHelper, type: :helper do
+class TermHelperTest < ActionView::TestCase
+  include TermHelper
+
   describe 'term_badge_color' do
     it 'returns green if the term is upcoming' do
       spring = create :term, term: '21S',
@@ -27,7 +19,7 @@ RSpec.describe TermHelper, type: :helper do
                            end_date: Date.new(2021, 12, 14)
       travel_to Time.zone.local(2021, 6, 14)
 
-      expect(helper.term_badge_color(summer, spring, [summer, fall])).to eq(ColorHelper::Color::Green)
+      assert_equal(ColorHelper::Color::Green, term_badge_color(summer, spring, [summer, fall]))
     end
 
     it 'returns green if the term is current and before/during week 4' do
@@ -42,7 +34,7 @@ RSpec.describe TermHelper, type: :helper do
                            end_date: Date.new(2021, 12, 14)
       travel_to Time.zone.local(2021, 4, 14)
 
-      expect(helper.term_badge_color(spring, spring, [summer, fall])).to eq(ColorHelper::Color::Green)
+      assert_equal(ColorHelper::Color::Green, term_badge_color(spring, spring, [summer, fall]))
     end
 
     it 'returns yellow if the term is current and after week 4' do
@@ -57,7 +49,7 @@ RSpec.describe TermHelper, type: :helper do
                            end_date: Date.new(2021, 12, 14)
       travel_to Time.zone.local(2021, 6, 14)
 
-      expect(helper.term_badge_color(spring, spring, [summer, fall])).to eq(ColorHelper::Color::Yellow)
+      assert_equal(ColorHelper::Color::Yellow, term_badge_color(spring, spring, [summer, fall]))
     end
 
     it 'returns gray if the term is not current or upcoming' do
@@ -75,7 +67,7 @@ RSpec.describe TermHelper, type: :helper do
                            end_date: Date.new(2021, 12, 14)
       travel_to Time.zone.local(2021, 6, 14)
 
-      expect(helper.term_badge_color(winter, spring, [summer, fall])).to eq(ColorHelper::Color::Gray)
+      assert_equal(ColorHelper::Color::Gray, term_badge_color(winter, spring, [summer, fall]))
     end
   end
 end
