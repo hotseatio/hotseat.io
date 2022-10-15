@@ -1,14 +1,10 @@
-# typed: false
+# typed: strict
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'application_system_test_case'
 
-RSpec.describe 'Update settings', type: :system do
-  before do
-    driven_by(:selenium_chrome_headless)
-  end
-
-  scenario 'user fills out their phone number and beta testing status' do
+class SettingsTest < ApplicationSystemTestCase
+  describe 'user fills out their phone number and beta testing status' do
     create_current_term
 
     user = create :user, phone: nil, beta_tester: false
