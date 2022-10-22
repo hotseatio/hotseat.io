@@ -3,7 +3,7 @@
 
 require 'application_system_test_case'
 
-class UpdateSettingsTest < ApplicationSystemTestCase
+class SettingsTest < ApplicationSystemTestCase
   test 'user fills out their phone number and beta testing status' do
     create_current_term
 

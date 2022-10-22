@@ -1,15 +1,12 @@
-# typed: false
+# typed: strict
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'application_system_test_case'
 
-RSpec.describe 'WriteReviews', type: :system do
-  before do
-    driven_by(:selenium_chrome_headless)
-  end
-
+class ReviewsTest < ApplicationSystemTestCase
   it 'allows users to write reviews with course preloaded' do
-    allow(NotifyOnNewReviewJob).to receive(:perform_later)
+    T.unsafe(NotifyOnNewReviewJob).expects(:perform_later)
+
     create_current_term
     subj_area = create(:subject_area)
     section = create :section,
@@ -78,28 +75,26 @@ RSpec.describe 'WriteReviews', type: :system do
 
     click_button 'Publish review'
 
-    expect(page).to have_current_path('/my-courses')
-    # TODO(475): GitHub Actions are being weird about session variables, so the flash doesn't always appear
-    expect(page).to have_content 'Review created!' unless ENV['CI'] == 'true'
+    assert_current_path '/my-courses'
+    assert_text page, 'Review created!', wait: 10
 
     review = section.reviews.first
-    expect(review.a_plus?).to be true
-    expect(review.organization).to be 5
-    expect(review.clarity).to be 7
-    expect(review.overall).to be 2
-    expect(review.fifteen_to_twenty_hours?).to be true
-    expect(review.has_group_project).to be true
-    expect(review.requires_attendance).to be false
-    expect(review.midterm_count).to be 2
-    expect(review.finals_week?).to be true
-    expect(review.reccomend_textbook).to be true
-    expect(review.offers_extra_credit).to be false
-    expect(review.comments).to eq review_text
-    expect(NotifyOnNewReviewJob).to have_received(:perform_later)
+    assert_equal true, review.a_plus?
+    assert_equal 5, review.organization
+    assert_equal 7, review.clarity
+    assert_equal 2, review.overall
+    assert_equal true, review.fifteen_to_twenty_hours?
+    assert_equal true, review.has_group_project
+    assert_equal false, review.requires_attendance
+    assert_equal 2, review.midterm_count
+    assert_equal true, review.finals_week?
+    assert_equal true, review.reccomend_textbook
+    assert_equal false, review.offers_extra_credit
+    assert_equal review_text, review.comments
   end
 
   it 'allows users to write reviews with section preloaded' do
-    allow(NotifyOnNewReviewJob).to receive(:perform_later)
+    T.unsafe(NotifyOnNewReviewJob).expects(:perform_later)
     create_current_term
     subj_area = create(:subject_area)
     section = create :section,
@@ -154,23 +149,21 @@ RSpec.describe 'WriteReviews', type: :system do
 
     click_button 'Publish review'
 
-    expect(page).to have_current_path('/my-courses')
-    # TODO(475): GitHub Actions are being weird about session variables, so the flash doesn't always appear
-    expect(page).to have_content 'Review created!' unless ENV['CI'] == 'true'
+    assert_current_path '/my-courses'
+    # expect(page).to have_current_path()
 
     review = section.reviews.first
-    expect(review.a_plus?).to be true
-    expect(review.organization).to be 5
-    expect(review.clarity).to be 7
-    expect(review.overall).to be 2
-    expect(review.fifteen_to_twenty_hours?).to be true
-    expect(review.has_group_project).to be true
-    expect(review.requires_attendance).to be false
-    expect(review.midterm_count).to be 2
-    expect(review.finals_week?).to be true
-    expect(review.reccomend_textbook).to be true
-    expect(review.offers_extra_credit).to be false
-    expect(review.comments).to eq review_text
-    expect(NotifyOnNewReviewJob).to have_received(:perform_later)
+    assert_equal true, review.a_plus?
+    assert_equal 5, review.organization
+    assert_equal 7, review.clarity
+    assert_equal 2, review.overall
+    assert_equal true, review.fifteen_to_twenty_hours?
+    assert_equal true, review.has_group_project
+    assert_equal false, review.requires_attendance
+    assert_equal 2, review.midterm_count
+    assert_equal true, review.finals_week?
+    assert_equal true, review.reccomend_textbook
+    assert_equal false, review.offers_extra_credit
+    assert_equal review_text, review.comments
   end
 end
