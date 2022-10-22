@@ -1,9 +1,9 @@
-# typed: false
+# typed: strict
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'test_helper'
 
-RSpec.describe 'SubjectAreas', type: :request do
+class SubjectAreasTest < ActionDispatch::IntegrationTest
   describe 'GET /subject-areas' do
     it 'lists all subject areas' do
       create_current_term
@@ -12,11 +12,11 @@ RSpec.describe 'SubjectAreas', type: :request do
 
       get '/subject-areas'
 
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to include('Subject Areas')
-      expect(response.body).to include('Computer Science')
-      expect(response.body).to include('Communication')
-      expect(response.body).to have_selector('.pagination-info', content: 'Displaying all 2 subject areas')
+      assert_response :ok
+      assert_select 'h2', 'Subject Areas'
+      assert_select 'p', 'Computer Science'
+      assert_select 'p', 'Communication'
+      assert_select '.pagination-info', 'Displaying all 2 subject areas'
     end
   end
 
@@ -30,9 +30,9 @@ RSpec.describe 'SubjectAreas', type: :request do
 
       get '/subject-areas/42'
 
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to include('Computer Science')
-      expect(response.body).to have_selector('.pagination-info', content: 'Showing 1 course')
+      assert_response :ok
+      assert_select 'p', /^Introduction to Computer Science I+/
+      assert_select '.pagination-info', 'Showing 1 course'
     end
 
     it 'lists all the courses of a subject area when given filter=all' do
@@ -42,9 +42,9 @@ RSpec.describe 'SubjectAreas', type: :request do
 
       get '/subject-areas/42?filter=all'
 
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to include('Computer Science')
-      expect(response.body).to have_selector('.pagination-info', content: 'Showing 1 to 50 of 51 courses')
+      assert_response :ok
+      assert_select 'p', /^Introduction to Computer Science I+/
+      assert_select '.pagination-info', 'Showing 1 to 50 of 51 courses'
     end
   end
 end
