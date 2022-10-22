@@ -6,9 +6,21 @@
 
 module ::Colorize::ClassMethods; end
 module ::Colorize::InstanceMethods; end
+module ::Helpers; end
 module ::MakeMakefile; end
+module ::Multipart::Post::Parts; end
+module ::Multipart::Post::UploadIO; end
+module ::Parts; end
+module ::Selenium::WebDriver::Chrome; end
+module ::SimpleCov; end
+module ::SimpleCov::Formatter::CoberturaFormatter; end
+module ::UploadIO; end
 module ActiveSupport::Dependencies::Loadable; end
 module ActiveSupport::Dependencies::ModuleConstMissing; end
+module Faraday::Multipart::CompositeReadIO; end
+module Faraday::Multipart::Middleware; end
+module Faraday::Multipart::ParamPart; end
+module Faraday::Retry::Middleware; end
 module Stripe::SubscriptionSchedulePhase; end
 module Stripe::SubscriptionScheduleSettings; end
 module T::Private::Methods::Signature; end

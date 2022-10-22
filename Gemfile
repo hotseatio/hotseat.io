@@ -11,7 +11,7 @@ gem 'dotenv-rails', groups: %i[development test]
 
 gem 'rails', '~> 7.0'
 # Use Puma as the app server
-gem 'puma'
+gem 'puma', '~> 5.0'
 
 # Handle malicious requests
 gem 'rack-attack'
@@ -150,13 +150,10 @@ group :test do
 
   # Fake values
   gem 'faker'
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'simplecov'
-  gem 'simplecov-cobertura'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
+
+  # Cuprite browser driver
+  gem 'cuprite'
+
   # Mock web requests
   gem 'webmock'
 end

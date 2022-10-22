@@ -51,8 +51,4 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
-
-  # If your Chrome is installed in a non-standard location,
-  # set WD_CHROME_PATH=<path> in .env.test.local
-  Selenium::WebDriver::Chrome.path = ENV['WD_CHROME_PATH'] if ENV['WD_CHROME_PATH']
 end
