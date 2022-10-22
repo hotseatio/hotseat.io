@@ -2,12 +2,14 @@
 # frozen_string_literal: true
 
 require 'test_helper'
+require 'capybara/cuprite'
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   include FactoryBot::Syntax::Methods
   include Capybara::DSL
+  include Devise::Test::IntegrationHelpers
 
-  driven_by :selenium, using: :headless_chrome
+  driven_by :cuprite
 
   sig { returns(Term) }
   def create_current_term

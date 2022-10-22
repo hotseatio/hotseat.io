@@ -3,8 +3,8 @@
 
 require 'application_system_test_case'
 
-class SettingsTest < ApplicationSystemTestCase
-  describe 'user fills out their phone number and beta testing status' do
+class UpdateSettingsTest < ApplicationSystemTestCase
+  test 'user fills out their phone number and beta testing status' do
     create_current_term
 
     user = create :user, phone: nil, beta_tester: false
@@ -16,9 +16,9 @@ class SettingsTest < ApplicationSystemTestCase
     end
 
     click_button 'Update account'
-    expect(page).to have_content 'Settings updated!', wait: 10
+    assert_text page, 'Settings updated!', wait: 10
 
     user.reload
-    expect(user.beta_tester).to be true
+    assert_equal true, user.beta_tester
   end
 end
