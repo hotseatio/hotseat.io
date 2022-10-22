@@ -1,7 +1,7 @@
-# typed: false
+# typed: strict
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'test_helper'
 
 class NotifyOnNewReviewJobTest < ActiveJob::TestCase
   it 'posts the review to slack' do
@@ -23,7 +23,7 @@ class NotifyOnNewReviewJobTest < ActiveJob::TestCase
       .to_return(status: 200, body: '', headers: {})
 
     ClimateControl.modify SLACK_WEBHOOK_URL: 'https://slack.com/secret-webhook' do
-      described_class.perform_now(review)
+      NotifyOnNewReviewJob.perform_now(review)
     end
   end
 end

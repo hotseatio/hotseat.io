@@ -12,21 +12,34 @@ WebMock.disable_net_connect!(
   allow: 'chromedriver.storage.googleapis.com',
 )
 
+module TermHelper
+  extend T::Sig
+  include FactoryBot::Syntax::Methods
+  include ActiveSupport::Testing::TimeHelpers
+
+  sig { returns(Term) }
+  def create_current_term
+    term = create :term, term: '21S',
+                         start_date: Date.new(2021, 3, 29),
+                         end_date: Date.new(2021, 6, 11)
+    travel_to Time.zone.local(2021, 5, 14)
+    term
+  end
+end
+
 module ActiveSupport
   class TestCase
-    extend T::Sig
     include FactoryBot::Syntax::Methods
     include WebMock::API
+    include TermHelper
 
     parallelize(workers: :number_of_processors)
+  end
+end
 
-    sig { returns(Term) }
-    def create_current_term
-      term = create :term, term: '21S',
-                           start_date: Date.new(2021, 3, 29),
-                           end_date: Date.new(2021, 6, 11)
-      travel_to Time.zone.local(2021, 5, 14)
-      term
-    end
+module ActionDispatch
+  class IntegrationTest
+    include Devise::Test::IntegrationHelpers
+    include TermHelper
   end
 end
