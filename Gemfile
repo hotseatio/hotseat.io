@@ -11,7 +11,7 @@ gem 'dotenv-rails', groups: %i[development test]
 
 gem 'rails', '~> 7.0'
 # Use Puma as the app server
-gem 'puma'
+gem 'puma', '~> 5.0'
 
 # Handle malicious requests
 gem 'rack-attack'
@@ -109,7 +109,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
-  gem 'rspec-rails'
 end
 
 group :development do
@@ -120,10 +119,10 @@ group :development do
   gem 'spring'
   # Rubocop
   gem 'rubocop', require: false
+  gem 'rubocop-minitest', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rake', require: false
-  gem 'rubocop-rspec', require: false
   gem 'rubocop-sorbet', require: false
   # ERB Linting
   gem 'erb_lint', require: false
@@ -140,15 +139,20 @@ group :development do
 end
 
 group :test do
+  gem 'minitest-spec-rails'
+
+  # Mocking
+  gem 'mocha'
+
+  # Stub ENV
+  gem 'climate_control'
+
   # Fake values
   gem 'faker'
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'simplecov'
-  gem 'simplecov-cobertura'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
+
+  # Cuprite browser driver
+  gem 'cuprite'
+
   # Mock web requests
   gem 'webmock'
 end

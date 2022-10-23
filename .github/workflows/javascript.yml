@@ -89,4 +89,4 @@ jobs:
           yarn install --pure-lockfile
 
       - name: Run tests
-        run: yarn test --coverage
+        run: yarn test
