@@ -116,7 +116,7 @@ module EnrollmentAppointmentScraper
     raw_input = if year_url.start_with?('http')
                   HTTParty.get(year_url)
                 else
-                  File.read(Rails.root.join(year_url))
+                  Rails.root.join(year_url).read
                 end
     Nokogiri.HTML(raw_input)
   end

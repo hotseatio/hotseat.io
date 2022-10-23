@@ -17,7 +17,7 @@ module TermDatesScraper
   sig { params(file: String).void }
   def self.scrape_html(file)
     # Read file
-    raw_input = File.read(Rails.root.join(file))
+    raw_input = Rails.root.join(file).read
     doc = Nokogiri.HTML(raw_input)
 
     tables = doc.css('.table')

@@ -229,10 +229,7 @@ GEM
     letter_opener (1.8.1)
       launchy (>= 2.2, < 3)
     libdatadog (0.7.0.1.1)
-    libdatadog (0.7.0.1.1-x86_64-linux)
     libddwaf (1.5.1.0.0-arm64-darwin)
-      ffi (~> 1.0)
-    libddwaf (1.5.1.0.0-x86_64-linux)
       ffi (~> 1.0)
     lisbn (0.3.2)
       nokogiri
@@ -280,8 +277,6 @@ GEM
     netrc (0.11.0)
     nio4r (2.5.8)
     nokogiri (1.13.9-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     nori (2.6.0)
     oauth2 (2.0.9)
@@ -405,23 +400,6 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
-    rspec-core (3.11.0)
-      rspec-support (~> 3.11.0)
-    rspec-expectations (3.11.1)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.11.0)
-    rspec-mocks (3.11.1)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.11.0)
-    rspec-rails (6.0.1)
-      actionpack (>= 6.1)
-      activesupport (>= 6.1)
-      railties (>= 6.1)
-      rspec-core (~> 3.11)
-      rspec-expectations (~> 3.11)
-      rspec-mocks (~> 3.11)
-      rspec-support (~> 3.11)
-    rspec-support (3.11.1)
     rubocop (1.37.0)
       json (~> 2.3)
       parallel (~> 1.10)
@@ -443,8 +421,6 @@ GEM
       rubocop (>= 1.33.0, < 2.0)
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
-    rubocop-rspec (2.13.2)
-      rubocop (~> 1.33)
     rubocop-sorbet (0.6.11)
       rubocop (>= 0.90.0)
     ruby-graphviz (1.2.5)
@@ -486,9 +462,7 @@ GEM
       sorbet-coerce (>= 0.2.6)
       sorbet-runtime (>= 0.5.9892)
     sorbet-runtime (0.5.10511)
-    sorbet-static (0.5.10511-universal-darwin-20)
     sorbet-static (0.5.10511-universal-darwin-21)
-    sorbet-static (0.5.10511-x86_64-linux)
     sorbet-static-and-runtime (0.5.10511)
       sorbet (= 0.5.10511)
       sorbet-runtime (= 0.5.10511)
@@ -553,9 +527,7 @@ GEM
     zeitwerk (2.6.1)
 
 PLATFORMS
-  arm64-darwin-20
   arm64-darwin-21
-  x86_64-linux
 
 DEPENDENCIES
   MailchimpMarketing
@@ -606,12 +578,10 @@ DEPENDENCIES
   rails (~> 7.0)
   rails-erd
   redcarpet
-  rspec-rails
   rubocop
   rubocop-performance
   rubocop-rails
   rubocop-rake
-  rubocop-rspec
   rubocop-sorbet
   searchjoy
   searchkick
