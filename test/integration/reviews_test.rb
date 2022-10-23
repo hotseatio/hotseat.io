@@ -1,14 +1,14 @@
-# typed: false
+# typed: strict
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'test_helper'
 
-RSpec.describe 'Reviews', type: :request do
+class ReviewsTest < ActionDispatch::IntegrationTest
   describe 'GET /reviews/new' do
     it 'redirects to login if a user is not authenticated' do
       create_current_term
       get '/reviews/new'
-      expect(response).to redirect_to '/sign_in'
+      assert_redirected_to '/sign_in'
     end
 
     it 'loads the review form without a pre-filled course' do
@@ -16,29 +16,41 @@ RSpec.describe 'Reviews', type: :request do
       sign_in create(:user)
       get '/reviews/new'
 
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to have_selector('#ReviewForm')
+      assert_response :ok
+      assert_select '#ReviewForm'
     end
   end
 
   describe 'GET /reviews/course-suggestions' do
-    it 'suggests courses given search text', search: true do
+    before do
+      # Reindex models, since every test happens in a transaction
+      T.unsafe(Course).reindex
+      T.unsafe(Instructor).reindex
+
+      Searchkick.enable_callbacks
+    end
+
+    after do
+      Searchkick.disable_callbacks
+    end
+
+    it 'suggests courses given search text' do
       create_current_term
       sign_in create(:user)
       com_sci = create(:subject_area, name: 'Computer Science', code: 'COM SCI')
-      create(:course, :reindex, subject_area: com_sci, title: 'Introduction to the Beep Boop', number: '30', id: 69)
+      create(:course, :reindex, subject_area: com_sci, title: 'Introduction to the Beep Boop', number: '30', id: 5)
 
       get '/reviews/course-suggestions?q=com+sci'
 
-      expect(response).to have_http_status(:ok)
+      assert_response :ok
       parsed_body = JSON.parse(response.body)
-      expect(parsed_body.length).to be 1
-      expect(parsed_body.first).to eq({
-                                        'id' => 69,
-                                        'title' => 'Introduction to the Beep Boop',
-                                        'number' => '30',
-                                        'subjectAreaCode' => 'COM SCI',
-                                      })
+      assert_equal 1, parsed_body.length
+      assert_equal({
+                     'id' => 5,
+                     'title' => 'Introduction to the Beep Boop',
+                     'number' => '30',
+                     'subjectAreaCode' => 'COM SCI',
+                   }, parsed_body.first)
     end
   end
 
@@ -47,32 +59,33 @@ RSpec.describe 'Reviews', type: :request do
       create_current_term
       sign_in create(:user)
       com_sci = create(:subject_area, name: 'Computer Science', code: 'COM SCI')
-      preceding_course = create(:course, subject_area: com_sci, title: 'Introduction to the Boop Beep', number: '30', id: 68)
+      preceding_course = create(:course, subject_area: com_sci, title: 'Introduction to the Boop Beep', number: '30', id: 5)
       course = create(:course, subject_area: com_sci,
                                title: 'Introduction to the Beep Boop',
                                number: '30',
-                               id: 69,
+                               id: 6,
                                preceding_course:)
       create_list(:section, 6, course:)
 
       get "/reviews/term-suggestions?course_id=#{course.id}"
 
-      expect(response).to have_http_status(:ok)
+      assert_response :ok
 
       parsed_body = JSON.parse(response.body)
-      expect(parsed_body['terms'].length).to be 6
-      expect(parsed_body['precedingCourse']).to match({
-                                                        'subjectAreaCode' => 'COM SCI',
-                                                        'title' => 'Introduction to the Boop Beep',
-                                                        'number' => '30',
-                                                        'id' => 68,
-                                                      })
-      expect(parsed_body['supersedingCourse']).to be_nil
+
+      assert_equal 6, response.parsed_body['terms']
+      assert_equal({
+                     'subjectAreaCode' => 'COM SCI',
+                     'title' => 'Introduction to the Boop Beep',
+                     'number' => '30',
+                     'id' => 5,
+                   }, response.parsed_body['precedingCourse'])
+      assert_nil(parsed_body['supersedingCourse'])
     end
   end
 
   describe 'POST /reviews' do
-    review = {
+    REVIEW = T.let({
       grade: 'A+',
       organization: '7',
       clarity: '7',
@@ -85,83 +98,82 @@ RSpec.describe 'Reviews', type: :request do
       final: '10th',
       textbook: 'true',
       comments: 'Labore anim veniam adipiscing, non. Adipiscing non eu, et sunt sunt. Et sunt sunt minim amet culpa aliqua. Sunt minim amet culpa aliqua, cupidatat. Culpa aliqua cupidatat nulla dolor elit ex exercitation. Cupidatat nulla dolor elit ex exercitation.',
-    }
-    let(:term) { create_current_term }
-    let(:user) {  create(:user) }
-    let(:section) do
+    }.freeze, T::Hash[Symbol, String])
+
+    before do
+      @term = T.let(create_current_term, Term)
+      @user = T.let(create(:user), User)
       com_sci = create(:subject_area, name: 'Computer Science', code: 'COM SCI')
       course = create(:course, subject_area: com_sci,
                                title: 'Introduction to the Beep Boop',
                                number: '30',
                                id: 69)
-      create(:section, course:, term:)
-    end
+      @section = T.let(create(:section, course:, term: @term), Section)
 
-    before do
-      sign_in user
+      sign_in @user
     end
 
     it 'creates a new review' do
       post '/reviews', params: {
-        review: { **review, section_id: section.id },
+        review: { **REVIEW, section_id: @section.id },
       }
-      expect(response).to have_http_status(:found)
-      expect(response).to redirect_to(my_courses_path)
+      assert_response :found
+      assert_redirected_to(my_courses_path)
     end
 
     it 'returns an error if a user has already written 6 reviews for a quarter' do
-      create_list(:section, 6, term:) do |section|
-        create(:review, user:, section:)
+      create_list(:section, 6, term: @term) do |section|
+        create(:review, user: @user, section:)
       end
       post '/reviews', params: {
         review: {
-          **review,
-          section_id: section.id,
+          **REVIEW,
+          section_id: @section.id,
         },
       }
-      expect(response).to have_http_status(:bad_request)
-      expect(response.parsed_body['msg']).to eq 'You can only review six classes per term.'
+      assert_response :bad_request
+      assert_equal 'You can only review six classes per term.', response.parsed_body['msg']
     end
 
     it 'returns an error if the course was reviewed already' do
       post '/reviews', params: {
         review: {
-          **review,
-          section_id: section.id,
+          **REVIEW,
+          section_id: @section.id,
         },
       }
       post '/reviews', params: {
         review: {
-          **review,
-          section_id: section.id,
+          **REVIEW,
+          section_id: @section.id,
         },
       }
-      expect(response).to have_http_status(:bad_request)
-      expect(response.parsed_body['msg']).to eq "You've already reviewed this course."
+      assert_response :bad_request
+      assert_equal "You've already reviewed this course.", response.parsed_body['msg']
     end
 
     it 'returns an error if the comments are too short' do
       post '/reviews', params: {
         review: {
-          **review,
+          **REVIEW,
           comments: 'class is good',
-          section_id: section.id,
+          section_id: @section.id,
         },
       }
-      expect(response).to have_http_status(:bad_request)
-      expect(response.parsed_body['msg']).to eq 'Your review looks a little short. Tell us a bit more about the class!'
+      assert_response :bad_request
+      assert_equal 'Your review looks a little short. Tell us a bit more about the class!', response.parsed_body['msg']
     end
 
     it 'returns an error if the comments are gibberish' do
       post '/reviews', params: {
         review: {
-          **review,
+          **REVIEW,
           comments: 'Labore anim veniam adipiscing, non. tdairhbunwdkccbuahnubk ahrbxuihubhkxtbmitnt ihdiccauxbruri.',
-          section_id: section.id,
+          section_id: @section.id,
         },
       }
-      expect(response).to have_http_status(:bad_request)
-      expect(response.parsed_body['msg']).to eq 'We had trouble understanding your review. Please make sure everything looks correct!'
+      assert_response :bad_request
+      assert_equal 'We had trouble understanding your review. Please make sure everything looks correct!', response.parsed_body['msg']
     end
   end
 end

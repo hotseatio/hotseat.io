@@ -9,9 +9,6 @@ class HomePageController < ApplicationController
 
   COURSE_INSTRUCTOR_PAIRS = T.let([
     ['COM SCI', '32', 'Nachenberg'],
-    # %w[LIFESCI 15 Phelan],
-    # %w[PHYSICS 1C Kang],
-    # ['FILM TV', '4', 'Kuntz'],
   ].freeze, T::Array[[String, String, String]])
 
   sig { void }

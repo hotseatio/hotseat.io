@@ -1,19 +1,20 @@
-# typed: false
+# typed: strict
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'test_helper'
 
-RSpec.describe 'Courses', type: :request do
+class CoursesTest < ActionDispatch::IntegrationTest
   describe 'GET /courses' do
     it 'returns http success' do
       create_current_term
       get '/courses'
-      expect(response).to have_http_status(:success)
+      assert_response :ok
     end
   end
 
   describe 'GET /courses/:id' do
     it "redirects to the most recent instructor's page if there is an instructor" do
+      # path = T.let(nil, T.nilable(String))
       term = create_current_term
       prev_term = create(:term)
 
@@ -25,8 +26,9 @@ RSpec.describe 'Courses', type: :request do
       create(:section, course:, term: prev_term, instructor: prev_instructor)
 
       get "/courses/#{course.id}"
-      expect(response).to have_http_status(:found)
-      expect(response.headers['Location']).to eq "http://www.example.com/courses/#{course.id}/instructors/#{current_instructor.id}"
+      assert_response :found
+      follow_redirect!
+      assert_equal "/courses/#{course.id}/instructors/#{current_instructor.id}", request.path
     end
 
     it 'does not redirect if there is no instructor' do
@@ -36,7 +38,7 @@ RSpec.describe 'Courses', type: :request do
       course = create(:course, subject_area: com_sci, title: 'Introduction to the Beep Boop', number: 69)
 
       get "/courses/#{course.id}"
-      expect(response).to have_http_status(:ok)
+      assert_response :ok
     end
   end
 end

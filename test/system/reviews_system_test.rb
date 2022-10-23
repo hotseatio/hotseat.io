@@ -3,7 +3,7 @@
 
 require 'application_system_test_case'
 
-class ReviewsTest < ApplicationSystemTestCase
+class ReviewsSystemTest < ApplicationSystemTestCase
   it 'allows users to write reviews with course preloaded' do
     T.unsafe(NotifyOnNewReviewJob).expects(:perform_later)
 
