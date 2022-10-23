@@ -12,13 +12,13 @@ class CourseTest < ActiveSupport::TestCase
     it 'returns true if the course is offered during the term' do
       term = build(:term)
       course = build(:course, terms: [term])
-      assert_equal(true, course.offered_for_term?(term))
+      assert(course.offered_for_term?(term))
     end
 
     it 'returns false if the course not is offered during the term' do
       term = build(:term)
       course = build(:course, terms: [])
-      assert_equal(false, course.offered_for_term?(term))
+      assert_not(course.offered_for_term?(term))
     end
   end
 

@@ -44,7 +44,6 @@ module ActiveSupport
       # and disable callbacks
       Searchkick.disable_callbacks
     end
-
   end
 end
 

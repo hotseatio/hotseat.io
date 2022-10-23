@@ -12,7 +12,7 @@ class ApplicationHelperTest < ActionView::TestCase
     end
 
     it 'returns the page and site title if given a page title' do
-      assert_equal(full_title('Log in'), 'Log in | Hotseat')
+      assert_equal('Log in | Hotseat', full_title('Log in'))
     end
   end
 

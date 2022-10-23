@@ -19,6 +19,6 @@ class SettingsTest < ApplicationSystemTestCase
     assert_text page, 'Settings updated!', wait: 10
 
     user.reload
-    assert_equal true, user.beta_tester
+    assert user.beta_tester
   end
 end

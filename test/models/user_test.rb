@@ -6,36 +6,36 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   it 'always has a name' do
     valid_user = build :user, name: 'Nathan Smith'
-    assert_equal true, valid_user.valid?
+    assert_predicate valid_user, :valid?
 
     invalid_user = build :user, name: ''
-    assert_equal false, invalid_user.valid?
+    assert_not invalid_user.valid?
   end
 
   it 'always has an email' do
     valid_user = build :user, email: 'natedub@g.ucla.edu'
-    assert_equal true, valid_user.valid?
+    assert_predicate valid_user, :valid?
 
     invalid_user = build :user, name: ''
-    assert_equal false, invalid_user.valid?
+    assert_not invalid_user.valid?
   end
 
   it 'has a name that is not too long' do
     user = build :user, name: 'Nathan' * 10
-    assert_equal false, user.valid?
+    assert_not user.valid?
   end
 
   it 'has an email that is not too long' do
     user = build :user, email: 'nathan.smith@ucla.edu' * 1500
-    assert_equal false, user.valid?
+    assert_not user.valid?
   end
 
   it 'can only have a ucla email' do
     valid_user = build :user, email: 'nathansmith@g.ucla.edu'
-    assert_equal true, valid_user.valid?
+    assert_predicate valid_user, :valid?
 
     invalid_user = build :user, email: 'nathansmith@gmail.com'
-    assert_equal false, invalid_user.valid?
+    assert_not invalid_user.valid?
   end
 
   describe 'unfollow' do
@@ -72,14 +72,14 @@ class UserTest < ActiveSupport::TestCase
   describe 'use_notification_token' do
     it 'removes a single notification token from a user and returns true' do
       user = build :user, notification_token_count: 3
-      assert_equal  true, user.use_notification_token
-      assert_equal  2, user.notification_token_count
+      assert  user.use_notification_token
+      assert_equal 2, user.notification_token_count
     end
 
     it 'returns false if a user has no notification tokens that can be used' do
       user = build :user, notification_token_count: 0
-      assert_equal  false, user.use_notification_token
-      assert_equal  0, user.notification_token_count
+      assert_not user.use_notification_token
+      assert_equal 0, user.notification_token_count
     end
   end
 
@@ -108,7 +108,7 @@ class UserTest < ActiveSupport::TestCase
       section = create :section, course: course
       create :relationship, :with_review, user: user, section: section
 
-      assert_equal true, user.reviewed_course?(course)
+      assert user.reviewed_course?(course)
     end
 
     it 'returns false if the user has not reviewed the course' do
@@ -117,7 +117,7 @@ class UserTest < ActiveSupport::TestCase
       section = create :section, course: course
       create :relationship, user: user, section: section
 
-      assert_equal false, user.reviewed_course?(course)
+      assert_not user.reviewed_course?(course)
     end
   end
 

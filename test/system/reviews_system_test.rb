@@ -79,17 +79,17 @@ class ReviewsSystemTest < ApplicationSystemTestCase
     assert_text page, 'Review created!', wait: 10
 
     review = section.reviews.first
-    assert_equal true, review.a_plus?
+    assert_predicate review, :a_plus?
     assert_equal 5, review.organization
     assert_equal 7, review.clarity
     assert_equal 2, review.overall
-    assert_equal true, review.fifteen_to_twenty_hours?
-    assert_equal true, review.has_group_project
-    assert_equal false, review.requires_attendance
+    assert_predicate review, :fifteen_to_twenty_hours?
+    assert review.has_group_project
+    assert_not review.requires_attendance
     assert_equal 2, review.midterm_count
-    assert_equal true, review.finals_week?
-    assert_equal true, review.reccomend_textbook
-    assert_equal false, review.offers_extra_credit
+    assert_predicate review, :finals_week?
+    assert review.reccomend_textbook
+    assert_not review.offers_extra_credit
     assert_equal review_text, review.comments
   end
 
@@ -153,17 +153,17 @@ class ReviewsSystemTest < ApplicationSystemTestCase
     # expect(page).to have_current_path()
 
     review = section.reviews.first
-    assert_equal true, review.a_plus?
+    assert_predicate review, :a_plus?
     assert_equal 5, review.organization
     assert_equal 7, review.clarity
     assert_equal 2, review.overall
-    assert_equal true, review.fifteen_to_twenty_hours?
-    assert_equal true, review.has_group_project
-    assert_equal false, review.requires_attendance
+    assert_predicate review, :fifteen_to_twenty_hours?
+    assert review.has_group_project
+    assert_not review.requires_attendance
     assert_equal 2, review.midterm_count
-    assert_equal true, review.finals_week?
-    assert_equal true, review.reccomend_textbook
-    assert_equal false, review.offers_extra_credit
+    assert_predicate review, :finals_week?
+    assert review.reccomend_textbook
+    assert_not review.offers_extra_credit
     assert_equal review_text, review.comments
   end
 end

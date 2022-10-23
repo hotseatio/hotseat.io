@@ -169,11 +169,11 @@ class TermTest < ActiveSupport::TestCase
            first: second_pass_start_time,
            last: second_pass_start_time + 1.day)
 
-    assert_in_delta( priority_start_time, term.enrollment_period_markers[0].time)
+    assert_in_delta(priority_start_time, term.enrollment_period_markers[0].time)
     assert_equal('Priority pass', term.enrollment_period_markers[0].label)
-    assert_in_delta( first_pass_start_time, term.enrollment_period_markers[1].time)
+    assert_in_delta(first_pass_start_time, term.enrollment_period_markers[1].time)
     assert_equal('First pass', term.enrollment_period_markers[1].label)
-    assert_in_delta( second_pass_start_time, term.enrollment_period_markers[2].time)
+    assert_in_delta(second_pass_start_time, term.enrollment_period_markers[2].time)
     assert_equal('Second pass', term.enrollment_period_markers[2].label)
   end
 
@@ -330,7 +330,7 @@ class TermTest < ActiveSupport::TestCase
                                       last: Date.new(2021, 6, 30),
                                       term: term
       travel_to Time.zone.local(2021, 6, 18)
-      assert_equal(true, term.live_enrollment?)
+      assert_predicate(term, :live_enrollment?)
     end
 
     it 'returns false if the current date is not during the enrollment times' do
@@ -347,7 +347,7 @@ class TermTest < ActiveSupport::TestCase
                                       last: Date.new(2021, 6, 30),
                                       term: term
       travel_to Time.zone.local(2021, 7, 12)
-      assert_equal(false, term.live_enrollment?)
+      assert_not(term.live_enrollment?)
     end
   end
 

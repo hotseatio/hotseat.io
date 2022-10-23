@@ -2,14 +2,12 @@ require:
   - rubocop-rails
   - rubocop-rake
   - rubocop-performance
-  - rubocop-rspec
+  - rubocop-minitest
   - rubocop-sorbet
 
 AllCops:
   NewCops: enable
-  # TODO: Uncomment when https://github.com/Shopify/erb-lint/pull/194 lands.
-  # erb_lint confines us to an old version of Rubocop, which doesn't have SuggestExtensions.
-  # SuggestExtensions: false
+  SuggestExtensions: true
 
 Lint/ConstantDefinitionInBlock:
   Enabled: false
@@ -46,12 +44,5 @@ Rails/I18nLocaleTexts:
   Enabled: false
 Rails/FilePath:
   EnforcedStyle: arguments
-
-RSpec/MultipleExpectations:
-  Enabled: false
-RSpec/ExampleLength:
-  Enabled: false
-RSpec/NoExpectationExample:
-  Enabled: false
-RSpec/Capybara/FeatureMethods:
+Rails/ActionControllerFlashBeforeRender:
   Enabled: false
