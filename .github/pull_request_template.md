@@ -1,7 +1,3 @@
-## Ready?
-
-- [ ] This PR is ready for review!
-
 ## Description
 
 <!--- What this PR does, why we're making it, etc. -->
