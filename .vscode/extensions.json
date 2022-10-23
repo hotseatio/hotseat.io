@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "sorbet.sorbet-vscode-extension",
+        "misogi.ruby-rubocop",
+        "golang.go",
+        "mikestead.dotenv",
+        "formulahendry.auto-rename-tag",
+        "formulahendry.auto-close-tag",
+        "kaiwood.endwise"
+    ]
+}
