@@ -34,6 +34,17 @@ module ActiveSupport
     include TermHelper
 
     parallelize(workers: :number_of_processors)
+    parallelize_setup do |worker|
+      Searchkick.index_suffix = worker
+
+      # reindex models
+      T.unsafe(Course).reindex
+      T.unsafe(Instructor).reindex
+
+      # and disable callbacks
+      Searchkick.disable_callbacks
+    end
+
   end
 end
 

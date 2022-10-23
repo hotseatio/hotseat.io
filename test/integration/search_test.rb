@@ -63,7 +63,7 @@ class SearchTest < ActionDispatch::IntegrationTest
       subject_area = create :subject_area, code: 'COM SCI', id: 420
       create :course, :reindex,
              subject_area: subject_area,
-             id: 69,
+             id: 20,
              number: '30',
              title: 'Introduction to Computer Science 0'
       create_list :course, 10, :reindex, subject_area: subject_area
@@ -81,8 +81,8 @@ class SearchTest < ActionDispatch::IntegrationTest
       assert_instance_of(Integer, first_result['id'])
       assert_instance_of(String, first_result['number'])
       assert_equal('COM SCI', first_result['subjectAreaCode'])
-      assert_match(%r{^/courses/}, parsed_body.first['linkUrl'])
-      assert_match(/^Introduction to Computer Science/, parsed_body.first['title'])
+      assert_match(%r{^/courses/}, first_result['linkUrl'])
+      assert_match(/^Introduction to Computer Science/, first_result['title'])
     end
 
     it 'returns no suggestions with q=adsfasdfasfd' do

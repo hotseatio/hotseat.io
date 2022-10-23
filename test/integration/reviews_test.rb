@@ -71,16 +71,14 @@ class ReviewsTest < ActionDispatch::IntegrationTest
 
       assert_response :ok
 
-      parsed_body = JSON.parse(response.body)
-
-      assert_equal 6, response.parsed_body['terms']
+      assert_equal 6, response.parsed_body['terms'].length
       assert_equal({
                      'subjectAreaCode' => 'COM SCI',
                      'title' => 'Introduction to the Boop Beep',
                      'number' => '30',
                      'id' => 5,
                    }, response.parsed_body['precedingCourse'])
-      assert_nil(parsed_body['supersedingCourse'])
+      assert_nil(response.parsed_body['supersedingCourse'])
     end
   end
 
