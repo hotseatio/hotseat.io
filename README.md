@@ -50,6 +50,12 @@ yarn
 # Set up pre-commit hooks
 pre-commit install
 
+# Set up the database
+# (Get the database dump file from the Slack)
+dropdb hotseat_dev
+createdb hotseat_dev
+psql -f path/to/dump.sql -d hotseat_dev # replace the path!
+
 # Set up dev.hotseat.io
 echo -e "# Hotseat dev server\n127.0.0.1 dev.hotseat.io" | sudo tee -a /etc/hosts
 
