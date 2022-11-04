@@ -52,6 +52,8 @@ pre-commit install
 
 # Set up the database
 # (Get the database dump file from the Slack)
+
+# This will fail if you haven't set up the hotseat_dev db before. You can skip if so!
 dropdb hotseat_dev
 createdb hotseat_dev
 psql -f path/to/dump.sql -d hotseat_dev # replace the path!
