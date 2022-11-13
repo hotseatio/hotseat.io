@@ -10,7 +10,7 @@ Install [Homebrew](https://brew.sh/). Then run:
 
 ```sh
 brew install docker --cask
-brew install go rbenv nodenv yarn pre-commit terraform postgres overmind tmux stripe/stripe-cli/stripe opensearch
+brew install go rbenv nodenv yarn pre-commit terraform postgresql@14 overmind tmux stripe/stripe-cli/stripe opensearch
 
 # You may have to start the DB and OpenSearch services:
 brew services start opensearch
@@ -49,6 +49,14 @@ yarn
 
 # Set up pre-commit hooks
 pre-commit install
+
+# Set up the database
+# (Get the database dump file from the Slack)
+
+# This will fail if you haven't set up the hotseat_dev db before. You can skip if so!
+dropdb hotseat_dev
+createdb hotseat_dev
+psql -f path/to/dump.sql -d hotseat_dev # replace the path!
 
 # Set up dev.hotseat.io
 echo -e "# Hotseat dev server\n127.0.0.1 dev.hotseat.io" | sudo tee -a /etc/hosts
