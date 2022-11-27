@@ -8,6 +8,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/sns"
 	"github.com/nathunsmitty/hotseat.io/lambdas/envutil"
 	"github.com/nathunsmitty/hotseat.io/lambdas/registrar"
+	log "github.com/sirupsen/logrus"
 )
 
 func NotifySubscribedUsers(
@@ -53,10 +54,10 @@ func SendNotificationToUser(
 	ctx context.Context,
 	user registrar.User,
 	message string,
-) error {
+) {
 	span, logger, ctx := envutil.GetLoggerAndNewSpan(ctx, "SendNotificationToUser")
 	defer span.Finish()
-	logger = logger.WithField("user", user.ID)
+	logger = logger.WithFields(log.Fields{"message": message, "user": user.ID})
 	logger.Info("Sending notification to user")
 
 	client := envutil.CreateAWSClient()
@@ -66,9 +67,7 @@ func SendNotificationToUser(
 	}
 	output, err := client.PublishWithContext(ctx, input)
 	if err != nil {
-		return err
+		logger.WithField("error", err).Error("Could not send text message for user")
 	}
 	logger.WithField("messageID", *output.MessageId).Info("Notification successful!")
-
-	return nil
 }
