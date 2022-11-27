@@ -26,6 +26,7 @@ func NotifySubscribedUsers(
 		return err
 	}
 	if len(users) == 0 {
+		logger.Info("No subscribed users found")
 		return nil
 	}
 	message := FormatMessage(course, section, prevEnrollmentNumbers)
@@ -67,7 +68,7 @@ func SendNotificationToUser(
 	}
 	output, err := client.PublishWithContext(ctx, input)
 	if err != nil {
-		logger.WithField("error", err).Error("Could not send text message for user")
+		logger.WithError(err).Error("Could not send text message for user")
 	}
 	logger.WithField("messageID", *output.MessageId).Info("Notification successful!")
 }
