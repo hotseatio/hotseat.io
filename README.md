@@ -10,7 +10,7 @@ Install [Homebrew](https://brew.sh/). Then run:
 
 ```sh
 brew install docker --cask
-brew install go rbenv nodenv yarn pre-commit terraform postgresql@14 overmind tmux stripe/stripe-cli/stripe opensearch
+brew install go rbenv nodenv yarn pre-commit terraform postgresql@14 overmind tmux stripe/stripe-cli/stripe opensearch serverless
 
 # You may have to start the DB and OpenSearch services:
 brew services start opensearch
