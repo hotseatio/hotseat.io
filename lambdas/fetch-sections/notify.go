@@ -48,6 +48,8 @@ func FormatMessage(
 		message += fmt.Sprintf("\n\nEnroll now: https://hotseat.io/enroll/%d", section.ID)
 	}
 
+	message += fmt.Sprintf("\n\nAlready enrolled? Unsubscribe: https://hotseat.io/unsubscribe/%d", section.ID)
+
 	return message
 }
 
