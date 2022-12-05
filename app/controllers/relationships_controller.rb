@@ -16,6 +16,10 @@ class RelationshipsController < ApplicationController
     const :subscription_only, T::Boolean
   end
 
+  class UnsubscribeParams < T::Struct
+    const :id, Integer
+  end
+
   sig { void }
   def create
     typed_params = TypedParams[CreateParams].new.extract!(params)
@@ -49,6 +53,22 @@ class RelationshipsController < ApplicationController
         render json: { msg: "You cannot unfollow a class you've reviewed! Did you mean to unsubscribe?" }, status: :bad_request
       end
     end
+  end
+
+  sig { void }
+  def unsubscribe
+    typed_params = TypedParams[UnsubscribeParams].new.extract!(params)
+    user = T.must(current_user)
+    section = Section.find(typed_params.id)
+    course = section.course
+
+    successfully_unsubscribed = user.unsubscribe(section)
+    if successfully_unsubscribed
+      flash[:success] = "Unsubscribed to alerts for #{course.short_title}"
+    else
+      flash[:error] = "You aren't subscribed to notifications for #{course.short_title}!"
+    end
+    redirect_to my_courses_url
   end
 
   private

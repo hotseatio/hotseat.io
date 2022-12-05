@@ -38,7 +38,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not invalid_user.valid?
   end
 
-  describe 'unfollow' do
+  describe '#unfollow' do
     before do
       @term = T.let(create(:term), Term)
       @user = T.let(create(:user), User)
@@ -61,7 +61,7 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  describe 'add_notification_token' do
+  describe '#add_notification_token' do
     it 'adds a single notification token to a user' do
       user = build :user, notification_token_count: 1
       user.add_notification_token
@@ -141,6 +141,37 @@ class UserTest < ActiveSupport::TestCase
       create :user, referral_code: referral_code
       user = build :user
       assert_raises(ActiveRecord::ActiveRecordError) { user.set_referral_code }
+    end
+  end
+
+  describe '#unsubscribe' do
+    it 'marks a relationship as notify=false' do
+      term = T.let(create(:term), Term)
+      user = T.let(create(:user), User)
+      section = T.let(create(:section, term:), Section)
+      relationship = create :relationship, user: user, section: section, notify: true
+
+      assert(user.unsubscribe(section))
+
+      relationship.reload
+      assert_not(relationship.notify)
+    end
+
+    it "returns false if the relationship didn't have notify set" do
+      term = T.let(create(:term), Term)
+      user = T.let(create(:user), User)
+      section = T.let(create(:section, term:), Section)
+      create :relationship, user: user, section: section, notify: false
+
+      assert_not(user.unsubscribe(section))
+    end
+
+    it 'returns false if there is no relationship' do
+      term = T.let(create(:term), Term)
+      user = T.let(create(:user), User)
+      section = T.let(create(:section, term:), Section)
+
+      assert_not(user.unsubscribe(section))
     end
   end
 end

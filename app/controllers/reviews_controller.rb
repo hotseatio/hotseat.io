@@ -4,6 +4,7 @@
 class ReviewsController < ApplicationController
   extend T::Sig
 
+  before_action :store_user_location!, if: :storable_location?
   before_action :authenticate_user!
 
   class ReviewParams < T::Struct
