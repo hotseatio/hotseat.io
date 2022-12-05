@@ -133,10 +133,15 @@ class User < ApplicationRecord
   end
 
   # Stops subscribing to a section. User will still be following section.
-  sig { params(section: Section).void }
+  sig { params(section: Section).returns(T::Boolean) }
   def unsubscribe(section)
     relationship = relationships.find_by(section:)
-    relationship&.update(notify: false)
+    if relationship
+      relationship.update(notify: false)
+      true
+    else
+      false
+    end
   end
 
   # Give the user a notification token and saves the new value.
