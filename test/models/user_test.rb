@@ -149,12 +149,21 @@ class UserTest < ActiveSupport::TestCase
       term = T.let(create(:term), Term)
       user = T.let(create(:user), User)
       section = T.let(create(:section, term:), Section)
-      relationship = create :relationship, user: user, section: section
+      relationship = create :relationship, user: user, section: section, notify: true
 
       assert(user.unsubscribe(section))
 
       relationship.reload
       assert_not(relationship.notify)
+    end
+
+    it "returns false if the relationship didn't have notify set" do
+      term = T.let(create(:term), Term)
+      user = T.let(create(:user), User)
+      section = T.let(create(:section, term:), Section)
+      create :relationship, user: user, section: section, notify: false
+
+      assert_not(user.unsubscribe(section))
     end
 
     it 'returns false if there is no relationship' do

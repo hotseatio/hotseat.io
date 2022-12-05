@@ -136,7 +136,7 @@ class User < ApplicationRecord
   sig { params(section: Section).returns(T::Boolean) }
   def unsubscribe(section)
     relationship = relationships.find_by(section:)
-    if relationship
+    if relationship&.notify
       relationship.update(notify: false)
       true
     else
