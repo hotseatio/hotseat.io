@@ -25,7 +25,7 @@ class SearchController < ApplicationController
   def index
     typed_params = TypedParams[IndexParams].new.extract!(params)
     @term = Term.current
-    @query = typed_params.q
+    @query = typed_params.q&.delete("\u0000")
     @results = Searchkick.search(@query,
                                  track: true,
                                  models: [Course, Instructor],
@@ -39,7 +39,7 @@ class SearchController < ApplicationController
   sig { void }
   def suggest
     typed_params = TypedParams[SearchParams].new.extract!(params)
-    @query = typed_params.q
+    @query = typed_params.q.delete("\u0000")
     @results = Searchkick.search(@query,
                                  track: true,
                                  models: [Course, Instructor],
