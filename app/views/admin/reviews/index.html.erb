@@ -1,0 +1,12 @@
+<% provide(:title, 'Admin: Reviews') %>
+
+<%= render 'shared/page_header', title: 'Admin: Reviews', breadcrumbs: [{ name: 'Home', link: '/' }, { name: 'Admin: Reviews', link: admin_reviews_path }] %>
+
+<div class="shadow overflow-hidden sm:rounded-md my-4">
+  <%= render 'shared/list', collection: @reviews do |review| %>
+    <%= render 'shared/list_item',
+               link: '#',
+               title: "#{review.section.course_title} - #{review.overall_rating}",
+               subtitle: (review.user ? "(#{review.user.name}) " : "(no user) ") + review.comments.truncate_words(10) %>
+  <% end %>
+</div>
