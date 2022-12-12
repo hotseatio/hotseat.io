@@ -27,6 +27,10 @@ Rails.application.routes.draw do
     mount Searchjoy::Engine, at: "searchjoy"
   end
 
+  namespace :admin do
+    resources :reviews
+  end
+
   get "checkout", to: "checkouts#checkout"
 
   resources "subject_areas", only: %i[index show], path: "subject-areas"

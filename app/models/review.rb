@@ -154,6 +154,12 @@ class Review < ApplicationRecord
     T.must(term).readable
   end
 
+  sig { returns(T.nilable(BigDecimal)) }
+  def overall_rating
+    review_rating = overall
+    Review.scale_to_ten_points(BigDecimal(review_rating)) if review_rating
+  end
+
   private
 
   sig { void }
