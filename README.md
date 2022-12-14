@@ -10,7 +10,7 @@ Install [Homebrew](https://brew.sh/). Then run:
 
 ```sh
 brew install docker --cask
-brew install go rbenv nodenv yarn pre-commit terraform postgresql@14 overmind tmux stripe/stripe-cli/stripe opensearch serverless
+brew install go rbenv nodenv yarn pre-commit terraform postgresql@14 stripe/stripe-cli/stripe opensearch serverless
 
 # You may have to start the DB and OpenSearch services:
 brew services start opensearch
@@ -23,7 +23,7 @@ brew services start postgres
 
 ```sh
 pacman -S docker go nodejs yarn python-pre-commit terraform postgresql opensearch
-pamac build ruby-build overmind stripe-cli-bin
+pamac build ruby-build stripe-cli-bin
 
 # You may have to start the DB and OpenSearch services:
 systemctl start opensearch.service postgresql.service
@@ -108,13 +108,11 @@ You can visit your local Hotseat development site at http://dev.hotseat.io:3000 
 
 ### Debugging
 
-We use [byebug](https://github.com/deivid-rodriguez/byebug) for debugging. Simply drop a `byebug` and get an interactive prompt. To connect to byebug while running overmind, use:
+We use [debug](https://github.com/ruby/debug) for debugging. Simply drop a `debugger` and get an interactive prompt. To connect to the debugger, run:
 
 ```
-overmind connect web
+rdbg -a
 ```
-
-See [this article](https://blog.testdouble.com/posts/2020-03-17-improving-dev-experience-with-overmind/) for details.
 
 ### Entity Diagram
 
