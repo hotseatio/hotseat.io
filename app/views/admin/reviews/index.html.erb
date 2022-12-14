@@ -5,7 +5,7 @@
 <div class="shadow overflow-hidden sm:rounded-md my-4">
   <%= render 'shared/list', collection: @reviews do |review| %>
     <%= render 'shared/list_item',
-               link: '#',
+               link: admin_review_path(review),
                title: "#{review.section.course_title} - #{review.overall_rating}",
                subtitle: (review.user ? "(#{review.user.name}) " : "(no user) ") + review.comments.truncate_words(10) %>
   <% end %>

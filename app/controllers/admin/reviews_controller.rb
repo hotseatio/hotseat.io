@@ -6,6 +6,8 @@ class Admin::ReviewsController < AdminController
   def initialize
     super
     @reviews = T.let(nil, T.nilable(Review::RelationType))
+    @review = T.let(nil, T.nilable(Review))
+    @author = T.let(nil, T.nilable(User))
   end
 
   class IndexParams < T::Struct
@@ -18,5 +20,16 @@ class Admin::ReviewsController < AdminController
     page = typed_params.page
 
     @reviews = Review.all.order(created_at: :desc).page(page)
+  end
+
+  class ShowParams < T::Struct
+    const :id, Integer
+  end
+
+  sig { void }
+  def show
+    typed_params = TypedParams[ShowParams].new.extract!(params)
+    @review = Review.find(typed_params.id)
+    @author = @review.user
   end
 end
