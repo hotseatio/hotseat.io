@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState } from 'react'
-import classNames from 'classnames'
+import {clsx} from 'clsx'
 
 import LoadingCircle from 'components/icons/LoadingCircle'
 import { authenticityHeaders } from 'utilities/authenticityHeaders'
@@ -66,7 +66,7 @@ export default function RequestButton({
   }
 
   return isSubmitting ? (
-    <LoadingCircle className={classNames('h-5 w-5', loadingClassName)} />
+    <LoadingCircle className={clsx('h-5 w-5', loadingClassName)} />
   ) : (
     <button title={title} className={className} onClick={onSubmit} disabled={disabled}>
       {children}

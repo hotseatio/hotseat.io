@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
-import classNames from 'classnames'
+import {clsx} from 'clsx'
 import { PhoneIcon } from '@heroicons/react/solid'
 
 import ConfirmModal from 'components/ConfirmModal'
@@ -75,7 +75,7 @@ export function AddChangePhoneModal({ isOpen, type, onCancel, onConfirm }: AddCh
               type="tel"
               name="phone-number"
               id="phone-number"
-              className={classNames('base-input rounded-l-md sm:text-sm border-gray-300', {
+              className={clsx('base-input rounded-l-md sm:text-sm border-gray-300', {
                 'text-red-900 placeholder-red-300 dark:placeholder-red-500 focus:outline-none focus:ring-red-500 focus:border-red-500':
                   phoneErrorMessage,
               })}
@@ -120,7 +120,7 @@ export function AddChangePhoneModal({ isOpen, type, onCancel, onConfirm }: AddCh
                 type="text"
                 name="confirmation-code"
                 id="confirmation-code"
-                className={classNames('base-input rounded-l-md sm:text-sm border-gray-300 block w-full rounded-md', {
+                className={clsx('base-input rounded-l-md sm:text-sm border-gray-300 block w-full rounded-md', {
                   'text-red-900 placeholder-red-300 dark:placeholder-red-500 focus:outline-none focus:ring-red-500 focus:border-red-500':
                     codeErrorMessage,
                 })}

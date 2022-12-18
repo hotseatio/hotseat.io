@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState } from 'react'
 import { Switch } from '@headlessui/react'
-import classNames from 'classnames'
+import {clsx} from 'clsx'
 
 import CopyToClipboardInput from './CopyToClipboardInput'
 import PhoneInput from './PhoneInput'
@@ -111,7 +111,7 @@ export default function SettingsForm({ updateURL, phoneNumber, ...props }: Props
         <Switch
           checked={betaTester}
           onChange={setBetaTester}
-          className={classNames(
+          className={clsx(
             betaTester ? 'bg-red-600' : 'bg-gray-200',
             'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
           )}
@@ -119,7 +119,7 @@ export default function SettingsForm({ updateURL, phoneNumber, ...props }: Props
           <span className="sr-only">Become a beta tester</span>
           <span
             aria-hidden="true"
-            className={classNames(
+            className={clsx(
               betaTester ? 'translate-x-5' : 'translate-x-0',
               'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
             )}

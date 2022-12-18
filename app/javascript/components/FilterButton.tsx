@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState } from 'react'
-import classNames from 'classnames'
+import {clsx} from 'clsx'
 import { usePopper } from 'react-popper'
 import { Listbox } from '@headlessui/react'
 import { CheckIcon, FilterIcon, SelectorIcon } from '@heroicons/react/solid'
@@ -56,7 +56,7 @@ export default function FilterButton({ links }: Props): JSX.Element | null {
             key={link.key}
             value={link}
             className={({ selected, active }) =>
-              classNames(
+              clsx(
                 active ? 'text-white bg-red-600' : 'text-gray-900 dark:text-white',
                 selected ? 'font-semibold' : 'font-normal',
                 'text-sm'
@@ -68,7 +68,7 @@ export default function FilterButton({ links }: Props): JSX.Element | null {
                 {link.label}
                 {selected ? (
                   <span
-                    className={classNames(
+                    className={clsx(
                       active ? 'text-white' : 'text-red-600',
                       'absolute inset-y-0 right-0 flex items-center pr-4'
                     )}
