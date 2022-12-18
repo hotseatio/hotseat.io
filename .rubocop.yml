@@ -46,3 +46,6 @@ Rails/FilePath:
   EnforcedStyle: arguments
 Rails/ActionControllerFlashBeforeRender:
   Enabled: false
+
+Minitest/EmptyLineBeforeAssertionMethods:
+  Enabled: false
