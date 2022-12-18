@@ -9,11 +9,11 @@ class ReviewsSystemTest < ApplicationSystemTestCase
 
     create_current_term
     subj_area = create(:subject_area)
-    section = create :section,
+    section = create(:section,
                      course: create(:course,
                                     subject_area: subj_area),
                      term: create(:term, term: '20W'),
-                     instructor: create(:instructor, first_names: ['Paul'], last_names: ['Eggert'])
+                     instructor: create(:instructor, first_names: ['Paul'], last_names: ['Eggert']))
 
     sign_in create(:user)
     visit "/reviews/new?course=#{section.course_id}"
@@ -97,11 +97,11 @@ class ReviewsSystemTest < ApplicationSystemTestCase
     T.unsafe(NotifyOnNewReviewJob).expects(:perform_later)
     create_current_term
     subj_area = create(:subject_area)
-    section = create :section,
+    section = create(:section,
                      course: create(:course,
                                     subject_area: subj_area),
                      term: create(:term, term: '20W'),
-                     instructor: create(:instructor, first_names: ['Paul'], last_names: ['Eggert'])
+                     instructor: create(:instructor, first_names: ['Paul'], last_names: ['Eggert']))
 
     sign_in create(:user)
     visit "/reviews/new?section=#{section.id}"

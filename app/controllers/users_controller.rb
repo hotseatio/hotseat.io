@@ -64,10 +64,10 @@ class UsersController < ApplicationController
     user.beta_tester = new_beta_status unless new_beta_status.nil?
     user.save!
 
-    render json: { title: 'Settings updated!' }, status: :ok
+    render(json: { title: 'Settings updated!' }, status: :ok)
   rescue ActiveRecord::RecordInvalid => e
-    logger.error e.inspect
-    render json: { title: 'Could not update settings', msg: 'Please make sure everything is properly formatted and try again.' }, status: :bad_request
+    logger.error(e.inspect)
+    render(json: { title: 'Could not update settings', msg: 'Please make sure everything is properly formatted and try again.' }, status: :bad_request)
   end
 
   class VerifyPhoneParams < T::Struct
@@ -90,20 +90,20 @@ class UsersController < ApplicationController
                            .verifications
                            .create(to: normalized_phone, channel: 'sms')
 
-      logger.info verification
-      render json: {
-        msg: 'Verification code sent',
-        formattedPhone: formatted_phone,
-      }, status: :ok
+      logger.info(verification)
+      render(json: {
+               msg: 'Verification code sent',
+               formattedPhone: formatted_phone,
+             }, status: :ok)
     else
-      render json: {
-        msg: 'In development mode; no verification code sent',
-        confirmationCodePlaceholder: 'Dev mode; put any 6-digit number',
-        formattedPhone: formatted_phone,
-      }, status: :ok
+      render(json: {
+               msg: 'In development mode; no verification code sent',
+               confirmationCodePlaceholder: 'Dev mode; put any 6-digit number',
+               formattedPhone: formatted_phone,
+             }, status: :ok)
     end
   rescue Twilio::REST::RestError => e
-    render json: { msg: e.error_message }, status: e.status_code
+    render(json: { msg: e.error_message }, status: e.status_code)
   end
 
   class ConfirmVerifyPhoneParams < T::Struct
@@ -115,7 +115,7 @@ class UsersController < ApplicationController
   def confirm_verify_phone
     typed_params = TypedParams[ConfirmVerifyPhoneParams].new.extract!(params)
     normalized_phone = User.normalize_phone(typed_params.phone)
-    logger.info normalized_phone
+    logger.info(normalized_phone)
 
     success = false
 
@@ -130,7 +130,7 @@ class UsersController < ApplicationController
                                  .services(verify_sid)
                                  .verification_checks
                                  .create(to: normalized_phone, code: typed_params.code)
-      logger.info verification_check
+      logger.info(verification_check)
 
       success = verification_check.status
     end
@@ -139,12 +139,12 @@ class UsersController < ApplicationController
       user = T.must(current_user)
       user.phone = normalized_phone
       user.save!
-      render json: { msg: 'Code verified and phone saved' }, status: :ok
+      render(json: { msg: 'Code verified and phone saved' }, status: :ok)
     else
-      render json: { msg: 'Invalid code' }, status: :bad_request
+      render(json: { msg: 'Invalid code' }, status: :bad_request)
     end
   rescue Twilio::REST::RestError => e
-    render json: { msg: e.error_message }, status: e.status_code
+    render(json: { msg: e.error_message }, status: e.status_code)
   end
 
   sig { void }
@@ -153,6 +153,6 @@ class UsersController < ApplicationController
     user.phone = nil
     user.relationships.update_all(notify: false)
     user.save!
-    render json: { msg: 'Removed phone' }, status: :ok
+    render(json: { msg: 'Removed phone' }, status: :ok)
   end
 end

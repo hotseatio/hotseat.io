@@ -60,7 +60,7 @@ class SearchTest < ActionDispatch::IntegrationTest
 
     it 'returns suggestions with q=com+sci' do
       create_current_term
-      subject_area = create :subject_area, code: 'COM SCI', id: 420
+      subject_area = create(:subject_area, code: 'COM SCI', id: 420)
       create(:course, :reindex,
              subject_area:,
              id: 20,
@@ -86,7 +86,7 @@ class SearchTest < ActionDispatch::IntegrationTest
     end
 
     it 'returns no suggestions with q=adsfasdfasfd' do
-      subject_area = create :subject_area, code: 'COM SCI'
+      subject_area = create(:subject_area, code: 'COM SCI')
       create_list(:course, 10, :reindex, subject_area:)
       get '/search/suggestions?q=adsfasdfasfd'
       assert_response :ok

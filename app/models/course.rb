@@ -97,7 +97,7 @@ class Course < ApplicationRecord
   # Whether a course is offered for a given term.
   sig { params(term: Term).returns(T::Boolean) }
   def offered_for_term?(term)
-    terms.include? term
+    terms.include?(term)
   end
 
   COURSE_NUMBER_REGEX = T.let(/([CM]*)([0-9]*)([A-Z]*)/, Regexp)

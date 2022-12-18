@@ -14,7 +14,7 @@ class TurboFailureApp < Devise::FailureApp
   end
 
   def skip_format?
-    %w[html turbo_stream */*].include? request_format.to_s
+    %w[html turbo_stream */*].include?(request_format.to_s)
   end
 end
 
@@ -283,10 +283,10 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :google_oauth2, ENV.fetch('GOOGLE_CLIENT_ID', nil), ENV.fetch('GOOGLE_CLIENT_SECRET', nil),
+  config.omniauth(:google_oauth2, ENV.fetch('GOOGLE_CLIENT_ID', nil), ENV.fetch('GOOGLE_CLIENT_SECRET', nil),
                   provider_ignores_state: true,
                   access_type: 'online',
-                  hd: 'g.ucla.edu'
+                  hd: 'g.ucla.edu')
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

@@ -125,7 +125,7 @@ class TermTest < ActiveSupport::TestCase
 
   it 'has an enrollment start time' do
     start_time = Time.zone.now
-    term = create :term
+    term = create(:term)
     create(:enrollment_appointment,
            term:,
            pass: 'priority',
@@ -137,7 +137,7 @@ class TermTest < ActiveSupport::TestCase
 
   it 'has an enrollment end time' do
     end_time = Time.zone.now
-    term = create :term
+    term = create(:term)
     create(:enrollment_appointment,
            term:,
            pass: 'second',
@@ -149,7 +149,7 @@ class TermTest < ActiveSupport::TestCase
   end
 
   it 'returns a hash of enrollment pass start times' do
-    term = create :term
+    term = create(:term)
     priority_start_time = Time.zone.now
     first_pass_start_time = priority_start_time + 4.days
     second_pass_start_time = first_pass_start_time + 1.week
@@ -207,61 +207,61 @@ class TermTest < ActiveSupport::TestCase
 
   describe 'Comparison operations' do
     it 'can determine if one term is less than another' do
-      term1 = build :term, term: '18F'
-      term2 = build :term, term: '19S'
+      term1 = build(:term, term: '18F')
+      term2 = build(:term, term: '19S')
       assert_operator term1, :<, term2
     end
 
     it 'can determine if one term is greater than another' do
-      term1 = build :term, term: '181'
-      term2 = build :term, term: '18W'
+      term1 = build(:term, term: '181')
+      term2 = build(:term, term: '18W')
       assert_operator term1, :>, term2
     end
   end
 
   describe 'current_week' do
     it 'Gives the current week' do
-      term = build :term, term: '19S',
+      term = build(:term, term: '19S',
                           start_date: Date.new(2021, 3, 29),
-                          end_date: Date.new(2021, 6, 11)
+                          end_date: Date.new(2021, 6, 11))
       travel_to Time.zone.local(2021, 4, 20)
       assert_equal(4, term.current_week)
     end
 
     it 'returns nil if the date is before the start date' do
-      term = build :term, term: '19S',
+      term = build(:term, term: '19S',
                           start_date: Date.new(2021, 3, 29),
-                          end_date: Date.new(2021, 6, 11)
+                          end_date: Date.new(2021, 6, 11))
       travel_to Time.zone.local(2021, 2, 20)
       assert_nil(term.current_week)
     end
 
     it 'returns a number if the date is after the end date' do
-      term = build :term, term: '19S',
+      term = build(:term, term: '19S',
                           start_date: Date.new(2021, 3, 29),
-                          end_date: Date.new(2021, 6, 11)
+                          end_date: Date.new(2021, 6, 11))
       travel_to Time.zone.local(2021, 7, 20)
       assert_equal(17, term.current_week)
     end
 
     it 'returns nil if there is no start date' do
-      term = build :term, term: '19S'
+      term = build(:term, term: '19S')
       travel_to Time.zone.local(2021, 7, 20)
       assert_nil(term.current_week)
     end
 
     it 'returns 11 for finals week' do
-      term = build :term, term: '19S',
+      term = build(:term, term: '19S',
                           start_date: Date.new(2021, 3, 29),
-                          end_date: Date.new(2021, 6, 11)
+                          end_date: Date.new(2021, 6, 11))
       travel_to Time.zone.local(2021, 6, 11)
       assert_equal(11, term.current_week)
     end
 
     it 'returns 0 if there is a zero week' do
-      term = build :term, term: '20F',
+      term = build(:term, term: '20F',
                           start_date: Date.new(2020, 10, 1),
-                          end_date: Date.new(2020, 12, 18)
+                          end_date: Date.new(2020, 12, 18))
       travel_to Time.zone.local(2020, 10, 2)
       assert_equal(0, term.current_week)
     end
@@ -269,47 +269,47 @@ class TermTest < ActiveSupport::TestCase
 
   describe 'current_week_label' do
     it 'Gives the current week' do
-      term = build :term, term: '19S',
+      term = build(:term, term: '19S',
                           start_date: Date.new(2021, 3, 29),
-                          end_date: Date.new(2021, 6, 11)
+                          end_date: Date.new(2021, 6, 11))
       travel_to Time.zone.local(2021, 4, 20)
       assert_equal('Week 4', term.current_week_label)
     end
 
     it 'Can handle terms with a zero week' do
-      term = build :term, term: '20F',
+      term = build(:term, term: '20F',
                           start_date: Date.new(2020, 10, 1),
-                          end_date: Date.new(2020, 12, 18)
+                          end_date: Date.new(2020, 12, 18))
       travel_to Time.zone.local(2020, 10, 2)
       assert_equal('Week 0', term.current_week_label)
     end
 
     it 'Can handle finals week' do
-      term = build :term, term: '20F',
+      term = build(:term, term: '20F',
                           start_date: Date.new(2020, 10, 1),
-                          end_date: Date.new(2020, 12, 18)
+                          end_date: Date.new(2020, 12, 18))
       travel_to Time.zone.local(2020, 12, 18)
       assert_equal('Finals Week', term.current_week_label)
     end
 
     it 'Returns nil if the term does not have a start date' do
-      term = build :term, term: '20F'
+      term = build(:term, term: '20F')
       travel_to Time.zone.local(2020, 10, 2)
       assert_nil(term.current_week_label)
     end
 
     it 'Returns nil if the date is before the start date' do
-      term = build :term, term: '20F',
+      term = build(:term, term: '20F',
                           start_date: Date.new(2020, 10, 1),
-                          end_date: Date.new(2020, 12, 18)
+                          end_date: Date.new(2020, 12, 18))
       travel_to Time.zone.local(2020, 9, 29)
       assert_nil(term.current_week_label)
     end
 
     it 'Returns nil for summer terms' do
-      term = build :term, term: '201',
+      term = build(:term, term: '201',
                           start_date: Date.new(2020, 6, 22),
-                          end_date: Date.new(2020, 9, 11)
+                          end_date: Date.new(2020, 9, 11))
       travel_to Time.zone.local(2020, 7, 4)
       assert_nil(term.current_week_label)
     end
@@ -317,9 +317,9 @@ class TermTest < ActiveSupport::TestCase
 
   describe 'live_enrollment?' do
     it 'returns true if the current date is during the enrollment times' do
-      term = create :term, term: '21F',
+      term = create(:term, term: '21F',
                            start_date: Date.new(2021, 9, 23),
-                           end_date: Date.new(2021, 12, 22)
+                           end_date: Date.new(2021, 12, 22))
       create(:enrollment_appointment, pass: 'priority',
                                       first: Date.new(2021, 6, 14),
                                       last: Date.new(2021, 6, 16),
@@ -334,9 +334,9 @@ class TermTest < ActiveSupport::TestCase
     end
 
     it 'returns false if the current date is not during the enrollment times' do
-      term = create :term, term: '21F',
+      term = create(:term, term: '21F',
                            start_date: Date.new(2021, 9, 23),
-                           end_date: Date.new(2021, 12, 22)
+                           end_date: Date.new(2021, 12, 22))
       create(:enrollment_appointment, pass: 'priority',
                                       first: Date.new(2021, 6, 14),
                                       last: Date.new(2021, 6, 16),
@@ -356,9 +356,9 @@ class TermTest < ActiveSupport::TestCase
       create :term, term: '21F',
                     start_date: Date.new(2021, 9, 20),
                     end_date: Date.new(2021, 12, 10)
-      upcoming = create :term, term: '22W',
+      upcoming = create(:term, term: '22W',
                                start_date: Date.new(2022, 1, 3),
-                               end_date: Date.new(2022, 3, 18)
+                               end_date: Date.new(2022, 3, 18))
 
       travel_to Time.zone.local(2021, 10, 4)
       assert_equal(1, Term.upcoming.length)
@@ -369,12 +369,12 @@ class TermTest < ActiveSupport::TestCase
       create :term, term: '22W',
                     start_date: Date.new(2022, 1, 3),
                     end_date: Date.new(2022, 3, 18)
-      spring = create :term, term: '22S',
+      spring = create(:term, term: '22S',
                              start_date: Date.new(2022, 3, 23),
-                             end_date: Date.new(2022, 6, 10)
-      summer = create :term, term: '221',
+                             end_date: Date.new(2022, 6, 10))
+      summer = create(:term, term: '221',
                              start_date: Date.new(2022, 6, 20),
-                             end_date: Date.new(2022, 9, 9)
+                             end_date: Date.new(2022, 9, 9))
 
       travel_to Time.zone.local(2022, 2, 4)
       assert_equal(2, Term.upcoming.length)
@@ -386,12 +386,12 @@ class TermTest < ActiveSupport::TestCase
       create :term, term: '22S',
                     start_date: Date.new(2022, 3, 23),
                     end_date: Date.new(2022, 6, 10)
-      summer = create :term, term: '221',
+      summer = create(:term, term: '221',
                              start_date: Date.new(2022, 6, 20),
-                             end_date: Date.new(2022, 9, 9)
-      fall = create :term, term: '22F',
+                             end_date: Date.new(2022, 9, 9))
+      fall = create(:term, term: '22F',
                            start_date: Date.new(2022, 9, 19),
-                           end_date: Date.new(2022, 12, 9)
+                           end_date: Date.new(2022, 12, 9))
 
       travel_to Time.zone.local(2022, 5, 4)
       assert_equal(2, Term.upcoming.length)
@@ -403,9 +403,9 @@ class TermTest < ActiveSupport::TestCase
       create :term, term: '221',
                     start_date: Date.new(2022, 6, 20),
                     end_date: Date.new(2022, 9, 9)
-      fall = create :term, term: '22F',
+      fall = create(:term, term: '22F',
                            start_date: Date.new(2022, 9, 19),
-                           end_date: Date.new(2022, 12, 9)
+                           end_date: Date.new(2022, 12, 9))
 
       travel_to Time.zone.local(2022, 8, 4)
       assert_equal(1, Term.upcoming.length)

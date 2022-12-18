@@ -42,7 +42,7 @@ class SubjectAreasController < ApplicationController
 
     @term = Term.current
     @upcoming_terms = Term.upcoming.to_a
-    @subject_area = SubjectArea.find typed_params.id
+    @subject_area = SubjectArea.find(typed_params.id)
 
     @filter_option = if typed_params.filter == 'all'
                        SubjectAreaHelper::FilterOption::All

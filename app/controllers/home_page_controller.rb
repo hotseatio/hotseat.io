@@ -42,6 +42,6 @@ class HomePageController < ApplicationController
 
   sig { void }
   def redirect_if_authenticated
-    redirect_to my_courses_path if user_signed_in?
+    redirect_to(my_courses_path) if user_signed_in?
   end
 end

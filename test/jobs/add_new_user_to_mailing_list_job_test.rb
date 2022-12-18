@@ -21,7 +21,7 @@ class AddNewUserToMailingListJobTest < ActiveJob::TestCase
       .to_return(status: 200, body: '{}', headers: {})
     T.unsafe(Rails).stubs(:env).returns(ActiveSupport::StringInquirer.new('production'))
 
-    ClimateControl.modify MAILCHIMP_SERVER: server, MAILCHIMP_LIST_ID: list_id, MAILCHIMP_API_KEY: api_key do
+    ClimateControl.modify(MAILCHIMP_SERVER: server, MAILCHIMP_LIST_ID: list_id, MAILCHIMP_API_KEY: api_key) do
       AddNewUserToMailingListJob.perform_now(user)
     end
   end

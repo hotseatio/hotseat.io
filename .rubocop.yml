@@ -27,8 +27,17 @@ Style/TrailingCommaInHashLiteral:
 Style/LambdaCall:
   Exclude:
     - '**/*.jbuilder'
-# Style/MethodCallWithArgsParentheses:
-#   Enabled: true
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  AllowedMethods:
+  - require
+  - require_relative
+  - require_dependency
+  - yield
+  - raise
+  - puts
+  Exclude:
+  - "/**/Gemfile"
 
 Metrics:
   Enabled: false

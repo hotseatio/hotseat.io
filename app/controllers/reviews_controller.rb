@@ -89,13 +89,13 @@ class ReviewsController < ApplicationController
     user = T.must(current_user)
 
     if user.review_count_for_term(section.term) >= 6
-      render json: { msg: 'You can only review six classes per term.' }, status: :bad_request
+      render(json: { msg: 'You can only review six classes per term.' }, status: :bad_request)
     elsif user.reviewed_course?(section.course)
-      render json: { msg: "You've already reviewed this course." }, status: :bad_request
+      render(json: { msg: "You've already reviewed this course." }, status: :bad_request)
     elsif review_params.comments.length < 40
-      render json: { msg: 'Your review looks a little short. Tell us a bit more about the class!' }, status: :bad_request
+      render(json: { msg: 'Your review looks a little short. Tell us a bit more about the class!' }, status: :bad_request)
     elsif review_params.comments.gibberish?
-      render json: { msg: 'We had trouble understanding your review. Please make sure everything looks correct!' }, status: :bad_request
+      render(json: { msg: 'We had trouble understanding your review. Please make sure everything looks correct!' }, status: :bad_request)
     else
       is_first_review = T.let(user.reviews.size.zero?, T::Boolean)
 
@@ -133,11 +133,11 @@ class ReviewsController < ApplicationController
       end
 
       # Disable turbolinks here, we handle the redirect in JS
-      redirect_to my_courses_path, turbolinks: false
+      redirect_to(my_courses_path, turbolinks: false)
     end
   rescue ActionController::BadRequest => e
-    logger.error e.inspect
-    render json: { msg: 'Could not create review. Make sure you fill out the class and all questions.' }, status: :bad_request
+    logger.error(e.inspect)
+    render(json: { msg: 'Could not create review. Make sure you fill out the class and all questions.' }, status: :bad_request)
   end
 
   sig { void }
