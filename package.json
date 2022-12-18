@@ -10,7 +10,7 @@
     "dev": "tsc-watch --noClear -p tsconfig.json --onSuccess \"yarn build\" --onFailure \"yarn clean\""
   },
   "engines": {
-    "node": "^16.16.0 || >=18"
+    "node": "^18.0.0"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.7",
@@ -68,8 +68,5 @@
     "shlex": "^2.1.2",
     "ts-jest": "^29.0.3",
     "tsc-watch": "6.0.0"
-  },
-  "resolutions": {
-    "**/@types/node": "^16.11.45"
   }
 }
