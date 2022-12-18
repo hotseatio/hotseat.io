@@ -1,2 +1,9 @@
 #!/usr/bin/env bash
-overmind start -f Procfile.dev
+
+if ! foreman version &> /dev/null
+then
+  echo "Installing foreman..."
+  gem install foreman
+fi
+
+foreman start -f Procfile.dev "$@"

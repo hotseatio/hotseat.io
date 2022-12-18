@@ -23,6 +23,9 @@
                upcoming_terms: @upcoming_terms %>
     <%= render 'grade_info', reviews: @reviews %>
     <%= render 'grades', grade_data: @grade_data %>
-    <%= render 'textbooks', textbooks: @textbooks %>
+    <%= render 'shared/card_ad' %>
+
+    <%# # No one really seems to be using textbooks, disabling for now. %>
+    <%# <%= render 'textbooks', textbooks: @textbooks %1> %>
   </div>
 </div>

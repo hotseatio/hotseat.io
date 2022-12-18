@@ -114,7 +114,6 @@ GEM
     bootsnap (1.13.0)
       msgpack (~> 1.2)
     builder (3.2.4)
-    byebug (11.1.3)
     capybara (3.37.1)
       addressable
       matrix
@@ -145,6 +144,9 @@ GEM
       libddwaf (~> 1.5.1.0.0)
       msgpack
     debase-ruby_core_source (0.10.17)
+    debug (1.7.0)
+      irb (>= 1.5.0)
+      reline (>= 0.3.1)
     device_detector (1.0.7)
     devise (4.8.1)
       bcrypt (~> 3.0)
@@ -204,6 +206,9 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    io-console (0.5.11)
+    irb (1.6.1)
+      reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -399,6 +404,8 @@ GEM
       unparser
     redcarpet (3.5.1)
     regexp_parser (2.6.0)
+    reline (0.3.1)
+      io-console (~> 0.5)
     request_store (1.5.1)
       rack (>= 1.4)
     responders (3.0.1)
@@ -545,11 +552,11 @@ DEPENDENCIES
   aws-sdk-s3
   blazer
   bootsnap
-  byebug
   climate_control
   cssbundling-rails
   cuprite
   ddtrace
+  debug (>= 1.0.0)
   devise
   dotenv-rails
   erb_lint
