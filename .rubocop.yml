@@ -27,6 +27,8 @@ Style/TrailingCommaInHashLiteral:
 Style/LambdaCall:
   Exclude:
     - '**/*.jbuilder'
+# Style/MethodCallWithArgsParentheses:
+#   Enabled: true
 
 Metrics:
   Enabled: false
@@ -48,4 +50,6 @@ Rails/ActionControllerFlashBeforeRender:
   Enabled: false
 
 Minitest/EmptyLineBeforeAssertionMethods:
+  Enabled: false
+Minitest/MultipleAssertions:
   Enabled: false

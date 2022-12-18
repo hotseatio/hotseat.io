@@ -93,9 +93,9 @@ class UserTest < ActiveSupport::TestCase
     it 'returns a number if a user has written reviews for sections during that term' do
       term = create :term
       user = create :user
-      sections = create_list :section, 2, term: term
-      create :relationship, :with_review, user: user, section: sections.first
-      create :relationship, :with_review, user: user, section: sections.second
+      sections = create_list(:section, 2, term:)
+      create(:relationship, :with_review, user:, section: sections.first)
+      create(:relationship, :with_review, user:, section: sections.second)
 
       assert_equal  2, user.review_count_for_term(term)
     end
@@ -105,8 +105,8 @@ class UserTest < ActiveSupport::TestCase
     it 'returns true if the user has reviewed the course' do
       user = create :user
       course = create :course
-      section = create :section, course: course
-      create :relationship, :with_review, user: user, section: section
+      section = create(:section, course:)
+      create(:relationship, :with_review, user:, section:)
 
       assert user.reviewed_course?(course)
     end
@@ -114,8 +114,8 @@ class UserTest < ActiveSupport::TestCase
     it 'returns false if the user has not reviewed the course' do
       user = create :user
       course = create :course
-      section = create :section, course: course
-      create :relationship, user: user, section: section
+      section = create(:section, course:)
+      create(:relationship, user:, section:)
 
       assert_not user.reviewed_course?(course)
     end
@@ -138,7 +138,7 @@ class UserTest < ActiveSupport::TestCase
     it 'raises an error if it cannot generate a referral code for some reason' do
       referral_code = 'test-code'
       T.unsafe(SecureRandom).stubs(:hex).returns(referral_code)
-      create :user, referral_code: referral_code
+      create(:user, referral_code:)
       user = build :user
       assert_raises(ActiveRecord::ActiveRecordError) { user.set_referral_code }
     end
@@ -149,7 +149,7 @@ class UserTest < ActiveSupport::TestCase
       term = T.let(create(:term), Term)
       user = T.let(create(:user), User)
       section = T.let(create(:section, term:), Section)
-      relationship = create :relationship, user: user, section: section, notify: true
+      relationship = create(:relationship, user:, section:, notify: true)
 
       assert(user.unsubscribe(section))
 
@@ -161,7 +161,7 @@ class UserTest < ActiveSupport::TestCase
       term = T.let(create(:term), Term)
       user = T.let(create(:user), User)
       section = T.let(create(:section, term:), Section)
-      create :relationship, user: user, section: section, notify: false
+      create(:relationship, user:, section:, notify: false)
 
       assert_not(user.unsubscribe(section))
     end

@@ -320,15 +320,15 @@ class TermTest < ActiveSupport::TestCase
       term = create :term, term: '21F',
                            start_date: Date.new(2021, 9, 23),
                            end_date: Date.new(2021, 12, 22)
-      create :enrollment_appointment, pass: 'priority',
+      create(:enrollment_appointment, pass: 'priority',
                                       first: Date.new(2021, 6, 14),
                                       last: Date.new(2021, 6, 16),
-                                      term: term
-      create :enrollment_appointment, pass: 'second',
+                                      term:)
+      create(:enrollment_appointment, pass: 'second',
                                       standing: 'freshman',
                                       first: Date.new(2021, 6, 29),
                                       last: Date.new(2021, 6, 30),
-                                      term: term
+                                      term:)
       travel_to Time.zone.local(2021, 6, 18)
       assert_predicate(term, :live_enrollment?)
     end
@@ -337,15 +337,15 @@ class TermTest < ActiveSupport::TestCase
       term = create :term, term: '21F',
                            start_date: Date.new(2021, 9, 23),
                            end_date: Date.new(2021, 12, 22)
-      create :enrollment_appointment, pass: 'priority',
+      create(:enrollment_appointment, pass: 'priority',
                                       first: Date.new(2021, 6, 14),
                                       last: Date.new(2021, 6, 16),
-                                      term: term
-      create :enrollment_appointment, pass: 'second',
+                                      term:)
+      create(:enrollment_appointment, pass: 'second',
                                       standing: 'freshman',
                                       first: Date.new(2021, 6, 29),
                                       last: Date.new(2021, 6, 30),
-                                      term: term
+                                      term:)
       travel_to Time.zone.local(2021, 7, 12)
       assert_not(term.live_enrollment?)
     end
