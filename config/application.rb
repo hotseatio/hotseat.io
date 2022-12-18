@@ -32,3 +32,5 @@ module HotseatIo
     # the framework and any gems in your application.
   end
 end
+
+require 'debug/open_nonstop' if defined?(Rails::Server) && Rails.env.development?
