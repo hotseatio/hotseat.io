@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.7",
-    "@heroicons/react": "^1.0.5",
+    "@heroicons/react": "^2.0.13",
     "@hotwired/turbo-rails": "7.2.4",
     "@popperjs/core": "^2.11.6",
     "@react-hook/debounce": "^4.0.0",

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { UserIcon, UsersIcon, CalendarIcon } from '@heroicons/react/outline'
+import { UserIcon, UsersIcon, CalendarIcon } from '@heroicons/react/24/outline'
 
 import type { Section } from './SectionRow'
 

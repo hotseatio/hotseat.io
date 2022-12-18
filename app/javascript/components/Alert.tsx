@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { XCircleIcon, ExclamationIcon, CheckCircleIcon, InformationCircleIcon } from '@heroicons/react/solid'
+import { XCircleIcon, ExclamationTriangleIcon, CheckCircleIcon, InformationCircleIcon } from '@heroicons/react/20/solid'
 import {clsx} from 'clsx'
 
 export type AlertType = 'error' | 'warn' | 'success' | 'info'
@@ -29,7 +29,7 @@ function getIcon(type: AlertType): (props: React.SVGProps<SVGSVGElement>) => JSX
     case 'error':
       return XCircleIcon
     case 'warn':
-      return ExclamationIcon
+      return ExclamationTriangleIcon
     case 'success':
       return CheckCircleIcon
     case 'info':

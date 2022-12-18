@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 import {clsx} from 'clsx'
-import { PhoneIcon } from '@heroicons/react/solid'
+import { PhoneIcon } from '@heroicons/react/20/solid'
 
 import ConfirmModal from 'components/ConfirmModal'
 import RequestButton from 'components/RequestButton'

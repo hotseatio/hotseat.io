@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState } from 'react'
-import { StarIcon as StarIconSolid, BellIcon as BellIconSolid } from '@heroicons/react/solid'
-import { StarIcon as StarIconOutline, BellIcon as BellIconOutline } from '@heroicons/react/outline'
+import { StarIcon as StarIconSolid, BellIcon as BellIconSolid } from '@heroicons/react/20/solid'
+import { StarIcon as StarIconOutline, BellIcon as BellIconOutline } from '@heroicons/react/24/outline'
 
 import RequestButton from 'components/RequestButton'
 import ConfirmModal from 'components/ConfirmModal'

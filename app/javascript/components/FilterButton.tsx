@@ -3,7 +3,7 @@ import { useState } from 'react'
 import {clsx} from 'clsx'
 import { usePopper } from 'react-popper'
 import { Listbox } from '@headlessui/react'
-import { CheckIcon, FilterIcon, SelectorIcon } from '@heroicons/react/solid'
+import { CheckIcon, FunnelIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 type Link = {
   key: string
@@ -40,9 +40,9 @@ export default function FilterButton({ links }: Props): JSX.Element | null {
         className="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm px-4 py-2 inline-flex justify-center text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
         ref={setReferenceElement}
       >
-        <FilterIcon className="mr-3 h-5 w-5 text-gray-400 dark:text-gray-500" aria-hidden="true" />
+        <FunnelIcon className="mr-3 h-5 w-5 text-gray-400 dark:text-gray-500" aria-hidden="true" />
         {selectedItem?.label ?? 'Filter'}
-        <SelectorIcon className="ml-2.5 -mr-1.5 h-5 w-5 text-gray-400 dark:text-gray-500" aria-hidden="true" />
+        <ChevronUpDownIcon className="ml-2.5 -mr-1.5 h-5 w-5 text-gray-400 dark:text-gray-500" aria-hidden="true" />
       </Listbox.Button>
 
       <Listbox.Options
