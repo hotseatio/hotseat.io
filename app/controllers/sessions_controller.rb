@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 # frozen_string_literal: true
 
 # ref: https://github.com/heartcombo/devise/issues/5458#issuecomment-1022555755
