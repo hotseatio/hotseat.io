@@ -7,6 +7,6 @@
     <%= render 'shared/list_item',
                link: admin_review_path(review),
                title: "#{review.section.course_title} - #{review.overall_rating}",
-               subtitle: (review.user ? "(#{review.user.name}) " : "(no user) ") + review.comments.truncate_words(10) %>
+               subtitle: (review.user ? "(#{review.user.name}) " : '(no user) ') + review.comments.truncate_words(10) %>
   <% end %>
 </div>
