@@ -149,4 +149,7 @@ group :test do
   gem 'cuprite'
   # Mock web requests
   gem 'webmock'
+  # Code coverage
+  gem 'simplecov'
+  gem 'simplecov-cobertura'
 end

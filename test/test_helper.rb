@@ -2,6 +2,14 @@
 # frozen_string_literal: true
 
 ENV['RAILS_ENV'] ||= 'test'
+
+if ENV.fetch('TEST_COVERAGE', nil)
+  require 'simplecov'
+  require 'simplecov-cobertura'
+  SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+  SimpleCov.start('rails')
+end
+
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'mocha/minitest'
@@ -33,7 +41,6 @@ module ActiveSupport
     include WebMock::API
     include TermHelper
 
-    parallelize(workers: :number_of_processors)
     parallelize_setup do |worker|
       Searchkick.index_suffix = worker
 
@@ -53,3 +60,5 @@ module ActionDispatch
     include TermHelper
   end
 end
+
+SimpleCov.command_name("features #{Process.pid}") if ENV.fetch('TEST_COVERAGE', nil)
