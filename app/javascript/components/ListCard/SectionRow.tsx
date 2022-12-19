@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ClockIcon, LocationMarkerIcon, UserIcon, UsersIcon, CalendarIcon } from '@heroicons/react/outline'
+import { ClockIcon, MapPinIcon, UserIcon, UsersIcon, CalendarIcon } from '@heroicons/react/24/outline'
 
 import Badge from 'components/Badge'
 import type { BadgeColor } from 'components/Badge'
@@ -74,7 +74,7 @@ export default function SectionRow({
                 )}
                 {locationLabel && (
                   <p className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                    <LocationMarkerIcon
+                    <MapPinIcon
                       className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400 dark:text-gray-500"
                       aria-hidden="true"
                     />

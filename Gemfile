@@ -139,19 +139,17 @@ end
 
 group :test do
   gem 'minitest-spec-rails'
-
   # Mocking
   gem 'mocha'
-
   # Stub ENV
   gem 'climate_control'
-
   # Fake values
   gem 'faker'
-
   # Cuprite browser driver
   gem 'cuprite'
-
   # Mock web requests
   gem 'webmock'
+  # Code coverage
+  gem 'simplecov'
+  gem 'simplecov-cobertura'
 end

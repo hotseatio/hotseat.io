@@ -13,6 +13,6 @@ class SectionsController < ApplicationController
   def enroll
     typed_params = TypedParams[EnrollParams].new.extract!(params)
     section = Section.find(typed_params.id)
-    redirect_to section.enroll_link
+    redirect_to(section.enroll_link)
   end
 end

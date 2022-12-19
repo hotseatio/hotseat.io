@@ -13,8 +13,8 @@ fulfill_checkout = lambda { |event|
 
   user = T.cast(customer.owner, User)
   user.add_notification_token(count: 4)
-  Rails.logger.info "Added 4 tokens to user: #{user.id}"
+  Rails.logger.info("Added 4 tokens to user: #{user.id}")
 }
 
-Pay::Webhooks.delegator.subscribe 'stripe.checkout.session.async_payment_succeeded', fulfill_checkout
-Pay::Webhooks.delegator.subscribe 'stripe.checkout.session.completed', fulfill_checkout
+Pay::Webhooks.delegator.subscribe('stripe.checkout.session.async_payment_succeeded', fulfill_checkout)
+Pay::Webhooks.delegator.subscribe('stripe.checkout.session.completed', fulfill_checkout)

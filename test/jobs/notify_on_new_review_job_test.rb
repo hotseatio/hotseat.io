@@ -22,7 +22,7 @@ class NotifyOnNewReviewJobTest < ActiveJob::TestCase
     stub_request(:post, 'https://slack.com/secret-webhook')
       .to_return(status: 200, body: '', headers: {})
 
-    ClimateControl.modify SLACK_WEBHOOK_URL: 'https://slack.com/secret-webhook' do
+    ClimateControl.modify(SLACK_WEBHOOK_URL: 'https://slack.com/secret-webhook') do
       NotifyOnNewReviewJob.perform_now(review)
     end
   end

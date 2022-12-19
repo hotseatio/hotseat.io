@@ -11,8 +11,10 @@ module ::Parts; end
 module ::UploadIO; end
 module ActiveSupport::Dependencies::Loadable; end
 module ActiveSupport::Dependencies::ModuleConstMissing; end
+module Capybara::DSLRSpecProxyInstaller; end
 module Faraday::AutoloadHelper; end
 module Faraday::DependencyLoader; end
+module Mail::Ruby19; end
 module Stripe::SubscriptionSchedulePhase; end
 module Stripe::SubscriptionScheduleSettings; end
 module T::Private::Methods::Signature; end

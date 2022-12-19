@@ -12845,7 +12845,7 @@ class Array
   #   ["6", "7"]
   #
   # source://activesupport//lib/active_support/core_ext/array/grouping.rb#62
-  def in_groups(number, fill_with = T.unsafe(nil), &block); end
+  def in_groups(number, fill_with = T.unsafe(nil)); end
 
   # Splits or iterates over the array in groups of size +number+,
   # padding any remaining slots with +fill_with+ unless it is +false+.
@@ -12867,7 +12867,7 @@ class Array
   #   ["5"]
   #
   # source://activesupport//lib/active_support/core_ext/array/grouping.rb#22
-  def in_groups_of(number, fill_with = T.unsafe(nil), &block); end
+  def in_groups_of(number, fill_with = T.unsafe(nil)); end
 
   # Returns a new array that includes the passed elements.
   #

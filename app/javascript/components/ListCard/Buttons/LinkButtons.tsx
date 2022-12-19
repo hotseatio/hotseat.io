@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { InformationCircleIcon } from '@heroicons/react/outline'
+import { InformationCircleIcon } from '@heroicons/react/24/outline'
 
 export function DetailsButton({ link }: { link: string }): JSX.Element {
   return (

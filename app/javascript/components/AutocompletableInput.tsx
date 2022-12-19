@@ -2,8 +2,8 @@ import * as React from 'react'
 import { useState } from 'react'
 import { useCombobox } from 'downshift'
 import { useDebounceCallback } from '@react-hook/debounce'
-import { SearchIcon } from '@heroicons/react/solid'
-import classNames from 'classnames'
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import {clsx} from 'clsx'
 
 import { Course } from 'api'
 
@@ -78,7 +78,7 @@ export default function AutocompletableInput<Suggestion extends IdObj>({
     }
   }, 200)
 
-  const { isOpen, getLabelProps, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps } =
+  const { isOpen, getLabelProps, getMenuProps, getInputProps, highlightedIndex, getItemProps } =
     useCombobox({
       id,
       items: suggestions,
@@ -100,21 +100,21 @@ export default function AutocompletableInput<Suggestion extends IdObj>({
     })
 
   return (
-    <div className={classNames('relative', className)} role="presentation">
+    <div className={clsx('relative', className)} role="presentation">
       <label className="sr-only" {...getLabelProps()}>
         {label}
       </label>
-      <div {...getComboboxProps()} className="rounded-md shadow-sm">
+      <div className="rounded-md shadow-sm">
         {shouldDisplayIcon && (
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <SearchIcon className="h-5 w-5 text-gray-400 dark:text-gray-500" fill="currentColor" aria-hidden="true" />
+            <MagnifyingGlassIcon className="h-5 w-5 text-gray-400 dark:text-gray-500" fill="currentColor" aria-hidden="true" />
           </div>
         )}
         <input
           {...getInputProps({ onFocus, onBlur })}
           placeholder={placeholder}
           type="text"
-          className={classNames('base-input block w-full rounded-md', { 'pl-10': shouldDisplayIcon })}
+          className={clsx('base-input block w-full rounded-md', { 'pl-10': shouldDisplayIcon })}
           required={required}
         />
       </div>
@@ -126,7 +126,7 @@ export default function AutocompletableInput<Suggestion extends IdObj>({
       >
         {suggestions.map((suggestion, index) => (
           <li
-            className={classNames(
+            className={clsx(
               highlightedIndex === index ? 'text-white bg-red-600' : 'text-gray-900 dark:text-gray-50',
               'cursor-default select-none relative py-2 pl-8 pr-4'
             )}

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState } from 'react'
-import classNames from 'classnames'
+import {clsx} from 'clsx'
 
 import AutocompletableInput from 'components/AutocompletableInput'
 import { Course, Instructor } from 'api'
@@ -93,7 +93,7 @@ export default function Search({
   const onFocus = isShrinkable ? () => setIsExpanded(true) : undefined
   const onBlur = isShrinkable ? () => setIsExpanded(false) : undefined
   const className = isShrinkable
-    ? classNames('w-full mx-auto transition-all duration-300 ease-in-out', isExpanded ? 'sm:max-w-xl' : 'sm:max-w-xs')
+    ? clsx('w-full mx-auto transition-all duration-300 ease-in-out', isExpanded ? 'sm:max-w-xl' : 'sm:max-w-xs')
     : undefined
 
   return (

@@ -18,24 +18,24 @@ class AddAdditionalFieldsToSection < ActiveRecord::Migration[6.0]
 
     reversible do |dir|
       dir.up do
-        execute <<-SQL.squish
+        execute(<<-SQL.squish)
           CREATE TYPE section_format AS ENUM ('ACT', 'CLI', 'DIS', 'FLD', 'LAB', 'LEC', 'REC', 'RGP', 'SEM', 'STU', 'TUT');
         SQL
       end
 
       dir.down do
-        execute <<-SQL.squish
+        execute(<<-SQL.squish)
           DROP TYPE section_format;
         SQL
       end
     end
 
-    change_table :sections, bulk: true do |t|
-      t.column :format, :section_format
-      t.integer :index
-      t.string :website
-      t.datetime :final_start
-      t.datetime :final_end
+    change_table(:sections, bulk: true) do |t|
+      t.column(:format, :section_format)
+      t.integer(:index)
+      t.string(:website)
+      t.datetime(:final_start)
+      t.datetime(:final_end)
     end
   end
 end

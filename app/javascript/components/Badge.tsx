@@ -1,5 +1,5 @@
 import * as React from 'react'
-import classNames from 'classnames'
+import {clsx} from 'clsx'
 
 export type BadgeColor = { text: string; background: string }
 
@@ -13,7 +13,7 @@ type Props = {
 export default function Badge({ label, color, className, size = 'medium' }: Props): JSX.Element {
   return (
     <span
-      className={classNames(
+      className={clsx(
         'inline-flex items-center rounded-full text-xs font-medium',
         {
           'px-2 py-0.5': size === 'small',

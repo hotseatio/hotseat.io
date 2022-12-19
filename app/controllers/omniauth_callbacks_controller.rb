@@ -14,15 +14,15 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if user.persisted?
       flash[:success] = 'Successfully logged in! Welcome to Hotseat!'
-      sign_in_and_redirect user
+      sign_in_and_redirect(user)
     else
       flash[:error] = 'Error logging in. Please try again.'
-      redirect_to new_user_session_path
+      redirect_to(new_user_session_path)
     end
   end
 
   sig { void }
   def failure
-    redirect_to root_path
+    redirect_to(root_path)
   end
 end

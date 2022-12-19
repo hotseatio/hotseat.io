@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Fragment, useMemo, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
-import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
-import classNames from 'classnames'
+import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
+import {clsx} from 'clsx'
 
 export type SelectItemID = number | string
 export type SelectItem = {
@@ -51,7 +51,7 @@ export default function Select({
           <>
             {label && (
               <Listbox.Label
-                className={classNames(
+                className={clsx(
                   'block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1',
                   labelInvisible && 'sr-only'
                 )}
@@ -64,7 +64,7 @@ export default function Select({
                 <span className="block">{selectedItem?.label ?? placeholderText}</span>
 
                 <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                  <SelectorIcon className="h-5 w-5 text-gray-400 dark:text-gray-500" aria-hidden="true" />
+                  <ChevronUpDownIcon className="h-5 w-5 text-gray-400 dark:text-gray-500" aria-hidden="true" />
                 </span>
               </Listbox.Button>
 
@@ -83,7 +83,7 @@ export default function Select({
                     <Listbox.Option
                       key={item.id}
                       className={({ active }) =>
-                        classNames(
+                        clsx(
                           active ? 'text-white bg-red-600' : 'text-gray-900 dark:text-white',
                           'cursor-default select-none relative py-2 pl-3 pr-9'
                         )
@@ -92,13 +92,13 @@ export default function Select({
                     >
                       {({ selected, active }) => (
                         <>
-                          <span className={classNames(selected ? 'font-semibold' : 'font-normal', 'block truncate')}>
+                          <span className={clsx(selected ? 'font-semibold' : 'font-normal', 'block truncate')}>
                             {item.label}
                           </span>
 
                           {selected ? (
                             <span
-                              className={classNames(
+                              className={clsx(
                                 active ? 'text-white' : 'text-red-600',
                                 'absolute inset-y-0 right-0 flex items-center pr-4'
                               )}

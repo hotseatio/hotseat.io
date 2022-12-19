@@ -67,7 +67,7 @@ class CoursesController < ApplicationController
 
     # Redirect to first instructor if there is one
     first_instructor = @instructors_and_latest_term.first&.first
-    redirect_to action: 'show_instructor', course_id: typed_params.id, id: first_instructor.id if first_instructor
+    redirect_to(action: 'show_instructor', course_id: typed_params.id, id: first_instructor.id) if first_instructor
   end
 
   class ShowInstructorParams < T::Struct

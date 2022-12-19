@@ -11,7 +11,7 @@ Bundler.require(*Rails.groups)
 
 module HotseatIo
   class Application < Rails::Application
-    config.load_defaults 6.1
+    config.load_defaults(6.1)
 
     config.exceptions_app = routes
 
@@ -23,7 +23,7 @@ module HotseatIo
     config.active_job.queue_adapter = :async
 
     config.generators do |g|
-      g.scaffold_stylesheet false
+      g.scaffold_stylesheet(false)
     end
 
     # Settings in config/environments/* take precedence over those specified here.

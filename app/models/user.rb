@@ -129,7 +129,7 @@ class User < ApplicationRecord
     relationship = relationships.find_by(section:)
     raise ActiveRecord::RecordNotDestroyed, 'Section is reviewed by user, cannot unfollow.' if relationship&.review?
 
-    sections.delete section
+    sections.delete(section)
   end
 
   # Stops subscribing to a section. User will still be following section.

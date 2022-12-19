@@ -6,7 +6,7 @@ require 'test_helper'
 class HomePageTest < ActionDispatch::IntegrationTest
   it 'contains the site title and some popular course' do
     term = create_current_term
-    com_sci = create :subject_area, name: 'Computer Science', code: 'COM SCI'
+    com_sci = create(:subject_area, name: 'Computer Science', code: 'COM SCI')
     create :subject_area, name: 'Economics', code: 'ECON'
     create :subject_area, name: 'Physics', code: 'PHYSICS'
 

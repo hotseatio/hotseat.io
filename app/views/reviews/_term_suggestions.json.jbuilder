@@ -10,10 +10,10 @@ json.preceding_course do
   if preceding_course.nil?
     json.nil!
   else
-    json.id preceding_course.id
-    json.title preceding_course.title
-    json.number preceding_course.number
-    json.subject_area_code preceding_course.subject_area_code
+    json.id(preceding_course.id)
+    json.title(preceding_course.title)
+    json.number(preceding_course.number)
+    json.subject_area_code(preceding_course.subject_area_code)
   end
 end
 json.superseding_course do
@@ -21,9 +21,9 @@ json.superseding_course do
   if superseding_course.nil?
     json.nil!
   else
-    json.id superseding_course.id
-    json.title superseding_course.title
-    json.number superseding_course.number
-    json.subject_area_code superseding_course.subject_area_code
+    json.id(superseding_course.id)
+    json.title(superseding_course.title)
+    json.number(superseding_course.number)
+    json.subject_area_code(superseding_course.subject_area_code)
   end
 end

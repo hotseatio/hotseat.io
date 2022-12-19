@@ -7,7 +7,7 @@ class SettingsTest < ApplicationSystemTestCase
   test 'user fills out their phone number and beta testing status' do
     create_current_term
 
-    user = create :user, phone: nil, beta_tester: false
+    user = create(:user, phone: nil, beta_tester: false)
     sign_in user
     visit '/settings'
 

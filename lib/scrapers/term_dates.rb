@@ -35,13 +35,13 @@ module TermDatesScraper
             raise 'No term found' if term.nil?
 
             start_date = "#{day} #{term.year}"
-            Rails.logger.info "Found start date: #{start_date}"
+            Rails.logger.info("Found start date: #{start_date}")
             term.start_date = Date.parse(start_date)
           when /^(Quarter|Summer session) ends/i
             raise 'No term found' if term.nil?
 
             end_date = "#{day} #{term.year}"
-            Rails.logger.info "Found end date: #{end_date}"
+            Rails.logger.info("Found end date: #{end_date}")
             term.end_date = Date.parse(end_date)
           end
         else
@@ -49,7 +49,7 @@ module TermDatesScraper
           term&.save!
 
           term_label = shortened_quarter_label(header.text)
-          Rails.logger.info "Reading for term: #{term_label}"
+          Rails.logger.info("Reading for term: #{term_label}")
           term = Term.find_by(term: term_label)
         end
       end
@@ -72,19 +72,19 @@ module TermDatesScraper
             term&.save!
 
             term_label = shortened_quarter_label(line)
-            Rails.logger.info "Reading for term: #{term_label}"
+            Rails.logger.info("Reading for term: #{term_label}")
             term = Term.find_by(term: term_label)
           when /^Instruction begins/i
             raise 'No term found' if term.nil?
 
             start_date = "#{row_value(line)} #{term.year}"
-            Rails.logger.info "Found start date: #{start_date}"
+            Rails.logger.info("Found start date: #{start_date}")
             term.start_date = Date.parse(start_date)
           when /^Quarter ends/i
             raise 'No term found' if term.nil?
 
             end_date = "#{row_value(line)} #{term.year}"
-            Rails.logger.info "Found end date: #{end_date}"
+            Rails.logger.info("Found end date: #{end_date}")
             term.end_date = Date.parse(end_date)
           end
         end
@@ -100,7 +100,7 @@ module TermDatesScraper
   def self.shortened_quarter_label(full_quarter_label)
     full_quarter_label.strip!
     year = T.must(full_quarter_label[-2..])
-    if full_quarter_label.start_with? 'Summer'
+    if full_quarter_label.start_with?('Summer')
       "#{year}1"
     else
       year + T.must(full_quarter_label[0]).upcase

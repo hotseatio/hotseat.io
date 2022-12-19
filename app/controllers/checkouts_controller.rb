@@ -25,6 +25,6 @@ class CheckoutsController < ApplicationController
       success_url: my_courses_url(payment_success: true),
       cancel_url: my_courses_url,
     )
-    redirect_to @checkout_session.url, allow_other_host: true, status: :see_other
+    redirect_to(@checkout_session.url, allow_other_host: true, status: :see_other)
   end
 end

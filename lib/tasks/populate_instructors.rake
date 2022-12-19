@@ -12,7 +12,7 @@ namespace :populate do
 
     term = Term.find_by(term: args[:term])
     if term.nil?
-      Rails.logger.error "Unknown term: #{args[:term]}"
+      Rails.logger.error("Unknown term: #{args[:term]}")
       return
     end
     Rails.logger.info("Using term #{term.readable}")

@@ -11,7 +11,7 @@ module LambdaScraper
 
   sig { params(function_name: String, term: Term).void }
   def self.invoke_for_term(function_name, term)
-    Rails.logger.info "Invoking for #{term.readable}"
+    Rails.logger.info("Invoking for #{term.readable}")
     payload = construct_payload(term)
     invoke_function(function_name, payload)
   end
@@ -35,6 +35,6 @@ module LambdaScraper
                                 payload: JSON.generate(payload),
                               })
     logs = Base64.decode64(response.log_result)
-    Rails.logger.info "\n#{logs}"
+    Rails.logger.info("\n#{logs}")
   end
 end
