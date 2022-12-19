@@ -1,3 +1,20 @@
-parsers:
-  v1:
-    include_full_missed_files: true
+codecov:
+  require_ci_to_pass: true
+comment:
+  behavior: default
+  layout: header,files
+  show_carryforward_flags: false
+coverage:
+  precision: 2
+  range:
+    - 70.0
+    - 100.0
+  round: down
+  status:
+    changes: false
+    default_rules:
+      flag_coverage_not_uploaded_behavior: include
+    patch: true
+    project: true
+github_checks:
+  annotations: true
