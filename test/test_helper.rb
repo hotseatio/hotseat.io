@@ -5,6 +5,9 @@ ENV['RAILS_ENV'] ||= 'test'
 
 if ENV.fetch('TEST_COVERAGE', nil)
   require 'simplecov'
+  require 'simplecov-lcov'
+  SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
+  SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
   SimpleCov.start('rails')
 end
 

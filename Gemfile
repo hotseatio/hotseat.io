@@ -151,4 +151,5 @@ group :test do
   gem 'webmock'
   # Code coverage
   gem 'simplecov'
+  gem 'simplecov-lcov'
 end
