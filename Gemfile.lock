@@ -468,8 +468,10 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
+    simplecov-cobertura (2.1.0)
+      rexml
+      simplecov (~> 0.19)
     simplecov-html (0.12.3)
-    simplecov-lcov (0.8.0)
     simplecov_json_formatter (0.1.4)
     sitemap_generator (6.3.0)
       builder (~> 3.0)
@@ -620,7 +622,7 @@ DEPENDENCIES
   sentry-rails
   sentry-ruby
   simplecov
-  simplecov-lcov
+  simplecov-cobertura
   sitemap_generator
   sorbet
   sorbet-rails
