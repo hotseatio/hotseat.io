@@ -24,9 +24,9 @@ class SubjectAreasTest < ActionDispatch::IntegrationTest
     it 'lists only the current courses of a subject area' do
       term = create_current_term
       subject_area = create(:subject_area, name: 'Computer Science', code: 'COM SCI', id: 42)
-      create_list :course, 51, subject_area: subject_area
-      current_course = create :course, subject_area: subject_area
-      create :section, course: current_course, term: term
+      create_list(:course, 51, subject_area:)
+      current_course = create(:course, subject_area:)
+      create(:section, course: current_course, term:)
 
       get '/subject-areas/42'
 
@@ -38,7 +38,7 @@ class SubjectAreasTest < ActionDispatch::IntegrationTest
     it 'lists all the courses of a subject area when given filter=all' do
       create_current_term
       subject_area = create(:subject_area, name: 'Computer Science', code: 'COM SCI', id: 42)
-      create_list :course, 51, subject_area: subject_area
+      create_list(:course, 51, subject_area:)
 
       get '/subject-areas/42?filter=all'
 

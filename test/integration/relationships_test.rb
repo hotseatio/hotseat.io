@@ -10,7 +10,7 @@ class RelatioshipTest < ActionDispatch::IntegrationTest
       user = T.let(create(:user), User)
       course = T.let(create(:course), Course)
       section = T.let(create(:section, course:, term:), Section)
-      create :relationship, user: user, section: section, notify: true
+      create(:relationship, user:, section:, notify: true)
       sign_in user
 
       get "/unsubscribe/#{section.id}"

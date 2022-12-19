@@ -3,6 +3,6 @@
 
 class IndexTermStartDate < ActiveRecord::Migration[6.1]
   def change
-    add_index :terms, :start_date
+    add_index(:terms, :start_date)
   end
 end

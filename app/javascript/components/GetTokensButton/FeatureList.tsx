@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { CheckIcon } from '@heroicons/react/outline'
+import { CheckIcon } from '@heroicons/react/24/outline'
 
 type Props = {
   features: string[]

@@ -60,13 +60,13 @@ class SearchTest < ActionDispatch::IntegrationTest
 
     it 'returns suggestions with q=com+sci' do
       create_current_term
-      subject_area = create :subject_area, code: 'COM SCI', id: 420
-      create :course, :reindex,
-             subject_area: subject_area,
+      subject_area = create(:subject_area, code: 'COM SCI', id: 420)
+      create(:course, :reindex,
+             subject_area:,
              id: 20,
              number: '30',
-             title: 'Introduction to Computer Science 0'
-      create_list :course, 10, :reindex, subject_area: subject_area
+             title: 'Introduction to Computer Science 0')
+      create_list(:course, 10, :reindex, subject_area:)
 
       get '/search/suggestions?q=com+sci'
       assert_response :ok
@@ -86,8 +86,8 @@ class SearchTest < ActionDispatch::IntegrationTest
     end
 
     it 'returns no suggestions with q=adsfasdfasfd' do
-      subject_area = create :subject_area, code: 'COM SCI'
-      create_list :course, 10, :reindex, subject_area: subject_area
+      subject_area = create(:subject_area, code: 'COM SCI')
+      create_list(:course, 10, :reindex, subject_area:)
       get '/search/suggestions?q=adsfasdfasfd'
       assert_response :ok
       parsed_body = JSON.parse(response.body)

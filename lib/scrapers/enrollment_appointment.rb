@@ -16,7 +16,7 @@ module EnrollmentAppointmentScraper
 
   sig { params(year_url: String).void }
   def self.scrape_new_format(year_url)
-    Rails.logger.info 'Scraping new format'
+    Rails.logger.info('Scraping new format')
     doc = retrieve_doc(year_url)
 
     term_headings = doc.css('h2').select { |e| e.text.strip.match(/20[0-9]{2}/) }
@@ -25,17 +25,17 @@ module EnrollmentAppointmentScraper
       heading_text = term_heading.text
       content = term_tables[i]
 
-      Rails.logger.info "Scanning heading: #{heading_text}"
+      Rails.logger.info("Scanning heading: #{heading_text}")
 
       code = heading_text[-2..] + heading_text[0]
-      term = T.must Term.find_by(term: code)
+      term = T.must(Term.find_by(term: code))
 
       content.css('table').each do |table|
         header = table.at_css('thead')
         body = table.at_css('tbody')
 
         header_text = header.at_css('tr').text.strip
-        pass = T.must get_pass(header_text)
+        pass = T.must(get_pass(header_text))
 
         body.css('tr').each do |tr|
           tds = tr.css('td')
@@ -131,7 +131,7 @@ module EnrollmentAppointmentScraper
   end
   def self.parse_pass_row(row_data, pass, term_year, term)
     if row_data.length != 5
-      Rails.logger.warn "Found a row with different from 5 <td>s: #{row_data.length}; ignoring"
+      Rails.logger.warn("Found a row with different from 5 <td>s: #{row_data.length}; ignoring")
       return
     end
     standing_label  = row_data[0].text

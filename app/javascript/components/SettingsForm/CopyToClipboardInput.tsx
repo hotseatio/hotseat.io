@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState } from 'react'
-import { ClipboardIcon } from '@heroicons/react/solid'
+import { ClipboardIcon } from '@heroicons/react/20/solid'
 
 type Props = {
   value: string

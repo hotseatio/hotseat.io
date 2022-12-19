@@ -34,7 +34,7 @@ class InstructorsController < ApplicationController
   sig { void }
   def show
     typed_params = TypedParams[ShowParams].new.extract!(params)
-    @instructor = Instructor.find typed_params.id
+    @instructor = Instructor.find(typed_params.id)
     @term = Term.current
     @courses = Course.from(@instructor.courses, :courses).includes(:subject_area).order_by_number.page(typed_params.page)
   end

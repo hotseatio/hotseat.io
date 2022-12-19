@@ -1,5 +1,5 @@
 import * as React from 'react'
-import classNames from 'classnames'
+import {clsx} from 'clsx'
 
 type Props = {
   className: string
@@ -11,7 +11,7 @@ export default function LoadingCircle({ className }: Props): JSX.Element {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      className={classNames('animate-spin', className)}
+      className={clsx('animate-spin', className)}
     >
       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
       <path

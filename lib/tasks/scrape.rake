@@ -76,13 +76,13 @@ namespace :scrape do
 
     if args[:year].blank?
       enrollment_appointments_map.each do |year, year_url|
-        Rails.logger.info "#{year}: fetching #{year_url}"
+        Rails.logger.info("#{year}: fetching #{year_url}")
         EnrollmentAppointmentScraper.scrape(year_url)
       end
     else
       year = args[:year]
       year_url = enrollment_appointments_map[year]
-      Rails.logger.info "#{year}: fetching #{year_url}"
+      Rails.logger.info("#{year}: fetching #{year_url}")
       EnrollmentAppointmentScraper.scrape(T.must(year_url))
     end
   end
@@ -93,13 +93,13 @@ namespace :scrape do
 
     if args[:year].blank?
       term_dates_map.each do |year, year_url|
-        Rails.logger.info "#{year}: fetching #{year_url}"
+        Rails.logger.info("#{year}: fetching #{year_url}")
         TermDatesScraper.scrape(year_url)
       end
     else
       year = args[:year]
       year_url = term_dates_map[year]
-      Rails.logger.info "#{year}: fetching #{year_url}"
+      Rails.logger.info("#{year}: fetching #{year_url}")
       TermDatesScraper.scrape(T.must(year_url))
     end
   end
@@ -110,13 +110,13 @@ namespace :scrape do
 
     if args[:year].blank?
       summer_session_dates_map.each do |year, year_url|
-        Rails.logger.info "#{year}: fetching #{year_url}"
+        Rails.logger.info("#{year}: fetching #{year_url}")
         SummerSessionDatesScraper.scrape(year_url, year)
       end
     else
       year = args[:year]
       year_url = T.must(summer_session_dates_map[year])
-      Rails.logger.info "#{year}: fetching #{year_url}"
+      Rails.logger.info("#{year}: fetching #{year_url}")
       SummerSessionDatesScraper.scrape(year_url, year)
     end
   end
@@ -126,7 +126,7 @@ namespace :scrape do
     Rails.logger = Logger.new($stdout)
 
     unless T.cast(Rails.env, ActiveSupport::EnvironmentInquirer).production?
-      Rails.logger.error 'Can only run in production environment.'
+      Rails.logger.error('Can only run in production environment.')
       return
     end
 
@@ -136,7 +136,7 @@ namespace :scrape do
         # The subject area api goes back to 2016
         .where('start_date > ?', Time.zone.local(2016))
         .order_chronologically_asc.each do |term|
-        Rails.logger.info "Invoking for #{term.readable}"
+        Rails.logger.info("Invoking for #{term.readable}")
         LambdaScraper.invoke_for_term('fetch-subject-areas', term)
 
         # Wait for scrapers to finish
@@ -145,7 +145,7 @@ namespace :scrape do
     else
       term = Term.find_by(term: args[:term])
       if term.nil?
-        Rails.logger.error "Unknown term: #{args[:term]}"
+        Rails.logger.error("Unknown term: #{args[:term]}")
       else
         LambdaScraper.invoke_for_term('fetch-subject-areas', term)
       end
@@ -157,7 +157,7 @@ namespace :scrape do
     Rails.logger = Logger.new($stdout)
 
     unless T.cast(Rails.env, ActiveSupport::EnvironmentInquirer).production?
-      Rails.logger.error 'Can only run in production environment.'
+      Rails.logger.error('Can only run in production environment.')
       return
     end
 
@@ -165,7 +165,7 @@ namespace :scrape do
       Term
         .where('start_date < ?', Time.zone.now)
         .order_chronologically_asc.each do |term|
-        Rails.logger.info "Invoking for #{term.readable}"
+        Rails.logger.info("Invoking for #{term.readable}")
         LambdaScraper.invoke_for_term('trigger-courses', term)
 
         # Wait for scrapers to finish
@@ -174,7 +174,7 @@ namespace :scrape do
     else
       term = Term.find_by(term: args[:term])
       if term.nil?
-        Rails.logger.error "Unknown term: #{args[:term]}"
+        Rails.logger.error("Unknown term: #{args[:term]}")
       else
         LambdaScraper.invoke_for_term('trigger-courses', term)
       end
@@ -186,7 +186,7 @@ namespace :scrape do
     Rails.logger = Logger.new($stdout)
 
     unless T.cast(Rails.env, ActiveSupport::EnvironmentInquirer).production?
-      Rails.logger.error 'Can only run in production environment.'
+      Rails.logger.error('Can only run in production environment.')
       return
     end
 
@@ -194,7 +194,7 @@ namespace :scrape do
       Term
         .where('start_date < ?', Time.zone.now)
         .order_chronologically_asc.each do |term|
-        Rails.logger.info "Invoking for #{term.readable}"
+        Rails.logger.info("Invoking for #{term.readable}")
         LambdaScraper.invoke_for_term('trigger-sections', term)
 
         # Wait for scrapers to finish
@@ -203,7 +203,7 @@ namespace :scrape do
     else
       term = Term.find_by(term: args[:term])
       if term.nil?
-        Rails.logger.error "Unknown term: #{args[:term]}"
+        Rails.logger.error("Unknown term: #{args[:term]}")
       else
         LambdaScraper.invoke_for_term('trigger-sections', term)
       end
@@ -215,13 +215,13 @@ namespace :scrape do
     Rails.logger = Logger.new($stdout)
 
     unless T.cast(Rails.env, ActiveSupport::EnvironmentInquirer).production?
-      Rails.logger.error 'Can only run in production environment.'
+      Rails.logger.error('Can only run in production environment.')
       return
     end
 
     term = Term.find_by(term: args[:term])
     term = Term.current if term.nil?
-    Rails.logger.info "Invoking for #{term.readable}"
+    Rails.logger.info("Invoking for #{term.readable}")
     LambdaScraper.invoke_for_term('trigger-textbooks', term)
   end
 
@@ -230,7 +230,7 @@ namespace :scrape do
     Rails.logger = Logger.new($stdout)
 
     unless T.cast(Rails.env, ActiveSupport::EnvironmentInquirer).production?
-      Rails.logger.error 'Can only run in production environment.'
+      Rails.logger.error('Can only run in production environment.')
       return
     end
 
@@ -240,7 +240,7 @@ namespace :scrape do
         # The subject area api goes back to 2013
         .where('start_date > ?', Time.zone.local(2013))
         .order_chronologically_asc.each do |term|
-        Rails.logger.info "Invoking for #{term.readable}"
+        Rails.logger.info("Invoking for #{term.readable}")
         LambdaScraper.invoke_for_term('trigger-instructors', term)
 
         # Wait for scrapers to finish
@@ -249,7 +249,7 @@ namespace :scrape do
     else
       term = Term.find_by(term: args[:term])
       if term.nil?
-        Rails.logger.error "Unknown term: #{args[:term]}"
+        Rails.logger.error("Unknown term: #{args[:term]}")
       else
         LambdaScraper.invoke_for_term('trigger-instructors', term)
       end
@@ -261,7 +261,7 @@ namespace :scrape do
     Rails.logger = Logger.new($stdout)
 
     unless T.cast(Rails.env, ActiveSupport::EnvironmentInquirer).production?
-      Rails.logger.error 'Can only run in production environment.'
+      Rails.logger.error('Can only run in production environment.')
       return
     end
 

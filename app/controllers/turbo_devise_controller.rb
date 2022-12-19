@@ -9,10 +9,10 @@ class TurboDeviseController < ApplicationController
       if get?
         raise e
       elsif has_errors? && default_action
-        render rendering_options.merge(formats: :html,
-                                       status: :unprocessable_entity)
+        render(rendering_options.merge(formats: :html,
+                                       status: :unprocessable_entity))
       else
-        redirect_to navigation_location
+        redirect_to(navigation_location)
       end
     end
   end

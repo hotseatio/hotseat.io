@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useMemo } from 'react'
 import type { ReactNode } from 'react'
-import classNames from 'classnames'
+import {clsx} from 'clsx'
 
 import Select from 'components/Select'
 
@@ -18,7 +18,7 @@ type Props = {
 export function Card({ id, children, title, rightContent }: Props): JSX.Element {
   if (Array.isArray(rightContent)) {
     rightContent = React.Children.map(rightContent, (item, i) => (
-      <div className={classNames(i === 0 && 'ml-auto', 'flex-shrink-0')} role="presentation">
+      <div className={clsx(i === 0 && 'ml-auto', 'flex-shrink-0')} role="presentation">
         {item}
       </div>
     ))

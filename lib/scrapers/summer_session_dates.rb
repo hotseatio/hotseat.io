@@ -27,7 +27,7 @@ module SummerSessionDatesScraper
       year = header_label[-2..]
       term = T.must(Term.find_by(term: "#{year}1"))
 
-      Rails.logger.info "Parsing dates for: #{term.readable}"
+      Rails.logger.info("Parsing dates for: #{term.readable}")
 
       table.css('tbody tr').each do |tr|
         columns = tr.css('td')
@@ -42,16 +42,16 @@ module SummerSessionDatesScraper
 
         case label
         when 'A'
-          Rails.logger.info "Found start date for Session A: #{start_date}"
+          Rails.logger.info("Found start date for Session A: #{start_date}")
           term.session_a_start = start_date
         when 'B'
-          Rails.logger.info "Found start date for Session B: #{start_date}"
+          Rails.logger.info("Found start date for Session B: #{start_date}")
           term.session_b_start = start_date
         when 'C'
-          Rails.logger.info "Found start date for Session C: #{start_date}"
+          Rails.logger.info("Found start date for Session C: #{start_date}")
           term.session_c_start = start_date
         when 'D'
-          Rails.logger.info "Found start date for Session D: #{start_date}"
+          Rails.logger.info("Found start date for Session D: #{start_date}")
           term.session_d_start = start_date
         end
 
@@ -73,7 +73,7 @@ module SummerSessionDatesScraper
       year = header_label[-2..]
       term = T.must(Term.find_by(term: "#{year}1"))
 
-      Rails.logger.info "Parsing dates for: #{term.readable}"
+      Rails.logger.info("Parsing dates for: #{term.readable}")
       table.css('tbody tr').each do |tr|
         columns = tr.css('td')
         label = columns[0]&.text&.strip
@@ -87,16 +87,16 @@ module SummerSessionDatesScraper
 
         case label
         when /^Session A/
-          Rails.logger.info "Found start date for Session A: #{start_date}"
+          Rails.logger.info("Found start date for Session A: #{start_date}")
           term.session_a_start = start_date
         when /^Session B/
-          Rails.logger.info "Found start date for Session B: #{start_date}"
+          Rails.logger.info("Found start date for Session B: #{start_date}")
           term.session_b_start = start_date
         when /^Session C/
-          Rails.logger.info "Found start date for Session C: #{start_date}"
+          Rails.logger.info("Found start date for Session C: #{start_date}")
           term.session_c_start = start_date
         when /^Session D/
-          Rails.logger.info "Found start date for Session D: #{start_date}"
+          Rails.logger.info("Found start date for Session D: #{start_date}")
           term.session_d_start = start_date
         end
 
