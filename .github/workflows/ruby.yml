@@ -25,6 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DD_TRACE_ENABLED: false
+      DISABLE_SPRING: true
+      TEST_COVERAGE: true
     services:
       postgres:
         image: postgres
