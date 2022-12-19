@@ -108,19 +108,5 @@ jobs:
       - name: Run tests
         run: bin/rails test
 
-      - name: Add code coverage comment
-        uses: 5monkeys/cobertura-action@master
-        with:
-          path: coverage/coverage.xml
-          show_line: true
-          show_branch: true
-          show_missing: true
-          link_missing_lines: true
-          minimum_coverage: 80
-          only_changed_files: true
-          fail_below_threshold: false
-
-        # uses: romeovs/lcov-reporter-action@v0.2.16
-        # with:
-        #   lcov-file: ./coverage/lcov/hotseat.io.lcov
-        #   github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
