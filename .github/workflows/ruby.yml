@@ -112,6 +112,10 @@ jobs:
         uses: 5monkeys/cobertura-action@master
         with:
           path: coverage/coverage.xml
+          show_line: true
+          show_branch: true
+          show_missing: true
+          link_missing_lines: true
           minimum_coverage: 80
           only_changed_files: true
           fail_below_threshold: false
