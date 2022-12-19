@@ -40,7 +40,7 @@
         <div class="hidden md:block">
           <div>
             <p class="text-sm text-gray-500">
-              Review written on <%= @review.created_at.strftime("%B %d, %Y at %I:%M %p") %>
+              Review written on <%= @review.created_at.strftime('%B %d, %Y at %I:%M %p') %>
             </p>
             <p class="mt-2 flex items-center text-sm text-gray-500">
               Notification tokens: <%= @author.notification_token_count %>
