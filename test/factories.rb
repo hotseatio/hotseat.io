@@ -73,13 +73,19 @@ FactoryBot.define do
   end
 
   factory :relationship do
+    user
+    section
+
     trait :with_review do
-      review { association(:review) }
+      review
     end
   end
 
   factory :review do
-    section { association(:section) }
+    relationship
+    user
+    section
+
     organization { 4 }
     clarity { 4 }
     overall { 4 }

@@ -149,8 +149,7 @@ class Review < ApplicationRecord
 
   sig { returns(T.nilable(String)) }
   def quarter_taken
-    # Term can't be nil on a section
-    T.must(term).readable
+    term&.readable
   end
 
   sig { returns(T.nilable(BigDecimal)) }
