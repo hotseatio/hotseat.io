@@ -32,10 +32,10 @@ class ReviewTest < ActiveSupport::TestCase
 
   describe '#quarter_taken' do
     it 'returns the quarter that the review is for' do
-      term = T.let(create_current_term, Term)
-      section = create(:section, term:)
+      term = build(:term, term: '21S')
+      section = build(:section, term:)
       review = build(:review, section:)
-      assert_nil(review.quarter_taken)
+      assert_equal('Spring 2021', review.quarter_taken)
     end
   end
 end
