@@ -198,23 +198,20 @@ class Review < ApplicationRecord
       },
       {
         label: :midterm_count,
-        value: midterm_count.to_i,
+        value: midterm_count,
       },
       {
         label: :requires_attendance,
         value: requires_attendance,
       },
       {
-        label: :midterm_count,
-        value: midterm_count.to_i,
-      },
-      {
         label: :final,
         value: read_attribute_before_type_cast(:final),
-      }, {
+      },
+      {
         label: :reccomend_textbook,
         value: reccomend_textbook,
-      }
+      },
     ]
   end
 
