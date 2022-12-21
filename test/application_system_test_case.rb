@@ -1,8 +1,8 @@
 # typed: strict
 # frozen_string_literal: true
 
-require 'test_helper'
-require 'capybara/cuprite'
+require "test_helper"
+require "capybara/cuprite"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   include FactoryBot::Syntax::Methods

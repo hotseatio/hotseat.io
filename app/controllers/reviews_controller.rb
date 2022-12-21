@@ -68,7 +68,7 @@ class ReviewsController < ApplicationController
 
     if typed_params.section.present?
       @section = Section.find(typed_params.section)
-      @initial_suggestion_type = 'section'
+      @initial_suggestion_type = "section"
       @course = @section.course
       @term = @section.term
       @sections = Section.where(course_id: @course.id, term_id: @term.id)
@@ -76,7 +76,7 @@ class ReviewsController < ApplicationController
                          .order(:index)
     elsif typed_params.course.present?
       @course = Course.find(typed_params.course)
-      @initial_suggestion_type = 'course'
+      @initial_suggestion_type = "course"
     end
   end
 
@@ -89,13 +89,13 @@ class ReviewsController < ApplicationController
     user = T.must(current_user)
 
     if user.review_count_for_term(section.term) >= 6
-      render(json: { msg: 'You can only review six classes per term.' }, status: :bad_request)
+      render(json: { msg: "You can only review six classes per term." }, status: :bad_request)
     elsif user.reviewed_course?(section.course)
       render(json: { msg: "You've already reviewed this course." }, status: :bad_request)
     elsif review_params.comments.length < 40
-      render(json: { msg: 'Your review looks a little short. Tell us a bit more about the class!' }, status: :bad_request)
+      render(json: { msg: "Your review looks a little short. Tell us a bit more about the class!" }, status: :bad_request)
     elsif review_params.comments.gibberish?
-      render(json: { msg: 'We had trouble understanding your review. Please make sure everything looks correct!' }, status: :bad_request)
+      render(json: { msg: "We had trouble understanding your review. Please make sure everything looks correct!" }, status: :bad_request)
     else
       is_first_review = T.let(user.reviews.size.zero?, T::Boolean)
 
@@ -120,7 +120,7 @@ class ReviewsController < ApplicationController
 
       user.add_notification_token
 
-      logger.info('Queueing NotifyOnNewReviewJob')
+      logger.info("Queueing NotifyOnNewReviewJob")
       NotifyOnNewReviewJob.perform_later(review)
 
       # Flash doesn't work here since we do the redirect through js,
@@ -137,7 +137,7 @@ class ReviewsController < ApplicationController
     end
   rescue ActionController::BadRequest => e
     logger.error(e.inspect)
-    render(json: { msg: 'Could not create review. Make sure you fill out the class and all questions.' }, status: :bad_request)
+    render(json: { msg: "Could not create review. Make sure you fill out the class and all questions." }, status: :bad_request)
   end
 
   sig { void }

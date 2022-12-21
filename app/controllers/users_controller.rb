@@ -1,7 +1,7 @@
 # typed: strict
 # frozen_string_literal: true
 
-require 'twilio-ruby'
+require "twilio-ruby"
 
 class UsersController < ApplicationController
   extend T::Sig
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       flash[:info] = "Review created! Since you were referred by #{referring_user.name}, you've received 2 notification tokens for this review."
       session.delete(:review_created)
     elsif session[:review_created]
-      flash[:info] = 'Review created!'
+      flash[:info] = "Review created!"
       session.delete(:review_created)
     end
     @term = Term.current
@@ -64,10 +64,10 @@ class UsersController < ApplicationController
     user.beta_tester = new_beta_status unless new_beta_status.nil?
     user.save!
 
-    render(json: { title: 'Settings updated!' }, status: :ok)
+    render(json: { title: "Settings updated!" }, status: :ok)
   rescue ActiveRecord::RecordInvalid => e
     logger.error(e.inspect)
-    render(json: { title: 'Could not update settings', msg: 'Please make sure everything is properly formatted and try again.' }, status: :bad_request)
+    render(json: { title: "Could not update settings", msg: "Please make sure everything is properly formatted and try again." }, status: :bad_request)
   end
 
   class VerifyPhoneParams < T::Struct
@@ -81,24 +81,24 @@ class UsersController < ApplicationController
     formatted_phone = User.format_phone(normalized_phone)
 
     if T.unsafe(Rails.env).production?
-      account_sid = ENV.fetch('TWILIO_ACCOUNT_SID', nil)
-      verify_sid = ENV.fetch('TWILIO_VERIFY_SID', nil)
-      auth_token = ENV.fetch('TWILIO_AUTH_TOKEN', nil)
+      account_sid = ENV.fetch("TWILIO_ACCOUNT_SID", nil)
+      verify_sid = ENV.fetch("TWILIO_VERIFY_SID", nil)
+      auth_token = ENV.fetch("TWILIO_AUTH_TOKEN", nil)
       client = Twilio::REST::Client.new(account_sid, auth_token)
       verification = client.verify
                            .services(verify_sid)
                            .verifications
-                           .create(to: normalized_phone, channel: 'sms')
+                           .create(to: normalized_phone, channel: "sms")
 
       logger.info(verification)
       render(json: {
-               msg: 'Verification code sent',
+               msg: "Verification code sent",
                formattedPhone: formatted_phone,
              }, status: :ok)
     else
       render(json: {
-               msg: 'In development mode; no verification code sent',
-               confirmationCodePlaceholder: 'Dev mode; put any 6-digit number',
+               msg: "In development mode; no verification code sent",
+               confirmationCodePlaceholder: "Dev mode; put any 6-digit number",
                formattedPhone: formatted_phone,
              }, status: :ok)
     end
@@ -122,9 +122,9 @@ class UsersController < ApplicationController
     if T.unsafe(Rails.env).development? || T.unsafe(Rails.env).test?
       success = true
     else
-      account_sid = ENV.fetch('TWILIO_ACCOUNT_SID', nil)
-      verify_sid = ENV.fetch('TWILIO_VERIFY_SID', nil)
-      auth_token = ENV.fetch('TWILIO_AUTH_TOKEN', nil)
+      account_sid = ENV.fetch("TWILIO_ACCOUNT_SID", nil)
+      verify_sid = ENV.fetch("TWILIO_VERIFY_SID", nil)
+      auth_token = ENV.fetch("TWILIO_AUTH_TOKEN", nil)
       client = Twilio::REST::Client.new(account_sid, auth_token)
       verification_check = client.verify
                                  .services(verify_sid)
@@ -139,9 +139,9 @@ class UsersController < ApplicationController
       user = T.must(current_user)
       user.phone = normalized_phone
       user.save!
-      render(json: { msg: 'Code verified and phone saved' }, status: :ok)
+      render(json: { msg: "Code verified and phone saved" }, status: :ok)
     else
-      render(json: { msg: 'Invalid code' }, status: :bad_request)
+      render(json: { msg: "Invalid code" }, status: :bad_request)
     end
   rescue Twilio::REST::RestError => e
     render(json: { msg: e.error_message }, status: e.status_code)
@@ -153,6 +153,6 @@ class UsersController < ApplicationController
     user.phone = nil
     user.relationships.update_all(notify: false)
     user.save!
-    render(json: { msg: 'Removed phone' }, status: :ok)
+    render(json: { msg: "Removed phone" }, status: :ok)
   end
 end

@@ -8,11 +8,11 @@ class CreateReadOnlyBlazerUser < ActiveRecord::Migration[6.0]
     SQL
 
     if T.unsafe(Rails.env).production?
-      execute('GRANT CONNECT ON DATABASE hotseat TO blazer;')
+      execute("GRANT CONNECT ON DATABASE hotseat TO blazer;")
     elsif T.unsafe(Rails.env).test?
-      execute('GRANT CONNECT ON DATABASE hotseat_test TO blazer;')
+      execute("GRANT CONNECT ON DATABASE hotseat_test TO blazer;")
     else
-      execute('GRANT CONNECT ON DATABASE hotseat_dev TO blazer;')
+      execute("GRANT CONNECT ON DATABASE hotseat_dev TO blazer;")
     end
 
     execute(<<~SQL.squish)

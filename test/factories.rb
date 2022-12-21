@@ -1,13 +1,13 @@
 # typed: false
 # frozen_string_literal: true
 
-require 'faker'
+require "faker"
 
 FactoryBot.define do
   factory :user do
-    name { 'Nathan Smith' }
+    name { "Nathan Smith" }
     sequence(:email) { |n| "natedub#{n}@g.ucla.edu" }
-    provider { 'google_oauth2' }
+    provider { "google_oauth2" }
     sequence(:uid) { |n| n }
     notification_token_count { 1 }
   end
@@ -23,7 +23,7 @@ FactoryBot.define do
   factory :enrollment_appointment
 
   factory :subject_area do
-    name { 'Computer Science' }
+    name { "Computer Science" }
     sequence(:code) { |n| "COM SCI#{n}" }
   end
 
@@ -44,22 +44,22 @@ FactoryBot.define do
     term { association(:term) }
     instructor { association(:instructor) }
     registrar_id { |n| "1870962#{n}" }
-    days { ['MW'] }
-    times { ['10am-11:50am'] }
-    locations { ['Online'] }
-    enrollment_status { 'Open' }
+    days { ["MW"] }
+    times { ["10am-11:50am"] }
+    locations { ["Online"] }
+    enrollment_status { "Open" }
     enrollment_count { 169 }
     enrollment_capacity { 200 }
-    waitlist_status { 'None' }
+    waitlist_status { "None" }
     waitlist_count { 0 }
     waitlist_capacity { 20 }
-    format { 'LEC' }
+    format { "LEC" }
     index { 1 }
   end
 
   factory :textbook do
-    isbn { '9781319050733' }
-    title { 'Calculus' }
+    isbn { "9781319050733" }
+    title { "Calculus" }
   end
 
   factory :instructor do
@@ -83,6 +83,6 @@ FactoryBot.define do
     organization { 4 }
     clarity { 4 }
     overall { 4 }
-    weekly_time { '10-15' }
+    weekly_time { "10-15" }
   end
 end

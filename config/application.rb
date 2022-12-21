@@ -1,9 +1,9 @@
 # typed: false
 # frozen_string_literal: true
 
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -33,4 +33,4 @@ module HotseatIo
   end
 end
 
-require 'debug/open_nonstop' if defined?(Rails::Server) && Rails.env.development?
+require "debug/open_nonstop" if defined?(Rails::Server) && Rails.env.development?

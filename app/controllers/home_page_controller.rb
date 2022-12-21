@@ -5,10 +5,10 @@ class HomePageController < ApplicationController
   extend T::Sig
 
   before_action :redirect_if_authenticated
-  layout 'homepage'
+  layout "homepage"
 
   COURSE_INSTRUCTOR_PAIRS = T.let([
-    ['COM SCI', '32', 'Nachenberg'],
+    ["COM SCI", "32", "Nachenberg"],
   ].freeze, T::Array[[String, String, String]])
 
   sig { void }
@@ -28,7 +28,7 @@ class HomePageController < ApplicationController
 
     subject_area, number, instructor_name = COURSE_INSTRUCTOR_PAIRS.sample
 
-    @course = T.must(Course.joins(:subject_area).find_by('subject_area.code': subject_area, number:))
+    @course = T.must(Course.joins(:subject_area).find_by("subject_area.code": subject_area, number:))
     instructor = T.must(Instructor.find_by(last_names: [instructor_name]))
     course_sections = instructor.sections.includes(:grade_distribution,
                                                    :enrollment_data,

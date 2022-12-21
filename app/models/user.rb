@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
-                    format: { with: VALID_UCLA_EMAIL_REGEX, message: 'must be an @g.ucla.edu email' },
+                    format: { with: VALID_UCLA_EMAIL_REGEX, message: "must be an @g.ucla.edu email" },
                     uniqueness: true
   validates :notification_token_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :phone, phone: true, allow_blank: true
@@ -25,10 +25,10 @@ class User < ApplicationRecord
   has_many :reviews, through: :relationships
 
   belongs_to :referred_by,
-             class_name: 'User',
+             class_name: "User",
              optional: true
   has_many :referred_users,
-           class_name: 'User',
+           class_name: "User",
            foreign_key: :referred_by_id,
            inverse_of: :referred_by,
            dependent: :restrict_with_exception
@@ -44,7 +44,7 @@ class User < ApplicationRecord
       self.referral_code = SecureRandom.hex(6).downcase
       return unless self.class.exists?(referral_code:)
     end
-    raise ActiveRecord::ActiveRecordError, 'Could not generate unique referral code'
+    raise ActiveRecord::ActiveRecordError, "Could not generate unique referral code"
   end
 
   # Called when a referral is complete, i.e., a user has signed up and written a review.
@@ -127,7 +127,7 @@ class User < ApplicationRecord
   sig { params(section: Section).void }
   def unfollow(section)
     relationship = relationships.find_by(section:)
-    raise ActiveRecord::RecordNotDestroyed, 'Section is reviewed by user, cannot unfollow.' if relationship&.review?
+    raise ActiveRecord::RecordNotDestroyed, "Section is reviewed by user, cannot unfollow." if relationship&.review?
 
     sections.delete(section)
   end
@@ -174,13 +174,13 @@ class User < ApplicationRecord
   # Whether a user has reviewed a given course.
   sig { params(course: Course).returns(T::Boolean) }
   def reviewed_course?(course)
-    reviews.joins(:relationship, :section).where('sections.course_id': course).any?
+    reviews.joins(:relationship, :section).where("sections.course_id": course).any?
   end
 
   # Whether a user has reviewed a given section.
   sig { params(section: Section).returns(T::Boolean) }
   def reviewed_section?(section)
-    reviews.where('relationships.section_id': section).any?
+    reviews.where("relationships.section_id": section).any?
   end
 
   sig { returns(T.nilable(String)) }
@@ -199,12 +199,12 @@ class User < ApplicationRecord
     return phone if parsed_phone.invalid?
 
     formatted =
-      if parsed_phone.country_code == '1' # NANP
+      if parsed_phone.country_code == "1" # NANP
         "+1 #{parsed_phone.full_national}" # +1 (415) 555-2671;123
       else
         parsed_phone.full_international # +44 20 7183 8750
       end
-    formatted.gsub!(';', ' x') # +1 (415) 555-2671 x123
+    formatted.gsub!(";", " x") # +1 (415) 555-2671 x123
     formatted
   end
 

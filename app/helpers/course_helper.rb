@@ -50,7 +50,7 @@ module CourseHelper
 
   sig { params(course: Course, instructor: T.nilable(Instructor)).returns(String) }
   def course_description(course, instructor = nil)
-    instructor_line = instructor.present? ? " with #{instructor.full_label}" : ''
+    instructor_line = instructor.present? ? " with #{instructor.full_label}" : ""
     "#{course.long_title}#{instructor_line} reviews, textbooks, enrollment charts and more. Provided by Hotseat, UCLA's premier source for professors and classes."
   end
 
@@ -60,9 +60,9 @@ module CourseHelper
 
     count = T.let(T.unsafe(course).section_count, T.nilable(Integer))
     if count.nil? || count.zero?
-      'Not offered'
+      "Not offered"
     else
-      pluralize(count, 'section')
+      pluralize(count, "section")
     end
   end
 
@@ -72,7 +72,7 @@ module CourseHelper
     case badge_label
     when nil
       nil
-    when 'Not offered'
+    when "Not offered"
       ColorHelper::Color::Gray
     else
       term_color
@@ -87,30 +87,30 @@ module CourseHelper
     case label
     when :has_group_project
       if value
-        'icons/user-group'
+        "icons/user-group"
       else
-        'icons/user'
+        "icons/user"
       end
     when :final
-      if value == 'none'
-        'icons/sun'
+      if value == "none"
+        "icons/sun"
       else
-        'icons/pencil-alt'
+        "icons/pencil-alt"
       end
     when :requires_attendance
       if value
-        'icons/presentation-chart-bar'
+        "icons/presentation-chart-bar"
       else
-        'icons/sun'
+        "icons/sun"
       end
     when :midterm_count
       if value.zero?
-        'icons/sun'
+        "icons/sun"
       else
-        'icons/pencil-alt'
+        "icons/pencil-alt"
       end
     when :reccomend_textbook
-      'icons/book-open'
+      "icons/book-open"
     end
   end
 
@@ -123,26 +123,26 @@ module CourseHelper
     when :has_group_project
       has_group_project = T.cast(value, T::Boolean)
       if has_group_project
-        'Has a group project'
+        "Has a group project"
       else
-        'No group projects'
+        "No group projects"
       end
     when :requires_attendance
       requires_attendance = T.cast(value, T::Boolean)
       if requires_attendance
-        'Attendance required'
+        "Attendance required"
       else
-        'Attendance not required'
+        "Attendance not required"
       end
     when :final
       final_labels = {
-        'none' => 'No final',
-        '10th' => '10th week final',
-        'finals' => 'Finals week final',
+        "none" => "No final",
+        "10th" => "10th week final",
+        "finals" => "Finals week final",
       }
       final_labels[value]
     when :midterm_count
-      pluralize(value, 'midterm')
+      pluralize(value, "midterm")
     when :reccomend_textbook
       "#{number_to_percentage(value, precision: 0)} recommend the textbook"
     end

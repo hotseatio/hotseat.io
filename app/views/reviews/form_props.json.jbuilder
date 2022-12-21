@@ -27,18 +27,18 @@ json.initial_suggestion do
       json.number(@course.number)
       json.subject_area_code(@course.subject_area_code)
     end
-    if @initial_suggestion_type == 'section'
+    if @initial_suggestion_type == "section"
       json.term_suggestion do
-        json.partial!('reviews/term_suggestions', course: @course)
+        json.partial!("reviews/term_suggestions", course: @course)
       end
       json.selected_term do
-        json.partial!('terms/term', term: @term)
+        json.partial!("terms/term", term: @term)
       end
       json.sections do
-        json.partial!('sections/section', collection: @sections, as: :section)
+        json.partial!("sections/section", collection: @sections, as: :section)
       end
       json.selected_section do
-        json.partial!('sections/section', section: @section, as: :section)
+        json.partial!("sections/section", section: @section, as: :section)
       end
     end
   end

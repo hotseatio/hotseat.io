@@ -50,9 +50,9 @@ module SectionHelper
   sig { params(section: Section).returns(String) }
   def section_badge_label(section)
     case section.enrollment_status
-    when 'Open'
+    when "Open"
       "Open (#{pluralize(section.available_seats, 'seats')})"
-    when 'Waitlist'
+    when "Waitlist"
       "Waitlist (#{pluralize(section.available_waitlist_seats, 'seats')})"
     else
       section.enrollment_status
@@ -62,11 +62,11 @@ module SectionHelper
   sig { params(section: Section).returns(ColorHelper::Color) }
   def section_badge_color(section)
     case section.enrollment_status
-    when 'Open'
+    when "Open"
       ColorHelper::Color::Green
-    when 'Waitlist'
+    when "Waitlist"
       ColorHelper::Color::Yellow
-    when 'Closed', 'Full', 'Canceled'
+    when "Closed", "Full", "Canceled"
       ColorHelper::Color::Red
     else
       ColorHelper::Color::Gray
