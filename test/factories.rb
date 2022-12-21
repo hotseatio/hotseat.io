@@ -90,5 +90,12 @@ FactoryBot.define do
     clarity { 4 }
     overall { 4 }
     weekly_time { "10-15" }
+    comments { Faker::Lorem.paragraph }
+
+    has_group_project { false }
+    midterm_count { 2 }
+    requires_attendance { false }
+    final { "finals" }
+    reccomend_textbook { false }
   end
 end
