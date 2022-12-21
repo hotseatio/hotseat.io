@@ -149,9 +149,70 @@ class Review < ApplicationRecord
 
   sig { returns(T.nilable(String)) }
   def quarter_taken
-    return nil if term.nil?
+    term&.readable
+  end
 
-    T.must(term).readable
+  sig { returns(T.nilable(BigDecimal)) }
+  def overall_rating
+    Review.scale_to_ten_points(BigDecimal(T.must(overall))) if overall
+  end
+
+  sig { returns(T.nilable(BigDecimal)) }
+  def clarity_rating
+    Review.scale_to_ten_points(BigDecimal(T.must(clarity))) if clarity
+  end
+
+  sig { returns(T.nilable(BigDecimal)) }
+  def organization_rating
+    Review.scale_to_ten_points(BigDecimal(T.must(organization))) if organization
+  end
+
+  sig { returns(T::Array[T::Hash[Symbol, T.any(String, Integer, Float)]]) }
+  def ratings
+    [
+      {
+        label: "Clarity",
+        value: clarity_rating,
+      },
+      {
+        label: "Organization",
+        value: organization_rating,
+      },
+      {
+        label: "Time",
+        value: read_attribute_before_type_cast(:weekly_time),
+      },
+      {
+        label: "Overall",
+        value: overall_rating,
+      },
+    ]
+  end
+
+  sig { returns(T::Array[T::Hash[Symbol, T.any(String, Integer, Float)]]) }
+  def course_details
+    [
+      {
+        label: :has_group_project,
+        value: has_group_project,
+      },
+      {
+        label: :midterm_count,
+        value: midterm_count,
+      },
+      {
+        label: :requires_attendance,
+        value: requires_attendance,
+      },
+      {
+        label: :final,
+        value: read_attribute_before_type_cast(:final),
+      },
+      {
+        label: :reccomend_textbook,
+        value: reccomend_textbook,
+      },
+    ]
   end
 
   private

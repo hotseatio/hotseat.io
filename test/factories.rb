@@ -73,16 +73,29 @@ FactoryBot.define do
   end
 
   factory :relationship do
+    user
+    section
+
     trait :with_review do
-      review { association(:review) }
+      review
     end
   end
 
   factory :review do
-    section { association(:section) }
+    relationship
+    user
+    section
+
     organization { 4 }
     clarity { 4 }
     overall { 4 }
     weekly_time { "10-15" }
+    comments { Faker::Lorem.paragraph }
+
+    has_group_project { false }
+    midterm_count { 2 }
+    requires_attendance { false }
+    final { "finals" }
+    reccomend_textbook { false }
   end
 end

@@ -12,6 +12,8 @@ AllCops:
 Lint/ConstantDefinitionInBlock:
   Enabled: false
 
+Style/ClassAndModuleChildren:
+  Enabled: false
 Style/GuardClause:
   Enabled: false
 Style/Documentation:

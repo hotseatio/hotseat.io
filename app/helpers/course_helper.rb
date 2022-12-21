@@ -142,9 +142,22 @@ module CourseHelper
       }
       final_labels[value]
     when :midterm_count
-      pluralize(value, "midterm")
+      if value.zero?
+        "No midterms"
+      else
+        pluralize(value, "midterm")
+      end
     when :reccomend_textbook
-      "#{number_to_percentage(value, precision: 0)} recommend the textbook"
+      # Check if value is boolean
+      case value
+      when true
+        "Recommends textbook"
+      when false
+        "Does not recommend textbook"
+      else
+        # Not boolean, is a number
+        "#{number_to_percentage(value, precision: 0)} recommend the textbook"
+      end
     end
   end
 end

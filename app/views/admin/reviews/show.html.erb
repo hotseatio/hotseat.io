@@ -1,0 +1,77 @@
+<% provide(:title, "Admin: Review #{@review.id}") %>
+
+<%= render "shared/page_header", title: "Admin: Review #{@review.id}", breadcrumbs: [{ name: "Home", link: "/" }, { name: "Admin: Reviews", link: admin_reviews_path }, { name: "Review #{@review.id}", link: admin_review_path(@review) }] %>
+
+<%= render "shared/card", id: "review-summary",
+                          title: "Review" do %>
+  <dl class="grid grid-cols-1 divide-y divide-gray-200 dark:divide-gray-700 md:grid-cols-4 md:divide-y-0 md:divide-x">
+    <% @review.ratings.each do |rating| %>
+      <%= render "shared/reviews_number",
+                 label: rating[:label],
+                 value: rating[:value],
+                 time: rating[:label] == "Time" %>
+    <% end %>
+  </dl>
+<% end %>
+
+<%= render "shared/card", id: "grading-info", title: "Grading Information" do %>
+  <%= render "shared/list", collection: @review.course_details, paginate: false do |course_detail| %>
+    <li class="p-2 flex items-center sm:px-6">
+      <div class="min-w-0 flex-1 flex items-center">
+        <%= render course_detail_icon(course_detail), classes: "h-5 w-5 text-gray-400 mr-4" %>
+        <p class="text-base font-medium text-gray-700 dark:text-gray-200 truncate">
+          <%= course_detail_label(course_detail) %>
+        </p>
+      </div>
+    </li>
+  <% end %>
+<% end %>
+
+<%= render "shared/card", id: "author", title: "Author" do %>
+  <div class="flex items-center px-4 py-4 sm:px-6">
+    <div class="flex min-w-0 flex-1 items-center">
+      <div class="min-w-0 flex-1 md:grid md:grid-cols-2 md:gap-4">
+        <div>
+          <p class="truncate text-sm font-medium text-gray-600"><%= @author.name %></p>
+          <p class="mt-2 flex items-center text-sm text-gray-500">
+            <%= @author.email %>, <%= @author.formatted_phone %>
+          </p>
+        </div>
+        <div class="hidden md:block">
+          <div>
+            <p class="text-sm text-gray-500">
+              Review written on <%= @review.created_at.strftime("%B %d, %Y at %I:%M %p") %>
+            </p>
+            <p class="mt-2 flex items-center text-sm text-gray-500">
+              Notification tokens: <%= @author.notification_token_count %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= render "shared/card", id: "comments", title: "Comments" do %>
+  <div class="px-2 py-4 sm:px-6">
+    <div class="w-full text-sm font-light text-gray-500 dark:text-gray-400">
+      <div>
+        Quarter Taken: <%= @review.quarter_taken %>
+      <span class="ml-1 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+        <%= @review.location_type.serialize %>
+      </span>
+      </div>
+      <div>
+        Grade: <%= Review.grades.fetch(@review.grade, "N/A") %>
+      </div>
+    </div>
+    <div class="py-3 text-base text-gray-700 dark:text-gray-200 prose">
+      <%= simple_format @review.comments %>
+    </div>
+  </div>
+<% end %>
+
+<div class="flex w-full justify-center">
+  <button type="button" class="inline-flex items-center rounded-md border border-transparent bg-red-100 px-6 py-3 text-base font-medium text-red-700 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 mr-4">Reject</button>
+  <button type="button" class="inline-flex items-center rounded-md border border-transparent bg-red-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">Approve</button>
+</div>
