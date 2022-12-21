@@ -7,7 +7,7 @@
         <option disabled value="" selected></option>
         <% end %>
       <% @instructors_and_latest_term.each do |instructor, term| %>
-        <option value="<%= course_instructor_path(@course, instructor) %>" <%= instructor == @instructor ? 'selected' : '' %>>
+        <option value="<%= course_instructor_path(@course, instructor) %>" <%= instructor == @instructor ? "selected" : "" %>>
           <%= instructor.full_label %> (<%= term.readable %>)
         </option>
       <% end %>
@@ -18,8 +18,8 @@
       <% @instructors_and_latest_term.each do |instructor, term| %>
         <%= link_to course_instructor_path(@course, instructor), class: "course-instructor-tab #{instructor == @instructor ? 'tab-selected' : ''}" do %>
           <%= instructor.full_label %>
-          <%= render 'shared/badge',
-                     classes: 'ml-1',
+          <%= render "shared/badge",
+                     classes: "ml-1",
                      label: term.short_readable,
                      shade: 200,
                      color: term_badge_color(term, @term, @upcoming_terms) %>

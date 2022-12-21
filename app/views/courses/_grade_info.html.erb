@@ -1,10 +1,10 @@
 <% details = Review.course_details(reviews) %>
 <% unless details.empty? %>
-  <%= render 'shared/card', id: 'grading-info', title: 'Grading Information' do %>
-    <%= render 'shared/list', collection: details, paginate: false do |course_detail| %>
+  <%= render "shared/card", id: "grading-info", title: "Grading Information" do %>
+    <%= render "shared/list", collection: details, paginate: false do |course_detail| %>
       <li class="p-2 flex items-center sm:px-6">
         <div class="min-w-0 flex-1 flex items-center">
-          <%= render course_detail_icon(course_detail), classes: 'h-5 w-5 text-gray-400 mr-4' %>
+          <%= render course_detail_icon(course_detail), classes: "h-5 w-5 text-gray-400 mr-4" %>
           <p class="text-base font-medium text-gray-700 dark:text-gray-200 truncate">
             <%= course_detail_label(course_detail) %>
           </p>

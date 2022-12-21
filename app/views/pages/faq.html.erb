@@ -1,54 +1,54 @@
-<%= render 'shared/page_header',
-           title: 'Frequently Asked Questions',
-           breadcrumbs: [{ name: 'Home', link: '/' }, { name: 'FAQ', link: page_path('faq') }] %>
+<%= render "shared/page_header",
+           title: "Frequently Asked Questions",
+           breadcrumbs: [{ name: "Home", link: "/" }, { name: "FAQ", link: page_path("faq") }] %>
 
 <div class="shadow overflow-hidden sm:rounded-md my-4 bg-white dark:bg-gray-900">
   <div class="px-4 py-6 sm:px-6 lg:py-8 lg:px-8">
     <dl class="space-y-8 divide-y divide-gray-200 dark:divide-gray-700">
 
-      <%= render 'faq_question',
-                 question: 'What is Hotseat?',
-                 answer: 'Hotseat is an all-in-one course enrollment platform for UCLA. We combine student reviews with information directly gathered from the UCLA Registrar so that you can make the best possible decisions when enrolling in classes.' %>
+      <%= render "faq_question",
+                 question: "What is Hotseat?",
+                 answer: "Hotseat is an all-in-one course enrollment platform for UCLA. We combine student reviews with information directly gathered from the UCLA Registrar so that you can make the best possible decisions when enrolling in classes." %>
 
-      <%= render 'faq_question',
-                 question: 'What makes Hotseat better than your competitors?',
+      <%= render "faq_question",
+                 question: "What makes Hotseat better than your competitors?",
                  answer: "Integration. We're the only course review platform that integrates information directly from the UCLA Registrar. This means we can show data like historic enrollment trends that no one else has." %>
 
-      <%= render 'faq_question',
-                 question: 'Where do you get your enrollment data/grade distributions/textbook info from?',
-                 answer: 'We get all our info directly from the UCLA Registrar. We run scripts hourly that scrape this info and consolidate it all in one place!' %>
+      <%= render "faq_question",
+                 question: "Where do you get your enrollment data/grade distributions/textbook info from?",
+                 answer: "We get all our info directly from the UCLA Registrar. We run scripts hourly that scrape this info and consolidate it all in one place!" %>
 
-      <%= render 'faq_question',
-                 question: 'Who are you?' do %>
+      <%= render "faq_question",
+                 question: "Who are you?" do %>
       We're Tim and Nathan, two computer science seniors. A couple of years ago, Nathan had trouble enrolling a class he wanted. He started scraping data from the UCLA Registrar to make sure it wouldn't happen again. Tim suggested that other students would be interested in the data and together we decided to build Hotseat!
     <% end %>
 
-      <%= render 'faq_question',
-                 question: 'How do you prevent spam reviews?' do %>
-                 Users are required to use their @ucla.edu emails in order to write reviews. Additionally, reviews are frequently moderated and removed if they attempt to advertise, contain ad hominem attacks or factual inaccuracies, or are otherwise generally off-topic. We take review integrity very seriously. If you think a review is spam, <%= mail_to 'reviews@hotseat.io', 'email us', class: 'font-bold' %> a link to the review and we'll check it out.
+      <%= render "faq_question",
+                 question: "How do you prevent spam reviews?" do %>
+                 Users are required to use their @ucla.edu emails in order to write reviews. Additionally, reviews are frequently moderated and removed if they attempt to advertise, contain ad hominem attacks or factual inaccuracies, or are otherwise generally off-topic. We take review integrity very seriously. If you think a review is spam, <%= mail_to "reviews@hotseat.io", "email us", class: "font-bold" %> a link to the review and we'll check it out.
     <% end %>
 
-      <%= render 'faq_question',
-                 question: 'How do you make money?',
-                 answer: 'As an Amazon Associate Hotseat earns from qualifying purchases. We have a couple other ideas on monetization as we add more features, so stay tuned!' %>
+      <%= render "faq_question",
+                 question: "How do you make money?",
+                 answer: "As an Amazon Associate Hotseat earns from qualifying purchases. We have a couple other ideas on monetization as we add more features, so stay tuned!" %>
 
-      <%= render 'faq_question', question: "I'd like to advertise my club/product/student government campaign/etc. on Hotseat!" do %>
-        Cool! Email us at <%= mail_to 'advertise@hotseat.io' %> and we can discuss.
+      <%= render "faq_question", question: "I'd like to advertise my club/product/student government campaign/etc. on Hotseat!" do %>
+        Cool! Email us at <%= mail_to "advertise@hotseat.io" %> and we can discuss.
       <% end %>
 
-      <%= render 'faq_question',
+      <%= render "faq_question",
                  question: "What's your tech stack?",
-                 answer: 'Hotseat is a Ruby on Rails application. We scrape data using Ruby and Go and store it in PostgreSQL. We use some TypeScript and React on the frontend and D3 to make the charts. We host most of our services on AWS.' %>
+                 answer: "Hotseat is a Ruby on Rails application. We scrape data using Ruby and Go and store it in PostgreSQL. We use some TypeScript and React on the frontend and D3 to make the charts. We host most of our services on AWS." %>
 
-      <%= render 'faq_question',
-                 question: 'I have programming, design, and/or product experience and want help out with Hotseat!' do %>
-                 Awesome! We're not actively hiring but if you email <%= mail_to 'jobs@hotseat.io' %> with your resume and a short blurb about yourself,
+      <%= render "faq_question",
+                 question: "I have programming, design, and/or product experience and want help out with Hotseat!" do %>
+                 Awesome! We're not actively hiring but if you email <%= mail_to "jobs@hotseat.io" %> with your resume and a short blurb about yourself,
           we'll keep you in mind when we start hiring. :)
       <% end %>
 
-      <%= render 'faq_question',
-                 question: 'I have an idea for how you could make Hotseat even better!' do %>
-                 Yay! Let us know at <%= mail_to 'suggestions@hotseat.io' %>.
+      <%= render "faq_question",
+                 question: "I have an idea for how you could make Hotseat even better!" do %>
+                 Yay! Let us know at <%= mail_to "suggestions@hotseat.io" %>.
       <% end %>
 
     </dl>

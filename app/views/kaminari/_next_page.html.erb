@@ -5,7 +5,7 @@
     total_pages:   total number of pages
     per_page:      number of items to fetch per page
     remote:        data-remote -%>
-<%= link_to url, rel: 'next', remote:, class: 'page' do %>
+<%= link_to url, rel: "next", remote:, class: "page" do %>
   <span class="sr-only">Next</span>
-  <%= render 'icons/chevron-right', classes: 'h-5 w-5' %>
+  <%= render "icons/chevron-right", classes: "h-5 w-5" %>
 <% end %>

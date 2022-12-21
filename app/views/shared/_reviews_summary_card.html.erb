@@ -1,13 +1,13 @@
-<%= render 'shared/card', id: 'review-summary',
-                          title: 'Review Summary',
-                          button: { label: 'Write a review',
+<%= render "shared/card", id: "review-summary",
+                          title: "Review Summary",
+                          button: { label: "Write a review",
                                     link: local_assigns[:course_id] ? new_review_path(course: course_id) : new_review_path } do %>
   <dl class="grid grid-cols-1 divide-y divide-gray-200 dark:divide-gray-700 md:grid-cols-4 md:divide-y-0 md:divide-x">
     <% Review.average_ratings(reviews).each do |rating| %>
-      <%= render 'shared/reviews_number',
+      <%= render "shared/reviews_number",
                  label: rating[:label],
                  value: rating[:value],
-                 time: rating[:label] == 'Time' %>
+                 time: rating[:label] == "Time" %>
     <% end %>
   </dl>
 <% end %>

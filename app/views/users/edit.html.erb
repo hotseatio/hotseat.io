@@ -1,7 +1,7 @@
-<% provide(:title, 'Settings') %>
+<% provide(:title, "Settings") %>
 
-<%= render 'devise/form_wrapper', title: 'Account Settings' do %>
-  <%= react_component_transparent('SettingsForm',
+<%= render "devise/form_wrapper", title: "Account Settings" do %>
+  <%= react_component_transparent("SettingsForm",
                                   props: {
                                     updateURL: user_path(current_user),
                                     name: current_user.name,

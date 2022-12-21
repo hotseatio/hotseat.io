@@ -1,6 +1,6 @@
 <% color = T.let(color, ColorHelper::Color) %>
 <% shade = ColorHelper::Shade.deserialize(local_assigns[:shade].nil? ? 100 : shade) %>
-<% classes = '' if local_assigns[:classes].nil? %>
+<% classes = "" if local_assigns[:classes].nil? %>
 
 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium <%= bg(color, shade) %> <%= text800 color %> <%= classes %>">
   <%= label %>
