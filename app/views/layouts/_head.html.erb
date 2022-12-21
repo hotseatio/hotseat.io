@@ -31,14 +31,16 @@
   <%= csp_meta_tag %>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QMXHM0BW9X"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  <% if T.unsafe(Rails.env).production? %>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QMXHM0BW9X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    gtag('config', 'G-QMXHM0BW9X');
-  </script>
+      gtag('config', 'G-QMXHM0BW9X');
+    </script>
+  <% end %>
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
