@@ -171,19 +171,19 @@ class Review < ApplicationRecord
   def ratings
     [
       {
-        label: 'Clarity',
+        label: "Clarity",
         value: clarity_rating,
       },
       {
-        label: 'Organization',
+        label: "Organization",
         value: organization_rating,
       },
       {
-        label: 'Time',
+        label: "Time",
         value: read_attribute_before_type_cast(:weekly_time),
       },
       {
-        label: 'Overall',
+        label: "Overall",
         value: overall_rating,
       },
     ]
