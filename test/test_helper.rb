@@ -6,7 +6,12 @@ ENV["RAILS_ENV"] ||= "test"
 if ENV.fetch("TEST_COVERAGE", nil)
   require "simplecov"
   require "simplecov-cobertura"
-  SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+
+  SimpleCov.formatter = if ENV.fetch("CI", nil)
+                          SimpleCov::Formatter::CoberturaFormatter
+                        else
+                          SimpleCov::Formatter::HTMLFormatter
+                        end
   SimpleCov.start("rails")
 end
 
