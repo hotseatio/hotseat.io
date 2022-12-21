@@ -72,9 +72,10 @@ module ApplicationHelper
 
   sig { returns(T::Boolean) }
   def show_ads?
-    !(current_page?(root_path) or
+    (!(current_page?(root_path) or
     current_page?(page_path("privacy")) or
     current_page?(page_path("terms")) or
-    current_page?(page_path("faq")))
+      current_page?(page_path("faq"))) and !T.unsafe(Rails.env).test?
+    )
   end
 end
