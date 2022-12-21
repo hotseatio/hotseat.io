@@ -30,14 +30,16 @@ Style/LambdaCall:
 Style/MethodCallWithArgsParentheses:
   Enabled: true
   AllowedMethods:
-  - require
-  - require_relative
-  - require_dependency
-  - yield
-  - raise
-  - puts
+    - require
+    - require_relative
+    - require_dependency
+    - yield
+    - raise
+    - puts
   Exclude:
-  - "/**/Gemfile"
+    - '/**/Gemfile'
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
 
 Metrics:
   Enabled: false
