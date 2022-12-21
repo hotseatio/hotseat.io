@@ -44,7 +44,7 @@ class SubjectAreasController < ApplicationController
     @upcoming_terms = Term.upcoming.to_a
     @subject_area = SubjectArea.find(typed_params.id)
 
-    @filter_option = if typed_params.filter == 'all'
+    @filter_option = if typed_params.filter == "all"
                        SubjectAreaHelper::FilterOption::All
                      elsif typed_params.filter.present?
                        Term.find_by!(term: typed_params.filter)
@@ -55,9 +55,9 @@ class SubjectAreasController < ApplicationController
                      end
 
     # Show up to three years of courses.
-    @filter_options = Term.where('start_date < ?', Time.zone.today)
+    @filter_options = Term.where("start_date < ?", Time.zone.today)
     @filter_options = @filter_options.or(Term.upcoming) if Term.should_show_upcoming?
-    @filter_options = @filter_options.order('start_date DESC').limit(12)
+    @filter_options = @filter_options.order("start_date DESC").limit(12)
 
     @courses = @subject_area.courses.active.order_by_number.page(page)
     @courses = if @filter_option.is_a?(SubjectAreaHelper::FilterOption) && @filter_option == SubjectAreaHelper::FilterOption::All

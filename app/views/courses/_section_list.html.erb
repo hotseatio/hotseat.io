@@ -1,5 +1,5 @@
 <% unless section_list.empty? %>
-  <%= react_component_transparent('SectionListCard',
+  <%= react_component_transparent("SectionListCard",
                                   props: {
                                     isBetaTester: current_user&.beta_tester.presence || false,
                                     sectionsByTerm: section_list,

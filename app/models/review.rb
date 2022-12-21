@@ -19,39 +19,39 @@ class Review < ApplicationRecord
   delegate :location_type, to: :section
 
   enum weekly_time: {
-    zero_to_five: '0-5',
-    five_to_ten: '5-10',
-    ten_to_fifteen: '10-15',
-    fifteen_to_twenty: '15-20',
-    twenty_plus: '20+',
+    zero_to_five: "0-5",
+    five_to_ten: "5-10",
+    ten_to_fifteen: "10-15",
+    fifteen_to_twenty: "15-20",
+    twenty_plus: "20+",
   }, _suffix: :hours
 
   enum final: {
-    no_final: 'none',
-    tenth_week: '10th',
-    finals_week: 'finals',
+    no_final: "none",
+    tenth_week: "10th",
+    finals_week: "finals",
   }
 
   enum grade: {
-    a_plus: 'A+',
-    a: 'A',
-    a_minus: 'A-',
-    b_plus: 'B+',
-    b: 'B',
-    b_minus: 'B-',
-    c_plus: 'C+',
-    c: 'C',
-    c_minus: 'C-',
-    d_plus: 'D+',
-    d: 'D',
-    d_minus: 'D-',
-    f: 'F',
-    pass: 'P',
-    no_pass: 'NP',
+    a_plus: "A+",
+    a: "A",
+    a_minus: "A-",
+    b_plus: "B+",
+    b: "B",
+    b_minus: "B-",
+    c_plus: "C+",
+    c: "C",
+    c_minus: "C-",
+    d_plus: "D+",
+    d: "D",
+    d_minus: "D-",
+    f: "F",
+    pass: "P",
+    no_pass: "NP",
   }
 
   scope :viewable, -> { where.not(hidden: true) }
-  scope :has_comment, -> { where.not(comments: '') }
+  scope :has_comment, -> { where.not(comments: "") }
 
   sig do
     params(reviews: Review::RelationType)
@@ -60,13 +60,13 @@ class Review < ApplicationRecord
   def self.course_details(reviews)
     # Take advantage of Postgres' `mode()` functionality
     has_group_project = reviews.where.not(has_group_project: nil)
-                               .pick(Arel.sql('mode() within group (order by has_group_project)'))
+                               .pick(Arel.sql("mode() within group (order by has_group_project)"))
     final = reviews.where.not(final: nil)
-                   .pick(Arel.sql('mode() within group (order by final)'))
+                   .pick(Arel.sql("mode() within group (order by final)"))
     requires_attendance = reviews.where.not(requires_attendance: nil)
-                                 .pick(Arel.sql('mode() within group (order by requires_attendance)'))
+                                 .pick(Arel.sql("mode() within group (order by requires_attendance)"))
     midterm_count = reviews.where.not(midterm_count: nil)
-                           .pick(Arel.sql('mode() within group (order by midterm_count)'))
+                           .pick(Arel.sql("mode() within group (order by midterm_count)"))
     textbook_reccomendations = reviews.where.not(reccomend_textbook: nil)
                                       .group(:reccomend_textbook).count
     textbook_reccomend_percentage = (textbook_reccomendations[true].to_f / textbook_reccomendations.values.sum)
@@ -113,28 +113,28 @@ class Review < ApplicationRecord
   end
   def self.average_ratings(reviews)
     overall, clarity, organization = reviews.pick(
-      'AVG(overall)',
-      'AVG(clarity)',
-      'AVG(organization)',
+      "AVG(overall)",
+      "AVG(clarity)",
+      "AVG(organization)",
     )
     weekly_time = reviews.where.not(weekly_time: nil)
-                         .pick(Arel.sql('mode() within group (order by weekly_time)'))
+                         .pick(Arel.sql("mode() within group (order by weekly_time)"))
 
     [
       {
-        label: 'Clarity',
+        label: "Clarity",
         value: scale_to_ten_points(clarity),
       },
       {
-        label: 'Organization',
+        label: "Organization",
         value: scale_to_ten_points(organization),
       },
       {
-        label: 'Time',
+        label: "Time",
         value: weekly_time,
       },
       {
-        label: 'Overall',
+        label: "Overall",
         value: scale_to_ten_points(overall),
       },
     ]

@@ -1,10 +1,10 @@
-<%= render 'shared/page_header',
+<%= render "shared/page_header",
            title: @course.title,
-           breadcrumbs: [{ name: 'Home', link: '/' }, { name: 'Subject Areas', link: subject_areas_path }, { name: @subject_area.name, link: subject_area_path(@subject_area) }, { name: @course.short_title, link: course_path(@course) }] %>
+           breadcrumbs: [{ name: "Home", link: "/" }, { name: "Subject Areas", link: subject_areas_path }, { name: @subject_area.name, link: subject_area_path(@subject_area) }, { name: @course.short_title, link: course_path(@course) }] %>
 
 <% unless @superseding_course.nil? %>
-  <%= render 'shared/alert', type: 'warn', title: 'Inactive Course' do %>
-    This course is no longer active and has been replaced by <%= link_to @superseding_course.short_title, @superseding_course, class: 'font-medium underline hover:text-yellow-600' %>.
+  <%= render "shared/alert", type: "warn", title: "Inactive Course" do %>
+    This course is no longer active and has been replaced by <%= link_to @superseding_course.short_title, @superseding_course, class: "font-medium underline hover:text-yellow-600" %>.
   <% end %>
 <% end %>
 
@@ -12,4 +12,4 @@
   <%= @course.description %>
 </p>
 
-<%= render 'instructor_tabs' %>
+<%= render "instructor_tabs" %>

@@ -1,4 +1,4 @@
-<% raise 'no id provided' if local_assigns[:id].blank? %>
+<% raise "no id provided" if local_assigns[:id].blank? %>
 
 <section id="<%= id %>" aria-labelledby="<%= id %>-title" class="bg-white dark:bg-gray-900 overflow-hidden shadow rounded-lg my-4">
   <header class="px-4 py-5 border-b border-gray-200 dark:border-gray-700 sm:px-6 flex items-center justify-between flex-wrap sm:flex-nowrap gap-2">
@@ -7,7 +7,7 @@
     </h3>
     <% if local_assigns[:button] %>
       <div class="flex-shrink-0" role="presentation">
-        <%= link_to button[:label], button[:link], class: 'inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500' %>
+        <%= link_to button[:label], button[:link], class: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" %>
       </div>
     <% elsif local_assigns[:right_label] && right_label.present? %>
       <p class="flex-shrink-0 text-sm text-gray-500 dark:text-gray-400">

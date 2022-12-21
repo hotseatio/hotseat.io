@@ -1,14 +1,14 @@
 <% provide(:title, @subject_area.name) %>
 <% provide(:description, subject_area_description(@subject_area)) %>
 
-<%= render 'shared/page_header',
+<%= render "shared/page_header",
            title: @subject_area.name,
            subtitle: @subject_area.code,
-           breadcrumbs: [{ name: 'Home', link: '/' }, { name: 'Subject Areas', link: subject_areas_path }, { name: @subject_area.name, path: subject_area_path(@subject_area) }] %>
+           breadcrumbs: [{ name: "Home", link: "/" }, { name: "Subject Areas", link: subject_areas_path }, { name: @subject_area.name, path: subject_area_path(@subject_area) }] %>
 
 <% unless @subject_area.superseding_subject_area.nil? %>
-  <%= render 'shared/alert', type: 'warn', title: 'Inactive Subject' do %>
-    This subject is not active and has been replaced by <%= link_to @subject_area.superseding_subject_area.name_and_code, @subject_area.superseding_subject_area, class: 'font-medium underline hover:text-yellow-600' %>.
+  <%= render "shared/alert", type: "warn", title: "Inactive Subject" do %>
+    This subject is not active and has been replaced by <%= link_to @subject_area.superseding_subject_area.name_and_code, @subject_area.superseding_subject_area, class: "font-medium underline hover:text-yellow-600" %>.
   <% end %>
 <% end %>
 
@@ -21,7 +21,7 @@
         </h3>
       </div>
       <div class="ml-4 mt-2 flex-shrink-0">
-        <%= react_component_transparent('FilterButton',
+        <%= react_component_transparent("FilterButton",
                                         props: {
                                           links: SubjectAreaHelper.filter_links(@subject_area, @filter_option, @filter_options),
                                         }) %>
@@ -33,9 +33,9 @@
                   else
                     ColorHelper::Color::Green
                   end %>
-  <%= render 'shared/list', collection: @courses do |course| %>
+  <%= render "shared/list", collection: @courses do |course| %>
     <% badge_label = course_badge_label(course) %>
-    <%= render 'shared/list_item',
+    <%= render "shared/list_item",
                link: course,
                title: course.title,
                subtitle: course.number,

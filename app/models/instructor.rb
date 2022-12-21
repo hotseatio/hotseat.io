@@ -16,12 +16,12 @@ class Instructor < ApplicationRecord
   sig { returns(T::Hash[Symbol, String]) }
   def search_data
     text = if first_names.blank? || last_names.blank?
-             T.must(registrar_listing).join(' ')
+             T.must(registrar_listing).join(" ")
            else
              T.must(first_names)
               .zip(T.must(last_names))
               .map { |name_parts| full_name(name_parts.first, name_parts.second) }
-              .join(' ')
+              .join(" ")
            end
     text += " #{preferred_label}" if preferred_label.present?
 

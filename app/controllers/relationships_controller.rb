@@ -28,10 +28,10 @@ class RelationshipsController < ApplicationController
 
     if typed_params.subscribe
       user.subscribe(section)
-      render(json: { msg: 'Subscribed' })
+      render(json: { msg: "Subscribed" })
     else
       user.follow(section)
-      render(json: { msg: 'Followed' })
+      render(json: { msg: "Followed" })
     end
   end
 
@@ -44,11 +44,11 @@ class RelationshipsController < ApplicationController
     section = relationship.section
     if typed_params.subscription_only
       user.unsubscribe(section)
-      render(json: { msg: 'Unsubscribed' })
+      render(json: { msg: "Unsubscribed" })
     else
       begin
         user.unfollow(section)
-        render(json: { msg: 'Unfollowed' })
+        render(json: { msg: "Unfollowed" })
       rescue ActiveRecord::RecordNotDestroyed
         render(json: { msg: "You cannot unfollow a class you've reviewed! Did you mean to unsubscribe?" }, status: :bad_request)
       end
@@ -79,7 +79,7 @@ class RelationshipsController < ApplicationController
   def authenticate_or_redirect_user
     return if user_signed_in?
 
-    flash[:error] = 'You must be logged in to follow a class!'
+    flash[:error] = "You must be logged in to follow a class!"
     redirect_to(new_user_session_path, turbolinks: false)
   end
 end

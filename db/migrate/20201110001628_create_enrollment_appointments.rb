@@ -27,7 +27,7 @@ class CreateEnrollmentAppointments < ActiveRecord::Migration[6.0]
       t.datetime(:last, null: false)
 
       t.index(%i[term_id pass standing], unique: true)
-      t.index(%i[term_id pass], unique: true, where: 'standing IS NULL')
+      t.index(%i[term_id pass], unique: true, where: "standing IS NULL")
 
       t.timestamps
     end

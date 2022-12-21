@@ -1,7 +1,7 @@
 <div class="relative mt-24 sm:mt-20 sm:py-16">
   <div aria-hidden="true" class="hidden sm:block">
     <div class="absolute inset-y-0 left-0 w-1/2 bg-gray-50 dark:bg-gray-700 rounded-r-3xl"></div>
-    <%= render 'dots_pattern', classes: 'absolute top-8 left-1/2 -ml-3', width: 404, height: 392 %>
+    <%= render "dots_pattern", classes: "absolute top-8 left-1/2 -ml-3", width: 404, height: 392 %>
   </div>
   <div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="relative rounded-2xl px-6 py-10 bg-red-500 dark:bg-red-600 overflow-hidden shadow-xl sm:px-12 sm:py-20">
@@ -17,7 +17,7 @@
             Available now. Free for all UCLA students.
           </h2>
           <div class="w-full flex justify-center">
-            <%= button_to 'Sign up', user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: 'cursor-pointer mt-6 mx-auto block rounded-md border border-transparent px-5 py-3 bg-gray-900 text-base font-medium text-white shadow hover:bg-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-red-500 sm:px-10' %>
+            <%= button_to "Sign up", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "cursor-pointer mt-6 mx-auto block rounded-md border border-transparent px-5 py-3 bg-gray-900 text-base font-medium text-white shadow hover:bg-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-red-500 sm:px-10" %>
           </div>
 
           <p class="mt-6 mb-4 mx-auto text-lg text-gray-100 font-bold">
@@ -26,10 +26,10 @@
         </div>
 
         <div class="flex justify-center w-full sm:w-3/5 mx-auto" id="home-search">
-          <%= react_component_transparent('Search',
-                                          html_options: { class: 'w-full' },
+          <%= react_component_transparent("Search",
+                                          html_options: { class: "w-full" },
                                           props: {
-                                            id: 'home_search',
+                                            id: "home_search",
                                             searchURL: search_url,
                                             suggestionURL: search_suggestions_url,
                                           }) %>

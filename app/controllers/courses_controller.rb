@@ -67,7 +67,7 @@ class CoursesController < ApplicationController
 
     # Redirect to first instructor if there is one
     first_instructor = @instructors_and_latest_term.first&.first
-    redirect_to(action: 'show_instructor', course_id: typed_params.id, id: first_instructor.id) if first_instructor
+    redirect_to(action: "show_instructor", course_id: typed_params.id, id: first_instructor.id) if first_instructor
   end
 
   class ShowInstructorParams < T::Struct
@@ -88,7 +88,7 @@ class CoursesController < ApplicationController
                                                     term: :enrollment_appointments)
                                  .where(course_id: T.must(@course).id)
                                  .where.not(index: nil)
-    raise ActionController::RoutingError, 'Not Found' if course_sections.size.zero?
+    raise ActionController::RoutingError, "Not Found" if course_sections.size.zero?
 
     @reviews = @instructor.reviews.viewable.merge(course_sections)
     @comments = @reviews.viewable.has_comment.page(typed_params.page).per(10)

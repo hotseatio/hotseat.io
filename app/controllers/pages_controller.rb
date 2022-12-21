@@ -12,10 +12,10 @@ class PagesController < ApplicationController
   sig { returns(String) }
   def layout_for_page
     case params[:id]
-    when 'terms', 'privacy'
-      'prose'
+    when "terms", "privacy"
+      "prose"
     else
-      'application'
+      "application"
     end
   end
 end

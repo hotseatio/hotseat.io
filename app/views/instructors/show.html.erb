@@ -1,15 +1,15 @@
 <% provide(:title, @instructor.full_label) %>
 <% provide(:description, instructor_description(@instructor)) %>
 
-<%= render 'shared/page_header',
+<%= render "shared/page_header",
            title: @instructor.full_label,
-           breadcrumbs: [{ name: 'Home', link: '/' }, { name: 'Instructors', link: instructors_path }, { name: @instructor.full_label, path: instructor_path(@instructor) }] %>
+           breadcrumbs: [{ name: "Home", link: "/" }, { name: "Instructors", link: instructors_path }, { name: @instructor.full_label, path: instructor_path(@instructor) }] %>
 
-<%= render 'shared/reviews_summary_card', reviews: @instructor.reviews %>
+<%= render "shared/reviews_summary_card", reviews: @instructor.reviews %>
 
-<%= render 'shared/card', id: 'courses', title: 'Courses' do %>
-  <%= render 'shared/list', collection: @courses do |course| %>
-    <%= render 'shared/list_item',
+<%= render "shared/card", id: "courses", title: "Courses" do %>
+  <%= render "shared/list", collection: @courses do |course| %>
+    <%= render "shared/list_item",
                link: course_instructor_path(course, @instructor),
                title: course.title,
                subtitle: course.short_title %>

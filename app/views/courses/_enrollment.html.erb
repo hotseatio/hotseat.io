@@ -1,5 +1,5 @@
 <% if enrollment_data.empty? %>
-  <%= render 'shared/card', id: 'enrollment-progress', title: 'Enrollment Progress' do %>
+  <%= render "shared/card", id: "enrollment-progress", title: "Enrollment Progress" do %>
     <div class="px-4 py-5 sm:p-6">
       <p class="text-base text-gray-500 dark:text-gray-400">
         Enrollment data not available.
@@ -7,9 +7,9 @@
     </div>
   <% end %>
 <% else %>
-  <%= react_component_transparent('EnrollmentCard',
+  <%= react_component_transparent("EnrollmentCard",
                                   props: {
-                                    id: 'enrollment-progress',
+                                    id: "enrollment-progress",
                                     termEnrollmentData: enrollment_data,
                                   }) %>
 <% end %>

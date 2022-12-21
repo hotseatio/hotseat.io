@@ -1,15 +1,15 @@
 # typed: false
 # frozen_string_literal: true
 
-require 'aws-sdk-s3'
+require "aws-sdk-s3"
 
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = 'https://hotseat.io'
-SitemapGenerator::Sitemap.public_path = 'tmp/'
-SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new('hotseat-sitemaps',
-                                                                        aws_access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
-                                                                        aws_secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
-                                                                        aws_region: ENV.fetch('AWS_REGION'))
+SitemapGenerator::Sitemap.default_host = "https://hotseat.io"
+SitemapGenerator::Sitemap.public_path = "tmp/"
+SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new("hotseat-sitemaps",
+                                                                        aws_access_key_id: ENV.fetch("AWS_ACCESS_KEY_ID"),
+                                                                        aws_secret_access_key: ENV.fetch("AWS_SECRET_ACCESS_KEY"),
+                                                                        aws_region: ENV.fetch("AWS_REGION"))
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.

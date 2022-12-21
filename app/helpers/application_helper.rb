@@ -9,13 +9,13 @@ module ApplicationHelper
   # should be styled differently when on a given page.
   sig { params(path: String).returns(String) }
   def cp(path)
-    current_page?(path) ? 'current' : ''
+    current_page?(path) ? "current" : ""
   end
 
   # Returns the full title on a per-page basis.
   sig { params(page_title: String).returns(String) }
-  def full_title(page_title = '')
-    base_title = 'Hotseat'
+  def full_title(page_title = "")
+    base_title = "Hotseat"
     if page_title.empty?
       "#{base_title}: Data-driven course enrollment for UCLA"
     else
@@ -25,7 +25,7 @@ module ApplicationHelper
 
   # Returns the full description on a per-page basis.
   sig { params(page_description: String).returns(String) }
-  def full_description(page_description = '')
+  def full_description(page_description = "")
     base_description = "Hotseat is UCLA's premier source on professor and course information. Find reviews, grades, enrollments, textbooks, and more."
     page_description.presence || base_description
   end
@@ -34,11 +34,11 @@ module ApplicationHelper
   sig { params(alert_type: String).returns(ColorHelper::Color) }
   def get_alert_color(alert_type)
     case alert_type
-    when 'alert', 'error'
+    when "alert", "error"
       ColorHelper::Color::Red
-    when 'warn'
+    when "warn"
       ColorHelper::Color::Yellow
-    when 'success'
+    when "success"
       ColorHelper::Color::Green
     else
       ColorHelper::Color::Blue
@@ -49,14 +49,14 @@ module ApplicationHelper
   sig { params(alert_type: String).returns(String) }
   def get_alert_symbol(alert_type)
     case alert_type
-    when 'alert', 'error'
-      'x-circle'
-    when 'warn'
-      'exclamation'
-    when 'success'
-      'check-circle'
+    when "alert", "error"
+      "x-circle"
+    when "warn"
+      "exclamation"
+    when "success"
+      "check-circle"
     else
-      'information-circle'
+      "information-circle"
     end
   end
 
@@ -67,14 +67,14 @@ module ApplicationHelper
                         else
                           props.to_json
                         end
-    content_tag(:div, nil, id: component_name, 'data-react-props': stringified_props, **html_options)
+    content_tag(:div, nil, id: component_name, "data-react-props": stringified_props, **html_options)
   end
 
   sig { returns(T::Boolean) }
   def show_ads?
     !(current_page?(root_path) or
-    current_page?(page_path('privacy')) or
-    current_page?(page_path('terms')) or
-    current_page?(page_path('faq')))
+    current_page?(page_path("privacy")) or
+    current_page?(page_path("terms")) or
+    current_page?(page_path("faq")))
   end
 end

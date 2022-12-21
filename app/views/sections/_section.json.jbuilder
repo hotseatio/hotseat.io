@@ -13,9 +13,9 @@ json.(section,
       :course_id,
       :index)
 json.term do
-  json.partial!('terms/term', term: section.term)
+  json.partial!("terms/term", term: section.term)
 end
 
 json.instructor do
-  json.partial!('instructors/instructor', instructor: section.instructor)
+  json.partial!("instructors/instructor", instructor: section.instructor)
 end

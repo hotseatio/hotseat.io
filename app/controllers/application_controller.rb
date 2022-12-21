@@ -28,10 +28,10 @@ class ApplicationController < ActionController::Base
     return if user.nil? || user_signed_in?
 
     flash.now[:success] = {
-      title: 'Welcome to Hotseat!',
+      title: "Welcome to Hotseat!",
       message: "#{user.name} has referred you to Hotseat. As a bonus for signing up and writing a review, you'll receive 2 notification tokens, for text alerts on any class!",
       link: new_user_session_path,
-      link_title: 'Sign up now ➡️',
+      link_title: "Sign up now ➡️",
     }
 
     cookies[:referral_code] = {
@@ -47,11 +47,11 @@ class ApplicationController < ActionController::Base
     super
     payload[:level] = case payload[:status]
                       when 200
-                        'INFO'
+                        "INFO"
                       when 302
-                        'WARN'
+                        "WARN"
                       else
-                        'ERROR'
+                        "ERROR"
                       end
   end
 

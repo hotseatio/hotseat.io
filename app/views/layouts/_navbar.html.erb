@@ -2,26 +2,26 @@
   <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <!-- Header -->
-      <%= link_to '/', class: 'block flex px-2 lg:px-0 items-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-500' do %>
-        <%= render 'icons/fire', classes: 'h-8' %>
+      <%= link_to "/", class: "block flex px-2 lg:px-0 items-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-500" do %>
+        <%= render "icons/fire", classes: "h-8" %>
         <h1 class="ml-1 text-lg font-extrabold hidden lg:block">hotseat.io</h1>
       <% end %>
 
       <% unless current_page?(root_path) %>
         <!-- Search -->
         <div class="flex-1 flex items-center justify-center px-2 lg:ml-6">
-          <%= react_component_transparent('Search',
+          <%= react_component_transparent("Search",
                                           props: {
                                             isShrinkable: true,
-                                            id: 'navbar_search',
+                                            id: "navbar_search",
                                             searchURL: search_url,
                                             suggestionURL: search_suggestions_url,
-                                            initialValue: @query || '',
+                                            initialValue: @query || "",
                                             magnifyingGlass: true,
-                                            placeholder: 'Search',
+                                            placeholder: "Search",
                                           },
                                           html_options: {
-                                            class: 'w-full',
+                                            class: "w-full",
                                           }) %>
         </div>
       <% end %>
@@ -30,21 +30,21 @@
         <details>
           <!-- Mobile menu button -->
           <summary class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:text-gray-500 dark:hover:text-gray-400 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-500">
-            <%= render 'icons/menu', classes: 'h-6 w-6' %>
+            <%= render "icons/menu", classes: "h-6 w-6" %>
           </summary>
 
           <div class="origin-top-right absolute right-0 bg-white dark:bg-gray-900 w-full h-full z-10">
             <div class="pt-2 pb-3 space-y-1">
-              <%= link_to 'Write a review', new_review_path, class: 'block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-100 hover:border-gray-300 dark:text-gray-300 dark:hover:text-gray-100 dark:hover:bg-gray-800 dark:hover:border-gray-600' %>
+              <%= link_to "Write a review", new_review_path, class: "block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-100 hover:border-gray-300 dark:text-gray-300 dark:hover:text-gray-100 dark:hover:bg-gray-800 dark:hover:border-gray-600" %>
             </div>
             <div class="py-3 space-y-1 border-t border-gray-200 dark:border-gray-700">
               <div class="space-y-1">
                 <% if user_signed_in? %>
-                  <%= link_to 'My Courses', my_courses_path, class: 'mobile-dropdown-link' %>
-                  <%= link_to 'Settings', settings_path, class: 'mobile-dropdown-link' %>
-                  <%= link_to 'Log out', destroy_user_session_path, data: { turbo_method: :delete }, class: 'mobile-dropdown-link' %>
+                  <%= link_to "My Courses", my_courses_path, class: "mobile-dropdown-link" %>
+                  <%= link_to "Settings", settings_path, class: "mobile-dropdown-link" %>
+                  <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "mobile-dropdown-link" %>
                 <% else %>
-                  <%= button_to 'Log in / Sign Up', user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: 'mobile-dropdown-link' %>
+                  <%= button_to "Log in / Sign Up", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "mobile-dropdown-link" %>
                 <% end %>
               </div>
             </div>
@@ -54,13 +54,13 @@
       <div class="hidden lg:ml-4 lg:flex lg:items-stretch lg:space-x-4">
         <% if user_signed_in? %>
           <div class="flex items-center">
-            <%= link_to 'Write a Review', new_review_path, class: 'button-primary' %>
+            <%= link_to "Write a Review", new_review_path, class: "button-primary" %>
           </div>
-          <%= link_to 'My Courses', my_courses_path, class: "desktop-link #{cp(my_courses_path)}" %>
-          <%= link_to 'Settings', settings_path, class: "desktop-link #{cp(settings_path)}" %>
-          <%= link_to 'Log out', destroy_user_session_path, data: { turbo_method: :delete }, class: 'desktop-link' %>
+          <%= link_to "My Courses", my_courses_path, class: "desktop-link #{cp(my_courses_path)}" %>
+          <%= link_to "Settings", settings_path, class: "desktop-link #{cp(settings_path)}" %>
+          <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "desktop-link" %>
         <% else %>
-          <%= button_to 'Log in / Sign Up', user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: 'button-primary' %>
+          <%= button_to "Log in / Sign Up", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "button-primary" %>
         <% end %>
       </div>
     </div>

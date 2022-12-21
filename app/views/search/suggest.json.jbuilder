@@ -10,14 +10,14 @@ json.array!(@results) do |result|
   json.searchable_type(searchable_type)
   json.searchable do
     case result.class.name
-    when 'Course'
+    when "Course"
       course = T.let(result, Course)
       json.id(course.id)
       json.title(course.title)
       json.number(course.number)
       json.subject_area_code(course.subject_area.code)
       json.link_url(url_for(course))
-    when 'Instructor'
+    when "Instructor"
       instructor = T.let(result, Instructor)
       json.id(instructor.id)
       json.full_label(instructor.full_label)

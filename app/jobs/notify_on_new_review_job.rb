@@ -7,8 +7,8 @@ class NotifyOnNewReviewJob < ApplicationJob
 
   sig { params(review: Review).void }
   def perform(review)
-    logger.info('Starting NotifyOnNewReviewJob')
-    webhook_url = ENV.fetch('SLACK_WEBHOOK_URL')
+    logger.info("Starting NotifyOnNewReviewJob")
+    webhook_url = ENV.fetch("SLACK_WEBHOOK_URL")
 
     text = <<~MESSAGE
       New review ##{review.id} created at #{review.created_at} by user ##{T.must(review.user).id}
@@ -38,9 +38,9 @@ class NotifyOnNewReviewJob < ApplicationJob
     logger.info("Posting review to Slack: #{review.id}")
     response = HTTParty.post(webhook_url, {
                                body: { text: }.to_json,
-                               headers: { 'Content-type' => 'application/json' },
+                               headers: { "Content-type" => "application/json" },
                              })
     logger.info("Slack response returned: #{response.code}")
-    logger.info('Finished NotifyOnNewReviewJob')
+    logger.info("Finished NotifyOnNewReviewJob")
   end
 end
