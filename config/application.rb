@@ -11,11 +11,12 @@ Bundler.require(*Rails.groups)
 
 module HotseatIo
   class Application < Rails::Application
-    config.load_defaults(6.1)
+    config.load_defaults(7.0)
 
     config.exceptions_app = routes
 
     config.active_record.schema_format = :sql
+    config.active_support.remove_deprecated_time_with_zone_name = true
 
     # Async is a fine ActiveJob adapter while our only job is the Slack notifier, but
     # we'll probably want something more robust if we add other jobs.

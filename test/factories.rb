@@ -15,7 +15,8 @@ FactoryBot.define do
   factory :term do
     sequence(:term) do |n|
       quarters = %w[W S F 1]
-      years = %w[99 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27]
+      # Note that 21 is missing: we explicitly omit it since `21S` is our "current" term in tests
+      years = %w[99 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 22 23 24 25 26 27]
       years.product(quarters).map(&:join)[n]
     end
   end
