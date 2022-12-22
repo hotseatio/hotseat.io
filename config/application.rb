@@ -16,6 +16,7 @@ module HotseatIo
     config.exceptions_app = routes
 
     config.active_record.schema_format = :sql
+    config.active_support.remove_deprecated_time_with_zone_name = true
 
     # Async is a fine ActiveJob adapter while our only job is the Slack notifier, but
     # we'll probably want something more robust if we add other jobs.

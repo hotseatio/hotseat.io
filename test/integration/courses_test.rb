@@ -14,7 +14,6 @@ class CoursesTest < ActionDispatch::IntegrationTest
 
   describe "GET /courses/:id" do
     it "redirects to the most recent instructor's page if there is an instructor" do
-      # path = T.let(nil, T.nilable(String))
       term = create_current_term
       prev_term = create(:term)
 
