@@ -65,10 +65,7 @@ class ReviewsTest < ActionDispatch::IntegrationTest
                                number: "30",
                                id: 6,
                                preceding_course:)
-      create_list(:section, 6, course:) do |section, i|
-        section.term = create(:term, term: "3#{i}W")
-      end
-
+      create_list(:section, 6, course:)
       get "/reviews/term-suggestions?course_id=#{course.id}"
 
       assert_response :ok
