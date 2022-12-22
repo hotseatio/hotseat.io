@@ -56,7 +56,7 @@ class ReviewsTest < ActionDispatch::IntegrationTest
 
   describe "GET /reviews/term-suggestions" do
     it "provides the terms a given course has been offered under" do
-      term = create_current_term
+      create_current_term
       sign_in create(:user)
       com_sci = create(:subject_area, name: "Computer Science", code: "COM SCI")
       preceding_course = create(:course, subject_area: com_sci, title: "Introduction to the Boop Beep", number: "30", id: 5)
