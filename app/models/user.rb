@@ -71,11 +71,7 @@ class User < ApplicationRecord
 
       if referral_code.present?
         referring_user = User.find_by(referral_code:)
-        if referring_user.present?
-          user.referred_by = referring_user
-          # Referring user gets one token per referral
-          referring_user.add_notification_token
-        end
+        user.referred_by = referring_user if referring_user.present?
       end
 
       user.email = auth.info.email
