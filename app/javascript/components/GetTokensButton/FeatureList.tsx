@@ -43,7 +43,7 @@ export function PrimaryFeatureList({ features, ctaLabel, ctaLink }: Props) {
             <div className="flex-shrink-0">
               <CheckIcon className="flex-shrink-0 h-6 w-6 text-red-500" aria-hidden="true" />
             </div>
-            <p className="ml-3 text-base font-medium text-gray-500">{feature}</p>
+            <p className="ml-3 text-base font-medium text-gray-500 dark:text-gray-400">{feature}</p>
           </li>
         ))}
       </ul>
