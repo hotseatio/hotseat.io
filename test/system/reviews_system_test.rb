@@ -15,7 +15,8 @@ class ReviewsSystemTest < ApplicationSystemTestCase
                      term: create(:term, term: "20W"),
                      instructor: create(:instructor, first_names: ["Paul"], last_names: ["Eggert"]))
 
-    sign_in create(:user)
+    user = create(:user, notification_token_count: 0)
+    sign_in user
     visit "/reviews/new?course=#{section.course_id}"
 
     within "#term" do
@@ -91,6 +92,9 @@ class ReviewsSystemTest < ApplicationSystemTestCase
     assert review.reccomend_textbook
     assert_not review.offers_extra_credit
     assert_equal review_text, review.comments
+
+    user.reload
+    assert_equal(1, user.notification_token_count)
   end
 
   it "allows users to write reviews with section preloaded" do
@@ -103,7 +107,8 @@ class ReviewsSystemTest < ApplicationSystemTestCase
                      term: create(:term, term: "20W"),
                      instructor: create(:instructor, first_names: ["Paul"], last_names: ["Eggert"]))
 
-    sign_in create(:user)
+    user = create(:user, notification_token_count: 0)
+    sign_in user
     visit "/reviews/new?section=#{section.id}"
 
     within "#grade" do
@@ -165,5 +170,8 @@ class ReviewsSystemTest < ApplicationSystemTestCase
     assert review.reccomend_textbook
     assert_not review.offers_extra_credit
     assert_equal review_text, review.comments
+
+    user.reload
+    assert_equal(1, user.notification_token_count)
   end
 end
