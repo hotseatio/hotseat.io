@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState } from 'react'
 import { Switch } from '@headlessui/react'
-import {clsx} from 'clsx'
+import { clsx } from 'clsx'
 
 import CopyToClipboardInput from './CopyToClipboardInput'
 import PhoneInput from './PhoneInput'
@@ -93,7 +93,7 @@ export default function SettingsForm({ updateURL, phoneNumber, ...props }: Props
         </label>
         <p className="text-xs text-gray-500 dark:text-gray-400">
           {
-            "Referrals earn two notification tokens for the first review they write. You'll receive two notification tokens as well! (One when they sign up, one when they write a review.)"
+            "Referred users earn two notification tokens for the first review they write. You'll receive a bonus notification token as well!"
           }
         </p>
 

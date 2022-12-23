@@ -5,7 +5,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import CloseButton from './CloseButton'
 import { PrimaryFeatureList, SecondaryFeatureList } from './FeatureList'
 
-const referFeatures = ['Earn 1 token per new user who signs up.', 'Earn an additional token if they write a review!']
+const referFeatures = ['Earn a token for each user who signs up and writes a review!']
 const reviewFeatures = [
   'Earn 1 token for every course you review.',
   'Helps out other Hotseat users find the best classes!',
