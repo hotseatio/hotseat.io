@@ -34,7 +34,7 @@ export default function SectionRow({
   const [isOpen, setIsOpen] = useState(false)
   return (
     <>
-      <SideBar />
+      <SideBar isOpen={isOpen} onClose={() => setIsOpen(false)} />
       <li onClick={() => setIsOpen(true)}>
         <div className="block hover:bg-gray-50 dark:hover:bg-gray-700">
           <div className="flex items-center px-4 py-2 sm:px-6">
