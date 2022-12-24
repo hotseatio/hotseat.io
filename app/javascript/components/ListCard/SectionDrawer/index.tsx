@@ -1,14 +1,17 @@
 import * as React from 'react'
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import { XMarkIcon, MapPinIcon } from '@heroicons/react/24/outline'
+
+import DrawerHeader from './DrawerHeader'
+import RadioGroup from './RadioGroup'
 
 interface Props {
   isOpen: boolean
   onClose: () => void
 }
 
-export default function SideBar({ isOpen, onClose }: Props) {
+export default function SectionDrawer({ isOpen, onClose }: Props) {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       {/* @ts-expect-error */}
@@ -42,7 +45,7 @@ export default function SideBar({ isOpen, onClose }: Props) {
                     <div className="flex min-h-0 flex-1 flex-col overflow-y-scroll py-6">
                       <div className="px-4 sm:px-6">
                         <div className="flex items-start justify-between">
-                          <Dialog.Title className="text-lg font-medium text-gray-900">Panel title</Dialog.Title>
+                          <Dialog.Title className="text-lg font-bold text-gray-900">{'MGMT 1B: Lec 1'}</Dialog.Title>
                           <div className="ml-3 flex h-7 items-center">
                             <button
                               type="button"
@@ -56,9 +59,8 @@ export default function SideBar({ isOpen, onClose }: Props) {
                         </div>
                       </div>
                       <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                        {/* Replace with your content */}
-                        <div className="h-full border-2 border-dashed border-gray-200" aria-hidden="true" />
-                        {/* /End replace */}
+                        <DrawerHeader />
+                        <RadioGroup />
                       </div>
                     </div>
                     <div className="flex flex-shrink-0 justify-end px-4 py-4">

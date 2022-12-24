@@ -2,8 +2,9 @@ import * as React from 'react'
 import {useState} from 'react'
 import {ClockIcon, MapPinIcon, UserIcon, UsersIcon, CalendarIcon} from '@heroicons/react/24/outline'
 
+import SectionDrawer from './SectionDrawer'
+
 import Badge from 'components/Badge'
-import SideBar from './SideBar'
 import type {BadgeColor} from 'components/Badge'
 
 export type Section = {
@@ -34,7 +35,7 @@ export default function SectionRow({
   const [isOpen, setIsOpen] = useState(false)
   return (
     <>
-      <SideBar isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <SectionDrawer isOpen={isOpen} onClose={() => setIsOpen(false)} />
       <li onClick={() => setIsOpen(true)}>
         <div className="block hover:bg-gray-50 dark:hover:bg-gray-700">
           <div className="flex items-center px-4 py-2 sm:px-6">
