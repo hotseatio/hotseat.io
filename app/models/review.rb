@@ -24,7 +24,7 @@ class Review < ApplicationRecord
     ten_to_fifteen: "10-15",
     fifteen_to_twenty: "15-20",
     twenty_plus: "20+",
-  }, _suffix: :hours
+  }, suffix: :hours
 
   enum final: {
     no_final: "none",
@@ -48,6 +48,12 @@ class Review < ApplicationRecord
     f: "F",
     pass: "P",
     no_pass: "NP",
+  }
+
+  enum status: {
+    pending: "pending",
+    approved: "approved",
+    rejected: "rejected",
   }
 
   scope :viewable, -> { where.not(hidden: true) }
