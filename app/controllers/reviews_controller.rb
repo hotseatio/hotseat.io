@@ -36,6 +36,14 @@ class ReviewsController < ApplicationController
     const :review, ReviewParams
   end
 
+  class EditParams < T::Struct
+    const :id, Integer
+  end
+
+  class UpdateParams < T::Struct
+    const :id, Integer
+  end
+
   class CourseSuggestionsParams < T::Struct
     const :q, String
   end
@@ -80,6 +88,13 @@ class ReviewsController < ApplicationController
     end
   end
 
+  # GET /reviews/:id/edit
+  sig { void }
+  def edit
+    typed_params = TypedParams[EditParams].new.extract!(params)
+    @review = Review.find(typed_params.id)
+  end
+
   sig { void }
   def create
     typed_params = TypedParams[CreateParams].new.extract!(params)
@@ -118,8 +133,6 @@ class ReviewsController < ApplicationController
         comments: review_params.comments,
       )
 
-      user.add_notification_token
-
       logger.info("Queueing NotifyOnNewReviewJob")
       NotifyOnNewReviewJob.perform_later(review)
 
@@ -138,6 +151,13 @@ class ReviewsController < ApplicationController
   rescue ActionController::BadRequest => e
     logger.error(e.inspect)
     render(json: { msg: "Could not create review. Make sure you fill out the class and all questions." }, status: :bad_request)
+  end
+
+  # PUT/PATCH /reviews/:id
+  sig { void }
+  def update
+    typed_params = TypedParams[UpdateParams].new.extract!(params)
+    Rails.logger.debug("hello world")
   end
 
   sig { void }

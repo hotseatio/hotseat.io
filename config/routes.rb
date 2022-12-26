@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   resources "courses", only: %i[index show] do
     get "/instructors/:id", to: "courses#show_instructor", as: :instructor
   end
-  resources "reviews", only: %i[new create]
+  resources "reviews", only: %i[new create edit update]
   get "/reviews/course-suggestions", to: "reviews#course_suggestions"
   get "/reviews/term-suggestions", to: "reviews#term_suggestions"
   get "/reviews/section-suggestions", to: "reviews#section_suggestions"
