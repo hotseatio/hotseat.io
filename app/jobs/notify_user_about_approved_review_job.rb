@@ -22,11 +22,11 @@ class NotifyUserAboutApprovedReviewJob < ApplicationJob
       Your Hotseat review for #{section.course_title} was approved. You now have #{user.notification_token_count} notification tokens.
     MESSAGE
 
-    # Do something later
     client = Aws::SNS::Client.new
     resp = client.publish({
                             phone_number: user.phone,
                             message:,
                           })
+    logger.info("Message sent. Message id: #{resp.message_id}")
   end
 end
