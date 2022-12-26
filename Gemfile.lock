@@ -95,6 +95,9 @@ GEM
       aws-sdk-core (~> 3, >= 3.165.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.4)
+    aws-sdk-sns (1.57.0)
+      aws-sdk-core (~> 3, >= 3.165.0)
+      aws-sigv4 (~> 1.1)
     aws-sigv4 (1.5.2)
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.18)
@@ -567,6 +570,7 @@ DEPENDENCIES
   ahoy_matey
   aws-sdk-lambda
   aws-sdk-s3
+  aws-sdk-sns
   blazer
   bootsnap
   climate_control
