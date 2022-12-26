@@ -104,6 +104,7 @@ export default function Question({ id, text, type, required, onSelect }: Questio
                   className="rating-radio"
                   required={required}
                   onChange={onChange}
+                  // checked={}
                 />
                 <label htmlFor={inputId} className="ml-2 sm:ml-0">
                   {questionLabelForValue({ type, value })}

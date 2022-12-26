@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useReducer } from 'react'
 
 import ReviewClassPicker, { InitialSuggestion } from './ReviewClassPicker'
 import Question from './Question'
@@ -9,6 +9,7 @@ import Alert from 'components/Alert'
 import Select from 'components/Select'
 import LoadingCircle from 'components/icons/LoadingCircle'
 import { authenticityHeaders } from 'utilities/authenticityHeaders'
+import { formatRequestBody } from 'utilities/formatRequestBody'
 
 type QuestionData = {
   id: string
@@ -32,6 +33,31 @@ type Props = {
   initialSuggestion?: InitialSuggestion
 }
 
+interface FormState {
+  sectionId: string
+  grade: string
+  organization: number
+  clarity: number
+  overall: number
+  weeklyTime: string
+  groupProject: boolean
+  extraCredit: boolean
+  attendance: boolean
+  midtermCount: number
+  final: string
+  textbook: boolean
+  comments: string
+}
+
+const formReducer = (state: Partial<FormState>, partialState: Partial<FormState>) => {
+  const nextState = {
+    ...state,
+    ...partialState,
+  }
+
+  return nextState
+}
+
 export default function ReviewForm({
   createURL,
   coursesURL,
@@ -43,13 +69,8 @@ export default function ReviewForm({
 }: Props): JSX.Element {
   const [error, setError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [formData, setFormData] = useState({})
-  const onInputSelect = (id: string, value: string) => {
-    setFormData({
-      ...formData,
-      [id]: value,
-    })
-  }
+
+  const [formData, updateFormData] = useReducer(formReducer, {})
 
   const gradeItems = useMemo(() => grades.map((grade) => ({ id: grade, label: grade })), [grades])
 
@@ -60,7 +81,7 @@ export default function ReviewForm({
     const response = await fetch(createURL, {
       method: 'POST',
       headers: authenticityHeaders({ 'Content-Type': 'application/json' }),
-      body: JSON.stringify(body),
+      body: JSON.stringify(formatRequestBody(body)),
     })
 
     if (response.status !== 200) {
@@ -74,8 +95,6 @@ export default function ReviewForm({
     setIsSubmitting(false)
   }
 
-  const onSectionSelect = (sectionId: string) => onInputSelect('section_id', sectionId)
-
   return (
     <form action="/reviews" acceptCharset="UTF-8" method="post" onSubmit={onSubmit}>
       <h3 className="my-6 text-2xl font-extrabold text-gray-900 dark:text-white">The class</h3>
@@ -84,7 +103,7 @@ export default function ReviewForm({
         sectionSuggestionsURL={sectionSuggestionsURL}
         termSuggestionsURL={termSuggestionsURL}
         initialSuggestion={initialSuggestion}
-        onSectionSelect={onSectionSelect}
+        onSectionSelect={(sectionId: string) => updateFormData({ sectionId })}
       />
 
       <Select
