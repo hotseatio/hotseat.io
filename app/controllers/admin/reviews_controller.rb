@@ -32,4 +32,29 @@ class Admin::ReviewsController < AdminController
     @review = Review.find(typed_params.id)
     @author = @review.user
   end
+
+  class ApproveParams < T::Struct
+    const :id, Integer
+  end
+
+  sig { void }
+  def approve
+    typed_params = TypedParams[ShowParams].new.extract!(params)
+    @review = Review.find(typed_params.id)
+    @review.approved!
+    # Add token for user
+    # Notify about approval
+  end
+
+  class RejectParams < T::Struct
+    const :id, Integer
+  end
+
+  sig { void }
+  def reject
+    typed_params = TypedParams[ShowParams].new.extract!(params)
+    @review = Review.find(typed_params.id)
+    @review.rejected!
+    # Notify about rejection
+  end
 end

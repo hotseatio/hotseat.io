@@ -24,7 +24,7 @@ class Review < ApplicationRecord
     ten_to_fifteen: "10-15",
     fifteen_to_twenty: "15-20",
     twenty_plus: "20+",
-  }, suffix: :hours
+  }, _suffix: :hours
 
   enum final: {
     no_final: "none",
