@@ -105,6 +105,9 @@ gem "gibberish_detector"
 gem "sentry-rails"
 gem "sentry-ruby"
 
+# Texting
+gem "aws-sdk-sns"
+
 group :development, :test do
   gem "debug", ">= 1.0.0"
   gem "factory_bot_rails"

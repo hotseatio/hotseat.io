@@ -41,8 +41,11 @@ class Admin::ReviewsController < AdminController
   def approve
     typed_params = TypedParams[ShowParams].new.extract!(params)
     @review = Review.find(typed_params.id)
+    user = T.must(@review.user)
+
     @review.approved!
-    # Add token for user
+    user.add_notification_token
+
     # Notify about approval
   end
 

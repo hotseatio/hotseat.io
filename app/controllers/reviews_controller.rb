@@ -118,8 +118,6 @@ class ReviewsController < ApplicationController
         comments: review_params.comments,
       )
 
-      user.add_notification_token
-
       logger.info("Queueing NotifyOnNewReviewJob")
       NotifyOnNewReviewJob.perform_later(review)
 
