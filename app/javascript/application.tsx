@@ -11,6 +11,7 @@ import ReviewForm from 'components/ReviewForm'
 import SettingsForm from 'components/SettingsForm'
 import FilterButton from 'components/FilterButton'
 import { SectionListCard, CurrentCoursesListCard, PreviousCoursesListCard } from 'components/ListCard'
+import CalendarCard from 'components/CalendarCard'
 
 const components = {
   Search,
@@ -22,6 +23,7 @@ const components = {
   SectionListCard,
   CurrentCoursesListCard,
   PreviousCoursesListCard,
+  CalendarCard,
 }
 
 document.addEventListener('turbo:load', () => {
@@ -32,6 +34,7 @@ document.addEventListener('turbo:load', () => {
 
       const rawProps = container.getAttribute('data-react-props')
       const props = JSON.parse(rawProps)
+      console.log('props: ', props)
       root.render(<Component {...props} />)
     }
   }

@@ -4,6 +4,8 @@
            title: "My Courses",
            breadcrumbs: [{ name: "Home", link: "/" }, { name: "My Courses", link: my_courses_path }] %>
 
+<%= react_component_transparent("CalendarCard") %>
+
 <%= react_component_transparent("CurrentCoursesListCard",
                                 props: {
                                   notificationTokenCount: current_user.notification_token_count,
