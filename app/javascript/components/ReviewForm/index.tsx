@@ -129,6 +129,7 @@ export default function ReviewForm({
               type={question.type}
               required={question.required}
               onSelect={(id: string, value: string) => updateFormData({ [id]: value })}
+              value={formData[question.id]?.value ?? null}
             />
           ))}
         </div>
