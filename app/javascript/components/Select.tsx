@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Fragment, useMemo, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-import {clsx} from 'clsx'
+import { clsx } from 'clsx'
 
 export type SelectItemID = number | string
 export type SelectItem = {
@@ -11,15 +11,22 @@ export type SelectItem = {
 }
 
 type Props = {
+  // The id attribute for the containing div
   id?: string
+  // The class(es) for the containing div
   className?: string
+  // The selectable items
   items: SelectItem[]
-  placeholder?: boolean
+  // The placeholder value. Defaults to `\u200b` (zero-width space)
   placeholderText?: string
-  label?: string
+  // The label of the input
+  label: string
+  // Whether or not to show the label for screen readers
   labelInvisible?: boolean
+  // Callback when a new item is selected
   onSelect: (selected: SelectItem, index: number) => void
-  initialSelectedIndex?: number
+  // The index of the selected item
+  value: number | 'placeholder'
 }
 
 export default function Select({
@@ -31,22 +38,19 @@ export default function Select({
   onSelect,
   // Zero-width nonbreaking space - keeps the line height of text without containing content
   placeholderText = '\u200b',
-  placeholder = false,
-  initialSelectedIndex = 0,
+  value = 'placeholder',
 }: Props): JSX.Element {
-  const initialSelectedItem = placeholder || !(initialSelectedIndex in items) ? undefined : items[initialSelectedIndex]
-  const [selectedID, setSelectedID] = useState<SelectItemID | undefined>(initialSelectedItem?.id)
-  const selectedItem = useMemo(() => items.find((item) => item.id === selectedID), [items, selectedID])
+  const usePlaceholder = value === 'placeholder' || !(value in items)
+  const selectedItem = usePlaceholder ? undefined : items[value]
 
   const onChange = (newSelectedID: SelectItemID) => {
     const newSelectedIndex = items.findIndex((item) => item.id === newSelectedID)
-    setSelectedID(newSelectedID)
     onSelect(items[newSelectedIndex], newSelectedIndex)
   }
 
   return (
     <div id={id} className={className} role="presentation">
-      <Listbox value={selectedID} onChange={onChange}>
+      <Listbox value={selectedItem.id} onChange={onChange}>
         {({ open }) => (
           <>
             {label && (

@@ -6,6 +6,7 @@ import EnrollmentChart from './EnrollmentChart'
 import type { Marker, EnrollmentDatumJSON } from './EnrollmentChart'
 
 import Select from 'components/Select'
+import type { SelectItem } from 'components/Select'
 import { Card } from 'components/Card'
 
 type TermEnrollmentSection = {
@@ -38,6 +39,8 @@ type Props = {
 
 export default function EnrollmentCard({ id, termEnrollmentData }: Props): JSX.Element {
   const terms = termEnrollmentData.map((d) => d.term)
+  const termItems = useMemo(() => terms.map((term) => ({ id: term, label: term })), [terms])
+
   const [selectedTermIndex, setSelectedTermIndex] = useState(0)
   const selectedTermData = termEnrollmentData[selectedTermIndex]
 
@@ -50,9 +53,8 @@ export default function EnrollmentCard({ id, termEnrollmentData }: Props): JSX.E
     [selectedTermData]
   )
 
-  const [selectedPeriod, setSelectedPeriod] = useState(periodItems[0].id)
-
-  const termItems = useMemo(() => terms.map((term) => ({ id: term, label: term })), [terms])
+  const [selectedPeriodIndex, setSelectedPeriodIndex] = useState(0)
+  const selectedPeriod = periodItems[selectedPeriodIndex]
 
   const SelectNodes = [
     <Select
@@ -60,21 +62,23 @@ export default function EnrollmentCard({ id, termEnrollmentData }: Props): JSX.E
       label="Enrollment or drops:"
       labelInvisible
       className="w-32"
-      onSelect={(period) => setSelectedPeriod(period.id.toString())}
+      onSelect={(_selected: SelectItem, i: number) => setSelectedPeriodIndex(i)}
       items={periodItems}
+      value={selectedPeriodIndex}
     />,
     <Select
       key="term"
       label="Select a term:"
       labelInvisible
       className="w-24"
-      onSelect={(_, i) => setSelectedTermIndex(i)}
+      onSelect={(_selected: SelectItem, i: number) => setSelectedTermIndex(i)}
       items={termItems}
+      value={selectedTermIndex}
     />,
   ]
 
   const { markers, start, end, sections, isLive } =
-    selectedPeriod === 'drop' ? selectedTermData.quarterStart : selectedTermData.enrollmentPeriod
+    selectedPeriod.id === 'drop' ? selectedTermData.quarterStart : selectedTermData.enrollmentPeriod
 
   return (
     <Card id={id} title="Enrollment Progress" rightContent={SelectNodes}>
