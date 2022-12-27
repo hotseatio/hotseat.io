@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { useMemo, useState, useReducer } from 'react'
+import { omit } from 'lodash-es'
 
 import ReviewClassPicker, { InitialSuggestion } from './ReviewClassPicker'
 import Question from './Question'
@@ -7,6 +8,7 @@ import type { QuestionType } from './Question'
 
 import Alert from 'components/Alert'
 import Select from 'components/Select'
+import type { SelectItem } from 'components/Select'
 import LoadingCircle from 'components/icons/LoadingCircle'
 import { authenticityHeaders } from 'utilities/authenticityHeaders'
 import { formatRequestBody } from 'utilities/formatRequestBody'
@@ -35,7 +37,8 @@ type Props = {
 
 interface FormState {
   sectionId: string
-  grade: string
+  grade: string | null
+  gradeIndex: number | 'placeholder'
   organization: number
   clarity: number
   overall: number
@@ -70,14 +73,14 @@ export default function ReviewForm({
   const [error, setError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const [formData, updateFormData] = useReducer(formReducer, {})
+  const [formData, updateFormData] = useReducer(formReducer, { gradeIndex: 'placeholder' })
 
   const gradeItems = useMemo(() => grades.map((grade) => ({ id: grade, label: grade })), [grades])
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
-    const body = { review: formData }
+    const body = { review: omit(formData, 'gradeIndex') }
     const response = await fetch(createURL, {
       method: 'POST',
       headers: authenticityHeaders({ 'Content-Type': 'application/json' }),
@@ -109,10 +112,10 @@ export default function ReviewForm({
       <Select
         id="grade"
         className="mt-4"
-        placeholder={true}
         label="Received grade"
         items={gradeItems}
-        onSelect={(selected) => onInputSelect('grade', selected.label)}
+        value={formData.gradeIndex}
+        onSelect={(selected: SelectItem, i: number) => updateFormData({ grade: selected.label, gradeIndex: i })}
       />
 
       {questionSections.map((section) => (
@@ -125,7 +128,7 @@ export default function ReviewForm({
               text={question.text}
               type={question.type}
               required={question.required}
-              onSelect={onInputSelect}
+              onSelect={(id: string, value: string) => updateFormData({ [id]: value })}
             />
           ))}
         </div>
@@ -151,7 +154,7 @@ export default function ReviewForm({
           className="text-field mt-4"
           name="review[comments]"
           id="review_comments"
-          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onInputSelect('comments', e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => updateFormData({ comments: e.target.value })}
           aria-labelledby="comments"
         />
       </div>

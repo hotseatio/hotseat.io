@@ -149,7 +149,6 @@ function ReviewClassPicker({
 
   // Derived state
   const selectedTerm = terms[selectedTermIndex]
-  const selectedSection = terms[selectedSectionIndex]
   // Memoized derived state
   const termItems = useMemo(() => terms.map((term) => ({ id: term.term, label: term.readable })), [terms])
   const sectionItems = useMemo(
@@ -208,11 +207,16 @@ function ReviewClassPicker({
   }, [sectionSuggestionsURL, selectedCourse, selectedTerm])
 
   const onCourseSelect = (course: Course) => {
-    updateState({ selectedCourse: course, selectedTermIndex: 'placeholder', sections: [] })
+    updateState({
+      selectedCourse: course,
+      selectedTermIndex: 'placeholder',
+      selectedSectionIndex: 'placeholder',
+      sections: [],
+    })
   }
 
   const onTermSelect = (_: SelectItem, i: number) => {
-    updateState({ selectedTermIndex: i })
+    updateState({ selectedTermIndex: i, selectedSectionIndex: 'placeholder' })
   }
 
   const onSectionSelect = (_: SelectItem, i: number) => {

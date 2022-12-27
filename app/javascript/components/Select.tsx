@@ -41,7 +41,7 @@ export default function Select({
   value = 'placeholder',
 }: Props): JSX.Element {
   const usePlaceholder = value === 'placeholder' || !(value in items)
-  const selectedItem = usePlaceholder ? undefined : items[value]
+  const selectedItem: SelectItem | null = usePlaceholder ? null : items[value]
 
   const onChange = (newSelectedID: SelectItemID) => {
     const newSelectedIndex = items.findIndex((item) => item.id === newSelectedID)
@@ -50,7 +50,7 @@ export default function Select({
 
   return (
     <div id={id} className={className} role="presentation">
-      <Listbox value={selectedItem.id} onChange={onChange}>
+      <Listbox value={selectedItem?.id} onChange={onChange}>
         {({ open }) => (
           <>
             {label && (
