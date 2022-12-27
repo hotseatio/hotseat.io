@@ -6,9 +6,13 @@ json = T.unsafe(json)
 @course = T.let(@course, T.nilable(Course))
 @term = T.let(@term, T.nilable(Term))
 @section = T.let(@section, T.nilable(Section))
+@review = T.let(@review, T.nilable(Review))
 
 extend ReviewHelper # rubocop:disable Style/MixinUsage
 
+json.review do
+  json.partial!("reviews/review", review: @review)
+end
 json.question_sections(question_sections)
 json.grades(Review.grades.values)
 json.createURL(reviews_url)

@@ -1,0 +1,13 @@
+<% provide(:title, "Edit review") %>
+
+<%= render "shared/breadcrumbs", path: [{ name: "Home", link: "/" }, { name: "Reviews", link: new_review_path }] %>
+
+<div class="sm:mx-auto sm:w-full sm:max-w-3xl">
+  <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
+    Review a class
+  </h2>
+
+  <div class="mt-8 mb-6 bg-white dark:bg-gray-900 py-8 px-4 shadow sm:rounded-lg sm:px-10">
+    <%= react_component_transparent("ReviewForm", props: render(template: "reviews/form_props", formats: :json)) %>
+  </div>
+</div>

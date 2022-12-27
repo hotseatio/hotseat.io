@@ -81,7 +81,7 @@ const reviewClassPickerReducer = (
   return nextState
 }
 
-const initializeReviewClassPicketState = (initialSuggestion: InitialSuggestion): ReviewClassPickerState => {
+const initializeReviewClassPickerState = (initialSuggestion: InitialSuggestion): ReviewClassPickerState => {
   // Render initial suggestion, if there is one
   let selectedCourse: Course | null = null
   let terms: Term[] = []
@@ -136,7 +136,7 @@ function ReviewClassPicker({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const [state, updateState] = useReducer(reviewClassPickerReducer, initialSuggestion, initializeReviewClassPicketState)
+  const [state, updateState] = useReducer(reviewClassPickerReducer, initialSuggestion, initializeReviewClassPickerState)
   const {
     selectedCourse,
     sections,

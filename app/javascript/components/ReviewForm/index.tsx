@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useMemo, useState, useReducer } from 'react'
-import { omit } from 'lodash-es'
+import { omit, camelCase } from 'lodash-es'
 
 import ReviewClassPicker, { InitialSuggestion } from './ReviewClassPicker'
 import Question from './Question'
@@ -25,6 +25,22 @@ type QuestionSection = {
   questions: QuestionData[]
 }
 
+type Review = {
+  id: string
+  organization: number
+  clarity: number
+  overall: number
+  grade: string
+  weeklyTime: string
+  groupProject: boolean
+  extraCredit: boolean
+  attendance: boolean
+  midtermCount: number
+  final: string
+  textbook: boolean
+  comments: string
+}
+
 type Props = {
   questionSections: QuestionSection[]
   grades: string[]
@@ -33,6 +49,7 @@ type Props = {
   sectionSuggestionsURL: string
   termSuggestionsURL: string
   initialSuggestion?: InitialSuggestion
+  review: Review | null
 }
 
 interface FormState {
@@ -61,6 +78,15 @@ const formReducer = (state: Partial<FormState>, partialState: Partial<FormState>
   return nextState
 }
 
+const initializeReviewFormState = ([review, grades]: [review: Review | null, grades: string[]]): Partial<FormState> => {
+  let gradeIndex: number | 'placeholder' = grades.findIndex((grade) => grade === review.grade)
+  if (gradeIndex === -1) {
+    gradeIndex = 'placeholder'
+  }
+
+  return { gradeIndex, ...omit(review, 'id') }
+}
+
 export default function ReviewForm({
   createURL,
   coursesURL,
@@ -69,13 +95,14 @@ export default function ReviewForm({
   initialSuggestion,
   questionSections,
   grades,
+  review,
 }: Props): JSX.Element {
   const [error, setError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const [formData, updateFormData] = useReducer(formReducer, { gradeIndex: 'placeholder' })
-
+  const [formData, updateFormData] = useReducer(formReducer, [review, grades], initializeReviewFormState)
   const gradeItems = useMemo(() => grades.map((grade) => ({ id: grade, label: grade })), [grades])
+  const isEdit = review !== null
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -98,6 +125,7 @@ export default function ReviewForm({
     setIsSubmitting(false)
   }
 
+  console.log('formData: ', formData)
   return (
     <form action="/reviews" acceptCharset="UTF-8" method="post" onSubmit={onSubmit}>
       <h3 className="my-6 text-2xl font-extrabold text-gray-900 dark:text-white">The class</h3>
@@ -121,17 +149,20 @@ export default function ReviewForm({
       {questionSections.map((section) => (
         <div className="my-4" key={section.title}>
           <h3 className="my-6 text-2xl font-extrabold text-gray-900 dark:text-white">{section.title}</h3>
-          {section.questions.map((question) => (
-            <Question
-              key={question.id}
-              id={question.id}
-              text={question.text}
-              type={question.type}
-              required={question.required}
-              onSelect={(id: string, value: string) => updateFormData({ [id]: value })}
-              value={formData[question.id]?.value ?? null}
-            />
-          ))}
+          {section.questions.map((question) => {
+            const id = camelCase(question.id)
+            return (
+              <Question
+                key={id}
+                id={id}
+                text={question.text}
+                type={question.type}
+                required={question.required}
+                onSelect={(id: string, value: string) => updateFormData({ [id]: value })}
+                value={formData[id] ?? null}
+              />
+            )
+          })}
         </div>
       ))}
 
@@ -157,6 +188,7 @@ export default function ReviewForm({
           id="review_comments"
           onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => updateFormData({ comments: e.target.value })}
           aria-labelledby="comments"
+          value={formData.comments}
         />
       </div>
 

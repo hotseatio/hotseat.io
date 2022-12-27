@@ -93,6 +93,13 @@ class ReviewsController < ApplicationController
   def edit
     typed_params = TypedParams[EditParams].new.extract!(params)
     @review = Review.find(typed_params.id)
+    @section = T.must(@review.section)
+    @initial_suggestion_type = "section"
+    @course = @section.course
+    @term = @section.term
+    @sections = Section.where(course_id: @course.id, term_id: @term.id)
+                       .includes(:term, :instructor)
+                       .order(:index)
   end
 
   sig { void }
