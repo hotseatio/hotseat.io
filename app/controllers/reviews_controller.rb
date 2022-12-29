@@ -93,6 +93,12 @@ class ReviewsController < ApplicationController
   def edit
     typed_params = TypedParams[EditParams].new.extract!(params)
     @review = Review.find(typed_params.id)
+
+    if current_user != @review.user
+      flash[:error] = "You can't edit a review that isn't yours."
+      redirect_back_or_to(my_courses_path)
+    end
+
     @section = T.must(@review.section)
     @initial_suggestion_type = "section"
     @course = @section.course

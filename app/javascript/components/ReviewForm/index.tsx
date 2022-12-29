@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useMemo, useState, useReducer } from 'react'
 import { omit, camelCase } from 'lodash-es'
+import type { SnakeCasedProperties } from 'type-fest'
 
 import ReviewClassPicker, { InitialSuggestion } from './ReviewClassPicker'
 import Question from './Question'
@@ -71,7 +72,7 @@ interface FormState {
 }
 
 interface RequestBody {
-  review: Review
+  review: SnakeCasedProperties<Review>
 }
 
 const formReducer = (state: FormState, partialState: Partial<FormState>) => {

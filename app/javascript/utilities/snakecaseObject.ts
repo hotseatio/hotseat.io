@@ -1,15 +1,7 @@
 import { snakeCase } from 'lodash-es'
+import type { SnakeCasedProperties } from 'type-fest'
 
-type Arg = {
-  [key: string]: string | boolean | number
-}
-
-type ReturnValue = {}
-
-type CamelToSnakeCase<S extends string> = S extends `${infer T}${infer U}`
-  ? `${T extends Capitalize<T> ? '_' : ''}${Lowercase<T>}${CamelToSnakeCase<U>}`
-  : S
-
-export default function snakecaseObject(body: Body) {
-  return Object.fromEntries(Object.entries(body).map(([key, value]) => [snakeCase(key), value]))
+export default function snakecaseObject<T extends object>(obj: T): SnakeCasedProperties<T> {
+  // @ts-expect-error: TODO figure out this error
+  return Object.fromEntries(Object.entries(obj).map(([key, value]) => [snakeCase(key), value]))
 }
