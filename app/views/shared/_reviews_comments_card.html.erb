@@ -8,6 +8,13 @@
             <span class="ml-1 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
               <%= review.location_type.serialize %>
             </span>
+            <% if review.user == current_user %>
+              <%= link_to edit_review_path(review) do %>
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">
+                  Your review · Edit
+                </span>
+              <% end %>
+            <% end %>
           </div>
           <div>
             Grade: <%= Review.grades.fetch(review.grade, "N/A") %>
