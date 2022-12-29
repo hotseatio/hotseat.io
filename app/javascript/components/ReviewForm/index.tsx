@@ -11,7 +11,7 @@ import Select from 'components/Select'
 import type { SelectItem } from 'components/Select'
 import LoadingCircle from 'components/icons/LoadingCircle'
 import { authenticityHeaders } from 'utilities/authenticityHeaders'
-import { formatRequestBody } from 'utilities/formatRequestBody'
+import snakecaseObject from 'utilities/snakecaseObject'
 
 type QuestionData = {
   id: string
@@ -26,7 +26,7 @@ type QuestionSection = {
 }
 
 type Review = {
-  id: string
+  sectionId: string
   organization: number
   clarity: number
   overall: number
@@ -45,6 +45,7 @@ type Props = {
   questionSections: QuestionSection[]
   grades: string[]
   createURL: string
+  editURL: string
   coursesURL: string
   sectionSuggestionsURL: string
   termSuggestionsURL: string
@@ -53,23 +54,27 @@ type Props = {
 }
 
 interface FormState {
-  sectionId: string
+  sectionId: string | null
   grade: string | null
   gradeIndex: number | 'placeholder'
-  organization: number
-  clarity: number
-  overall: number
-  weeklyTime: string
-  groupProject: boolean
-  extraCredit: boolean
-  attendance: boolean
-  midtermCount: number
-  final: string
-  textbook: boolean
-  comments: string
+  organization: number | null
+  clarity: number | null
+  overall: number | null
+  weeklyTime: string | null
+  groupProject: boolean | null
+  extraCredit: boolean | null
+  attendance: boolean | null
+  midtermCount: number | null
+  final: string | null
+  textbook: boolean | null
+  comments: string | null
 }
 
-const formReducer = (state: Partial<FormState>, partialState: Partial<FormState>) => {
+interface RequestBody {
+  review: Review
+}
+
+const formReducer = (state: FormState, partialState: Partial<FormState>) => {
   const nextState = {
     ...state,
     ...partialState,
@@ -78,40 +83,68 @@ const formReducer = (state: Partial<FormState>, partialState: Partial<FormState>
   return nextState
 }
 
-const initializeReviewFormState = ([review, grades]: [review: Review | null, grades: string[]]): Partial<FormState> => {
-  let gradeIndex: number | 'placeholder' = grades.findIndex((grade) => grade === review.grade)
+const initializeReviewFormState = ({ review, grades }: { review: Review | null; grades: string[] }): FormState => {
+  const {
+    grade,
+    sectionId,
+    organization,
+    clarity,
+    overall,
+    weeklyTime,
+    groupProject,
+    extraCredit,
+    attendance,
+    midtermCount,
+    final,
+    textbook,
+    comments,
+  } = review ?? {}
+
+  let gradeIndex: number | 'placeholder' = grades.findIndex((currentGrade) => grade === currentGrade)
   if (gradeIndex === -1) {
     gradeIndex = 'placeholder'
   }
 
-  return { gradeIndex, ...omit(review, 'id') }
+  return {
+    sectionId,
+    grade,
+    gradeIndex,
+    organization,
+    clarity,
+    overall,
+    weeklyTime,
+    groupProject,
+    extraCredit,
+    attendance,
+    midtermCount,
+    final,
+    textbook,
+    comments,
+  }
 }
 
-export default function ReviewForm({
-  createURL,
-  coursesURL,
-  sectionSuggestionsURL,
-  termSuggestionsURL,
-  initialSuggestion,
-  questionSections,
-  grades,
-  review,
-}: Props): JSX.Element {
-  const [error, setError] = useState<string | null>(null)
-  const [isSubmitting, setIsSubmitting] = useState(false)
+interface ConstructOnSubmitParams {
+  url: string
+  method: string
+  state: FormState
+  setIsSubmitting: (isSubmitting: boolean) => void
+  setError: (error: string) => void
+}
 
-  const [formData, updateFormData] = useReducer(formReducer, [review, grades], initializeReviewFormState)
-  const gradeItems = useMemo(() => grades.map((grade) => ({ id: grade, label: grade })), [grades])
-  const isEdit = review !== null
+const formatStateToRequestBody = (formState: FormState): RequestBody => ({
+  review: snakecaseObject(omit(formState, 'gradeIndex')),
+})
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+const constructOnSubmit =
+  ({ state, setIsSubmitting, setError, url, method }: ConstructOnSubmitParams) =>
+  async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
-    const body = { review: omit(formData, 'gradeIndex') }
-    const response = await fetch(createURL, {
-      method: 'POST',
+    const body = formatStateToRequestBody(state)
+    const response = await fetch(url, {
+      method,
       headers: authenticityHeaders({ 'Content-Type': 'application/json' }),
-      body: JSON.stringify(formatRequestBody(body)),
+      body: JSON.stringify(body),
     })
 
     if (response.status !== 200) {
@@ -125,7 +158,32 @@ export default function ReviewForm({
     setIsSubmitting(false)
   }
 
-  console.log('formData: ', formData)
+export default function ReviewForm({
+  createURL,
+  editURL,
+  coursesURL,
+  sectionSuggestionsURL,
+  termSuggestionsURL,
+  initialSuggestion,
+  questionSections,
+  grades,
+  review,
+}: Props): JSX.Element {
+  const [error, setError] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const [formData, updateFormData] = useReducer(formReducer, { review, grades }, initializeReviewFormState)
+  const gradeItems = useMemo(() => grades.map((grade) => ({ id: grade, label: grade })), [grades])
+  const isEdit = review !== null
+
+  const onSubmit = constructOnSubmit({
+    url: isEdit ? editURL : createURL,
+    method: isEdit ? 'PUT' : 'POST',
+    state: formData,
+    setError,
+    setIsSubmitting,
+  })
+
   return (
     <form action="/reviews" acceptCharset="UTF-8" method="post" onSubmit={onSubmit}>
       <h3 className="my-6 text-2xl font-extrabold text-gray-900 dark:text-white">The class</h3>

@@ -5,6 +5,7 @@ review = T.cast(review, Review)
 json = T.unsafe(json)
 
 json.id(review.id)
+json.section_id(T.must(review.section).id)
 json.organization(review.organization)
 json.clarity(review.clarity)
 json.overall(review.overall)
