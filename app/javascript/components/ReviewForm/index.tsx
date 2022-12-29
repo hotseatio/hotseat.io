@@ -45,11 +45,11 @@ type Review = {
 type Props = {
   questionSections: QuestionSection[]
   grades: string[]
-  createURL: string
-  editURL: string
-  coursesURL: string
-  sectionSuggestionsURL: string
-  termSuggestionsURL: string
+  createUrl: string
+  editUrl: string
+  coursesUrl: string
+  sectionSuggestionsUrl: string
+  termSuggestionsUrl: string
   initialSuggestion?: InitialSuggestion
   review: Review | null
 }
@@ -160,11 +160,11 @@ const constructOnSubmit =
   }
 
 export default function ReviewForm({
-  createURL,
-  editURL,
-  coursesURL,
-  sectionSuggestionsURL,
-  termSuggestionsURL,
+  createUrl,
+  editUrl,
+  coursesUrl,
+  sectionSuggestionsUrl,
+  termSuggestionsUrl,
   initialSuggestion,
   questionSections,
   grades,
@@ -178,7 +178,7 @@ export default function ReviewForm({
   const isEdit = review !== null
 
   const onSubmit = constructOnSubmit({
-    url: isEdit ? editURL : createURL,
+    url: isEdit ? editUrl : createUrl,
     method: isEdit ? 'PUT' : 'POST',
     state: formData,
     setError,
@@ -189,9 +189,9 @@ export default function ReviewForm({
     <form action="/reviews" acceptCharset="UTF-8" method="post" onSubmit={onSubmit}>
       <h3 className="my-6 text-2xl font-extrabold text-gray-900 dark:text-white">The class</h3>
       <ReviewClassPicker
-        coursesURL={coursesURL}
-        sectionSuggestionsURL={sectionSuggestionsURL}
-        termSuggestionsURL={termSuggestionsURL}
+        coursesUrl={coursesUrl}
+        sectionSuggestionsUrl={sectionSuggestionsUrl}
+        termSuggestionsUrl={termSuggestionsUrl}
         initialSuggestion={initialSuggestion}
         onSectionSelect={(sectionId: string) => updateFormData({ sectionId })}
       />
@@ -263,7 +263,7 @@ export default function ReviewForm({
         className="mt-4 submit-button disabled:opacity-50 flex items-center justify-center"
         disabled={isSubmitting}
       >
-        <span>Publish review</span>
+        <span>{isEdit ? 'Edit review' : 'Publish review'}</span>
         {isSubmitting && <LoadingCircle className="ml-2 h-5 w-5" />}
       </button>
     </form>

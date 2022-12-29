@@ -30,9 +30,9 @@ type SectionSuggestion = {
 export type InitialSuggestion = CourseSuggestion | SectionSuggestion | null
 
 type Props = {
-  coursesURL: string
-  sectionSuggestionsURL: string
-  termSuggestionsURL: string
+  coursesUrl: string
+  sectionSuggestionsUrl: string
+  termSuggestionsUrl: string
   onSectionSelect: (sectionId: string) => void
   initialSuggestion?: InitialSuggestion
 }
@@ -120,9 +120,9 @@ const initializeReviewClassPickerState = (initialSuggestion: InitialSuggestion):
 }
 
 function ReviewClassPicker({
-  coursesURL,
-  sectionSuggestionsURL,
-  termSuggestionsURL,
+  coursesUrl,
+  sectionSuggestionsUrl,
+  termSuggestionsUrl,
 
   initialSuggestion = null,
   onSectionSelect: onSectionSelectCallback,
@@ -162,7 +162,7 @@ function ReviewClassPicker({
     const fetchTerms = async () => {
       if (selectedCourse === null) return
 
-      const url = new URL(`${termSuggestionsURL}?course_id=${selectedCourse.id}`)
+      const url = new URL(`${termSuggestionsUrl}?course_id=${selectedCourse.id}`)
       updateState({ isLoadingTerms: true })
       try {
         const res = await fetch(url.toString(), {
@@ -179,7 +179,7 @@ function ReviewClassPicker({
       }
     }
     fetchTerms()
-  }, [selectedCourse, termSuggestionsURL])
+  }, [selectedCourse, termSuggestionsUrl])
 
   // Fetch sections corresponding to currently chosen course and term.
   // Triggered on changes to selected course or term.
@@ -187,7 +187,7 @@ function ReviewClassPicker({
     const fetchSections = async () => {
       if (selectedCourse === null || selectedTerm === null) return
 
-      const url = new URL(`${sectionSuggestionsURL}?course_id=${selectedCourse.id}&term=${selectedTerm.term}`)
+      const url = new URL(`${sectionSuggestionsUrl}?course_id=${selectedCourse.id}&term=${selectedTerm.term}`)
       updateState({ isLoadingSections: true })
       try {
         const res = await fetch(url.toString(), {
@@ -204,7 +204,7 @@ function ReviewClassPicker({
       }
     }
     fetchSections()
-  }, [sectionSuggestionsURL, selectedCourse, selectedTerm])
+  }, [sectionSuggestionsUrl, selectedCourse, selectedTerm])
 
   const onCourseSelect = (course: Course) => {
     updateState({
@@ -229,7 +229,7 @@ function ReviewClassPicker({
     <div className="w-full space-y-4">
       <AutocompletableInput
         id="review-class-picker"
-        suggestionURL={coursesURL}
+        suggestionUrl={coursesUrl}
         label="Course"
         placeholder="Search for your class…"
         onSelect={onCourseSelect}

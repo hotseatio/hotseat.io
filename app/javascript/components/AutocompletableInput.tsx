@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useCombobox } from 'downshift'
 import { useDebounceCallback } from '@react-hook/debounce'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import {clsx} from 'clsx'
+import { clsx } from 'clsx'
 
 import { Course } from 'api'
 
@@ -15,7 +15,7 @@ type Props<Suggestion> = {
   id: string
   className?: string
 
-  suggestionURL: string
+  suggestionUrl: string
   label: string
   placeholder?: string
   // Whether or not to display the search icon.
@@ -48,7 +48,7 @@ export const renderCourse = (c: Course): JSX.Element => {
 export default function AutocompletableInput<Suggestion extends IdObj>({
   id,
   className,
-  suggestionURL,
+  suggestionUrl,
   label,
   onSelect,
   onInputChange,
@@ -64,7 +64,7 @@ export default function AutocompletableInput<Suggestion extends IdObj>({
   const [suggestions, setSuggestions] = useState<Suggestion[]>([])
 
   const fetchSuggestions = useDebounceCallback(async (value: string) => {
-    const url = new URL(suggestionURL)
+    const url = new URL(suggestionUrl)
     url.searchParams.set('q', value)
     try {
       const res = await fetch(url.toString(), { headers: { Accept: 'application/json' } })
@@ -78,26 +78,25 @@ export default function AutocompletableInput<Suggestion extends IdObj>({
     }
   }, 200)
 
-  const { isOpen, getLabelProps, getMenuProps, getInputProps, highlightedIndex, getItemProps } =
-    useCombobox({
-      id,
-      items: suggestions,
-      initialSelectedItem,
-      itemToString: suggestionToString,
-      onInputValueChange: ({ inputValue }) => {
-        if (onInputChange) {
-          onInputChange(inputValue)
-        }
-        if (inputValue) {
-          fetchSuggestions(inputValue)
-        }
-      },
-      onSelectedItemChange: ({ selectedItem }) => {
-        if (selectedItem) {
-          onSelect(selectedItem)
-        }
-      },
-    })
+  const { isOpen, getLabelProps, getMenuProps, getInputProps, highlightedIndex, getItemProps } = useCombobox({
+    id,
+    items: suggestions,
+    initialSelectedItem,
+    itemToString: suggestionToString,
+    onInputValueChange: ({ inputValue }) => {
+      if (onInputChange) {
+        onInputChange(inputValue)
+      }
+      if (inputValue) {
+        fetchSuggestions(inputValue)
+      }
+    },
+    onSelectedItemChange: ({ selectedItem }) => {
+      if (selectedItem) {
+        onSelect(selectedItem)
+      }
+    },
+  })
 
   return (
     <div className={clsx('relative', className)} role="presentation">
@@ -107,7 +106,11 @@ export default function AutocompletableInput<Suggestion extends IdObj>({
       <div className="rounded-md shadow-sm">
         {shouldDisplayIcon && (
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <MagnifyingGlassIcon className="h-5 w-5 text-gray-400 dark:text-gray-500" fill="currentColor" aria-hidden="true" />
+            <MagnifyingGlassIcon
+              className="h-5 w-5 text-gray-400 dark:text-gray-500"
+              fill="currentColor"
+              aria-hidden="true"
+            />
           </div>
         )}
         <input
