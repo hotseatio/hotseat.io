@@ -82,6 +82,34 @@ module GeneratedUrlHelpers
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def searchjoy_url(*args, **kwargs); end
 
+  # Sigs for route /admin/reviews(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def admin_reviews_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def admin_reviews_url(*args, **kwargs); end
+
+  # Sigs for route /admin/reviews/new(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def new_admin_review_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def new_admin_review_url(*args, **kwargs); end
+
+  # Sigs for route /admin/reviews/:id/edit(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def edit_admin_review_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def edit_admin_review_url(*args, **kwargs); end
+
+  # Sigs for route /admin/reviews/:id(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def admin_review_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def admin_review_url(*args, **kwargs); end
+
   # Sigs for route /checkout(.:format)
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def checkout_path(*args, **kwargs); end
@@ -137,6 +165,20 @@ module GeneratedUrlHelpers
 
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def new_review_url(*args, **kwargs); end
+
+  # Sigs for route /reviews/:id/edit(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def edit_review_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def edit_review_url(*args, **kwargs); end
+
+  # Sigs for route /reviews/:id(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def review_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def review_url(*args, **kwargs); end
 
   # Sigs for route /reviews/course-suggestions(.:format)
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
