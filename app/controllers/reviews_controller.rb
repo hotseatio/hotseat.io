@@ -158,14 +158,19 @@ class ReviewsController < ApplicationController
   sig { void }
   def update
     typed_params = TypedParams[UpdateParams].new.extract!(params)
+    @review = Review.find(typed_params.id)
     review_params = typed_params.review
     # This action requires authentication, so we're guaranteed a user
     user = T.must(current_user)
 
+    if user != @review.user
+      render(json: { msg: "You can't edit a review that isn't yours." }, status: :bad_request)
+      return
+    end
+
     return unless review_valid?(review_params, user, existing_review: true)
 
-    review = Review.find(typed_params.id)
-    review.update(
+    @review.update(
       grade: review_params.grade,
       organization: review_params.organization,
       weekly_time: review_params.weekly_time,
@@ -187,7 +192,7 @@ class ReviewsController < ApplicationController
     redirect_to(my_courses_path, turbolinks: false, status: :see_other)
   rescue ActionController::BadRequest => e
     logger.error(e.inspect)
-    render(json: { msg: "Could not create review. Make sure you fill out the class and all questions." }, status: :bad_request)
+    render(json: { msg: "Could not update review. Make sure you fill out the class and all questions." }, status: :bad_request)
   end
 
   sig { void }
@@ -222,7 +227,7 @@ class ReviewsController < ApplicationController
   def review_valid?(review_params, user, existing_review: false)
     section = Section.find(review_params.section_id)
 
-    if user.review_count_for_term(section.term) > 6
+    if user.review_count_for_term(section.term) >= 6
       render(json: { msg: "You can only review six classes per term." }, status: :bad_request)
       false
     elsif !existing_review && user.reviewed_course?(section.course)

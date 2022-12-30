@@ -46,7 +46,7 @@ type Props = {
   questionSections: QuestionSection[]
   grades: string[]
   createUrl: string
-  editUrl: string
+  editUrl: string | null
   coursesUrl: string
   sectionSuggestionsUrl: string
   termSuggestionsUrl: string
