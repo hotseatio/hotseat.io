@@ -186,7 +186,12 @@ export default function ReviewForm({
   })
 
   return (
-    <form action="/reviews" acceptCharset="UTF-8" method="post" onSubmit={onSubmit}>
+    <form
+      acceptCharset="UTF-8"
+      action={isEdit ? editUrl : createUrl}
+      method={isEdit ? 'put' : 'post'}
+      onSubmit={onSubmit}
+    >
       <h3 className="my-6 text-2xl font-extrabold text-gray-900 dark:text-white">The class</h3>
       <ReviewClassPicker
         coursesUrl={coursesUrl}

@@ -31,6 +31,9 @@ class UsersController < ApplicationController
     elsif session[:review_created]
       flash[:info] = "Review created!"
       session.delete(:review_created)
+    elsif session[:review_updated]
+      flash[:info] = "Review updated!"
+      session.delete(:review_updated)
     end
     @term = Term.current
     user = T.must(current_user)
