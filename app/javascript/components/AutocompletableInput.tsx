@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { useState } from 'react'
-import { useCombobox } from 'downshift'
-import { useDebounceCallback } from '@react-hook/debounce'
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import { clsx } from 'clsx'
+import {useState} from 'react'
+import {useCombobox} from 'downshift'
+import {useDebounceCallback} from '@react-hook/debounce'
+import {MagnifyingGlassIcon} from '@heroicons/react/20/solid'
+import {clsx} from 'clsx'
 
-import { Course } from 'api'
+import {Course} from 'api'
 
 interface IdObj {
   id: string | number
@@ -67,7 +67,7 @@ export default function AutocompletableInput<Suggestion extends IdObj>({
     const url = new URL(suggestionUrl)
     url.searchParams.set('q', value)
     try {
-      const res = await fetch(url.toString(), { headers: { Accept: 'application/json' } })
+      const res = await fetch(url.toString(), {headers: {Accept: 'application/json'}})
       if (res.ok) {
         setSuggestions((await res.json()) as Suggestion[])
       } else {
@@ -78,12 +78,12 @@ export default function AutocompletableInput<Suggestion extends IdObj>({
     }
   }, 200)
 
-  const { isOpen, getLabelProps, getMenuProps, getInputProps, highlightedIndex, getItemProps } = useCombobox({
+  const {isOpen, getLabelProps, getMenuProps, getInputProps, highlightedIndex, getItemProps} = useCombobox({
     id,
     items: suggestions,
     initialSelectedItem,
     itemToString: suggestionToString,
-    onInputValueChange: ({ inputValue }) => {
+    onInputValueChange: ({inputValue}) => {
       if (onInputChange) {
         onInputChange(inputValue)
       }
@@ -91,7 +91,7 @@ export default function AutocompletableInput<Suggestion extends IdObj>({
         fetchSuggestions(inputValue)
       }
     },
-    onSelectedItemChange: ({ selectedItem }) => {
+    onSelectedItemChange: ({selectedItem}) => {
       if (selectedItem) {
         onSelect(selectedItem)
       }
@@ -114,10 +114,10 @@ export default function AutocompletableInput<Suggestion extends IdObj>({
           </div>
         )}
         <input
-          {...getInputProps({ onFocus, onBlur })}
+          {...getInputProps({onFocus, onBlur})}
           placeholder={placeholder}
           type="text"
-          className={clsx('base-input block w-full rounded-md', { 'pl-10': shouldDisplayIcon })}
+          className={clsx('base-input block w-full rounded-md', {'pl-10': shouldDisplayIcon})}
           required={required}
         />
       </div>
@@ -134,7 +134,7 @@ export default function AutocompletableInput<Suggestion extends IdObj>({
               'cursor-default select-none relative py-2 pl-8 pr-4'
             )}
             key={suggestion.id}
-            {...getItemProps({ item: suggestion, index })}
+            {...getItemProps({item: suggestion, index})}
           >
             {renderSuggestion(suggestion)}
           </li>

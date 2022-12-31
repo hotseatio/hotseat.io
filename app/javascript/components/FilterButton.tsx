@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { useState } from 'react'
+import {useState} from 'react'
 import {clsx} from 'clsx'
-import { usePopper } from 'react-popper'
-import { Listbox } from '@headlessui/react'
-import { CheckIcon, FunnelIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
+import {usePopper} from 'react-popper'
+import {Listbox} from '@headlessui/react'
+import {CheckIcon, FunnelIcon, ChevronUpDownIcon} from '@heroicons/react/20/solid'
 
 type Link = {
   key: string
@@ -16,10 +16,10 @@ type Props = {
   links: Link[]
 }
 
-export default function FilterButton({ links }: Props): JSX.Element | null {
+export default function FilterButton({links}: Props): JSX.Element | null {
   const [referenceElement, setReferenceElement] = useState<HTMLButtonElement | null>(null)
   const [popperElement, setPopperElement] = useState<HTMLUListElement | null>(null)
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+  const {styles, attributes} = usePopper(referenceElement, popperElement, {
     placement: 'bottom-end',
   })
 
@@ -55,7 +55,7 @@ export default function FilterButton({ links }: Props): JSX.Element | null {
           <Listbox.Option
             key={link.key}
             value={link}
-            className={({ selected, active }) =>
+            className={({selected, active}) =>
               clsx(
                 active ? 'text-white bg-red-600' : 'text-gray-900 dark:text-white',
                 selected ? 'font-semibold' : 'font-normal',
@@ -63,7 +63,7 @@ export default function FilterButton({ links }: Props): JSX.Element | null {
               )
             }
           >
-            {({ selected, active }) => (
+            {({selected, active}) => (
               <a href={link.url} className={'block px-4 py-2 relative'}>
                 {link.label}
                 {selected ? (

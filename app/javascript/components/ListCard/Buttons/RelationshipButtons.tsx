@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { useState } from 'react'
-import { StarIcon as StarIconSolid, BellIcon as BellIconSolid } from '@heroicons/react/20/solid'
-import { StarIcon as StarIconOutline, BellIcon as BellIconOutline } from '@heroicons/react/24/outline'
+import {useState} from 'react'
+import {StarIcon as StarIconSolid, BellIcon as BellIconSolid} from '@heroicons/react/20/solid'
+import {StarIcon as StarIconOutline, BellIcon as BellIconOutline} from '@heroicons/react/24/outline'
 
 import RequestButton from 'components/RequestButton'
 import ConfirmModal from 'components/ConfirmModal'
@@ -12,22 +12,22 @@ type ButtonProps = {
   onClick?: () => void
 }
 
-export function FollowButton({ isFollowed, ...props }: ButtonProps & { isFollowed: boolean }): JSX.Element {
+export function FollowButton({isFollowed, ...props}: ButtonProps & {isFollowed: boolean}): JSX.Element {
   return isFollowed ? <ToggledFollowButton {...props} /> : <UntoggledFollowButton {...props} />
 }
 
-export function SubscribeButton({ isSubscribed, ...props }: ButtonProps & { isSubscribed: boolean }): JSX.Element {
+export function SubscribeButton({isSubscribed, ...props}: ButtonProps & {isSubscribed: boolean}): JSX.Element {
   return isSubscribed ? <ToggledSubscribeButton {...props} /> : <UntoggledSubscribeButton {...props} />
 }
 
-function UntoggledFollowButton({ sectionId, onClick }: ButtonProps): JSX.Element {
+function UntoggledFollowButton({sectionId, onClick}: ButtonProps): JSX.Element {
   return (
     <RequestButton
       title="Add to my courses"
       className="button-secondary"
       resource="/relationships"
       method="POST"
-      body={{ section_id: sectionId, subscribe: false }}
+      body={{section_id: sectionId, subscribe: false}}
       onClick={onClick}
     >
       <StarIconOutline className="h-5 w-5" />
@@ -35,14 +35,14 @@ function UntoggledFollowButton({ sectionId, onClick }: ButtonProps): JSX.Element
   )
 }
 
-function ToggledFollowButton({ sectionId, onClick }: ButtonProps): JSX.Element {
+function ToggledFollowButton({sectionId, onClick}: ButtonProps): JSX.Element {
   return (
     <RequestButton
       title="Remove from my courses"
       className="button-secondary"
       resource={`/relationships/${sectionId}`}
       method="DELETE"
-      body={{ section_id: sectionId, subscription_only: false }}
+      body={{section_id: sectionId, subscription_only: false}}
       onClick={onClick}
     >
       <StarIconSolid className="h-5 w-5" />
@@ -50,12 +50,12 @@ function ToggledFollowButton({ sectionId, onClick }: ButtonProps): JSX.Element {
   )
 }
 
-function UntoggledSubscribeButton({ sectionId, onClick }: ButtonProps): JSX.Element {
+function UntoggledSubscribeButton({sectionId, onClick}: ButtonProps): JSX.Element {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [notificationTokens, setNotificationTokens] = useState(0)
   const [phone, setPhone] = useState<string | null>(null)
 
-  const onOpenModal = (payload: { notificationTokens: number; phone: string }) => {
+  const onOpenModal = (payload: {notificationTokens: number; phone: string}) => {
     setNotificationTokens(payload.notificationTokens)
     setPhone(payload.phone)
     setIsModalOpen(true)
@@ -101,7 +101,7 @@ function UntoggledSubscribeButton({ sectionId, onClick }: ButtonProps): JSX.Elem
           confirmRequest={{
             method: 'POST',
             resource: '/relationships',
-            body: { section_id: sectionId, subscribe: true },
+            body: {section_id: sectionId, subscribe: true},
           }}
         />
       )}
@@ -109,7 +109,7 @@ function UntoggledSubscribeButton({ sectionId, onClick }: ButtonProps): JSX.Elem
   )
 }
 
-function ToggledSubscribeButton({ sectionId, onClick }: ButtonProps): JSX.Element {
+function ToggledSubscribeButton({sectionId, onClick}: ButtonProps): JSX.Element {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const onConfirm = () => {
     setIsModalOpen(false)
@@ -131,7 +131,7 @@ function ToggledSubscribeButton({ sectionId, onClick }: ButtonProps): JSX.Elemen
         confirmRequest={{
           method: 'DELETE',
           resource: `/relationships/${sectionId}`,
-          body: { section_id: sectionId, subscription_only: true },
+          body: {section_id: sectionId, subscription_only: true},
         }}
       />
     </>

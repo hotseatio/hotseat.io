@@ -1,6 +1,6 @@
 import '@hotwired/turbo-rails'
 import * as React from 'react'
-import { createRoot } from 'react-dom/client'
+import {createRoot} from 'react-dom/client'
 import ahoy from 'ahoy.js'
 
 // React components
@@ -10,7 +10,7 @@ import GradeCard from 'components/GradeCard'
 import ReviewForm from 'components/ReviewForm'
 import SettingsForm from 'components/SettingsForm'
 import FilterButton from 'components/FilterButton'
-import { SectionListCard, CurrentCoursesListCard, PreviousCoursesListCard } from 'components/ListCard'
+import {SectionListCard, CurrentCoursesListCard, PreviousCoursesListCard} from 'components/ListCard'
 
 const components = {
   Search,

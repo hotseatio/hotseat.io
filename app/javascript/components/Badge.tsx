@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {clsx} from 'clsx'
 
-export type BadgeColor = { text: string; background: string }
+export type BadgeColor = {text: string; background: string}
 
 type Props = {
   label: string
@@ -10,7 +10,7 @@ type Props = {
   size?: 'small' | 'medium' | 'large'
 }
 
-export default function Badge({ label, color, className, size = 'medium' }: Props): JSX.Element {
+export default function Badge({label, color, className, size = 'medium'}: Props): JSX.Element {
   return (
     <span
       className={clsx(

@@ -1,17 +1,17 @@
 import * as React from 'react'
-import { useMemo, useState, useReducer } from 'react'
-import { omit, camelCase } from 'lodash-es'
-import type { SnakeCasedProperties } from 'type-fest'
+import {useMemo, useState, useReducer} from 'react'
+import {omit, camelCase} from 'lodash-es'
+import type {SnakeCasedProperties} from 'type-fest'
 
-import ReviewClassPicker, { InitialSuggestion } from './ReviewClassPicker'
+import ReviewClassPicker, {InitialSuggestion} from './ReviewClassPicker'
 import Question from './Question'
-import type { QuestionType } from './Question'
+import type {QuestionType} from './Question'
 
 import Alert from 'components/Alert'
 import Select from 'components/Select'
-import type { SelectItem } from 'components/Select'
+import type {SelectItem} from 'components/Select'
 import LoadingCircle from 'components/icons/LoadingCircle'
-import { authenticityHeaders } from 'utilities/authenticityHeaders'
+import {authenticityHeaders} from 'utilities/authenticityHeaders'
 import snakecaseObject from 'utilities/snakecaseObject'
 
 type QuestionData = {
@@ -84,7 +84,7 @@ const formReducer = (state: FormState, partialState: Partial<FormState>) => {
   return nextState
 }
 
-const initializeReviewFormState = ({ review, grades }: { review: Review | null; grades: string[] }): FormState => {
+const initializeReviewFormState = ({review, grades}: {review: Review | null; grades: string[]}): FormState => {
   const {
     grade,
     sectionId,
@@ -137,14 +137,14 @@ const formatStateToRequestBody = (formState: FormState): RequestBody => ({
 })
 
 const constructOnSubmit =
-  ({ state, setIsSubmitting, setError, url, method }: ConstructOnSubmitParams) =>
+  ({state, setIsSubmitting, setError, url, method}: ConstructOnSubmitParams) =>
   async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
     const body = formatStateToRequestBody(state)
     const response = await fetch(url, {
       method,
-      headers: authenticityHeaders({ 'Content-Type': 'application/json' }),
+      headers: authenticityHeaders({'Content-Type': 'application/json'}),
       body: JSON.stringify(body),
     })
 
@@ -173,8 +173,8 @@ export default function ReviewForm({
   const [error, setError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const [formData, updateFormData] = useReducer(formReducer, { review, grades }, initializeReviewFormState)
-  const gradeItems = useMemo(() => grades.map((grade) => ({ id: grade, label: grade })), [grades])
+  const [formData, updateFormData] = useReducer(formReducer, {review, grades}, initializeReviewFormState)
+  const gradeItems = useMemo(() => grades.map((grade) => ({id: grade, label: grade})), [grades])
   const isEdit = review !== null
 
   const onSubmit = constructOnSubmit({
@@ -198,7 +198,7 @@ export default function ReviewForm({
         sectionSuggestionsUrl={sectionSuggestionsUrl}
         termSuggestionsUrl={termSuggestionsUrl}
         initialSuggestion={initialSuggestion}
-        onSectionSelect={(sectionId: string) => updateFormData({ sectionId })}
+        onSectionSelect={(sectionId: string) => updateFormData({sectionId})}
       />
 
       <Select
@@ -207,7 +207,7 @@ export default function ReviewForm({
         label="Received grade"
         items={gradeItems}
         value={formData.gradeIndex}
-        onSelect={(selected: SelectItem, i: number) => updateFormData({ grade: selected.label, gradeIndex: i })}
+        onSelect={(selected: SelectItem, i: number) => updateFormData({grade: selected.label, gradeIndex: i})}
       />
 
       {questionSections.map((section) => (
@@ -222,7 +222,7 @@ export default function ReviewForm({
                 text={question.text}
                 type={question.type}
                 required={question.required}
-                onSelect={(id: string, value: string) => updateFormData({ [id]: value })}
+                onSelect={(id: string, value: string) => updateFormData({[id]: value})}
                 value={formData[id] ?? null}
               />
             )
@@ -250,7 +250,7 @@ export default function ReviewForm({
           className="text-field mt-4"
           name="review[comments]"
           id="review_comments"
-          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => updateFormData({ comments: e.target.value })}
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => updateFormData({comments: e.target.value})}
           aria-labelledby="comments"
           value={formData.comments}
         />

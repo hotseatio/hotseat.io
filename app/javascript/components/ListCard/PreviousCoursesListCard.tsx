@@ -1,20 +1,19 @@
 import * as React from 'react'
-import { CheckIcon } from '@heroicons/react/24/outline'
-
+import {CheckIcon} from '@heroicons/react/24/outline'
 
 import CourseRow from './CourseRow'
-import type { Section } from './SectionRow'
-import { ReviewButton, DetailsButton } from './Buttons'
-import { IsBetaTesterContext } from './context'
+import type {Section} from './SectionRow'
+import {ReviewButton, DetailsButton} from './Buttons'
+import {IsBetaTesterContext} from './context'
 
-import { Card } from 'components/Card'
+import {Card} from 'components/Card'
 
 type Props = {
   isBetaTester: boolean
   sections: Section[]
 }
 
-export default function PreviousCoursesListCard({ isBetaTester, sections }: Props): JSX.Element {
+export default function PreviousCoursesListCard({isBetaTester, sections}: Props): JSX.Element {
   return (
     <IsBetaTesterContext.Provider value={isBetaTester}>
       <Card id="previous-courses" title="Previous Courses">

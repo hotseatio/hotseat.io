@@ -1,14 +1,14 @@
 import * as React from 'react'
-import { useState } from 'react'
-import { clsx } from 'clsx'
+import {useState} from 'react'
+import {clsx} from 'clsx'
 
 import AutocompletableInput from 'components/AutocompletableInput'
-import { Course, Instructor } from 'api'
+import {Course, Instructor} from 'api'
 
 export type CourseSearchSuggestion = {
   id: string
   searchableType: 'Course'
-  searchable: Course & { linkUrl: string }
+  searchable: Course & {linkUrl: string}
 }
 
 export type InstructorSearchSuggestion = {

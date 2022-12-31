@@ -1,13 +1,13 @@
 import * as React from 'react'
-import { useMemo, useState } from 'react'
-import { compact } from 'lodash-es'
+import {useMemo, useState} from 'react'
+import {compact} from 'lodash-es'
 
 import EnrollmentChart from './EnrollmentChart'
-import type { Marker, EnrollmentDatumJSON } from './EnrollmentChart'
+import type {Marker, EnrollmentDatumJSON} from './EnrollmentChart'
 
 import Select from 'components/Select'
-import type { SelectItem } from 'components/Select'
-import { Card } from 'components/Card'
+import type {SelectItem} from 'components/Select'
+import {Card} from 'components/Card'
 
 type TermEnrollmentSection = {
   label: string
@@ -37,9 +37,9 @@ type Props = {
   termEnrollmentData: TermEnrollmentDatum[]
 }
 
-export default function EnrollmentCard({ id, termEnrollmentData }: Props): JSX.Element {
+export default function EnrollmentCard({id, termEnrollmentData}: Props): JSX.Element {
   const terms = termEnrollmentData.map((d) => d.term)
-  const termItems = useMemo(() => terms.map((term) => ({ id: term, label: term })), [terms])
+  const termItems = useMemo(() => terms.map((term) => ({id: term, label: term})), [terms])
 
   const [selectedTermIndex, setSelectedTermIndex] = useState(0)
   const selectedTermData = termEnrollmentData[selectedTermIndex]
@@ -47,8 +47,8 @@ export default function EnrollmentCard({ id, termEnrollmentData }: Props): JSX.E
   const periodItems = useMemo(
     () =>
       compact([
-        selectedTermData.enrollmentPeriod.sections.length > 0 ? { label: 'Enrollment', id: 'enroll' } : null,
-        selectedTermData.quarterStart.sections.length > 0 ? { label: 'Drops', id: 'drop' } : null,
+        selectedTermData.enrollmentPeriod.sections.length > 0 ? {label: 'Enrollment', id: 'enroll'} : null,
+        selectedTermData.quarterStart.sections.length > 0 ? {label: 'Drops', id: 'drop'} : null,
       ]),
     [selectedTermData]
   )
@@ -77,7 +77,7 @@ export default function EnrollmentCard({ id, termEnrollmentData }: Props): JSX.E
     />,
   ]
 
-  const { markers, start, end, sections, isLive } =
+  const {markers, start, end, sections, isLive} =
     selectedPeriod.id === 'drop' ? selectedTermData.quarterStart : selectedTermData.enrollmentPeriod
 
   return (

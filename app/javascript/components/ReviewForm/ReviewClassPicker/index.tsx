@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { useMemo, useState, useEffect, useReducer } from 'react'
+import {useMemo, useState, useEffect, useReducer} from 'react'
 
 import Alert from 'components/Alert'
-import AutocompletableInput, { renderCourse } from 'components/AutocompletableInput'
+import AutocompletableInput, {renderCourse} from 'components/AutocompletableInput'
 import LoadingCircle from 'components/icons/LoadingCircle'
-import Select, { SelectItem } from 'components/Select'
-import { Course, Term, Section } from 'api'
+import Select, {SelectItem} from 'components/Select'
+import {Course, Term, Section} from 'api'
 
 export type TermReviewSuggestion = {
   terms: Term[]
@@ -94,7 +94,7 @@ const initializeReviewClassPickerState = (initialSuggestion: InitialSuggestion):
   if (initialSuggestion?.type === 'course') {
     selectedCourse = initialSuggestion.course
   } else if (initialSuggestion?.type === 'section') {
-    const { selectedTerm, selectedSection } = initialSuggestion
+    const {selectedTerm, selectedSection} = initialSuggestion
 
     selectedCourse = initialSuggestion.course
     sections = initialSuggestion.sections
@@ -137,22 +137,15 @@ function ReviewClassPicker({
   }, [])
 
   const [state, updateState] = useReducer(reviewClassPickerReducer, initialSuggestion, initializeReviewClassPickerState)
-  const {
-    selectedCourse,
-    sections,
-    terms,
-    selectedTermIndex,
-    selectedSectionIndex,
-    precedingCourse,
-    supersedingCourse,
-  } = state
+  const {selectedCourse, sections, terms, selectedTermIndex, selectedSectionIndex, precedingCourse, supersedingCourse} =
+    state
 
   // Derived state
   const selectedTerm = terms[selectedTermIndex]
   // Memoized derived state
-  const termItems = useMemo(() => terms.map((term) => ({ id: term.term, label: term.readable })), [terms])
+  const termItems = useMemo(() => terms.map((term) => ({id: term.term, label: term.readable})), [terms])
   const sectionItems = useMemo(
-    () => sections.map((section) => ({ id: section.id, label: sectionToLabel(section) })),
+    () => sections.map((section) => ({id: section.id, label: sectionToLabel(section)})),
     [sections]
   )
 
@@ -163,19 +156,19 @@ function ReviewClassPicker({
       if (selectedCourse === null) return
 
       const url = new URL(`${termSuggestionsUrl}?course_id=${selectedCourse.id}`)
-      updateState({ isLoadingTerms: true })
+      updateState({isLoadingTerms: true})
       try {
         const res = await fetch(url.toString(), {
-          headers: { Accept: 'application/json' },
+          headers: {Accept: 'application/json'},
         })
         if (res.ok) {
           const termSuggestion: TermReviewSuggestion = await res.json()
-          updateState({ ...termSuggestion })
+          updateState({...termSuggestion})
         } else {
           console.error('Could not get terms', url.toString(), res.status)
         }
       } finally {
-        updateState({ isLoadingTerms: false })
+        updateState({isLoadingTerms: false})
       }
     }
     fetchTerms()
@@ -188,19 +181,19 @@ function ReviewClassPicker({
       if (selectedCourse === null || selectedTerm === null) return
 
       const url = new URL(`${sectionSuggestionsUrl}?course_id=${selectedCourse.id}&term=${selectedTerm.term}`)
-      updateState({ isLoadingSections: true })
+      updateState({isLoadingSections: true})
       try {
         const res = await fetch(url.toString(), {
-          headers: { Accept: 'application/json' },
+          headers: {Accept: 'application/json'},
         })
         if (res.ok) {
           const sections = await res.json()
-          updateState({ sections })
+          updateState({sections})
         } else {
           console.error('Could not get sections', url.toString(), res.status)
         }
       } finally {
-        updateState({ isLoadingSections: false })
+        updateState({isLoadingSections: false})
       }
     }
     fetchSections()
@@ -216,12 +209,12 @@ function ReviewClassPicker({
   }
 
   const onTermSelect = (_: SelectItem, i: number) => {
-    updateState({ selectedTermIndex: i, selectedSectionIndex: 'placeholder' })
+    updateState({selectedTermIndex: i, selectedSectionIndex: 'placeholder'})
   }
 
   const onSectionSelect = (_: SelectItem, i: number) => {
     const section = sections[i]
-    updateState({ selectedSectionIndex: i })
+    updateState({selectedSectionIndex: i})
     onSectionSelectCallback(section.id.toString())
   }
 

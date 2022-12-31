@@ -24,11 +24,11 @@ function questionValueRange(type: QuestionType): number[] | string[] {
 
 function questionLabelForValue(
   q:
-    | { type: 'agreement'; value: 1 | 2 | 3 | 4 | 5 | 6 | 7 }
-    | { type: 'count'; value: 0 | 1 | 2 | 3 }
-    | { type: 'binary'; value: 'false' | 'true' }
-    | { type: 'final'; value: 'none' | '10th' | 'finals' }
-    | { type: 'time'; value: string }
+    | {type: 'agreement'; value: 1 | 2 | 3 | 4 | 5 | 6 | 7}
+    | {type: 'count'; value: 0 | 1 | 2 | 3}
+    | {type: 'binary'; value: 'false' | 'true'}
+    | {type: 'final'; value: 'none' | '10th' | 'finals'}
+    | {type: 'time'; value: string}
 ): string {
   const likertResponsesAgreement = {
     1: 'Strongly disagree',
@@ -115,7 +115,7 @@ export default function Question({
                   checked={value === checkedValue}
                 />
                 <label htmlFor={inputId} className="ml-2 sm:ml-0">
-                  {questionLabelForValue({ type, value })}
+                  {questionLabelForValue({type, value})}
                 </label>
               </div>
             )

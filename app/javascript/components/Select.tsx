@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { Fragment, useMemo, useState } from 'react'
-import { Listbox, Transition } from '@headlessui/react'
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-import { clsx } from 'clsx'
+import {Fragment, useMemo, useState} from 'react'
+import {Listbox, Transition} from '@headlessui/react'
+import {CheckIcon, ChevronUpDownIcon} from '@heroicons/react/20/solid'
+import {clsx} from 'clsx'
 
 export type SelectItemID = number | string
 export type SelectItem = {
@@ -51,7 +51,7 @@ export default function Select({
   return (
     <div id={id} className={className} role="presentation">
       <Listbox value={selectedItem?.id} onChange={onChange}>
-        {({ open }) => (
+        {({open}) => (
           <>
             {label && (
               <Listbox.Label
@@ -86,7 +86,7 @@ export default function Select({
                   {items.map((item) => (
                     <Listbox.Option
                       key={item.id}
-                      className={({ active }) =>
+                      className={({active}) =>
                         clsx(
                           active ? 'text-white bg-red-600' : 'text-gray-900 dark:text-white',
                           'cursor-default select-none relative py-2 pl-3 pr-9'
@@ -94,7 +94,7 @@ export default function Select({
                       }
                       value={item.id}
                     >
-                      {({ selected, active }) => (
+                      {({selected, active}) => (
                         <>
                           <span className={clsx(selected ? 'font-semibold' : 'font-normal', 'block truncate')}>
                             {item.label}
