@@ -96,6 +96,23 @@ class ReviewsTest < ActionDispatch::IntegrationTest
     end
   end
 
+  describe "GET /reviews/section-suggestions" do
+    it "provides the sections for a given term and course" do
+      term = create_current_term
+      sign_in create(:user)
+      com_sci = create(:subject_area, name: "Computer Science", code: "COM SCI")
+      course = create(:course, subject_area: com_sci,
+                               title: "Introduction to the Beep Boop",
+                               number: "30",
+                               id: 6)
+      create_list(:section, 6, course:, term:)
+      get "/reviews/section-suggestions?course_id=#{course.id}&term=#{term.term}"
+
+      assert_response :ok
+      assert_equal 6, response.parsed_body.length
+    end
+  end
+
   describe "POST /reviews" do
     before do
       @term = T.let(create_current_term, Term)

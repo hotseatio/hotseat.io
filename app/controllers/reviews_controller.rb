@@ -197,6 +197,7 @@ class ReviewsController < ApplicationController
     render(json: { msg: "Could not update review. Make sure you fill out the class and all questions." }, status: :bad_request)
   end
 
+  # GET /reviews/term-suggestions
   sig { void }
   def course_suggestions
     typed_params = TypedParams[CourseSuggestionsParams].new.extract!(params)
@@ -204,6 +205,7 @@ class ReviewsController < ApplicationController
     render(formats: :json)
   end
 
+  # GET /reviews/term-suggestions
   sig { void }
   def term_suggestions
     typed_params = TypedParams[TermSuggestionsParams].new.extract!(params)
@@ -211,6 +213,7 @@ class ReviewsController < ApplicationController
     render(formats: :json)
   end
 
+  # GET /reviews/section-suggestions
   sig { void }
   def section_suggestions
     typed_params = TypedParams[SectionSuggestionsParams].new.extract!(params)
