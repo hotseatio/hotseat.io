@@ -46,6 +46,7 @@ module ActiveSupport
     include WebMock::API
     include TermHelper
 
+    parallelize(workers: :number_of_processors)
     parallelize_setup do |worker|
       Searchkick.index_suffix = worker
 
