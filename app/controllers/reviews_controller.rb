@@ -66,6 +66,7 @@ class ReviewsController < ApplicationController
     @results = T.let(nil, T.untyped)
   end
 
+  # GET /reviews/new
   sig { void }
   def new
     typed_params = TypedParams[NewParams].new.extract!(params)
@@ -105,6 +106,7 @@ class ReviewsController < ApplicationController
                        .order(:index)
   end
 
+  # POST /reviews
   sig { void }
   def create
     typed_params = TypedParams[CreateParams].new.extract!(params)
