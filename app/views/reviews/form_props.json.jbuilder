@@ -24,13 +24,7 @@ end
 json.question_sections(question_sections)
 json.grades(Review.grades.values)
 json.create_url(reviews_url)
-json.edit_url do
-  if @review&.section
-    review_url(@review)
-  else
-    json.null!
-  end
-end
+json.edit_url(@review&.section ? review_url(@review) : nil)
 json.courses_url(reviews_course_suggestions_url)
 json.section_suggestions_url(reviews_section_suggestions_url)
 json.term_suggestions_url(reviews_term_suggestions_url)

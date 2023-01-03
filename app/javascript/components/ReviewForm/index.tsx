@@ -126,7 +126,7 @@ const initializeReviewFormState = ({review, grades}: {review: Review | null; gra
 
 interface ConstructOnSubmitParams {
   url: string
-  method: string
+  method: 'POST' | 'PATCH'
   state: FormState
   setIsSubmitting: (isSubmitting: boolean) => void
   setError: (error: string) => void
@@ -179,7 +179,7 @@ export default function ReviewForm({
 
   const onSubmit = constructOnSubmit({
     url: isEdit ? editUrl : createUrl,
-    method: isEdit ? 'PUT' : 'POST',
+    method: isEdit ? 'PATCH' : 'POST',
     state: formData,
     setError,
     setIsSubmitting,
@@ -189,7 +189,7 @@ export default function ReviewForm({
     <form
       acceptCharset="UTF-8"
       action={isEdit ? editUrl : createUrl}
-      method={isEdit ? 'put' : 'post'}
+      method={isEdit ? 'patch' : 'post'}
       onSubmit={onSubmit}
     >
       <h3 className="my-6 text-2xl font-extrabold text-gray-900 dark:text-white">The class</h3>
