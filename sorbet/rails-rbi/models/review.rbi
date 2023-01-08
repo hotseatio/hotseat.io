@@ -283,6 +283,15 @@ module Review::GeneratedAttributeMethods
   sig { returns(T::Boolean) }
   def requires_attendance?; end
 
+  sig { returns(T.untyped) }
+  def status; end
+
+  sig { params(value: T.untyped).void }
+  def status=(value); end
+
+  sig { returns(T::Boolean) }
+  def status?; end
+
   sig { returns(ActiveSupport::TimeWithZone) }
   def updated_at; end
 
