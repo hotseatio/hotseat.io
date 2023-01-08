@@ -21,6 +21,7 @@ namespace :data_analysis do
       data = section.enrollment_data
                     .where(created_at: enrollment_start..enrollment_end)
                     .where.not(enrollment_capacity: 0)
+                    .where.not("enrollment_status = 'Full' AND created_at > ?", enrollment_start)
                     .order(:created_at)
 
       enrollment_start_datum = data.first
@@ -40,16 +41,16 @@ namespace :data_analysis do
         drop_count:,
         start_count: enrollment_start_datum.enrollment_count,
         start_count_waitlist: enrollment_start_datum.waitlist_count,
-        start_time: enrollment_start_datum.created_at,
+        start_time: enrollment_start_datum.created_at.in_time_zone("America/Los_Angeles"),
         end_count: enrollment_end_datum.enrollment_count,
         end_count_waitlist: enrollment_end_datum.waitlist_count,
-        end_time: enrollment_end_datum.created_at,
+        end_time: enrollment_end_datum.created_at.in_time_zone("America/Los_Angeles"),
         section: section.id,
         course: section.course_title,
         instructor: section.instructor&.full_label || section.registrar_instructor_label,
         url: "https://hotseat.io/courses/#{section.course_id}/instructors/#{section.instructor_id}",
       }
     end
-    puts ap(drop_counts.compact.sort_by { |counts| counts[:drop_count] })
+    puts ap(drop_counts.compact.sort_by { |counts| counts[:drop_count] }.last(20))
   end
 end
