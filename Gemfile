@@ -105,6 +105,8 @@ gem "gibberish_detector"
 gem "sentry-rails"
 gem "sentry-ruby"
 
+gem "awesome_print"
+
 group :development, :test do
   gem "debug", ">= 1.0.0"
   gem "factory_bot_rails"
