@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { Fragment } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+import {Fragment} from 'react'
+import {Dialog, Transition} from '@headlessui/react'
 
 import CloseButton from './CloseButton'
-import { PrimaryFeatureList, SecondaryFeatureList } from './FeatureList'
+import {PrimaryFeatureList, SecondaryFeatureList} from './FeatureList'
 
 const referFeatures = ['Earn a token for each user who signs up and writes a review!']
 const reviewFeatures = [
@@ -17,7 +17,7 @@ type Props = {
   setOpen: (open: boolean) => void
 }
 
-export default function GetMoreTokensModal({ open, setOpen }: Props) {
+export default function GetMoreTokensModal({open, setOpen}: Props) {
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog className="fixed z-10 inset-0 overflow-y-auto" onClose={setOpen}>

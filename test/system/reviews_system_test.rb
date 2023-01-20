@@ -155,7 +155,6 @@ class ReviewsSystemTest < ApplicationSystemTestCase
     click_button "Publish review"
 
     assert_current_path "/my-courses"
-    # expect(page).to have_current_path()
 
     review = section.reviews.first
     assert_predicate review, :a_plus?
@@ -173,5 +172,85 @@ class ReviewsSystemTest < ApplicationSystemTestCase
 
     user.reload
     assert_equal(1, user.notification_token_count)
+  end
+
+  describe "review editing" do
+    before do
+      create_current_term
+      subj_area = create(:subject_area)
+      section = create(:section,
+                       course: create(:course,
+                                      subject_area: subj_area),
+                       term: create(:term, term: "20W"),
+                       instructor: create(:instructor, first_names: ["Paul"], last_names: ["Eggert"]))
+      @user = T.let(create(:user), User)
+      @review = T.let(create(:review, user: @user, section:,
+                                      organization: 4,
+                                      clarity: 3,
+                                      overall: 3,
+                                      weekly_time: "10-15",
+                                      grade: "C+",
+                                      has_group_project: true,
+                                      requires_attendance: false,
+                                      reccomend_textbook: false,
+                                      midterm_count: 2,
+                                      final: "finals",
+                                      offers_extra_credit: true), Review)
+    end
+
+    it "populates the field with the review" do
+      sign_in @user
+      visit "/reviews/#{@review.id}/edit"
+
+      within "#grade" do
+        assert_button(text: "C+")
+      end
+
+      within "#organization" do
+        assert_checked_field("Neutral")
+      end
+      within "#clarity" do
+        assert_checked_field("Somewhat Disagree")
+      end
+      within "#overall" do
+        assert_checked_field("Somewhat Disagree")
+      end
+      within "#weekly_time" do
+        assert_checked_field("15-20 hrs/week")
+      end
+      within "#attendance" do
+        assert_checked_field("No")
+      end
+      within "#group_project" do
+        assert_checked_field("Yes")
+      end
+      within "#extra_credit" do
+        assert_checked_field("Yes")
+      end
+      within "#midterm_count" do
+        assert_checked_field("2")
+      end
+      within "#final" do
+        assert_checked_field("Yes, during finals week")
+      end
+      within "#textbook" do
+        assert_checked_field("No")
+      end
+      assert_field "review[comments]", with: @review.comments
+    end
+
+    it "allows for changing the review" do
+      sign_in @user
+      visit "/reviews/#{@review.id}/edit"
+      review_text = "I've thought about my review some more and wanted to change what I wrote because I'm now taking another class that made me think about this professor in a new light!"
+
+      fill_in "review[comments]", with: review_text
+
+      click_button "Edit review"
+      assert_current_path "/my-courses"
+
+      @review.reload
+      assert_equal(review_text, @review.comments)
+    end
   end
 end

@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { createContext, useContext } from 'react'
+import {createContext, useContext} from 'react'
 
-import { defaultDimensions, Dimensions } from './hooks/useChartDimensions'
+import {defaultDimensions, Dimensions} from './hooks/useChartDimensions'
 
 const ChartContext = createContext(defaultDimensions)
 export const useChartDimensions = (): Dimensions => useContext(ChartContext)
@@ -13,7 +13,7 @@ type Props = {
   onPointerLeave?: () => void
 }
 
-export default function Chart({ dimensions, children, onPointerMove, onPointerLeave }: Props): JSX.Element {
+export default function Chart({dimensions, children, onPointerMove, onPointerLeave}: Props): JSX.Element {
   return (
     <ChartContext.Provider value={dimensions}>
       <svg

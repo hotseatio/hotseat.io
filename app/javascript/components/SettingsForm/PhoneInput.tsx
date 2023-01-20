@@ -1,13 +1,13 @@
 import * as React from 'react'
-import { useState } from 'react'
+import {useState} from 'react'
 
-import { RemovePhoneModal, AddPhoneModal, ChangePhoneModal } from './PhoneModals'
+import {RemovePhoneModal, AddPhoneModal, ChangePhoneModal} from './PhoneModals'
 
 type Props = {
   initialPhoneNumber: string | null
 }
 
-export default function PhoneInput({ initialPhoneNumber }: Props): JSX.Element {
+export default function PhoneInput({initialPhoneNumber}: Props): JSX.Element {
   const [phone, setPhone] = useState(initialPhoneNumber)
   const [isModalOpen, setIsModalOpen] = useState<false | 'new' | 'change' | 'delete'>(false)
 

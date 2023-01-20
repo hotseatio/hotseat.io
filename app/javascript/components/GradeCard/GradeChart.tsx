@@ -1,13 +1,13 @@
 import * as React from 'react'
-import { useState } from 'react'
-import { scaleBand, scaleLinear } from 'd3-scale'
-import { max } from 'd3-array'
+import {useState} from 'react'
+import {scaleBand, scaleLinear} from 'd3-scale'
+import {max} from 'd3-array'
 
 import Chart from 'components/charts/Chart'
 import XAxis from 'components/charts/axis/XAxis'
 import YAxis from 'components/charts/axis/YAxis'
-import { RedGradient, redGradientId } from 'components/charts/Gradient'
-import { useChartDimensions } from 'components/charts/hooks/useChartDimensions'
+import {RedGradient, redGradientId} from 'components/charts/Gradient'
+import {useChartDimensions} from 'components/charts/hooks/useChartDimensions'
 
 const POSSIBLE_GRADES = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F']
 const GAP_SIZE = 2
@@ -19,8 +19,8 @@ type TooltipProps = {
   y: number
 }
 
-function Tooltip({ grade, percentage, x, y }: TooltipProps): JSX.Element {
-  const styles = { left: x + 10, top: y - 16 }
+function Tooltip({grade, percentage, x, y}: TooltipProps): JSX.Element {
+  const styles = {left: x + 10, top: y - 16}
   return (
     <div className="absolute bg-black text-white text-sm rounded py-1 px-2" style={styles}>
       <p>
@@ -34,10 +34,10 @@ type Props = {
   data: number[]
 }
 
-export default function GradeChart({ data }: Props): JSX.Element {
+export default function GradeChart({data}: Props): JSX.Element {
   const [tooltipGrade, setTooltipGrade] = useState<string | null>(null)
   const [tooltipPercentage, setTooltipPercentage] = useState<number | null>(null)
-  const [tooltipCoords, setTooltipCoords] = useState({ x: 0, y: 0 })
+  const [tooltipCoords, setTooltipCoords] = useState({x: 0, y: 0})
 
   const [ref, dimensions] = useChartDimensions<HTMLDivElement>({
     marginLeft: 36,
@@ -68,7 +68,7 @@ export default function GradeChart({ data }: Props): JSX.Element {
               onMouseMove={(e) => {
                 setTooltipGrade(POSSIBLE_GRADES[i])
                 setTooltipPercentage(d)
-                setTooltipCoords({ x: e.pageX, y: e.pageY })
+                setTooltipCoords({x: e.pageX, y: e.pageY})
               }}
               onMouseLeave={() => {
                 setTooltipGrade(null)
@@ -79,7 +79,7 @@ export default function GradeChart({ data }: Props): JSX.Element {
               y={y}
               width={width}
               height={height}
-              style={{ fill: `url(#${redGradientId})` }}
+              style={{fill: `url(#${redGradientId})`}}
             />
           )
         })}
