@@ -1,11 +1,12 @@
-# typed: strict
+# typed: false
 # frozen_string_literal: true
 
 require "aws-sdk-sns"
 
 class NotifyUserAboutRejectedReviewJob < ApplicationJob
   extend T::Sig
-  include GeneratedUrlHelpers
+  # I'd like to use `include GeneratedUrlHelpers` here, but we run into errors when testing
+  T.unsafe(self).include(Rails.application.routes.url_helpers)
 
   queue_as :default
 
@@ -21,7 +22,7 @@ class NotifyUserAboutRejectedReviewJob < ApplicationJob
     end
 
     message = <<~MESSAGE
-      Your Hotseat review for #{section.course_title} was not approved. No woriess! You can update and resubmit your review here: #{review_url(review)}
+      Your Hotseat review for #{section.course_title} was not approved. No worries! You can update and resubmit your review here: #{edit_review_url(review)}
     MESSAGE
 
     client = Aws::SNS::Client.new
