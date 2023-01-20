@@ -224,14 +224,14 @@ class Term < ApplicationRecord
 
   sig { returns(T.nilable(ActiveSupport::TimeWithZone)) }
   def start_time
-    start_date&.at_beginning_of_day
+    start_date&.in_time_zone("America/Los_Angeles")&.at_beginning_of_day
   end
 
   sig { returns(T.nilable(ActiveSupport::TimeWithZone)) }
   def end_of_week_two_time
     return nil if start_date.nil?
 
-    (T.must(start_date) + T.unsafe(zero_week? ? 2.weeks : 1.week)).next_occurring(:friday).at_end_of_day
+    (T.must(start_date) + T.unsafe(zero_week? ? 2.weeks : 1.week)).next_occurring(:friday).in_time_zone("America/Los_Angeles").at_end_of_day
   end
 
   # Returns true if it is currently during the first two weeks of the quarter.
@@ -292,11 +292,11 @@ class Term < ApplicationRecord
     [
       EnrollmentChartMarker.new(
         label: "Week 1",
-        time: week1_start.at_beginning_of_day,
+        time: week1_start.in_time_zone("America/Los_Angeles").at_beginning_of_day,
       ),
       EnrollmentChartMarker.new(
         label: "Week 2",
-        time: week2_start.at_beginning_of_day,
+        time: week2_start.in_time_zone("America/Los_Angeles").at_beginning_of_day,
       ),
     ]
   end
