@@ -15,7 +15,7 @@ class CoursesTest < ActionDispatch::IntegrationTest
   describe "GET /courses/:id" do
     it "redirects to the most recent instructor's page if there is an instructor" do
       term = create_current_term
-      prev_term = create(:term)
+      prev_term = create(:term, term: "21W")
 
       com_sci = create(:subject_area, name: "Computer Science", code: "COM SCI")
       course = create(:course, subject_area: com_sci, title: "Introduction to the Beep Boop", number: 69)

@@ -24,11 +24,11 @@ function questionValueRange(type: QuestionType): number[] | string[] {
 
 function questionLabelForValue(
   q:
-    | { type: 'agreement'; value: 1 | 2 | 3 | 4 | 5 | 6 | 7 }
-    | { type: 'count'; value: 0 | 1 | 2 | 3 }
-    | { type: 'binary'; value: 'false' | 'true' }
-    | { type: 'final'; value: 'none' | '10th' | 'finals' }
-    | { type: 'time'; value: string }
+    | {type: 'agreement'; value: 1 | 2 | 3 | 4 | 5 | 6 | 7}
+    | {type: 'count'; value: 0 | 1 | 2 | 3}
+    | {type: 'binary'; value: 'false' | 'true'}
+    | {type: 'final'; value: 'none' | '10th' | 'finals'}
+    | {type: 'time'; value: string}
 ): string {
   const likertResponsesAgreement = {
     1: 'Strongly disagree',
@@ -75,9 +75,17 @@ type QuestionProps = {
   type: QuestionType
   required: boolean
   onSelect: (id: string, value: string) => void
+  value: number | string | null
 }
 
-export default function Question({ id, text, type, required, onSelect }: QuestionProps): JSX.Element {
+export default function Question({
+  id,
+  text,
+  type,
+  required,
+  onSelect,
+  value: checkedValue,
+}: QuestionProps): JSX.Element {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onSelect(id, e.target.value)
   }
@@ -89,7 +97,7 @@ export default function Question({ id, text, type, required, onSelect }: Questio
       <div className="max-w-xl mx-auto flex flex-col sm:flex-row justify-between" role="radiogroup" aria-label={text}>
         {
           // @ts-ignore: TypeScript can't tell that questionValueRange works
-          questionValueRange(type).map((value, i: number) => {
+          questionValueRange(type).map((value: any, i: number) => {
             const inputId = `review_${id}_${i}`
             return (
               <div
@@ -104,9 +112,10 @@ export default function Question({ id, text, type, required, onSelect }: Questio
                   className="rating-radio"
                   required={required}
                   onChange={onChange}
+                  checked={value === checkedValue}
                 />
                 <label htmlFor={inputId} className="ml-2 sm:ml-0">
-                  {questionLabelForValue({ type, value })}
+                  {questionLabelForValue({type, value})}
                 </label>
               </div>
             )

@@ -1,2 +1,2 @@
-export { FollowButton, SubscribeButton } from './RelationshipButtons'
-export { DetailsButton, RegistrarButton, ReviewButton } from './LinkButtons'
+export {FollowButton, SubscribeButton} from './RelationshipButtons'
+export {DetailsButton, RegistrarButton, ReviewButton} from './LinkButtons'

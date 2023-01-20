@@ -1,9 +1,10 @@
 import * as React from 'react'
-import { useMemo } from 'react'
-import type { ReactNode } from 'react'
+import {useMemo, useState} from 'react'
+import type {ReactNode} from 'react'
 import {clsx} from 'clsx'
 
 import Select from 'components/Select'
+import type {SelectItem} from 'components/Select'
 
 type Props = {
   id: string
@@ -15,7 +16,7 @@ type Props = {
 /**
  * A display card. The React equivalent of shared/_card.html.erb.
  */
-export function Card({ id, children, title, rightContent }: Props): JSX.Element {
+export function Card({id, children, title, rightContent}: Props): JSX.Element {
   if (Array.isArray(rightContent)) {
     rightContent = React.Children.map(rightContent, (item, i) => (
       <div className={clsx(i === 0 && 'ml-auto', 'flex-shrink-0')} role="presentation">
@@ -57,15 +58,23 @@ type TermSelectCardProps = {
 /**
  * A display card with a selectable term.
  */
-export function TermSelectCard({ id, title, children, onTermSelect, terms }: TermSelectCardProps): JSX.Element {
-  const termItems = useMemo(() => terms.map((term) => ({ id: term, label: term })), [terms])
+export function TermSelectCard({id, title, children, onTermSelect, terms}: TermSelectCardProps): JSX.Element {
+  const [selectedTermIndex, setSelectedTermIndex] = useState(0)
+  const termItems = useMemo(() => terms.map((term) => ({id: term, label: term})), [terms])
+
+  const onSelect = (_selected: SelectItem, i: number) => {
+    setSelectedTermIndex(i)
+    onTermSelect(i)
+  }
+
   const SelectNode = (
     <Select
       label="Select a term:"
       labelInvisible
       className="w-24"
-      onSelect={(_, i) => onTermSelect(i)}
+      onSelect={onSelect}
       items={termItems}
+      value={selectedTermIndex}
     />
   )
 

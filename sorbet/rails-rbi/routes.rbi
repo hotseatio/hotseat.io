@@ -166,6 +166,20 @@ module GeneratedUrlHelpers
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def new_review_url(*args, **kwargs); end
 
+  # Sigs for route /reviews/:id/edit(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def edit_review_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def edit_review_url(*args, **kwargs); end
+
+  # Sigs for route /reviews/:id(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def review_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def review_url(*args, **kwargs); end
+
   # Sigs for route /reviews/course-suggestions(.:format)
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def reviews_course_suggestions_path(*args, **kwargs); end

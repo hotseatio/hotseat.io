@@ -3,6 +3,8 @@
 
 ENV["RAILS_ENV"] ||= "test"
 
+# ENV["PARALLEL_TEST_GROUPS"] = "true"
+
 if ENV.fetch("TEST_COVERAGE", nil)
   require "simplecov"
   require "simplecov-cobertura"
@@ -12,6 +14,7 @@ if ENV.fetch("TEST_COVERAGE", nil)
                         else
                           SimpleCov::Formatter::HTMLFormatter
                         end
+  SimpleCov.enable_coverage(:branch)
   SimpleCov.start("rails")
 end
 
@@ -46,7 +49,10 @@ module ActiveSupport
     include WebMock::API
     include TermHelper
 
+    parallelize(workers: :number_of_processors)
     parallelize_setup do |worker|
+      SimpleCov.command_name("#{SimpleCov.command_name}-#{worker}") if ENV["TEST_COVERAGE"]
+
       Searchkick.index_suffix = worker
 
       # reindex models
@@ -55,6 +61,10 @@ module ActiveSupport
 
       # and disable callbacks
       Searchkick.disable_callbacks
+    end
+
+    parallelize_teardown do |_worker|
+      SimpleCov.result if ENV["TEST_COVERAGE"]
     end
   end
 end
@@ -65,5 +75,3 @@ module ActionDispatch
     include TermHelper
   end
 end
-
-SimpleCov.command_name("features #{Process.pid}") if ENV.fetch("TEST_COVERAGE", nil)

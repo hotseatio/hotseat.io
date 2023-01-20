@@ -3,10 +3,10 @@
  */
 
 import * as React from 'react'
-import { render } from '@testing-library/react'
+import {render} from '@testing-library/react'
 
-import EnrollmentChart, { EnrollmentDatumJSON } from 'components/EnrollmentCard/EnrollmentChart'
-import { add, HOUR } from 'utilities/date'
+import EnrollmentChart, {EnrollmentDatumJSON} from 'components/EnrollmentCard/EnrollmentChart'
+import {add, HOUR} from 'utilities/date'
 
 test('loads lectures', async () => {
   const baseTime = new Date('2020-12-22T08:00:00Z')

@@ -1,16 +1,15 @@
 import * as React from 'react'
-import { useState } from 'react'
-import { AcademicCapIcon } from '@heroicons/react/24/outline'
-
+import {useState} from 'react'
+import {AcademicCapIcon} from '@heroicons/react/24/outline'
 
 import CourseRow from './CourseRow'
-import type { Section } from './SectionRow'
-import { DetailsButton, FollowButton, SubscribeButton } from './Buttons'
-import { IsBetaTesterContext } from './context'
+import type {Section} from './SectionRow'
+import {DetailsButton, FollowButton, SubscribeButton} from './Buttons'
+import {IsBetaTesterContext} from './context'
 
-import { GetMoreTokensButton } from 'components/GetTokensButton'
-import { Card } from 'components/Card'
-import type { SubjectArea } from 'api'
+import {GetMoreTokensButton} from 'components/GetTokensButton'
+import {Card} from 'components/Card'
+import type {SubjectArea} from 'api'
 
 type Props = {
   isBetaTester: boolean
@@ -22,7 +21,7 @@ type Props = {
   subjectAreas: SubjectArea[]
 }
 
-function CourseList({ sections: initialSections }: { sections: Section[] }): JSX.Element {
+function CourseList({sections: initialSections}: {sections: Section[]}): JSX.Element {
   const [sections, setSections] = useState(initialSections)
   const onFollowToggle = (sectionIndex: number) => {
     sections[sectionIndex].isFollowed = !sections[sectionIndex].isFollowed
@@ -62,7 +61,7 @@ function CourseList({ sections: initialSections }: { sections: Section[] }): JSX
   )
 }
 
-function EmptyState({ subjectAreas }: { subjectAreas: SubjectArea[] }): JSX.Element {
+function EmptyState({subjectAreas}: {subjectAreas: SubjectArea[]}): JSX.Element {
   return (
     <div className="text-center p-12">
       <AcademicCapIcon className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500" />

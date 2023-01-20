@@ -1,10 +1,9 @@
 import * as React from 'react'
-import { useMemo, useState } from 'react'
+import {useMemo, useState} from 'react'
 
 import GradeChart from './GradeChart'
 
-import { TermSelectCard } from 'components/Card'
-
+import {TermSelectCard} from 'components/Card'
 
 type TermGradeDatum = {
   term: string
@@ -17,7 +16,7 @@ type Props = {
   termGradeData: TermGradeDatum[]
 }
 
-export default function GradeCard({ id, termGradeData }: Props): JSX.Element {
+export default function GradeCard({id, termGradeData}: Props): JSX.Element {
   const terms = useMemo(() => termGradeData.map((d: TermGradeDatum) => d.term), [termGradeData])
   const [selectedTermIndex, setSelectedTermIndex] = useState(0)
   const selectedData = termGradeData[selectedTermIndex].grades

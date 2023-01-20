@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { ClockIcon, MapPinIcon, UserIcon, UsersIcon, CalendarIcon } from '@heroicons/react/24/outline'
+import {ClockIcon, MapPinIcon, UserIcon, UsersIcon, CalendarIcon} from '@heroicons/react/24/outline'
 
 import Badge from 'components/Badge'
-import type { BadgeColor } from 'components/Badge'
+import type {BadgeColor} from 'components/Badge'
 
 export type Section = {
   id: number
@@ -26,7 +26,7 @@ export type SectionRowProps = {
 }
 
 export default function SectionRow({
-  section: { title, instructorCount, instructorLabel, timeLabel, locationLabel, termLabel, badgeLabel, badgeColor },
+  section: {title, instructorCount, instructorLabel, timeLabel, locationLabel, termLabel, badgeLabel, badgeColor},
   actionButtons,
 }: SectionRowProps) {
   return (

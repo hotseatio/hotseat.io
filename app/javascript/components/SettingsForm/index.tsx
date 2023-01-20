@@ -1,15 +1,15 @@
 import * as React from 'react'
-import { useState } from 'react'
-import { Switch } from '@headlessui/react'
-import { clsx } from 'clsx'
+import {useState} from 'react'
+import {Switch} from '@headlessui/react'
+import {clsx} from 'clsx'
 
 import CopyToClipboardInput from './CopyToClipboardInput'
 import PhoneInput from './PhoneInput'
 
 import LoadingCircle from 'components/icons/LoadingCircle'
 import Alert from 'components/Alert'
-import type { AlertType } from 'components/Alert'
-import { authenticityHeaders } from 'utilities/authenticityHeaders'
+import type {AlertType} from 'components/Alert'
+import {authenticityHeaders} from 'utilities/authenticityHeaders'
 
 type Props = {
   updateURL: string
@@ -26,7 +26,7 @@ type Response = {
   msg?: string
 }
 
-export default function SettingsForm({ updateURL, phoneNumber, ...props }: Props): JSX.Element {
+export default function SettingsForm({updateURL, phoneNumber, ...props}: Props): JSX.Element {
   const [response, setResponse] = useState<Response | null>(null)
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -35,18 +35,18 @@ export default function SettingsForm({ updateURL, phoneNumber, ...props }: Props
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
-    const body = { beta_tester: betaTester, phone: phoneNumber }
+    const body = {beta_tester: betaTester, phone: phoneNumber}
     const response = await fetch(updateURL, {
       method: 'PUT',
-      headers: authenticityHeaders({ 'Content-Type': 'application/json' }),
+      headers: authenticityHeaders({'Content-Type': 'application/json'}),
       body: JSON.stringify(body),
     })
 
     const responseBody = await response.json()
     if (response.status !== 200) {
-      setResponse({ type: 'error', title: responseBody.title, msg: responseBody.msg })
+      setResponse({type: 'error', title: responseBody.title, msg: responseBody.msg})
     } else {
-      setResponse({ type: 'success', title: responseBody.title, msg: responseBody.msg })
+      setResponse({type: 'success', title: responseBody.title, msg: responseBody.msg})
     }
 
     setIsSubmitting(false)

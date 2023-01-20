@@ -2,19 +2,32 @@
 # frozen_string_literal: true
 
 json = T.unsafe(json)
+json.key_format!(camelize: :lower)
+
 @initial_suggestion_type = T.let(@initial_suggestion_type, T.nilable(String))
 @course = T.let(@course, T.nilable(Course))
 @term = T.let(@term, T.nilable(Term))
 @section = T.let(@section, T.nilable(Section))
+@review = T.let(@review, T.nilable(Review))
 
 extend ReviewHelper # rubocop:disable Style/MixinUsage
 
+json.review do
+  # If a review doesn't have a section yet, then it's a new review. Set `review` to null.
+  # The `review` key should only be used when editing.
+  if @review&.section
+    json.partial!("reviews/review", review: @review)
+  else
+    json.null!
+  end
+end
 json.question_sections(question_sections)
 json.grades(Review.grades.values)
-json.createURL(reviews_url)
-json.coursesURL(reviews_course_suggestions_url)
-json.sectionSuggestionsURL(reviews_section_suggestions_url)
-json.termSuggestionsURL(reviews_term_suggestions_url)
+json.create_url(reviews_url)
+json.edit_url(@review&.section ? review_url(@review) : nil)
+json.courses_url(reviews_course_suggestions_url)
+json.section_suggestions_url(reviews_section_suggestions_url)
+json.term_suggestions_url(reviews_term_suggestions_url)
 json.initial_suggestion do
   if @initial_suggestion_type.nil?
     json.null!

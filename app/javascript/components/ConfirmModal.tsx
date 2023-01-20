@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Fragment, useRef } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+import {Fragment, useRef} from 'react'
+import {Dialog, Transition} from '@headlessui/react'
 
 import RequestButton from 'components/RequestButton'
 
@@ -18,7 +18,7 @@ type Props = {
   confirmRequest: {
     resource: string
     method: string
-    body?: { [key: string]: string | number | boolean }
+    body?: {[key: string]: string | number | boolean}
   }
   children?: React.ReactNode
 }

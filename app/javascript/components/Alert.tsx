@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { XCircleIcon, ExclamationTriangleIcon, CheckCircleIcon, InformationCircleIcon } from '@heroicons/react/20/solid'
+import {XCircleIcon, ExclamationTriangleIcon, CheckCircleIcon, InformationCircleIcon} from '@heroicons/react/20/solid'
 import {clsx} from 'clsx'
 
 export type AlertType = 'error' | 'warn' | 'success' | 'info'
@@ -13,14 +13,14 @@ type Props = {
 function getColors(type: AlertType) {
   switch (type) {
     case 'error':
-      return { bg: 'bg-red-50', icon: 'text-red-400', headerText: 'text-red-800', bodyText: 'text-red-700' }
+      return {bg: 'bg-red-50', icon: 'text-red-400', headerText: 'text-red-800', bodyText: 'text-red-700'}
     case 'warn':
-      return { bg: 'bg-yellow-50', icon: 'text-yellow-400', headerText: 'text-yellow-800', bodyText: 'text-yellow-700' }
+      return {bg: 'bg-yellow-50', icon: 'text-yellow-400', headerText: 'text-yellow-800', bodyText: 'text-yellow-700'}
     case 'success':
-      return { bg: 'bg-green-50', icon: 'text-green-400', headerText: 'text-green-800', bodyText: 'text-green-700' }
+      return {bg: 'bg-green-50', icon: 'text-green-400', headerText: 'text-green-800', bodyText: 'text-green-700'}
     case 'info':
     default:
-      return { bg: 'bg-blue-50', icon: 'text-blue-400', headerText: 'text-blue-800', bodyText: 'text-blue-700' }
+      return {bg: 'bg-blue-50', icon: 'text-blue-400', headerText: 'text-blue-800', bodyText: 'text-blue-700'}
   }
 }
 
@@ -38,7 +38,7 @@ function getIcon(type: AlertType): (props: React.SVGProps<SVGSVGElement>) => JSX
   }
 }
 
-export default function Alert({ type, title, children }: Props): JSX.Element {
+export default function Alert({type, title, children}: Props): JSX.Element {
   const colors = getColors(type)
   const Icon = getIcon(type)
   return (

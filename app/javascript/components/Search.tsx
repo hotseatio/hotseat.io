@@ -1,14 +1,14 @@
 import * as React from 'react'
-import { useState } from 'react'
+import {useState} from 'react'
 import {clsx} from 'clsx'
 
 import AutocompletableInput from 'components/AutocompletableInput'
-import { Course, Instructor } from 'api'
+import {Course, Instructor} from 'api'
 
 export type CourseSearchSuggestion = {
   id: string
   searchableType: 'Course'
-  searchable: Course & { linkUrl: string }
+  searchable: Course & {linkUrl: string}
 }
 
 export type InstructorSearchSuggestion = {
@@ -23,8 +23,8 @@ type Props = {
   label: string
   placeholder?: string
   initialValue?: string
-  searchURL: string
-  suggestionURL: string
+  searchUrl: string
+  suggestionUrl: string
   magnifyingGlass?: boolean
   isShrinkable: boolean
 }
@@ -55,8 +55,8 @@ const suggestionToString = (s: SearchSuggestion | null): string => {
 }
 
 export default function Search({
-  searchURL,
-  suggestionURL,
+  searchUrl,
+  suggestionUrl,
   placeholder = '',
   initialValue = undefined,
   label = 'Search',
@@ -83,7 +83,7 @@ export default function Search({
     if (self.Turbo) {
       event.preventDefault()
       if (inputValue) {
-        const url = new URL(searchURL, document.URL)
+        const url = new URL(searchUrl, document.URL)
         url.searchParams.set('q', inputValue)
         self.Turbo.visit(url.toString())
       }
@@ -97,14 +97,14 @@ export default function Search({
     : undefined
 
   return (
-    <form method="get" action={searchURL} onSubmit={onFormSubmit}>
+    <form method="get" action={searchUrl} onSubmit={onFormSubmit}>
       <AutocompletableInput
         id="search-downshift-input"
         className={className}
         label={label}
         placeholder={placeholder}
         shouldDisplayIcon={magnifyingGlass}
-        suggestionURL={suggestionURL}
+        suggestionUrl={suggestionUrl}
         onSelect={onSelect}
         onFocus={onFocus}
         onBlur={onBlur}

@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import {XMarkIcon} from '@heroicons/react/24/outline'
 
 type Props = {
   onClick: () => void
 }
 
-export default function CloseButton({ onClick }: Props) {
+export default function CloseButton({onClick}: Props) {
   return (
     <div className="block absolute top-0 right-0 pt-4 pr-4">
       <button
