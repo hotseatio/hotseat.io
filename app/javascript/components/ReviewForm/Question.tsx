@@ -2,21 +2,21 @@ import * as React from 'react'
 
 export type QuestionType = 'agreement' | 'time' | 'binary' | 'count' | 'final'
 
-function questionValueRange(type: 'agreement'): [1, 2, 3, 4, 5, 6, 7]
+function questionValueRange(type: 'agreement'): ['1', '2', '3', '4', '5', '6', '7']
 function questionValueRange(type: 'time'): string[]
 function questionValueRange(type: 'binary'): ['false', 'true']
-function questionValueRange(type: 'count'): [0, 1, 2, 3]
+function questionValueRange(type: 'count'): ['0', '1', '2', '3']
 function questionValueRange(type: 'final'): ['none', '10th', 'finals']
 function questionValueRange(type: QuestionType): number[] | string[] {
   switch (type) {
     case 'agreement':
-      return [1, 2, 3, 4, 5, 6, 7]
+      return ['1', '2', '3', '4', '5', '6', '7']
     case 'time':
       return ['0-5', '5-10', '10-15', '15-20', '20+']
     case 'binary':
       return ['false', 'true']
     case 'count':
-      return [0, 1, 2, 3]
+      return ['0', '1', '2', '3']
     case 'final':
       return ['none', '10th', 'finals']
   }
@@ -24,26 +24,26 @@ function questionValueRange(type: QuestionType): number[] | string[] {
 
 function questionLabelForValue(
   q:
-    | {type: 'agreement'; value: 1 | 2 | 3 | 4 | 5 | 6 | 7}
-    | {type: 'count'; value: 0 | 1 | 2 | 3}
+    | {type: 'agreement'; value: '1' | '2' | '3' | '4' | '5' | '6' | '7'}
+    | {type: 'count'; value: '0' | '1' | '2' | '3'}
     | {type: 'binary'; value: 'false' | 'true'}
     | {type: 'final'; value: 'none' | '10th' | 'finals'}
     | {type: 'time'; value: string}
 ): string {
   const likertResponsesAgreement = {
-    1: 'Strongly disagree',
-    2: 'Disagree',
-    3: 'Somewhat disagree',
-    4: 'Neutral',
-    5: 'Somewhat agree',
-    6: 'Agree',
-    7: 'Strongly agree',
+    '1': 'Strongly disagree',
+    '2': 'Disagree',
+    '3': 'Somewhat disagree',
+    '4': 'Neutral',
+    '5': 'Somewhat agree',
+    '6': 'Agree',
+    '7': 'Strongly agree',
   }
   const responsesCount = {
-    0: '0',
-    1: '1',
-    2: '2',
-    3: '3 or more',
+    '0': '0',
+    '1': '1',
+    '2': '2',
+    '3': '3 or more',
   }
   const responsesBinary = {
     false: 'No',
