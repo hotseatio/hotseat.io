@@ -5,6 +5,8 @@ require "aws-sdk-sns"
 
 class NotifyUserAboutRejectedReviewJob < ApplicationJob
   extend T::Sig
+  include GeneratedUrlHelpers
+
   queue_as :default
 
   sig { params(review: Review).void }
@@ -19,7 +21,7 @@ class NotifyUserAboutRejectedReviewJob < ApplicationJob
     end
 
     message = <<~MESSAGE
-      Your Hotseat review for #{section.course_title} was not approved. No woriess! You can update and resubmit your review here: #{review.edit_link}
+      Your Hotseat review for #{section.course_title} was not approved. No woriess! You can update and resubmit your review here: #{review_url(review)}
     MESSAGE
 
     client = Aws::SNS::Client.new
