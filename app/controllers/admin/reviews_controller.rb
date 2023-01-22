@@ -42,6 +42,18 @@ class Admin::ReviewsController < AdminController
   def update
     typed_params = TypedParams[UpdateParams].new.extract!(params)
     @review = Review.find(typed_params.id)
+    user = T.must(@review.user)
+    is_first_review = user.reviews.size == 1
+
+    if (typed_params.status == Review::Status::Approved) && !@review.approved?
+      user.add_notification_token
+      user.complete_referral! if is_first_review && user.referred_by
+
+      NotifyUserAboutApprovedReviewJob.perform_later(@review)
+    elsif typed_params.status == Review::Status::Approved
+      NotifyUserAboutRejectedReviewJob.perform_later(@review)
+    end
+
     @review.typed_status = typed_params.status
     @review.save!
 
