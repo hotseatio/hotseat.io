@@ -27,6 +27,7 @@ jobs:
       DD_TRACE_ENABLED: false
       DISABLE_SPRING: true
       TEST_COVERAGE: true
+      DATABASE_URL: 'postgres://postgres:test-password@localhost:5432/hotseat_test'
     services:
       postgres:
         image: postgres
