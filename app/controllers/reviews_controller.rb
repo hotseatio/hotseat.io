@@ -189,6 +189,9 @@ class ReviewsController < ApplicationController
       status: "pending",
     )
 
+    logger.info("Queueing NotifyOnNewReviewJob")
+    NotifyOnNewReviewJob.perform_later(@review, edit: true)
+
     session[:review_updated] = true
 
     # Disable turbolinks here, we handle the redirect in JS
