@@ -88,7 +88,7 @@ class CoursesController < ApplicationController
                                                     term: :enrollment_appointments)
                                  .where(course_id: T.must(@course).id)
                                  .where.not(index: nil)
-    raise ActionController::RoutingError, "Not Found" if course_sections.size.zero?
+    raise ActionController::RoutingError, "Not Found" if course_sections.empty?
 
     @reviews = @instructor.reviews.viewable.merge(course_sections)
     @comments = @reviews.viewable.has_comment.page(typed_params.page).per(10)

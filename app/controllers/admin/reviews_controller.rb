@@ -19,7 +19,7 @@ class Admin::ReviewsController < AdminController
     typed_params = TypedParams[IndexParams].new.extract!(params)
     page = typed_params.page
 
-    @reviews = Review.all.where(status: :pending).order(created_at: :desc).page(page)
+    @reviews = Review.all.where(status: :pending).order(updated_at: :desc).page(page)
   end
 
   class ShowParams < T::Struct
@@ -50,7 +50,7 @@ class Admin::ReviewsController < AdminController
       user.complete_referral! if is_first_review && user.referred_by
 
       NotifyUserAboutApprovedReviewJob.perform_later(@review)
-    elsif typed_params.status == Review::Status::Approved
+    elsif typed_params.status == Review::Status::Rejected
       NotifyUserAboutRejectedReviewJob.perform_later(@review)
     end
 

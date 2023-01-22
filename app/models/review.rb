@@ -56,7 +56,7 @@ class Review < ApplicationRecord
     rejected: "rejected",
   }
 
-  scope :viewable, -> { where.not(hidden: true) }
+  scope :viewable, -> { where(hidden: false, status: "approved") }
   scope :has_comment, -> { where.not(comments: "") }
 
   sig do

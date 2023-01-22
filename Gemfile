@@ -106,8 +106,8 @@ gem "sentry-rails"
 gem "sentry-ruby"
 
 # Texting
-gem "aws-sdk-sns"
 gem "awesome_print"
+gem "aws-sdk-sns"
 
 group :development, :test do
   gem "debug", ">= 1.0.0"
