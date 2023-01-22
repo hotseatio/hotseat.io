@@ -15,7 +15,7 @@ class NotifyOnNewReviewJob < ApplicationJob
 
     text = <<~MESSAGE
       #{edit ? 'Edited' : 'New'} review ##{review.id} created at #{review.updated_at} by user ##{T.must(review.user).id}
-      🔗 #{admin_review_url(@review)}
+      🔗 #{admin_review_url(review)}
 
       Numbers
       =======
