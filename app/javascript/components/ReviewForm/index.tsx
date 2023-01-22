@@ -28,17 +28,17 @@ type QuestionSection = {
 
 type Review = {
   sectionId: string
-  organization: number
-  clarity: number
-  overall: number
+  organization: string
+  clarity: string
+  overall: string
   grade: string
   weeklyTime: string
   groupProject: boolean
   extraCredit: boolean
   attendance: boolean
-  midtermCount: number
+  midtermCount: string
   final: string
-  textbook: boolean
+  textbook: string
   comments: string
 }
 
@@ -58,16 +58,16 @@ interface FormState {
   sectionId: string | null
   grade: string | null
   gradeIndex: number | 'placeholder'
-  organization: number | null
-  clarity: number | null
-  overall: number | null
+  organization: string | null
+  clarity: string | null
+  overall: string | null
   weeklyTime: string | null
   groupProject: boolean | null
   extraCredit: boolean | null
   attendance: boolean | null
-  midtermCount: number | null
+  midtermCount: string | null
   final: string | null
-  textbook: boolean | null
+  textbook: string | null
   comments: string | null
 }
 
@@ -214,16 +214,15 @@ export default function ReviewForm({
         <div className="my-4" key={section.title}>
           <h3 className="my-6 text-2xl font-extrabold text-gray-900 dark:text-white">{section.title}</h3>
           {section.questions.map((question) => {
-            const id = camelCase(question.id)
             return (
               <Question
-                key={id}
-                id={id}
+                key={question.id}
+                id={question.id}
                 text={question.text}
                 type={question.type}
                 required={question.required}
-                onSelect={(id: string, value: string) => updateFormData({[id]: value})}
-                value={formData[id] ?? null}
+                onSelect={(id: string, value: string) => updateFormData({[camelCase(id)]: value})}
+                value={formData[camelCase(question.id)] ?? null}
               />
             )
           })}
