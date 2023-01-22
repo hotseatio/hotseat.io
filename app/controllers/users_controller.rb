@@ -28,12 +28,9 @@ class UsersController < ApplicationController
       referring_user = T.must(T.must(current_user).referred_by)
       flash[:info] = "Review created! Since you were referred by #{referring_user.name}, you've received 2 notification tokens for this review."
       session.delete(:review_created)
-    elsif session[:review_created]
-      flash[:info] = "Review created!"
+    elsif session[:review_submitted]
+      flash[:info] = "Review submitted! Once approved, you'll received a notification token. (We'll text you when that happens!)"
       session.delete(:review_created)
-    elsif session[:review_updated]
-      flash[:info] = "Review updated!"
-      session.delete(:review_updated)
     end
     @term = Term.current
     user = T.must(current_user)

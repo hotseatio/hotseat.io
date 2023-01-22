@@ -192,7 +192,7 @@ class ReviewsController < ApplicationController
     logger.info("Queueing NotifyOnNewReviewJob")
     NotifyOnNewReviewJob.perform_later(@review, edit: true)
 
-    session[:review_updated] = true
+    session[:review_created] = true
 
     # Disable turbolinks here, we handle the redirect in JS
     # Some browsers will try to follow the redirect using the original request method (PUT/PATCH). Use 303 to force GET of /my-courses.
