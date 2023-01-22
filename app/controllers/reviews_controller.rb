@@ -116,7 +116,7 @@ class ReviewsController < ApplicationController
 
     return unless review_valid?(review_params, user)
 
-    is_first_review = T.let(user.reviews.size.zero?, T::Boolean)
+    is_first_review = T.let(user.reviews.empty?, T::Boolean)
 
     relationship = Relationship.find_or_create_by(
       section_id: review_params.section_id,
@@ -137,6 +137,8 @@ class ReviewsController < ApplicationController
       comments: review_params.comments,
       status: "pending",
     )
+
+    user.add_notification_token
 
     logger.info("Queueing NotifyOnNewReviewJob")
     NotifyOnNewReviewJob.perform_later(review)
