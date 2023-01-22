@@ -19,7 +19,7 @@ class Admin::ReviewsController < AdminController
     typed_params = TypedParams[IndexParams].new.extract!(params)
     page = typed_params.page
 
-    @reviews = Review.all.order(created_at: :desc).page(page)
+    @reviews = Review.all.where(status: :pending).order(created_at: :desc).page(page)
   end
 
   class ShowParams < T::Struct
@@ -33,31 +33,18 @@ class Admin::ReviewsController < AdminController
     @author = @review.user
   end
 
-  class ApproveParams < T::Struct
+  class UpdateParams < T::Struct
     const :id, Integer
+    const :status, Review::Status
   end
 
   sig { void }
-  def approve
-    typed_params = TypedParams[ShowParams].new.extract!(params)
+  def update
+    typed_params = TypedParams[UpdateParams].new.extract!(params)
     @review = Review.find(typed_params.id)
-    user = T.must(@review.user)
+    @review.typed_status = typed_params.status
+    @review.save!
 
-    @review.approved!
-    user.add_notification_token
-
-    # Notify about approval
-  end
-
-  class RejectParams < T::Struct
-    const :id, Integer
-  end
-
-  sig { void }
-  def reject
-    typed_params = TypedParams[ShowParams].new.extract!(params)
-    @review = Review.find(typed_params.id)
-    @review.rejected!
-    # Notify about rejection
+    redirect_to(admin_review_path(@review))
   end
 end

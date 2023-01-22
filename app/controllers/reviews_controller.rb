@@ -135,6 +135,7 @@ class ReviewsController < ApplicationController
       final: review_params.final,
       reccomend_textbook: review_params.textbook,
       comments: review_params.comments,
+      status: "pending",
     )
 
     logger.info("Queueing NotifyOnNewReviewJob")
@@ -185,6 +186,7 @@ class ReviewsController < ApplicationController
       final: review_params.final,
       reccomend_textbook: review_params.textbook,
       comments: review_params.comments,
+      status: "pending",
     )
 
     session[:review_updated] = true
