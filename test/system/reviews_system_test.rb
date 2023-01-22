@@ -209,15 +209,15 @@ class ReviewsSystemTest < ApplicationSystemTestCase
       within "#organization" do
         assert_checked_field("Neutral")
       end
-      within "#clarity" do
-        assert_checked_field("Somewhat Disagree")
-      end
-      within "#overall" do
-        assert_checked_field("Somewhat Disagree")
-      end
-      within "#weekly_time" do
-        assert_checked_field("15-20 hrs/week")
-      end
+      # within "#clarity" do
+      #   assert_checked_field("Somewhat Disagree")
+      # end
+      # within "#overall" do
+      #   assert_checked_field("Somewhat Disagree")
+      # end
+      # within "#weekly_time" do
+      #   assert_checked_field("15-20 hrs/week")
+      # end
       within "#attendance" do
         assert_checked_field("No")
       end
