@@ -26,8 +26,8 @@ class UsersController < ApplicationController
       flash[:success] = "Thank you for your purchase! You now have #{view_context.pluralize(user.notification_token_count, 'tokens')}."
     elsif session[:referred_review_created] && T.must(current_user).referred_by
       referring_user = T.must(T.must(current_user).referred_by)
-      flash[:info] = "Review created! Since you were referred by #{referring_user.name}, you've received 2 notification tokens for this review."
-      session.delete(:review_created)
+      flash[:info] = "Review submitted! Since you were referred by #{referring_user.name}, you'll receive 2 notification tokens once your review is approved. (We'll text you when that happens!)"
+      session.delete(:referred_review_created)
     elsif session[:review_submitted]
       flash[:info] = "Review submitted! Once approved, you'll received a notification token. (We'll text you when that happens!)"
       session.delete(:review_created)
