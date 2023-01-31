@@ -104,10 +104,12 @@ class Admin::ReviewsControllerTest < ActionDispatch::IntegrationTest
       }
 
       review.reload
+      reviewer.reload
+
       assert_response :found
       assert_redirected_to(admin_review_path(review))
       assert_predicate review, :rejected?
-      assert_equal 1, reviewer.notification_token_count
+      assert_equal 0, reviewer.notification_token_count
     end
   end
 end
