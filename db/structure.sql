@@ -75,6 +75,17 @@ CREATE TYPE public.grade_type AS ENUM (
 
 
 --
+-- Name: review_status; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE public.review_status AS ENUM (
+    'pending',
+    'approved',
+    'rejected'
+);
+
+
+--
 -- Name: section_format; Type: TYPE; Schema: public; Owner: -
 --
 
@@ -869,39 +880,6 @@ ALTER SEQUENCE public.pay_webhooks_id_seq OWNED BY public.pay_webhooks.id;
 
 
 --
--- Name: pg_search_documents; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.pg_search_documents (
-    id bigint NOT NULL,
-    content text,
-    searchable_type character varying,
-    searchable_id bigint,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: pg_search_documents_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.pg_search_documents_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: pg_search_documents_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.pg_search_documents_id_seq OWNED BY public.pg_search_documents.id;
-
-
---
 -- Name: relationships; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -955,7 +933,8 @@ CREATE TABLE public.reviews (
     weekly_time public.weekly_time_type,
     offers_extra_credit boolean,
     hidden boolean DEFAULT false NOT NULL,
-    relationship_id bigint
+    relationship_id bigint,
+    status public.review_status DEFAULT 'pending'::public.review_status NOT NULL
 );
 
 
@@ -1376,13 +1355,6 @@ ALTER TABLE ONLY public.pay_webhooks ALTER COLUMN id SET DEFAULT nextval('public
 
 
 --
--- Name: pg_search_documents id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.pg_search_documents ALTER COLUMN id SET DEFAULT nextval('public.pg_search_documents_id_seq'::regclass);
-
-
---
 -- Name: relationships id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1596,14 +1568,6 @@ ALTER TABLE ONLY public.pay_subscriptions
 
 ALTER TABLE ONLY public.pay_webhooks
     ADD CONSTRAINT pay_webhooks_pkey PRIMARY KEY (id);
-
-
---
--- Name: pg_search_documents pg_search_documents_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.pg_search_documents
-    ADD CONSTRAINT pg_search_documents_pkey PRIMARY KEY (id);
 
 
 --
@@ -1931,20 +1895,6 @@ CREATE UNIQUE INDEX index_pay_subscriptions_on_customer_id_and_processor_id ON p
 
 
 --
--- Name: index_pg_search_documents_on_searchable; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_pg_search_documents_on_searchable ON public.pg_search_documents USING btree (searchable_type, searchable_id);
-
-
---
--- Name: index_pg_search_documents_on_to_tsvector_simple_content; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_pg_search_documents_on_to_tsvector_simple_content ON public.pg_search_documents USING gin (to_tsvector('simple'::regconfig, COALESCE(content, ''::text)));
-
-
---
 -- Name: index_relationships_on_section_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1970,6 +1920,13 @@ CREATE UNIQUE INDEX index_relationships_on_user_id_and_section_id ON public.rela
 --
 
 CREATE INDEX index_reviews_on_relationship_id ON public.reviews USING btree (relationship_id);
+
+
+--
+-- Name: index_reviews_on_status; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_reviews_on_status ON public.reviews USING btree (status);
 
 
 --
@@ -2342,6 +2299,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220131054151'),
 ('20220227225317'),
 ('20220303051621'),
-('20220817045634');
+('20220817045634'),
+('20221226072833');
 
 

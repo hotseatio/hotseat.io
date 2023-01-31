@@ -84,7 +84,7 @@ class ReferralTest < ApplicationSystemTestCase
     fill_out_review
 
     assert_current_path "/my-courses"
-    assert_text page, "Review created! Since you were referred by Nathan Smith, you've received 2 notification tokens for this review.", wait: 10
+    assert_text page, "Review submitted! Since you were referred by Nathan Smith, you'll receive 2 notification tokens once your review is approved. (We'll text you when that happens!)", wait: 10
 
     referring_user.reload
     user.reload

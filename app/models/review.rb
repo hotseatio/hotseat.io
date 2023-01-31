@@ -50,7 +50,13 @@ class Review < ApplicationRecord
     no_pass: "NP",
   }
 
-  scope :viewable, -> { where.not(hidden: true) }
+  enum status: {
+    pending: "pending",
+    approved: "approved",
+    rejected: "rejected",
+  }
+
+  scope :viewable, -> { where(hidden: false, status: "approved") }
   scope :has_comment, -> { where.not(comments: "") }
 
   sig do

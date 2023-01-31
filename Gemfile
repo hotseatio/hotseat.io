@@ -105,7 +105,9 @@ gem "gibberish_detector"
 gem "sentry-rails"
 gem "sentry-ruby"
 
+# Texting
 gem "awesome_print"
+gem "aws-sdk-sns"
 
 group :development, :test do
   gem "debug", ">= 1.0.0"

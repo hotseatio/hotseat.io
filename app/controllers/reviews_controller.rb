@@ -135,6 +135,7 @@ class ReviewsController < ApplicationController
       final: review_params.final,
       reccomend_textbook: review_params.textbook,
       comments: review_params.comments,
+      status: "pending",
     )
 
     user.add_notification_token
@@ -148,7 +149,7 @@ class ReviewsController < ApplicationController
       session[:referred_review_created] = true
       user.complete_referral!
     else
-      session[:review_created] = true
+      session[:review_submitted] = true
     end
 
     # Disable turbolinks here, we handle the redirect in JS
@@ -187,9 +188,13 @@ class ReviewsController < ApplicationController
       final: review_params.final,
       reccomend_textbook: review_params.textbook,
       comments: review_params.comments,
+      status: "pending",
     )
 
-    session[:review_updated] = true
+    logger.info("Queueing NotifyOnNewReviewJob")
+    NotifyOnNewReviewJob.perform_later(@review, edit: true)
+
+    session[:review_submitted] = true
 
     # Disable turbolinks here, we handle the redirect in JS
     # Some browsers will try to follow the redirect using the original request method (PUT/PATCH). Use 303 to force GET of /my-courses.
