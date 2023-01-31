@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       session.delete(:referred_review_created)
     elsif session[:review_submitted]
       flash[:info] = "Review submitted! Once approved, you'll received a notification token. (We'll text you when that happens!)"
-      session.delete(:review_created)
+      session.delete(:review_submitted)
     end
     @term = Term.current
     user = T.must(current_user)
