@@ -1,16 +1,16 @@
 import * as React from 'react'
-import { useState } from 'react'
-import { RadioGroup } from '@headlessui/react'
-import { clsx } from 'clsx'
+import {useState} from 'react'
+import {RadioGroup} from '@headlessui/react'
+import {clsx} from 'clsx'
 
 const plans = [
-  { name: 'Not Following' },
-  { name: 'Plan', description: 'Add course to your quarter plan.' },
+  {name: 'Not Following'},
+  {name: 'Plan', description: 'Add course to your quarter plan.'},
   {
     name: 'Notify',
     description: 'Get text message alerts about the course. Will use one of your X notification tokens.',
   },
-  { name: 'Enroll', description: 'Add to your enrolled courses.' },
+  {name: 'Enroll', description: 'Add to your enrolled courses.'},
 ]
 
 export default function Example() {
@@ -24,7 +24,7 @@ export default function Example() {
           <RadioGroup.Option
             key={plan.name}
             value={plan}
-            className={({ checked, active }) =>
+            className={({checked, active}) =>
               clsx(
                 checked ? 'border-transparent' : 'border-gray-300',
                 active ? 'border-indigo-500 ring-2 ring-indigo-500' : '',
@@ -32,7 +32,7 @@ export default function Example() {
               )
             }
           >
-            {({ active, checked }) => (
+            {({active, checked}) => (
               <>
                 <span className="flex items-center">
                   <span className="flex flex-col text-sm">

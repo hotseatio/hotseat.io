@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { Fragment, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { XMarkIcon, MapPinIcon } from '@heroicons/react/24/outline'
+import {Fragment, useState} from 'react'
+import {Dialog, Transition} from '@headlessui/react'
+import {XMarkIcon, MapPinIcon} from '@heroicons/react/24/outline'
 
 import DrawerHeader from './DrawerHeader'
 import RadioGroup from './RadioGroup'
@@ -11,7 +11,7 @@ interface Props {
   onClose: () => void
 }
 
-export default function SectionDrawer({ isOpen, onClose }: Props) {
+export default function SectionDrawer({isOpen, onClose}: Props) {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       {/* @ts-expect-error */}
