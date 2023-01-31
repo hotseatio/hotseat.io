@@ -14,6 +14,7 @@ class Admin::ReviewsController < AdminController
     const :page, T.nilable(Integer)
   end
 
+  # GET /admin/reviews
   sig { void }
   def index
     typed_params = TypedParams[IndexParams].new.extract!(params)
@@ -26,6 +27,7 @@ class Admin::ReviewsController < AdminController
     const :id, Integer
   end
 
+  # GET /admin/review/:id
   sig { void }
   def show
     typed_params = TypedParams[ShowParams].new.extract!(params)
@@ -38,6 +40,7 @@ class Admin::ReviewsController < AdminController
     const :status, Review::Status
   end
 
+  # PATCH/PUT /admin/review/:id
   sig { void }
   def update
     typed_params = TypedParams[UpdateParams].new.extract!(params)
