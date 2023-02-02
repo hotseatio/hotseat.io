@@ -92,3 +92,7 @@ public/sitemap*.xml.gz
 # secrets we need for dev and test, so
 # we really don't want this in version control
 .env.*.local
+env.*.local
+
+*.DS_Store
+dump*.sql
