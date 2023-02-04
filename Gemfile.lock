@@ -423,6 +423,7 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
+    rotp (6.2.2)
     rubocop (1.40.0)
       json (~> 2.3)
       parallel (~> 1.10)
@@ -617,6 +618,7 @@ DEPENDENCIES
   rails (~> 7.0)
   rails-erd
   redcarpet
+  rotp
   rubocop
   rubocop-minitest
   rubocop-performance
