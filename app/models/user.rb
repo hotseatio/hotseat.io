@@ -1,6 +1,8 @@
 # typed: strict
 # frozen_string_literal: true
 
+require "rotp"
+
 class User < ApplicationRecord
   extend T::Sig
   extend Pay::Attributes::ClassMethods
@@ -202,6 +204,28 @@ class User < ApplicationRecord
       end
     formatted.gsub!(";", " x") # +1 (415) 555-2671 x123
     formatted
+  end
+
+  sig { void }
+  def set_new_otp_secret
+    self.phone_verification_otp_secret = ROTP::Base32.random
+  end
+
+  sig { void }
+  def delete_otp_secret
+    self.phone_verification_otp_secret = nil
+  end
+
+  sig { returns(String) }
+  def generate_otp_code
+    totp = ROTP::TOTP.new(phone_verification_otp_secret, interval: 10.minutes.to_i)
+    totp.now
+  end
+
+  sig { params(code: String).returns(T::Boolean) }
+  def validate_otp_code(code)
+    totp = ROTP::TOTP.new(phone_verification_otp_secret, interval: 10.minutes.to_i)
+    totp.verify(code).present?
   end
 
   private

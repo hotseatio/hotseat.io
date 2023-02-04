@@ -80,30 +80,40 @@ class UsersController < ApplicationController
     normalized_phone = User.normalize_phone(typed_params.phone)
     formatted_phone = User.format_phone(normalized_phone)
 
-    if T.unsafe(Rails.env).production?
-      account_sid = ENV.fetch("TWILIO_ACCOUNT_SID", nil)
-      verify_sid = ENV.fetch("TWILIO_VERIFY_SID", nil)
-      auth_token = ENV.fetch("TWILIO_AUTH_TOKEN", nil)
-      client = Twilio::REST::Client.new(account_sid, auth_token)
-      verification = client.verify
-                           .services(verify_sid)
-                           .verifications
-                           .create(to: normalized_phone, channel: "sms")
+    # if T.unsafe(Rails.env).production?
+    user = T.must(current_user)
+    user.set_new_otp_secret
+    user.save!
 
-      logger.info(verification)
-      render(json: {
-               msg: "Verification code sent",
-               formattedPhone: formatted_phone,
-             }, status: :ok)
-    else
-      render(json: {
-               msg: "In development mode; no verification code sent",
-               confirmationCodePlaceholder: "Dev mode; put any 6-digit number",
-               formattedPhone: formatted_phone,
-             }, status: :ok)
-    end
-  rescue Twilio::REST::RestError => e
-    render(json: { msg: e.error_message }, status: e.status_code)
+    client = Aws::SNS::Client.new
+    client.publish({
+                     phone_number: formatted_phone,
+                     message: "Your Hotseat code: #{user.generate_otp_code}",
+                   })
+
+    # account_sid = ENV.fetch("TWILIO_ACCOUNT_SID", nil)
+    # verify_sid = ENV.fetch("TWILIO_VERIFY_SID", nil)
+    # auth_token = ENV.fetch("TWILIO_AUTH_TOKEN", nil)
+    # client = Twilio::REST::Client.new(account_sid, auth_token)
+    # verification = client.verify
+    #                      .services(verify_sid)
+    #                      .verifications
+    #                      .create(to: normalized_phone, channel: "sms")
+
+    # logger.info(verification)
+    render(json: {
+             msg: "Verification code sent",
+             formattedPhone: formatted_phone,
+           }, status: :ok)
+    # else
+    #   render(json: {
+    #            msg: "In development mode; no verification code sent",
+    #            confirmationCodePlaceholder: "Dev mode; put any 6-digit number",
+    #            formattedPhone: formatted_phone,
+    #          }, status: :ok)
+    # end
+    # rescue Twilio::REST::RestError => e
+    #   render(json: { msg: e.error_message }, status: e.status_code)
   end
 
   class ConfirmVerifyPhoneParams < T::Struct
@@ -116,28 +126,18 @@ class UsersController < ApplicationController
     typed_params = TypedParams[ConfirmVerifyPhoneParams].new.extract!(params)
     normalized_phone = User.normalize_phone(typed_params.phone)
     logger.info(normalized_phone)
+    user = T.must(current_user)
 
-    success = false
-
-    if T.unsafe(Rails.env).development? || T.unsafe(Rails.env).test?
-      success = true
-    else
-      account_sid = ENV.fetch("TWILIO_ACCOUNT_SID", nil)
-      verify_sid = ENV.fetch("TWILIO_VERIFY_SID", nil)
-      auth_token = ENV.fetch("TWILIO_AUTH_TOKEN", nil)
-      client = Twilio::REST::Client.new(account_sid, auth_token)
-      verification_check = client.verify
-                                 .services(verify_sid)
-                                 .verification_checks
-                                 .create(to: normalized_phone, code: typed_params.code)
-      logger.info(verification_check)
-
-      success = verification_check.status
-    end
+    # success = if T.unsafe(Rails.env).development? || T.unsafe(Rails.env).test?
+    #             true
+    #           else
+    #             user.validate_otp_code(typed_params.code)
+    #           end
+    success = user.validate_otp_code(typed_params.code)
 
     if success
-      user = T.must(current_user)
       user.phone = normalized_phone
+      user.delete_otp_secret
       user.save!
       render(json: { msg: "Code verified and phone saved" }, status: :ok)
     else
