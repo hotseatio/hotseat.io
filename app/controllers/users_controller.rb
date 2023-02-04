@@ -1,8 +1,6 @@
 # typed: strict
 # frozen_string_literal: true
 
-require "twilio-ruby"
-
 class UsersController < ApplicationController
   extend T::Sig
 
@@ -80,40 +78,29 @@ class UsersController < ApplicationController
     normalized_phone = User.normalize_phone(typed_params.phone)
     formatted_phone = User.format_phone(normalized_phone)
 
-    # if T.unsafe(Rails.env).production?
-    user = T.must(current_user)
-    user.set_new_otp_secret
-    user.save!
+    if T.unsafe(Rails.env).production?
+      user = T.must(current_user)
+      user.set_new_otp_secret
+      user.save!
 
-    client = Aws::SNS::Client.new
-    client.publish({
-                     phone_number: formatted_phone,
-                     message: "Your Hotseat code: #{user.generate_otp_code}",
-                   })
+      client = Aws::SNS::Client.new
+      client.publish({
+                       phone_number: formatted_phone,
+                       message: "Your Hotseat code: #{user.generate_otp_code}",
+                     })
 
-    # account_sid = ENV.fetch("TWILIO_ACCOUNT_SID", nil)
-    # verify_sid = ENV.fetch("TWILIO_VERIFY_SID", nil)
-    # auth_token = ENV.fetch("TWILIO_AUTH_TOKEN", nil)
-    # client = Twilio::REST::Client.new(account_sid, auth_token)
-    # verification = client.verify
-    #                      .services(verify_sid)
-    #                      .verifications
-    #                      .create(to: normalized_phone, channel: "sms")
-
-    # logger.info(verification)
-    render(json: {
-             msg: "Verification code sent",
-             formattedPhone: formatted_phone,
-           }, status: :ok)
-    # else
-    #   render(json: {
-    #            msg: "In development mode; no verification code sent",
-    #            confirmationCodePlaceholder: "Dev mode; put any 6-digit number",
-    #            formattedPhone: formatted_phone,
-    #          }, status: :ok)
-    # end
-    # rescue Twilio::REST::RestError => e
-    #   render(json: { msg: e.error_message }, status: e.status_code)
+      # logger.info(verification)
+      render(json: {
+               msg: "Verification code sent",
+               formattedPhone: formatted_phone,
+             }, status: :ok)
+    else
+      render(json: {
+               msg: "In development mode; no verification code sent",
+               confirmationCodePlaceholder: "Dev mode; put any 6-digit number",
+               formattedPhone: formatted_phone,
+             }, status: :ok)
+    end
   end
 
   class ConfirmVerifyPhoneParams < T::Struct
@@ -128,12 +115,11 @@ class UsersController < ApplicationController
     logger.info(normalized_phone)
     user = T.must(current_user)
 
-    # success = if T.unsafe(Rails.env).development? || T.unsafe(Rails.env).test?
-    #             true
-    #           else
-    #             user.validate_otp_code(typed_params.code)
-    #           end
-    success = user.validate_otp_code(typed_params.code)
+    success = if T.unsafe(Rails.env).development? || T.unsafe(Rails.env).test?
+                true
+              else
+                user.validate_otp_code(typed_params.code)
+              end
 
     if success
       user.phone = normalized_phone
