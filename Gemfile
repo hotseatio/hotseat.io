@@ -94,7 +94,6 @@ gem "ddtrace"
 
 # Phone verification
 gem "rotp"
-gem "twilio-ruby"
 
 # Add users to Mailchimp list
 gem "MailchimpMarketing"
