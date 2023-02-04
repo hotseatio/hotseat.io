@@ -129,8 +129,6 @@ class UsersController < ApplicationController
     else
       render(json: { msg: "Invalid code" }, status: :bad_request)
     end
-  rescue Twilio::REST::RestError => e
-    render(json: { msg: e.error_message }, status: e.status_code)
   end
 
   sig { void }
