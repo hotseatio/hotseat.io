@@ -18,7 +18,6 @@ module Mail::Ruby19; end
 module Stripe::SubscriptionSchedulePhase; end
 module Stripe::SubscriptionScheduleSettings; end
 module T::Private::Methods::Signature; end
-module UsersController::Twilio::REST::RestError; end
 module YARD::CodeObjects::MethodObject; end
 module YARD::Docstring; end
 module YARD::Logger; end
