@@ -2,4 +2,6 @@
 web: rails s -p 3000
 js: yarn dev
 css: yarn build:css --watch --verbose
-stripe: stripe listen --forward-to localhost:3000/pay/webhooks/stripe
+
+# Uncomment if you've set up the Stripe CLI!
+# stripe: stripe listen --forward-to localhost:3000/pay/webhooks/stripe
