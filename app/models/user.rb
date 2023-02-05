@@ -210,12 +210,12 @@ class User < ApplicationRecord
   end
 
   sig { void }
-  def set_new_otp_secret
+  def set_new_otp_secret!
     self.phone_verification_otp_secret = ROTP::Base32.random
   end
 
   sig { void }
-  def delete_otp_secret
+  def delete_otp_secret!
     self.phone_verification_otp_secret = nil
   end
 
