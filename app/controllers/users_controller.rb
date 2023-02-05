@@ -115,10 +115,10 @@ class UsersController < ApplicationController
     logger.info(normalized_phone)
     user = T.must(current_user)
 
-    success = if T.unsafe(Rails.env).development? || T.unsafe(Rails.env).test?
-                true
-              else
+    success = if T.unsafe(Rails.env).production?
                 user.validate_otp_code(typed_params.code)
+              else
+                true
               end
 
     if success
