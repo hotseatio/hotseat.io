@@ -85,7 +85,7 @@ class UsersController < ApplicationController
 
       client = Aws::SNS::Client.new
       client.publish({
-                       phone_number: formatted_phone,
+                       phone_number: normalized_phone,
                        message: "Your Hotseat code: #{user.generate_otp_code}",
                      })
 

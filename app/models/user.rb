@@ -186,11 +186,14 @@ class User < ApplicationRecord
     User.format_phone(phone)
   end
 
+  # Normalize phone number to E.164 format, e.g., +11234567890
+  # https://en.wikipedia.org/wiki/E.164
   sig { params(phone: String).returns(T.nilable(String)) }
   def self.normalize_phone(phone)
     Phonelib.parse(phone).full_e164.presence
   end
 
+  # Format phone number to a human-readable format, e.g., +1 (123) 456-7890
   sig { params(phone: T.nilable(String)).returns(T.nilable(String)) }
   def self.format_phone(phone)
     parsed_phone = Phonelib.parse(phone)
