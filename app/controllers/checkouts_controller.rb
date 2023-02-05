@@ -3,6 +3,7 @@
 
 class CheckoutsController < ApplicationController
   extend T::Sig
+  before_action :store_user_location!, if: :storable_location?
   before_action :authenticate_user!
 
   sig { void }
@@ -10,7 +11,7 @@ class CheckoutsController < ApplicationController
     super
     @checkout_session = T.let(nil, T.untyped)
     # Use Stripe livemode price in production, testmode for all other data
-    @price = T.let(T.unsafe(Rails.env).production? ? 'price_1KXuuBBclLivpoJujRNSkGJ4' : 'price_1KXuv2BclLivpoJuWavz9GPj', String)
+    @price = T.let(T.unsafe(Rails.env).production? ? "price_1KXuuBBclLivpoJujRNSkGJ4" : "price_1KXuv2BclLivpoJuWavz9GPj", String)
   end
 
   sig { void }
@@ -19,11 +20,11 @@ class CheckoutsController < ApplicationController
     user.set_payment_processor(:stripe)
 
     @checkout_session = T.unsafe(user.payment_processor).checkout(
-      mode: 'payment',
+      mode: "payment",
       line_items: @price,
       success_url: my_courses_url(payment_success: true),
       cancel_url: my_courses_url,
     )
-    redirect_to @checkout_session.url, allow_other_host: true, status: :see_other
+    redirect_to(@checkout_session.url, allow_other_host: true, status: :see_other)
   end
 end

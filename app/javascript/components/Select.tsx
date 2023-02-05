@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { Fragment, useMemo, useState } from 'react'
-import { Listbox, Transition } from '@headlessui/react'
-import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
-import classNames from 'classnames'
+import {Fragment, useMemo, useState} from 'react'
+import {Listbox, Transition} from '@headlessui/react'
+import {CheckIcon, ChevronUpDownIcon} from '@heroicons/react/20/solid'
+import {clsx} from 'clsx'
 
 export type SelectItemID = number | string
 export type SelectItem = {
@@ -11,15 +11,22 @@ export type SelectItem = {
 }
 
 type Props = {
+  // The id attribute for the containing div
   id?: string
+  // The class(es) for the containing div
   className?: string
+  // The selectable items
   items: SelectItem[]
-  placeholder?: boolean
+  // The placeholder value. Defaults to `\u200b` (zero-width space)
   placeholderText?: string
-  label?: string
+  // The label of the input
+  label: string
+  // Whether or not to show the label for screen readers
   labelInvisible?: boolean
+  // Callback when a new item is selected
   onSelect: (selected: SelectItem, index: number) => void
-  initialSelectedIndex?: number
+  // The index of the selected item
+  value: number | 'placeholder'
 }
 
 export default function Select({
@@ -31,27 +38,24 @@ export default function Select({
   onSelect,
   // Zero-width nonbreaking space - keeps the line height of text without containing content
   placeholderText = '\u200b',
-  placeholder = false,
-  initialSelectedIndex = 0,
+  value = 'placeholder',
 }: Props): JSX.Element {
-  const initialSelectedItem = placeholder || !(initialSelectedIndex in items) ? undefined : items[initialSelectedIndex]
-  const [selectedID, setSelectedID] = useState<SelectItemID | undefined>(initialSelectedItem?.id)
-  const selectedItem = useMemo(() => items.find((item) => item.id === selectedID), [items, selectedID])
+  const usePlaceholder = value === 'placeholder' || !(value in items)
+  const selectedItem: SelectItem | null = usePlaceholder ? null : items[value]
 
   const onChange = (newSelectedID: SelectItemID) => {
     const newSelectedIndex = items.findIndex((item) => item.id === newSelectedID)
-    setSelectedID(newSelectedID)
     onSelect(items[newSelectedIndex], newSelectedIndex)
   }
 
   return (
     <div id={id} className={className} role="presentation">
-      <Listbox value={selectedID} onChange={onChange}>
-        {({ open }) => (
+      <Listbox value={selectedItem?.id} onChange={onChange}>
+        {({open}) => (
           <>
             {label && (
               <Listbox.Label
-                className={classNames(
+                className={clsx(
                   'block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1',
                   labelInvisible && 'sr-only'
                 )}
@@ -64,7 +68,7 @@ export default function Select({
                 <span className="block">{selectedItem?.label ?? placeholderText}</span>
 
                 <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                  <SelectorIcon className="h-5 w-5 text-gray-400 dark:text-gray-500" aria-hidden="true" />
+                  <ChevronUpDownIcon className="h-5 w-5 text-gray-400 dark:text-gray-500" aria-hidden="true" />
                 </span>
               </Listbox.Button>
 
@@ -82,23 +86,23 @@ export default function Select({
                   {items.map((item) => (
                     <Listbox.Option
                       key={item.id}
-                      className={({ active }) =>
-                        classNames(
+                      className={({active}) =>
+                        clsx(
                           active ? 'text-white bg-red-600' : 'text-gray-900 dark:text-white',
                           'cursor-default select-none relative py-2 pl-3 pr-9'
                         )
                       }
                       value={item.id}
                     >
-                      {({ selected, active }) => (
+                      {({selected, active}) => (
                         <>
-                          <span className={classNames(selected ? 'font-semibold' : 'font-normal', 'block truncate')}>
+                          <span className={clsx(selected ? 'font-semibold' : 'font-normal', 'block truncate')}>
                             {item.label}
                           </span>
 
                           {selected ? (
                             <span
-                              className={classNames(
+                              className={clsx(
                                 active ? 'text-white' : 'text-red-600',
                                 'absolute inset-y-0 right-0 flex items-center pr-4'
                               )}

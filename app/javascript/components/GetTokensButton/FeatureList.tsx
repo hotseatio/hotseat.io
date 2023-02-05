@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { CheckIcon } from '@heroicons/react/outline'
+import {CheckIcon} from '@heroicons/react/24/outline'
 
 type Props = {
   features: string[]
@@ -7,7 +7,7 @@ type Props = {
   ctaLink: string
 }
 
-export function SecondaryFeatureList({ features, ctaLabel, ctaLink }: Props) {
+export function SecondaryFeatureList({features, ctaLabel, ctaLink}: Props) {
   return (
     <div className="flex-1 flex flex-col justify-between border-t-2 border-gray-100 dark:border-gray-800 p-6 bg-gray-50 dark:bg-gray-800 sm:px-5 sm:py-6">
       <ul role="list" className="space-y-4">
@@ -34,7 +34,7 @@ export function SecondaryFeatureList({ features, ctaLabel, ctaLink }: Props) {
   )
 }
 
-export function PrimaryFeatureList({ features, ctaLabel, ctaLink }: Props) {
+export function PrimaryFeatureList({features, ctaLabel, ctaLink}: Props) {
   return (
     <div className="border-t-2 border-gray-100 dark:border-gray-800 rounded-b-lg pt-10 pb-8 px-6 bg-gray-50 dark:bg-gray-800 sm:p-8">
       <ul role="list" className="space-y-4">
@@ -43,7 +43,7 @@ export function PrimaryFeatureList({ features, ctaLabel, ctaLink }: Props) {
             <div className="flex-shrink-0">
               <CheckIcon className="flex-shrink-0 h-6 w-6 text-red-500" aria-hidden="true" />
             </div>
-            <p className="ml-3 text-base font-medium text-gray-500">{feature}</p>
+            <p className="ml-3 text-base font-medium text-gray-500 dark:text-gray-400">{feature}</p>
           </li>
         ))}
       </ul>

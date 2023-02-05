@@ -3,8 +3,8 @@
 
 class AddNotifyToRelationships < ActiveRecord::Migration[6.1]
   def change
-    change_table :relationships do |t|
-      t.boolean :notify, null: false, default: false
+    change_table(:relationships) do |t|
+      t.boolean(:notify, null: false, default: false)
     end
   end
 end

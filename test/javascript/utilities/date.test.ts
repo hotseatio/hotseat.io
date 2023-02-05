@@ -1,4 +1,4 @@
-import { earliest, latest } from 'utilities/date'
+import {earliest, latest} from 'utilities/date'
 
 describe('earliest', () => {
   it('returns the earliest date', () => {

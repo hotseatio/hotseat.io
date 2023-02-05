@@ -14,7 +14,7 @@ class TurboFailureApp < Devise::FailureApp
   end
 
   def skip_format?
-    %w[html turbo_stream */*].include? request_format.to_s
+    %w[html turbo_stream */*].include?(request_format.to_s)
   end
 end
 
@@ -29,13 +29,13 @@ end
 Devise.setup do |config|
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
-  config.parent_controller = 'TurboDeviseController'
+  config.parent_controller = "TurboDeviseController"
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'noreply@hotseat.io'
+  config.mailer_sender = "noreply@hotseat.io"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -47,7 +47,7 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  require "devise/orm/active_record"
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -274,7 +274,7 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  config.navigational_formats = ['*/*', :html, :turbo_stream]
+  config.navigational_formats = ["*/*", :html, :turbo_stream]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
@@ -283,10 +283,10 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :google_oauth2, ENV.fetch('GOOGLE_CLIENT_ID', nil), ENV.fetch('GOOGLE_CLIENT_SECRET', nil),
+  config.omniauth(:google_oauth2, ENV.fetch("GOOGLE_CLIENT_ID", nil), ENV.fetch("GOOGLE_CLIENT_SECRET", nil),
                   provider_ignores_state: true,
-                  access_type: 'online',
-                  hd: 'g.ucla.edu'
+                  access_type: "online",
+                  hd: "g.ucla.edu")
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

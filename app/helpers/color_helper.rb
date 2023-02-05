@@ -39,11 +39,11 @@ module ColorHelper
   sig { params(color: Color).returns(String) }
   def bg50(color)
     case color
-    when Color::Blue   then 'bg-blue-50'
-    when Color::Gray   then 'bg-gray-50 dark:bg-gray-900'
-    when Color::Green  then 'bg-green-50'
-    when Color::Red    then 'bg-red-50'
-    when Color::Yellow then 'bg-yellow-50'
+    when Color::Blue   then "bg-blue-50"
+    when Color::Gray   then "bg-gray-50 dark:bg-gray-900"
+    when Color::Green  then "bg-green-50"
+    when Color::Red    then "bg-red-50"
+    when Color::Yellow then "bg-yellow-50"
     else T.absurd(color)
     end
   end
@@ -51,11 +51,11 @@ module ColorHelper
   sig { params(color: Color).returns(String) }
   def bg100(color)
     case color
-    when Color::Blue   then 'bg-blue-100'
-    when Color::Gray   then 'bg-gray-100 dark:bg-gray-800'
-    when Color::Green  then 'bg-green-100'
-    when Color::Red    then 'bg-red-100'
-    when Color::Yellow then 'bg-yellow-100'
+    when Color::Blue   then "bg-blue-100"
+    when Color::Gray   then "bg-gray-100 dark:bg-gray-800"
+    when Color::Green  then "bg-green-100"
+    when Color::Red    then "bg-red-100"
+    when Color::Yellow then "bg-yellow-100"
     else T.absurd(color)
     end
   end
@@ -63,11 +63,11 @@ module ColorHelper
   sig { params(color: Color).returns(String) }
   def bg200(color)
     case color
-    when Color::Blue   then 'bg-blue-200'
-    when Color::Gray   then 'bg-gray-200 dark:bg-gray-700'
-    when Color::Green  then 'bg-green-200'
-    when Color::Red    then 'bg-red-200'
-    when Color::Yellow then 'bg-yellow-200'
+    when Color::Blue   then "bg-blue-200"
+    when Color::Gray   then "bg-gray-200 dark:bg-gray-700"
+    when Color::Green  then "bg-green-200"
+    when Color::Red    then "bg-red-200"
+    when Color::Yellow then "bg-yellow-200"
     else T.absurd(color)
     end
   end
@@ -75,11 +75,11 @@ module ColorHelper
   sig { params(color: Color).returns(String) }
   def text700(color)
     case color
-    when Color::Blue   then 'text-blue-700'
-    when Color::Gray   then 'text-gray-700 dark:text-gray-200'
-    when Color::Green  then 'text-green-700'
-    when Color::Red    then 'text-red-700'
-    when Color::Yellow then 'text-yellow-700'
+    when Color::Blue   then "text-blue-700"
+    when Color::Gray   then "text-gray-700 dark:text-gray-200"
+    when Color::Green  then "text-green-700"
+    when Color::Red    then "text-red-700"
+    when Color::Yellow then "text-yellow-700"
     else T.absurd(color)
     end
   end
@@ -87,11 +87,11 @@ module ColorHelper
   sig { params(color: Color).returns(String) }
   def text800(color)
     case color
-    when Color::Blue   then 'text-blue-800'
-    when Color::Gray   then 'text-gray-800 dark:text-gray-100'
-    when Color::Green  then 'text-green-800'
-    when Color::Red    then 'text-red-800'
-    when Color::Yellow then 'text-yellow-800'
+    when Color::Blue   then "text-blue-800"
+    when Color::Gray   then "text-gray-800 dark:text-gray-100"
+    when Color::Green  then "text-green-800"
+    when Color::Red    then "text-red-800"
+    when Color::Yellow then "text-yellow-800"
     else T.absurd(color)
     end
   end

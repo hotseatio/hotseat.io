@@ -12,6 +12,8 @@ AllCops:
 Lint/ConstantDefinitionInBlock:
   Enabled: false
 
+Style/ClassAndModuleChildren:
+  Enabled: false
 Style/GuardClause:
   Enabled: false
 Style/Documentation:
@@ -27,6 +29,20 @@ Style/TrailingCommaInHashLiteral:
 Style/LambdaCall:
   Exclude:
     - '**/*.jbuilder'
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  AllowedMethods:
+    - require
+    - require_relative
+    - require_dependency
+    - yield
+    - raise
+    - puts
+    - execute
+  Exclude:
+    - '/**/Gemfile'
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
 
 Metrics:
   Enabled: false
@@ -45,4 +61,9 @@ Rails/I18nLocaleTexts:
 Rails/FilePath:
   EnforcedStyle: arguments
 Rails/ActionControllerFlashBeforeRender:
+  Enabled: false
+
+Minitest/EmptyLineBeforeAssertionMethods:
+  Enabled: false
+Minitest/MultipleAssertions:
   Enabled: false

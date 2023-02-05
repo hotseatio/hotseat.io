@@ -6,10 +6,10 @@ class Term < ApplicationRecord
   include Comparable
 
   QUARTER_WEIGHTS = T.let({
-    'Winter' => 1,
-    'Spring' => 2,
-    'Summer' => 3,
-    'Fall' => 4,
+    "Winter" => 1,
+    "Spring" => 2,
+    "Summer" => 3,
+    "Fall" => 4,
   }.freeze, T::Hash[String, Integer])
 
   scope :order_chronologically_asc, lambda {
@@ -33,19 +33,19 @@ class Term < ApplicationRecord
   has_many :sections, dependent: :restrict_with_exception
   has_many :enrollment_appointments, dependent: :restrict_with_exception
 
-  has_many :courses, -> { distinct.reorder('') }, through: :sections
-  has_many :subject_areas, -> { distinct.reorder('') }, through: :courses
+  has_many :courses, -> { distinct.reorder("") }, through: :sections
+  has_many :subject_areas, -> { distinct.reorder("") }, through: :courses
 
   enum summer_session: {
-    A: 'A',
-    B: 'B',
-    C: 'C',
-    D: 'D',
+    A: "A",
+    B: "B",
+    C: "C",
+    D: "D",
   }
 
   sig { returns(Term) }
   def self.current
-    T.must(where('start_date < ?', Time.zone.today).order('start_date DESC').limit(1).first)
+    T.must(where("start_date < ?", Time.zone.today).order("start_date DESC").limit(1).first)
   end
 
   sig { returns(Term::RelationType) }
@@ -53,19 +53,19 @@ class Term < ApplicationRecord
     current_term = current
     short_year = current_term.short_year
     case current_term.quarter
-    when 'Fall' # Upcoming: Winter (of next year)
+    when "Fall" # Upcoming: Winter (of next year)
       next_year = short_year.to_i + 1
       winter_term = "#{next_year}W"
       where(term: winter_term)
-    when 'Winter' # Upcoming: Spring, Summer
+    when "Winter" # Upcoming: Spring, Summer
       spring_term = "#{short_year}S"
       summer_term = "#{short_year}1"
       where(term: spring_term).or(where(term: summer_term))
-    when 'Spring' # Upcoming: Summer, Fall
+    when "Spring" # Upcoming: Summer, Fall
       summer_term = "#{short_year}1"
       fall_term = "#{short_year}F"
       where(term: summer_term).or(where(term: fall_term))
-    when 'Summer' # Upcoming: Fall
+    when "Summer" # Upcoming: Fall
       fall_term = "#{short_year}F"
       where(term: fall_term)
     else
@@ -100,20 +100,20 @@ class Term < ApplicationRecord
 
   sig { returns(String) }
   def year
-    (term[0] == '9' ? '19' : '20') + T.must(term[0..1])
+    (term[0] == "9" ? "19" : "20") + T.must(term[0..1])
   end
 
   sig { returns(String) }
   def quarter
     case term[2]
-    when 'F'
-      'Fall'
-    when 'W'
-      'Winter'
-    when 'S'
-      'Spring'
-    when '1'
-      'Summer'
+    when "F"
+      "Fall"
+    when "W"
+      "Winter"
+    when "S"
+      "Spring"
+    when "1"
+      "Summer"
     else
       T.must(term[2])
     end
@@ -127,8 +127,8 @@ class Term < ApplicationRecord
   sig { returns(String) }
   def short_quarter
     case term[2]
-    when '1'
-      'Su'
+    when "1"
+      "Su"
     else
       T.must(term[2])
     end
@@ -136,7 +136,7 @@ class Term < ApplicationRecord
 
   sig { returns(T::Boolean) }
   def summer?
-    quarter == 'Summer'
+    quarter == "Summer"
   end
 
   sig { returns(T.nilable(T::Boolean)) }
@@ -182,7 +182,7 @@ class Term < ApplicationRecord
     when 0..10
       "Week #{current_week}"
     when 11
-      'Finals Week'
+      "Finals Week"
     when (12..)
       post_term_break
     end
@@ -201,37 +201,37 @@ class Term < ApplicationRecord
   sig { returns(T.nilable(String)) }
   def post_term_break
     case quarter
-    when 'Fall'
-      'Winter Break'
-    when 'Winter'
-      'Spring Break'
-    when 'Spring', 'Summer'
-      'Summer Break'
+    when "Fall"
+      "Winter Break"
+    when "Winter"
+      "Spring Break"
+    when "Spring", "Summer"
+      "Summer Break"
     end
   end
 
   sig { returns(T.nilable(ActiveSupport::TimeWithZone)) }
   def enrollment_start
-    priority_pass = enrollment_appointments.find_by(pass: 'priority')
+    priority_pass = enrollment_appointments.find_by(pass: "priority")
     priority_pass&.first
   end
 
   sig { returns(T.nilable(ActiveSupport::TimeWithZone)) }
   def enrollment_end
-    freshmen_second_pass = enrollment_appointments.find_by(pass: 'second', standing: 'freshman')
+    freshmen_second_pass = enrollment_appointments.find_by(pass: "second", standing: "freshman")
     (freshmen_second_pass.last + 10.days).at_end_of_day if freshmen_second_pass
   end
 
   sig { returns(T.nilable(ActiveSupport::TimeWithZone)) }
   def start_time
-    start_date&.at_beginning_of_day
+    start_date&.in_time_zone("America/Los_Angeles")&.at_beginning_of_day
   end
 
   sig { returns(T.nilable(ActiveSupport::TimeWithZone)) }
   def end_of_week_two_time
     return nil if start_date.nil?
 
-    (T.must(start_date) + T.unsafe(zero_week? ? 2.weeks : 1.week)).next_occurring(:friday).at_end_of_day
+    (T.must(start_date) + T.unsafe(zero_week? ? 2.weeks : 1.week)).next_occurring(:friday).in_time_zone("America/Los_Angeles").at_end_of_day
   end
 
   # Returns true if it is currently during the first two weeks of the quarter.
@@ -277,7 +277,7 @@ class Term < ApplicationRecord
   sig { returns(T.nilable(T::Array[EnrollmentChartMarker])) }
   def enrollment_period_markers
     enrollment_appointments
-      .where.not(pass: 'graduate')
+      .where.not(pass: "graduate")
       .group(:pass)
       .minimum(:first)
       .map { |pass, time| EnrollmentChartMarker.new(label: pass.humanize, time:) }
@@ -291,12 +291,12 @@ class Term < ApplicationRecord
 
     [
       EnrollmentChartMarker.new(
-        label: 'Week 1',
-        time: week1_start.at_beginning_of_day,
+        label: "Week 1",
+        time: week1_start.in_time_zone("America/Los_Angeles").at_beginning_of_day,
       ),
       EnrollmentChartMarker.new(
-        label: 'Week 2',
-        time: week2_start.at_beginning_of_day,
+        label: "Week 2",
+        time: week2_start.in_time_zone("America/Los_Angeles").at_beginning_of_day,
       ),
     ]
   end

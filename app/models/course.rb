@@ -11,12 +11,12 @@ class Course < ApplicationRecord
   belongs_to :subject_area
 
   has_one :preceding_course,
-          class_name: 'Course',
-          foreign_key: 'superseding_course_id',
+          class_name: "Course",
+          foreign_key: "superseding_course_id",
           inverse_of: :superseding_course,
           dependent: :restrict_with_exception
   belongs_to :superseding_course,
-             class_name: 'Course',
+             class_name: "Course",
              optional: true
 
   has_many :sections, dependent: :restrict_with_exception
@@ -97,7 +97,7 @@ class Course < ApplicationRecord
   # Whether a course is offered for a given term.
   sig { params(term: Term).returns(T::Boolean) }
   def offered_for_term?(term)
-    terms.include? term
+    terms.include?(term)
   end
 
   COURSE_NUMBER_REGEX = T.let(/([CM]*)([0-9]*)([A-Z]*)/, Regexp)
@@ -112,7 +112,7 @@ class Course < ApplicationRecord
     number = T.must(matches.second)
     trailing_chars = T.must(matches.third)
 
-    (number.rjust(4, '0') + trailing_chars.ljust(2) + leading_chars).strip
+    (number.rjust(4, "0") + trailing_chars.ljust(2) + leading_chars).strip
   end
 
   # Returns the course that replaced the current course, if one exists.

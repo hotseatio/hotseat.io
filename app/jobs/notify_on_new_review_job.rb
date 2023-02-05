@@ -1,17 +1,21 @@
-# typed: strict
+# typed: false
 # frozen_string_literal: true
 
 class NotifyOnNewReviewJob < ApplicationJob
   extend T::Sig
+  # I'd like to use `include GeneratedUrlHelpers` here, but we run into errors when testing
+  T.unsafe(self).include(Rails.application.routes.url_helpers)
+
   queue_as :default
 
-  sig { params(review: Review).void }
-  def perform(review)
-    logger.info('Starting NotifyOnNewReviewJob')
-    webhook_url = ENV.fetch('SLACK_WEBHOOK_URL')
+  sig { params(review: Review, edit: T::Boolean).void }
+  def perform(review, edit: false)
+    logger.info("Starting NotifyOnNewReviewJob")
+    webhook_url = ENV.fetch("SLACK_WEBHOOK_URL")
 
     text = <<~MESSAGE
-      New review ##{review.id} created at #{review.created_at} by user ##{T.must(review.user).id}
+      #{edit ? 'Edited' : 'New'} review ##{review.id} created at #{review.updated_at} by user ##{T.must(review.user).id}
+      🔗 #{admin_review_url(review)}
 
       Numbers
       =======
@@ -38,9 +42,9 @@ class NotifyOnNewReviewJob < ApplicationJob
     logger.info("Posting review to Slack: #{review.id}")
     response = HTTParty.post(webhook_url, {
                                body: { text: }.to_json,
-                               headers: { 'Content-type' => 'application/json' },
+                               headers: { "Content-type" => "application/json" },
                              })
     logger.info("Slack response returned: #{response.code}")
-    logger.info('Finished NotifyOnNewReviewJob')
+    logger.info("Finished NotifyOnNewReviewJob")
   end
 end

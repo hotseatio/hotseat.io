@@ -1,14 +1,13 @@
 import * as React from 'react'
-import { useMemo, useState } from 'react'
-import { CheckIcon } from '@heroicons/react/outline'
-
+import {useMemo, useState} from 'react'
+import {CheckIcon} from '@heroicons/react/24/outline'
 
 import SectionRow from './SectionRow'
-import type { Section } from './SectionRow'
-import { IsBetaTesterContext } from './context'
-import { ReviewButton, RegistrarButton, FollowButton, SubscribeButton } from './Buttons'
+import type {Section} from './SectionRow'
+import {IsBetaTesterContext} from './context'
+import {ReviewButton, RegistrarButton, FollowButton, SubscribeButton} from './Buttons'
 
-import { TermSelectCard } from 'components/Card'
+import {TermSelectCard} from 'components/Card'
 
 type EnrollmentPeriod = 'pre' | 'current' | 'post'
 
@@ -28,7 +27,7 @@ const constructActionButtons = (
   enrollmentPeriod: EnrollmentPeriod,
   section: Section,
   sectionIndex: number,
-  callbacks: { onSubscribeToggle: (sectionIndex: number) => void; onFollowToggle: (sectionIndex: number) => void }
+  callbacks: {onSubscribeToggle: (sectionIndex: number) => void; onFollowToggle: (sectionIndex: number) => void}
 ): React.ReactNode => {
   let actionButtons = null
   if (enrollmentPeriod === 'post') {
@@ -66,11 +65,11 @@ const constructActionButtons = (
   return actionButtons
 }
 
-export default function SectionListCard({ isBetaTester, sectionsByTerm: initialSectionsByTerm }: Props): JSX.Element {
+export default function SectionListCard({isBetaTester, sectionsByTerm: initialSectionsByTerm}: Props): JSX.Element {
   const [sectionsByTerm, setSectionsByTerm] = useState(initialSectionsByTerm)
   const [selectedTermIndex, setSelectedTermIndex] = useState(0)
   const terms = useMemo(() => sectionsByTerm.map(([term]) => term), [sectionsByTerm])
-  const { enrollmentPeriod, sections } = sectionsByTerm[selectedTermIndex][1]
+  const {enrollmentPeriod, sections} = sectionsByTerm[selectedTermIndex][1]
 
   const onFollowToggle = (sectionIndex: number) => {
     sections[sectionIndex].isFollowed = !sections[sectionIndex].isFollowed

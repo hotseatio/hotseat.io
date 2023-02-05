@@ -1,11 +1,12 @@
 # typed: strict
 # frozen_string_literal: true
 
-require 'twilio-ruby'
+require "twilio-ruby"
 
 class UsersController < ApplicationController
   extend T::Sig
 
+  before_action :store_user_location!, if: :storable_location?
   before_action :authenticate_user!
 
   sig { void }
@@ -25,11 +26,11 @@ class UsersController < ApplicationController
       flash[:success] = "Thank you for your purchase! You now have #{view_context.pluralize(user.notification_token_count, 'tokens')}."
     elsif session[:referred_review_created] && T.must(current_user).referred_by
       referring_user = T.must(T.must(current_user).referred_by)
-      flash[:info] = "Review created! Since you were referred by #{referring_user.name}, you've received 2 notification tokens for this review."
-      session.delete(:review_created)
-    elsif session[:review_created]
-      flash[:info] = 'Review created!'
-      session.delete(:review_created)
+      flash[:info] = "Review submitted! Since you were referred by #{referring_user.name}, you'll receive 2 notification tokens once your review is approved. (We'll text you when that happens!)"
+      session.delete(:referred_review_created)
+    elsif session[:review_submitted]
+      flash[:info] = "Review submitted! Once approved, you'll received a notification token. (We'll text you when that happens!)"
+      session.delete(:review_submitted)
     end
     @term = Term.current
     user = T.must(current_user)
@@ -63,10 +64,10 @@ class UsersController < ApplicationController
     user.beta_tester = new_beta_status unless new_beta_status.nil?
     user.save!
 
-    render json: { title: 'Settings updated!' }, status: :ok
+    render(json: { title: "Settings updated!" }, status: :ok)
   rescue ActiveRecord::RecordInvalid => e
-    logger.error e.inspect
-    render json: { title: 'Could not update settings', msg: 'Please make sure everything is properly formatted and try again.' }, status: :bad_request
+    logger.error(e.inspect)
+    render(json: { title: "Could not update settings", msg: "Please make sure everything is properly formatted and try again." }, status: :bad_request)
   end
 
   class VerifyPhoneParams < T::Struct
@@ -80,29 +81,29 @@ class UsersController < ApplicationController
     formatted_phone = User.format_phone(normalized_phone)
 
     if T.unsafe(Rails.env).production?
-      account_sid = ENV.fetch('TWILIO_ACCOUNT_SID', nil)
-      verify_sid = ENV.fetch('TWILIO_VERIFY_SID', nil)
-      auth_token = ENV.fetch('TWILIO_AUTH_TOKEN', nil)
+      account_sid = ENV.fetch("TWILIO_ACCOUNT_SID", nil)
+      verify_sid = ENV.fetch("TWILIO_VERIFY_SID", nil)
+      auth_token = ENV.fetch("TWILIO_AUTH_TOKEN", nil)
       client = Twilio::REST::Client.new(account_sid, auth_token)
       verification = client.verify
                            .services(verify_sid)
                            .verifications
-                           .create(to: normalized_phone, channel: 'sms')
+                           .create(to: normalized_phone, channel: "sms")
 
-      logger.info verification
-      render json: {
-        msg: 'Verification code sent',
-        formattedPhone: formatted_phone,
-      }, status: :ok
+      logger.info(verification)
+      render(json: {
+               msg: "Verification code sent",
+               formattedPhone: formatted_phone,
+             }, status: :ok)
     else
-      render json: {
-        msg: 'In development mode; no verification code sent',
-        confirmationCodePlaceholder: 'Dev mode; put any 6-digit number',
-        formattedPhone: formatted_phone,
-      }, status: :ok
+      render(json: {
+               msg: "In development mode; no verification code sent",
+               confirmationCodePlaceholder: "Dev mode; put any 6-digit number",
+               formattedPhone: formatted_phone,
+             }, status: :ok)
     end
   rescue Twilio::REST::RestError => e
-    render json: { msg: e.error_message }, status: e.status_code
+    render(json: { msg: e.error_message }, status: e.status_code)
   end
 
   class ConfirmVerifyPhoneParams < T::Struct
@@ -114,22 +115,22 @@ class UsersController < ApplicationController
   def confirm_verify_phone
     typed_params = TypedParams[ConfirmVerifyPhoneParams].new.extract!(params)
     normalized_phone = User.normalize_phone(typed_params.phone)
-    logger.info normalized_phone
+    logger.info(normalized_phone)
 
     success = false
 
     if T.unsafe(Rails.env).development? || T.unsafe(Rails.env).test?
       success = true
     else
-      account_sid = ENV.fetch('TWILIO_ACCOUNT_SID', nil)
-      verify_sid = ENV.fetch('TWILIO_VERIFY_SID', nil)
-      auth_token = ENV.fetch('TWILIO_AUTH_TOKEN', nil)
+      account_sid = ENV.fetch("TWILIO_ACCOUNT_SID", nil)
+      verify_sid = ENV.fetch("TWILIO_VERIFY_SID", nil)
+      auth_token = ENV.fetch("TWILIO_AUTH_TOKEN", nil)
       client = Twilio::REST::Client.new(account_sid, auth_token)
       verification_check = client.verify
                                  .services(verify_sid)
                                  .verification_checks
                                  .create(to: normalized_phone, code: typed_params.code)
-      logger.info verification_check
+      logger.info(verification_check)
 
       success = verification_check.status
     end
@@ -138,12 +139,12 @@ class UsersController < ApplicationController
       user = T.must(current_user)
       user.phone = normalized_phone
       user.save!
-      render json: { msg: 'Code verified and phone saved' }, status: :ok
+      render(json: { msg: "Code verified and phone saved" }, status: :ok)
     else
-      render json: { msg: 'Invalid code' }, status: :bad_request
+      render(json: { msg: "Invalid code" }, status: :bad_request)
     end
   rescue Twilio::REST::RestError => e
-    render json: { msg: e.error_message }, status: e.status_code
+    render(json: { msg: e.error_message }, status: e.status_code)
   end
 
   sig { void }
@@ -152,6 +153,6 @@ class UsersController < ApplicationController
     user.phone = nil
     user.relationships.update_all(notify: false)
     user.save!
-    render json: { msg: 'Removed phone' }, status: :ok
+    render(json: { msg: "Removed phone" }, status: :ok)
   end
 end

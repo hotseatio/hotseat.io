@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { useState } from 'react'
-import { ClipboardIcon } from '@heroicons/react/solid'
+import {useState} from 'react'
+import {ClipboardIcon} from '@heroicons/react/20/solid'
 
 type Props = {
   value: string
@@ -8,7 +8,7 @@ type Props = {
   id: string
 }
 
-export default function CopyToClipboardInput({ value, name, id }: Props) {
+export default function CopyToClipboardInput({value, name, id}: Props) {
   const [wasRecentlyCopied, setWasRecentlyCopied] = useState(false)
 
   const onClick = () => {

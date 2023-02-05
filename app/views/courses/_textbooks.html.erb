@@ -1,4 +1,4 @@
-<%= render 'shared/card', id: 'textbooks', title: 'Textbooks' do %>
+<%= render "shared/card", id: "textbooks", title: "Textbooks" do %>
   <% if textbooks.empty? %>
     <div class="px-4 py-5 sm:p-6">
       <p class="text-base text-gray-500 dark:text-gray-400">
@@ -6,8 +6,8 @@
       </p>
     </div>
   <% else %>
-    <%= render 'shared/list', collection: textbooks, paginate: false do |textbook| %>
-      <%= render 'shared/list_item',
+    <%= render "shared/list", collection: textbooks, paginate: false do |textbook| %>
+      <%= render "shared/list_item",
                  link: textbook.amazon_link,
                  title: textbook.title,
                  subtitle: textbook.sublabel %>

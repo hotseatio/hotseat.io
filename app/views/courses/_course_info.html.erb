@@ -1,19 +1,19 @@
-<%= render 'shared/card', id: 'course-info', title: 'Course' do %>
+<%= render "shared/card", id: "course-info", title: "Course" do %>
   <div class="px-4 sm:px-6 py-5 space-y-4">
-    <%= render 'instructor_info_row', label: 'Instructor' do %>
-      <%= link_to instructor.full_label, instructor, class: 'text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-500 underline' %>
+    <%= render "instructor_info_row", label: "Instructor" do %>
+      <%= link_to instructor.full_label, instructor, class: "text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-500 underline" %>
     <% end %>
-    <%= render 'instructor_info_row', label: 'Previously taught' do %>
+    <%= render "instructor_info_row", label: "Previously taught" do %>
       <% terms.each do |term| %>
-        <%= render 'shared/badge',
+        <%= render "shared/badge",
                    label: term.short_readable,
                    color: term_badge_color(term, current_term, upcoming_terms),
-                   classes: 'mb-0.5' %>
+                   classes: "mb-0.5" %>
       <% end %>
     <% end %>
     <% unless preceding_course.nil? %>
-      <%= render 'instructor_info_row', label: 'Formerly offered as' do %>
-        <%= link_to preceding_course.short_title, preceding_course, class: 'text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-500 underline' %>
+      <%= render "instructor_info_row", label: "Formerly offered as" do %>
+        <%= link_to preceding_course.short_title, preceding_course, class: "text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-500 underline" %>
       <% end %>
     <% end %>
   </div>

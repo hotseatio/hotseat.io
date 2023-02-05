@@ -9,27 +9,27 @@
               <%= section.course_title %>
             </p>
             <% if current %>
-              <%= render 'shared/badge', label: section_badge_label(section), color: section_badge_color(section) %>
+              <%= render "shared/badge", label: section_badge_label(section), color: section_badge_color(section) %>
             <% end %>
           </div>
           <div class="sm:flex">
             <p class="flex items-center text-sm text-gray-500">
-              <%= render (section.instructor_count > 1 ? 'icons/users' : 'icons/user'),
-                         classes: 'flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400' %>
+              <%= render (section.instructor_count > 1 ? "icons/users" : "icons/user"),
+                         classes: "flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" %>
               <%= section.instructors_label %>
             </p>
             <% if current %>
               <p class="mt-2 flex items-center text-sm text-gray-500 dark:text-gray-400 sm:mt-0 sm:ml-3">
-                <%= render 'icons/clock', classes: 'flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400 dark:text-gray-500' %>
+                <%= render "icons/clock", classes: "flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400 dark:text-gray-500" %>
                 <%= section.time_label %>
               </p>
               <p class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-3">
-                <%= render 'icons/location-marker', classes: 'flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400' %>
+                <%= render "icons/location-marker", classes: "flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" %>
                 <%= section.location_label %>
               </p>
             <% else %>
               <p class="mt-2 flex items-center text-sm text-gray-500 dark:text-gray-400 sm:mt-0 sm:ml-3">
-                <%= render 'icons/calendar', classes: 'flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400 dark:text-gray-500' %>
+                <%= render "icons/calendar", classes: "flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400 dark:text-gray-500" %>
                 <%= section.term.readable %>
               </p>
             <% end %>
@@ -39,16 +39,16 @@
       <div class="ml-4 flex flex-shrink-0 space-x-2 items-center">
         <% if current_user&.reviewed_section?(section) %>
           <div class="flex items-center text-gray-500 dark:text-gray-400 text-sm">
-            Reviewed <%= render 'icons/check', classes: 'h-5 w-5 ml-1 text-gray-400 dark:text-gray-500' %>
+            Reviewed <%= render "icons/check", classes: "h-5 w-5 ml-1 text-gray-400 dark:text-gray-500" %>
           </div>
         <% else %>
-          <%= render 'shared/unfollow_section_button', section: %>
+          <%= render "shared/unfollow_section_button", section: %>
         <% end %>
-        <%= link_to 'View',
+        <%= link_to "View",
                     section.instructor.present? ? course_instructor_path(section.course, section.instructor) : course_path(section.course),
-                    class: 'button-secondary' %>
+                    class: "button-secondary" %>
         <% unless current_user&.reviewed_section?(section) %>
-          <%= link_to 'Enroll', section.enroll_link, class: 'button-primary' %>
+          <%= link_to "Enroll", section.enroll_link, class: "button-primary" %>
         <% end %>
       </div>
     </div>

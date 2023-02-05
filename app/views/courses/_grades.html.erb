@@ -1,5 +1,5 @@
 <% if grade_data.empty? %>
-  <%= render 'shared/card', id: 'previous-grades', title: 'Previous Grades' do %>
+  <%= render "shared/card", id: "previous-grades", title: "Previous Grades" do %>
     <div class="px-4 py-5 sm:p-6">
       <p class="text-base text-gray-500 dark:text-gray-400">
         Grade distributions not available.
@@ -7,9 +7,9 @@
     </div>
   <% end %>
 <% else %>
-  <%= react_component_transparent('GradeCard',
+  <%= react_component_transparent("GradeCard",
                                   props: {
-                                    id: 'previous-grades',
+                                    id: "previous-grades",
                                     termGradeData: grade_data,
                                   }) %>
 <% end %>

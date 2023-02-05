@@ -75,6 +75,17 @@ CREATE TYPE public.grade_type AS ENUM (
 
 
 --
+-- Name: review_status; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE public.review_status AS ENUM (
+    'pending',
+    'approved',
+    'rejected'
+);
+
+
+--
 -- Name: section_format; Type: TYPE; Schema: public; Owner: -
 --
 
@@ -869,18 +880,6 @@ ALTER SEQUENCE public.pay_webhooks_id_seq OWNED BY public.pay_webhooks.id;
 
 
 --
--- Name: pg_search_documents_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.pg_search_documents_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
 -- Name: relationships; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -934,7 +933,8 @@ CREATE TABLE public.reviews (
     weekly_time public.weekly_time_type,
     offers_extra_credit boolean,
     hidden boolean DEFAULT false NOT NULL,
-    relationship_id bigint
+    relationship_id bigint,
+    status public.review_status DEFAULT 'pending'::public.review_status NOT NULL
 );
 
 
@@ -1923,6 +1923,13 @@ CREATE INDEX index_reviews_on_relationship_id ON public.reviews USING btree (rel
 
 
 --
+-- Name: index_reviews_on_status; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_reviews_on_status ON public.reviews USING btree (status);
+
+
+--
 -- Name: index_searchjoy_searches_on_convertable; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2160,6 +2167,14 @@ ALTER TABLE ONLY public.enrollment_data
 
 
 --
+-- Name: relationships fk_rails_a3d77c3b00; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.relationships
+    ADD CONSTRAINT fk_rails_a3d77c3b00 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
 -- Name: sections fk_rails_ae061b0a82; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2284,6 +2299,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220131054151'),
 ('20220227225317'),
 ('20220303051621'),
-('20220817045634');
+('20220817045634'),
+('20221226072833');
 
 

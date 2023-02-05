@@ -5,9 +5,9 @@
 #
 #   https://github.com/sorbet/sorbet-typed/edit/master/lib/actionmailer/all/actionmailer.rbi
 #
-# typed: strong
+# typed: false
 
 class ActionMailer::Base
-  sig { params(headers: T.untyped).returns(ActionMailer::MessageDelivery) }
+  sig { params(headers: T.untyped, block: T.untyped).returns(Mail::Message) }
   def mail(headers = nil, &block); end
 end

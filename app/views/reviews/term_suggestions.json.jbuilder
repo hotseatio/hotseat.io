@@ -3,4 +3,4 @@
 
 json = T.unsafe(json)
 @course = T.must(@course)
-json.partial! 'reviews/term_suggestions', course: @course
+json.partial!("reviews/term_suggestions", course: @course)

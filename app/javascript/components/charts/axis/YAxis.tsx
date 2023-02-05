@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { ScaleLinear } from 'd3-scale'
+import {ScaleLinear} from 'd3-scale'
 
-import { useChartDimensions } from 'components/charts/Chart'
+import {useChartDimensions} from 'components/charts/Chart'
 
 type Props = {
   scale: ScaleLinear<number, number, never>
@@ -12,7 +12,7 @@ type Props = {
 /**
  * A vertical axis.
  */
-export default function YAxis({ scale, label, formatTick }: Props): JSX.Element {
+export default function YAxis({scale, label, formatTick}: Props): JSX.Element {
   const dimensions = useChartDimensions()
 
   const numberOfTicks = dimensions.boundedHeight / 70

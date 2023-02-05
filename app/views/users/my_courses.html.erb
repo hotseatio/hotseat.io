@@ -1,10 +1,10 @@
-<% provide(:title, 'My Courses') %>
+<% provide(:title, "My Courses") %>
 
-<%= render 'shared/page_header',
-           title: 'My Courses',
-           breadcrumbs: [{ name: 'Home', link: '/' }, { name: 'My Courses', link: my_courses_path }] %>
+<%= render "shared/page_header",
+           title: "My Courses",
+           breadcrumbs: [{ name: "Home", link: "/" }, { name: "My Courses", link: my_courses_path }] %>
 
-<%= react_component_transparent('CurrentCoursesListCard',
+<%= react_component_transparent("CurrentCoursesListCard",
                                 props: {
                                   notificationTokenCount: current_user.notification_token_count,
                                   isBetaTester: current_user&.beta_tester.presence || false,
@@ -13,7 +13,7 @@
                                 }) %>
 
 <% unless @previous_sections.empty? %>
-  <%= react_component_transparent('PreviousCoursesListCard',
+  <%= react_component_transparent("PreviousCoursesListCard",
                                   props: {
                                     isBetaTester: current_user&.beta_tester.presence || false,
                                     sections: @previous_sections.map { |section| to_section_list_props(section, current_user, display_type: SectionHelper::SectionListType::MyCoursesPagePrevious, hide_badge: true) },

@@ -5,7 +5,7 @@ class Section < ApplicationRecord
   extend T::Sig
 
   scope :order_by_course, -> { merge(Course.order_by_number) }
-  scope :order_by_index, -> { order('index ASC') }
+  scope :order_by_index, -> { order("index ASC") }
 
   belongs_to :course
   belongs_to :term
@@ -41,7 +41,7 @@ class Section < ApplicationRecord
 
   sig { returns(String) }
   def location_label
-    locations.join(', ')
+    locations.join(", ")
   end
 
   sig { returns(Integer) }
@@ -64,7 +64,7 @@ class Section < ApplicationRecord
 
   sig { returns(String) }
   def registrar_instructor_label
-    registrar_instructors.join('; ')
+    registrar_instructors.join("; ")
   end
 
   sig { returns(String) }
@@ -74,7 +74,7 @@ class Section < ApplicationRecord
       subj_area_cd: course.subject_area_code.ljust(7),
       crs_catlg_no: course.catalog_number.ljust(7),
       class_id: registrar_id,
-      class_no: Kernel.format(' %03d  ', index),
+      class_no: Kernel.format(" %03d  ", index),
     }
     "https://sa.ucla.edu/ro/Public/SOC/Results/ClassDetail?#{query_params.to_query}"
   end
@@ -83,11 +83,11 @@ class Section < ApplicationRecord
   def enroll_link
     query_params = {
       t: term.term,
-      sBy: 'subject',
+      sBy: "subject",
       subj: course.subject_area_code,
       crsCatlg: "#{course.number} - #{course.title}",
       catlg: course.catalog_number,
-      cls_no: '%',
+      cls_no: "%",
     }
     "https://sa.ucla.edu/ro/ClassSearch/Results?#{query_params.to_query}"
   end
@@ -127,12 +127,12 @@ class Section < ApplicationRecord
 
     # Insert data for enrollment start
     data_before_enrollment = enrollment_data
-                             .where('created_at < ?', enrollment_start)
+                             .where("created_at < ?", enrollment_start)
                              .order(created_at: :desc)
                              .first
                              .as_json
     unless data_before_enrollment.blank? || data_props.blank?
-      data_before_enrollment['created_at'] = enrollment_start
+      data_before_enrollment["created_at"] = enrollment_start
       data_props.prepend(data_before_enrollment)
     end
 
@@ -141,15 +141,15 @@ class Section < ApplicationRecord
 
   class LocationType < T::Enum
     enums do
-      InPerson = new('In-Person')
-      Hybrid = new('Hybrid')
-      Online = new('Online')
+      InPerson = new("In-Person")
+      Hybrid = new("Hybrid")
+      Online = new("Online")
     end
   end
 
   sig { returns(LocationType) }
   def location_type
-    online_locations = locations.select { |location| location.downcase.include?('online') }
+    online_locations = locations.select { |location| location.downcase.include?("online") }
     if online_locations.size == locations.size # all locations online
       LocationType::Online
     elsif online_locations.empty? # all locations in person

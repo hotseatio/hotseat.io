@@ -1,7 +1,7 @@
 # typed: strict
 # frozen_string_literal: true
 
-AFFILIATE_TAG = 'hotseat0c-20'
+AFFILIATE_TAG = "hotseat0c-20"
 
 class Textbook < ApplicationRecord
   extend T::Sig
@@ -23,7 +23,7 @@ class Textbook < ApplicationRecord
     elsif author
       author
     else
-      ''
+      ""
     end
   end
 
@@ -63,6 +63,6 @@ class Textbook < ApplicationRecord
     is_required = self.is_required
     return nil if is_required.nil?
 
-    is_required ? 'Required' : 'Optional'
+    is_required ? "Required" : "Optional"
   end
 end

@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { ScaleTime, ScaleBand } from 'd3-scale'
-import { timeDay } from 'd3-time'
+import {ScaleTime, ScaleBand} from 'd3-scale'
+import {timeDay} from 'd3-time'
 
-import { useChartDimensions } from 'components/charts/Chart'
+import {useChartDimensions} from 'components/charts/Chart'
 
 interface CommonProps {
   label?: string
@@ -23,12 +23,12 @@ interface BandProps extends CommonProps {
  * A horizontal axis.
  */
 export default function XAxis(props: TimeProps | BandProps): JSX.Element {
-  const { showTickMarks = false, label } = props
+  const {showTickMarks = false, label} = props
   let ticks: JSX.Element
   const dimensions = useChartDimensions()
 
   if (isBandProps(props)) {
-    const { scale, formatTick } = props
+    const {scale, formatTick} = props
     const tickValues = scale.domain()
     const getX = (value: string) => {
       const x = props.scale(value)
@@ -37,7 +37,7 @@ export default function XAxis(props: TimeProps | BandProps): JSX.Element {
     }
     ticks = createTicksLabels<string>(tickValues, getX, formatTick, showTickMarks)
   } else {
-    const { scale, formatTick } = props
+    const {scale, formatTick} = props
     const timeInterval = timeDay.every(3)
     const tickValues = timeInterval ? scale.ticks(timeInterval) : scale.ticks()
     const getX = (value: Date) => scale(value)

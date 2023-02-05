@@ -1,13 +1,13 @@
 # typed: false
 # frozen_string_literal: true
 
-require 'faker'
+require "faker"
 
 FactoryBot.define do
   factory :user do
-    name { 'Nathan Smith' }
+    name { "Nathan Smith" }
     sequence(:email) { |n| "natedub#{n}@g.ucla.edu" }
-    provider { 'google_oauth2' }
+    provider { "google_oauth2" }
     sequence(:uid) { |n| n }
     notification_token_count { 1 }
   end
@@ -15,7 +15,8 @@ FactoryBot.define do
   factory :term do
     sequence(:term) do |n|
       quarters = %w[W S F 1]
-      years = %w[99 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27]
+      # Note that 21 is missing: we explicitly omit it since `21S` is our "current" term in tests
+      years = %w[99 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 22 23 24 25 26 27]
       years.product(quarters).map(&:join)[n]
     end
   end
@@ -23,7 +24,7 @@ FactoryBot.define do
   factory :enrollment_appointment
 
   factory :subject_area do
-    name { 'Computer Science' }
+    name { "Computer Science" }
     sequence(:code) { |n| "COM SCI#{n}" }
   end
 
@@ -44,22 +45,22 @@ FactoryBot.define do
     term { association(:term) }
     instructor { association(:instructor) }
     registrar_id { |n| "1870962#{n}" }
-    days { ['MW'] }
-    times { ['10am-11:50am'] }
-    locations { ['Online'] }
-    enrollment_status { 'Open' }
+    days { ["MW"] }
+    times { ["10am-11:50am"] }
+    locations { ["Online"] }
+    enrollment_status { "Open" }
     enrollment_count { 169 }
     enrollment_capacity { 200 }
-    waitlist_status { 'None' }
+    waitlist_status { "None" }
     waitlist_count { 0 }
     waitlist_capacity { 20 }
-    format { 'LEC' }
+    format { "LEC" }
     index { 1 }
   end
 
   factory :textbook do
-    isbn { '9781319050733' }
-    title { 'Calculus' }
+    isbn { "9781319050733" }
+    title { "Calculus" }
   end
 
   factory :instructor do
@@ -73,16 +74,29 @@ FactoryBot.define do
   end
 
   factory :relationship do
+    user
+    section
+
     trait :with_review do
-      review { association(:review) }
+      review
     end
   end
 
   factory :review do
-    section { association(:section) }
+    relationship
+    user
+    section
+
     organization { 4 }
     clarity { 4 }
     overall { 4 }
-    weekly_time { '10-15' }
+    weekly_time { "10-15" }
+    comments { Faker::Lorem.paragraph }
+
+    has_group_project { false }
+    midterm_count { 2 }
+    requires_attendance { false }
+    final { "finals" }
+    reccomend_textbook { false }
   end
 end

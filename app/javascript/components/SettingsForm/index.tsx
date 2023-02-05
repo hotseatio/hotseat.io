@@ -1,15 +1,15 @@
 import * as React from 'react'
-import { useState } from 'react'
-import { Switch } from '@headlessui/react'
-import classNames from 'classnames'
+import {useState} from 'react'
+import {Switch} from '@headlessui/react'
+import {clsx} from 'clsx'
 
 import CopyToClipboardInput from './CopyToClipboardInput'
 import PhoneInput from './PhoneInput'
 
 import LoadingCircle from 'components/icons/LoadingCircle'
 import Alert from 'components/Alert'
-import type { AlertType } from 'components/Alert'
-import { authenticityHeaders } from 'utilities/authenticityHeaders'
+import type {AlertType} from 'components/Alert'
+import {authenticityHeaders} from 'utilities/authenticityHeaders'
 
 type Props = {
   updateURL: string
@@ -26,7 +26,7 @@ type Response = {
   msg?: string
 }
 
-export default function SettingsForm({ updateURL, phoneNumber, ...props }: Props): JSX.Element {
+export default function SettingsForm({updateURL, phoneNumber, ...props}: Props): JSX.Element {
   const [response, setResponse] = useState<Response | null>(null)
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -35,18 +35,18 @@ export default function SettingsForm({ updateURL, phoneNumber, ...props }: Props
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
-    const body = { beta_tester: betaTester, phone: phoneNumber }
+    const body = {beta_tester: betaTester, phone: phoneNumber}
     const response = await fetch(updateURL, {
       method: 'PUT',
-      headers: authenticityHeaders({ 'Content-Type': 'application/json' }),
+      headers: authenticityHeaders({'Content-Type': 'application/json'}),
       body: JSON.stringify(body),
     })
 
     const responseBody = await response.json()
     if (response.status !== 200) {
-      setResponse({ type: 'error', title: responseBody.title, msg: responseBody.msg })
+      setResponse({type: 'error', title: responseBody.title, msg: responseBody.msg})
     } else {
-      setResponse({ type: 'success', title: responseBody.title, msg: responseBody.msg })
+      setResponse({type: 'success', title: responseBody.title, msg: responseBody.msg})
     }
 
     setIsSubmitting(false)
@@ -93,7 +93,7 @@ export default function SettingsForm({ updateURL, phoneNumber, ...props }: Props
         </label>
         <p className="text-xs text-gray-500 dark:text-gray-400">
           {
-            "Referrals earn two notification tokens for the first review they write. You'll receive two notification tokens as well! (One when they sign up, one when they write a review.)"
+            "Referred users earn two notification tokens for the first review they write. You'll receive a bonus notification token as well!"
           }
         </p>
 
@@ -111,7 +111,7 @@ export default function SettingsForm({ updateURL, phoneNumber, ...props }: Props
         <Switch
           checked={betaTester}
           onChange={setBetaTester}
-          className={classNames(
+          className={clsx(
             betaTester ? 'bg-red-600' : 'bg-gray-200',
             'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
           )}
@@ -119,7 +119,7 @@ export default function SettingsForm({ updateURL, phoneNumber, ...props }: Props
           <span className="sr-only">Become a beta tester</span>
           <span
             aria-hidden="true"
-            className={classNames(
+            className={clsx(
               betaTester ? 'translate-x-5' : 'translate-x-0',
               'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
             )}

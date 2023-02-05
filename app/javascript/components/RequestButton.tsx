@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { useState } from 'react'
-import classNames from 'classnames'
+import {useState} from 'react'
+import {clsx} from 'clsx'
 
 import LoadingCircle from 'components/icons/LoadingCircle'
-import { authenticityHeaders } from 'utilities/authenticityHeaders'
+import {authenticityHeaders} from 'utilities/authenticityHeaders'
 
 type Props = {
   title?: string
@@ -11,7 +11,7 @@ type Props = {
   loadingClassName?: string
   resource: string
   method: string
-  body?: { [key: string]: string | number | boolean }
+  body?: {[key: string]: string | number | boolean}
   onClick?: (payload: any) => void // eslint-disable-line @typescript-eslint/no-explicit-any
   onError?: (payload?: any) => void // eslint-disable-line @typescript-eslint/no-explicit-any
   children: React.ReactNode
@@ -37,7 +37,7 @@ export default function RequestButton({
     setIsSubmitting(true)
     const response = await fetch(resource, {
       method,
-      headers: authenticityHeaders({ 'Content-Type': 'application/json' }),
+      headers: authenticityHeaders({'Content-Type': 'application/json'}),
       body: body ? JSON.stringify(body) : undefined,
     })
 
@@ -66,7 +66,7 @@ export default function RequestButton({
   }
 
   return isSubmitting ? (
-    <LoadingCircle className={classNames('h-5 w-5', loadingClassName)} />
+    <LoadingCircle className={clsx('h-5 w-5', loadingClassName)} />
   ) : (
     <button title={title} className={className} onClick={onSubmit} disabled={disabled}>
       {children}

@@ -3,7 +3,7 @@
 
 # Stolen from https://stackoverflow.com/questions/56715152/using-erb-in-markdown-with-redcarpet
 
-require 'redcarpet'
+require "redcarpet"
 
 class MarkdownTemplateHandler
   extend T::Sig

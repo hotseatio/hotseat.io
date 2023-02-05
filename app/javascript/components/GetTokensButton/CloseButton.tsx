@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { XIcon } from '@heroicons/react/outline'
+import {XMarkIcon} from '@heroicons/react/24/outline'
 
 type Props = {
   onClick: () => void
 }
 
-export default function CloseButton({ onClick }: Props) {
+export default function CloseButton({onClick}: Props) {
   return (
     <div className="block absolute top-0 right-0 pt-4 pr-4">
       <button
@@ -14,7 +14,7 @@ export default function CloseButton({ onClick }: Props) {
         onClick={onClick}
       >
         <span className="sr-only">Close</span>
-        <XIcon className="h-6 w-6" aria-hidden="true" />
+        <XMarkIcon className="h-6 w-6" aria-hidden="true" />
       </button>
     </div>
   )

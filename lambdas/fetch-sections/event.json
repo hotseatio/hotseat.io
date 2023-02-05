@@ -1,59 +1,16 @@
 {
   "courses": [
     {
-      "id": 63517,
-      "subjectAreaCode": "M E STD",
-      "title": "Variable Topics in Middle Eastern Studies: Lecture 50  ",
-      "number": "177",
-      "sectionIndices": ["%"]
-    },
-    {
-      "id": 4257,
-      "subjectAreaCode": "HIST",
-      "title": "Holocaust: History and Memory",
-      "number": "5",
-      "sectionIndices": [" 002  "]
-    },
-    {
-      "id": 978,
-      "subjectAreaCode": "ENGCOMP",
-      "title": "Supervised Teaching of Second Language Learners",
-      "number": "495B",
-      "sectionIndices": ["%"]
-    },
-    {
-      "id": 5865,
-      "subjectAreaCode": "THEATER",
-      "title": "Costume Construction Techniques",
-      "number": "C157A",
-      "sectionIndices": ["%"]
-    },
-    {
-      "id": 4506,
-      "subjectAreaCode": "I A STD",
-      "title": "Elementary Yoruba",
-      "number": "M7B",
-      "sectionIndices": ["%"]
-    },
-    {
-      "id": 4505,
-      "subjectAreaCode": "I A STD",
-      "title": "Elementary Amharic",
-      "number": "M6B",
-      "sectionIndices": ["%"]
-    },
-    { "id": 5786, "subjectAreaCode": "SWAHILI", "title": "Elementary Swahili", "number": "2", "sectionIndices": ["%"] },
-    {
-      "id": 26466,
-      "subjectAreaCode": "HUM GEN",
-      "title": "Advanced Human Genetics B: Genetics and Genomics Aspects",
-      "number": "236B",
+      "id": 3073,
+      "subjectAreaCode": "COM SCI",
+      "title": "Introduction to Computer Science I",
+      "number": "31",
       "sectionIndices": ["%"]
     }
   ],
   "term": {
-    "term": "21W",
-    "id": 67
+    "term": "22W",
+    "id": 73
   },
   "shouldInsertEnrollmentData": true
 }

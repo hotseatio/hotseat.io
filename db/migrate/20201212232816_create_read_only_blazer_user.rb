@@ -3,19 +3,19 @@
 
 class CreateReadOnlyBlazerUser < ActiveRecord::Migration[6.0]
   def up
-    execute <<~SQL.squish
+    execute(<<~SQL.squish)
       CREATE ROLE blazer LOGIN PASSWORD '#{ENV.fetch('BLAZER_PASSWORD')}';
     SQL
 
     if T.unsafe(Rails.env).production?
-      execute 'GRANT CONNECT ON DATABASE hotseat TO blazer;'
+      execute("GRANT CONNECT ON DATABASE hotseat TO blazer;")
     elsif T.unsafe(Rails.env).test?
-      execute 'GRANT CONNECT ON DATABASE hotseat_test TO blazer;'
+      execute("GRANT CONNECT ON DATABASE hotseat_test TO blazer;")
     else
-      execute 'GRANT CONNECT ON DATABASE hotseat_dev TO blazer;'
+      execute("GRANT CONNECT ON DATABASE hotseat_dev TO blazer;")
     end
 
-    execute <<~SQL.squish
+    execute(<<~SQL.squish)
       GRANT USAGE ON SCHEMA public TO blazer;
       GRANT SELECT ON ALL TABLES IN SCHEMA public TO blazer;
       ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO blazer;
@@ -23,7 +23,7 @@ class CreateReadOnlyBlazerUser < ActiveRecord::Migration[6.0]
   end
 
   def down
-    execute <<~SQL.squish
+    execute(<<~SQL.squish)
       DROP OWNED BY blazer;
       DROP ROLE blazer;
     SQL

@@ -1,10 +1,9 @@
 import * as React from 'react'
-import { UserIcon, UsersIcon, CalendarIcon } from '@heroicons/react/outline'
+import {UserIcon, UsersIcon, CalendarIcon} from '@heroicons/react/24/outline'
 
-import type { Section } from './SectionRow'
+import type {Section} from './SectionRow'
 
 import Badge from 'components/Badge'
-
 
 export type CourseRowProps = {
   section: Section
@@ -13,7 +12,7 @@ export type CourseRowProps = {
 
 // Display a section primarily by its course
 export default function CourseRow({
-  section: { title, instructorCount, instructorLabel, termLabel, badgeLabel, badgeColor },
+  section: {title, instructorCount, instructorLabel, termLabel, badgeLabel, badgeColor},
   actionButtons,
 }: CourseRowProps) {
   return (

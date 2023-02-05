@@ -3,7 +3,7 @@
 <% subtitle = local_assigns.fetch(:subtitle, nil) %>
 
 <li>
-  <%= link_to link, class: 'm-0 block hover:bg-gray-50 dark:hover:bg-gray-700' do %>
+  <%= link_to link, class: "m-0 block hover:bg-gray-50 dark:hover:bg-gray-700" do %>
     <div class="p-2 flex items-center sm:px-6">
       <div class="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">
         <div class="sm:flex-1 min-w-0">
@@ -17,11 +17,11 @@
           <% end %>
         </div>
         <% if badge_label && badge_color %>
-          <%= render 'shared/badge', label: badge_label, color: badge_color, classes: 'my-4' %>
+          <%= render "shared/badge", label: badge_label, color: badge_color, classes: "my-4" %>
         <% end %>
       </div>
       <div class="ml-1 flex-shrink-0">
-        <%= render 'icons/chevron-right', classes: 'h-5 w-5 text-gray-400' %>
+        <%= render "icons/chevron-right", classes: "h-5 w-5 text-gray-400" %>
       </div>
     </div>
   <% end %>

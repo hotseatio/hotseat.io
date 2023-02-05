@@ -1,17 +1,17 @@
 import * as React from 'react'
-import { useState, useMemo, useCallback } from 'react'
-import { pointer } from 'd3-selection'
-import { max, bisector } from 'd3-array'
-import { scaleTime, scaleLinear } from 'd3-scale'
-import { timeDay } from 'd3-time'
-import { line } from 'd3-shape'
+import {useState, useMemo, useCallback} from 'react'
+import {pointer} from 'd3-selection'
+import {max, bisector} from 'd3-array'
+import {scaleTime, scaleLinear} from 'd3-scale'
+import {timeDay} from 'd3-time'
+import {line} from 'd3-shape'
 
-import { add, sub, earliest, HOUR } from 'utilities/date'
-import { useChartDimensions } from 'components/charts/hooks/useChartDimensions'
+import {add, sub, earliest, HOUR} from 'utilities/date'
+import {useChartDimensions} from 'components/charts/hooks/useChartDimensions'
 import XAxis from 'components/charts/axis/XAxis'
 import YAxis from 'components/charts/axis/YAxis'
 import Chart from 'components/charts/Chart'
-import { RedGradient, redGradientId } from 'components/charts/Gradient'
+import {RedGradient, redGradientId} from 'components/charts/Gradient'
 
 type EnrollmentDatumNonDate = {
   enrollmentCapacity: number
@@ -22,8 +22,8 @@ type EnrollmentDatumNonDate = {
   waitlistStatus: string
 }
 
-export type EnrollmentDatumJSON = EnrollmentDatumNonDate & { createdAt: string; updatedAt: string }
-export type EnrollmentDatum = EnrollmentDatumNonDate & { createdAt: Date }
+export type EnrollmentDatumJSON = EnrollmentDatumNonDate & {createdAt: string; updatedAt: string}
+export type EnrollmentDatum = EnrollmentDatumNonDate & {createdAt: Date}
 
 export type Marker = {
   label: string
@@ -62,7 +62,7 @@ function formatHoverLabel(datum: EnrollmentDatum): string {
 
 function fillOmittedData(
   jsonData: EnrollmentDatumJSON[],
-  { enrollmentEnd, isLive }: { enrollmentEnd: Date; isLive: boolean }
+  {enrollmentEnd, isLive}: {enrollmentEnd: Date; isLive: boolean}
 ): EnrollmentDatum[] {
   const out: EnrollmentDatum[] = []
   let prev: EnrollmentDatum | undefined
@@ -120,7 +120,7 @@ export default function EnrollmentChart({
   const [highlightedDataPoints, setHighlightedDataPoints] = useState<Array<EnrollmentDatum> | null>(null)
 
   const sanitizedSectionData = useMemo(
-    () => sectionData.map((data) => fillOmittedData(data, { enrollmentEnd: new Date(enrollmentEnd), isLive })),
+    () => sectionData.map((data) => fillOmittedData(data, {enrollmentEnd: new Date(enrollmentEnd), isLive})),
     [sectionData, enrollmentEnd, isLive]
   )
   const latestSectionData = useMemo(
@@ -240,7 +240,7 @@ export default function EnrollmentChart({
             </g>
           )}
 
-          {markers.map(({ label, time: rawTime }) => {
+          {markers.map(({label, time: rawTime}) => {
             const time = new Date(rawTime)
             return (
               <g key={rawTime} transform={`translate(${xScale(time)},0)`}>

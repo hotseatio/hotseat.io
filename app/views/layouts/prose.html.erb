@@ -1,8 +1,8 @@
 <%# A slightly modified version of the default template that styles markdown content. %>
 <!DOCTYPE html>
 <html>
-  <%= render 'layouts/head' %>
-  <%= render 'layouts/body' do %>
+  <%= render "layouts/head" %>
+  <%= render "layouts/body" do %>
     <div class="prose dark:prose-invert mx-auto">
       <%= yield %>
     </div>

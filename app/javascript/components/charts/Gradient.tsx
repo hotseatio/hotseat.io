@@ -9,7 +9,7 @@ type Props = React.SVGProps<SVGLinearGradientElement> & {
 /**
  * A SVG linear gradient. Requires a unique ID and an array of color values.
  */
-export default function Gradient({ id, colors, ...props }: Props): JSX.Element {
+export default function Gradient({id, colors, ...props}: Props): JSX.Element {
   return (
     <linearGradient id={id} gradientUnits="userSpaceOnUse" spreadMethod="pad" {...props}>
       {colors.map((color, i) => (
