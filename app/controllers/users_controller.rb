@@ -89,7 +89,6 @@ class UsersController < ApplicationController
                        message: "Your Hotseat code: #{user.generate_otp_code}",
                      })
 
-      # logger.info(verification)
       render(json: {
                msg: "Verification code sent",
                formattedPhone: formatted_phone,
