@@ -80,7 +80,7 @@ class UsersController < ApplicationController
 
     if T.unsafe(Rails.env).production?
       user = T.must(current_user)
-      user.set_new_otp_secret
+      user.set_new_otp_secret!
       user.save!
 
       client = Aws::SNS::Client.new
@@ -122,7 +122,7 @@ class UsersController < ApplicationController
 
     if success
       user.phone = normalized_phone
-      user.delete_otp_secret
+      user.delete_otp_secret!
       user.save!
       render(json: { msg: "Code verified and phone saved" }, status: :ok)
     else
