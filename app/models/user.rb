@@ -1,6 +1,8 @@
 # typed: strict
 # frozen_string_literal: true
 
+require "rotp"
+
 class User < ApplicationRecord
   extend T::Sig
   extend Pay::Attributes::ClassMethods
@@ -184,11 +186,14 @@ class User < ApplicationRecord
     User.format_phone(phone)
   end
 
+  # Normalize phone number to E.164 format, e.g., +11234567890
+  # https://en.wikipedia.org/wiki/E.164
   sig { params(phone: String).returns(T.nilable(String)) }
   def self.normalize_phone(phone)
     Phonelib.parse(phone).full_e164.presence
   end
 
+  # Format phone number to a human-readable format, e.g., +1 (123) 456-7890
   sig { params(phone: T.nilable(String)).returns(T.nilable(String)) }
   def self.format_phone(phone)
     parsed_phone = Phonelib.parse(phone)
@@ -202,6 +207,28 @@ class User < ApplicationRecord
       end
     formatted.gsub!(";", " x") # +1 (415) 555-2671 x123
     formatted
+  end
+
+  sig { void }
+  def set_new_otp_secret!
+    self.phone_verification_otp_secret = ROTP::Base32.random
+  end
+
+  sig { void }
+  def delete_otp_secret!
+    self.phone_verification_otp_secret = nil
+  end
+
+  sig { returns(String) }
+  def generate_otp_code
+    totp = ROTP::TOTP.new(phone_verification_otp_secret, interval: 10.minutes.to_i)
+    totp.now
+  end
+
+  sig { params(code: String).returns(T::Boolean) }
+  def validate_otp_code(code)
+    totp = ROTP::TOTP.new(phone_verification_otp_secret, interval: 10.minutes.to_i)
+    totp.verify(code).present?
   end
 
   private

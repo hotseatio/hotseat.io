@@ -1198,6 +1198,7 @@ CREATE TABLE public.users (
     referral_code character varying NOT NULL,
     referred_by_id integer,
     referral_completed_at timestamp without time zone,
+    phone_verification_otp_secret character varying(32),
     CONSTRAINT notification_tokens_positive_count CHECK ((notification_token_count >= 0))
 );
 
@@ -2300,6 +2301,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220227225317'),
 ('20220303051621'),
 ('20220817045634'),
-('20221226072833');
+('20221226072833'),
+('20230204030922');
 
 

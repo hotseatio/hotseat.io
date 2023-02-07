@@ -93,7 +93,7 @@ gem "mini_portile2" # needed for Tapioca for some reason
 gem "ddtrace"
 
 # Phone verification
-gem "twilio-ruby"
+gem "rotp"
 
 # Add users to Mailchimp list
 gem "MailchimpMarketing"

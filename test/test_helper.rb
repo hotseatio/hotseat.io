@@ -27,6 +27,7 @@ WebMock.disable_net_connect!(
   # Used to download headless chrome in CI
   allow: "chromedriver.storage.googleapis.com",
 )
+Faker::Config.locale = "en-US"
 
 module TermHelper
   extend T::Sig

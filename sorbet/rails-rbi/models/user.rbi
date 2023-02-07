@@ -117,6 +117,15 @@ module User::GeneratedAttributeMethods
   def phone?; end
 
   sig { returns(T.nilable(String)) }
+  def phone_verification_otp_secret; end
+
+  sig { params(value: T.nilable(T.any(String, Symbol))).void }
+  def phone_verification_otp_secret=(value); end
+
+  sig { returns(T::Boolean) }
+  def phone_verification_otp_secret?; end
+
+  sig { returns(T.nilable(String)) }
   def provider; end
 
   sig { params(value: T.nilable(T.any(String, Symbol))).void }
