@@ -19,10 +19,6 @@ build: build-fs build-ts build-fc build-tc build-fsa build-ft build-tt build-tcd
 build-fetch-subject-areas build-fsa:
 	$(GOBUILD) -o ./bin/fetch-subject-areas ./fetch-subject-areas
 
-.PHONY: build-trigger-courses build-tc
-build-trigger-courses build-tc:
-	$(GOBUILD) -o ./bin/trigger-courses ./trigger-courses
-
 .PHONY: build-fetch-courses build-fc
 build-fetch-courses build-fc:
 	$(GOBUILD) -o ./bin/fetch-courses ./fetch-courses
@@ -58,15 +54,6 @@ ifeq ($(UNAME),Darwin)
 	--docker-arg='--platform linux/amd64'
 else
 	sls invoke local -f FetchSubjectAreas --path default-event.json -s linux-dev
-endif
-
-.PHONY: local-trigger-courses local-tc
-local-trigger-courses local-tc: build-tc
-ifeq ($(UNAME),Darwin)
-	sls invoke local -f TriggerCourses --path default-event.json -s mac-dev \
-	--docker-arg='--platform linux/amd64'
-else
-	sls invoke local -f TriggerCourses --path default-event.json -s linux-dev
 endif
 
 .PHONY: local-fetch-courses local-fc
