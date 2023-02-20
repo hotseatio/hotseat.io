@@ -35,14 +35,6 @@ build-trigger-sections build-ts:
 build-fetch-sections build-fs:
 	$(GOBUILD) -o ./bin/fetch-sections ./fetch-sections
 
-.PHONY: build-trigger-textbooks build-tt
-build-trigger-textbooks build-tt:
-	$(GOBUILD) -o ./bin/trigger-textbooks ./trigger-textbooks
-
-.PHONY: build-fetch-textbooks build-ft
-build-fetch-textbooks build-ft:
-	$(GOBUILD) -o ./bin/fetch-textbooks ./fetch-textbooks
-
 .PHONY: build-trigger-course-descriptions build-tcd
 build-trigger-course-descriptions build-tcd:
 	$(GOBUILD) -o ./bin/trigger-course-descriptions ./trigger-course-descriptions
@@ -94,24 +86,6 @@ ifeq ($(UNAME),Darwin)
 	--docker-arg='--platform linux/amd64'
 else
 	sls invoke local -f FetchSections --path ./fetch-sections/event.json -s linux-dev
-endif
-
-.PHONY: local-trigger-textbooks local-tt
-local-trigger-textbooks local-tt: build-tt
-ifeq ($(UNAME),Darwin)
-	sls invoke local -f TriggerTextbooks --path ./default-event.json -s mac-dev \
-	--docker-arg='--platform linux/amd64'
-else
-	sls invoke local -f TriggerTextbooks --path ./default-event.json -s linux-dev
-endif
-
-.PHONY: local-fetch-textbooks local-ft
-local-fetch-textbooks local-ft: build-ft
-ifeq ($(UNAME),Darwin)
-	sls invoke local -f FetchTextbooks --path ./fetch-textbooks/event.json -s mac-dev \
-	--docker-arg='--platform linux/amd64'
-else
-	sls invoke local -f FetchTextbooks --path ./fetch-textbooks/event.json -s linux-dev
 endif
 
 .PHONY: local-trigger-course-descriptions local-tcd

@@ -108,25 +108,6 @@ functions:
     name: fetch-sections
     handler: bin/fetch-sections
 
-  TriggerTextbooks:
-    name: trigger-textbooks
-    handler: bin/trigger-textbooks
-    events:
-      # # Top of every month at 11:50pm UTC
-      # - schedule:
-      #     rate: cron(50 23 1 * ? *)
-      #     input: ${self:custom.currentTerm}
-    environment:
-      BATCH_SIZE: 400
-  FetchTextbooks:
-    name: fetch-textbooks
-    handler: bin/fetch-textbooks
-    events:
-      # Top of every month at 11:50pm UTC
-      - schedule:
-          rate: cron(50 23 1 * ? *)
-          input: {}
-
   TriggerCourseDescriptions:
     name: trigger-course-descriptions
     handler: bin/trigger-course-descriptions

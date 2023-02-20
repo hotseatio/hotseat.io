@@ -210,21 +210,6 @@ namespace :scrape do
     end
   end
 
-  desc "Scrape textbooks"
-  task :textbooks, %i[term] => %i[environment] do |_, args|
-    Rails.logger = Logger.new($stdout)
-
-    unless T.cast(Rails.env, ActiveSupport::EnvironmentInquirer).production?
-      Rails.logger.error("Can only run in production environment.")
-      return
-    end
-
-    term = Term.find_by(term: args[:term])
-    term = Term.current if term.nil?
-    Rails.logger.info("Invoking for #{term.readable}")
-    LambdaScraper.invoke_for_term("trigger-textbooks", term)
-  end
-
   desc "Scrape instructors"
   task :instructors, %i[term] => %i[environment] do |_, args|
     Rails.logger = Logger.new($stdout)
