@@ -72,10 +72,10 @@ endif
 .PHONY: local-fetch-courses local-fc
 local-fetch-courses local-fc: build-fc
 ifeq ($(UNAME),Darwin)
-	sls invoke local -f FetchCourses --path ./fetch-courses/event.json -s mac-dev \
+	sls invoke local -f FetchCourses --path default-event.json -s mac-dev \
 	--docker-arg='--platform linux/amd64'
 else
-	sls invoke local -f FetchCourses --path ./fetch-courses/event.json -s linux-dev
+	sls invoke local -f FetchCourses --path default-event.json -s linux-dev
 endif
 
 .PHONY: local-trigger-sections local-ts

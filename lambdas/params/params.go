@@ -13,8 +13,9 @@ type TriggerCourses struct {
 }
 
 type FetchCourses struct {
-	Term        registrar.Term        `json:"term"`
-	SubjectArea registrar.SubjectArea `json:"subjectArea"`
+	Term registrar.Term `json:"term"`
+	// Term        registrar.Term        `json:"term"`
+	// SubjectArea registrar.SubjectArea `json:"subjectArea"`
 }
 
 type TriggerSections struct {
