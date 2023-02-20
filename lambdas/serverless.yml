@@ -105,14 +105,11 @@ functions:
     name: fetch-sections
     handler: bin/fetch-sections
 
-  TriggerCourseDescriptions:
-    name: trigger-course-descriptions
-    handler: bin/trigger-course-descriptions
+  FetchCourseDescriptions:
+    name: fetch-course-descriptions
+    handler: bin/fetch-course-descriptions
     events:
       # Top of every month at 11:40pm UTC
       - schedule:
           rate: cron(40 23 1 * ? *)
           input: {}
-  FetchCourseDescriptions:
-    name: fetch-course-descriptions
-    handler: bin/fetch-course-descriptions
