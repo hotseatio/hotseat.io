@@ -13,7 +13,7 @@ fix:
 
 # Builds
 .PHONY: build
-build: build-fs build-ts build-fc build-tc build-fsa build-ft build-tt build-tcd build-fcd
+build: build-fs build-fc build-tc build-fsa build-ft build-tt build-tcd build-fcd
 
 .PHONY: build-fetch-subject-areas build-fsa
 build-fetch-subject-areas build-fsa:
@@ -26,10 +26,6 @@ build-trigger-courses build-tc:
 .PHONY: build-fetch-courses build-fc
 build-fetch-courses build-fc:
 	$(GOBUILD) -o ./bin/fetch-courses ./fetch-courses
-
-.PHONY: build-trigger-sections build-ts
-build-trigger-sections build-ts:
-	$(GOBUILD) -o ./bin/trigger-sections ./trigger-sections
 
 .PHONY: build-fetch-sections build-fs
 build-fetch-sections build-fs:
@@ -70,22 +66,13 @@ else
 	sls invoke local -f FetchCourses --path ./fetch-courses/event.json -s linux-dev
 endif
 
-.PHONY: local-trigger-sections local-ts
-local-trigger-sections local-ts: build-ts
-ifeq ($(UNAME),Darwin)
-	sls invoke local -f TriggerSections --path default-event.json -s mac-dev \
-	--docker-arg='--platform linux/amd64'
-else
-	sls invoke local -f TriggerSections --path default-event.json -s linux-dev
-endif
-
 .PHONY: local-fetch-sections local-fs
 local-fetch-sections local-fs: build-fs
 ifeq ($(UNAME),Darwin)
-	sls invoke local -f FetchSections --path ./fetch-sections/event.json -s mac-dev \
+	sls invoke local -f FetchSections --path default-event.json -s mac-dev \
 	--docker-arg='--platform linux/amd64'
 else
-	sls invoke local -f FetchSections --path ./fetch-sections/event.json -s linux-dev
+	sls invoke local -f FetchSections --path default-event.json -s linux-dev
 endif
 
 .PHONY: local-trigger-course-descriptions local-tcd
@@ -105,10 +92,6 @@ ifeq ($(UNAME),Darwin)
 else
 	sls invoke local -f FetchCourseDescriptions --path ./fetch-course-descriptions/event.json -s linux-dev
 endif
-
-.PHONY: prod-trigger-sections prod-ts
-prod-trigger-sections prod-ts: build-ts
-	sls invoke -f TriggerSections --path default-event.json -s production
 
 .PHONY: test
 test:

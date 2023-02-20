@@ -161,7 +161,10 @@ func HandleRequest(ctx context.Context, params params.FetchSections) error {
 	logger = logger.WithField("term", term)
 	logger.Info("Term and termId initialized")
 
-	courses := params.Courses
+	courses, err := RetrieveCourses(ctx, term)
+	if err != nil {
+		return err
+	}
 
 	err = FetchAndSaveSectionsForAllCourses(ctx, courses, term, params.ShouldInsertEnrollmentData)
 	if err != nil {
