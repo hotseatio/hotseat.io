@@ -157,7 +157,6 @@ func ParseEnrollmentData(logger log.FieldLogger, enrollmentData string) (status 
 	case canceledRegex.MatchString(enrollmentData):
 		status = Canceled
 	case closedByDeptRegex.MatchString(enrollmentData):
-		status = Closed
 		return ParseClosedStatus(logger, enrollmentData)
 	case classFullRegex.MatchString(enrollmentData):
 		return ParseFullStatus(logger, enrollmentData)
