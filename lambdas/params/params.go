@@ -17,11 +17,6 @@ type FetchCourses struct {
 	SubjectArea registrar.SubjectArea `json:"subjectArea"`
 }
 
-type TriggerSections struct {
-	Term                       registrar.Term `json:"term"`
-	ShouldInsertEnrollmentData bool           `json:"shouldInsertEnrollmentData"`
-}
-
 type FetchSections struct {
 	Term                       registrar.Term `json:"term"`
 	ShouldInsertEnrollmentData bool           `json:"shouldInsertEnrollmentData"`
