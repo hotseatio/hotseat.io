@@ -13,7 +13,7 @@ fix:
 
 # Builds
 .PHONY: build
-build: build-fs build-ts build-fc build-tc build-fsa build-ft build-tt build-fcd
+build: build-fs build-ts build-fc build-fsa build-fcd
 
 .PHONY: build-fetch-subject-areas build-fsa
 build-fetch-subject-areas build-fsa:
