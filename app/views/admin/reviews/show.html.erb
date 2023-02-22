@@ -29,6 +29,19 @@
   </dl>
 <% end %>
 
+<%= render "shared/card", id: "section", title: "Section" do %>
+  <div class="flex items-center px-4 py-4 sm:px-6">
+    <div class="flex min-w-0 flex-1 items-center">
+      <div class="min-w-0 flex-1 md:grid md:grid-cols-2 md:gap-4">
+        <div>
+          <p class="truncate text-sm font-medium text-gray-600"><%= @section.course_title %></p>
+          <p class="truncate text-sm font-medium text-gray-600">Instructor: <%= @section.instructor.full_label %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <%= render "shared/card", id: "grading-info", title: "Grading Information" do %>
   <%= render "shared/list", collection: @review.course_details, paginate: false do |course_detail| %>
     <li class="p-2 flex items-center sm:px-6">

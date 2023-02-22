@@ -8,6 +8,7 @@ class Admin::ReviewsController < AdminController
     @reviews = T.let(nil, T.nilable(Review::RelationType))
     @review = T.let(nil, T.nilable(Review))
     @author = T.let(nil, T.nilable(User))
+    @section = T.let(nil, T.nilable(Section))
   end
 
   class IndexParams < T::Struct
@@ -33,6 +34,7 @@ class Admin::ReviewsController < AdminController
     typed_params = TypedParams[ShowParams].new.extract!(params)
     @review = Review.find(typed_params.id)
     @author = @review.user
+    @section = T.must(@review.section)
   end
 
   class UpdateParams < T::Struct
