@@ -71,34 +71,6 @@ else
 	sls invoke local -f FetchSections --path ./fetch-sections/event.json -s linux-dev
 endif
 
-<<<<<<< HEAD
-.PHONY: local-trigger-course-descriptions local-tcd
-local-trigger-course-descriptions local-tcd: build-tcd
-ifeq ($(UNAME),Darwin)
-	sls invoke local -f TriggerCourseDescriptions --path ./trigger-course-descriptions/event.json -s mac-dev \
-	--docker-arg='--platform linux/amd64'
-else
-	sls invoke local -f TriggerCourseDescriptions --path ./trigger-course-descriptions/event.json -s linux-dev
-=======
-.PHONY: local-trigger-textbooks local-tt
-local-trigger-textbooks local-tt: build-tt
-ifeq ($(UNAME),Darwin)
-	sls invoke local -f TriggerTextbooks --path ./default-event.json -s mac-dev \
-	--docker-arg='--platform linux/amd64'
-else
-	sls invoke local -f TriggerTextbooks --path ./default-event.json -s linux-dev
-endif
-
-.PHONY: local-fetch-textbooks local-ft
-local-fetch-textbooks local-ft: build-ft
-ifeq ($(UNAME),Darwin)
-	sls invoke local -f FetchTextbooks --path ./fetch-textbooks/event.json -s mac-dev \
-	--docker-arg='--platform linux/amd64'
-else
-	sls invoke local -f FetchTextbooks --path ./fetch-textbooks/event.json -s linux-dev
->>>>>>> 4c125cc (Update other references)
-endif
-
 .PHONY: local-fetch-course-descriptions local-fcd
 local-fetch-course-descriptions local-fcd: build-fcd
 ifeq ($(UNAME),Darwin)
