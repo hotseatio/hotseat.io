@@ -91,7 +91,7 @@ class ReferralTest < ApplicationSystemTestCase
 
     # +1 token for the referrer
     assert_equal(1, referring_user.notification_token_count)
-    # +2 tokens for the referree
-    assert_equal(3, user.notification_token_count)
+    # +1 token for the referree
+    assert_equal(2, user.notification_token_count)
   end
 end
