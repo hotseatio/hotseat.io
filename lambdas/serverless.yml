@@ -88,9 +88,9 @@ functions:
       #     rate: cron(50 23 * * ? *)
       #     input: ${self:custom.summerTerm}
 
-  TriggerSections:
-    name: trigger-sections
-    handler: bin/trigger-sections
+  FetchSections:
+    name: fetch-sections
+    handler: bin/fetch-sections
     timeout: 420 # 7 minutes
     events:
       # Every hour at XX:25
@@ -101,9 +101,6 @@ functions:
       # - schedule:
       #     rate: cron(35 * * * ? *)
       #     input: ${self:custom.summerTerm}
-  FetchSections:
-    name: fetch-sections
-    handler: bin/fetch-sections
 
   FetchCourseDescriptions:
     name: fetch-course-descriptions
