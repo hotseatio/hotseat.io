@@ -45,12 +45,18 @@ class Admin::ReviewsController < AdminController
   def update
     typed_params = TypedParams[UpdateParams].new.extract!(params)
     @review = Review.find(typed_params.id)
-    user = T.must(@review.user)
-    is_first_review = user.reviews.size == 1
 
+    # TODO: move this to @review.approve! for testability
     if (typed_params.status == Review::Status::Approved) && !@review.approved?
+      user = T.must(@review.user)
+
       user.add_notification_token
-      user.complete_referral! if is_first_review && user.referred_by
+
+      if user.referred_by
+        # TODO: this check is incorrect if the new user has multiple unapproved reviews
+        is_first_review = user.reviews.size == 1
+        user.complete_referral! if is_first_review
+      end
 
       NotifyUserAboutApprovedReviewJob.perform_later(@review)
     elsif typed_params.status == Review::Status::Rejected

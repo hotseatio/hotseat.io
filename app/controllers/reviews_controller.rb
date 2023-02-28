@@ -138,8 +138,6 @@ class ReviewsController < ApplicationController
       status: "pending",
     )
 
-    user.add_notification_token
-
     logger.info("Queueing NotifyOnNewReviewJob")
     NotifyOnNewReviewJob.perform_later(review)
 
@@ -147,7 +145,6 @@ class ReviewsController < ApplicationController
     # so we store a session variable instead
     if is_first_review && user.referred_by
       session[:referred_review_created] = true
-      user.complete_referral!
     else
       session[:review_submitted] = true
     end

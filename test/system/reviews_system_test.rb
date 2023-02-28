@@ -94,7 +94,7 @@ class ReviewsSystemTest < ApplicationSystemTestCase
     assert_equal review_text, review.comments
 
     user.reload
-    assert_equal(1, user.notification_token_count)
+    assert_equal(0, user.notification_token_count)
   end
 
   it "allows users to write reviews with section preloaded" do
@@ -169,9 +169,10 @@ class ReviewsSystemTest < ApplicationSystemTestCase
     assert review.reccomend_textbook
     assert_not review.offers_extra_credit
     assert_equal review_text, review.comments
+    assert_equal "pending", review.status
 
     user.reload
-    assert_equal(1, user.notification_token_count)
+    assert_equal(0, user.notification_token_count)
   end
 
   describe "review editing" do
@@ -241,6 +242,9 @@ class ReviewsSystemTest < ApplicationSystemTestCase
 
     it "allows for changing the review" do
       sign_in @user
+      @user.reload
+      prev_tokens = @user.notification_token_count
+
       visit "/reviews/#{@review.id}/edit"
       review_text = "I've thought about my review some more and wanted to change what I wrote because I'm now taking another class that made me think about this professor in a new light!"
 
@@ -251,6 +255,10 @@ class ReviewsSystemTest < ApplicationSystemTestCase
 
       @review.reload
       assert_equal(review_text, @review.comments)
+      assert_equal("pending", @review.status)
+
+      @user.reload
+      assert_equal(prev_tokens, @user.notification_token_count)
     end
   end
 end
