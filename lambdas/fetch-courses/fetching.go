@@ -36,7 +36,7 @@ func FetchFirstPage(ctx context.Context, subjectArea registrar.SubjectArea, term
 	req.URL.RawQuery = query.Encode()
 	logger = logger.WithField("url", req.URL.String())
 
-	logger.Info("Fetching URL")
+	logger.Info("Fetching first page URL")
 	response, err := fetchutil.Client.Do(req)
 	if err != nil {
 		logger.WithError(err).Error("Unable to fetch URL")
@@ -78,7 +78,7 @@ func FetchAdditionalPage(ctx context.Context, model string, pageNumber int) (*go
 	req.URL.RawQuery = query.Encode()
 	logger = logger.WithField("url", req.URL.String())
 
-	logger.Info("Fetching URL")
+	logger.Info("Fetching additional page URL")
 	response, err := fetchutil.Client.Do(req)
 	if err != nil {
 		logger.WithError(err).Error("Unable to fetch URL")

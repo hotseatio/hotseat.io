@@ -166,7 +166,7 @@ namespace :scrape do
         .where("start_date < ?", Time.zone.now)
         .order_chronologically_asc.each do |term|
         Rails.logger.info("Invoking for #{term.readable}")
-        LambdaScraper.invoke_for_term("trigger-courses", term)
+        LambdaScraper.invoke_for_term("fetch-courses", term)
 
         # Wait for scrapers to finish
         sleep(3.minutes.in_seconds)
@@ -176,7 +176,7 @@ namespace :scrape do
       if term.nil?
         Rails.logger.error("Unknown term: #{args[:term]}")
       else
-        LambdaScraper.invoke_for_term("trigger-courses", term)
+        LambdaScraper.invoke_for_term("fetch-courses", term)
       end
     end
   end
@@ -250,6 +250,6 @@ namespace :scrape do
       return
     end
 
-    LambdaScraper.invoke_function("trigger-course-descriptions", {})
+    LambdaScraper.invoke_function("fetch-course-descriptions", {})
   end
 end

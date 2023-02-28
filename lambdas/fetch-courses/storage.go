@@ -12,6 +12,9 @@ import (
 
 // SQL queries.
 const (
+	SelectSubjectAreas string = `
+SELECT subject_areas.id, name, code FROM subject_areas
+`
 	InsertCourse string = `
 		INSERT INTO courses (subject_area_id, title, number, created_at, updated_at)
 		VALUES ($1, $2, $3, NOW(), NOW())
@@ -33,6 +36,42 @@ const (
 		ON CONFLICT (course_id, term_id) DO NOTHING
 	`
 )
+
+func RetrieveSubjectAreas(ctx context.Context) (subjectAreas []registrar.SubjectArea, err error) {
+	span, logger, ctx := envutil.GetLoggerAndNewSpan(ctx, "RetrieveSubjectAreas")
+	defer span.Finish()
+	logger.Info("Retrieving subject areas from DB")
+
+	db, err := envutil.CreateDatabasePool()
+	if err != nil {
+		return subjectAreas, err
+	}
+
+	rows, err := db.Query(ctx, SelectSubjectAreas)
+	if err != nil {
+		return subjectAreas, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		sa := registrar.SubjectArea{}
+		err = rows.Scan(&sa.ID, &sa.Name, &sa.Code)
+		if err != nil {
+			logger.WithField("subjectArea", sa).WithError(err).Error("Error reading course from DB, trying next course")
+			continue
+		}
+		subjectAreas = append(subjectAreas, sa)
+	}
+	err = rows.Err()
+	if err != nil {
+		logger.WithField("subjectAreas", subjectAreas).WithError(err).Error("Error after reading all subject areas")
+		return subjectAreas, err
+	}
+
+	logger.WithField("subjectAreas", subjectAreas).Info("Subject areas retrieved")
+
+	return subjectAreas, nil
+}
 
 func SaveCourse(ctx context.Context, db pgxtrace.WrappedConn, course registrar.Course, term registrar.Term) error {
 	span, logger, ctx := envutil.GetLoggerAndNewSpan(ctx, "SaveCourse")
@@ -73,18 +112,18 @@ func SaveCourse(ctx context.Context, db pgxtrace.WrappedConn, course registrar.C
 	return tx.Commit(ctx)
 }
 
-func SaveCourses(ctx context.Context, courses []registrar.Course, term registrar.Term) error {
+func SaveCourses(ctx context.Context, courses []registrar.Course, term registrar.Term) (int, error) {
 	span, _, _ := envutil.GetLoggerAndNewSpan(ctx, "SaveCourses")
 	defer span.Finish()
 
 	db, err := envutil.CreateDatabasePool()
 	if err != nil {
-		return err
+		return 0, err
 	}
 
 	for _, course := range courses {
 		SaveCourse(ctx, db, course, term)
 	}
 
-	return nil
+	return len(courses), nil
 }

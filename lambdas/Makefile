@@ -13,15 +13,11 @@ fix:
 
 # Builds
 .PHONY: build
-build: build-fs build-fc build-tc build-fsa build-ft build-tt build-tcd build-fcd
+build: build-fs build-fc build-fsa build-fcd
 
 .PHONY: build-fetch-subject-areas build-fsa
 build-fetch-subject-areas build-fsa:
 	$(GOBUILD) -o ./bin/fetch-subject-areas ./fetch-subject-areas
-
-.PHONY: build-trigger-courses build-tc
-build-trigger-courses build-tc:
-	$(GOBUILD) -o ./bin/trigger-courses ./trigger-courses
 
 .PHONY: build-fetch-courses build-fc
 build-fetch-courses build-fc:
@@ -30,10 +26,6 @@ build-fetch-courses build-fc:
 .PHONY: build-fetch-sections build-fs
 build-fetch-sections build-fs:
 	$(GOBUILD) -o ./bin/fetch-sections ./fetch-sections
-
-.PHONY: build-trigger-course-descriptions build-tcd
-build-trigger-course-descriptions build-tcd:
-	$(GOBUILD) -o ./bin/trigger-course-descriptions ./trigger-course-descriptions
 
 .PHONY: build-fetch-course-descriptions build-fcd
 build-fetch-course-descriptions build-fcd:
@@ -48,22 +40,13 @@ else
 	sls invoke local -f FetchSubjectAreas --path default-event.json -s linux-dev
 endif
 
-.PHONY: local-trigger-courses local-tc
-local-trigger-courses local-tc: build-tc
-ifeq ($(UNAME),Darwin)
-	sls invoke local -f TriggerCourses --path default-event.json -s mac-dev \
-	--docker-arg='--platform linux/amd64'
-else
-	sls invoke local -f TriggerCourses --path default-event.json -s linux-dev
-endif
-
 .PHONY: local-fetch-courses local-fc
 local-fetch-courses local-fc: build-fc
 ifeq ($(UNAME),Darwin)
-	sls invoke local -f FetchCourses --path ./fetch-courses/event.json -s mac-dev \
+	sls invoke local -f FetchCourses --path default-event.json -s mac-dev \
 	--docker-arg='--platform linux/amd64'
 else
-	sls invoke local -f FetchCourses --path ./fetch-courses/event.json -s linux-dev
+	sls invoke local -f FetchCourses --path default-event.json -s linux-dev
 endif
 
 .PHONY: local-fetch-sections local-fs
@@ -73,15 +56,6 @@ ifeq ($(UNAME),Darwin)
 	--docker-arg='--platform linux/amd64'
 else
 	sls invoke local -f FetchSections --path default-event.json -s linux-dev
-endif
-
-.PHONY: local-trigger-course-descriptions local-tcd
-local-trigger-course-descriptions local-tcd: build-tcd
-ifeq ($(UNAME),Darwin)
-	sls invoke local -f TriggerCourseDescriptions --path ./trigger-course-descriptions/event.json -s mac-dev \
-	--docker-arg='--platform linux/amd64'
-else
-	sls invoke local -f TriggerCourseDescriptions --path ./trigger-course-descriptions/event.json -s linux-dev
 endif
 
 .PHONY: local-fetch-course-descriptions local-fcd

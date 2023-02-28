@@ -8,6 +8,9 @@ import (
 )
 
 const (
+	selectSubjectAreas string = `
+SELECT id, name, code FROM subject_areas
+`
 	updateCourse string = `
 	UPDATE courses
 	SET
@@ -20,10 +23,38 @@ const (
 	`
 )
 
+func RetrieveSubjectAreas(ctx context.Context) (subjectAreas []registrar.SubjectArea, err error) {
+	span, logger, ctx := envutil.GetLoggerAndNewSpan(ctx, "RetrieveSubjectAreas")
+	defer span.Finish()
+
+	logger.Info("Connecting to Database")
+	db, err := envutil.CreateDatabasePool()
+	if err != nil {
+		return subjectAreas, err
+	}
+
+	rows, err := db.Query(ctx, selectSubjectAreas)
+	if err != nil {
+		return subjectAreas, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		subjectArea := registrar.SubjectArea{}
+		err = rows.Scan(&subjectArea.ID, &subjectArea.Name, &subjectArea.Code)
+		if err != nil {
+			continue
+		}
+		subjectAreas = append(subjectAreas, subjectArea)
+	}
+
+	return subjectAreas, nil
+}
+
 func SaveCourseDescriptions(
 	ctx context.Context,
 	courses []registrar.Course,
-) error {
+) (int, error) {
 	span, logger, ctx := envutil.GetLoggerAndNewSpan(ctx, "SaveCourseDescriptions")
 	defer span.Finish()
 
@@ -31,7 +62,7 @@ func SaveCourseDescriptions(
 
 	db, err := envutil.CreateDatabasePool()
 	if err != nil {
-		return err
+		return 0, err
 	}
 
 	logger.Info("Updating database rows")
@@ -57,5 +88,5 @@ func SaveCourseDescriptions(
 
 	logger.Info("Database update complete")
 
-	return nil
+	return len(courses), nil
 }

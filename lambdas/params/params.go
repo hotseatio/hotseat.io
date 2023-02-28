@@ -8,13 +8,8 @@ type FetchSubjectAreas struct {
 	Term registrar.Term `json:"term"`
 }
 
-type TriggerCourses struct {
-	Term registrar.Term `json:"term"`
-}
-
 type FetchCourses struct {
-	Term        registrar.Term        `json:"term"`
-	SubjectArea registrar.SubjectArea `json:"subjectArea"`
+	Term registrar.Term `json:"term"`
 }
 
 type FetchSections struct {
