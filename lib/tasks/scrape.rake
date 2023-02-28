@@ -250,6 +250,6 @@ namespace :scrape do
       return
     end
 
-    LambdaScraper.invoke_function("trigger-course-descriptions", {})
+    LambdaScraper.invoke_function("fetch-course-descriptions", {})
   end
 end
