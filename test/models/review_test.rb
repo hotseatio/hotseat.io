@@ -128,7 +128,7 @@ class ReviewTest < ActiveSupport::TestCase
   end
 
   describe "review statuses" do
-    describe "approve!" do
+    describe "#approve!" do
       before do
         create_current_term
       end
@@ -206,6 +206,56 @@ class ReviewTest < ActiveSupport::TestCase
 
         assert_predicate(review, :approved?)
         assert_equal(0, reviewer.notification_token_count)
+      end
+    end
+
+    describe "#reject!" do
+      it "rejects the review" do
+        T.unsafe(NotifyUserAboutRejectedReviewJob).expects(:perform_later).once
+
+        reviewer = create(:user, notification_token_count: 0)
+        review = create(:review, user: reviewer, status: "pending")
+
+        assert(review.reject!)
+        review.reload
+
+        assert_predicate(review, :rejected?)
+        assert_equal(0, reviewer.notification_token_count)
+      end
+
+      it "does not reject the review if the review is rejected" do
+        T.unsafe(NotifyUserAboutRejectedReviewJob).expects(:perform_later).once
+
+        reviewer = create(:user, notification_token_count: 0)
+        review = create(:review, user: reviewer, status: "rejected")
+
+        assert_not(review.reject!)
+        review.reload
+
+        assert_predicate(review, :rejected?)
+        assert_equal(0, reviewer.notification_token_count)
+      end
+
+      it "does not reject the review if the review is approved" do
+        T.unsafe(NotifyUserAboutRejectedReviewJob).expects(:perform_later).once
+
+        reviewer = create(:user, notification_token_count: 0)
+        review = create(:review, user: reviewer, status: "approved")
+
+        assert_not(review.reject!)
+        review.reload
+
+        assert_predicate(review, :approved?)
+        assert_equal(0, reviewer.notification_token_count)
+      end
+    end
+
+    describe "#set_pending!" do
+      it "sets a review as pending" do
+        reviewer = create(:user, notification_token_count: 0)
+        review = create(:review, user: reviewer, status: "approved")
+        assert(review.set_pending!)
+        assert_predicate(review, :pending?)
       end
     end
   end

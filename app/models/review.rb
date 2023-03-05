@@ -243,7 +243,8 @@ class Review < ApplicationRecord
   end
 
   # Reject the review.
-  sig { void }
+  # This method is idempotent.
+  sig { returns(T::Boolean) }
   def reject!
     # Can't reject after a review is approved
     return false if approved?
@@ -258,11 +259,8 @@ class Review < ApplicationRecord
   end
 
   # Set the review as pending.
-  sig { void }
+  sig { returns(T::Boolean) }
   def set_pending!
-    # Can't set pending after a review is approved
-    return false if approved?
-
     pending!
     save!
 
