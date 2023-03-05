@@ -51,7 +51,7 @@ class User < ApplicationRecord
 
   # Called when a referral is complete, i.e., a user has signed up and written a review.
   # As a bonus, the user and their referrer get an extra notification token each!
-  # Note this method is idempotent.
+  # This method is idempotent.
   sig { void }
   def complete_referral!
     return unless referral_completed_at.nil? && referred_by

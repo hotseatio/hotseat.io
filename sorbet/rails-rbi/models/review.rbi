@@ -202,6 +202,15 @@ module Review::GeneratedAttributeMethods
   sig { returns(T::Boolean) }
   def final?; end
 
+  sig { returns(T.nilable(ActiveSupport::TimeWithZone)) }
+  def first_approved_at; end
+
+  sig { params(value: T.nilable(T.any(Date, Time, ActiveSupport::TimeWithZone))).void }
+  def first_approved_at=(value); end
+
+  sig { returns(T::Boolean) }
+  def first_approved_at?; end
+
   sig { returns(T.nilable(String)) }
   def grade; end
 

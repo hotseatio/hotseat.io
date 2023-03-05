@@ -934,7 +934,8 @@ CREATE TABLE public.reviews (
     offers_extra_credit boolean,
     hidden boolean DEFAULT false NOT NULL,
     relationship_id bigint,
-    status public.review_status DEFAULT 'pending'::public.review_status NOT NULL
+    status public.review_status DEFAULT 'pending'::public.review_status NOT NULL,
+    first_approved_at timestamp(6) without time zone DEFAULT NULL::timestamp without time zone
 );
 
 
@@ -2302,6 +2303,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220303051621'),
 ('20220817045634'),
 ('20221226072833'),
-('20230204030922');
+('20230204030922'),
+('20230228014101');
 
 
