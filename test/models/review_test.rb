@@ -126,4 +126,87 @@ class ReviewTest < ActiveSupport::TestCase
       )
     end
   end
+
+  describe "review statuses" do
+    describe "approve!" do
+      before do
+        create_current_term
+      end
+
+      it "gives a notification token to the reviewer" do
+        T.unsafe(NotifyUserAboutApprovedReviewJob).expects(:perform_later).once
+        reviewer = create(:user, notification_token_count: 0)
+        review = create(:review, user: reviewer, status: "pending")
+        assert_predicate(review, :pending?)
+        assert_equal(0, reviewer.notification_token_count)
+
+        assert(review.approve!)
+        review.reload
+
+        assert_predicate(review, :approved?)
+        assert_equal(1, reviewer.notification_token_count)
+      end
+
+      it "is idempotent; it returns false for an approved review" do
+        T.unsafe(NotifyUserAboutApprovedReviewJob).expects(:perform_later).never
+        reviewer = create(:user, notification_token_count: 0)
+        review = create(:review, user: reviewer, status: "approved")
+        assert_predicate(review, :approved?)
+        assert_equal(0, reviewer.notification_token_count)
+
+        assert_not(review.approve!)
+        review.reload
+
+        assert_predicate(review, :approved?)
+        assert_equal(0, reviewer.notification_token_count)
+      end
+
+      it "gives two notification tokens to a referred reviewer for the first time" do
+        T.unsafe(NotifyUserAboutApprovedReviewJob).expects(:perform_later).once
+        referrer = create(:user, notification_token_count: 0)
+        reviewer = create(:user, notification_token_count: 0, referred_by: referrer)
+
+        review = create(:review, user: reviewer, status: "pending")
+        assert_predicate(review, :pending?)
+        assert_equal(0, reviewer.notification_token_count)
+
+        assert(review.approve!)
+        review.reload
+
+        assert_predicate(review, :approved?)
+        assert_equal(2, reviewer.notification_token_count)
+        assert_equal(1, referrer.notification_token_count)
+      end
+
+      it "gives one notification token to a referred reviewer for the second time" do
+        T.unsafe(NotifyUserAboutApprovedReviewJob).expects(:perform_later).once
+        referrer = create(:user, notification_token_count: 0)
+        reviewer = create(:user, notification_token_count: 0, referred_by: referrer, referral_completed_at: Time.zone.now)
+
+        review = create(:review, user: reviewer, status: "pending")
+        assert_predicate(review, :pending?)
+        assert_equal(0, reviewer.notification_token_count)
+
+        assert(review.approve!)
+        review.reload
+
+        assert_predicate(review, :approved?)
+        assert_equal(1, reviewer.notification_token_count)
+        assert_equal(0, referrer.notification_token_count)
+      end
+
+      it "does not give a notification token to a review that's been edited" do
+        T.unsafe(NotifyUserAboutApprovedReviewJob).expects(:perform_later).never
+
+        reviewer = create(:user, notification_token_count: 0)
+        review = create(:review, user: reviewer, status: "pending", first_approved_at: DateTime.now)
+
+        assert(review.approve!)
+        review.reload
+
+        assert_predicate(review, :approved?)
+        assert_equal(0, reviewer.notification_token_count)
+      end
+    end
+  end
 end

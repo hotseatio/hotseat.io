@@ -221,6 +221,54 @@ class Review < ApplicationRecord
     ]
   end
 
+  # Approve a review and provide the review with a notification token if applicable.
+  # This method is idempotent.
+  sig { returns(T::Boolean) }
+  def approve!
+    # No need to approve again
+    return false if approved?
+
+    # Don't given tokens if the review has been approved before.
+    # example: approved review is edited later.
+    unless first_approved_at
+      T.must(user).complete_referral!
+      T.must(user).add_notification_token
+      NotifyUserAboutApprovedReviewJob.perform_later(self)
+    end
+
+    approved!
+    save!
+
+    true
+  end
+
+  # Reject the review.
+  sig { void }
+  def reject!
+    # Can't reject after a review is approved
+    return false if approved?
+    # No point in rejecting if already rejected
+    return false if rejected?
+
+    NotifyUserAboutRejectedReviewJob.perform_later(self)
+    rejected!
+    save!
+
+    true
+  end
+
+  # Set the review as pending.
+  sig { void }
+  def set_pending!
+    # Can't set pending after a review is approved
+    return false if approved?
+
+    pending!
+    save!
+
+    true
+  end
+
   private
 
   sig { void }
