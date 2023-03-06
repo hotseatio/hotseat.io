@@ -8,6 +8,7 @@ class Review < ApplicationRecord
   has_one :user, through: :relationship
   has_one :section, through: :relationship
   has_one :course, through: :section
+  has_one :instructor, through: :section
   has_one :term, through: :section
 
   validates :organization, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 7 }, allow_nil: false

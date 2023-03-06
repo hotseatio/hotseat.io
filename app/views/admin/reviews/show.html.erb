@@ -2,6 +2,21 @@
 
 <%= render "shared/page_header", title: "Admin: Review #{@review.id}", breadcrumbs: [{ name: "Home", link: "/" }, { name: "Admin: Reviews", link: admin_reviews_path }, { name: "Review #{@review.id}", link: admin_review_path(@review) }] %>
 
+<div class="overflow-hidden bg-white shadow sm:rounded-lg">
+  <div class="px-4 py-5 sm:px-6">
+    <h3 class="text-base font-semibold leading-6 text-gray-900">
+      <%= link_to course_instructor_path(@review.course, @review.instructor) do %>
+        <%= @review.course.long_title %>
+      <% end %>
+    </h3>
+    <p class="mt-1 max-w-2xl text-sm text-gray-500">
+      <%= link_to instructor_path(@review.instructor) do %>
+        <%= @review.section.instructor.full_label %>
+      <% end %>
+    </p>
+  </div>
+</div>
+
 <%= render "shared/card", id: "review-summary",
                           title: "Review" do %>
   <dl class="grid grid-cols-1 divide-y divide-gray-200 dark:divide-gray-700 md:grid-cols-4 md:divide-y-0 md:divide-x">
