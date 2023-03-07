@@ -234,13 +234,11 @@ class Review < ApplicationRecord
     unless first_approved_at
       T.must(user).complete_referral!
       T.must(user).add_notification_token
-      self.first_approved_at = Time.zone.now
-      save!
+      update(first_approved_at: Time.zone.now)
       NotifyUserAboutApprovedReviewJob.perform_later(self)
     end
 
     approved!
-    save!
 
     true
   end
