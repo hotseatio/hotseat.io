@@ -75,7 +75,7 @@ export function AddChangePhoneModal({isOpen, type, onCancel, onConfirm}: AddChan
               type="tel"
               name="phone-number"
               id="phone-number"
-              className={clsx('base-input rounded-l-md sm:text-sm border-gray-300', {
+              className={clsx('base-input rounded-l-md border-gray-300 sm:text-sm rounded-r-none flex-1', {
                 'text-red-900 placeholder-red-300 dark:placeholder-red-500 focus:outline-none focus:ring-red-500 focus:border-red-500':
                   phoneErrorMessage,
               })}
@@ -89,7 +89,7 @@ export function AddChangePhoneModal({isOpen, type, onCancel, onConfirm}: AddChan
               method="POST"
               resource="/users/verify-phone"
               body={phone ? {phone} : undefined}
-              className="-ml-px relative items-center space-x-2 button-background-unrounded rounded-r-md"
+              className="space-x-2 item-center button-background-unrounded rounded-lg rounded-l-none"
               loadingClassName="ml-3"
               onError={(body) => setPhoneErrorMessage(body?.msg ?? 'Could not set phone number')}
               onClick={(body) => {
