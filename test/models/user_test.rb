@@ -174,4 +174,46 @@ class UserTest < ActiveSupport::TestCase
       assert_not(user.unsubscribe(section))
     end
   end
+
+  describe "phone verification otp codes" do
+    describe "#set_new_otp_secret!" do
+      it "sets the 'phone_verification_otp_secret' property" do
+        user = T.let(build(:user), User)
+
+        assert_nil user.phone_verification_otp_secret
+        user.set_new_otp_secret!
+        assert_not_nil user.phone_verification_otp_secret
+      end
+    end
+
+    describe "#delete_otp_secret!" do
+      it "unsets the 'phone_verification_otp_secret' property" do
+        user = T.let(build(:user, phone_verification_otp_secret: ROTP::Base32.random), User)
+
+        assert_not_nil user.phone_verification_otp_secret
+        user.delete_otp_secret!
+        assert_nil user.phone_verification_otp_secret
+      end
+    end
+
+    describe "#generate_otp_code" do
+      it "generates a new otp code using the secret" do
+        user = T.let(build(:user, phone_verification_otp_secret: ROTP::Base32.random), User)
+        assert_equal 6, user.generate_otp_code.length
+      end
+    end
+
+    describe "#validate_otp_code" do
+      it "returns true if the otp code is valid" do
+        user = T.let(build(:user, phone_verification_otp_secret: ROTP::Base32.random), User)
+        valid_code = user.generate_otp_code
+        assert user.validate_otp_code(valid_code)
+      end
+
+      it "returns false if the otp code is invalid" do
+        user = T.let(build(:user, phone_verification_otp_secret: ROTP::Base32.random), User)
+        assert_not user.validate_otp_code("111111")
+      end
+    end
+  end
 end

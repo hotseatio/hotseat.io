@@ -38,6 +38,7 @@ Style/MethodCallWithArgsParentheses:
     - yield
     - raise
     - puts
+    - execute
   Exclude:
     - '/**/Gemfile'
 Style/StringLiterals:

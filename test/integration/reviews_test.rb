@@ -120,8 +120,7 @@ class ReviewsTest < ActionDispatch::IntegrationTest
       com_sci = create(:subject_area, name: "Computer Science", code: "COM SCI")
       course = create(:course, subject_area: com_sci,
                                title: "Introduction to the Beep Boop",
-                               number: "30",
-                               id: 69)
+                               number: "30")
       @section = T.let(create(:section, course:, term: @term), Section)
 
       sign_in @user
@@ -225,8 +224,7 @@ class ReviewsTest < ActionDispatch::IntegrationTest
       com_sci = create(:subject_area, name: "Computer Science", code: "COM SCI")
       course = create(:course, subject_area: com_sci,
                                title: "Introduction to the Beep Boop",
-                               number: "30",
-                               id: 69)
+                               number: "30")
       @section = T.let(create(:section, course:, term: @term), Section)
 
       sign_in @user

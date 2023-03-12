@@ -17,7 +17,7 @@
             Available now. Free for all UCLA students.
           </h2>
           <div class="w-full flex justify-center">
-            <%= button_to "Sign up", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "cursor-pointer mt-6 mx-auto block rounded-md border border-transparent px-5 py-3 bg-gray-900 text-base font-medium text-white shadow hover:bg-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-red-500 sm:px-10" %>
+            <%= button_to "Log in / Sign up", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "cursor-pointer mt-6 mx-auto block rounded-md border border-transparent px-5 py-3 bg-gray-900 text-base font-medium text-white shadow hover:bg-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-red-500 sm:px-10" %>
           </div>
 
           <p class="mt-6 mb-4 mx-auto text-lg text-gray-100 font-bold">
@@ -30,8 +30,8 @@
                                           html_options: { class: "w-full" },
                                           props: {
                                             id: "home_search",
-                                            searchURL: search_url,
-                                            suggestionURL: search_suggestions_url,
+                                            searchUrl: search_url,
+                                            suggestionUrl: search_suggestions_url,
                                           }) %>
         </div>
 

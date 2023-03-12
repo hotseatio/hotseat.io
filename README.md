@@ -10,14 +10,14 @@ Install [Homebrew](https://brew.sh/). Then run:
 
 ```sh
 brew install docker --cask
-brew install go rbenv nodenv yarn pre-commit terraform postgresql@14 stripe/stripe-cli/stripe opensearch serverless
+brew install go rbenv nodenv yarn pre-commit terraform postgresql@14 stripe/stripe-cli/stripe opensearch serverless graphviz
 
 # You may have to start the DB and OpenSearch services:
 brew services start opensearch
-brew services start postgres
+brew services start postgresql@14
 ```
 
-### Arch / Manjaro
+### Arch / Manjaro (Linux)
 
 (Using pamac, but any AUR helper should work.)
 
@@ -57,6 +57,7 @@ pre-commit install
 dropdb hotseat_dev
 createdb hotseat_dev
 psql -f path/to/dump.sql -d hotseat_dev # replace the path!
+# You can ignore any error messages you see when loading the dump
 
 # Set up dev.hotseat.io
 echo -e "# Hotseat dev server\n127.0.0.1 dev.hotseat.io" | sudo tee -a /etc/hosts

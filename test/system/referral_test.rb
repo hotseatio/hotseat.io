@@ -67,7 +67,7 @@ class ReferralTest < ApplicationSystemTestCase
   test "user fills out their phone number and beta testing status" do
     create_current_term
 
-    referring_user = create(:user, name: "Nathan Smith", notification_token_count: 0)
+    referring_user = create(:user, name: "Nathan Smith", notification_token_count: 100)
     user = create(:user, referred_by: referring_user, notification_token_count: 1)
 
     subj_area = create(:subject_area)
@@ -84,14 +84,24 @@ class ReferralTest < ApplicationSystemTestCase
     fill_out_review
 
     assert_current_path "/my-courses"
-    assert_text page, "Review created! Since you were referred by Nathan Smith, you've received 2 notification tokens for this review.", wait: 10
+    assert_text page, "Review submitted! Since you were referred by Nathan Smith, you'll receive 2 notification tokens once your review is approved. (We'll text you when that happens!)", wait: 10
 
+    # No tokens yet
     referring_user.reload
     user.reload
+    assert_equal(100, referring_user.notification_token_count)
+    assert_equal(1, user.notification_token_count)
 
-    # +1 token for the referrer
-    assert_equal(1, referring_user.notification_token_count)
-    # +2 tokens for the referree
-    assert_equal(3, user.notification_token_count)
+    # TODO: add review.approve! to check what happens after the review is approved.
+    #
+    # review = ...
+    # review.approve!
+    #
+    # referring_user.reload
+    # user.reload
+    # # +1 token for the referrer
+    # assert_equal(101, referring_user.notification_token_count)
+    # # +2 token for the referree
+    # assert_equal(3, user.notification_token_count)
   end
 end

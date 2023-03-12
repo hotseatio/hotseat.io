@@ -112,6 +112,24 @@ module Review::EnumInstanceMethods
   def no_pass!; end
 
   sig { returns(T::Boolean) }
+  def pending?; end
+
+  sig { void }
+  def pending!; end
+
+  sig { returns(T::Boolean) }
+  def approved?; end
+
+  sig { void }
+  def approved!; end
+
+  sig { returns(T::Boolean) }
+  def rejected?; end
+
+  sig { void }
+  def rejected!; end
+
+  sig { returns(T::Boolean) }
   def zero_to_five_hours?; end
 
   sig { void }
@@ -183,6 +201,15 @@ module Review::GeneratedAttributeMethods
 
   sig { returns(T::Boolean) }
   def final?; end
+
+  sig { returns(T.nilable(ActiveSupport::TimeWithZone)) }
+  def first_approved_at; end
+
+  sig { params(value: T.nilable(T.any(Date, Time, ActiveSupport::TimeWithZone))).void }
+  def first_approved_at=(value); end
+
+  sig { returns(T::Boolean) }
+  def first_approved_at?; end
 
   sig { returns(T.nilable(String)) }
   def grade; end
@@ -283,10 +310,10 @@ module Review::GeneratedAttributeMethods
   sig { returns(T::Boolean) }
   def requires_attendance?; end
 
-  sig { returns(T.untyped) }
+  sig { returns(String) }
   def status; end
 
-  sig { params(value: T.untyped).void }
+  sig { params(value: T.any(Integer, String, Symbol)).void }
   def status=(value); end
 
   sig { returns(T::Boolean) }
@@ -435,6 +462,9 @@ class Review < ApplicationRecord
   def self.grades; end
 
   sig { returns(T::Hash[T.any(String, Symbol), String]) }
+  def self.statuses; end
+
+  sig { returns(T::Hash[T.any(String, Symbol), String]) }
   def self.weekly_times; end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
@@ -445,6 +475,9 @@ class Review < ApplicationRecord
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
   def self.a_plus(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
+  def self.approved(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
   def self.b(*args); end
@@ -504,6 +537,9 @@ class Review < ApplicationRecord
   def self.not_a_plus(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
+  def self.not_approved(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
   def self.not_b(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
@@ -552,6 +588,12 @@ class Review < ApplicationRecord
   def self.not_pass(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
+  def self.not_pending(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
+  def self.not_rejected(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
   def self.not_ten_to_fifteen_hours(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
@@ -565,6 +607,12 @@ class Review < ApplicationRecord
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
   def self.pass(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
+  def self.pending(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
+  def self.rejected(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
   def self.ten_to_fifteen_hours(*args); end
@@ -592,6 +640,12 @@ class Review < ApplicationRecord
 
   sig { params(value: T.nilable(Review::Grade)).void }
   def typed_grade=(value); end
+
+  sig { returns(Review::Status) }
+  def typed_status; end
+
+  sig { params(value: Review::Status).void }
+  def typed_status=(value); end
 
   sig { returns(T.nilable(Review::WeeklyTime)) }
   def typed_weekly_time; end
@@ -625,6 +679,15 @@ class Review < ApplicationRecord
       F = new(%q{f})
       Pass = new(%q{pass})
       NoPass = new(%q{no_pass})
+    end
+
+  end
+
+  class Status < T::Enum
+    enums do
+      Pending = new(%q{pending})
+      Approved = new(%q{approved})
+      Rejected = new(%q{rejected})
     end
 
   end
@@ -667,6 +730,9 @@ class Review::ActiveRecord_Relation < ActiveRecord::Relation
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
   def a_plus(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
+  def approved(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
   def b(*args); end
@@ -726,6 +792,9 @@ class Review::ActiveRecord_Relation < ActiveRecord::Relation
   def not_a_plus(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
+  def not_approved(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
   def not_b(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
@@ -774,6 +843,12 @@ class Review::ActiveRecord_Relation < ActiveRecord::Relation
   def not_pass(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
+  def not_pending(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
+  def not_rejected(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
   def not_ten_to_fifteen_hours(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
@@ -787,6 +862,12 @@ class Review::ActiveRecord_Relation < ActiveRecord::Relation
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
   def pass(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
+  def pending(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
+  def rejected(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_Relation) }
   def ten_to_fifteen_hours(*args); end
@@ -832,6 +913,9 @@ class Review::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelati
   def a_plus(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
+  def approved(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
   def b(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
@@ -889,6 +973,9 @@ class Review::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelati
   def not_a_plus(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
+  def not_approved(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
   def not_b(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
@@ -937,6 +1024,12 @@ class Review::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelati
   def not_pass(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
+  def not_pending(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
+  def not_rejected(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
   def not_ten_to_fifteen_hours(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
@@ -950,6 +1043,12 @@ class Review::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelati
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
   def pass(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
+  def pending(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
+  def rejected(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
   def ten_to_fifteen_hours(*args); end
@@ -994,6 +1093,9 @@ class Review::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associat
   def a_plus(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
+  def approved(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
   def b(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
@@ -1051,6 +1153,9 @@ class Review::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associat
   def not_a_plus(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
+  def not_approved(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
   def not_b(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
@@ -1099,6 +1204,12 @@ class Review::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associat
   def not_pass(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
+  def not_pending(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
+  def not_rejected(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
   def not_ten_to_fifteen_hours(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
@@ -1112,6 +1223,12 @@ class Review::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associat
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
   def pass(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
+  def pending(*args); end
+
+  sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
+  def rejected(*args); end
 
   sig { params(args: T.untyped).returns(Review::ActiveRecord_AssociationRelation) }
   def ten_to_fifteen_hours(*args); end

@@ -14,22 +14,50 @@ class Admin::ReviewsController < AdminController
     const :page, T.nilable(Integer)
   end
 
+  # GET /admin/reviews
   sig { void }
   def index
     typed_params = TypedParams[IndexParams].new.extract!(params)
     page = typed_params.page
 
-    @reviews = Review.all.order(created_at: :desc).page(page)
+    @reviews = Review.all.where(status: :pending).order(updated_at: :desc).page(page)
   end
 
   class ShowParams < T::Struct
     const :id, Integer
   end
 
+  # GET /admin/review/:id
   sig { void }
   def show
     typed_params = TypedParams[ShowParams].new.extract!(params)
     @review = Review.find(typed_params.id)
     @author = @review.user
+  end
+
+  class UpdateParams < T::Struct
+    const :id, Integer
+    const :status, Review::Status
+  end
+
+  # PATCH/PUT /admin/review/:id
+  sig { void }
+  def update
+    typed_params = TypedParams[UpdateParams].new.extract!(params)
+    status = typed_params.status
+    @review = Review.find(typed_params.id)
+
+    case status
+    when Review::Status::Approved
+      @review.approve!
+    when Review::Status::Rejected
+      @review.reject!
+    when Review::Status::Pending
+      @review.set_pending!
+    else
+      T.absurd(status)
+    end
+
+    redirect_to(admin_review_path(@review))
   end
 end

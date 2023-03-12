@@ -1,8 +1,6 @@
 # typed: strict
 # frozen_string_literal: true
 
-require "twilio-ruby"
-
 class UsersController < ApplicationController
   extend T::Sig
 
@@ -26,14 +24,11 @@ class UsersController < ApplicationController
       flash[:success] = "Thank you for your purchase! You now have #{view_context.pluralize(user.notification_token_count, 'tokens')}."
     elsif session[:referred_review_created] && T.must(current_user).referred_by
       referring_user = T.must(T.must(current_user).referred_by)
-      flash[:info] = "Review created! Since you were referred by #{referring_user.name}, you've received 2 notification tokens for this review."
-      session.delete(:review_created)
-    elsif session[:review_created]
-      flash[:info] = "Review created!"
-      session.delete(:review_created)
-    elsif session[:review_updated]
-      flash[:info] = "Review updated!"
-      session.delete(:review_updated)
+      flash[:info] = "Review submitted! Since you were referred by #{referring_user.name}, you'll receive 2 notification tokens once your review is approved. (We'll text you when that happens!)"
+      session.delete(:referred_review_created)
+    elsif session[:review_submitted]
+      flash[:info] = "Review submitted! Once approved, you'll received a notification token. (We'll text you when that happens!)"
+      session.delete(:review_submitted)
     end
     @term = Term.current
     user = T.must(current_user)
@@ -84,16 +79,16 @@ class UsersController < ApplicationController
     formatted_phone = User.format_phone(normalized_phone)
 
     if T.unsafe(Rails.env).production?
-      account_sid = ENV.fetch("TWILIO_ACCOUNT_SID", nil)
-      verify_sid = ENV.fetch("TWILIO_VERIFY_SID", nil)
-      auth_token = ENV.fetch("TWILIO_AUTH_TOKEN", nil)
-      client = Twilio::REST::Client.new(account_sid, auth_token)
-      verification = client.verify
-                           .services(verify_sid)
-                           .verifications
-                           .create(to: normalized_phone, channel: "sms")
+      user = T.must(current_user)
+      user.set_new_otp_secret!
+      user.save!
 
-      logger.info(verification)
+      client = Aws::SNS::Client.new
+      client.publish({
+                       phone_number: normalized_phone,
+                       message: "Your Hotseat code: #{user.generate_otp_code}",
+                     })
+
       render(json: {
                msg: "Verification code sent",
                formattedPhone: formatted_phone,
@@ -105,8 +100,6 @@ class UsersController < ApplicationController
                formattedPhone: formatted_phone,
              }, status: :ok)
     end
-  rescue Twilio::REST::RestError => e
-    render(json: { msg: e.error_message }, status: e.status_code)
   end
 
   class ConfirmVerifyPhoneParams < T::Struct
@@ -119,35 +112,22 @@ class UsersController < ApplicationController
     typed_params = TypedParams[ConfirmVerifyPhoneParams].new.extract!(params)
     normalized_phone = User.normalize_phone(typed_params.phone)
     logger.info(normalized_phone)
+    user = T.must(current_user)
 
-    success = false
-
-    if T.unsafe(Rails.env).development? || T.unsafe(Rails.env).test?
-      success = true
-    else
-      account_sid = ENV.fetch("TWILIO_ACCOUNT_SID", nil)
-      verify_sid = ENV.fetch("TWILIO_VERIFY_SID", nil)
-      auth_token = ENV.fetch("TWILIO_AUTH_TOKEN", nil)
-      client = Twilio::REST::Client.new(account_sid, auth_token)
-      verification_check = client.verify
-                                 .services(verify_sid)
-                                 .verification_checks
-                                 .create(to: normalized_phone, code: typed_params.code)
-      logger.info(verification_check)
-
-      success = verification_check.status
-    end
+    success = if T.unsafe(Rails.env).production?
+                user.validate_otp_code(typed_params.code)
+              else
+                true
+              end
 
     if success
-      user = T.must(current_user)
       user.phone = normalized_phone
+      user.delete_otp_secret!
       user.save!
       render(json: { msg: "Code verified and phone saved" }, status: :ok)
     else
       render(json: { msg: "Invalid code" }, status: :bad_request)
     end
-  rescue Twilio::REST::RestError => e
-    render(json: { msg: e.error_message }, status: e.status_code)
   end
 
   sig { void }

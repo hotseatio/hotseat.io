@@ -8,6 +8,7 @@ class Review < ApplicationRecord
   has_one :user, through: :relationship
   has_one :section, through: :relationship
   has_one :course, through: :section
+  has_one :instructor, through: :section
   has_one :term, through: :section
 
   validates :organization, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 7 }, allow_nil: false
@@ -50,7 +51,13 @@ class Review < ApplicationRecord
     no_pass: "NP",
   }
 
-  scope :viewable, -> { where.not(hidden: true) }
+  enum status: {
+    pending: "pending",
+    approved: "approved",
+    rejected: "rejected",
+  }
+
+  scope :viewable, -> { where(hidden: false, status: "approved") }
   scope :has_comment, -> { where.not(comments: "") }
 
   sig do
@@ -213,6 +220,52 @@ class Review < ApplicationRecord
         value: reccomend_textbook,
       },
     ]
+  end
+
+  # Approve a review and provide the review with a notification token if applicable.
+  # This method is idempotent.
+  sig { returns(T::Boolean) }
+  def approve!
+    # No need to approve again
+    return false if approved?
+
+    # Don't given tokens if the review has been approved before.
+    # example: approved review is edited later.
+    unless first_approved_at
+      T.must(user).complete_referral!
+      T.must(user).add_notification_token
+      update(first_approved_at: Time.zone.now)
+      NotifyUserAboutApprovedReviewJob.perform_later(self)
+    end
+
+    approved!
+
+    true
+  end
+
+  # Reject the review.
+  # This method is idempotent.
+  sig { returns(T::Boolean) }
+  def reject!
+    # Can't reject after a review is approved
+    return false if approved?
+    # No point in rejecting if already rejected
+    return false if rejected?
+
+    NotifyUserAboutRejectedReviewJob.perform_later(self)
+    rejected!
+    save!
+
+    true
+  end
+
+  # Set the review as pending.
+  sig { returns(T::Boolean) }
+  def set_pending!
+    pending!
+    save!
+
+    true
   end
 
   private

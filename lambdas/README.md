@@ -50,7 +50,7 @@ files. To locally invoke a function, use:
 
 ```bash
 make local-fetch-subject-areas # or make local-fsa
-make local-trigger-courses # or make local-tc
+make local-trigger-sections # or make local-ts
 ```
 
 ## Deployment
