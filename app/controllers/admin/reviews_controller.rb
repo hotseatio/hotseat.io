@@ -70,36 +70,23 @@ class Admin::ReviewsController < AdminController
   # PATCH/PUT /admin/reviews/all
   sig { void }
   def update_all_pending
-    Rails.logger.debug("NATHAN HELLO")
     typed_params = TypedParams[UpdateAllParams].new.extract!(params)
+    status = typed_params.status
 
     pending_reviews = T.let(T.unsafe(Review.all.where(status: :pending)).to_a, T::Array[Review])
     pending_reviews.map do |review|
-      update_review(review, typed_params.status)
+      case status
+      when Review::Status::Approved
+        review.approve!
+      when Review::Status::Rejected
+        review.reject!
+      when Review::Status::Pending
+        review.set_pending!
+      else
+        T.absurd(status)
+      end
     end
 
     redirect_to(admin_reviews_path)
-  end
-
-  private
-
-  sig { params(review: Review, status: Review::Status).returns(Review) }
-  def update_review(review, status)
-    user = T.must(review.user)
-    is_first_review = user.reviews.size == 1
-
-    if (status == Review::Status::Approved) && !review.approved?
-      user.add_notification_token
-      user.complete_referral! if is_first_review && user.referred_by
-
-      NotifyUserAboutApprovedReviewJob.perform_later(review)
-    elsif status == Review::Status::Rejected
-      NotifyUserAboutRejectedReviewJob.perform_later(review)
-    end
-
-    review.typed_status = status
-    review.save!
-
-    review
   end
 end
