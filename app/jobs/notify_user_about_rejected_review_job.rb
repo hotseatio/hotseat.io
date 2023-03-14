@@ -25,11 +25,15 @@ class NotifyUserAboutRejectedReviewJob < ApplicationJob
       Your Hotseat review for #{section.course_title} was not approved. No worries! You can update and resubmit your review here: #{edit_review_url(review)}
     MESSAGE
 
-    client = Aws::SNS::Client.new
-    resp = client.publish({
-                            phone_number: user.phone,
-                            message:,
-                          })
-    logger.info("Message sent. Message id: #{resp.message_id}")
+    if T.unsafe(Rails.env).production?
+      client = Aws::SNS::Client.new
+      resp = client.publish({
+                              phone_number: user.phone,
+                              message:,
+                            })
+      logger.info("Message sent. Message id: #{resp.message_id}")
+    else
+      logger.info("Message would have been sent in production. Message: #{message}")
+    end
   end
 end
