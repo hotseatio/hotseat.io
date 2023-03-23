@@ -25,6 +25,9 @@ export function SecondaryFeatureList({features, ctaLabel, ctaLink}: Props) {
           <a
             href={ctaLink}
             className="block w-full text-center rounded-lg border border-transparent bg-white dark:bg-gray-900 px-6 py-3 text-base font-medium text-red-600 hover:bg-gray-50 dark:hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+            // We need this here for the Stripe checkout redirect to work properly
+            // https://github.com/hotwired/turbo/issues/211#issuecomment-966570923
+            data-turbo="false"
           >
             {ctaLabel}
           </a>
