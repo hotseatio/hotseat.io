@@ -76,6 +76,9 @@ gem "stripe", ">= 2.8", "< 6.0"
 # Async processing
 gem "sidekiq"
 
+# Web Push
+gem "web-push"
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
