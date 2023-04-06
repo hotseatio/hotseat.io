@@ -29,13 +29,11 @@ func createDatabaseURL() (psqlInfo string) {
 	dbname := os.Getenv("DB_NAME")
 	dbSSLMode := os.Getenv("DB_SSL_MODE")
 
-	// Add statement_cache_mode=describe to allow pgx to work with PgBouncer.
-	// https://pkg.go.dev/github.com/jackc/pgx/v4#hdr-PgBouncer
 	if password != "" {
-		psqlInfo = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s statement_cache_mode=describe",
+		psqlInfo = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s",
 			host, port, user, password, dbname, dbSSLMode)
 	} else {
-		psqlInfo = fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=%s statement_cache_mode=describe",
+		psqlInfo = fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=%s",
 			host, port, user, dbname, dbSSLMode)
 	}
 
@@ -77,8 +75,7 @@ func createDatabasePool() (DB, error) {
 	}
 	config.ConnConfig.LogLevel = pgx.LogLevelWarn
 	config.ConnConfig.Logger = logrusadapter.NewLogger(log.StandardLogger())
-	config.MaxConns = 100
-	// Disable prepared statements and extended protocol as they are incompatible with RDS Proxy
+	config.MaxConns = 30
 	usePreparedStatements := InitUsePreparedStatements()
 	if !usePreparedStatements {
 		config.ConnConfig.BuildStatementCache = nil
@@ -93,9 +90,3 @@ func createDatabasePool() (DB, error) {
 
 	return db, nil
 }
-
-// func ConnectToDatabase(ctx context.Context) (*sql.DB, error) {
-// 	log.WithFields(log.Fields{"connection": psqlInfo}).Info("Starting connection")
-// 	db, err := sql.Open("pgx", psqlInfo)
-
-// }
