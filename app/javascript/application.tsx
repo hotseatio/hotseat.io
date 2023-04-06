@@ -45,3 +45,12 @@ ahoy.configure({
 ahoy.trackView()
 ahoy.trackClicks('a, button, input[type=submit]')
 ahoy.trackSubmits('form')
+
+// Register service worker for notifications
+navigator.serviceWorker.register('/service-worker.js')
+navigator.serviceWorker.ready.then((serviceWorkerRegistration) => {
+  serviceWorkerRegistration.pushManager.subscribe({
+    userVisibleOnly: true,
+    applicationServerKey: window.vapidPublicKey,
+  })
+})
