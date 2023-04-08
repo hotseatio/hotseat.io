@@ -324,6 +324,15 @@ module User::GeneratedAssociationMethods
 
   sig { params(value: T::Enumerable[::Pay::Subscription]).void }
   def subscriptions=(value); end
+
+  sig { returns(::WebpushDevice::ActiveRecord_Associations_CollectionProxy) }
+  def webpush_devices; end
+
+  sig { returns(T::Array[Integer]) }
+  def webpush_device_ids; end
+
+  sig { params(value: T::Enumerable[::WebpushDevice]).void }
+  def webpush_devices=(value); end
 end
 
 module User::CustomFinderMethods

@@ -37,7 +37,7 @@ async function sendSubscriptionToServer(subscription: PushSubscription) {
     p256dh,
   }
 
-  await fetch('/notifications', {
+  await fetch('/webpush_devices', {
     method: 'POST',
     headers: authenticityHeaders({'Content-Type': 'application/json'}),
     body: JSON.stringify(body),

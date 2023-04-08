@@ -1,10 +1,22 @@
 # typed: strict
 # frozen_string_literal: true
 
-class NotificationsController < ApplicationController
+class WebpushDevicesController < ApplicationController
   extend T::Sig
 
   before_action :authenticate_user!
+
+  sig { void }
+  def initialize
+    super
+    @webpush_devices = T.let(nil, T.nilable(WebpushDevice::RelationType))
+  end
+
+  sig { void }
+  def index
+    user = T.must(current_user)
+    @webpush_devices = user.webpush_devices
+  end
 
   class CreateParams < T::Struct
     const :browser, String
