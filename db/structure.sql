@@ -1272,6 +1272,42 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
+-- Name: webpush_devices; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.webpush_devices (
+    id bigint NOT NULL,
+    user_id bigint,
+    nickname character varying,
+    browser character varying NOT NULL,
+    device character varying NOT NULL,
+    operating_system character varying NOT NULL,
+    notification_endpoint character varying NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: webpush_devices_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.webpush_devices_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: webpush_devices_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.webpush_devices_id_seq OWNED BY public.webpush_devices.id;
+
+
+--
 -- Name: ahoy_events id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1465,6 +1501,13 @@ ALTER TABLE ONLY public.textbooks ALTER COLUMN id SET DEFAULT nextval('public.te
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Name: webpush_devices id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.webpush_devices ALTER COLUMN id SET DEFAULT nextval('public.webpush_devices_id_seq'::regclass);
 
 
 --
@@ -1705,6 +1748,14 @@ ALTER TABLE ONLY public.textbooks
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: webpush_devices webpush_devices_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.webpush_devices
+    ADD CONSTRAINT webpush_devices_pkey PRIMARY KEY (id);
 
 
 --
@@ -2135,6 +2186,13 @@ CREATE UNIQUE INDEX index_users_on_uid_and_provider ON public.users USING btree 
 
 
 --
+-- Name: index_webpush_devices_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_webpush_devices_on_user_id ON public.webpush_devices USING btree (user_id);
+
+
+--
 -- Name: pay_customer_owner_index; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2227,6 +2285,14 @@ ALTER TABLE ONLY public.courses_terms
 
 ALTER TABLE ONLY public.sections_textbooks
     ADD CONSTRAINT fk_rails_80ab4a23d4 FOREIGN KEY (section_id) REFERENCES public.sections(id);
+
+
+--
+-- Name: webpush_devices fk_rails_848699f77d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.webpush_devices
+    ADD CONSTRAINT fk_rails_848699f77d FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
 --
@@ -2382,6 +2448,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20221226072833'),
 ('20230204030922'),
 ('20230228014101'),
-('20230421233948');
+('20230421233948'),
+('20230430161016');
 
 
