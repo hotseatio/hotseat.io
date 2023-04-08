@@ -10,6 +10,7 @@ class WebpushDevicesController < ApplicationController
   def initialize
     super
     @webpush_devices = T.let(nil, T.nilable(WebpushDevice::RelationType))
+    @device = T.let(nil, T.nilable(WebpushDevice))
   end
 
   sig { void }
@@ -20,7 +21,6 @@ class WebpushDevicesController < ApplicationController
 
   class CreateParams < T::Struct
     const :browser, String
-    const :version, String
     const :os, String
     const :endpoint, String
     const :auth, String
@@ -31,10 +31,9 @@ class WebpushDevicesController < ApplicationController
   def create
     typed_params = TypedParams[CreateParams].new.extract!(params)
 
-    WebpushDevice.create(
+    @device = WebpushDevice.create_or_find_by(
       user: current_user,
       browser: typed_params.browser,
-      version: typed_params.version,
       operating_system: typed_params.os,
       notification_endpoint: typed_params.endpoint,
       auth_key: typed_params.auth,

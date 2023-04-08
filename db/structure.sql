@@ -1280,7 +1280,6 @@ CREATE TABLE public.webpush_devices (
     user_id bigint,
     nickname character varying,
     browser character varying NOT NULL,
-    version character varying NOT NULL,
     operating_system character varying NOT NULL,
     notification_endpoint character varying NOT NULL,
     auth_key character varying NOT NULL,
@@ -2185,6 +2184,13 @@ CREATE UNIQUE INDEX index_users_on_referral_code ON public.users USING btree (re
 --
 
 CREATE UNIQUE INDEX index_users_on_uid_and_provider ON public.users USING btree (uid, provider);
+
+
+--
+-- Name: index_webpush_devices_on_notification_endpoint; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_webpush_devices_on_notification_endpoint ON public.webpush_devices USING btree (notification_endpoint);
 
 
 --

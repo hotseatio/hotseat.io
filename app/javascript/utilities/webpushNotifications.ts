@@ -1,4 +1,5 @@
 import {detect} from 'detect-browser'
+
 import {authenticityHeaders} from 'utilities/authenticityHeaders'
 
 export async function registerServiceWorker() {
@@ -30,7 +31,6 @@ async function sendSubscriptionToServer(subscription: PushSubscription) {
 
   const body = {
     browser: browserInfo.name,
-    version: browserInfo.version,
     os: browserInfo.os,
     endpoint: subscription.endpoint,
     auth,
