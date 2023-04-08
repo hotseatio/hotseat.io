@@ -3,7 +3,6 @@ import * as React from 'react'
 import {createRoot} from 'react-dom/client'
 import ahoy from 'ahoy.js'
 
-// React components
 import Search from 'components/Search'
 import EnrollmentCard from 'components/EnrollmentCard'
 import GradeCard from 'components/GradeCard'
@@ -11,6 +10,7 @@ import ReviewForm from 'components/ReviewForm'
 import SettingsForm from 'components/SettingsForm'
 import FilterButton from 'components/FilterButton'
 import {SectionListCard, CurrentCoursesListCard, PreviousCoursesListCard} from 'components/ListCard'
+import {registerServiceWorker, subscribeToPush} from 'utilities/webpushNotifications'
 
 const components = {
   Search,
@@ -46,11 +46,6 @@ ahoy.trackView()
 ahoy.trackClicks('a, button, input[type=submit]')
 ahoy.trackSubmits('form')
 
-// Register service worker for notifications
-navigator.serviceWorker.register('/service-worker.js')
-navigator.serviceWorker.ready.then((serviceWorkerRegistration) => {
-  serviceWorkerRegistration.pushManager.subscribe({
-    userVisibleOnly: true,
-    applicationServerKey: window.vapidPublicKey,
-  })
-})
+// Service worker
+registerServiceWorker()
+subscribeToPush()

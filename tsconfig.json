@@ -3,13 +3,16 @@
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": ["es2019", "dom"],
+    "lib": [
+      "es2019",
+      "dom"
+    ],
     "jsx": "react",
-    "module": "es6",
+    "module": "es2022",
     "moduleResolution": "node",
     "baseUrl": "./app/javascript",
     "sourceMap": true,
-    "target": "es2019",
+    "target": "es2022",
     "noEmit": true,
     "skipLibCheck": true
   },

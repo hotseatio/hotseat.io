@@ -1280,9 +1280,11 @@ CREATE TABLE public.webpush_devices (
     user_id bigint,
     nickname character varying,
     browser character varying NOT NULL,
-    device character varying NOT NULL,
+    version character varying NOT NULL,
     operating_system character varying NOT NULL,
     notification_endpoint character varying NOT NULL,
+    auth_key character varying NOT NULL,
+    p256dh_key character varying NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
