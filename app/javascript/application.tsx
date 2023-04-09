@@ -10,7 +10,7 @@ import ReviewForm from 'components/ReviewForm'
 import SettingsForm from 'components/SettingsForm'
 import FilterButton from 'components/FilterButton'
 import {SectionListCard, CurrentCoursesListCard, PreviousCoursesListCard} from 'components/ListCard'
-import {registerServiceWorker, subscribeToPush} from 'utilities/webpushNotifications'
+import {registerServiceWorker} from 'utilities/webpushNotifications'
 
 const components = {
   Search,
@@ -48,4 +48,3 @@ ahoy.trackSubmits('form')
 
 // Service worker
 registerServiceWorker()
-subscribeToPush()

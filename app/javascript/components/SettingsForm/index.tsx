@@ -6,6 +6,8 @@ import {FireIcon} from '@heroicons/react/24/outline'
 
 import CopyToClipboardInput from './CopyToClipboardInput'
 import PhoneInput from './PhoneInput'
+import DevicesTable from './DevicesTable'
+import type {Device} from './DevicesTable'
 
 import LoadingCircle from 'components/icons/LoadingCircle'
 import Alert from 'components/Alert'
@@ -19,6 +21,7 @@ type Props = {
   phoneNumber: string | undefined
   betaTester: boolean
   referralLink: string
+  devices: Device[]
 }
 
 type Response = {
@@ -27,7 +30,7 @@ type Response = {
   msg?: string
 }
 
-export default function SettingsForm({updateURL, phoneNumber, ...props}: Props): JSX.Element {
+export default function SettingsForm({updateURL, phoneNumber, devices, ...props}: Props): JSX.Element {
   const [response, setResponse] = useState<Response | null>(null)
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -60,7 +63,7 @@ export default function SettingsForm({updateURL, phoneNumber, ...props}: Props):
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-gray-50">Settings</h2>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-xl">
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-2xl">
         <div className="bg-white dark:bg-gray-900 py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form acceptCharset="UTF-8" onSubmit={onSubmit} className="space-y-6">
             <div>
@@ -115,6 +118,8 @@ export default function SettingsForm({updateURL, phoneNumber, ...props}: Props):
 
               <CopyToClipboardInput value={props.referralLink} name="referral_input" id="referral_input" />
             </div>
+
+            <DevicesTable devices={devices} />
 
             <Switch.Group as="div" className="flex items-center justify-between" id="beta_tester">
               <Switch.Label<'span'> as="span" className="flex-grow flex flex-col" passive>

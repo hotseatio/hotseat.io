@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @current_sections = T.let(nil, T.nilable(Section::RelationType))
     @previous_sections = T.let(nil, T.nilable(Section::RelationType))
     @subject_areas = T.let(nil, T.nilable(SubjectArea::ActiveRecord_Relation))
+    @webpush_devices = T.let(nil, T.nilable(WebpushDevice::RelationType))
   end
 
   # GET /my-courses
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
       flash[:info] = "Review submitted! Since you were referred by #{referring_user.name}, you'll receive 2 notification tokens once your review is approved. (We'll text you when that happens!)"
       session.delete(:referred_review_created)
     elsif session[:review_submitted]
-      flash[:info] = "Review submitted! Once approved, you'll received a notification token. (We'll text you when that happens!)"
+      flash[:info] = "Review submitted! Once approved, you'll receive a notification token. (We'll text you when that happens!)"
       session.delete(:review_submitted)
     end
     @term = Term.current
@@ -46,7 +47,9 @@ class UsersController < ApplicationController
 
   # GET /settings
   sig { void }
-  def edit; end
+  def edit
+    @webpush_devices = T.must(current_user).webpush_devices
+  end
 
   class UpdateParams < T::Struct
     const :id, Integer
