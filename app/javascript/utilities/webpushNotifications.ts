@@ -2,6 +2,13 @@ import {detect} from 'detect-browser'
 
 import {authenticityHeaders} from 'utilities/authenticityHeaders'
 
+export type Device = {
+  id: number
+  name: string | null
+  browser: string
+  os: string
+}
+
 export async function registerServiceWorker() {
   if ('serviceWorker' in navigator) {
     const registration = await navigator.serviceWorker.getRegistration()
@@ -11,17 +18,17 @@ export async function registerServiceWorker() {
   }
 }
 
-export async function subscribeToPush() {
+export async function subscribeToPush(): Promise<Device> {
   const registration = await navigator.serviceWorker.getRegistration()
   const subscription = await registration.pushManager.subscribe({
     userVisibleOnly: true,
     applicationServerKey: window.vapidPublicKey,
   })
 
-  sendSubscriptionToServer(subscription)
+  return sendSubscriptionToServer(subscription)
 }
 
-async function sendSubscriptionToServer(subscription: PushSubscription) {
+async function sendSubscriptionToServer(subscription: PushSubscription): Promise<Device> {
   const browserInfo = detect()
   if (browserInfo.type !== 'browser') {
     throw new Error('Unsupported browser')
@@ -37,11 +44,13 @@ async function sendSubscriptionToServer(subscription: PushSubscription) {
     p256dh,
   }
 
-  await fetch('/webpush_devices', {
+  const response = await fetch('/webpush_devices', {
     method: 'POST',
     headers: authenticityHeaders({'Content-Type': 'application/json'}),
     body: JSON.stringify(body),
   })
+  const device: Device = await response.json()
+  return device
 }
 
 function getSubscriptionKeyAndAuth(subscription: PushSubscription) {

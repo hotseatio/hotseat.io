@@ -7,12 +7,12 @@ import {FireIcon} from '@heroicons/react/24/outline'
 import CopyToClipboardInput from './CopyToClipboardInput'
 import PhoneInput from './PhoneInput'
 import DevicesTable from './DevicesTable'
-import type {Device} from './DevicesTable'
 
 import LoadingCircle from 'components/icons/LoadingCircle'
 import Alert from 'components/Alert'
 import type {AlertType} from 'components/Alert'
 import {authenticityHeaders} from 'utilities/authenticityHeaders'
+import type {Device} from 'utilities/webpushNotifications'
 
 type Props = {
   updateURL: string

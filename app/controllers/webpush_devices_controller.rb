@@ -54,6 +54,6 @@ class WebpushDevicesController < ApplicationController
     render(json: { msg: "Device does not belong to user" }, status: :bad_request) if device.user != current_user
 
     device.destroy!
-    redirect_to(settings_path)
+    render(json: { msg: "Device destroyed" }, status: :ok)
   end
 end

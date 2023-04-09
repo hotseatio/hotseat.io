@@ -1,14 +1,10 @@
 import * as React from 'react'
+import {useState} from 'react'
+import {sortBy} from 'lodash-es'
 
 import RequestButton from 'components/RequestButton'
 import {subscribeToPush} from 'utilities/webpushNotifications'
-
-export type Device = {
-  id: number
-  name: string | null
-  browser: string
-  os: string
-}
+import type {Device} from 'utilities/webpushNotifications'
 
 type Props = {
   devices: Device[]
@@ -22,7 +18,25 @@ function formatDeviceName(device: Device): string {
   return device.name ?? `${capitalizeFirstLetter(device.browser)} (${device.os})`
 }
 
-export default function DevicesTable({devices}: Props) {
+export default function DevicesTable({devices: initialDevices}: Props) {
+  const [devices, setDevices] = useState(initialDevices)
+
+  const addDevice = async () => {
+    const newDevice = await subscribeToPush()
+    if (devices.some((device) => device.id === newDevice.id)) {
+      window.alert('Device is already added!')
+    } else {
+      setDevices(sortBy([...devices, newDevice], 'id'))
+    }
+  }
+  const removeDevice = (id: number) => {
+    setDevices(
+      devices.filter((device: Device) => {
+        device.id !== id
+      })
+    )
+  }
+
   return (
     <div>
       <div className="sm:flex sm:items-center mt-12">
@@ -34,7 +48,7 @@ export default function DevicesTable({devices}: Props) {
           <button
             type="button"
             className="block rounded-md bg-red-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
-            onClick={subscribeToPush}
+            onClick={addDevice}
           >
             Add current device
           </button>
@@ -63,6 +77,7 @@ export default function DevicesTable({devices}: Props) {
                         method="DELETE"
                         resource={`/webpush_devices/${device.id}`}
                         className="text-red-600 hover:text-red-900"
+                        onClick={() => removeDevice(device.id)}
                       >
                         Remove<span className="sr-only">, {formatDeviceName(device)}</span>
                       </RequestButton>
