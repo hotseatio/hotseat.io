@@ -40,4 +40,20 @@ class WebpushDevicesController < ApplicationController
       p256dh_key: typed_params.p256dh,
     )
   end
+
+  class DestroyParams < T::Struct
+    const :id, Integer
+  end
+
+  sig { void }
+  def destroy
+    typed_params = TypedParams[DestroyParams].new.extract!(params)
+    id = typed_params.id
+
+    device = WebpushDevice.find(id)
+    render(json: { msg: "Device does not belong to user" }, status: :bad_request) if device.user != current_user
+
+    device.destroy!
+    redirect_to(settings_path)
+  end
 end

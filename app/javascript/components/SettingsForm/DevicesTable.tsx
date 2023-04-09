@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import RequestButton from 'components/RequestButton'
 import {subscribeToPush} from 'utilities/webpushNotifications'
 
 export type Device = {
@@ -58,9 +59,13 @@ export default function DevicesTable({devices}: Props) {
                   <tr key={device.id}>
                     <td className="px-3 py-4 text-sm text-gray-500">{formatDeviceName(device)}</td>
                     <td className="py-4 text-right text-sm font-medium sm:pr-0">
-                      <a href="#" className="text-red-600 hover:text-red-900">
+                      <RequestButton
+                        method="DELETE"
+                        resource={`/webpush_devices/${device.id}`}
+                        className="text-red-600 hover:text-red-900"
+                      >
                         Remove<span className="sr-only">, {formatDeviceName(device)}</span>
-                      </a>
+                      </RequestButton>
                     </td>
                   </tr>
                 ))}
