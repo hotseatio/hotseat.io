@@ -44,9 +44,8 @@ gem "omniauth-rails_csrf_protection"
 gem "searchjoy"
 gem "searchkick"
 # Search dependencies
-gem "faraday_middleware-aws-sigv4"
+gem "elasticsearch"
 gem "oj"
-gem "opensearch-ruby"
 gem "typhoeus"
 
 # Sitemap

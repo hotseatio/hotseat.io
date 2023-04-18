@@ -50,7 +50,7 @@ jobs:
         uses: ruby/setup-ruby@v1
 
       - name: Setup Elasticsearch
-        uses: ankane/setup-opensearch@v1
+        uses: ankane/setup-elasticsearch@v1
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
