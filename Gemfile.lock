@@ -165,6 +165,14 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
+    elastic-transport (8.2.1)
+      faraday (< 3)
+      multi_json
+    elasticsearch (8.7.0)
+      elastic-transport (~> 8)
+      elasticsearch-api (= 8.7.0)
+    elasticsearch-api (8.7.0)
+      multi_json
     erb_lint (0.3.1)
       activesupport
       better_html (>= 2.0.1)
@@ -188,9 +196,6 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
-    faraday_middleware-aws-sigv4 (1.0.1)
-      aws-sigv4 (~> 1.0)
-      faraday (>= 2.0, < 3)
     ferrum (0.13)
       addressable (~> 2.5)
       concurrent-ruby (~> 1.1)
@@ -323,14 +328,6 @@ GEM
     omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
-    opensearch-api (2.1.0)
-      multi_json
-    opensearch-ruby (2.1.0)
-      opensearch-api (~> 2.1)
-      opensearch-transport (~> 2.0)
-    opensearch-transport (2.1.0)
-      faraday (>= 1.0, < 3)
-      multi_json
     orm_adapter (0.5.0)
     parallel (1.22.1)
     parlour (8.0.0)
@@ -579,10 +576,10 @@ DEPENDENCIES
   debug (>= 1.0.0)
   devise
   dotenv-rails
+  elasticsearch
   erb_lint
   factory_bot_rails
   faker
-  faraday_middleware-aws-sigv4
   gibberish_detector
   high_voltage
   httparty
@@ -601,7 +598,6 @@ DEPENDENCIES
   oj
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
-  opensearch-ruby
   pay (~> 3.0)
   pdf-reader
   pg
