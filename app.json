@@ -1,0 +1,10 @@
+{
+  "name": "hotseat",
+  "description": "Data-driven enrollment for UCLA",
+  "keywords": [],
+  "scripts": {
+    "dokku": {
+      "postdeploy": "rails db:migrate"
+    }
+  }
+}
