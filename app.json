@@ -6,5 +6,11 @@
     "dokku": {
       "postdeploy": "rails db:migrate"
     }
-  }
+  },
+  "cron": [
+    {
+      "command": "rake searchkick:reindex:all",
+      "schedule": "@daily"
+    }
+  ]
 }
