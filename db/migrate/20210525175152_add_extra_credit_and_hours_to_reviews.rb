@@ -20,7 +20,9 @@ class AddExtraCreditAndHoursToReviews < ActiveRecord::Migration[6.1]
     remove_column(:reviews, :difficulty, :integer)
     change_table(:reviews, bulk: true) do |t|
       t.column(:weekly_time, :weekly_time_type)
+      # rubocop:disable Rails/ThreeStateBooleanColumn
       t.boolean(:offers_extra_credit)
+      # rubocop:enable Rails/ThreeStateBooleanColumn
     end
   end
 end

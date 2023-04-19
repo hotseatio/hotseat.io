@@ -18,12 +18,14 @@ class AddExtraInfoToReviews < ActiveRecord::Migration[6.1]
     end
 
     change_table(:reviews, bulk: true) do |t|
+      # rubocop:disable Rails/ThreeStateBooleanColumn
       t.boolean(:has_group_project)
       t.boolean(:requires_attendance)
+      t.boolean(:reccomend_textbook)
+      # rubocop:enable Rails/ThreeStateBooleanColumn
+
       t.integer(:midterm_count)
       t.column(:final, :final_type)
-
-      t.boolean(:reccomend_textbook)
     end
   end
 end

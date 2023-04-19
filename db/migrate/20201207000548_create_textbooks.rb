@@ -7,7 +7,9 @@ class CreateTextbooks < ActiveRecord::Migration[6.0]
       t.string(:isbn, null: false)
       t.string(:title, null: false)
       t.string(:author)
+      # rubocop:disable Rails/ThreeStateBooleanColumn
       t.boolean(:is_required)
+      # rubocop:enable Rails/ThreeStateBooleanColumn
       t.integer(:edition, limit: 2)
       t.string(:copyright_year)
 

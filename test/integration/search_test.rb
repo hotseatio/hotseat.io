@@ -54,7 +54,7 @@ class SearchTest < ActionDispatch::IntegrationTest
     it "returns no suggestions with q=" do
       get "/search/suggestions?q="
       assert_response :ok
-      parsed_body = JSON.parse(response.body)
+      parsed_body = response.parsed_body
       assert_empty parsed_body
     end
 
@@ -69,7 +69,7 @@ class SearchTest < ActionDispatch::IntegrationTest
 
       get "/search/suggestions?q=com+sci"
       assert_response :ok
-      parsed_body = JSON.parse(response.body)
+      parsed_body = response.parsed_body
       assert_equal 8, parsed_body.length
 
       first_result = parsed_body.first["searchable"]
@@ -89,7 +89,7 @@ class SearchTest < ActionDispatch::IntegrationTest
       create_list(:course, 10, :reindex, subject_area:)
       get "/search/suggestions?q=adsfasdfasfd"
       assert_response :ok
-      parsed_body = JSON.parse(response.body)
+      parsed_body = response.parsed_body
       assert_empty parsed_body
     end
   end
