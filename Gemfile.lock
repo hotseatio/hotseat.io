@@ -265,7 +265,10 @@ GEM
     letter_opener (1.8.1)
       launchy (>= 2.2, < 3)
     libdatadog (2.0.0.1.0)
+    libdatadog (2.0.0.1.0-x86_64-linux)
     libddwaf (1.6.2.0.0-arm64-darwin)
+      ffi (~> 1.0)
+    libddwaf (1.6.2.0.0-x86_64-linux)
       ffi (~> 1.0)
     lisbn (0.3.2)
       nokogiri
@@ -316,6 +319,8 @@ GEM
     netrc (0.11.0)
     nio4r (2.5.9)
     nokogiri (1.14.3-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.14.3-x86_64-linux)
       racc (~> 1.4)
     nori (2.6.0)
     oauth2 (2.0.9)
@@ -515,6 +520,7 @@ GEM
       sorbet-runtime (>= 0.5.9892)
     sorbet-runtime (0.5.10784)
     sorbet-static (0.5.10784-universal-darwin-22)
+    sorbet-static (0.5.10784-x86_64-linux)
     sorbet-static-and-runtime (0.5.10784)
       sorbet (= 0.5.10784)
       sorbet-runtime (= 0.5.10784)
@@ -574,6 +580,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   MailchimpMarketing
