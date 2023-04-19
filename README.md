@@ -9,12 +9,14 @@ The monorepo for [hotseat.io](https://hotseat.io).
 Install [Homebrew](https://brew.sh/). Then run:
 
 ```sh
+brew tap elastic/tap
 brew install docker --cask
-brew install go rbenv nodenv yarn pre-commit terraform postgresql@14 stripe/stripe-cli/stripe opensearch serverless graphviz
+brew install go rbenv nodenv yarn pre-commit terraform postgresql@15 stripe/stripe-cli/stripe serverless graphviz elastic/tap/elasticsearch-full redis
 
-# You may have to start the DB and OpenSearch services:
-brew services start opensearch
-brew services start postgresql@14
+# You may have to start the DB, Redis, and ElasticSearch services:
+brew services start postgresql@15
+brew services start redis
+brew services start elasticsearch-full
 ```
 
 ### Arch / Manjaro (Linux)
