@@ -10,7 +10,11 @@
   "cron": [
     {
       "command": "rake searchkick:reindex:all",
-      "schedule": "@daily"
+      "schedule": "0 10 * * *"
+    },
+    {
+      "command": "rake sitemap:refresh",
+      "schedule": "0 12 * * *"
     }
   ]
 }
