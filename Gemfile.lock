@@ -134,6 +134,7 @@ GEM
     commander (4.6.0)
       highline (~> 2.0.0)
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.0)
     crack (0.4.5)
       rexml
     crass (1.0.6)
@@ -165,13 +166,13 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
-    elasticsearch (7.16.3)
-      elasticsearch-api (= 7.16.3)
-      elasticsearch-transport (= 7.16.3)
-    elasticsearch-api (7.16.3)
+    elastic-transport (8.2.1)
+      faraday (< 3)
       multi_json
-    elasticsearch-transport (7.16.3)
-      faraday (~> 1)
+    elasticsearch (8.7.0)
+      elastic-transport (~> 8)
+      elasticsearch-api (= 8.7.0)
+    elasticsearch-api (8.7.0)
       multi_json
     erb_lint (0.4.0)
       activesupport
@@ -423,6 +424,8 @@ GEM
       sorbet-runtime (>= 0.5.9204)
       unparser
     redcarpet (3.6.0)
+    redis-client (0.14.1)
+      connection_pool
     regexp_parser (2.8.0)
     reline (0.3.3)
       io-console (~> 0.5)
@@ -478,6 +481,11 @@ GEM
       sentry-ruby (~> 5.8.0)
     sentry-ruby (5.8.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
+    sidekiq (7.0.9)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.11.0)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -583,7 +591,7 @@ DEPENDENCIES
   debug (>= 1.0.0)
   devise
   dotenv-rails
-  elasticsearch (= 7.16.3)
+  elasticsearch (= 8.7.0)
   erb_lint
   factory_bot_rails
   faker
@@ -628,6 +636,7 @@ DEPENDENCIES
   searchkick
   sentry-rails
   sentry-ruby
+  sidekiq
   simplecov
   simplecov-cobertura
   sitemap_generator

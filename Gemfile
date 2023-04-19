@@ -74,6 +74,9 @@ gem "redcarpet"
 gem "pay", "~> 3.0"
 gem "stripe", ">= 2.8", "< 6.0"
 
+# Async processing
+gem "sidekiq"
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
