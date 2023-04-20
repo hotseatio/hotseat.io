@@ -7,13 +7,6 @@ provider:
   timeout: 120
   region: 'us-east-1'
   versionFunctions: false
-  vpc:
-    securityGroupIds:
-      - ${env:AWS_SECURITY_GROUP_ID}
-    subnetIds:
-      - ${env:AWS_SUBNET_ID_1}
-      - ${env:AWS_SUBNET_ID_2}
-      - ${env:AWS_SUBNET_ID_3}
   iam:
     role:
       statements:
