@@ -91,9 +91,6 @@ gem "pdf-reader"
 
 gem "mini_portile2" # needed for Tapioca for some reason
 
-# Metrics
-gem "ddtrace"
-
 # Phone verification
 gem "rotp"
 
