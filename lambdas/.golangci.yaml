@@ -1,3 +1,6 @@
+run:
+  skip-dirs:
+    - envutil/opentracer
 linters:
   # In addition to default linters
   # https://golangci-lint.run/usage/linters/
