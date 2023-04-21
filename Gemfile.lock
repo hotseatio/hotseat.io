@@ -144,12 +144,6 @@ GEM
       capybara (~> 3.0)
       ferrum (~> 0.13.0)
     date (3.3.3)
-    ddtrace (1.10.1)
-      debase-ruby_core_source (>= 0.10.16, <= 3.2.0)
-      libdatadog (~> 2.0.0.1.0)
-      libddwaf (~> 1.6.2.0.0)
-      msgpack
-    debase-ruby_core_source (3.2.0)
     debug (1.7.2)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
@@ -245,12 +239,6 @@ GEM
       addressable (~> 2.8)
     letter_opener (1.8.1)
       launchy (>= 2.2, < 3)
-    libdatadog (2.0.0.1.0)
-    libdatadog (2.0.0.1.0-x86_64-linux)
-    libddwaf (1.6.2.0.0-arm64-darwin)
-      ffi (~> 1.0)
-    libddwaf (1.6.2.0.0-x86_64-linux)
-      ffi (~> 1.0)
     lisbn (0.3.2)
       nokogiri
       nori (~> 2.0)
@@ -574,7 +562,6 @@ DEPENDENCIES
   climate_control
   cssbundling-rails
   cuprite
-  ddtrace
   debug (>= 1.0.0)
   devise
   dotenv-rails
