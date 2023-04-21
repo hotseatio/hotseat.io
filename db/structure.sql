@@ -131,6 +131,19 @@ CREATE TYPE public.weekly_time_type AS ENUM (
 
 
 --
+-- Name: is_graduate(character varying); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.is_graduate(num character varying) RETURNS boolean
+    LANGUAGE plpgsql IMMUTABLE STRICT
+    AS $$
+    BEGIN
+        RETURN (num SIMILAR TO '%[2-9][0-9][0-9]%');
+    END
+$$;
+
+
+--
 -- Name: strposrev(text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -656,6 +669,41 @@ CREATE SEQUENCE public.instructors_id_seq
 --
 
 ALTER SEQUENCE public.instructors_id_seq OWNED BY public.instructors.id;
+
+
+--
+-- Name: notifications; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.notifications (
+    id bigint NOT NULL,
+    recipient_type character varying NOT NULL,
+    recipient_id bigint NOT NULL,
+    type character varying NOT NULL,
+    params jsonb,
+    read_at timestamp(6) without time zone,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.notifications_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.notifications_id_seq OWNED BY public.notifications.id;
 
 
 --
@@ -1315,6 +1363,13 @@ ALTER TABLE ONLY public.instructors ALTER COLUMN id SET DEFAULT nextval('public.
 
 
 --
+-- Name: notifications id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.notifications ALTER COLUMN id SET DEFAULT nextval('public.notifications_id_seq'::regclass);
+
+
+--
 -- Name: pay_charges id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1522,6 +1577,14 @@ ALTER TABLE ONLY public.grade_distributions
 
 ALTER TABLE ONLY public.instructors
     ADD CONSTRAINT instructors_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: notifications notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.notifications
+    ADD CONSTRAINT notifications_pkey PRIMARY KEY (id);
 
 
 --
@@ -1852,6 +1915,20 @@ CREATE UNIQUE INDEX index_grade_distributions_on_section_id ON public.grade_dist
 --
 
 CREATE UNIQUE INDEX index_instructors_on_registrar_listing ON public.instructors USING btree (registrar_listing);
+
+
+--
+-- Name: index_notifications_on_read_at; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_notifications_on_read_at ON public.notifications USING btree (read_at);
+
+
+--
+-- Name: index_notifications_on_recipient; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_notifications_on_recipient ON public.notifications USING btree (recipient_type, recipient_id);
 
 
 --
@@ -2304,6 +2381,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220817045634'),
 ('20221226072833'),
 ('20230204030922'),
-('20230228014101');
+('20230228014101'),
+('20230421233948');
 
 
