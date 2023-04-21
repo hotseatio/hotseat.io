@@ -5,7 +5,7 @@ provider:
   name: aws
   runtime: go1.x
   timeout: 120
-  region: 'us-east-1'
+  region: 'us-west-1'
   versionFunctions: false
   iam:
     role:

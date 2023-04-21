@@ -44,9 +44,8 @@ gem "omniauth-rails_csrf_protection"
 gem "searchjoy"
 gem "searchkick"
 # Search dependencies
-gem "faraday_middleware-aws-sigv4"
+gem "elasticsearch", "8.7.0"
 gem "oj"
-gem "opensearch-ruby"
 gem "typhoeus"
 
 # Sitemap
@@ -74,6 +73,9 @@ gem "redcarpet"
 # Payments
 gem "pay", "~> 3.0"
 gem "stripe", ">= 2.8", "< 6.0"
+
+# Async processing
+gem "sidekiq"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

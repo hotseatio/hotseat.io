@@ -58,7 +58,7 @@ class ReviewsTest < ActionDispatch::IntegrationTest
       get "/reviews/course-suggestions?q=com+sci"
 
       assert_response :ok
-      parsed_body = JSON.parse(response.body)
+      parsed_body = response.parsed_body
       assert_equal 1, parsed_body.length
       assert_equal({
                      "id" => 5,

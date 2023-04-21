@@ -7,7 +7,9 @@ class CreatePayTables < ActiveRecord::Migration[6.0]
       t.belongs_to(:owner, polymorphic: true, index: false)
       t.string(:processor, null: false)
       t.string(:processor_id)
+      # rubocop:disable Rails/ThreeStateBooleanColumn
       t.boolean(:default)
+      # rubocop:enable Rails/ThreeStateBooleanColumn
       t.public_send(Pay::Adapter.json_column_type, :data)
       t.datetime(:deleted_at)
       t.timestamps
@@ -19,7 +21,9 @@ class CreatePayTables < ActiveRecord::Migration[6.0]
       t.belongs_to(:owner, polymorphic: true, index: false)
       t.string(:processor, null: false)
       t.string(:processor_id)
+      # rubocop:disable Rails/ThreeStateBooleanColumn
       t.boolean(:default)
+      # rubocop:enable Rails/ThreeStateBooleanColumn
       t.public_send(Pay::Adapter.json_column_type, :data)
       t.timestamps
     end
@@ -28,7 +32,9 @@ class CreatePayTables < ActiveRecord::Migration[6.0]
     create_table(:pay_payment_methods) do |t|
       t.belongs_to(:customer, foreign_key: { to_table: :pay_customers }, null: false, index: false)
       t.string(:processor_id, null: false)
+      # rubocop:disable Rails/ThreeStateBooleanColumn
       t.boolean(:default)
+      # rubocop:enable Rails/ThreeStateBooleanColumn
       t.string(:type)
       t.public_send(Pay::Adapter.json_column_type, :data)
       t.timestamps
