@@ -17,7 +17,7 @@ module Rack
     #
     # Key: "rack::attack:#{Time.now.to_i/:period}:req/ip:#{req.ip}"
     throttle("req/ip", limit: 300, period: 5.minutes) do |req|
-      req.ip unless req.path.start_with?("/packs", "/favicon", "/hotcount")
+      req.ip unless req.path.start_with?("/packs", "/favicon", "/hotcount", "/enrollment_notifications")
     end
 
     # Block suspicious requests for '/etc/password' or wordpress specific paths.

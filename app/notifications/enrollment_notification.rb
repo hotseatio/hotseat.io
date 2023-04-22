@@ -15,8 +15,8 @@ class EnrollmentNotification < Noticed::Base
   # deliver_by :custom, class: "MyDeliveryMethod"
 
   # Add required params
-  #
-  # param :post
+  param :section
+  param :previous_enrollment_numbers
 
   # Define helper methods to make rendering easier.
   #

@@ -100,12 +100,12 @@ func (c Course) ShortTitle() string {
 }
 
 type EnrollmentNumbers struct {
-	EnrollmentStatus   string `json:"enrollmentStatus"`
-	EnrollmentCount    int    `json:"enrollmentCount"`
-	EnrollmentCapacity int    `json:"enrollmentCapacity"`
-	WaitlistStatus     string `json:"waitlistStatus"`
-	WaitlistCount      int    `json:"waitlistCount"`
-	WaitlistCapacity   int    `json:"waitlistCapacity"`
+	EnrollmentStatus   string `json:"enrollment_status"`
+	EnrollmentCount    int    `json:"enrollment_count"`
+	EnrollmentCapacity int    `json:"enrollment_capacity"`
+	WaitlistStatus     string `json:"waitlist_status"`
+	WaitlistCount      int    `json:"waitlist_count"`
+	WaitlistCapacity   int    `json:"waitlist_capacity"`
 }
 
 type SummerInfo struct {

@@ -10,6 +10,7 @@ Rails.application.configure do
   config.cache_classes = false
 
   config.hosts << "dev.hotseat.io"
+  config.hosts << "host.docker.internal"
 
   # Do not eager load code on boot.
   config.eager_load = false
