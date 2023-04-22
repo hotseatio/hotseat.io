@@ -61,9 +61,9 @@ functions:
     handler: bin/fetch-subject-areas
     events:
       # Top of every month at 11:15pm UTC
-      - schedule:
-          rate: cron(15 23 1 * ? *)
-          input: ${self:custom.currentTerm}
+      # - schedule:
+      #     rate: cron(15 23 1 * ? *)
+      #     input: ${self:custom.currentTerm}
       # - schedule:
       #     rate: cron(15 23 1 * ? *)
       #     input: ${self:custom.summerTerm}
@@ -73,9 +73,9 @@ functions:
     handler: bin/fetch-courses
     events:
       # Every day at 11:45pm UTC
-      - schedule:
-          rate: cron(45 23 * * ? *)
-          input: ${self:custom.currentTerm}
+      # - schedule:
+      #     rate: cron(45 23 * * ? *)
+      #     input: ${self:custom.currentTerm}
       # Every day at 11:50pm UTC
       # - schedule:
       #     rate: cron(50 23 * * ? *)
@@ -87,9 +87,9 @@ functions:
     timeout: 420 # 7 minutes
     events:
       # Every hour at XX:25
-      - schedule:
-          rate: cron(25 * * * ? *)
-          input: ${self:custom.currentTerm}
+      # - schedule:
+      #     rate: cron(25 * * * ? *)
+      #     input: ${self:custom.currentTerm}
       # # Every hour at XX:35
       # - schedule:
       #     rate: cron(35 * * * ? *)
