@@ -15,11 +15,7 @@ class DeliveryMethods::AwsTextMessage < Noticed::DeliveryMethods::Base
 
   sig { void }
   def deliver
-    client = Aws::SNS::Client.new(
-      region: "us-east-1",
-      # ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']
-      # credentials: credentials,
-    )
+    client = Aws::SNS::Client.new(region: "us-east-1")
 
     Rails.logger.warn(notification.message)
 
