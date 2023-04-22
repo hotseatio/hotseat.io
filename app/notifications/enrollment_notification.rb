@@ -11,25 +11,26 @@ class EnrollmentNotification < Noticed::Base
 
   deliver_by :database
   # deliver_by :email, mailer: "UserMailer"
-  # deliver_by :slack
-  # deliver_by :custom, class: "MyDeliveryMethod"
+  deliver_by :aws_text_message, class: "DeliveryMethods::AwsTextMessage"
 
   # Add required params
   param :section
   param :previous_enrollment_numbers
 
-  # sig { returns(String) }
-  # def message
-  #   params
+  sig { returns(String) }
+  def message
+    old_enrollment_status = params[:previous_enrollment_numbers]["enrollment_status"]
+    section = params[:section]
+    new_enrollment_status = section.enrollment_status
 
-  #   <<~EOS
-  #     Hotseat Alert: #{section} enrollment status changed from  to
+    <<~MESSAGE
+      Hotseat Alert: #{section.course_title} enrollment status changed from #{old_enrollment_status} to #{new_enrollment_status}.
 
-  #     Enroll now: https://hotseat.io/enroll/%d
+      Enroll now: https://hotseat.io/enroll/#{section.id}
 
-  #     Already enrolled? Unsubscribe: https://hotseat.io/unsubscribe/%d
-  #   EOS
-  # end
+      Already enrolled? Unsubscribe: https://hotseat.io/unsubscribe/#{section.id}
+    MESSAGE
+  end
   #
   # def url
   #   post_path(params[:post])

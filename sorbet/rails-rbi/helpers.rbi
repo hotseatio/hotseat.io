@@ -21,6 +21,11 @@ module CourseHelper
   include ActionView::Helpers
 end
 
+module EnrollmentNotificationsHelper
+  include Kernel
+  include ActionView::Helpers
+end
+
 module InstructorHelper
   include Kernel
   include ActionView::Helpers
@@ -62,6 +67,6 @@ module DeviseHelper
 end
 
 module ActionController::Helpers
-  sig { returns(T.all(Admin::ReviewsHelper, ApplicationHelper, ColorHelper, CourseHelper, InstructorHelper, ReviewHelper, SectionHelper, SubjectAreaHelper, TermHelper, UserHelper, Pay::ApplicationHelper, DeviseHelper)) }
+  sig { returns(T.all(Admin::ReviewsHelper, ApplicationHelper, ColorHelper, CourseHelper, EnrollmentNotificationsHelper, InstructorHelper, ReviewHelper, SectionHelper, SubjectAreaHelper, TermHelper, UserHelper, Pay::ApplicationHelper, DeviseHelper)) }
   def helpers; end
 end
