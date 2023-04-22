@@ -820,7 +820,7 @@ class ActionMailer::Base < ::AbstractController::Base
   #   end
   #
   # source://actionmailer//lib/action_mailer/base.rb#858
-  def mail(headers = T.unsafe(nil), &block); end
+  def mail(headers = T.unsafe(nil)); end
 
   # Returns the name of the mailer object.
   #

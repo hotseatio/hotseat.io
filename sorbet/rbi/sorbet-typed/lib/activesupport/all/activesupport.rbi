@@ -1374,7 +1374,7 @@ end
 # this is not a complete definition!
 class Hash
   sig { params(other_hash: T::Hash[T.untyped, T.untyped]).returns(T::Hash[T.untyped, T.untyped]) }
-  def deep_merge(other_hash, &block); end
+  def deep_merge(other_hash); end
 
   sig { params(keys: T.untyped).returns(T.self_type) }
   def except(*keys); end
@@ -1621,7 +1621,7 @@ module Enumerable
   def exclude?(object); end
 
   sig { returns(T::Boolean) }
-  def many?(&block); end
+  def many?(); end
 
   def pluck(*keys); end
 end

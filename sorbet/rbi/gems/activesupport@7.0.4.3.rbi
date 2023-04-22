@@ -12860,7 +12860,7 @@ class Array
   #   ["6", "7"]
   #
   # source://activesupport//lib/active_support/core_ext/array/grouping.rb#62
-  def in_groups(number, fill_with = T.unsafe(nil), &block); end
+  def in_groups(number, fill_with = T.unsafe(nil)); end
 
   # Splits or iterates over the array in groups of size +number+,
   # padding any remaining slots with +fill_with+ unless it is +false+.
@@ -12882,7 +12882,7 @@ class Array
   #   ["5"]
   #
   # source://activesupport//lib/active_support/core_ext/array/grouping.rb#22
-  def in_groups_of(number, fill_with = T.unsafe(nil), &block); end
+  def in_groups_of(number, fill_with = T.unsafe(nil)); end
 
   # Returns a new array that includes the passed elements.
   #
@@ -15142,12 +15142,12 @@ class Hash
   #   # => { a: 100, b: 450, c: { c1: 300 } }
   #
   # source://activesupport//lib/active_support/core_ext/hash/deep_merge.rb#18
-  def deep_merge(other_hash, &block); end
+  def deep_merge(other_hash); end
 
   # Same as +deep_merge+, but modifies +self+.
   #
   # source://activesupport//lib/active_support/core_ext/hash/deep_merge.rb#23
-  def deep_merge!(other_hash, &block); end
+  def deep_merge!(other_hash); end
 
   # Returns a new hash with all keys converted to strings.
   # This includes the keys from the root hash and from all

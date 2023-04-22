@@ -9,5 +9,5 @@
 
 class ActionMailer::Base
   sig { params(headers: T.untyped).returns(Mail::Message) }
-  def mail(headers = nil, &block); end
+  def mail(headers = nil); end
 end

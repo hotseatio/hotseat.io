@@ -2130,7 +2130,7 @@ class Rails::Engine < ::Rails::Railtie
   # routes, it is appended to the engine.
   #
   # source://railties//lib/rails/engine.rb#540
-  def routes(&block); end
+  def routes(); end
 
   # @return [Boolean]
   #
