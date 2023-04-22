@@ -44,7 +44,6 @@ gem "omniauth-rails_csrf_protection"
 gem "searchjoy"
 gem "searchkick"
 # Search dependencies
-gem "elasticsearch", "8.7.0"
 gem "oj"
 gem "typhoeus"
 
@@ -109,9 +108,14 @@ gem "sentry-ruby"
 gem "awesome_print"
 gem "aws-sdk-sns"
 
+group :production do
+  gem "elasticsearch", "8.7.0"
+end
+
 group :development, :test do
   gem "debug", ">= 1.0.0"
   gem "factory_bot_rails"
+  gem "opensearch-ruby"
 end
 
 group :development do
