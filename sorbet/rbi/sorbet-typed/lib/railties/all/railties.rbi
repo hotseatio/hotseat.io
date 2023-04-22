@@ -54,8 +54,8 @@ module Rails::Command::Behavior::ClassMethods; end
 Rails::Command::HELP_MAPPINGS = T.let(T.unsafe(nil), T::Array[T.untyped])
 
 class Rails::Engine < ::Rails::Railtie
-  sig { params(block: T.untyped).returns(ActionDispatch::Routing::RouteSet) }
-  def routes(&block); end
+  sig { returns(ActionDispatch::Routing::RouteSet) }
+  def routes(); end
 end
 
 Rails::Generators::AppName::RESERVED_NAMES = T.let(T.unsafe(nil), T::Array[T.untyped])

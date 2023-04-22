@@ -357,6 +357,24 @@ module Review::GeneratedAssociationMethods
   sig { returns(T.nilable(::Course)) }
   def reload_course; end
 
+  sig { returns(T.nilable(::Instructor)) }
+  def instructor; end
+
+  sig { params(args: T.untyped, block: T.nilable(T.proc.params(object: ::Instructor).void)).returns(::Instructor) }
+  def build_instructor(*args, &block); end
+
+  sig { params(args: T.untyped, block: T.nilable(T.proc.params(object: ::Instructor).void)).returns(::Instructor) }
+  def create_instructor(*args, &block); end
+
+  sig { params(args: T.untyped, block: T.nilable(T.proc.params(object: ::Instructor).void)).returns(::Instructor) }
+  def create_instructor!(*args, &block); end
+
+  sig { params(value: T.nilable(::Instructor)).void }
+  def instructor=(value); end
+
+  sig { returns(T.nilable(::Instructor)) }
+  def reload_instructor; end
+
   sig { returns(::Relationship) }
   def relationship; end
 

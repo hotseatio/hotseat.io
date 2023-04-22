@@ -1373,8 +1373,8 @@ end
 # defines some of the methods at https://github.com/rails/rails/tree/v6.0.0/activesupport/lib/active_support/core_ext/hash
 # this is not a complete definition!
 class Hash
-  sig { params(other_hash: T::Hash[T.untyped, T.untyped], block: T.untyped).returns(T::Hash[T.untyped, T.untyped]) }
-  def deep_merge(other_hash, &block); end
+  sig { params(other_hash: T::Hash[T.untyped, T.untyped]).returns(T::Hash[T.untyped, T.untyped]) }
+  def deep_merge(other_hash); end
 
   sig { params(keys: T.untyped).returns(T.self_type) }
   def except(*keys); end
@@ -1620,8 +1620,8 @@ module Enumerable
   sig { params(object: Object).returns(T::Boolean) }
   def exclude?(object); end
 
-  sig { params(block: T.untyped).returns(T::Boolean) }
-  def many?(&block); end
+  sig { returns(T::Boolean) }
+  def many?(); end
 
   def pluck(*keys); end
 end
