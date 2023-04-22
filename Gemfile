@@ -36,7 +36,7 @@ gem "sorbet-runtime"
 gem "kaminari"
 
 # Logins
-gem "devise"
+gem "devise", "~> 4.8.0"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
 
