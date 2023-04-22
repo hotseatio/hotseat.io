@@ -53,6 +53,8 @@ class ApplicationController < ActionController::Base
                       else
                         "ERROR"
                       end
+    payload[:request_id] = request.uuid
+    payload[:user_id] = T.must(current_user).id if current_user
   end
 
   private
