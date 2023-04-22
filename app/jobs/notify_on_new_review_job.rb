@@ -39,7 +39,7 @@ class NotifyOnNewReviewJob < ApplicationJob
 
     text.prepend("DEVELOPMENT\n\n") if T.unsafe(Rails.env).development?
 
-    logger.info("Posting review to Slack: #{review.id}")
+    logger.info("Posting review to Slack", review_id: review.id)
     response = HTTParty.post(webhook_url, {
                                body: { text: }.to_json,
                                headers: { "Content-type" => "application/json" },

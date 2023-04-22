@@ -65,6 +65,7 @@ gem "phonelib"
 # Logging
 gem "lograge"
 gem "lograge-sql"
+gem "mr_loga_loga"
 
 # Static pages
 gem "high_voltage"
