@@ -1,3 +1,6 @@
+# typed: strict
+# frozen_string_literal: true
+
 # To deliver this notification:
 #
 # EnrollmentNotification.with(post: @post).deliver_later(current_user)
@@ -6,7 +9,7 @@
 class EnrollmentNotification < Noticed::Base
   # Add your delivery methods
   #
-  # deliver_by :database
+  deliver_by :database
   # deliver_by :email, mailer: "UserMailer"
   # deliver_by :slack
   # deliver_by :custom, class: "MyDeliveryMethod"
