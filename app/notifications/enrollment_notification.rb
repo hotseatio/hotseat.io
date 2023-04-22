@@ -7,8 +7,8 @@
 # EnrollmentNotification.with(post: @post).deliver(current_user)
 
 class EnrollmentNotification < Noticed::Base
-  # Add your delivery methods
-  #
+  extend T::Sig
+
   deliver_by :database
   # deliver_by :email, mailer: "UserMailer"
   # deliver_by :slack
@@ -18,10 +18,17 @@ class EnrollmentNotification < Noticed::Base
   param :section
   param :previous_enrollment_numbers
 
-  # Define helper methods to make rendering easier.
-  #
+  # sig { returns(String) }
   # def message
-  #   t(".message")
+  #   params
+
+  #   <<~EOS
+  #     Hotseat Alert: #{section} enrollment status changed from  to
+
+  #     Enroll now: https://hotseat.io/enroll/%d
+
+  #     Already enrolled? Unsubscribe: https://hotseat.io/unsubscribe/%d
+  #   EOS
   # end
   #
   # def url
