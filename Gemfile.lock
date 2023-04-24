@@ -269,7 +269,6 @@ GEM
       railties (>= 4.1)
     mocha (2.0.2)
       ruby2_keywords (>= 0.0.5)
-    mr_loga_loga (0.2.0)
     msgpack (1.7.0)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -584,7 +583,6 @@ DEPENDENCIES
   mini_portile2
   minitest-spec-rails
   mocha
-  mr_loga_loga
   nokogiri
   oj
   omniauth-google-oauth2
