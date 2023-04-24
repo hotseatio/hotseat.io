@@ -65,10 +65,6 @@ Rails.application.configure do
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
 
-  # Use an evented file watcher to asynchronously detect changes in source code,
-  # routes, locales, etc. This feature depends on the listen gem.
-  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
   config.active_job.queue_adapter = :sidekiq
 
   Rails.application.routes.default_url_options[:host] = "localhost:3000"
