@@ -70,12 +70,12 @@ func (sa SubjectArea) Validate() error {
 
 type Course struct {
 	ID              int64    `json:"id,omitempty"`
-	SubjectAreaID   int64    `json:"subjectAreaId"`
-	SubjectAreaCode string   `json:"subjectAreaCode,omitempty"`
+	SubjectAreaID   int64    `json:"subject_area_id"`
+	SubjectAreaCode string   `json:"subject_area_code,omitempty"`
 	Title           string   `json:"title"`
 	Number          string   `json:"number"`
 	Model           string   `json:"model,omitempty"`
-	SectionIndices  []string `json:"sectionIndices,omitempty"`
+	SectionIndices  []string `json:"section_indices,omitempty"`
 	Description     string   `json:"description,omitempty"`
 	Units           string   `json:"units,omitempty"`
 }
@@ -109,16 +109,16 @@ type EnrollmentNumbers struct {
 }
 
 type SummerInfo struct {
-	SummerSession       string `json:"summerSession"`
-	SummerDurationWeeks int    `json:"summerDurationWeeks"`
+	SummerSession       string `json:"summer_session"`
+	SummerDurationWeeks int    `json:"summer_duration_weeks"`
 }
 
 type Section struct {
 	ID          int64  `json:"id,omitempty"`
-	RegistrarID string `json:"registrarId"` // An ID assigned to the section by the registrar.
-	TermID      int64  `json:"termId"`
-	CourseID    int64  `json:"courseId"`
-	ASUCLAID    string `json:"asuclaId,omitempty"`
+	RegistrarID string `json:"registrar_id"` // An ID assigned to the section by the registrar.
+	TermID      int64  `json:"term_id"`
+	CourseID    int64  `json:"course_id"`
+	ASUCLAID    string `json:"asucla_id,omitempty"`
 
 	Format      string   `json:"format"`
 	Index       int      `json:"index"`
@@ -129,8 +129,8 @@ type Section struct {
 	EnrollmentNumbers
 
 	Website    string    `json:"website"`
-	FinalStart time.Time `json:"finalStart"`
-	FinalEnd   time.Time `json:"finalEnd"`
+	FinalStart time.Time `json:"final_start"`
+	FinalEnd   time.Time `json:"final_end"`
 
 	SummerInfo
 }
@@ -154,7 +154,7 @@ type Model struct {
 
 type SectionListing struct {
 	SectionID    int64  `json:"id,omitempty"`
-	CourseNumber string `json:"courseNumber"`
+	CourseNumber string `json:"course_number"`
 	Index        int    `json:"index"`
 }
 
@@ -173,11 +173,11 @@ func (i *Instructor) AddName(firstName, lastName string) {
 type Textbook struct {
 	ID            int64  `json:"id,omitempty"`
 	Edition       int16  `json:"edition,omitempty"`
-	IsRequired    bool   `json:"isRequired,omitempty"`
+	IsRequired    bool   `json:"is_required,omitempty"`
 	ISBN          string `json:"isbn"`
 	Title         string `json:"title"`
 	Author        string `json:"author,omitempty"`
-	CopyrightYear string `json:"copyrightYear,omitempty"`
+	CopyrightYear string `json:"copyright_year,omitempty"`
 }
 
 type User struct {

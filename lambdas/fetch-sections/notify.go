@@ -15,7 +15,6 @@ import (
 
 func NotifySubscribedUsers(
 	ctx context.Context,
-	course registrar.Course,
 	section registrar.Section,
 	prevEnrollmentNumbers registrar.EnrollmentNumbers,
 ) error {

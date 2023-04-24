@@ -1,7 +1,7 @@
 {
-  "registrarId": "431822200",
-  "termId": 36,
-  "courseId": 4222,
+  "registrar_id": "431822200",
+  "term_id": 36,
+  "course_id": 4222,
   "format": "ACT",
   "index": 1,
   "days": [
@@ -24,15 +24,15 @@
     "Ordonez, A.C.",
     "Alam, T.Y."
   ],
-  "enrollmentStatus": "Open",
-  "enrollmentCount": 0,
-  "enrollmentCapacity": 200,
-  "waitlistStatus": "None",
-  "waitlistCount": 0,
-  "waitlistCapacity": 0,
+  "enrollment_status": "Open",
+  "enrollment_count": 0,
+  "enrollment_capacity": 200,
+  "waitlist_status": "None",
+  "waitlist_count": 0,
+  "waitlist_capacity": 0,
   "website": "",
-  "finalStart": "0001-01-01T00:00:00Z",
-  "finalEnd": "0001-01-01T00:00:00Z",
-  "summerSession": "",
-  "summerDurationWeeks": 0
+  "final_start": "0001-01-01T00:00:00Z",
+  "final_end": "0001-01-01T00:00:00Z",
+  "summer_session": "",
+  "summer_duration_weeks": 0
 }

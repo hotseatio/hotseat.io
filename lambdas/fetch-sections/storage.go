@@ -407,13 +407,13 @@ func SaveSection(
 		}
 	}
 
-	// if currentEnrollmentNumbers.EnrollmentStatus != prevEnrollmentNumbers.EnrollmentStatus {
-	logger.Info("Notifying subscribed users")
-	err = NotifySubscribedUsers(ctx, course, section, prevEnrollmentNumbers)
-	if err != nil {
-		logger.WithError(err).Error("Could not notify users")
+	if currentEnrollmentNumbers.EnrollmentStatus != prevEnrollmentNumbers.EnrollmentStatus {
+		logger.Info("Notifying subscribed users")
+		err = NotifySubscribedUsers(ctx, section, prevEnrollmentNumbers)
+		if err != nil {
+			logger.WithError(err).Error("Could not notify users")
+		}
 	}
-	// }
 
 	// If we don't need to insert enrollment data, we can exit early.
 	if !shouldInsertEnrollmentData {
