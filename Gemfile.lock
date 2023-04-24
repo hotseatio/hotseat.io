@@ -269,7 +269,6 @@ GEM
       railties (>= 4.1)
     mocha (2.0.2)
       ruby2_keywords (>= 0.0.5)
-    mr_loga_loga (0.2.0)
     msgpack (1.7.0)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -312,6 +311,14 @@ GEM
     omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
+    opensearch-api (2.2.0)
+      multi_json
+    opensearch-ruby (2.1.0)
+      opensearch-api (~> 2.1)
+      opensearch-transport (~> 2.0)
+    opensearch-transport (2.1.0)
+      faraday (>= 1.0, < 3)
+      multi_json
     orm_adapter (0.5.0)
     parallel (1.23.0)
     parlour (8.1.0)
@@ -576,11 +583,11 @@ DEPENDENCIES
   mini_portile2
   minitest-spec-rails
   mocha
-  mr_loga_loga
   nokogiri
   oj
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
+  opensearch-ruby
   pay (~> 3.0)
   pdf-reader
   pg

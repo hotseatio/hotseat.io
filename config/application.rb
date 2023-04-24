@@ -27,9 +27,6 @@ module HotseatIo
       g.scaffold_stylesheet(false)
     end
 
-    config.log_formatter = MrLogaLoga::Formatters::KeyValue.new
-    config.logger = MrLogaLoga::Logger.new($stdout, formatter: config.log_formatter)
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
