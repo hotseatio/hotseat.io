@@ -83,15 +83,7 @@ If you're in DevX, let Nathan know and he can share some test keys with you!
 In a separate terminal, run the following:
 
 ```
-rspec
-# If this fails with:
-#     Selenium::WebDriver::Error::UnknownError:
-#       unknown error: cannot find Chrome binary
-# make a new file .env.test.local with content:
-#     WD_CHROME_PATH=<path to chrome>
-#
-# <path to chrome> is the "Executable Path" on chrome://version/
-
+bin/rails test:all
 cd lambdas/ && make test
 ```
 
