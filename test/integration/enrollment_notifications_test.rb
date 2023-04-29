@@ -8,13 +8,19 @@ class CoursesTest < ActionDispatch::IntegrationTest
     before do
       @token = T.let("test-token", String)
       ENV["ENROLLMENT_NOTIFICATION_API_TOKEN"] = @token
+
+      @term = T.let(create(:term, term: "21S",
+                                  start_date: Date.new(2021, 3, 29),
+                                  end_date: Date.new(2021, 6, 11)), Term)
+      travel_to(Time.zone.local(2021, 4, 1))
     end
 
     it "returns a 400 if an incorrect auth token is given" do
+      token = "blah-bad-token"
       post "/enrollment_notifications", headers: {
-        Authorization: "Bearer #{@token}",
+        Authorization: "Bearer #{token}",
       }
-      assert_response :bad_request
+      assert_response :unauthorized
     end
 
     it "sends out notifications to all users subscribed to the section" do
@@ -25,7 +31,7 @@ class CoursesTest < ActionDispatch::IntegrationTest
       user3 = create(:user, name: "Paul Eggert", email: "eggert@g.ucla.edu")
       create(:user, name: "Bob Loblaw", email: "loblaw@g.ucla.edu")
 
-      section = create(:section, enrollment_status: "Open")
+      section = create(:section, term: @term, enrollment_status: "Open")
       create(:relationship, section:, user: user1, notify: true)
       create(:relationship, section:, user: user2, notify: true)
       create(:relationship, section:, user: user3, notify: false)
@@ -64,7 +70,7 @@ class CoursesTest < ActionDispatch::IntegrationTest
     end
 
     it "does not send any notifications if no users are subscribed" do
-      section = create(:section, enrollment_status: "Open")
+      section = create(:section, term: @term, enrollment_status: "Open")
 
       perform_enqueued_jobs do
         post "/enrollment_notifications",
@@ -89,8 +95,9 @@ class CoursesTest < ActionDispatch::IntegrationTest
     end
 
     it "does not send any notifications if enrollment has ended -- i.e., is past EOD Friday week 2" do
-      term = create_current_term
-      section = create(:section, term:, enrollment_status: "Open")
+      travel_to(Time.zone.local(2021, 5, 14))
+
+      section = create(:section, term: @term, enrollment_status: "Open")
 
       perform_enqueued_jobs do
         post "/enrollment_notifications",
