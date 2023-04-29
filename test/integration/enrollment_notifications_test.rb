@@ -59,7 +59,7 @@ class CoursesTest < ActionDispatch::IntegrationTest
              }
       end
       assert_response :success
-      assert_equal({ "success" => true }, response.parsed_body)
+      assert_equal({ "notifications_sent" => 2 }, response.parsed_body)
       assert_performed_jobs 2
     end
 
@@ -84,12 +84,34 @@ class CoursesTest < ActionDispatch::IntegrationTest
              }
       end
       assert_response :success
-      assert_equal({ "success" => true }, response.parsed_body)
+      assert_equal({ "notifications_sent" => 0 }, response.parsed_body)
       assert_performed_jobs 0
     end
 
-    it "does not send any notifications if enrollment has ended -- i.e., is past EOD Friday week 3" do
-      # TODO: implement
+    it "does not send any notifications if enrollment has ended -- i.e., is past EOD Friday week 2" do
+      term = create_current_term
+      section = create(:section, term:, enrollment_status: "Open")
+
+      perform_enqueued_jobs do
+        post "/enrollment_notifications",
+             headers: {
+               Authorization: "Bearer #{@token}",
+             },
+             params: {
+               section_id: section.id,
+               previous_enrollment_numbers: {
+                 enrollment_status: "Closed",
+                 enrollment_count: 100,
+                 enrollment_capacity: 100,
+                 waitlist_status: "None",
+                 waitlist_count: 0,
+                 waitlist_capacity: 0,
+               },
+             }
+      end
+      assert_response :success
+      assert_equal({ "notifications_sent" => 0, "not_enrollable" => true }, response.parsed_body)
+      assert_performed_jobs 0
     end
   end
 end

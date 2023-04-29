@@ -159,8 +159,8 @@ class Section < ApplicationRecord
     end
   end
 
-  # sig { returns(T::Boolean) }
-  # def enrollable?
-
-  # end
+  sig { returns(T::Boolean) }
+  def enrollable?
+    term.first_two_weeks?
+  end
 end
