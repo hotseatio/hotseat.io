@@ -36,10 +36,9 @@ class EnrollmentNotificationsController < ApplicationController
 
   sig { void }
   def authenticate
+    expected_token = ENV.fetch("ENROLLMENT_NOTIFICATION_API_TOKEN")
     authenticate_or_request_with_http_token do |token, _options|
-      # Compare the tokens in a time-constant manner, to mitigate
-      # timing attacks.
-      ActiveSupport::SecurityUtils.secure_compare(token, "NOTIFICATION_API_TOKEN")
+      ActiveSupport::SecurityUtils.secure_compare(token, expected_token)
     end
   end
 end
