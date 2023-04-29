@@ -22,6 +22,9 @@ require_relative "../config/environment"
 require "rails/test_help"
 require "mocha/minitest"
 require "webmock/minitest"
+
+require "test_helpers/text_message_helper"
+
 WebMock.disable_net_connect!(
   allow_localhost: true,
   # Used to download headless chrome in CI
@@ -72,7 +75,9 @@ end
 
 module ActionDispatch
   class IntegrationTest
+    include ActiveJob::TestHelper
     include Devise::Test::IntegrationHelpers
     include TermHelper
+    include TextMessageHelper
   end
 end

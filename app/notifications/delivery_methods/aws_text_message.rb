@@ -15,16 +15,19 @@ class DeliveryMethods::AwsTextMessage < Noticed::DeliveryMethods::Base
 
   sig { void }
   def deliver
+    # TODO: put into validate! method
+    if recipient.phone.nil?
+      Rails.logger.error("User does not have phone number! user=#{recipient.id}")
+      return
+    end
+
     client = Aws::SNS::Client.new(region: "us-east-1")
 
-    Rails.logger.warn(notification.message)
-
-    message = "test" # T.let(params[:message], String)
-    if T.unsafe(Rails.env).production?
-      response = client.publish({ phone_number: recipient.phone, message: })
-      Rails.logger.info("Message sent! #{response.message_id}")
-    else
+    if T.unsafe(Rails.env).development?
       Rails.logger.info("Skipping sending message since we're not in production.")
+    else
+      response = client.publish({ phone_number: recipient.phone, message: notification.message })
+      Rails.logger.info("Message sent! #{response.message_id}")
     end
   end
 
