@@ -5,12 +5,18 @@ require "test_helper"
 
 class CoursesTest < ActionDispatch::IntegrationTest
   describe "POST /enrollment_notifications" do
-    it "returns a 400 if an incorrect auth token is given" do
-      # TODO: implement
+    before do
+      @token = T.let("test-token", String)
+      ENV["ENROLLMENT_NOTIFICATION_API_TOKEN"] = @token
     end
 
-    it "returns an error if the required params aren't given" do
-      # TODO: implement
+    it "returns a 400 if an incorrect auth token is given" do
+      post "/enrollment_notifications", headers: {
+        Authorization: "Bearer #{@token}",
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      }
+      assert_response :bad_request
     end
 
     it "sends out notifications to all users subscribed to the section" do
