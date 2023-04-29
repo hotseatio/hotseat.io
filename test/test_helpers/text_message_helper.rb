@@ -22,7 +22,7 @@ module TextMessageHelper
              body: {
                "Action" => "Publish",
                "Version" => "2010-03-31",
-               "Message" => message,
+               "Message" => message.strip,
                "PhoneNumber" => phone,
              },
            )
