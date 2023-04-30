@@ -3,6 +3,7 @@ import {useState} from 'react'
 import {sortBy} from 'lodash-es'
 
 import RequestButton from 'components/RequestButton'
+import LoadingCircle from 'components/icons/LoadingCircle'
 import {subscribeToPush} from 'utilities/webpushNotifications'
 import type {Device} from 'utilities/webpushNotifications'
 
@@ -20,15 +21,19 @@ function formatDeviceName(device: Device): string {
 
 export default function DevicesTable({devices: initialDevices}: Props) {
   const [devices, setDevices] = useState(initialDevices)
+  const [isAddingDevice, setIsAddingDevice] = useState(false)
+
   const hasNoDevicesRegisted = devices.length === 0
 
   const addDevice = async () => {
+    setIsAddingDevice(true)
     const newDevice = await subscribeToPush()
     if (devices.some((device) => device.id === newDevice.id)) {
       window.alert('Device is already added!')
     } else {
       setDevices(sortBy([...devices, newDevice], 'id'))
     }
+    setIsAddingDevice(false)
   }
   const removeDevice = (id: number) => {
     setDevices(
@@ -43,20 +48,24 @@ export default function DevicesTable({devices: initialDevices}: Props) {
       <div className="sm:flex sm:items-center mt-12">
         <div className="sm:flex-auto">
           <h2 className="text-base font-semibold leading-6 text-gray-900">Devices</h2>
-          <p className="mt-2 text-sm text-gray-500">
+          <p className="mt-2 text-sm text-gray-600">
             {hasNoDevicesRegisted
               ? 'Devices that will receive web notifications from Hotseat. Try registering your current device!'
               : 'Your devices that will receive web notifications from Hotseat.'}
           </p>
         </div>
         <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-          <button
-            type="button"
-            className="block rounded-md bg-red-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
-            onClick={addDevice}
-          >
-            Add current device
-          </button>
+          {isAddingDevice ? (
+            <LoadingCircle className="h-5 w-5" />
+          ) : (
+            <button
+              type="button"
+              className="block rounded-md bg-red-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+              onClick={addDevice}
+            >
+              Add current device
+            </button>
+          )}
         </div>
       </div>
       <div className="mt-2">
