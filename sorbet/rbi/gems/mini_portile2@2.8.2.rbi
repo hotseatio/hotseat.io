@@ -64,7 +64,7 @@ class MiniPortile
   # source://mini_portile2//lib/mini_portile2/mini_portile.rb#35
   def files=(_arg0); end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#232
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#229
   def gcc_cmd; end
 
   # Returns the value of attribute host.
@@ -99,7 +99,7 @@ class MiniPortile
   # source://mini_portile2//lib/mini_portile2/mini_portile.rb#35
   def logger=(_arg0); end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#236
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#233
   def make_cmd; end
 
   # Returns the value of attribute name.
@@ -127,7 +127,7 @@ class MiniPortile
   # source://mini_portile2//lib/mini_portile2/mini_portile.rb#35
   def patch_files=(_arg0); end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#228
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#225
   def path; end
 
   # source://mini_portile2//lib/mini_portile2/mini_portile.rb#73
@@ -164,79 +164,85 @@ class MiniPortile
 
   private
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#250
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#265
   def archives_path; end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#270
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#285
   def computed_options; end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#258
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#273
   def configure_defaults; end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#266
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#281
   def configure_prefix; end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#391
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#406
   def detect_host; end
 
   # Slighly modified from RubyInstaller uri_ext, Rubinius configure
   # and adaptations of Wayne's RailsInstaller
   #
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#487
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#503
   def download_file(url, full_path, count = T.unsafe(nil)); end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#560
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#576
   def download_file_file(uri, full_path); end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#565
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#581
   def download_file_ftp(uri, full_path); end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#506
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#522
   def download_file_http(url, full_path, count = T.unsafe(nil)); end
 
   # command could be an array of args, or one string containing a command passed to the shell. See
   # Process.spawn for more information.
   #
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#418
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#433
   def execute(action, command, command_opts = T.unsafe(nil)); end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#408
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#423
   def extract_file(file, target); end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#277
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#292
   def files_hashs; end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#343
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#358
   def log_file(action); end
 
   # print out a message with the logger
   #
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#474
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#490
   def message(text); end
+
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#239
+  def native_path(path); end
 
   # @return [Boolean]
   #
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#465
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#481
   def newer?(target, checkpoint); end
 
   # print out a message using the logger but return to a new line
   #
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#480
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#496
   def output(text = T.unsafe(nil)); end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#246
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#261
   def port_path; end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#359
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#248
+  def posix_path(path); end
+
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#374
   def tar_compression_switch(filename); end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#351
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#366
   def tar_exe; end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#242
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#257
   def tmp_path; end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#297
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#312
   def verify_file(file); end
 
   # From: http://stackoverflow.com/a/5471032/7672
@@ -246,15 +252,15 @@ class MiniPortile
   #
   #   which('ruby') #=> /usr/bin/ruby
   #
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#380
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#395
   def which(cmd); end
 
   # @yield [temp_file]
   #
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#598
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#614
   def with_tempfile(filename, full_path); end
 
-  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#254
+  # source://mini_portile2//lib/mini_portile2/mini_portile.rb#269
   def work_path; end
 
   class << self
@@ -282,10 +288,10 @@ end
 # source://mini_portile2//lib/mini_portile2/mini_portile.rb#31
 MiniPortile::DEFAULT_TIMEOUT = T.let(T.unsafe(nil), Integer)
 
-# source://mini_portile2//lib/mini_portile2/mini_portile.rb#295
+# source://mini_portile2//lib/mini_portile2/mini_portile.rb#310
 MiniPortile::KEYRING_NAME = T.let(T.unsafe(nil), String)
 
-# source://mini_portile2//lib/mini_portile2/mini_portile.rb#350
+# source://mini_portile2//lib/mini_portile2/mini_portile.rb#365
 MiniPortile::TAR_EXECUTABLES = T.let(T.unsafe(nil), Array)
 
 # source://mini_portile2//lib/mini_portile2/version.rb#2

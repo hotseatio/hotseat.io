@@ -274,40 +274,40 @@ module Noticed::Model
   #
   # @return [Boolean]
   #
-  # source://noticed//lib/noticed/model.rb#77
+  # source://noticed//lib/noticed/model.rb#81
   def deserialize_error?; end
 
-  # source://noticed//lib/noticed/model.rb#60
+  # source://noticed//lib/noticed/model.rb#64
   def mark_as_read!; end
 
-  # source://noticed//lib/noticed/model.rb#64
+  # source://noticed//lib/noticed/model.rb#68
   def mark_as_unread!; end
 
   # @return [Boolean]
   #
-  # source://noticed//lib/noticed/model.rb#72
+  # source://noticed//lib/noticed/model.rb#76
   def read?; end
 
   # Rehydrate the database notification into the Notification object for rendering
   #
-  # source://noticed//lib/noticed/model.rb#51
+  # source://noticed//lib/noticed/model.rb#55
   def to_notification; end
 
   # @return [Boolean]
   #
-  # source://noticed//lib/noticed/model.rb#68
+  # source://noticed//lib/noticed/model.rb#72
   def unread?; end
 end
 
 # source://noticed//lib/noticed/model.rb#0
 module Noticed::Model::ClassMethods
-  # source://noticed//lib/noticed/model.rb#26
+  # source://noticed//lib/noticed/model.rb#30
   def mark_as_read!; end
 
-  # source://noticed//lib/noticed/model.rb#30
+  # source://noticed//lib/noticed/model.rb#34
   def mark_as_unread!; end
 
-  # source://noticed//lib/noticed/model.rb#34
+  # source://noticed//lib/noticed/model.rb#38
   def noticed_coder; end
 end
 
