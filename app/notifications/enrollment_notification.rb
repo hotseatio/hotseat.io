@@ -8,8 +8,7 @@
 
 class EnrollmentNotification < Noticed::Base
   extend T::Sig
-  # TODO: change this line?
-  T.unsafe(self).include(Rails.application.routes.url_helpers)
+  include GeneratedUrlHelpers
 
   deliver_by :database
   # deliver_by :email, mailer: "UserMailer"
