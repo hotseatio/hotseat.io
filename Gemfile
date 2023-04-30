@@ -107,6 +107,9 @@ gem "sentry-ruby"
 gem "awesome_print"
 gem "aws-sdk-sns"
 
+# Caching
+gem "dalli"
+
 group :production, :test do
   gem "elasticsearch", "8.7.0"
 end
