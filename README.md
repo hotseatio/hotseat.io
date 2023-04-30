@@ -11,9 +11,10 @@ Install [Homebrew](https://brew.sh/). Then run:
 ```sh
 brew tap elastic/tap
 brew install docker --cask
-brew install go rbenv nodenv yarn pre-commit terraform postgresql@15 stripe/stripe-cli/stripe serverless graphviz elastic/tap/elasticsearch-full redis
+brew install go rbenv nodenv yarn pre-commit terraform postgresql@15 stripe/stripe-cli/stripe serverless graphviz elastic/tap/elasticsearch-full redis memcached
 
 # You may have to start the DB, Redis, and ElasticSearch services:
+brew services start memcached
 brew services start postgresql@15
 brew services start redis
 brew services start elasticsearch-full
