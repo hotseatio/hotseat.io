@@ -7,7 +7,8 @@ import {FireIcon} from '@heroicons/react/24/outline'
 import CopyToClipboardInput from './CopyToClipboardInput'
 import PhoneInput from './PhoneInput'
 import DevicesTable from './DevicesTable'
-import NotificationPreferences from './NotificationPreferences'
+// TODO: come back and polish up notification preferences
+// import NotificationPreferences from './NotificationPreferences'
 
 import LoadingCircle from 'components/icons/LoadingCircle'
 import Alert from 'components/Alert'
@@ -121,7 +122,7 @@ export default function SettingsForm({updateURL, phoneNumber, devices, ...props}
             </div>
 
             <DevicesTable devices={devices} />
-            <NotificationPreferences />
+            {/* <NotificationPreferences /> */}
 
             <Switch.Group as="div" className="flex items-center justify-between" id="beta_tester">
               <Switch.Label<'span'> as="span" className="flex-grow flex flex-col" passive>
