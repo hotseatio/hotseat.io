@@ -1,184 +1,184 @@
 {
   "188-Special Courses in Computer Science: Turn Your Idea into Company": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Special Courses in Computer Science: Turn Your Idea into Company",
     "number": "188",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0188    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\" 002  \",\"SequenceNumber\":null,\"Path\":\"COMSCI0188002\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDE4OCAgICBDT01TQ0kwMTg4MDAy\"}",
-    "sectionIndices": [
+    "section_indices": [
       " 002  "
     ]
   },
   "192-Methods and Application of Collaborative Learning Theory in Life Sciences": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Methods and Application of Collaborative Learning Theory in Life Sciences",
     "number": "192",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0192    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0192\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDE5MiAgICBDT01TQ0kwMTky\"}"
   },
   "201-Computer Science Seminar": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Computer Science Seminar",
     "number": "201",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0201    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0201\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDIwMSAgICBDT01TQ0kwMjAx\"}"
   },
   "205-Health Analytics": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Health Analytics",
     "number": "205",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0205    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0205\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDIwNSAgICBDT01TQ0kwMjA1\"}"
   },
   "216-Network Algorithmics": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Network Algorithmics",
     "number": "216",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0216    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0216\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDIxNiAgICBDT01TQ0kwMjE2\"}"
   },
   "218-Advanced Computer Networks": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Advanced Computer Networks",
     "number": "218",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0218    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0218\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDIxOCAgICBDT01TQ0kwMjE4\"}"
   },
   "236-Computer Security": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Computer Security",
     "number": "236",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0236    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0236\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDIzNiAgICBDT01TQ0kwMjM2\"}"
   },
   "239-Current Topics in Computer Science: Programming Languages and Systems: Advanced Cloud Systems": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Current Topics in Computer Science: Programming Languages and Systems: Advanced Cloud Systems",
     "number": "239",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0239    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\" 002  \",\"SequenceNumber\":null,\"Path\":\"COMSCI0239002\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDIzOSAgICBDT01TQ0kwMjM5MDAy\"}",
-    "sectionIndices": [
+    "section_indices": [
       " 002  "
     ]
   },
   "239-Current Topics in Computer Science: Programming Languages and Systems: Advanced Quantum Programming": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Current Topics in Computer Science: Programming Languages and Systems: Advanced Quantum Programming",
     "number": "239",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0239    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\" 001  \",\"SequenceNumber\":null,\"Path\":\"COMSCI0239001\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDIzOSAgICBDT01TQ0kwMjM5MDAx\"}",
-    "sectionIndices": [
+    "section_indices": [
       " 001  "
     ]
   },
   "247-Advanced Data Mining": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Advanced Data Mining",
     "number": "247",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0247    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0247\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDI0NyAgICBDT01TQ0kwMjQ3\"}"
   },
   "249-Current Topics in Data Structures: Lecture 80  ": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Current Topics in Data Structures: Lecture 80  ",
     "number": "249",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0249    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\" 080  \",\"SequenceNumber\":null,\"Path\":\"COMSCI0249080\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDI0OSAgICBDT01TQ0kwMjQ5MDgw\"}",
-    "sectionIndices": [
+    "section_indices": [
       " 080  "
     ]
   },
   "259-Current Topics in Computer Science: System Design/Architecture: Learning Machines": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Current Topics in Computer Science: System Design/Architecture: Learning Machines",
     "number": "259",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0259    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\" 001  \",\"SequenceNumber\":null,\"Path\":\"COMSCI0259001\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDI1OSAgICBDT01TQ0kwMjU5MDAx\"}",
-    "sectionIndices": [
+    "section_indices": [
       " 001  "
     ]
   },
   "269-Seminar: Current Topics in Artificial Intelligence: Foundations of Deep Learning": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Seminar: Current Topics in Artificial Intelligence: Foundations of Deep Learning",
     "number": "269",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0269    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\" 001  \",\"SequenceNumber\":null,\"Path\":\"COMSCI0269001\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDI2OSAgICBDT01TQ0kwMjY5MDAx\"}",
-    "sectionIndices": [
+    "section_indices": [
       " 001  "
     ]
   },
   "275-Artificial Life for Computer Graphics and Vision": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Artificial Life for Computer Graphics and Vision",
     "number": "275",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0275    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0275\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDI3NSAgICBDT01TQ0kwMjc1\"}"
   },
   "289A-Current Topics in Computer Theory: Algorithmic Machine Learning": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Current Topics in Computer Theory: Algorithmic Machine Learning",
     "number": "289A",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0289A   \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\" 001  \",\"SequenceNumber\":null,\"Path\":\"COMSCI0289A001\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDI4OUEgICBDT01TQ0kwMjg5QTAwMQ==\"}",
-    "sectionIndices": [
+    "section_indices": [
       " 001  "
     ]
   },
   "289A-Current Topics in Computer Theory: Cryptography": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Current Topics in Computer Theory: Cryptography",
     "number": "289A",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0289A   \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\" 002  \",\"SequenceNumber\":null,\"Path\":\"COMSCI0289A002\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDI4OUEgICBDT01TQ0kwMjg5QTAwMg==\"}",
-    "sectionIndices": [
+    "section_indices": [
       " 002  "
     ]
   },
   "289A-Current Topics in Computer Theory: Lecture 80  ": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Current Topics in Computer Theory: Lecture 80  ",
     "number": "289A",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0289A   \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\" 080  \",\"SequenceNumber\":null,\"Path\":\"COMSCI0289A080\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDI4OUEgICBDT01TQ0kwMjg5QTA4MA==\"}",
-    "sectionIndices": [
+    "section_indices": [
       " 080  "
     ]
   },
   "289OA-Current Topics in Computer Theory: Online Algorithms": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Current Topics in Computer Theory: Online Algorithms",
     "number": "289OA",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0289OA  \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0289OA\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDI4OU9BICBDT01TQ0kwMjg5T0E=\"}"
   },
   "298-Research Seminar: Computer Science": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Research Seminar: Computer Science",
     "number": "298",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0298    \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0298\",\"MultiListedClassFlag\":\"n\",\"Token\":\"MDI5OCAgICBDT01TQ0kwMjk4\"}"
   },
   "CM222-Algorithms in Bioinformatics": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Algorithms in Bioinformatics",
     "number": "CM222",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0222  CM\",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0222CM\",\"MultiListedClassFlag\":\"y\",\"Token\":\"MDIyMiAgQ01DT01TQ0kwMjIyQ00=\"}"
   },
   "CM287-Research Communication in Computational and Systems Biology": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Research Communication in Computational and Systems Biology",
     "number": "CM287",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0287  CM\",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0287CM\",\"MultiListedClassFlag\":\"y\",\"Token\":\"MDI4NyAgQ01DT01TQ0kwMjg3Q00=\"}"
   },
   "M192A-Introduction to Collaborative Learning Theory and Practice": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Introduction to Collaborative Learning Theory and Practice",
     "number": "M192A",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0192A M \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0192AM\",\"MultiListedClassFlag\":\"y\",\"Token\":\"MDE5MkEgTSBDT01TQ0kwMTkyQU0=\"}"
   },
   "M225-Computational Methods in Genomics": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Computational Methods in Genomics",
     "number": "M225",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0225  M \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\"%\",\"SequenceNumber\":null,\"Path\":\"COMSCI0225M\",\"MultiListedClassFlag\":\"y\",\"Token\":\"MDIyNSAgTSBDT01TQ0kwMjI1TQ==\"}"
   },
   "M229S-Seminar: Current Topics in Bioinformatics: Advanced Computational Genetics": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Seminar: Current Topics in Bioinformatics: Advanced Computational Genetics",
     "number": "M229S",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0229S M \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\" 002  \",\"SequenceNumber\":null,\"Path\":\"COMSCI0229SM002\",\"MultiListedClassFlag\":\"y\",\"Token\":\"MDIyOVMgTSBDT01TQ0kwMjI5U00wMDI=\"}",
-    "sectionIndices": [
+    "section_indices": [
       " 002  "
     ]
   },
   "M229S-Seminar: Current Topics in Bioinformatics: Computational Methods in Medicine": {
-    "subjectAreaId": 42,
+    "subject_area_id": 42,
     "title": "Seminar: Current Topics in Bioinformatics: Computational Methods in Medicine",
     "number": "M229S",
     "model": "{\"Term\":\"21S\",\"SubjectAreaCode\":\"COM SCI\",\"CatalogNumber\":\"0229S M \",\"IsRoot\":true,\"SessionGroup\":\"%\",\"ClassNumber\":\" 001  \",\"SequenceNumber\":null,\"Path\":\"COMSCI0229SM001\",\"MultiListedClassFlag\":\"y\",\"Token\":\"MDIyOVMgTSBDT01TQ0kwMjI5U00wMDE=\"}",
-    "sectionIndices": [
+    "section_indices": [
       " 001  "
     ]
   }

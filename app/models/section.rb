@@ -158,4 +158,9 @@ class Section < ApplicationRecord
       LocationType::Hybrid
     end
   end
+
+  sig { returns(T::Boolean) }
+  def enrollable?
+    term.first_two_weeks?
+  end
 end

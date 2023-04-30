@@ -110,6 +110,9 @@ gem "aws-sdk-sns"
 # Caching
 gem "dalli"
 
+# Alerts
+gem "noticed"
+
 group :production, :test do
   gem "elasticsearch", "8.7.0"
 end

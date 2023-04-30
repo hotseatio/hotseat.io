@@ -299,6 +299,20 @@ module GeneratedUrlHelpers
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def relationship_url(*args, **kwargs); end
 
+  # Sigs for route /unsubscribe/:id(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def unsubscribe_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def unsubscribe_url(*args, **kwargs); end
+
+  # Sigs for route /enrollment_notifications(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def enrollment_notifications_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def enrollment_notifications_url(*args, **kwargs); end
+
   # Sigs for route /*id
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def page_path(*args, **kwargs); end

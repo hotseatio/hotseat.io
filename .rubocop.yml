@@ -12,6 +12,8 @@ AllCops:
 Lint/ConstantDefinitionInBlock:
   Enabled: false
 
+Style/NegatedIf:
+  EnforcedStyle: postfix
 Style/ClassAndModuleChildren:
   Enabled: false
 Style/GuardClause:

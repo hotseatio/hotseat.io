@@ -38,7 +38,7 @@ func ParseAndSaveTableRows(
 			}
 
 			FilterInstructors(ctx, course, &section)
-			err = SaveSection(ctx, course, section, shouldInsertEnrollmentData)
+			err = SaveSection(ctx, section, shouldInsertEnrollmentData)
 			if err != nil {
 				log.WithError(err).Error("Error saving section")
 			}

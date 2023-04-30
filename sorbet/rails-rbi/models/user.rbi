@@ -226,6 +226,15 @@ module User::GeneratedAssociationMethods
   sig { params(value: T::Enumerable[::Course]).void }
   def courses=(value); end
 
+  sig { returns(::Notification::ActiveRecord_Associations_CollectionProxy) }
+  def notifications; end
+
+  sig { returns(T::Array[Integer]) }
+  def notification_ids; end
+
+  sig { params(value: T::Enumerable[::Notification]).void }
+  def notifications=(value); end
+
   sig { returns(::Pay::Customer::ActiveRecord_Associations_CollectionProxy) }
   def pay_customers; end
 

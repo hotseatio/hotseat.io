@@ -59,7 +59,9 @@ Rails.application.routes.draw do
   resources "users", only: %i[update]
 
   resources "relationships", only: %i[create destroy]
-  get "/unsubscribe/:id", to: "relationships#unsubscribe"
+  get "/unsubscribe/:id", to: "relationships#unsubscribe", as: :unsubscribe
+
+  resources "enrollment_notifications", only: %i[create]
 
   # 404 and 500 pages
   match "/404", to: "errors#not_found", via: :all
