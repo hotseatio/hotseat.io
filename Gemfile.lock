@@ -302,6 +302,8 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.14.3-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.14.3-x86_64-linux)
+      racc (~> 1.4)
     nori (2.6.0)
     noticed (1.6.2)
       http (>= 4.0.0)
@@ -508,6 +510,7 @@ GEM
       sorbet-runtime (>= 0.5.9892)
     sorbet-runtime (0.5.10798)
     sorbet-static (0.5.10798-universal-darwin-22)
+    sorbet-static (0.5.10798-x86_64-linux)
     sorbet-static-and-runtime (0.5.10798)
       sorbet (= 0.5.10798)
       sorbet-runtime (= 0.5.10798)
@@ -569,6 +572,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   MailchimpMarketing
