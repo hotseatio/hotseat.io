@@ -12,9 +12,8 @@ AllCops:
 Lint/ConstantDefinitionInBlock:
   Enabled: false
 
-# TODO: find better option than disabling NegatedIf
 Style/NegatedIf:
-  Enabled: false
+  EnforcedStyle: postfix
 Style/ClassAndModuleChildren:
   Enabled: false
 Style/GuardClause:

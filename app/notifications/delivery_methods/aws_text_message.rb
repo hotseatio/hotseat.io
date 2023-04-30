@@ -15,7 +15,6 @@ class DeliveryMethods::AwsTextMessage < Noticed::DeliveryMethods::Base
 
   sig { void }
   def deliver
-    # TODO: put into validate! method
     if recipient.phone.nil?
       Rails.logger.error("User does not have phone number! user=#{recipient.id}")
       return
