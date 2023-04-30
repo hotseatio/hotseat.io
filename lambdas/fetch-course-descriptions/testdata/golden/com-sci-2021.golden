@@ -1,1406 +1,1406 @@
 [
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Freshman Computer Science Seminar",
     "number": "1",
     "description": "Seminar, one hour; discussion, one hour. Introduction to department resources and principal topics and key ideas in computer science and computer engineering. Assignments given to bolster independent study and writing skills. Letter grading.",
     "units": "1.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Fiat Lux Freshman Seminars",
     "number": "19",
     "description": "Seminar, one hour. Discussion of and critical thinking about topics of current intellectual importance, taught by faculty members in their areas of expertise and illuminating many paths of discovery at UCLA. P/NP grading.",
     "units": "1.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Principles and Practices of Computing",
     "number": "30",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Designed for students in computer science and related majors who do not have prior programming experience. Precursor course to introductory computer science sequence (courses 31, 32, 33). Teaches students how to use computers as tool for problem solving, creativity, and exploration through design and implementation of computer programs. Key topics are data types including integers, strings, and lists; control structures, including conditionals and loops; and functional decomposition. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Computer Science I",
     "number": "31",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Introduction to computer science via theory, applications, and programming. Basic data types, operators and control structures. Input/output. Procedural and data abstraction. Introduction to object-oriented software development. Functions, recursion. Arrays, strings, pointers. Abstract data types, object-oriented programming. Examples and exercises from computer science theory and applications. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Computer Science II",
     "number": "32",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisite: course 31. Object-oriented software development. Abstract data type definition and use. Overloading, inheritance, polymorphism. Object-oriented view of data structures: stacks, queues, lists. Algorithm analysis. Trees, graphs, and associated algorithms. Searching and sorting. Case studies and exercises from computer science applications. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Computer Organization",
     "number": "33",
     "description": "Lecture, four hours; discussion, two hours; outside study, nine hours. Enforced requisite: course 32. Introductory course on computer architecture, assembly language, and operating systems fundamentals. Number systems, machine language, and assembly language. Procedure calls, stacks, interrupts, and traps. Assemblers, linkers, and loaders. Operating systems concepts: processes and process management, input/output (I/O) programming, memory management, file systems. Letter grading.",
     "units": "5.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Software Construction",
     "number": "35L",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Requisite: course 31. Fundamentals of tools and environments for software construction projects, particularly open-source platforms used in upper-division computer science courses. Software practice through collaborative student project. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Logic Design of Digital Systems",
     "number": "M51A",
     "description": "(Same as Electrical and Computer Engineering M16.) Lecture, four hours; discussion, two hours; outside study, six hours. Introduction to digital systems. Specification and implementation of combinational and sequential systems. Standard logic modules and programmable logic arrays. Specification and implementation of algorithmic systems: data and control sections. Number systems and arithmetic algorithms. Error control codes for digital information. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Variable Topics in Computer Science",
     "number": "97",
     "description": "Lecture, one to four hours; discussion, zero to two hours. Designed for freshmen/sophomores. Variable topics in computer science not covered in regular computer science courses. May be repeated once for credit with topic or instructor change. Letter grading.",
     "units": "1.0 to 4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Student Research Program",
     "number": "99",
     "description": "Tutorial (supervised research or other scholarly work), three hours per week per unit. Entry-level research for lower-division students under guidance of faculty mentor. Students must be in good academic standing and enrolled in minimum of 12 units (excluding this course). Individual contract required; consult Undergraduate Research Center. May be repeated. P/NP grading.",
     "units": "1.0 to 2.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Operating Systems Principles",
     "number": "111",
     "description": "Lecture, four hours; laboratory, two hours; outside study, nine hours. Enforced requisites: courses 32, 33, 35L. Introduction to operating systems design and evaluation. Computer software systems performance, robustness, and functionality. Kernel structure, bootstrapping, input/output (I/O) devices and interrupts. Processes and threads; address spaces, memory management, and virtual memory. Scheduling, synchronization. File systems: layout, performance, robustness. Distributed systems: networking, remote procedure call (RPC), asynchronous RPC, distributed file systems, transactions. Protection and security. Exercises involving applications using, and internals of, real-world operating systems. Letter grading.",
     "units": "5.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Modeling Uncertainty in Information Systems",
     "number": "112",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisites: course 111 and one course from Civil Engineering 110, Electrical Engineering 131A, Mathematics 170A, or Statistics 100A. Designed for juniors/seniors. Probability and stochastic process models as applied in computer science. Basic methodological tools include random variables, conditional probability, expectation and higher moments, Bayes theorem, Markov chains. Applications include probabilistic algorithms, evidential reasoning, analysis of algorithms and data structures, reliability, communication protocol and queueing models. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Computer Networks: Physical Layer",
     "number": "117",
     "description": "(Formerly numbered M117.) Lecture, two hours; discussion, two hours; laboratory, two hours; outside study, six hours. Not open to students with credit for course M171L. Introduction to fundamental computer communication concepts underlying and supporting modern networks, with focus on wireless communications and media access layers of network protocol stack. Systems include wireless LANs (IEEE802.11) and ad hoc wireless and personal area networks (e.g., Bluetooth, ZigBee). Experimental project based on mobile radio-equipped devices (smart phones, tablets, etc.) as sensor platforms for personal applications such as wireless health, positioning, and environment awareness, and experimental laboratory sessions included. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Computer Network Fundamentals",
     "number": "118",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisite: course 111. Designed for juniors/seniors. Introduction to design and performance evaluation of computer networks, including such topics as what protocols are, layered network architecture, Internet protocol architecture, network applications, transport protocols, routing algorithms and protocols, internetworking, congestion control, and link layer protocols including Ethernet and wireless channels. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Fundamentals of Embedded Networked Systems",
     "number": "M119",
     "description": "(Same as Electrical and Computer Engineering M119.) Lecture, four hours; discussion, one hour; outside study, seven hours. Requisites: courses 33; 118 or Electrical and Computer Engineering 132B; one course from Civil and Environmental Engineering 110, Electrical and Computer Engineering 131A, Mathematics 170A, 170E, Statistics 100A. Design trade-offs and principles of operation of cyber physical systems such as devices and systems constituting Internet of Things. Topics include signal propagation and modeling, sensing, node architecture and operation, and applications. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Bioinformatics",
     "number": "CM121",
     "description": "(Same as Chemistry CM160A.) Lecture, four hours; discussion, two hours. Requisites: course 32 or Program in Computing 10C with grade of C- or better, and one course from Biostatistics 100A, Civil Engineering 110, Electrical Engineering 131A, Mathematics 170A, or Statistics 100A. Prior knowledge of biology not required. Designed for engineering students as well as students from biological sciences and medical school. Introduction to bioinformatics and methodologies, with emphasis on concepts and inventing new computational and statistical techniques to analyze biological data. Focus on sequence analysis and alignment algorithms. Concurrently scheduled with course CM221. P/NP or letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Algorithms in Bioinformatics",
     "number": "CM122",
     "description": "(Same as Chemistry CM160B.) Lecture, four hours; discussion, two hours. Requisites: course 32 or Program in Computing 10C with grade of C- or better, and one course from Civil Engineering 110, Electrical Engineering 131A, Mathematics 170A, Mathematics 170E, or Statistics 100A. Course CM121 is not requisite to CM122. Designed for engineering students as well as students from biological sciences and medical school. Development and application of computational approaches to biological questions, with focus on formulating interdisciplinary problems as computational problems and then solving these problems using algorithmic techniques. Computational techniques include those from statistics and computer science. Concurrently scheduled with course CM222. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Machine Learning Applications in Genetics",
     "number": "CM124",
     "description": "(Same as Human Genetics CM124.) Lecture, four hours; discussion, two hours; outside study, six hours. Requisites: course 32 or Program in Computing 10C with grade of C- or better, Mathematics 33A, and one course from Civil Engineering 110, Electrical and Computer Engineering 131A, Mathematics 170A, Mathematics 170E, or Statistics 100A. Designed for engineering students as well as students from biological sciences and medical school. Introduction to computational analysis of genetic variation and computational interdisciplinary research in genetics. Topics include introduction to genetics, identification of genes involved in disease, inferring human population history, technologies for obtaining genetic information, and genetic sequencing. Focus on formulating interdisciplinary problems as computational problems and then solving those problems using computational techniques from statistics and computer science. Concurrently scheduled with course CM224. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Software Engineering",
     "number": "130",
     "description": "Lecture, four hours; laboratory, two hours; outside study, six hours. Requisites: courses 111, 131. Recommended requisite: Engineering 183EW or 185EW. Structured programming, program specification, program proving, modularity, abstract data types, composite design, software tools, software control systems, program testing, team programming. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Programming Languages",
     "number": "131",
     "description": "Lecture, four hours; laboratory, two hours; outside study, six hours. Enforced requisites: courses 33, 35L. Basic concepts in design and use of programming languages, including abstraction, modularity, control mechanisms, types, declarations, syntax, and semantics. Study of several different language paradigms, including functional, object-oriented, and logic programming. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Compiler Construction",
     "number": "132",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Requisite: course 131. Compiler structure; lexical and syntactic analysis; semantic analysis and code generation; theory of parsing. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Parallel and Distributed Computing",
     "number": "133",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisites: courses 131, M151B. Distributed memory and shared memory parallel architectures; asynchronous parallel languages: MPI, Maisie; primitives for parallel computation: specification of parallelism, interprocess communication and synchronization; design of parallel programs for scientific computation and distributed systems. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Distributed Systems",
     "number": "134",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisite: course 118. Covers fundamental concepts regarding design and implementation of distributed systems. Topics include synchronization (e.g., clock synchronization, logical clocks, vector clocks), failure recovery (e.g., snapshotting, primary-backup), consistency models (e.g., linearizability, eventual, causal), consensus protocols (e.g., Paxos, Raft), distributed transactions, and lock. Students gain hands-on, practical experience through multiple programming assignments that work through steps of creating fault-tolerant, sharded key/value store. Exploration of how these concepts have manifested in several real-world, large-scale distributed systems used by Internet companies like Google, Facebook, and Amazon. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Computer Security",
     "number": "136",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisite: course 118. Introduction to basic concepts of information security necessary for students to understand risks and mitigations associated with protection of systems and data. Topics include security models and architectures, security threats and risk analysis, access control and authentication/authorization, cryptography, network security, secure application design, and ethics and law. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Prototyping Programming Languages",
     "number": "C137A",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisite: course 131. How different programming language paradigms provide dramatically different ways of thinking about computation and offer trade-offs on many dimensions, such as modularity, extensibility, expressiveness, and safety. Concrete exploration of three major programming paradigms--functional, object-oriented, and logic programming--by prototyping implementations of languages in each. Analysis of prototypes to shed light on design and structural properties of each language and paradigm and to allow easy comparison against one another. Hands-on experience implementing new abstractions, both as stand-alone languages and as libraries in existing languages. Concurrently scheduled with course C237A. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Programming Language Design",
     "number": "C137B",
     "description": "Seminar, four hours; outside study, eight hours. Enforced requisite: course C137A. Study of various programming language designs, from computing history and research literature, that attempt to address problems of software systems that are bloated, buggy, and difficult to maintain and extend despite trend in computing toward ever higher levels of abstraction for programming. Hands-on experience designing, prototyping, and evaluating new languages, language abstractions, and/or programming environments. Concurrently scheduled with course C237B. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Database Systems",
     "number": "143",
     "description": "Lecture, four hours; laboratory, two hours; outside study, six hours. Enforced requisite: course 111. Information systems and database systems in enterprises. File organization and secondary storage structures. Relational model and relational database systems. Network, hierarchical, and other models. Query languages. Database design principles. Transactions, concurrency, and recovery. Integrity and authorization. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Web Applications",
     "number": "144",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisite: course 143. Important concepts and theory for building effective and safe Web applications and first-hand experience with basic tools. Topics include basic Web architecture and protocol, XML and XML query language, mapping between XML and relational models, information retrieval model and theory, security and user model, Web services and distributed transactions. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Data Mining",
     "number": "145",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisite: course 180. Introductory survey of data mining (process of automatic discovery of patterns, changes, associations, and anomalies in massive databases), knowledge engineering, and wide spectrum of data mining application areas such as bioinformatics, e-commerce, environmental studies, financial markets, multimedia data processing, network monitoring, and social service analysis. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Machine Learning",
     "number": "M146",
     "description": "(Same as Electrical and Computer Engineering M146.) Lecture, four hours; discussion, one hour; outside study, seven hours. Requisites: course 33, and Civil and Environmental Engineering 110 or Electrical and Computer Engineering 131A or Mathematics 170A or 170E or Statistics 100A. Introduction to breadth of data science. Foundations for modeling data sources, principles of operation of common tools for data analysis, and application of tools and models to data gathering and analysis. Topics include statistical foundations, regression, classification, kernel methods, clustering, expectation maximization, principal component analysis, decision theory, reinforcement learning and deep learning. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Data Science",
     "number": "M148",
     "description": "(Same as Electrical and Computer Engineering M148.) Lecture, four hours; discussion, two hours; outside study, six hours. Requisites: course 31 or Program in Computing 10A, and 10B, and one course from Civil and Environmental Engineering 110, Electrical and Computer Engineering 131A, Mathematics 170A, Mathematics 170E, or Statistics 100A. How to analyze data arising in real world so as to understand corresponding phenomenon. Covers topics in machine learning, data analytics, and statistical modeling classically employed for prediction. Comprehensive, hands-on overview of data science domain by blending theoretical and practical instruction. Data science lifecycle: data selection and cleaning, feature engineering, model selection, and prediction methodologies. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Computer Systems Architecture",
     "number": "M151B",
     "description": "(Same as Electrical and Computer Engineering M116C.) Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisites: courses 33, and M51A or Electrical and Computer Engineering M16. Recommended: courses 111, and M152A or Electrical and Computer Engineering M116L. Computer system organization and design, implementation of CPU datapath and control, instruction set design, memory hierarchy (caches, main memory, virtual memory) organization and management, input/output subsystems (bus structures, interrupts, DMA), performance evaluation, pipelined processors. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introductory Digital Design Laboratory",
     "number": "M152A",
     "description": "(Same as Electrical and Computer Engineering M116L.) Laboratory, four hours; outside study, two hours. Enforced requisite: course M51A or Electrical and Computer Engineering M16. Hands-on design, implementation, and debugging of digital logic circuits, use of computer-aided design tools for schematic capture and simulation, implementation of complex circuits using programmed array logic, design projects. Letter grading.",
     "units": "2.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Digital Design Project Laboratory",
     "number": "152B",
     "description": "Laboratory, four hours; discussion, two hours; outside study, six hours. Enforced requisite: course M151B or Electrical Engineering M116C. Recommended: Engineering 183EW or 185EW. Limited to seniors. Design and implementation of complex digital subsystems using field-programmable gate arrays (e.g., processors, special-purpose processors, device controllers, and input/output interfaces). Students work in teams to develop and implement designs and to document and give oral presentations of their work. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Fundamentals of Artificial Intelligence",
     "number": "161",
     "description": "Lecture, four hours; laboratory, two hours; outside study, six hours. Enforced requisite: course 180. Introduction to fundamental problem solving and knowledge representation paradigms of artificial intelligence. Introduction to Lisp with regular programming assignments. State-space and problem reduction methods, brute-force and heuristic search, planning techniques, two-player games. Knowledge structures including predicate logic, production systems, semantic nets and primitives, frames, scripts. Special topics in natural language processing, expert systems, vision, and parallel architectures. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Computational Methods for Medical Imaging",
     "number": "168",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Requisites: course 32 or Program in Computing 10C with grade of C- or better, Mathematics 33A, one course from Civil and Environmental Engineering 110, Electrical and Computer Engineering 131A, Mathematics 170A, 170E, or Statistics 100A. Theory and practice of image acquisition including angiography, computed tomography (CT), and magnetic resonance (MR). Project-based course covers applied topics in medical imaging including image processing, atlasing, predictive modeling, personalized medicine, data driven and machine learning methods. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Mathematical Modeling and Methods for Computer Science",
     "number": "170A",
     "description": "Lecture, four hours; laboratory, two hours; outside study, six hours. Enforced requisites: course 180, Mathematics 33B. Introduction to methods for modeling and simulation using interactive computing environments. Extensive coverage of methods for numeric and symbolic computation, matrix algebra, statistics, floating point, optimization, and spectral analysis. Emphasis on applications in simulation of physical systems. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Data Communication Systems Laboratory",
     "number": "M171L",
     "description": "(Same as Electrical and Computer Engineering M171L.) Laboratory, four to eight hours; outside study, two to four hours. Recommended preparation: course M152A. Limited to seniors. Not open to students with credit for course M117. Interpretation of analog-signaling aspects of digital systems and data communications through experience in using contemporary test instruments to generate and display signals in relevant laboratory setups. Use of oscilloscopes, pulse and function generators, baseband spectrum analyzers, desktop computers, terminals, modems, PCs, and workstations in experiments on pulse transmission impairments, waveforms and their spectra, modem and terminal characteristics, and interfaces. Letter grading.",
     "units": "2.0 to 4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Real-Time Three-Dimensional Animation",
     "number": "172",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisite: course 32. Introduction to handling of geometry, appearance, and motion specifically for real-time virtual environments, both on theoretical and practical levels. Completion of one quality real-time three-dimensional animation by following through from preproduction to postproduction. End products expected to be game demonstrations, storytelling games, or machinima (use of real-time graphics engines to create cinematic productions). Focus on achieving highest quality productions to qualify and submit products to Student Academy Awards competition. Use of Unity Game Engine to make technical decisions to adapt stories to games. Introduction to interaction concepts, enabling students to create low-fidelity real-time three-dimensional animation and to concepts in artificial intelligence, enabling them to refine their interactions to create high-fidelity real-time three-dimensional animation. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Computer Graphics",
     "number": "174A",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisite: course 32. Basic principles behind modern two- and three-dimensional computer graphics systems, including complete set of steps that modern graphics pipelines use to create realistic images in real time. How to position and manipulate objects in scene using geometric and camera transformations. How to create final image using perspective and orthographic transformations. Basics of modeling primitives such as polygonal models and implicit and parametric surfaces. Basic ideas behind color spaces, illumination models, shading, and texture mapping. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Computer Graphics: Three-Dimensional Photography and Rendering",
     "number": "174B",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisite: course 174A. State of art in three-dimensional photography and image-based rendering. How to use cameras and light to capture shape and appearance of real objects and scenes. Process provides simple way to acquire three-dimensional models of unparalleled detail and realism. Applications of techniques from entertainment (reverse engineering and postprocessing of movies, generation of realistic synthetic objects and characters) to medicine (modeling of biological structures from imaging data), mixed reality (augmentation of video), and security (visual surveillance). Fundamental analytical tools for modeling and inferring geometric (shape) and photometric (reflectance, illumination) properties of objects and scenes, and for rendering and manipulating novel views. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Computer Animation",
     "number": "C174C",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisite: course 174A. Designed for juniors/seniors. Introduction to computer animation, including basic principles of character modeling, forward and inverse kinematics, forward and inverse dynamics, motion capture animation techniques, physics-based animation of particles and systems, and motor control. Concurrently scheduled with course C274C. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Algorithms and Complexity",
     "number": "180",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisites: course 32, Mathematics 61. Designed for junior/senior Computer Science majors. Introduction to design and analysis of algorithms. Design techniques: divide-and-conquer, greedy method, dynamic programming; selection of prototypical algorithms; choice of data structures and representations; complexity measures: time, space, upper, lower bounds, asymptotic complexity; NP-completeness. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Formal Languages and Automata Theory",
     "number": "181",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisite: course 180. Designed for junior/senior Computer Science majors. Grammars, automata, and languages. Finite-state languages and finite-state automata. Context-free languages and pushdown story automata. Unrestricted rewriting systems, recursively enumerable and recursive languages, and Turing machines. Closure properties, pumping lemmas, and decision algorithms. Introduction to computability. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Dynamic Biosystem Modeling and Simulation Methodology",
     "number": "M182",
     "description": "(Same as Bioengineering M182.) Lecture, four hours; discussion, one hour; laboratory, two hours; outside study, five hours. Requisites: Life Sciences 30A and 30B, or Mathematics 3A and 3B, or 31A and 31B. Recommended requisite or corequisite: Mathematics 3C, 32A, or 32T. For undergraduate students in life, computational, engineering, and mathematical sciences. Active learning approach. Introduction to explicit modeling and simulation of dynamic biological systems. Basic methodology for transforming biology, biochemistry, and physiology into system diagrams, graphs, and mathematical expressions for studying their behavior. Structural models, formulated from basic conservation and mass action laws and feedback concepts, are further transformed into first-order differential equations, and implemented in simulation diagrams for quantifying and exploring biosystem properties. Examples show how to use these explicit models to gain clarity on nature of biosystem phenomena, and frame questions and explore new ideas for research. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Cryptography",
     "number": "183",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Preparation: knowledge of basic probability theory. Enforced requisite: course 180. Introduction to cryptography, computer security, and basic concepts and techniques. Topics include notions of hardness, one-way functions, hard-core bits, pseudorandom generators, pseudorandom functions and pseudorandom permutations, semantic security, public-key and private-key encryption, key-agreement, homomorphic encryption, private information retrieval and voting protocols, message authentication, digital signatures, interactive proofs, zero-knowledge proofs, collision-resistant hash functions, commitment protocols, and two-party secure computation with static security. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Computational and Systems Biology",
     "number": "M184",
     "description": "(Same as Bioengineering M184 and Computational and Systems Biology M184.) Lecture, two hours; outside study, four hours. Enforced requisites: one course from 31, Civil Engineering M20, Mechanical and Aerospace Engineering M20, or Program in Computing 10A; and Life Sciences 30B or Mathematics 3B or 31B. Survey course designed to introduce students to computational and systems modeling and computation in biology and medicine, providing motivation, flavor, culture, and cutting-edge contributions in computational biosciences and aiming for more informed basis for focused studies by students with computational and systems biology interests. Presentations by individual UCLA researchers discussing their active computational and systems biology research. P/NP grading.",
     "units": "2.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Computational Systems Biology: Modeling and Simulation of Biological Systems",
     "number": "CM186",
     "description": "(Same as Bioengineering CM186, Computational and Systems Biology M186, and Ecology and Evolutionary Biology M178.) Lecture, four hours; laboratory, two hours; discussion, one hour. Requisites: Life Sciences 30A, 30B, Mathematics 32A or M32T, 33A, and 33B, or Mathematics 3A, 3B, and 3C, or Mathematics 31A, 31B, 32A or M32T, 33A, and 33B. Dynamic biosystem modeling and computer simulation methods for studying analyzing biological/biomedical processes and systems at multiple levels of organization. Intermediate linear and nonlinear control system, multicompartmental, epidemiological, pharmacokinetic, and other biomodeling methods applied to life sciences problems at molecular, cellular, organ, and population levels. Both theory- and data-driven modeling, with focus on translating biomodeling goals and data into dynamical mathematical models, and implementing them for simulation, quantification, and analysis. Numerical simulation, optimization, and parameter identifiability and search algorithms, with model discrimination and analysis and software exercises in PC laboratory assignments. Concurrently scheduled with course CM286. Letter grading.",
     "units": "5.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Research Communication in Computational and Systems Biology",
     "number": "CM187",
     "description": "(Same as Bioengineering CM187 and Computational and Systems Biology M187.) Lecture, four hours; outside study, eight hours. Requisites: course M182 or CM186 or Computational and Systems Biology M150; and research experience (course 199, Bioengineering 199, Computational and Systems Biology 199, or equivalent). Closely directed, interactive, and real research experience in active quantitative systems biology research laboratory. Direction on how to focus on topics of current interest in scientific community, appropriate to student interests and capabilities. Critiques of oral presentations and written progress reports explain how to proceed with search for research results. Major emphasis on effective research reporting, both oral and written. Concurrently scheduled with course CM287. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Special Courses in Computer Science",
     "number": "188",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Special topics in computer science for undergraduate students taught on experimental or temporary basis, such as those taught by resident and visiting faculty members. May be repeated for credit with topic or instructor change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Individual Studies for USIE Facilitators",
     "number": "188SA",
     "description": "Tutorial, to be arranged. Enforced corequisite: Honors Collegium 101E. Limited to junior/senior USIE facilitators. Individual study in regularly scheduled meetings with faculty mentor to discuss selected USIE seminar topic, conduct preparatory research, and begin preparation of syllabus. Individual contract with faculty mentor required. May not be repeated. Letter grading.",
     "units": "1.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Individual Studies for USIE Facilitators",
     "number": "188SB",
     "description": "Tutorial, to be arranged. Enforced requisite: course 188SA. Enforced corequisite: Honors Collegium 101E. Limited to junior/senior USIE facilitators. Individual study in regularly scheduled meetings with faculty mentor to finalize course syllabus. Individual contract with faculty mentor required. May not be repeated. Letter grading.",
     "units": "1.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Individual Studies for USIE Facilitators",
     "number": "188SC",
     "description": "Tutorial, to be arranged. Enforced requisite: course 188SB. Limited to junior/senior USIE facilitators. Individual study in regularly scheduled meetings with faculty mentor while facilitating USIE 88S course. Individual contract with faculty mentor required. May not be repeated. Letter grading.",
     "units": "2.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Methods and Application of Collaborative Learning Theory in  Life Sciences",
     "number": "192",
     "description": "Seminar, two hours; clinic, four hours. Requisites: course 192A or Life Sciences 192A (may be taken concurrently), and at least one term of prior experience in same course in which collaborative learning theory is practiced and refined under supervision of instructors. With instructor guidance, students apply pedagogical principles based on current education research, assist with development of innovative instructional materials, and receive frequent feedback on their progress. May be repeated four times for credit. Letter grading.",
     "units": "2.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Collaborative Learning Theory and Practice",
     "number": "M192A",
     "description": "(Formerly numbered 192A.) (Same as Chemistry M192E, Life Sciences M192A, Mathematics M192A, and Physics M192S.) Seminar, one hour. Training seminar for undergraduate students who are selected for learning assistant (LA) program. Exploration of current topics in pedagogy and education research focused on methods of learning and their practical application in small-group settings. Students practice communication skills with frequent assessment of and feedback on progress. Letter grading.",
     "units": "1.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Research Group Seminars: Computer Science",
     "number": "194",
     "description": "Seminar, four hours; outside study, eight hours. Designed for undergraduate students who are part of research group. Discussion of research methods and current literature in field or of research of faculty members or students. May be repeated for credit. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Directed Research in Computer Science",
     "number": "199",
     "description": "Tutorial, to be arranged. Limited to juniors/seniors. Supervised individual research or investigation under guidance of faculty mentor. Culminating paper or project required. May be repeated for credit with school approval. Individual contract required; enrollment petitions available in Office of Academic and Student Affairs. Letter grading.",
     "units": "2.0 to 8.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Computer Science Seminar",
     "number": "201",
     "description": "Seminar, four hours; outside study, two hours. Designed for graduate computer science students. Seminars on current research topics in computer science. May be repeated for credit. S/U grading.",
     "units": "2.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Advanced Computer Science Seminar",
     "number": "202",
     "description": "Seminar, four hours; outside study, eight hours. Preparation: completion of major field examination in computer science. Current computer science research into theory of, analysis and synthesis of, and applications of information processing systems. Each member completes one tutorial and one or more original pieces of work in one specialized area. May be repeated for credit. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Health Analytics",
     "number": "205",
     "description": "Lecture, four hours; outside study, eight hours. Enforced requisites: courses 31, 180. Recommended: statistics and probability, numerical methods, knowledge in programming languages. Applied data analytics course, with focus on healthcare applications. How to properly generate and analyze health data. Project-based course to learn about best practices in health data collection and validation. Exploration of various machine learning and data analytic tools to learn underlying structure of datasets to solve healthcare problems. Different machine learning concepts and algorithms, statistical models, and building of data-driven models. Big data analytics and tools for handling structured, unstructured, and semistructured datasets. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Network Protocol and Systems Software Design for Wireless and Mobile",
     "number": "211",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 118. Designed for graduate students. In-depth study of network protocol and systems software design in area of wireless and mobile Internet. Topics include (1) networking fundamentals: design philosophy of TCP/IP, end-to-end arguments, and protocol design principles, (2) networking protocols: 802.11 MAC standard, packet scheduling, mobile IP, ad hoc routing, and wireless TCP, (3) mobile computing systems software: middleware, file system, services, and applications, and (4) topical studies: energy-efficient design, security, location management, and quality of service. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Big Data Systems",
     "number": "212",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Queueing Systems Theory",
     "number": "212A",
     "description": "Lecture, four hours; outside study, eight hours. Requisites: course 112, Electrical Engineering 131A. Resource sharing issues and theory of queueing (waiting-line) systems. Review of Markov chains and baby queueing theory. Method of stages. M/Er/1. Er/M/1. Bulk arrival and bulk service systems. Series-parallel stages. Fundamentals of open and closed queueing networks. Intermediate queueing theory: M/G/1, G/M/m. Collective marks. Advanced queueing theory: G/G/1, Lindley integral equation, spectral solution. Inequalities, bounds, approximations. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Embedded Systems",
     "number": "M213A",
     "description": "(Same as Electrical and Computer Engineering M202A.) Lecture, four hours; discussion, one hour; outside study, seven hours. Requisite: course 111. Designed for graduate computer science and electrical engineering students. Methodologies and technologies for design of embedded systems. Topics include hardware and software platforms for embedded systems, techniques for modeling and specification of system behavior, software organization, real-time operating system scheduling, real-time communication and packet scheduling, low-power battery and energy-aware system design, timing synchronization, fault tolerance and debugging, and techniques for hardware and software architecture optimization. Theoretical foundations as well as practical design methods. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Energy-Aware Computing and Cyber-Physical Systems",
     "number": "M213B",
     "description": "(Same as Electrical and Computer Engineering M202B.) Lecture, four hours; outside study, eight hours. Requisite: course M51A or Electrical and Computer Engineering M16. Recommended: courses 111, and M151B or Electrical and Computer Engineering M116C. System-level management and cross-layer methods for power and energy consumption in computing and communication at various scales ranging across embedded, mobile, personal, enterprise, and data-center scale. Computing, networking, sensing, and control technologies and algorithms for improving energy sustainability in human-cyber-physical systems. Topics include modeling of energy consumption, energy sources, and energy storage; dynamic power management; power-performance scaling and energy proportionality; duty-cycling; power-aware scheduling; low-power protocols; battery modeling and management; thermal management; sensing of power consumption. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Big Data Systems",
     "number": "214",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisite: course 111. Modern computing has entered era of big data. Introduction to concepts and state-of-art in modern big data systems. Study of distributed storage and database systems, which provide foundation for other systems. Discussion of systems built for specific kinds of workloads, such as processing of streaming data, relational data, batched data, graph data, as well as machine learning. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Network Algorithmics",
     "number": "216",
     "description": "Lecture, four hours; outside study, eight hours. Recommended preparation: one course on networks. Requisite: course 211. Introduction to algorithms for routers and servers. Models of network devices and hardware design. Principles for efficient implementation. Lookup algorithms (exact match, prefix lookups, advanced cardiac life support), fair queuing implementations, crossbar and scalable switches, with examples from well-known networking devices. Advanced topics include traffic measurement and network security. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Internet Architecture and Protocols",
     "number": "217A",
     "description": "Lecture, four hours; outside study, eight hours. Enforced requisite: course 118. Focus on mastering existing core set of Internet protocols, including IP, core transport protocols, routing protocols, DNS, NTP, and security protocols such as DNSSEC, to understand principles behind design of these protocols, appreciate their design tradeoffs, and learn lessons from their operations. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Advanced Topics in Internet Research",
     "number": "217B",
     "description": "Lecture, four hours; outside study, eight hours. Enforced requisite: course 217A. Designed for graduate students. Overview of Internet development history and fundamental principles underlying TCP/IP protocol design. Discussion of current Internet research topics, including latest research results in routing protocols, transport protocols, network measurements, network security protocols, and clean-slate approach to network architecture design. Fundamental issues in network protocol design and implementations. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Advanced Computer Networks",
     "number": "218",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Requisites: courses 112, 118. Review of seven-layer ISO-OSI model. High-speed networks: LANs, MANs, ATM. Flow and congestion control; bandwidth allocation. Internetting. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Computer System Modeling Analysis",
     "number": "219",
     "description": "Lecture, eight hours; outside study, four hours. Review of current literature in area of computer system modeling analysis in which instructor has developed special proficiency as consequence of research interests. Students report on selected topics. May be repeated for credit with consent of instructor. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Bioinformatics",
     "number": "CM221",
     "description": "(Same as Bioinformatics M221, Chemistry CM260A, and Human Genetics M260A.) Lecture, four hours; discussion, two hours. Requisites: course 32 or Program in Computing 10C with grade of C- or better, and one course from Biostatistics 100A, Civil Engineering 110, Electrical Engineering 131A, Mathematics 170A, or Statistics 100A. Prior knowledge of biology not required. Designed for engineering students as well as students from biological sciences and medical school. Introduction to bioinformatics and methodologies, with emphasis on concepts and inventing new computational and statistical techniques to analyze biological data. Focus on sequence analysis and alignment algorithms. Concurrently scheduled with course CM121. S/U or letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Algorithms in Bioinformatics",
     "number": "CM222",
     "description": "(Same as Bioinformatics M222 and Chemistry CM260B.) Lecture, four hours; discussion, two hours. Requisites: course 32 or Program in Computing 10C with grade of C- or better, and one course from Civil Engineering 110, Electrical Engineering 131A, Mathematics 170A, Mathematics 170E, or Statistics 100A. Course CM221 is not requisite to CM222. Designed for engineering students as well as students from biological sciences and medical school. Development and application of computational approaches to biological questions, with focus on formulating interdisciplinary problems as computational problems and then solving these problems using algorithmic techniques. Computational techniques include those from statistics and computer science. Concurrently scheduled with course CM122. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Machine Learning Applications in Genetics",
     "number": "CM224",
     "description": "(Same as Bioinformatics M224 and Human Genetics CM224.) Lecture, four hours; discussion, two hours; outside study, six hours. Requisites: course 32 or Program in Computing 10C with grade of C- or better, Mathematics 33A, and one course from Civil Engineering 110, Electrical and Computer Engineering 131A, Mathematics 170A, Mathematics 170E, or Statistics 100A. Designed for engineering students as well as students from biological sciences and medical school. Introduction to computational analysis of genetic variation and computational interdisciplinary research in genetics. Topics include introduction to genetics, identification of genes involved in disease, inferring human population history, technologies for obtaining genetic information, and genetic sequencing. Focus on formulating interdisciplinary problems as computational problems and then solving those problems using computational techniques from statistics and computer science. Concurrently scheduled with course CM124. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Computational Methods in Genomics",
     "number": "M225",
     "description": "(Same as Bioinformatics M225 and Human Genetics M265.) Lecture, two and one half hours; discussion, two and one half hours; outside study, seven hours. Introduction to computational approaches in bioinformatics, genomics, and computational genetics and preparation for computational interdisciplinary research in genetics and genomics. Topics include genome analysis, regulatory genomics, association analysis, association study design, isolated and admixed populations, population substructure, human structural variation, model organisms, and genomic technologies. Computational techniques and methods include those from statistics and computer science. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Machine Learning in Bioinformatics",
     "number": "M226",
     "description": "(Same as Bioinformatics M226 and Human Genetics M226.) Lecture, four hours; outside study, eight hours. Enforced requisite: course 32 or Program in Computing 10C with grade of C- or better. Recommended: one course from Biostatistics 100A, 110A, Civil Engineering 110, Electrical Engineering 131A, Mathematics 170A, or Statistics 100A. Familiarity with probability, statistics, linear algebra, and algorithms expected. Designed for engineering students as well as students from biological sciences and medical school. Biology has become data-intensive science. Bottleneck in being able to make sense of biological processes has shifted from data generation to statistical models and inference algorithms that can analyze these datasets. Statistical machine learning provides important toolkit in this endeavor. Biological datasets offer new challenges to field of machine learning. Examination of statistical and computational aspects of machine learning techniques and their application to key biological questions. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Seminar: Current Topics in Bioinformatics",
     "number": "M229S",
     "description": "(Same as Biological Chemistry M229S and Human Genetics M229S.) Seminar, four hours; outside study, eight hours. Designed for graduate engineering students as well as students from biological sciences and medical school. Introduction to current topics in bioinformatics, genomics, and computational genetics and preparation for computational interdisciplinary research in genetics and genomics. Topics include genome analysis, regulatory genomics, association analysis, association study design, isolated and admixed populations, population substructure, human structural variation, model organisms, and genomic technologies. Computational techniques include those from statistics and computer science. May be repeated for credit with topic change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Software Engineering",
     "number": "230",
     "description": "Lecture, four hours; discussion, two hours. Recommended preparation for undergraduate students: prior software engineering course. Required preparation for graduate students: undergraduate-level knowledge of data structures and object-oriented program languages. As software systems become increasingly large and complex, automated software engineering analysis and development tools play important role in various software engineering tasks, such as design, construction, evolution, and testing and debugging of software systems. Introduction to foundations, techniques, tools, and applications of automated software engineering technology. Development, extension, and evaluation of mini automated software engineering analysis tool and assessment of how tool fits into software development process. Introduction to current research topics in automated software engineering. S/U or letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Types and Programming Languages",
     "number": "231",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 131. Introduction to static type systems and their usage in programming language design and software reliability. Operational semantics, simply-typed lambda calculus, type soundness proofs, types for mutable references, types for exceptions. Parametric polymorphism, let-bound polymorphism, polymorphic type inference. Types for objects, subtyping, combining parametric polymorphism and subtyping. Types for modules, parameterized modules. Formal specification and implementation of variety of type systems, as well as readings from recent research literature on modern applications of type systems. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Static Program Analysis",
     "number": "232",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 132. Introduction to static analysis of object-oriented programs and its usage for optimization and bug finding. Class hierarchy analysis, rapid type analysis, equality-based analysis, subset-based analysis, flow-insensitive and flow-sensitive analysis, context-insensitive and context-sensitive analysis. Soundness proofs for static analyses. Efficient data structures for static analysis information such as directed graphs and binary decision diagrams. Flow-directed method inlining, type-safe method inlining, synchronization optimization, deadlock detection, security vulnerability detection. Formal specification and implementation of variety of static analyses, as well as readings from recent research literature on modern applications of static analysis. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Parallel Programming",
     "number": "233A",
     "description": "Lecture, four hours; outside study, eight hours. Requisites: courses 111, 131. Mutual exclusion and resource allocation in distributed systems; primitives for parallel computation: specification of parallelism, interprocess communication and synchronization, atomic actions, binary and multiway rendezvous; synchronous and asynchronous languages: CSP, Ada, Linda, Maisie, UC, and others; introduction to parallel program verification. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Verification of Concurrent Programs",
     "number": "233B",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 233A. Formal techniques for verification of concurrent programs. Topics include safety, liveness, program and state assertion-based techniques, weakest precondition semantics, Hoare logic, temporal logic, UNITY, and axiomatic semantics for selected parallel languages. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Computer-Aided Verification",
     "number": "234",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 181. Introduction to theory and practice of formal methods for design and analysis of concurrent and embedded systems, with focus on algorithmic techniques for checking logical properties of hardware and software systems. Topics include semantics of reactive systems, invariant verification, temporal logic model checking, theory of omega automata, state-space reduction techniques, compositional and hierarchical reasoning. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Advanced Operating Systems",
     "number": "235",
     "description": "Lecture, four hours. Preparation: C or C++ programming experience. Requisite: course 111. In-depth investigation of operating systems issues through guided construction of research operating system for PC machines and consideration of recent literature. Memory management and protection, interrupts and traps, processes, interprocess communication, preemptive multitasking, file systems. Virtualization, networking, profiling, research operating systems. Series of laboratory projects, including extra challenge work. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Computer Security",
     "number": "236",
     "description": "Lecture, four hours; outside study, eight hours. Requisites: courses 111, 118. Basic and research material on computer security. Topics include basic principles and goals of computer security, common security tools, use of cryptographic protocols for security, security tools (firewalls, virtual private networks, honeypots), virus and worm protection, security assurance and testing, design of secure programs, privacy, applying security principles to realistic problems, and new and emerging threats and security tools. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Prototyping Programming Languages",
     "number": "C237A",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisite: course 131. How different programming language paradigms provide dramatically different ways of thinking about computation and offer trade-offs on many dimensions, such as modularity, extensibility, expressiveness, and safety. Concrete exploration of three major programming paradigms--functional, object-oriented, and logic programming--by prototyping implementations of languages in each. Analysis of prototypes to shed light on design and structural properties of each language and paradigm and to allow easy comparison against one another. Hands-on experience implementing new abstractions, both as stand-alone languages and as libraries in existing languages. Concurrently scheduled with course C137A. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Programming Language Design",
     "number": "C237B",
     "description": "Seminar, four hours; outside study, eight hours. Enforced requisite: course C237A. Study of various programming language designs, from computing history and research literature, that attempt to address problems of software systems that are bloated, buggy, and difficult to maintain and extend despite trend in computing toward ever higher levels of abstraction for programming. Hands-on experience designing, prototyping, and evaluating new languages, language abstractions, and/or programming environments. Concurrently scheduled with course C137B. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Quantum Programming",
     "number": "238",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: Mathematics 115A. History of quantum computing; notion of qubit; four postulates that provide interface to quantum mechanics; concepts of quantum circuit and universal gate set; quantum teleportation; superdense coding; no-cloning theorem; suite of fundamental quantum algorithms including Shor's algorithm, Grover's algorithm, and quantum approximate optimization algorithm; several quantum programming languages and how they compare; quantum simulators; quantum compilers; quantum error correction; quantum advantage. Students implement several quantum algorithms in multiple languages and run them on both simulators and quantum computer. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Computer Science: Programming Languages and Systems",
     "number": "239",
     "description": "Lecture, four hours; outside study, eight hours. Review of current literature in area of computer science programming languages and systems in which instructor has developed special proficiency as consequence of research interests. May be repeated for credit with topic change. Letter grading.",
     "units": "2.0 to 12.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Computer Science: Programming Languages and Systems (Effective Fall 2021 )",
     "number": "239",
     "description": "Lecture, four hours; outside study, eight hours. Review of current literature in area of computer science programming languages and systems in which instructor has developed special proficiency as consequence of research interests. May be repeated for credit with topic change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Databases and Knowledge Bases",
     "number": "240A",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 143. Theoretical and technological foundation of Intelligent Database Systems, that merge database technology, knowledge-based systems, and advanced programming environments. Rule-based knowledge representation, spatio-temporal reasoning, and logic-based declarative querying/programming are salient features of this technology. Other topics include object-relational systems and data mining techniques. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Advanced Data and Knowledge Bases",
     "number": "240B",
     "description": "Lecture, four hours; outside study, eight hours. Requisites: courses 143, 240A. Logical models for data and knowledge representations. Rule-based languages and nonmonotonic reasoning. Temporal queries, spatial queries, and uncertainty in deductive databases and object relational databases (ORDBs). Abstract data types and user-defined column functions in ORDBs. Data mining algorithms. Semistructured information. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Pictorial and Multimedia Database Management",
     "number": "241B",
     "description": "Lecture, three and one half hours; discussion, 30 minutes; laboratory, one hour; outside study, seven hours. Requisite: course 143. Multimedia data: alphanumeric, long text, images/pictures, video, and voice. Multimedia information systems requirements. Data models. Searching and accessing databases and across Internet by alphanumeric, image, video, and audio content. Querying, visual languages, and communication. Database design and organization, logical and physical. Indexing methods. Internet multimedia streaming. Other topics at discretion of instructor. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Distributed Database Systems",
     "number": "244A",
     "description": "Lecture, four hours; outside study, eight hours. File allocation, intelligent directory design, transaction management, deadlock, strong and weak concurrency control, commit protocols, semantic query answering, multidatabase systems, fault recovery techniques, network partitioning, examples, trade-offs, and design experiences. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Big Data Analytics",
     "number": "245",
     "description": "Lecture, four hours; outside study, eight hours. Requisites: courses 143 or 180 or equivalent. With unprecedented rate at which data is being collected today in almost all fields of human endeavor, there is emerging economic and scientific need to extract useful information from it. Data analytics is process of automatic discovery of patterns, changes, associations, and anomalies in massive databases, and is highly inter-disciplinary field representing confluence of several disciplines, including database systems, data warehousing, data mining, machine learning, statistics, algorithms, data visualization, and cloud computing. Survey of main topics in big data analytics and latest advances, as well as wide spectrum of applications such as bioinformatics, E-commerce, environmental study, financial market study, multimedia data processing, network monitoring, social media analysis. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Web Information Management",
     "number": "246",
     "description": "Lecture, four hours; outside study, eight hours. Requisites: courses 112, 143, 180, 181. Designed for graduate students. Scale of Web data requires novel algorithms and principles for their management and retrieval. Study of Web characteristics and new management techniques needed to build computer systems suitable for Web environment. Topics include Web measuring techniques, large-scale data mining algorithms, efficient page refresh techniques, Web-search ranking algorithms, and query processing techniques on independent data sources. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Advanced Data Mining",
     "number": "247",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 145 or M146 or equivalent. Introduction of concepts, algorithms, and techniques of data mining on different types of datasets, covering basic data mining algorithms, advanced topics on text mining, recommender systems, and graph/network mining. Team-based project involving hands-on practice of mining useful knowledge from large data sets is required. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Data Structures",
     "number": "249",
     "description": "Lecture, four hours; outside study, eight hours. Review of current literature in area of data structures in which instructor has developed special proficiency as consequence of research interests. Students report on selected topics. May be repeated for credit with consent of instructors. Letter grading.",
     "units": "2.0 to 12.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Data Structures (Effective Fall 2021 )",
     "number": "249",
     "description": "Lecture, four hours; outside study, eight hours. Review of current literature in area of data structures in which instructor has developed special proficiency as consequence of research interests. Students report on selected topics. May be repeated for credit with consent of instructor. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Advanced Computer Architecture",
     "number": "251A",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course M151B. Recommended: course 111. Design and implementation of high-performance systems, advanced memory hierarchy techniques, static and dynamic pipelining, superscalar and VLIW processors, branch prediction, speculative execution, software support for instruction-level parallelism, simulation-based performance analysis and evaluation, state-of-art design examples, introduction to parallel architectures. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Parallel Computer Architectures",
     "number": "251B",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course M151B. Recommended: course 251A. SIMD and MIMD systems, symmetric multiprocessors, distributed-shared-memory systems, messages-passing systems, multicore chips, clusters, interconnection networks, host-network interfaces, switching element design, communication primitives, cache coherency, memory consistency models, synchronization primitives, state-of-art design examples. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Arithmetic Algorithms and Processors",
     "number": "252A",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 251A. Number systems: conventional, redundant, signed-digit, and residue. Types of algorithms and implementations. Complexity measures. Fast algorithms and implementations for two-operand addition, multioperand addition, multiplication, division, and square root. Online arithmetic. Evaluation of transcendental functions. Floating-point arithmetic and numerical error control. Arithmetic error codes. Residue arithmetic. Examples of contemporary arithmetic ICs and processors. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Advanced Scalable Architectures",
     "number": "256A",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course M151B. Recommended: course 251A. State-of-art scalable multiprocessors. Interdependency among implementation technology, chip microarchitecture, and system architecture. High-performance building blocks, such as chip multiprocessors (CMPs). On-chip and off-chip communication. Mechanisms for exploiting parallelism at multiple levels. Current research areas. Examples of chips and systems. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Design of VLSI Circuits and Systems",
     "number": "M258A",
     "description": "(Same as Electrical and Computer Engineering M216A.) Lecture, four hours; discussion, two hours; laboratory, four hours; outside study, two hours. Requisites: course M51A or Electrical and Computer Engineering M16, and Electrical and Computer Engineering 115A. Recommended: Electrical and Computer Engineering 115C. LSI/VLSI design and application in computer systems. Fundamental design techniques that can be used to implement complex integrated systems on chips. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "LSI in Computer System Design",
     "number": "M258C",
     "description": "(Same as Electrical and Computer Engineering M216C.) Lecture, four hours; laboratory, four hours; outside study, four hours. Requisite: course M258A. LSI/VLSI design and application in computer systems. In-depth studies of VLSI architectures and VLSI design tools. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Physical Design Automation of VLSI Systems",
     "number": "258F",
     "description": "Lecture, four hours; outside study, eight hours. Detailed study of various physical design automation problems of VLSI circuits, including logic partitioning, floorplanning, placement, global routing, channel and switchbox routing, planar routing and via minimization, compaction and performance-driven layout. Discussion of applications of number of important optimization techniques, such as network flows, Steiner trees, simulated annealing, and generic algorithms. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Logic Synthesis of Digital Systems",
     "number": "258G",
     "description": "Lecture, four hours; outside study, eight hours. Requisites: courses M51A, 180. Detailed study of various problems in logic-level synthesis of VLSI digital systems, including two-level Boolean network optimization; multilevel Boolean network optimization; technology mapping for standard cell designs and field-programmable gate-array (FPGA) designs; retiming for sequential circuits; and applications of binary decision diagrams (BDDS). Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Analysis and Design of High-Speed VLSI Interconnects",
     "number": "258H",
     "description": "Lecture, four hours; outside study, eight hours. Requisites: courses M258A, 258F. Detailed study of various problems in analysis and design of high-speed VLSI interconnects at both integrated circuit (IC) and packing levels, including interconnect capacitance and resistance, lossless and lossy transmission lines, cross-talk and power distribution noise, delay models and power dissipation models, interconnect topology and geometry optimization, and clocking for high-speed systems. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Computer Science: System Design/Architecture",
     "number": "259",
     "description": "Lecture, four hours; outside study, eight hours. Review of current literature in area of computer science system design in which instructor has developed special proficiency as consequence of research interests. Students report on selected topics. May be repeated for credit with topic change. Letter grading.",
     "units": "2.0 to 12.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Computer Science: System Design/Architecture (Effective Fall 2021 )",
     "number": "259",
     "description": "Lecture, four hours; outside study, eight hours. Review of current literature in area of computer science system design in which instructor has developed special proficiency as consequence of research interests. Students report on selected topics. May be repeated for credit with topic change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Machine Learning Algorithms",
     "number": "260",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Recommended requisite: course 180. Problems of identifying patterns in data. Machine learning allows computers to learn potentially complex patterns from data and to make decisions based on these patterns. Introduction to fundamentals of this discipline to provide both conceptual grounding and practical experience with several learning algorithms. Techniques and examples used in areas such as healthcare, financial systems, commerce, and social networking. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Algorithmic Machine Learning",
     "number": "260B",
     "description": "Lecture, four hours; outside study, eight hours. In-depth examination of handful of ubiquitous algorithms in machine learning. Covers several classical tools in machine learning but more emphasis on recent advances and developing efficient and provable algorithms for learning tasks. Topics include low-rank approximations, online learning, multiplicative weights framework, mathematical optimization, outlier-robust algorithms, streaming algorithms. S/U or letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Problem Solving and Search",
     "number": "261A",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 180. In-depth treatment of systematic problem-solving search algorithms in artificial intelligence, including problem spaces, brute-force search, heuristic search, linear-space algorithms, real-time search, heuristic evaluation functions, two-player games, and constraint-satisfaction problems. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Learning and Reasoning with Bayesian Networks",
     "number": "262A",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 112 or Electrical Engineering 131A. Review of several formalisms for representing and managing uncertainty in reasoning systems; presentation of comprehensive description of Bayesian inference using belief networks representation. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Causal Modeling, Inference, and Reasoning",
     "number": "M262C",
     "description": "(Same as Statistics M241.) Lecture, four hours; outside study, eight hours. Requisite: one graduate probability or statistics course such as course 262A, Statistics 200B, or 202B. Review of Bayesian networks, causal Bayesian networks, and structural equations. Learning causal structures from data. Identifying causal effects. Covariate selection and instrumental variables in linear and nonparametric models. Simpson paradox and confounding control. Logic and algorithmization of counterfactuals. Probabilities of counterfactuals. Direct and indirect effects. Probabilities of causation. Identifying causes of events. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Cognitive Systems",
     "number": "262Z",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 262A. Additional requisites for each offering announced in advance by department. Theory and implementation of systems that emulate or support human reasoning. Current literature and individual studies in artificial intelligence, knowledge-based systems, decision support systems, computational psychology, and heuristic programming theory. May be repeated for credit with topic change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Natural Language Processing",
     "number": "263",
     "description": "Lecture, four hours; outside study, eight hours. Natural language processing (NLP) enables computers to understand and process human languages. NLP techniques have been widely used in many applications, including machine translation, question answering, machine summarization, and information extraction. Study of fundamental elements and recent trends in NLP. Students gain ability to apply NLP techniques in text-orientated applications, understand machine learning and algorithms used in NLP, and propose new approaches to solve NLP problems. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Language and Thought",
     "number": "263A",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 130 or 131 or 161. Introduction to natural language processing (NLP), with emphasis on semantics. Presentation of process models for variety of tasks, including question answering, paraphrasing, machine translation, word-sense disambiguation, narrative and editorial comprehension. Examination of both symbolic and statistical approaches to language processing and acquisition. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Animats-Based Modeling",
     "number": "263C",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 130 or 131 or 161. Animats are mobile/sensing animal-like software agents embedded in simulated dynamic environments. Emphasis on modeling: goal-oriented behavior via neurocontrollers, adaptation via reinforcement learning, evolutionary programming. Animat-based tasks include foraging, mate finding, predation, navigation, predator avoidance, cooperative nest construction, communication, and parenting. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Automated Reasoning: Theory and Applications",
     "number": "264A",
     "description": "Lecture, four hours; laboratory, four hours; outside study, four hours. Requisite: course 161. Introduction to theory and practice of automated reasoning using propositional and first-order logic. Topics include syntax and semantics of formal logic; algorithms for logical reasoning, including satisfiability and entailment; syntactic and semantic restrictions on knowledge bases; effect of these restrictions on expressiveness, compactness, and computational tractability; applications of automated reasoning to diagnosis, planning, design, formal verification, and reliability analysis. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Machine Learning",
     "number": "265A",
     "description": "Lecture, four hours; outside study, eight hours. Requisites: courses 263A, 264A. Introduction to machine learning. Learning by analogy, inductive learning, modeling creativity, learning by experience, role of episodic memory organization in learning. Examination of BACON, AM, Eurisko, HACKER, teachable production systems. Failure-driven learning. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Statistical Modeling and Learning in Vision and Cognition",
     "number": "M266A",
     "description": "(Same as Statistics M232A.) Lecture, three hours. Preparation: basic statistics, linear algebra (matrix analysis), computer vision. Computer vision and pattern recognition. Study of four types of statistical models for modeling visual patterns: descriptive, causal Markov, generative (hidden Markov), and discriminative. Comparison of principles and algorithms for these models; presentation of unifying picture. Introduction of minimax entropy and EM-type and stochastic algorithms for learning. S/U or letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Statistical Computing and Inference in Vision and Cognition",
     "number": "M266B",
     "description": "(Same as Statistics M232B.) Lecture, three hours. Preparation: basic statistics, linear algebra (matrix analysis), computer vision. Introduction to broad range of algorithms for statistical inference and learning that could be used in vision, pattern recognition, speech, bioinformatics, data mining. Topics include Markov chain Monte Carlo computing, sequential Monte Carlo methods, belief propagation, partial differential equations. S/U or letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Probabilistic Programming and Relational Learning",
     "number": "267A",
     "description": "Lecture, four hours; outside study, eight hours. Introduction to computational models of probability and statistical models of relational data. Study of relational representations such as probabilistic databases, relational graphical models, and Markov logic networks, as well as various probabilistic programming languages. Covers their syntax and semantics, probabilistic inference problems, parameter, and structure learning algorithms, and theoretical properties of representation and inference. Expressive statistical modeling, how to formalize and reason about complex statistical assumptions and encode knowledge in machine learning models. Survey of key applications in natural language processing, graph mining, computer vision, and computational biology. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Machine Perception",
     "number": "M268",
     "description": "(Same as Electrical and Computer Engineering M206.) Lecture, four hours; discussion, two hours; outside study, six hours. Designed for graduate students. Computational aspects of processing visual and other sensory information. Unified treatment of early vision in man and machine. Integration of symbolic and iconic representations in process of image segmentation. Computing multimodal sensory information by neural-net architectures. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Seminar: Computational Neuroscience",
     "number": "268S",
     "description": "Seminar, two hours; outside study, four hours. Designed for students undertaking thesis research. Discussion of advanced topics and current research in computational neuroscience. Neural networks and connectionism as paradigm for parallel and concurrent computation in application to problems of perception, vision, multimodal sensory integration, and robotics. May be repeated for credit. S/U grading.",
     "units": "2.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Seminar: Current Topics in Artificial Intelligence",
     "number": "269",
     "description": "Seminar, to be arranged. Review of current literature and research practicum in area of artificial intelligence in which instructor has developed special proficiency as consequence of research interests. Students report on selected topics. May be repeated for credit with topic change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Computer Animation",
     "number": "C274C",
     "description": "Lecture, four hours; discussion, two hours; outside study, six hours. Enforced requisite: course 174A. Introduction to computer animation, including basic principles of character modeling, forward and inverse kinematics, forward and inverse dynamics, motion capture animation techniques, physics-based animation of particles and systems, and motor control. Concurrently scheduled with course C174C. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Artificial Life for Computer Graphics and Vision",
     "number": "275",
     "description": "Lecture, four hours; outside study, eight hours. Enforced requisite: course 174A. Recommended: course 161. Investigation of important role that concepts from artificial life, emerging discipline that spans computational and biological sciences, can play in construction of advanced computer graphics and vision models for virtual reality, animation, interactive games, active vision, visual sensor networks, medical image analysis, etc. Focus on comprehensive models that can realistically emulate variety of living things (plants and animals) from lower animals to humans. Exposure to effective computational modeling of natural phenomena of life and their incorporation into sophisticated, self-animating graphical entities. Specific topics include modeling plants using L-systems, biomechanical simulation and control, behavioral animation, reinforcement and neural-network learning of locomotion, cognitive modeling, artificial animals and humans, human facial animation, and artificial evolution. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Pattern Recognition and Machine Learning",
     "number": "M276A",
     "description": "(Same as Statistics M231A.) Lecture, three hours; discussion, one hour. Designed for graduate students. Fundamental concepts, theories, and algorithms for pattern recognition and machine learning that are used in computer vision, image processing, speech recognition, data mining, statistics, and computational biology. Topics include Bayesian decision theory, parametric and nonparametric learning, clustering, complexity (VC-dimension, MDL, AIC), PCA/ICA/TCA, MDS, SVM, boosting. S/U or letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Algorithms",
     "number": "280A",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 180. Additional requisites for each offering announced in advance by department. Selections from design, analysis, optimization, and implementation of algorithms; computational complexity and general theory of algorithms; algorithms for particular application areas. Subtitles of some current sections: Principles of Design and Analysis (280A); Distributed Algorithms (280D); Graphs and Networks (280G). May be repeated for credit with consent of instructor and topic change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Algorithms: Approximation Algorithms",
     "number": "280AP",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 180. Background in discrete mathematics helpful. Theoretically sound techniques for dealing with NP-Hard problems. Inability to solve these problems efficiently means algorithmic techniques are based on approximation--finding solution that is near to best possible in efficient running time. Coverage of approximation techniques for number of different problems, with algorithm design techniques that include primal-dual method, linear program rounding, greedy algorithms, and local search. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Algorithms",
     "number": "280CO",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 180. Additional requisites for each offering announced in advance by department. Selections from design, analysis, optimization, and implementation of algorithms; computational complexity and general theory of algorithms; algorithms for particular application areas. Subtitles of some current sections: Principles of Design and Analysis (280A); Distributed Algorithms (280D); Graphs and Networks (280G). May be repeated for credit with consent of instructor and topic change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Algorithms",
     "number": "280D",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 180. Additional requisites for each offering announced in advance by department. Selections from design, analysis, optimization, and implementation of algorithms; computational complexity and general theory of algorithms; algorithms for particular application areas. Subtitles of some current sections: Principles of Design and Analysis (280A); Distributed Algorithms (280D); Graphs and Networks (280G). May be repeated for credit with consent of instructor and topic change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Algorithms",
     "number": "280DA",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 180. Additional requisites for each offering announced in advance by department. Selections from design, analysis, optimization, and implementation of algorithms; computational complexity and general theory of algorithms; algorithms for particular application areas. Subtitles of some current sections: Principles of Design and Analysis (280A); Distributed Algorithms (280D); Graphs and Networks (280G). May be repeated for credit with consent of instructor and topic change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Algorithms",
     "number": "280DP",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 180. Additional requisites for each offering announced in advance by department. Selections from design, analysis, optimization, and implementation of algorithms; computational complexity and general theory of algorithms; algorithms for particular application areas. Subtitles of some current sections: Principles of Design and Analysis (280A); Distributed Algorithms (280D); Graphs and Networks (280G). May be repeated for credit with consent of instructor and topic change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Algorithms",
     "number": "280G",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 180. Additional requisites for each offering announced in advance by department. Selections from design, analysis, optimization, and implementation of algorithms; computational complexity and general theory of algorithms; algorithms for particular application areas. Subtitles of some current sections: Principles of Design and Analysis (280A); Distributed Algorithms (280D); Graphs and Networks (280G). May be repeated for credit with consent of instructor and topic change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Algorithms",
     "number": "280P",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 180. Additional requisites for each offering announced in advance by department. Selections from design, analysis, optimization, and implementation of algorithms; computational complexity and general theory of algorithms; algorithms for particular application areas. Subtitles of some current sections: Principles of Design and Analysis (280A); Distributed Algorithms (280D); Graphs and Networks (280G). May be repeated for credit with consent of instructor and topic change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Computability and Complexity",
     "number": "281A",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 181 or compatible background. Concepts fundamental to study of discrete information systems and theory of computing, with emphasis on regular sets of strings, Turing-recognizable (recursively enumerable) sets, closure properties, machine characterizations, nondeterminisms, decidability, unsolvable problems, \"easy\" and \"hard\" problems, PTIME/NPTIME. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Cryptography",
     "number": "M282A",
     "description": "(Same as Mathematics M209A.) Lecture, four hours; outside study, eight hours. Introduction to theory of cryptography, stressing rigorous definitions and proofs of security. Topics include notions of hardness, one-way functions, hard-core bits, pseudorandom generators, pseudorandom functions and pseudorandom permutations, semantic security, public-key and private-key encryption, secret-sharing, message authentication, digital signatures, interactive proofs, zero-knowledge proofs, collision-resistant hash functions, commitment protocols, key-agreement, contract signing, and two-party secure computation with static security. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Cryptographic Protocols",
     "number": "M282B",
     "description": "(Same as Mathematics M209B.) Lecture, four hours; outside study, eight hours. Requisite: course M282A. Consideration of advanced cryptographic protocol design and analysis. Topics include noninteractive zero-knowledge proofs; zero-knowledge arguments; concurrent and non-black-box zero-knowledge; IP=PSPACE proof, stronger notions of security for public-key encryption, including chosen-ciphertext security; secure multiparty computation; dealing with dynamic adversary; nonmalleability and composability of secure protocols; software protection; threshold cryptography; identity-based cryptography; private information retrieval; protection against man-in-middle attacks; voting protocols; identification protocols; digital cash schemes; lower bounds on use of cryptographic primitives, software obfuscation. May be repeated for credit with topic change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Topics in Applied Number Theory",
     "number": "M283A",
     "description": "(Same as Mathematics M208A.) Lecture, three hours. Basic number theory, including congruences and prime numbers. Cryptography: public-key and discrete log cryptosystems. Attacks on cryptosystems. Primality testing and factorization methods. Elliptic curve methods. Topics from coding theory: Hamming codes, cyclic codes, Gilbert/Varshamov bounds, Shannon theorem. S/U or letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Topics in Applied Number Theory",
     "number": "M283B",
     "description": "(Same as Mathematics M208B.) Lecture, three hours. Basic number theory, including congruences and prime numbers. Cryptography: public-key and discrete log cryptosystems. Attacks on cryptosystems. Primality testing and factorization methods. Elliptic curve methods. Topics from coding theory: Hamming codes, cyclic codes, Gilbert/Varshamov bounds, Shannon theorem. S/U or letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Topics in Automata and Languages",
     "number": "284A",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 181. Additional requisites for each offering announced in advance by department. Selections from families of formal languages, grammars, machines, operators; pushdown automata, context-free languages and their generalizations, parsing; multidimensional grammars, developmental systems; machine-based complexity. Subtitles of some current and planned sections: Context-Free Languages (284A), Parsing Algorithms (284P). May be repeated for credit with consent of instructor and topic change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Topics in Automata and Languages",
     "number": "284C",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 181. Additional requisites for each offering announced in advance by department. Selections from families of formal languages, grammars, machines, operators; pushdown automata, context-free languages and their generalizations, parsing; multidimensional grammars, developmental systems; machine-based complexity. Subtitles of some current and planned sections: Context-Free Languages (284A), Parsing Algorithms (284P). May be repeated for credit with consent of instructor and topic change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Topics in Automata and Languages",
     "number": "284P",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 181. Additional requisites for each offering announced in advance by department. Selections from families of formal languages, grammars, machines, operators; pushdown automata, context-free languages and their generalizations, parsing; multidimensional grammars, developmental systems; machine-based complexity. Subtitles of some current and planned sections: Context-Free Languages (284A), Parsing Algorithms (284P). May be repeated for credit with consent of instructor and topic change. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Computational Systems Biology: Modeling and Simulation of Biological Systems",
     "number": "CM286",
     "description": "(Same as Bioengineering CM286.) Lecture, four hours; laboratory, two hours; discussion, one hour. Requisites: Life Sciences 30A, 30B, Mathematics 32A or M32T, 33A, and 33B, or Mathematics 3A, 3B, and 3C, or Mathematics 31A, 31B, 32A or M32T, 33A, and 33B. Dynamic biosystem modeling and computer simulation methods for studying analyzing biological/biomedical processes and systems at multiple levels of organization. Intermediate linear and nonlinear control system, multicompartmental, epidemiological, pharmacokinetic, and other biomodeling methods applied to life sciences problems at molecular, cellular, organ, and population levels. Both theory- and data-driven modeling, with focus on translating biomodeling goals and data into dynamical mathematical models, and implementing them for simulation, quantification, and analysis. Numerical simulation, optimization, and parameter identifiability and search algorithms, with model discrimination and analysis and software exercises in PC laboratory assignments. Concurrently scheduled with course CM186. Letter grading.",
     "units": "5.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Research Communication in Computational and Systems Biology",
     "number": "CM287",
     "description": "(Same as Bioengineering CM287.) Lecture, four hours; outside study, eight hours. Requisites: course M182 or CM286 or Computational and Systems Biology M150; and research experience (course 199, Bioengineering 199, Computational and Systems Biology 199, or equivalent). Closely directed, interactive, and real research experience in active quantitative systems biology research laboratory. Direction on how to focus on topics of current interest in scientific community, appropriate to student interests and capabilities. Critiques of oral presentations and written progress reports explain how to proceed with search for research results. Major emphasis on effective research reporting, both oral and written. Concurrently scheduled with course CM187. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Seminar: Theoretical Computer Science",
     "number": "288S",
     "description": "Seminar, two hours; outside study, six hours. Requisites: courses 280A, 281A. Intended for students undertaking thesis research. Discussion of advanced topics and current research in such areas as algorithms and complexity models for parallel and concurrent computation, and formal language and automata theory. May be repeated for credit. S/U grading.",
     "units": "2.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Computer Theory",
     "number": "289A",
     "description": "Lecture, four hours; outside study, eight hours. Review of current literature in area of computer theory in which instructor has developed special proficiency as consequence of research interests. Students report on selected topics. Letter grading.",
     "units": "2.0 to 12.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Computer Theory (Effective Fall 2021 )",
     "number": "289A",
     "description": "Lecture, four hours; outside study, eight hours. Review of current literature in area of computer theory in which instructor has developed special proficiency as consequence of research interests. Students report on selected topics. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Computer Theory: Complexity Theory",
     "number": "289CO",
     "description": "Lecture, four hours; outside study, eight hours. Diagonalization, polynomial-time hierarchy, PCP theorem, randomness and de-randomization, circuit complexity, attempts and limitations to proving P does not equal NP, average-case complexity, one-way functions, hardness amplification. Problem sets and presentation of previous and original research related to course topics. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Computer Theory",
     "number": "289L",
     "description": "Lecture, four hours; outside study, eight hours. Review of current literature in area of computer theory in which instructor has developed special proficiency as consequence of research interests. Students report on selected topics. Letter grading.",
     "units": "2.0 to 12.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Computer Theory (Effective Fall 2021 )",
     "number": "289L",
     "description": "Lecture, four hours; outside study, eight hours. Review of current literature in area of computer theory in which instructor has developed special proficiency as consequence of research interests. Students report on selected topics. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Computer Theory: Online Algorithms",
     "number": "289OA",
     "description": "Lecture, four hours; outside study, eight hours. Requisite: course 180. Introduction to decision making under uncertainty and competitive analysis. Review of current research in online algorithms for problems arising in many areas, such as data and memory management, searching and navigating in unknown terrains, and server systems. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Computer Theory",
     "number": "289P",
     "description": "Lecture, four hours; outside study, eight hours. Review of current literature in area of computer theory in which instructor has developed special proficiency as consequence of research interests. Students report on selected topics. Letter grading.",
     "units": "2.0 to 12.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Computer Theory (Effective Fall 2021 )",
     "number": "289P",
     "description": "Lecture, four hours; outside study, eight hours. Review of current literature in area of computer theory in which instructor has developed special proficiency as consequence of research interests. Students report on selected topics. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Computer Theory: Randomized Algorithms",
     "number": "289RA",
     "description": "Lecture, four hours; outside study, eight hours. Basic concepts and design techniques for randomized algorithms, such as probability theory, Markov chains, random walks, and probabilistic method. Applications to randomized algorithms in data structures, graph theory, computational geometry, number theory, and parallel and distributed systems. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Computer Theory",
     "number": "289SG",
     "description": "Lecture, four hours; outside study, eight hours. Review of current literature in area of computer theory in which instructor has developed special proficiency as consequence of research interests. Students report on selected topics. Letter grading.",
     "units": "2.0 to 12.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Current Topics in Computer Theory (Effective Fall 2021 )",
     "number": "289SG",
     "description": "Lecture, four hours; outside study, eight hours. Review of current literature in area of computer theory in which instructor has developed special proficiency as consequence of research interests. Students report on selected topics. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Advanced Modeling Methodology for Dynamic Biomedical Systems",
     "number": "M296A",
     "description": "(Same as Bioengineering M296A and Medicine M270C.) Lecture, four hours; outside study, eight hours. Requisite: Electrical Engineering 141 or 142 or Mathematics 115A or Mechanical and Aerospace Engineering 171A. Development of dynamic systems modeling methodology for physiological, biomedical, pharmacological, chemical, and related systems. Control system, multicompartmental, noncompartmental, and input/output models, linear and nonlinear. Emphasis on model applications, limitations, and relevance in biomedical sciences and other limited data environments. Problem solving in PC laboratory. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Optimal Parameter Estimation and Experiment Design for Biomedical Systems",
     "number": "M296B",
     "description": "(Same as Bioengineering M296B, Biomathematics M270, and Medicine M270D.) Lecture, four hours; outside study, eight hours. Requisite: course CM286 or M296A or Biomathematics 220. Estimation methodology and model parameter estimation algorithms for fitting dynamic system models to biomedical data. Model discrimination methods. Theory and algorithms for designing optimal experiments for developing and quantifying models, with special focus on optimal sampling schedule design for kinetic models. Exploration of PC software for model building and optimal experiment design via applications in physiology and pharmacology. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Advanced Topics and Research in Biomedical Systems Modeling and Computing",
     "number": "M296C",
     "description": "(Same as Bioengineering M296C and Medicine M270E.) Lecture, four hours; outside study, eight hours. Requisite: course M296B. Research techniques and experience on special topics involving models, modeling methods, and model/computing in biological and medical sciences. Review and critique of literature. Research problem searching and formulation. Approaches to solutions. Individual MS- and PhD-level project training. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Introduction to Computational Cardiology",
     "number": "M296D",
     "description": "(Same as Bioengineering M296D.) Lecture, four hours; outside study, eight hours. Requisite: course CM186. Introduction to mathematical modeling and computer simulation of cardiac electrophysiological process. Ionic models of action potential (AP). Theory of AP propagation in one-dimensional and two-dimensional cardiac tissue. Simulation on sequential and parallel supercomputers, choice of numerical algorithms, to optimize accuracy and to provide computational stability. Letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Research Seminar: Computer Science",
     "number": "298",
     "description": "Lecture, two to four hours; outside study, four to eight hours. Designed for graduate computer science students. Discussion of advanced topics and current research in algorithmic processes that describe and transform information: theory, analysis, design, efficiency, implementation, and application. May be repeated for credit. S/U grading.",
     "units": "2.0 to 4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Teaching Apprentice Practicum",
     "number": "375",
     "description": "Seminar, to be arranged. Preparation: apprentice personnel employment as teaching assistant, associate, or fellow. Teaching apprenticeship under active guidance and supervision of regular faculty member responsible for curriculum and instruction at UCLA. May be repeated for credit. S/U grading.",
     "units": "1.0 to 4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Teaching Assistant Training Seminar",
     "number": "495",
     "description": "Seminar, four hours; outside study, two hours. Limited to graduate Computer Science Department students. Seminar on being effective teaching assistant, including preparation, classroom presentation, encouraging interactive discussion, active learning, office hours, review sessions, making up and grading assignments and exam questions, proctoring exams, and grading. S/U grading.",
     "units": "2.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Teaching with Technology",
     "number": "495B",
     "description": "Seminar, two hours; outside study, four hours. Limited to graduate Computer Science Department teaching assistants. Seminar for teaching assistants covering how technology can be used to aid instruction in and out of classroom. S/U grading.",
     "units": "2.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Field Projects in Computer Science",
     "number": "497D",
     "description": "Fieldwork, to be arranged. Students are divided into teams led by instructor; each team is assigned one external company or organization that they investigate as candidate for possible computerization, submitting team report of their findings and recommendations. In Progress grading (credit to be given only on completion of course 497E).",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Field Projects in Computer Science",
     "number": "497E",
     "description": "Fieldwork, to be arranged. Students are divided into teams led by instructor; each team is assigned one external company or organization that they investigate as candidate for possible computerization, submitting team report of their findings and recommendations. S/U or letter grading.",
     "units": "4.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Directed Individual or Tutorial Studies",
     "number": "596",
     "description": "Tutorial, to be arranged. Limited to graduate computer science students. Petition forms to request enrollment may be obtained from assistant dean, Graduate Studies. Supervised investigation of advanced technical problems. S/U grading.",
     "units": "1.0 to 8.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Preparation for MS Comprehensive Examination",
     "number": "597A",
     "description": "Tutorial, to be arranged. Limited to graduate computer science students. Reading and preparation for MS comprehensive examination. S/U grading.",
     "units": "2.0 to 12.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Preparation for PhD Preliminary Examination",
     "number": "597B",
     "description": "Tutorial, to be arranged. Limited to graduate computer science students. Preparation for PhD preliminary examinations. S/U grading.",
     "units": "2.0 to 16.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Preparation for PhD Oral Qualifying Examination",
     "number": "597C",
     "description": "Tutorial, to be arranged. Limited to graduate computer science students. Preparation for oral qualifying examination, including preliminary research on dissertation. S/U grading.",
     "units": "2.0 to 16.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Research for and Preparation of MS Thesis",
     "number": "598",
     "description": "Tutorial, to be arranged. Limited to graduate computer science students. Supervised independent research for MS candidates, including thesis prospectus. S/U grading.",
     "units": "2.0 to 12.0"
   },
   {
-    "subjectAreaId": 42,
-    "subjectAreaCode": "COM SCI",
+    "subject_area_id": 42,
+    "subject_area_code": "COM SCI",
     "title": "Research for and Preparation of PhD Dissertation",
     "number": "599",
     "description": "Tutorial, to be arranged. Limited to graduate computer science students. Petition forms to request enrollment may be obtained from assistant dean, Graduate Studies. S/U grading.",
