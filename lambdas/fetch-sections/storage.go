@@ -301,7 +301,6 @@ func GetSubscribedUsers(ctx context.Context, section registrar.Section) (users [
 // Saves a section to the database.
 func SaveSection(
 	ctx context.Context,
-	course registrar.Course,
 	section registrar.Section,
 	shouldInsertEnrollmentData bool,
 ) error {
