@@ -143,6 +143,7 @@ GEM
     cuprite (0.14.3)
       capybara (~> 3.0)
       ferrum (~> 0.13.0)
+    dalli (3.2.4)
     date (3.3.3)
     debug (1.7.2)
       irb (>= 1.5.0)
@@ -563,6 +564,7 @@ DEPENDENCIES
   climate_control
   cssbundling-rails
   cuprite
+  dalli
   debug (>= 1.0.0)
   devise
   dotenv-rails
