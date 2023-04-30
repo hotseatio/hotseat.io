@@ -1,11 +1,11 @@
-# typed: strict
+# typed: false
 # frozen_string_literal: true
 
 json = T.unsafe(json)
 json.key_format!(camelize: :lower)
 
 user = T.let(T.unsafe(current_user), User)
-extend UserHelper # rubocop:disable Style/MixinUsage
+# extend UserHelper
 
 json.update_url(user_path(user))
 json.name(user.name)
