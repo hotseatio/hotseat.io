@@ -25,10 +25,10 @@ class EnrollmentNotificationsController < ApplicationController
     typed_params = TypedParams[CreateParams].new.extract!(params)
     section = Section.find(typed_params.section_id)
 
-    if !section.enrollable?
-      render(json: { not_enrollable: true, notifications_sent: 0 })
-      return
-    end
+    # if !section.enrollable?
+    #   render(json: { not_enrollable: true, notifications_sent: 0 })
+    #   return
+    # end
 
     subscriptions = section.relationships.where(notify: true)
     subscriptions.each do |relationship|

@@ -8,11 +8,12 @@
 
 class EnrollmentNotification < Noticed::Base
   extend T::Sig
-  include GeneratedUrlHelpers
+  # include GeneratedUrlHelpers
 
   deliver_by :database
   # deliver_by :email, mailer: "UserMailer"
   deliver_by :aws_text_message, class: "DeliveryMethods::AwsTextMessage"
+  deliver_by :web_push, class: "DeliveryMethods::WebPush"
 
   # Add required params
   param :section
@@ -25,8 +26,8 @@ class EnrollmentNotification < Noticed::Base
     new_enrollment_status = section.enrollment_status
 
     message = "Hotseat Alert: #{section.course_title} enrollment status changed from #{old_enrollment_status} to #{new_enrollment_status}."
-    message << "\n\nEnroll now: #{enroll_url(section.id)}" if (section.enrollment_status == "Open") || (section.enrollment_status == "Waitlist")
-    message << "\n\nAlready enrolled? Unsubscribe: #{unsubscribe_url(section.id)}"
+    # message << "\n\nEnroll now: #{enroll_url(section.id)}" if (section.enrollment_status == "Open") || (section.enrollment_status == "Waitlist")
+    # message << "\n\nAlready enrolled? Unsubscribe: #{unsubscribe_url(section.id)}"
 
     message.strip
   end
