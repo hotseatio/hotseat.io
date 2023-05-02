@@ -15,7 +15,30 @@ class DeliveryMethods::WebPush < Noticed::DeliveryMethods::Base
 
   sig { void }
   def deliver
-    recipient.webpush_devices.each(&:send_push)
+    push_notification = WebpushDevice::PushNotification.new(
+      title: notification.title,
+      body: notification.body,
+      tag: notification.tag,
+      status: notification.enrollment_status,
+      actions: [
+        WebpushDevice::Action.new(
+          action: notification.enroll_link,
+          title: "Enroll",
+        ),
+        WebpushDevice::Action.new(
+          action: notification.unsubscribe_link,
+          title: "Unsubscribe",
+        ),
+        WebpushDevice::Action.new(
+          action: notification.manage_link,
+          title: "Manage",
+        ),
+      ],
+    )
+
+    recipient.webpush_devices.each do |device|
+      device.send_push(push_notification)
+    end
   end
 
   # You may override this method to validate options for the delivery method

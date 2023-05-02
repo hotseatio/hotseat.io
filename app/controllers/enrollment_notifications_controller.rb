@@ -30,9 +30,10 @@ class EnrollmentNotificationsController < ApplicationController
     #   return
     # end
 
+    timestamp = Time.now.to_i
     subscriptions = section.relationships.where(notify: true)
     subscriptions.each do |relationship|
-      EnrollmentNotification.with(section:, previous_enrollment_numbers: typed_params.previous_enrollment_numbers.serialize).deliver_later(relationship.user)
+      EnrollmentNotification.with(timestamp:, section:, previous_enrollment_numbers: typed_params.previous_enrollment_numbers.serialize).deliver_later(relationship.user)
     end
 
     render(json: { notifications_sent: subscriptions.size })

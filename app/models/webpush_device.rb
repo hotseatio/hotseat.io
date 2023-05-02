@@ -7,12 +7,25 @@ class WebpushDevice < ApplicationRecord
 
   belongs_to :user
 
-  # sig { params(message).void }
-  sig { void }
-  def send_push
+  class Action < T::Struct
+    const :action, String
+    const :title, String
+    # const :icon, String
+  end
+
+  class PushNotification < T::Struct
+    const :title, String
+    const :body, String
+    const :tag, String
+    const :status, String
+    const :actions, T::Array[Action]
+  end
+
+  sig { params(notification: PushNotification).void }
+  def send_push(notification)
     WebPush.payload_send(
       endpoint: notification_endpoint,
-      message: "Test notification",
+      message: notification.serialize.to_json,
       p256dh: p256dh_key,
       auth: auth_key,
       vapid: {
