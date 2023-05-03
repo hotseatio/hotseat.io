@@ -121,7 +121,7 @@ export default function SettingsForm({updateURL, phoneNumber, devices, ...props}
               <CopyToClipboardInput value={props.referralLink} name="referral_input" id="referral_input" />
             </div>
 
-            <DevicesTable devices={devices} />
+            {betaTester && <DevicesTable devices={devices} />}
             {/* <NotificationPreferences /> */}
 
             <Switch.Group as="div" className="flex items-center justify-between" id="beta_tester">
