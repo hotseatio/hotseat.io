@@ -14,8 +14,8 @@ class EnrollmentNotification < Noticed::Base
 
   deliver_by :database
   # deliver_by :email, mailer: "UserMailer"
-  deliver_by :aws_text_message, class: "DeliveryMethods::AwsTextMessage"
-  deliver_by :web_push, class: "DeliveryMethods::WebPush"
+  deliver_by :aws_text_message, class: "DeliveryMethods::AwsTextMessage", if: :text_notifications?
+  deliver_by :web_push, class: "DeliveryMethods::WebPush", if: :webpush_notifications?
 
   # Add required params
   param :section
@@ -78,5 +78,15 @@ class EnrollmentNotification < Noticed::Base
   def enrollment_status
     section = params[:section]
     section.enrollment_status
+  end
+
+  sig { returns(T::Boolean) }
+  def webpush_notifications?
+    recipient.admin?
+  end
+
+  sig { returns(T::Boolean) }
+  def text_notifications?
+    true
   end
 end
