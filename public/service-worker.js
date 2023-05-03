@@ -9,6 +9,7 @@ self.addEventListener('push', (event) => {
       tag: pushMessage.tag,
       actions: pushMessage.actions,
       data: { status: pushMessage.status },
+      icon: '/images/icons-192.png',
     })
   )
 })
