@@ -1,5 +1,5 @@
 function getLinkForAction(actions, actionTitle) {
-  return actions.find((action) => (action.title = 'Enroll')).action
+  return actions.find((action) => action.title === actionTitle).action
 }
 
 self.addEventListener('push', (event) => {
@@ -30,7 +30,7 @@ self.addEventListener('notificationclick', async (event) => {
     self.clients.openWindow(event.action)
   } else {
     const notification = event.notification
-    const { status, enrollLink, manageLink } = notification.data
+    const {status, enrollLink, manageLink} = notification.data
     if (status === 'Open' || status === 'Waitlist') {
       console.log(`Defaulting to opening enrollment link: ${enrollLink}`)
       self.clients.openWindow(enrollLink)
