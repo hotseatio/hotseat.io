@@ -11,9 +11,6 @@ FactoryBot.define do
     read_at { "2023-04-21 16:39:49" }
   end
 
-  factory :webpush_device do
-  end
-
   factory :user do
     name { "Nathan Smith" }
     sequence(:email) { |n| "natedub#{n}@g.ucla.edu" }
