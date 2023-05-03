@@ -27,13 +27,18 @@ export default function DevicesTable({devices: initialDevices}: Props) {
 
   const addDevice = async () => {
     setIsAddingDevice(true)
-    const newDevice = await subscribeToPush()
-    if (devices.some((device) => device.id === newDevice.id)) {
-      window.alert('Device is already added!')
-    } else {
-      setDevices(sortBy([...devices, newDevice], 'id'))
+    try {
+      const newDevice = await subscribeToPush()
+      if (devices.some((device) => device.id === newDevice.id)) {
+        window.alert('Device is already added!')
+      } else {
+        setDevices(sortBy([...devices, newDevice], 'id'))
+      }
+    } catch (error) {
+      alert('There was an error registered your device. Please try again.')
+    } finally {
+      setIsAddingDevice(false)
     }
-    setIsAddingDevice(false)
   }
   const removeDevice = (id: number) => {
     setDevices(

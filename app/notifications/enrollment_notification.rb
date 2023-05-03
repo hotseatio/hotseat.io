@@ -74,7 +74,7 @@ class EnrollmentNotification < Noticed::Base
     my_courses_url
   end
 
-  sig { String }
+  sig { returns(String) }
   def enrollment_status
     section = params[:section]
     section.enrollment_status
