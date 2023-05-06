@@ -17,7 +17,7 @@ import {authenticityHeaders} from 'utilities/authenticityHeaders'
 import type {Device} from 'utilities/webpushNotifications'
 
 type Props = {
-  updateURL: string
+  updateUrl: string
   name: string
   email: string
   phoneNumber: string | undefined
@@ -32,7 +32,7 @@ type Response = {
   msg?: string
 }
 
-export default function SettingsForm({updateURL, phoneNumber, devices, ...props}: Props): JSX.Element {
+export default function SettingsForm({updateUrl, phoneNumber, devices, ...props}: Props): JSX.Element {
   const [response, setResponse] = useState<Response | null>(null)
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -42,7 +42,7 @@ export default function SettingsForm({updateURL, phoneNumber, devices, ...props}
     e.preventDefault()
     setIsSubmitting(true)
     const body = {beta_tester: betaTester, phone: phoneNumber}
-    const response = await fetch(updateURL, {
+    const response = await fetch(updateUrl, {
       method: 'PUT',
       headers: authenticityHeaders({'Content-Type': 'application/json'}),
       body: JSON.stringify(body),
