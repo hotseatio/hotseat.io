@@ -1,8 +1,6 @@
 # typed: strict
 # frozen_string_literal: true
 
-require "lograge/sql/extension"
-
 Rails.application.configure do
   # Lograge config
   config.lograge.enabled = true

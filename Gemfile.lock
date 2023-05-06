@@ -265,9 +265,6 @@ GEM
       activesupport (>= 4)
       railties (>= 4)
       request_store (~> 1.0)
-    lograge-sql (2.1.0)
-      activerecord (>= 5, < 7.1)
-      lograge (~> 0.11)
     loofah (2.20.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -609,7 +606,6 @@ DEPENDENCIES
   letter_opener
   lisbn
   lograge
-  lograge-sql
   mini_portile2
   minitest-spec-rails
   mocha
