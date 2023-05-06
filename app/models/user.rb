@@ -26,6 +26,7 @@ class User < ApplicationRecord
   has_many :courses, through: :sections
   has_many :reviews, through: :relationships
   has_many :notifications, as: :recipient, dependent: :destroy
+  has_many :webpush_devices, dependent: :destroy
 
   belongs_to :referred_by,
              class_name: "User",

@@ -67,7 +67,7 @@ class CoursesTest < ActionDispatch::IntegrationTest
       end
       assert_response :success
       assert_equal({ "notifications_sent" => 2 }, response.parsed_body)
-      assert_performed_jobs 2
+      assert_performed_jobs 4
     end
 
     it "does not send any notifications if no users are subscribed" do

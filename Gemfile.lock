@@ -213,6 +213,7 @@ GEM
     hashie (5.0.0)
     high_voltage (3.1.2)
     highline (2.0.3)
+    hkdf (1.0.0)
     http (5.1.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
@@ -339,6 +340,7 @@ GEM
     opensearch-transport (2.1.0)
       faraday (>= 1.0, < 3)
       multi_json
+    openssl (3.1.0)
     orm_adapter (0.5.0)
     parallel (1.23.0)
     parlour (8.1.0)
@@ -554,6 +556,10 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    web-push (3.0.0)
+      hkdf (~> 1.0)
+      jwt (~> 2.0)
+      openssl (~> 3.0)
     webmock (3.18.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -648,6 +654,7 @@ DEPENDENCIES
   turbo-rails
   typhoeus
   web-console
+  web-push
   webmock
 
 RUBY VERSION

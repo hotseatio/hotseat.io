@@ -47,7 +47,7 @@ export default function FilterButton({links}: Props): JSX.Element | null {
 
       <Listbox.Options
         className="mt-2 w-56 max-h-96 py-1 overflow-auto rounded-md shadow-lg bg-white dark:bg-gray-900 ring-1 ring-black ring-opacity-5 focus:outline-none"
-        ref={setPopperElement}
+        ref={(element: HTMLUListElement) => setPopperElement(element)}
         style={styles.popper}
         {...attributes.popper}
       >

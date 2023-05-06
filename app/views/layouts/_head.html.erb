@@ -7,6 +7,7 @@
 
   <title><%= title %></title>
   <meta name="description" content="<%= description %>">
+  <link rel="manifest" href="/manifest.json">
 
   <%= favicon_link_tag "favicon.svg", type: "image/svg+xml", skip_pipeline: true %>
   <%= favicon_link_tag "favicon.ico", rel: "alternate icon", skip_pipeline: true %>
@@ -41,6 +42,11 @@
       gtag('config', 'G-QMXHM0BW9X');
     </script>
   <% end %>
+
+  <!-- VAPID key -->
+  <script>
+    window.vapidPublicKey = new Uint8Array(<%= Base64.urlsafe_decode64(ENV.fetch("VAPID_PUBLIC_KEY", nil)).bytes %>);
+  </script>
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>

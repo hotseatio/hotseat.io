@@ -3,7 +3,6 @@ import * as React from 'react'
 import {createRoot} from 'react-dom/client'
 import ahoy from 'ahoy.js'
 
-// React components
 import Search from 'components/Search'
 import EnrollmentCard from 'components/EnrollmentCard'
 import GradeCard from 'components/GradeCard'
@@ -11,6 +10,7 @@ import ReviewForm from 'components/ReviewForm'
 import SettingsForm from 'components/SettingsForm'
 import FilterButton from 'components/FilterButton'
 import {SectionListCard, CurrentCoursesListCard, PreviousCoursesListCard} from 'components/ListCard'
+import {registerServiceWorker} from 'utilities/webpushNotifications'
 
 const components = {
   Search,
@@ -45,3 +45,6 @@ ahoy.configure({
 ahoy.trackView()
 ahoy.trackClicks('a, button, input[type=submit]')
 ahoy.trackSubmits('form')
+
+// Service worker
+registerServiceWorker()

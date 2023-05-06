@@ -63,6 +63,8 @@ Rails.application.routes.draw do
 
   resources "enrollment_notifications", only: %i[create]
 
+  resources "webpush_devices", only: %i[index create destroy]
+
   # 404 and 500 pages
   match "/404", to: "errors#not_found", via: :all
   match "/422", to: "errors#unprocessable_entity", via: :all

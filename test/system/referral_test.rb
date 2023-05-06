@@ -64,7 +64,7 @@ class ReferralTest < ApplicationSystemTestCase
     click_button("Publish review")
   end
 
-  test "user fills out their phone number and beta testing status" do
+  test "user fills out a review after being referred" do
     create_current_term
 
     referring_user = create(:user, name: "Nathan Smith", notification_token_count: 100)

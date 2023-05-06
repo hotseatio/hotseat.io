@@ -77,7 +77,7 @@ class ReviewsSystemTest < ApplicationSystemTestCase
     click_button "Publish review"
 
     assert_current_path "/my-courses"
-    assert_text page, "Review submitted! Once approved, you'll received a notification token. (We'll text you when that happens!)", wait: 10
+    assert_text page, "Review submitted! Once approved, you'll receive a notification token. (We'll text you when that happens!)", wait: 10
 
     review = section.reviews.first
     assert_predicate review, :a_plus?

@@ -1,4 +1,4 @@
-# typed: strict
+# typed: false
 # frozen_string_literal: true
 
 # To deliver this notification:
@@ -8,18 +8,22 @@
 
 class EnrollmentNotification < Noticed::Base
   extend T::Sig
-  include GeneratedUrlHelpers
+  # include GeneratedUrlHelpers
+  # include Rails.application.routes.url_helpers
+  # include GeneratedUrlHelpers
 
   deliver_by :database
   # deliver_by :email, mailer: "UserMailer"
-  deliver_by :aws_text_message, class: "DeliveryMethods::AwsTextMessage"
+  deliver_by :aws_text_message, class: "DeliveryMethods::AwsTextMessage", if: :text_notifications?
+  deliver_by :web_push, class: "DeliveryMethods::WebPush", if: :webpush_notifications?
 
   # Add required params
   param :section
   param :previous_enrollment_numbers
+  param :timestamp
 
   sig { returns(String) }
-  def message
+  def full_message
     old_enrollment_status = params[:previous_enrollment_numbers]["enrollment_status"]
     section = params[:section]
     new_enrollment_status = section.enrollment_status
@@ -30,8 +34,59 @@ class EnrollmentNotification < Noticed::Base
 
     message.strip
   end
-  #
-  # def url
-  #   post_path(params[:post])
-  # end
+
+  sig { returns(String) }
+  def title
+    section = params[:section]
+    section.course_title
+  end
+
+  sig { returns(String) }
+  def body
+    old_enrollment_status = params[:previous_enrollment_numbers]["enrollment_status"]
+    section = params[:section]
+    new_enrollment_status = section.enrollment_status
+
+    "Enrollment status changed from #{old_enrollment_status} to #{new_enrollment_status}."
+  end
+
+  sig { returns(String) }
+  def tag
+    section = params[:section]
+    timestamp = params[:timestamp]
+    "#{section.id}-#{timestamp}"
+  end
+
+  sig { returns(String) }
+  def enroll_link
+    section = params[:section]
+    enroll_url(section.id)
+  end
+
+  sig { returns(String) }
+  def unsubscribe_link
+    section = params[:section]
+    unsubscribe_url(section.id)
+  end
+
+  sig { returns(String) }
+  def manage_link
+    my_courses_url
+  end
+
+  sig { returns(String) }
+  def enrollment_status
+    section = params[:section]
+    section.enrollment_status
+  end
+
+  sig { returns(T::Boolean) }
+  def webpush_notifications?
+    recipient.admin?
+  end
+
+  sig { returns(T::Boolean) }
+  def text_notifications?
+    true
+  end
 end

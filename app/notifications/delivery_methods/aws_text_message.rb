@@ -25,7 +25,7 @@ class DeliveryMethods::AwsTextMessage < Noticed::DeliveryMethods::Base
     if T.unsafe(Rails.env).development?
       Rails.logger.info("Skipping sending message since we're not in production.")
     else
-      response = client.publish({ phone_number: recipient.phone, message: notification.message })
+      response = client.publish({ phone_number: recipient.phone, message: notification.full_message })
       Rails.logger.info("Message sent! #{response.message_id}")
     end
   end
