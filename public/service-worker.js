@@ -2,7 +2,16 @@ function getLinkForAction(actions, actionTitle) {
   return actions.find((action) => action.title === actionTitle).action
 }
 
+self.addEventListener('install', (event) => {
+  console.log('Service worker installed.')
+})
+
+self.addEventListener('activate', (event) => {
+  console.log('Service worker activated.')
+})
+
 self.addEventListener('push', (event) => {
+  console.log('Push message received')
   const pushMessage = event.data.json()
 
   const enrollLink = getLinkForAction(pushMessage.actions, 'Enroll')
