@@ -7,6 +7,14 @@
       "postdeploy": "rails db:migrate"
     }
   },
+  "formation": {
+    "web": {
+      "quantity": 1
+    },
+    "worker": {
+      "quantity": 1
+    }
+  },
   "cron": [
     {
       "command": "rake searchkick:reindex:all",

@@ -13,7 +13,9 @@ export async function registerServiceWorker() {
   if ('serviceWorker' in navigator) {
     const registration = await navigator.serviceWorker.getRegistration()
     if (!registration) {
+      console.log('Registering service worker...')
       await navigator.serviceWorker.register('/service-worker.js')
+      console.log('Registered!')
     }
   }
 }

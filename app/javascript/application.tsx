@@ -35,6 +35,9 @@ document.addEventListener('turbo:load', () => {
       root.render(<Component {...props} />)
     }
   }
+
+  // Service worker
+  registerServiceWorker()
 })
 
 // Ahoy
@@ -45,6 +48,3 @@ ahoy.configure({
 ahoy.trackView()
 ahoy.trackClicks('a, button, input[type=submit]')
 ahoy.trackSubmits('form')
-
-// Service worker
-registerServiceWorker()
