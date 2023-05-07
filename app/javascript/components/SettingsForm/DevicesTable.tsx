@@ -34,8 +34,12 @@ export default function DevicesTable({devices: initialDevices}: Props) {
       } else {
         setDevices(sortBy([...devices, newDevice], 'id'))
       }
-    } catch (error) {
-      alert('There was an error registered your device. Please try again.')
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        alert(`There was an error registered your device: ${error.message}`)
+      } else {
+        alert(`There was an error registered your device: ${error}`)
+      }
     } finally {
       setIsAddingDevice(false)
     }

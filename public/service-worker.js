@@ -35,7 +35,7 @@ self.addEventListener('push', (event) => {
 self.addEventListener('notificationclick', async (event) => {
   console.log('Notification clicked')
   if (event.action) {
-    console.log('Opening event action')
+    console.log('Opening event action: ', event)
     self.clients.openWindow(event.action)
   } else {
     const notification = event.notification
