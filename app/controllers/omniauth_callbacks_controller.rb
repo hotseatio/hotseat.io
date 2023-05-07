@@ -3,6 +3,7 @@
 
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   extend T::Sig
+  include Devise::Controllers::Rememberable
 
   # skip_before_action :authenticate_user!, raise: false
   skip_before_action :verify_authenticity_token, only: :google_oauth2
@@ -11,6 +12,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
     auth = request.env["omniauth.auth"]
     user = User.from_omniauth(auth, referral_code: cookies[:referral_code])
+
+    remember_me(user)
 
     if user.persisted?
       flash[:success] = "Successfully logged in! Welcome to Hotseat!"
