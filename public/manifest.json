@@ -1,5 +1,6 @@
 {
   "name": "Hotseat",
+  "display": "standalone",
   "icons": [
     {
       "src": "/images/icons-vector.svg",

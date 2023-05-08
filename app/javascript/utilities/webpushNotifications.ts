@@ -22,6 +22,7 @@ export async function registerServiceWorker() {
 
 export async function subscribeToPush(): Promise<Device> {
   const permission = await Notification.requestPermission()
+  console.log('permission: ', permission)
   if (permission !== 'granted') {
     throw new Error('Permission was not granted. Please allow notifications from Hotseat.')
   }
