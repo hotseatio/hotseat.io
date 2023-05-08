@@ -15,7 +15,8 @@ self.addEventListener('push', (event) => {
   const pushMessage = event.data.json()
 
   const enrollLink = getLinkForAction(pushMessage.actions, 'Enroll')
-  const manageLink = getLinkForAction(pushMessage.actions, 'Unsubscribe')
+  const unsubscribeLink = getLinkForAction(pushMessage.actions, 'Unsubscribe')
+  const manageLink = getLinkForAction(pushMessage.actions, 'Manage')
 
   event.waitUntil(
     self.registration.showNotification(pushMessage.title, {
@@ -25,6 +26,7 @@ self.addEventListener('push', (event) => {
       data: {
         status: pushMessage.status,
         enrollLink,
+        unsubscribeLink,
         manageLink,
       },
       icon: '/images/icons-192.png',
