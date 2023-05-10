@@ -56,8 +56,8 @@ export default function DevicesTable({devices: initialDevices}: Props) {
     <div>
       <div className="sm:flex sm:items-center mt-12">
         <div className="sm:flex-auto">
-          <h2 className="text-base font-semibold leading-6 text-gray-900">Devices</h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <h2 className="text-base font-semibold leading-6 text-gray-900 dark:text-white">Devices</h2>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
             {hasNoDevicesRegisted
               ? 'Devices that will receive web notifications from Hotseat. Try registering your current device!'
               : 'Your devices that will receive web notifications from Hotseat.'}
@@ -82,7 +82,7 @@ export default function DevicesTable({devices: initialDevices}: Props) {
           <table className="min-w-full divide-y divide-gray-300">
             <thead>
               <tr>
-                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white">
                   Client
                 </th>
                 <th scope="col" className="py-3.5">
@@ -93,7 +93,7 @@ export default function DevicesTable({devices: initialDevices}: Props) {
             <tbody className="divide-y divide-gray-200">
               {devices.map((device) => (
                 <tr key={device.id}>
-                  <td className="px-3 py-4 text-sm text-gray-500">{formatDeviceName(device)}</td>
+                  <td className="px-3 py-4 text-sm text-gray-500 dark:text-gray-400">{formatDeviceName(device)}</td>
                   <td className="py-4 text-right text-sm font-medium sm:pr-0">
                     <RequestButton
                       method="DELETE"
