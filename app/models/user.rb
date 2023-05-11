@@ -6,7 +6,10 @@ require "rotp"
 class User < ApplicationRecord
   extend T::Sig
   extend Pay::Attributes::ClassMethods
+  extend Mailkick::Model
   include Pay::Attributes::CustomerExtension
+
+  has_subscriptions
 
   VALID_UCLA_EMAIL_REGEX = T.let(/\A.+@g\.ucla\.edu\z/i, Regexp)
   before_save :save_normalized_phone
