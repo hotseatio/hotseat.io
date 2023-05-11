@@ -250,6 +250,10 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    kramdown (2.4.0)
+      rexml
+    kramdown-parser-gfm (1.1.0)
+      kramdown (~> 2.0)
     launchy (2.5.2)
       addressable (~> 2.8)
     letter_opener (1.8.1)
@@ -273,6 +277,9 @@ GEM
       net-imap
       net-pop
       net-smtp
+    maildown (3.3.1)
+      actionmailer (>= 4.0.0)
+      kramdown-parser-gfm
     mailkick (1.1.2)
       activesupport (>= 5.2)
     marcel (1.0.2)
@@ -608,6 +615,7 @@ DEPENDENCIES
   letter_opener
   lisbn
   lograge
+  maildown
   mailkick
   mini_portile2
   minitest-spec-rails
