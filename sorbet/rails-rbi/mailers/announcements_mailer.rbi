@@ -3,5 +3,5 @@
 # Please rerun bundle exec rake rails_rbi:mailers to regenerate.
 class AnnouncementsMailer
   sig { returns(ActionMailer::MessageDelivery) }
-  def self.annoucement_2023_05_16_push_notifications; end
+  def self.push_notifications_2023_05_16; end
 end
