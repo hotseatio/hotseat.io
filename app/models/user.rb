@@ -104,7 +104,7 @@ class User < ApplicationRecord
 
   # Marks a section as being followed with notifications by the given user.
   sig { params(section: Section).void }
-  def subscribe(section)
+  def subscribe_to_section(section)
     follow(section)
     relationship = relationships.find_by(section:)
     relationship&.update(notify: true) if use_notification_token
@@ -112,7 +112,7 @@ class User < ApplicationRecord
 
   # Whether a user is subscribed to a given section.
   sig { params(section: Section).returns(T::Boolean) }
-  def subscribed?(section)
+  def subscribed_to_section?(section)
     relationship = relationships.find_by(section:)
     relationship&.notify? || false
   end
@@ -134,7 +134,7 @@ class User < ApplicationRecord
 
   # Stops subscribing to a section. User will still be following section.
   sig { params(section: Section).returns(T::Boolean) }
-  def unsubscribe(section)
+  def unsubscribe_to_section(section)
     relationship = relationships.find_by(section:)
     if relationship&.notify
       relationship.update(notify: false)
