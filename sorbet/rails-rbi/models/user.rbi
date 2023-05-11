@@ -226,6 +226,15 @@ module User::GeneratedAssociationMethods
   sig { params(value: T::Enumerable[::Course]).void }
   def courses=(value); end
 
+  sig { returns(::Mailkick::Subscription::ActiveRecord_Associations_CollectionProxy) }
+  def mailkick_subscriptions; end
+
+  sig { returns(T::Array[Integer]) }
+  def mailkick_subscription_ids; end
+
+  sig { params(value: T::Enumerable[::Mailkick::Subscription]).void }
+  def mailkick_subscriptions=(value); end
+
   sig { returns(::Notification::ActiveRecord_Associations_CollectionProxy) }
   def notifications; end
 
@@ -359,6 +368,9 @@ class User < ApplicationRecord
   extend User::QueryMethodsReturningRelation
   RelationType = T.type_alias { T.any(User::ActiveRecord_Relation, User::ActiveRecord_Associations_CollectionProxy, User::ActiveRecord_AssociationRelation) }
 
+  sig { params(args: T.untyped).returns(User::ActiveRecord_Relation) }
+  def self.subscribed(*args); end
+
   sig { params(num: T.nilable(Integer)).returns(User::ActiveRecord_Relation) }
   def self.page(num = nil); end
 
@@ -370,6 +382,83 @@ class User < ApplicationRecord
 
   sig { returns(Integer) }
   def self.default_per_page; end
+end
+
+class User::ActiveRecord_Relation < ActiveRecord::Relation
+  include User::ActiveRelation_WhereNot
+  include User::CustomFinderMethods
+  include User::QueryMethodsReturningRelation
+  Elem = type_member {{fixed: User}}
+
+  sig { params(args: T.untyped).returns(User::ActiveRecord_Relation) }
+  def subscribed(*args); end
+
+  sig { params(num: T.nilable(Integer)).returns(User::ActiveRecord_Relation) }
+  def page(num = nil); end
+
+  sig { params(num: Integer, max_per_page: T.nilable(Integer)).returns(User::ActiveRecord_Relation) }
+  def per(num, max_per_page = nil); end
+
+  sig { params(num: Integer).returns(User::ActiveRecord_Relation) }
+  def padding(num); end
+
+  sig { returns(T::Boolean) }
+  def last_page?; end
+end
+
+class User::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelation
+  include User::ActiveRelation_WhereNot
+  include User::CustomFinderMethods
+  include User::QueryMethodsReturningAssociationRelation
+  Elem = type_member {{fixed: User}}
+
+  sig { params(args: T.untyped).returns(User::ActiveRecord_AssociationRelation) }
+  def subscribed(*args); end
+
+  sig { params(num: T.nilable(Integer)).returns(User::ActiveRecord_AssociationRelation) }
+  def page(num = nil); end
+
+  sig { params(num: Integer, max_per_page: T.nilable(Integer)).returns(User::ActiveRecord_AssociationRelation) }
+  def per(num, max_per_page = nil); end
+
+  sig { params(num: Integer).returns(User::ActiveRecord_AssociationRelation) }
+  def padding(num); end
+
+  sig { returns(T::Boolean) }
+  def last_page?; end
+end
+
+class User::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+  include User::CustomFinderMethods
+  include User::QueryMethodsReturningAssociationRelation
+  Elem = type_member {{fixed: User}}
+
+  sig { params(args: T.untyped).returns(User::ActiveRecord_AssociationRelation) }
+  def subscribed(*args); end
+
+  sig { params(records: T.any(User, T::Array[User])).returns(T.self_type) }
+  def <<(*records); end
+
+  sig { params(records: T.any(User, T::Array[User])).returns(T.self_type) }
+  def append(*records); end
+
+  sig { params(records: T.any(User, T::Array[User])).returns(T.self_type) }
+  def push(*records); end
+
+  sig { params(records: T.any(User, T::Array[User])).returns(T.self_type) }
+  def concat(*records); end
+
+  sig { params(num: T.nilable(Integer)).returns(User::ActiveRecord_AssociationRelation) }
+  def page(num = nil); end
+
+  sig { params(num: Integer, max_per_page: T.nilable(Integer)).returns(User::ActiveRecord_AssociationRelation) }
+  def per(num, max_per_page = nil); end
+
+  sig { params(num: Integer).returns(User::ActiveRecord_AssociationRelation) }
+  def padding(num); end
+
+  sig { returns(T::Boolean) }
+  def last_page?; end
 end
 
 module User::QueryMethodsReturningRelation
@@ -614,72 +703,4 @@ module User::QueryMethodsReturningAssociationRelation
     ).returns(ActiveRecord::Batches::BatchEnumerator)
   end
   def in_batches(of: 1000, start: nil, finish: nil, load: false, error_on_ignore: nil, &block); end
-end
-
-class User::ActiveRecord_Relation < ActiveRecord::Relation
-  include User::ActiveRelation_WhereNot
-  include User::CustomFinderMethods
-  include User::QueryMethodsReturningRelation
-  Elem = type_member {{fixed: User}}
-
-  sig { params(num: T.nilable(Integer)).returns(User::ActiveRecord_Relation) }
-  def page(num = nil); end
-
-  sig { params(num: Integer, max_per_page: T.nilable(Integer)).returns(User::ActiveRecord_Relation) }
-  def per(num, max_per_page = nil); end
-
-  sig { params(num: Integer).returns(User::ActiveRecord_Relation) }
-  def padding(num); end
-
-  sig { returns(T::Boolean) }
-  def last_page?; end
-end
-
-class User::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelation
-  include User::ActiveRelation_WhereNot
-  include User::CustomFinderMethods
-  include User::QueryMethodsReturningAssociationRelation
-  Elem = type_member {{fixed: User}}
-
-  sig { params(num: T.nilable(Integer)).returns(User::ActiveRecord_AssociationRelation) }
-  def page(num = nil); end
-
-  sig { params(num: Integer, max_per_page: T.nilable(Integer)).returns(User::ActiveRecord_AssociationRelation) }
-  def per(num, max_per_page = nil); end
-
-  sig { params(num: Integer).returns(User::ActiveRecord_AssociationRelation) }
-  def padding(num); end
-
-  sig { returns(T::Boolean) }
-  def last_page?; end
-end
-
-class User::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
-  include User::CustomFinderMethods
-  include User::QueryMethodsReturningAssociationRelation
-  Elem = type_member {{fixed: User}}
-
-  sig { params(records: T.any(User, T::Array[User])).returns(T.self_type) }
-  def <<(*records); end
-
-  sig { params(records: T.any(User, T::Array[User])).returns(T.self_type) }
-  def append(*records); end
-
-  sig { params(records: T.any(User, T::Array[User])).returns(T.self_type) }
-  def push(*records); end
-
-  sig { params(records: T.any(User, T::Array[User])).returns(T.self_type) }
-  def concat(*records); end
-
-  sig { params(num: T.nilable(Integer)).returns(User::ActiveRecord_AssociationRelation) }
-  def page(num = nil); end
-
-  sig { params(num: Integer, max_per_page: T.nilable(Integer)).returns(User::ActiveRecord_AssociationRelation) }
-  def per(num, max_per_page = nil); end
-
-  sig { params(num: Integer).returns(User::ActiveRecord_AssociationRelation) }
-  def padding(num); end
-
-  sig { returns(T::Boolean) }
-  def last_page?; end
 end

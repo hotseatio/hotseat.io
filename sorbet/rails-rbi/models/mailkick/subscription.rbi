@@ -7,6 +7,62 @@ module Mailkick::Subscription::ActiveRelation_WhereNot
   def not(opts, *rest); end
 end
 
+module Mailkick::Subscription::GeneratedAttributeMethods
+  sig { returns(ActiveSupport::TimeWithZone) }
+  def created_at; end
+
+  sig { params(value: T.any(Date, Time, ActiveSupport::TimeWithZone)).void }
+  def created_at=(value); end
+
+  sig { returns(T::Boolean) }
+  def created_at?; end
+
+  sig { returns(Integer) }
+  def id; end
+
+  sig { params(value: T.any(Numeric, ActiveSupport::Duration)).void }
+  def id=(value); end
+
+  sig { returns(T::Boolean) }
+  def id?; end
+
+  sig { returns(String) }
+  def list; end
+
+  sig { params(value: T.any(String, Symbol)).void }
+  def list=(value); end
+
+  sig { returns(T::Boolean) }
+  def list?; end
+
+  sig { returns(T.nilable(Integer)) }
+  def subscriber_id; end
+
+  sig { params(value: T.nilable(T.any(Numeric, ActiveSupport::Duration))).void }
+  def subscriber_id=(value); end
+
+  sig { returns(T::Boolean) }
+  def subscriber_id?; end
+
+  sig { returns(T.nilable(String)) }
+  def subscriber_type; end
+
+  sig { params(value: T.nilable(T.any(String, Symbol))).void }
+  def subscriber_type=(value); end
+
+  sig { returns(T::Boolean) }
+  def subscriber_type?; end
+
+  sig { returns(ActiveSupport::TimeWithZone) }
+  def updated_at; end
+
+  sig { params(value: T.any(Date, Time, ActiveSupport::TimeWithZone)).void }
+  def updated_at=(value); end
+
+  sig { returns(T::Boolean) }
+  def updated_at?; end
+end
+
 module Mailkick::Subscription::GeneratedAssociationMethods
   sig { returns(T.untyped) }
   def subscriber; end
@@ -45,6 +101,7 @@ module Mailkick::Subscription::CustomFinderMethods
 end
 
 class Mailkick::Subscription < ActiveRecord::Base
+  include Mailkick::Subscription::GeneratedAttributeMethods
   include Mailkick::Subscription::GeneratedAssociationMethods
   extend Mailkick::Subscription::CustomFinderMethods
   extend Mailkick::Subscription::QueryMethodsReturningRelation
