@@ -273,6 +273,8 @@ GEM
       net-imap
       net-pop
       net-smtp
+    mailkick (1.1.2)
+      activesupport (>= 5.2)
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
@@ -606,6 +608,7 @@ DEPENDENCIES
   letter_opener
   lisbn
   lograge
+  mailkick
   mini_portile2
   minitest-spec-rails
   mocha

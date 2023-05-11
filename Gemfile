@@ -55,6 +55,9 @@ gem "sitemap_generator"
 gem "ahoy_matey"
 gem "blazer"
 
+# Mailing lists
+gem "mailkick"
+
 # Useful for textbooks
 gem "lisbn"
 
