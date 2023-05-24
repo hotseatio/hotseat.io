@@ -15,19 +15,9 @@
           UCLA enrollment trends, alerts, reviews, grades, textbooks and more. All on one website, completely free.
           </p>
         </div>
-        <div class="mt-12 flex">
-        <%= button_to "Log in", user_google_oauth2_omniauth_authorize_path, data: { turbo: false },
-                                                                            class: 'block cursor-pointer rounded-md border border-transparent
-          px-5 py-3 bg-red-500 text-base font-medium text-white shadow
-          hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:px-10' %>
-
-          <%= button_to "Sign up", user_google_oauth2_omniauth_authorize_path, data: { turbo: false },
-                                                                               class: 'block cursor-pointer rounded-md border border-transparent
-            px-5 py-3 text-base font-medium text-red-700
-            bg-red-100 dark:bg-red-300 ml-3 shadow
-            hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:px-10' %>
-
-          </div>
+        <div class="mt-8 flex">
+          <%= render "shared/google_log_in_button" %>
+        </div>
       </div>
     </div>
   </div>

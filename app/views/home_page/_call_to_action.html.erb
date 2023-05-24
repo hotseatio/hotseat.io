@@ -16,12 +16,12 @@
           <h2 class="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
             Available now. Free for all UCLA students.
           </h2>
-          <div class="w-full flex justify-center">
-            <%= button_to "Log in / Sign up", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "cursor-pointer mt-6 mx-auto block rounded-md border border-transparent px-5 py-3 bg-gray-900 text-base font-medium text-white shadow hover:bg-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-red-500 sm:px-10" %>
+          <div class="w-full flex justify-center mt-4">
+            <%= render "shared/google_log_in_button" %>
           </div>
 
-          <p class="mt-6 mb-4 mx-auto text-lg text-gray-100 font-bold">
-          Not ready to sign up? Search for classes and instructors commitment-free.
+          <p class="mt-4 mb-4 mx-auto text-lg text-gray-100 font-bold">
+            Not ready to sign up? Search for classes and instructors commitment-free.
           </p>
         </div>
 
