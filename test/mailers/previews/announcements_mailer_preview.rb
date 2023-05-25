@@ -7,6 +7,6 @@ class AnnouncementsMailerPreview < ActionMailer::Preview
 
   sig { returns(ActionMailer::MessageDelivery) }
   def push_notifications_2023_05_16
-    AnnouncementsMailer.push_notifications_2023_05_16
+    AnnouncementsMailer.with(user: User.find_by(name: "Nathan Smith")).push_notifications_2023_05_16
   end
 end
