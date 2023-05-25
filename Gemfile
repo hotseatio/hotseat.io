@@ -58,6 +58,7 @@ gem "blazer"
 # Email
 gem "maildown"
 gem "mailkick"
+gem "premailer-rails"
 
 # Useful for textbooks
 gem "lisbn"
