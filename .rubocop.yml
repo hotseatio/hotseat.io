@@ -46,6 +46,9 @@ Style/MethodCallWithArgsParentheses:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
+Naming/VariableNumber:
+  Enabled: false
+
 Metrics:
   Enabled: false
 
