@@ -131,19 +131,6 @@ CREATE TYPE public.weekly_time_type AS ENUM (
 
 
 --
--- Name: is_graduate(character varying); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.is_graduate(num character varying) RETURNS boolean
-    LANGUAGE plpgsql IMMUTABLE STRICT
-    AS $$
-    BEGIN
-        RETURN (num SIMILAR TO '%[2-9][0-9][0-9]%');
-    END
-$$;
-
-
---
 -- Name: strposrev(text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -925,6 +912,18 @@ CREATE SEQUENCE public.pay_webhooks_id_seq
 --
 
 ALTER SEQUENCE public.pay_webhooks_id_seq OWNED BY public.pay_webhooks.id;
+
+
+--
+-- Name: pg_search_documents_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.pg_search_documents_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
 
 
 --
@@ -2317,14 +2316,6 @@ ALTER TABLE ONLY public.sections_textbooks
 
 ALTER TABLE ONLY public.enrollment_data
     ADD CONSTRAINT fk_rails_9744b3d66e FOREIGN KEY (section_id) REFERENCES public.sections(id);
-
-
---
--- Name: relationships fk_rails_a3d77c3b00; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.relationships
-    ADD CONSTRAINT fk_rails_a3d77c3b00 FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
 --
