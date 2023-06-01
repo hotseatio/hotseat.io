@@ -12,18 +12,18 @@
 </div>
 <div class="centered-content">
   <div class="team-component">
-    <div class="team-icon"></div>
+    <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=1zEhcr1a8Xb9VVhniOuVo51sqk8I3Tjsm')"></div>
     <div class="team-details">
-      First & Last Name <br>
-      Major & Year
+      Nathan Smith <br>
+      Software Engineer @ Stripe
     </div>
   </div>
 
   <div class="team-component">
     <div class="team-icon"></div>
     <div class="team-details">
-      First & Last Name <br>
-      Major & Year
+      Timothy Gu <br>
+      MS Computer Science @ Stanford
     </div>
   </div>
 </div>
@@ -33,78 +33,112 @@
   <h2>Our Team</h2>
 </div>
 <div class="centered-content">
+  <!-- LEADS -->
   <div class="team-row">
     <div class="team-component">
-      <div class="team-icon"></div>
+      <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=1-nLDxfv5mkBHWYJ8Yj1-UFJSL9sjfAvZ')"></div>
       <div class="team-details">
-        First & Last Name <br>
-        Major & Year
+        Brandon Pan <br>
+        PM Lead <br>
       </div>
     </div>
     <div class="team-component">
-      <div class="team-icon"></div>
+      <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=1TL4xygzAmXZzZdAd8-3yg-UoiV8no-lZ')"></div>
       <div class="team-details">
-        First & Last Name <br>
-        Major & Year
+        Justin Quan <br>
+        EM Lead <br>
+      </div>
+    </div>
+  <!-- PMs -->
+    <div class="team-component">
+      <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=1FiIgRPq3N2zMnW_qeWuQL4ueck12Yn_l')"></div>
+      <div class="team-details">
+        Alwena Lin <br>
+        PM <br>
       </div>
     </div>
     <div class="team-component">
-      <div class="team-icon"></div>
+      <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=1iqwt1-l9jOQNt5Ym1ONeOlp3K6hF405S')"></div>
       <div class="team-details">
-        First & Last Name <br>
-        Major & Year
+        Andrew Han <br>
+        PM <br>
       </div>
     </div>
     <div class="team-component">
-      <div class="team-icon"></div>
+      <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=187nJz7rjo05EHUVlyrWI3iz4tpwaZBIB')"></div>
       <div class="team-details">
-        First & Last Name <br>
-        Major & Year
+        Brian Ton <br>
+        PM <br>
       </div>
     </div>
-    <div class="team-component">
-      <div class="team-icon"></div>
-      <div class="team-details">
-        First & Last Name <br>
-        Major & Year
-      </div>
-    </div>
-  </div>
 
+  <!-- Devs -->
   <div class="team-row">
     <div class="team-component">
-      <div class="team-icon"></div>
+      <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=1Qzqz6Jjxvigtyvw1CKyo6nAgxjGYOdxQ')"></div>
       <div class="team-details">
-        First & Last Name <br>
-        Major & Year
+        Jiacheng Wang <br>
+        Developer <br>
       </div>
     </div>
     <div class="team-component">
-      <div class="team-icon"></div>
+      <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=1kqmK-6fEj-8JjgZ0WYdEUxOzR7kIfFSt')"></div>
       <div class="team-details">
-        First & Last Name <br>
-        Major & Year
+        Jonathan Si <br>
+        Developer <br>
       </div>
     </div>
     <div class="team-component">
-      <div class="team-icon"></div>
+      <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=1X8VgRlJPpE_JUmanf2H3CHB36DMDmvg_')"></div>
       <div class="team-details">
-        First & Last Name <br>
-        Major & Year
+        Joycelyn Ng <br>
+        Developer <br>
+      </div>
+    </div>
+  <!-- Desginers -->
+    <div class="team-component">
+      <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=19-nRs0eg7F71cSw3abjd4D3UJWgX4NPC')"></div>
+      <div class="team-details">
+        Cecily Hu <br>
+        Designer <br>
       </div>
     </div>
     <div class="team-component">
-      <div class="team-icon"></div>
+      <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=1OZZYNh4VokfD6PZxVm5DC7FGseuqL9Om')"></div>
       <div class="team-details">
-        First & Last Name <br>
-        Major & Year
+        Yifei Sun <br>
+        Designer <br>
       </div>
     </div>
     <div class="team-component">
-      <div class="team-icon"></div>
+      <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=1s7pysLB3C84SqXduJUkxD2rCz0865pvc')"></div>
       <div class="team-details">
-        First & Last Name <br>
-        Major & Year
+        Elisa Fang <br>
+        Designer <br>
+      </div>
+    </div>
+
+  <!-- Marketers -->
+  <div class="team-row">
+    <div class="team-component">
+      <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=1XjDvIah8tFJET3ZZTvS5vv1UDnZPRNZK')"></div>
+      <div class="team-details">
+        Jonathan King <br>
+        Marketer <br>
+      </div>
+    </div>
+    <div class="team-component">
+      <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=1nhOAeFLPEP1-gccQykSnJJgdU7KNuuxu')"></div>
+      <div class="team-details">
+        Katherine Chan <br>
+        Marketer <br>
+      </div>
+    </div>
+    <div class="team-component">
+      <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=1nCmo49fj2mZDd_MXFDBPi9o4-UK8ryiv')"></div>
+      <div class="team-details">
+        Kylie Bach <br>
+        Marketer <br>
       </div>
     </div>
   </div>
@@ -116,63 +150,57 @@
 </div>
 <div class="centered-content">
   <div class="team-row">
-    <div class="team-component">
+  <h2>Coming soon</h2>
+    <!-- <div class="team-component">
       <div class="team-icon"></div>
       <div class="team-details">
         First & Last Name <br>
         Major & Year
       </div>
-    </div>
-    <div class="team-component">
-      <div class="team-icon"></div>
-      <div class="team-details">
-        First & Last Name <br>
-        Major & Year
-      </div>
-    </div>
-    <div class="team-component">
-      <div class="team-icon"></div>
-      <div class="team-details">
-        First & Last Name <br>
-        Major & Year
-      </div>
-    </div>
-    <div class="team-component">
-      <div class="team-icon"></div>
-      <div class="team-details">
-        First & Last Name <br>
-        Major & Year
-      </div>
-    </div>
-    <div class="team-component">
-      <div class="team-icon"></div>
-      <div class="team-details">
-        First & Last Name <br>
-        Major & Year
-      </div>
-    </div>
+    </div> -->
   </div>
 </div>
 
-<script src="app/javascript/components/teamData.js"></script>
+<script>
+// Hide the team icons initially
+var teamIcons = document.querySelectorAll('.team-icon');
+teamIcons.forEach(function(icon) {
+  icon.style.backgroundColor = '#ccc';
+});
+
+// Load the team icons and display them once loaded
+window.addEventListener('load', function() {
+  teamIcons.forEach(function(icon) {
+    var imageUrl = icon.style.backgroundImage.replace(/^url\(["']?([^"']*)["']?\)$/i, '$1');
+    var image = new Image();
+    image.src = imageUrl;
+    image.addEventListener('load', function() {
+      icon.style.backgroundImage = 'url(' + imageUrl + ')';
+    });
+  });
+});
+</script>
 
 <style>
 /* CSS for the founder and team components */
 .team-component {
   display: inline-block;
-  margin: 10px;
+  margin: 20px;
   text-align: center;
 }
 
 /* CSS for the team icons */
 .team-icon {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   background-color: #ccc;
   margin-bottom: 10px;
   margin-left: auto;
   margin-right: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 /* Additional CSS for positioning and alignment of the content */
