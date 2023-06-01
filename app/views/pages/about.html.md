@@ -10,21 +10,16 @@
 <h2 class="text-center mb-10 font-bold text-3xl">
   Founders
 </h2>
-<div class="text-center mb-30">
-  <div class="inline-block mx-20 my-10 text-center">
-    <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=1zEhcr1a8Xb9VVhniOuVo51sqk8I3Tjsm')"></div>
-    <div class="team-details">
-      Nathan Smith <br>
-      Software Engineer @ Stripe
-    </div>
+<div class="mb-30 grid grid-cols-2 gap-2">
+  <div class="my-20 text-center">
+    <%= image_tag('/images/team/nathan_smith.jpg', class: 'rounded-full bg-gray-300 mb-10 mx-auto', style: 'width: 100px; height: 100px; object-fit: cover;') %>
+    <div class="mt-2">Nathan Smith</div>
+    <div class="mt-2">Software Engineer @ Stripe</div>
   </div>
-
-  <div class="inline-block mx-20 my-10 text-center">
+  <div class="my-20 text-center">
     <div class="team-icon"></div>
-    <div class="team-details">
-      Timothy Gu <br>
-      MS Computer Science @ Stanford
-    </div>
+    <div class="mt-2">Timothy Gu</div>
+    <div class="mt-2">MS Computer Science @ Stanford</div>
   </div>
 </div>
 
@@ -182,8 +177,6 @@ window.addEventListener('load', function() {
 </script>
 
 <style>
-
-
 /* CSS for the team icons */
 .team-icon {
   width: 100px;
