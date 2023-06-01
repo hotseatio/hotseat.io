@@ -1,15 +1,15 @@
 <!-- About Us Section -->
-<div class="section-title">
-  <h2>About Us</h2>
-</div>
+<h2 class="text-center mb-10 font-bold text-3xl">
+  About Us
+</h2>
 <div class="centered-content">
   Our goal is to help UCLA students make informed enrollment decisions by providing UCLA enrollment trends, alerts, reviews, grades, textbooks, and more. All on one website, completely free. Made for UCLA students BY UCLA students.
 </div>
 
 <!-- Founders Section -->
-<div class="section-title">
-  <h2>Founders</h2>
-</div>
+<h2 class="text-center mb-10 font-bold text-3xl">
+  Founders
+</h2>
 <div class="centered-content">
   <div class="team-component">
     <div class="team-icon" style="background-image: url('https://drive.google.com/uc?export=view&id=1zEhcr1a8Xb9VVhniOuVo51sqk8I3Tjsm')"></div>
@@ -29,9 +29,9 @@
 </div>
 
 <!-- Our Team Section -->
-<div class="section-title">
-  <h2>Our Team</h2>
-</div>
+<h2 class="text-center mb-10 font-bold text-3xl">
+  Our Team
+</h2>
 <div class="centered-content">
   <!-- LEADS -->
   <div class="team-row">
@@ -145,9 +145,9 @@
 </div>
 
 <!-- Alumni Section -->
-<div class="section-title">
-  <h2>Alumni</h2>
-</div>
+<h2 class="text-center mb-10 font-bold text-3xl">
+  Alumni
+</h2>
 <div class="centered-content">
   <div class="team-row">
   <h2>Coming soon</h2>
