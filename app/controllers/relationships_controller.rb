@@ -11,15 +11,6 @@ class RelationshipsController < ApplicationController
     const :subscribe, T::Boolean
   end
 
-  class DestroyParams < T::Struct
-    const :section_id, Integer
-    const :subscription_only, T::Boolean
-  end
-
-  class UnsubscribeParams < T::Struct
-    const :id, Integer
-  end
-
   sig { void }
   def create
     typed_params = TypedParams[CreateParams].new.extract!(params)
@@ -33,6 +24,11 @@ class RelationshipsController < ApplicationController
       user.follow(section)
       render(json: { msg: "Followed" })
     end
+  end
+
+  class DestroyParams < T::Struct
+    const :section_id, Integer
+    const :subscription_only, T::Boolean
   end
 
   sig { void }
@@ -53,6 +49,10 @@ class RelationshipsController < ApplicationController
         render(json: { msg: "You cannot unfollow a class you've reviewed! Did you mean to unsubscribe?" }, status: :bad_request)
       end
     end
+  end
+
+  class UnsubscribeParams < T::Struct
+    const :id, Integer
   end
 
   sig { void }
