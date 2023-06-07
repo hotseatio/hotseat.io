@@ -105,3 +105,22 @@ functions:
       - schedule:
           rate: cron(40 23 1 * ? *)
           input: {}
+
+resources:
+  Resources:
+    FetchSubjectAreasLogGroup:
+      Type: 'AWS::Logs::LogGroup'
+      Properties:
+        RetentionInDays: 7
+    FetchCoursesLogGroup:
+      Type: 'AWS::Logs::LogGroup'
+      Properties:
+        RetentionInDays: 7
+    FetchSectionsLogGroup:
+      Type: 'AWS::Logs::LogGroup'
+      Properties:
+        RetentionInDays: 7
+    FetchCourseDescriptionsLogGroup:
+      Type: 'AWS::Logs::LogGroup'
+      Properties:
+        RetentionInDays: 7
