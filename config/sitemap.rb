@@ -3,8 +3,8 @@
 
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "https://hotseat.io"
-SitemapGenerator::Sitemap.public_path = "/app/storage"
 SitemapGenerator::Sitemap.create_index = true
+SitemapGenerator::Sitemap.public_path = "/app/storage" if T.unsafe(Rails.env).production?
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
