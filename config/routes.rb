@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    put "/reviews/all", to: "reviews#update_all_pending"
+    patch "/reviews/all", to: "reviews#update_all_pending"
     resources :reviews
   end
 

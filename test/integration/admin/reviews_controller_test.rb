@@ -112,4 +112,23 @@ class Admin::ReviewsControllerTest < ActionDispatch::IntegrationTest
       assert_equal 0, reviewer.notification_token_count
     end
   end
+
+  describe "PATCH/PUT /admin/review/all" do
+    it "approves all pending reviews" do
+      create_current_term
+      reviewer = create(:user, notification_token_count: 0)
+      reviews = create_list(:review, 10, user: reviewer)
+      T.unsafe(NotifyUserAboutApprovedReviewJob).expects(:perform_later).once
+      T.unsafe(NotifyUserAboutRejectedReviewJob).expects(:perform_later).never
+
+      sign_in create(:user, admin: true)
+      patch "/admin/reviews/all", params: { status: "approved" }
+
+      reviewer.reload
+
+      assert_response :found
+      assert_redirected_to(admin_reviews_path)
+      assert_equal 10, reviewer.notification_token_count
+    end
+  end
 end

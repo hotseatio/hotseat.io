@@ -2,6 +2,10 @@
 
 <%= render "shared/page_header", title: "Admin: Reviews", breadcrumbs: [{ name: "Home", link: "/" }, { name: "Admin: Reviews", link: admin_reviews_path }] %>
 
+<div class="flex w-full">
+  <%= button_to "Approve all", [:admin, :reviews, :all], method: :patch, params: { status: "approved" }, class: "inline-flex items-center rounded-md border border-transparent bg-red-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2" %>
+</div>
+
 <div class="shadow overflow-hidden sm:rounded-md my-4">
   <%= render "shared/list", collection: @reviews do |review| %>
     <%= render "shared/list_item",
