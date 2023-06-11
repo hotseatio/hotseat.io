@@ -127,5 +127,5 @@ Rails.application.configure do
   end
 
   # Location of sitemaps in production
-  config.middleware.use(ActionDispatch::Static, "/app/storage", headers: config.static_cache_control)
+  config.middleware.use(ActionDispatch::Static, "/app/storage")
 end
