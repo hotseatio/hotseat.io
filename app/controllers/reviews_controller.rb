@@ -133,7 +133,7 @@ class ReviewsController < ApplicationController
       requires_attendance: review_params.attendance,
       midterm_count: review_params.midterm_count,
       final: review_params.final,
-      reccomend_textbook: review_params.textbook,
+      recommend_textbook: review_params.textbook,
       comments: review_params.comments,
       status: "pending",
     )
@@ -183,7 +183,7 @@ class ReviewsController < ApplicationController
       requires_attendance: review_params.attendance,
       midterm_count: review_params.midterm_count,
       final: review_params.final,
-      reccomend_textbook: review_params.textbook,
+      recommend_textbook: review_params.textbook,
       comments: review_params.comments,
       status: "pending",
     )

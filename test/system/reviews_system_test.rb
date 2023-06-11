@@ -89,7 +89,7 @@ class ReviewsSystemTest < ApplicationSystemTestCase
     assert_not review.requires_attendance
     assert_equal 2, review.midterm_count
     assert_predicate review, :finals_week?
-    assert review.reccomend_textbook
+    assert review.recommend_textbook
     assert_not review.offers_extra_credit
     assert_equal review_text, review.comments
 
@@ -166,7 +166,7 @@ class ReviewsSystemTest < ApplicationSystemTestCase
     assert_not review.requires_attendance
     assert_equal 2, review.midterm_count
     assert_predicate review, :finals_week?
-    assert review.reccomend_textbook
+    assert review.recommend_textbook
     assert_not review.offers_extra_credit
     assert_equal review_text, review.comments
     assert_equal "pending", review.status
@@ -193,7 +193,7 @@ class ReviewsSystemTest < ApplicationSystemTestCase
                                       grade: "C+",
                                       has_group_project: true,
                                       requires_attendance: false,
-                                      reccomend_textbook: false,
+                                      recommend_textbook: false,
                                       midterm_count: 2,
                                       final: "finals",
                                       offers_extra_credit: true), Review)

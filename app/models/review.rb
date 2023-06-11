@@ -74,8 +74,8 @@ class Review < ApplicationRecord
                                  .pick(Arel.sql("mode() within group (order by requires_attendance)"))
     midterm_count = reviews.where.not(midterm_count: nil)
                            .pick(Arel.sql("mode() within group (order by midterm_count)"))
-    textbook_reccomendations = reviews.where.not(reccomend_textbook: nil)
-                                      .group(:reccomend_textbook).count
+    textbook_reccomendations = reviews.where.not(recommend_textbook: nil)
+                                      .group(:recommend_textbook).count
     textbook_reccomend_percentage = (textbook_reccomendations[true].to_f / textbook_reccomendations.values.sum)
 
     details = []
@@ -106,7 +106,7 @@ class Review < ApplicationRecord
     end
     unless textbook_reccomend_percentage.nan?
       details.push({
-                     label: :reccomend_textbook,
+                     label: :recommend_textbook,
                      value: textbook_reccomend_percentage * 100,
                    })
     end
@@ -216,8 +216,8 @@ class Review < ApplicationRecord
         value: read_attribute_before_type_cast(:final),
       },
       {
-        label: :reccomend_textbook,
-        value: reccomend_textbook,
+        label: :recommend_textbook,
+        value: recommend_textbook,
       },
     ]
   end

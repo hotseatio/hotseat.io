@@ -135,10 +135,10 @@ class CourseHelperTest < ActionView::TestCase
       end
     end
 
-    describe "reccomend_textbook" do
+    describe "recommend_textbook" do
       it "returns a string if the value is true" do
         course_detail = {
-          label: :reccomend_textbook,
+          label: :recommend_textbook,
           value: true,
         }
         assert_equal("Recommends textbook", course_detail_label(course_detail))
@@ -146,7 +146,7 @@ class CourseHelperTest < ActionView::TestCase
 
       it "returns a string if the value is false" do
         course_detail = {
-          label: :reccomend_textbook,
+          label: :recommend_textbook,
           value: false,
         }
         assert_equal("Does not recommend textbook", course_detail_label(course_detail))
@@ -154,7 +154,7 @@ class CourseHelperTest < ActionView::TestCase
 
       it "returns a percentage if given a number" do
         course_detail = {
-          label: :reccomend_textbook,
+          label: :recommend_textbook,
           value: 65,
         }
         assert_equal("65% recommend the textbook", course_detail_label(course_detail))
