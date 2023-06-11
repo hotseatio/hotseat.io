@@ -125,4 +125,7 @@ Rails.application.configure do
     options[:search] = event.payload[:searchkick_runtime] if event.payload[:searchkick_runtime].to_f.positive?
     options
   end
+
+  # Location of sitemaps in production
+  config.middleware.use(ActionDispatch::Static, "/app/storage", headers: config.static_cache_control)
 end

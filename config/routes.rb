@@ -4,10 +4,6 @@
 Rails.application.routes.draw do
   root "home_page#index"
 
-  get "/sitemap.xml.gz", to: redirect("https://hotseat-sitemaps.s3.amazonaws.com/sitemap.xml.gz")
-  get "/sitemap1.xml.gz", to: redirect("https://hotseat-sitemaps.s3.amazonaws.com/sitemap1.xml.gz")
-  get "/sitemap2.xml.gz", to: redirect("https://hotseat-sitemaps.s3.amazonaws.com/sitemap2.xml.gz")
-
   devise_for :users, controllers: {
     omniauth_callbacks: "omniauth_callbacks",
     sessions: "sessions",
