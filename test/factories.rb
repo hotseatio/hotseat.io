@@ -104,6 +104,6 @@ FactoryBot.define do
     midterm_count { 2 }
     requires_attendance { false }
     final { "finals" }
-    reccomend_textbook { false }
+    recommend_textbook { false }
   end
 end

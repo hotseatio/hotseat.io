@@ -109,7 +109,7 @@ module CourseHelper
       else
         "icons/pencil-alt"
       end
-    when :reccomend_textbook
+    when :recommend_textbook
       "icons/book-open"
     end
   end
@@ -147,7 +147,7 @@ module CourseHelper
       else
         pluralize(value, "midterm")
       end
-    when :reccomend_textbook
+    when :recommend_textbook
       # Check if value is boolean
       case value
       when true

@@ -284,13 +284,13 @@ module Review::GeneratedAttributeMethods
   def overall?; end
 
   sig { returns(T.nilable(T::Boolean)) }
-  def reccomend_textbook; end
+  def recommend_textbook; end
 
   sig { params(value: T.nilable(T::Boolean)).void }
-  def reccomend_textbook=(value); end
+  def recommend_textbook=(value); end
 
   sig { returns(T::Boolean) }
-  def reccomend_textbook?; end
+  def recommend_textbook?; end
 
   sig { returns(T.nilable(Integer)) }
   def relationship_id; end

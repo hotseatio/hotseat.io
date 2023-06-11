@@ -98,7 +98,7 @@ class ReviewTest < ActiveSupport::TestCase
                      midterm_count: 2,
                      requires_attendance: false,
                      final: "10th",
-                     reccomend_textbook: false)
+                     recommend_textbook: false)
       assert_equal(
         [
           {
@@ -118,7 +118,7 @@ class ReviewTest < ActiveSupport::TestCase
             value: "10th",
           },
           {
-            label: :reccomend_textbook,
+            label: :recommend_textbook,
             value: false,
           },
         ],
