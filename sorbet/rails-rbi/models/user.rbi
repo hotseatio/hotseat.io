@@ -229,7 +229,7 @@ module User::GeneratedAssociationMethods
   sig { returns(::Mailkick::Subscription::ActiveRecord_Associations_CollectionProxy) }
   def mailkick_subscriptions; end
 
-  sig { returns(T::Array[Integer]) }
+  sig { returns(T::Array[T.untyped]) }
   def mailkick_subscription_ids; end
 
   sig { params(value: T::Enumerable[::Mailkick::Subscription]).void }
