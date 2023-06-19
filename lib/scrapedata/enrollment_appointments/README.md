@@ -1,10 +1,20 @@
 # Archived enrollment appointments data
 
-Downloaded from the Wayback Machine:
+These files are archived versions of the [enrollment appointments table](https://registrar.ucla.edu/registration-classes/enrollment-appointments/enrollment-appointments) provided by the UCLA Registrar.
+
+The table is updated roughly every quarter to provide enrollment appointments for the next quarter.
+
+## Adding or updating a page
 
 ```
-2016.html: https://web.archive.org/web/20170519211444/http://www.registrar.ucla.edu/Registration-Classes/Enrollment-Appointments/Enrollment-Appointments
-2017.html: https://web.archive.org/web/20180513090405/http://www.registrar.ucla.edu/Registration-Classes/Enrollment-Appointments/Enrollment-Appointments
-2018.html: https://web.archive.org/web/20190524223024/https://www.registrar.ucla.edu/Registration-Classes/Enrollment-Appointments/Enrollment-Appointments
-2019.html: https://web.archive.org/web/20200413212452/https://www.registrar.ucla.edu/Registration-Classes/Enrollment-Appointments/Enrollment-Appointments
+# from root hotseat directory
+curl https://registrar.ucla.edu/registration-classes/enrollment-appointments/enrollment-appointments -o lib/scrapedata/enrollment_appointments/<START_TERM>-<END_TERM>.html
 ```
+
+Note that depending on the time of year, there may only be one or two terms listed on the website. In summer/fall, the fall term is only listed. In fall, both fall and winter are listed. In winter/spring, spring, winter, and fall are listed. Please name the file accordingly.
+
+## Scraping a downloaded file
+
+1. Make sure the file is listed in the `enrollment_appointments_map` in `lib/tasks/scrape.rake`.
+2. `rake scrape:summer_session_dates[<YEAR>]`. Note that we use Fall of that year as the anchor. Example: `rake scrape:summer_session_dates[2022]` will scrape enrollment appointments from Fall 2022 to Spring 2023.
+3. Confirm that the dates have been correctly added under the appropriate columns in the `enrollment_appointments` table.

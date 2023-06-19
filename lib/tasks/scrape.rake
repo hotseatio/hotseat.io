@@ -13,14 +13,14 @@ extend Rake::DSL # rubocop:disable Style/MixinUsage
 # Source: https://registrar.ucla.edu/registration-classes/enrollment-appointments/enrollment-appointments
 enrollment_appointments_map = T.let(
   {
-    "2016" => "lib/scrapedata/enrollment_appointments/2016.html",
-    "2017" => "lib/scrapedata/enrollment_appointments/2017.html",
-    "2018" => "lib/scrapedata/enrollment_appointments/2018.html",
-    "2019" => "lib/scrapedata/enrollment_appointments/2019.html",
-    "2020" => "lib/scrapedata/enrollment_appointments/2020.html",
-    "2021" => "lib/scrapedata/enrollment_appointments/2021.html",
-    "2022" => "lib/scrapedata/enrollment_appointments/2022.html",
-    "2023" => "lib/scrapedata/enrollment_appointments/2023.html",
+    "2016" => "lib/scrapedata/enrollment_appointments/Fall 2016-Spring 2017.html",
+    "2017" => "lib/scrapedata/enrollment_appointments/Fall 2017-Spring 2018.html",
+    "2018" => "lib/scrapedata/enrollment_appointments/Fall 2018-Spring 2019.html",
+    "2019" => "lib/scrapedata/enrollment_appointments/Fall 2019-Spring 2020.html",
+    "2020" => "lib/scrapedata/enrollment_appointments/Fall 2020-Spring 2021.html",
+    "2021" => "lib/scrapedata/enrollment_appointments/Fall 2021-Spring 2022.html",
+    "2022" => "lib/scrapedata/enrollment_appointments/Fall 2022-Spring 2023.html",
+    "2023" => "lib/scrapedata/enrollment_appointments/Fall 2023.html",
   },
   T::Hash[String, String],
 )
