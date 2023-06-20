@@ -96,6 +96,9 @@ GEM
       aws-sdk-core (~> 3, >= 3.165.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.4)
+    aws-sdk-sesv2 (1.33.0)
+      aws-sdk-core (~> 3, >= 3.165.0)
+      aws-sigv4 (~> 1.1)
     aws-sdk-sns (1.60.0)
       aws-sdk-core (~> 3, >= 3.165.0)
       aws-sigv4 (~> 1.1)
@@ -603,6 +606,7 @@ DEPENDENCIES
   awesome_print
   aws-sdk-lambda
   aws-sdk-s3
+  aws-sdk-sesv2
   aws-sdk-sns
   blazer
   bootsnap

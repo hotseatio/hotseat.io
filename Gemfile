@@ -56,6 +56,7 @@ gem "ahoy_matey"
 gem "blazer"
 
 # Email
+gem "aws-sdk-sesv2"
 gem "maildown"
 gem "mailkick"
 gem "premailer-rails"
