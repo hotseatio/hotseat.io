@@ -13,6 +13,7 @@ class WebpushDevicesController < ApplicationController
     @device = T.let(nil, T.nilable(WebpushDevice))
   end
 
+  # GET /webpush_devices
   sig { void }
   def index
     user = T.must(current_user)
@@ -27,6 +28,7 @@ class WebpushDevicesController < ApplicationController
     const :p256dh, String
   end
 
+  # POST /webpush_devices
   sig { void }
   def create
     typed_params = TypedParams[CreateParams].new.extract!(params)
@@ -45,6 +47,7 @@ class WebpushDevicesController < ApplicationController
     const :id, Integer
   end
 
+  # DELETE /webpush_devices/:id
   sig { void }
   def destroy
     typed_params = TypedParams[DestroyParams].new.extract!(params)
