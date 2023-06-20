@@ -97,15 +97,6 @@ module WebpushDevice::GeneratedAttributeMethods
 
   sig { returns(T::Boolean) }
   def user_id?; end
-
-  sig { returns(String) }
-  def version; end
-
-  sig { params(value: T.any(String, Symbol)).void }
-  def version=(value); end
-
-  sig { returns(T::Boolean) }
-  def version?; end
 end
 
 module WebpushDevice::GeneratedAssociationMethods

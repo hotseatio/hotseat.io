@@ -27,7 +27,7 @@ class RelationshipsController < ApplicationController
     user = T.must(current_user)
 
     if typed_params.subscribe
-      user.subscribe(section)
+      user.subscribe_to_section(section)
       render(json: { msg: "Subscribed" })
     else
       user.follow(section)
@@ -43,7 +43,7 @@ class RelationshipsController < ApplicationController
     relationship = user.relationships.find_by!(section_id: typed_params.section_id)
     section = relationship.section
     if typed_params.subscription_only
-      user.unsubscribe(section)
+      user.unsubscribe_to_section(section)
       render(json: { msg: "Unsubscribed" })
     else
       begin
@@ -62,7 +62,7 @@ class RelationshipsController < ApplicationController
     section = Section.find(typed_params.id)
     course = section.course
 
-    successfully_unsubscribed = user.unsubscribe(section)
+    successfully_unsubscribed = user.unsubscribe_to_section(section)
     if successfully_unsubscribed
       flash[:success] = "Unsubscribed to alerts for #{course.short_title}"
     else
