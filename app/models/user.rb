@@ -83,18 +83,12 @@ class User < ApplicationRecord
 
       user.email = auth.info.email
       user.name = auth.info.name
-      user.save
-
-      # Add user to mailing list
-      if T.unsafe(Rails.env).production?
-        logger.info("Created new user #{user.id}, adding user to Mailchimp mailing list")
-        AddNewUserToMailingListJob.perform_later(user)
-      end
+      user.subscribe("announcements")
     else
       user.email = auth.info.email
       user.name = auth.info.name
-      user.save
     end
+    user.save
 
     user
   end
