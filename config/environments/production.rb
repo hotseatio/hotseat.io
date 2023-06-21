@@ -69,6 +69,15 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   host = "hotseat.io"
   config.action_mailer.default_url_options = { host: }
+  config.action_mailer.smtp_settings = {
+    address: ENV.fetch("AWS_SES_ADDRESS", nil),
+    port: ENV.fetch("AWS_SES_PORT", nil),
+    authentication: "login",
+    domain: ENV.fetch("AWS_SES_DOMAIN", nil),
+    user_name: ENV.fetch("AWS_SES_USERNAME", nil),
+    password: ENV.fetch("AWS_SES_PASSWORD", nil),
+    enable_starttls_auto: true,
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -125,4 +134,7 @@ Rails.application.configure do
     options[:search] = event.payload[:searchkick_runtime] if event.payload[:searchkick_runtime].to_f.positive?
     options
   end
+
+  # Location of sitemaps in production
+  config.middleware.use(ActionDispatch::Static, "/app/storage")
 end

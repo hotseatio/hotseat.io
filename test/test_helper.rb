@@ -24,6 +24,7 @@ require "mocha/minitest"
 require "webmock/minitest"
 
 require "test_helpers/text_message_helper"
+require "test_helpers/term_helper"
 
 WebMock.disable_net_connect!(
   allow_localhost: true,
@@ -31,21 +32,6 @@ WebMock.disable_net_connect!(
   allow: "chromedriver.storage.googleapis.com",
 )
 Faker::Config.locale = "en-US"
-
-module TermHelper
-  extend T::Sig
-  include FactoryBot::Syntax::Methods
-  include ActiveSupport::Testing::TimeHelpers
-
-  sig { returns(Term) }
-  def create_current_term
-    term = create(:term, term: "21S",
-                         start_date: Date.new(2021, 3, 29),
-                         end_date: Date.new(2021, 6, 11))
-    travel_to(Time.zone.local(2021, 5, 14))
-    term
-  end
-end
 
 module ActiveSupport
   class TestCase
@@ -75,9 +61,16 @@ end
 
 module ActionDispatch
   class IntegrationTest
+    extend T::Sig
     include ActiveJob::TestHelper
     include Devise::Test::IntegrationHelpers
     include TermHelper
     include TextMessageHelper
+
+    sig { void }
+    def assert_redirected_to_login
+      assert_response(:found)
+      assert_redirected_to("/sign_in")
+    end
   end
 end

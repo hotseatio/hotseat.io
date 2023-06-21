@@ -3,7 +3,7 @@
 
 require "test_helper"
 
-class UsersTest < ActionDispatch::IntegrationTest
+class UsersControllerTest < ActionDispatch::IntegrationTest
   describe "phone verification" do
     describe "POST /users/verify-phone" do
       it "texts an otp" do

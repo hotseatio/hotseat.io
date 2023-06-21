@@ -299,7 +299,6 @@ module GeneratedUrlHelpers
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def relationship_url(*args, **kwargs); end
 
-
   # Sigs for route /unsubscribe/:id(.:format)
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def unsubscribe_path(*args, **kwargs); end
@@ -321,12 +320,26 @@ module GeneratedUrlHelpers
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def webpush_devices_url(*args, **kwargs); end
 
+  # Sigs for route /webpush_devices/:id(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def webpush_device_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def webpush_device_url(*args, **kwargs); end
+
   # Sigs for route /*id
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def page_path(*args, **kwargs); end
 
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def page_url(*args, **kwargs); end
+
+  # Sigs for route /mailkick
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def mailkick_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def mailkick_url(*args, **kwargs); end
 
   # Sigs for route /recede_historical_location(.:format)
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
@@ -697,6 +710,29 @@ module GeneratedUrlHelpers
 
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def root_url(*args, **kwargs); end
+end
+
+module GeneratedUrlHelpers
+  # Sigs for route /subscriptions/:id/unsubscribe(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def unsubscribe_subscription_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def unsubscribe_subscription_url(*args, **kwargs); end
+
+  # Sigs for route /subscriptions/:id/subscribe(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def subscribe_subscription_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def subscribe_subscription_url(*args, **kwargs); end
+
+  # Sigs for route /subscriptions/:id(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def subscription_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def subscription_url(*args, **kwargs); end
 end
 
 module GeneratedUrlHelpers

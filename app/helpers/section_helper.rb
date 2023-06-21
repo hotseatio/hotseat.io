@@ -82,7 +82,7 @@ module SectionHelper
     )
 
     is_followed = T.let(current_user&.following?(section).presence || false, T::Boolean)
-    is_subscribed = T.let(current_user&.subscribed?(section).presence || false, T::Boolean)
+    is_subscribed = T.let(current_user&.subscribed_to_section?(section).presence || false, T::Boolean)
     is_reviewed = T.let(current_user&.reviewed_section?(section).presence || false, T::Boolean)
 
     time_label = section.time_label

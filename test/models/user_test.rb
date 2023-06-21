@@ -144,14 +144,14 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  describe "#unsubscribe" do
+  describe "#unsubscribe_to_section" do
     it "marks a relationship as notify=false" do
       term = T.let(create(:term), Term)
       user = T.let(create(:user), User)
       section = T.let(create(:section, term:), Section)
       relationship = create(:relationship, user:, section:, notify: true)
 
-      assert(user.unsubscribe(section))
+      assert(user.unsubscribe_to_section(section))
 
       relationship.reload
       assert_not(relationship.notify)
@@ -163,7 +163,7 @@ class UserTest < ActiveSupport::TestCase
       section = T.let(create(:section, term:), Section)
       create(:relationship, user:, section:, notify: false)
 
-      assert_not(user.unsubscribe(section))
+      assert_not(user.unsubscribe_to_section(section))
     end
 
     it "returns false if there is no relationship" do
@@ -171,7 +171,7 @@ class UserTest < ActiveSupport::TestCase
       user = T.let(create(:user), User)
       section = T.let(create(:section, term:), Section)
 
-      assert_not(user.unsubscribe(section))
+      assert_not(user.unsubscribe_to_section(section))
     end
   end
 

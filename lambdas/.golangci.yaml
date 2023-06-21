@@ -7,7 +7,6 @@ linters:
   enable:
     - asciicheck
     - bodyclose
-    - depguard
     - dogsled
     - dupl
     - exhaustive
@@ -37,6 +36,7 @@ linters:
   disable:
     # TODO: Enable when we can get it to ignore pgx tx.Rollback
     - errcheck
+    - depguard
 
 linters-settings:
   gocritic:

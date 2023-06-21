@@ -6,7 +6,10 @@ require "rotp"
 class User < ApplicationRecord
   extend T::Sig
   extend Pay::Attributes::ClassMethods
+  extend Mailkick::Model
   include Pay::Attributes::CustomerExtension
+
+  has_subscriptions
 
   VALID_UCLA_EMAIL_REGEX = T.let(/\A.+@g\.ucla\.edu\z/i, Regexp)
   before_save :save_normalized_phone
@@ -80,18 +83,12 @@ class User < ApplicationRecord
 
       user.email = auth.info.email
       user.name = auth.info.name
-      user.save
-
-      # Add user to mailing list
-      if T.unsafe(Rails.env).production?
-        logger.info("Created new user #{user.id}, adding user to Mailchimp mailing list")
-        AddNewUserToMailingListJob.perform_later(user)
-      end
+      user.subscribe("announcements")
     else
       user.email = auth.info.email
       user.name = auth.info.name
-      user.save
     end
+    user.save
 
     user
   end
@@ -104,7 +101,7 @@ class User < ApplicationRecord
 
   # Marks a section as being followed with notifications by the given user.
   sig { params(section: Section).void }
-  def subscribe(section)
+  def subscribe_to_section(section)
     follow(section)
     relationship = relationships.find_by(section:)
     relationship&.update(notify: true) if use_notification_token
@@ -112,7 +109,7 @@ class User < ApplicationRecord
 
   # Whether a user is subscribed to a given section.
   sig { params(section: Section).returns(T::Boolean) }
-  def subscribed?(section)
+  def subscribed_to_section?(section)
     relationship = relationships.find_by(section:)
     relationship&.notify? || false
   end
@@ -134,7 +131,7 @@ class User < ApplicationRecord
 
   # Stops subscribing to a section. User will still be following section.
   sig { params(section: Section).returns(T::Boolean) }
-  def unsubscribe(section)
+  def unsubscribe_to_section(section)
     relationship = relationships.find_by(section:)
     if relationship&.notify
       relationship.update(notify: false)
