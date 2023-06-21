@@ -21,7 +21,7 @@ provider:
     lambda: true
   environment:
     LOGGING: ${env:LOGGING, ''}
-    LOG_LEVEL: ${env:LOG_LEVEL, 'info'}
+    LOG_LEVEL: ${env:LOG_LEVEL, 'warn'}
     DB_USER: ${env:DB_USER, 'postgres'}
     DB_PASS: ${env:DB_PASS, ''}
     DB_HOST: ${env:DB_HOST, ''}
