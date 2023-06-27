@@ -2,5 +2,6 @@
   "term": {
     "term": "23F",
     "id": 75
-  }
+  },
+  "shouldInsertEnrollmentData": true
 }
