@@ -40,25 +40,6 @@ func createDatabaseURL() (psqlInfo string) {
 	return psqlInfo
 }
 
-func CreateDatabaseConnection(ctx context.Context) (*pgx.Conn, error) {
-	connectionURL := createDatabaseURL()
-	conn, err := pgx.Connect(ctx, connectionURL)
-	if err != nil {
-		log.WithField("connection", connectionURL).Error(err)
-		return nil, err
-	}
-
-	err = conn.Ping(ctx)
-	if err != nil {
-		log.WithField("connection", connectionURL).Error(err)
-		return nil, err
-	}
-
-	log.Info("Connected to database")
-
-	return conn, nil
-}
-
 func CreateDatabasePool() (_ DB, err error) {
 	dbOnce.Do(func() {
 		db, err = createDatabasePool()
@@ -75,7 +56,7 @@ func createDatabasePool() (DB, error) {
 	}
 	config.ConnConfig.LogLevel = pgx.LogLevelWarn
 	config.ConnConfig.Logger = logrusadapter.NewLogger(log.StandardLogger())
-	config.MaxConns = 30
+	config.MaxConns = 15
 	usePreparedStatements := InitUsePreparedStatements()
 	if !usePreparedStatements {
 		config.ConnConfig.BuildStatementCache = nil
