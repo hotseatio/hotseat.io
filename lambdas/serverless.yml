@@ -92,7 +92,7 @@ functions:
       - schedule:
           rate: cron(25 * * * ? *)
           input: ${self:custom.currentTerm}
-      # # Every hour at XX:35
+      # Every hour at XX:35
       - schedule:
           rate: cron(35 * * * ? *)
           input: ${self:custom.summerTerm}
