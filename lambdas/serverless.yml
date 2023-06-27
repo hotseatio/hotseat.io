@@ -48,8 +48,8 @@ custom:
   # Payloads
   currentTerm:
     term:
-      term: '23S'
-      id: 74
+      term: '23F'
+      id: 75
     shouldInsertEnrollmentData: true
   summerTerm:
     term:
@@ -63,25 +63,25 @@ functions:
     handler: bin/fetch-subject-areas
     events:
       # Top of every month at 11:15pm UTC
-      # - schedule:
-      #     rate: cron(15 23 1 * ? *)
-      #     input: ${self:custom.currentTerm}
-      # - schedule:
-      #     rate: cron(15 23 1 * ? *)
-      #     input: ${self:custom.summerTerm}
+      - schedule:
+          rate: cron(15 23 1 * ? *)
+          input: ${self:custom.currentTerm}
+      - schedule:
+          rate: cron(15 23 1 * ? *)
+          input: ${self:custom.summerTerm}
 
   FetchCourses:
     name: fetch-courses
     handler: bin/fetch-courses
     events:
       # Every day at 11:45pm UTC
-      # - schedule:
-      #     rate: cron(45 23 * * ? *)
-      #     input: ${self:custom.currentTerm}
+      - schedule:
+          rate: cron(45 23 * * ? *)
+          input: ${self:custom.currentTerm}
       # Every day at 11:50pm UTC
-      # - schedule:
-      #     rate: cron(50 23 * * ? *)
-      #     input: ${self:custom.summerTerm}
+      - schedule:
+          rate: cron(50 23 * * ? *)
+          input: ${self:custom.summerTerm}
 
   FetchSections:
     name: fetch-sections
@@ -89,13 +89,13 @@ functions:
     timeout: 420 # 7 minutes
     events:
       # Every hour at XX:25
-      # - schedule:
-      #     rate: cron(25 * * * ? *)
-      #     input: ${self:custom.currentTerm}
-      # # Every hour at XX:35
-      # - schedule:
-      #     rate: cron(35 * * * ? *)
-      #     input: ${self:custom.summerTerm}
+      - schedule:
+          rate: cron(25 * * * ? *)
+          input: ${self:custom.currentTerm}
+      # Every hour at XX:35
+      - schedule:
+          rate: cron(35 * * * ? *)
+          input: ${self:custom.summerTerm}
 
   FetchCourseDescriptions:
     name: fetch-course-descriptions
@@ -105,3 +105,22 @@ functions:
       - schedule:
           rate: cron(40 23 1 * ? *)
           input: {}
+
+resources:
+  Resources:
+    FetchSubjectAreasLogGroup:
+      Type: 'AWS::Logs::LogGroup'
+      Properties:
+        RetentionInDays: 7
+    FetchCoursesLogGroup:
+      Type: 'AWS::Logs::LogGroup'
+      Properties:
+        RetentionInDays: 7
+    FetchSectionsLogGroup:
+      Type: 'AWS::Logs::LogGroup'
+      Properties:
+        RetentionInDays: 7
+    FetchCourseDescriptionsLogGroup:
+      Type: 'AWS::Logs::LogGroup'
+      Properties:
+        RetentionInDays: 7

@@ -3,7 +3,6 @@ package envutil
 import (
 	"os"
 
-	ddlambda "github.com/DataDog/datadog-lambda-go"
 	"github.com/aws/aws-lambda-go/lambda"
 	opentracing "github.com/opentracing/opentracing-go"
 	log "github.com/sirupsen/logrus"
@@ -48,5 +47,6 @@ func InitTracing() {
 // https://pkg.go.dev/github.com/aws/aws-lambda-go/lambda#Start
 // on requirements for the handler function.
 func Start(handler interface{}) {
-	lambda.Start(ddlambda.WrapHandler(handler, nil))
+	// lambda.Start(ddlambda.WrapHandler(handler, nil))
+	lambda.Start(handler)
 }

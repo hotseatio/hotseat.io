@@ -1,6 +1,7 @@
 {
   "term": {
-    "term": "23W",
-    "id": 73
-  }
+    "term": "23F",
+    "id": 75
+  },
+  "shouldInsertEnrollmentData": true
 }
