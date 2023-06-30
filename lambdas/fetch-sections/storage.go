@@ -200,7 +200,7 @@ func RetrieveCourses(ctx context.Context, term registrar.Term) (courses []regist
 	defer span.Finish()
 	logger.Info("Retrieving courses from DB")
 
-	db, err := envutil.CreateDatabasePool()
+	db, err := envutil.CreateDatabaseConnection(ctx)
 	if err != nil {
 		return courses, err
 	}
@@ -267,7 +267,7 @@ func GetSubscribedUsers(ctx context.Context, section registrar.Section) (users [
 	defer span.Finish()
 	logger.Info("Retrieving users from DB")
 
-	db, err := envutil.CreateDatabasePool()
+	db, err := envutil.CreateDatabaseConnection(ctx)
 	if err != nil {
 		return users, err
 	}
@@ -308,7 +308,7 @@ func SaveSection(
 	defer span.Finish()
 	logger = logger.WithField("section", section)
 
-	db, err := envutil.CreateDatabasePool()
+	db, err := envutil.CreateDatabaseConnection(ctx)
 	if err != nil {
 		return err
 	}

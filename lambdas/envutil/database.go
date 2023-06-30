@@ -40,6 +40,38 @@ func createDatabaseURL() (psqlInfo string) {
 	return psqlInfo
 }
 
+func CreateDatabaseConnection(ctx context.Context) (*pgx.Conn, error) {
+	connectionURL := createDatabaseURL()
+	config, err := pgx.ParseConfig(connectionURL)
+	if err != nil {
+		log.WithField("connection", connectionURL).Error(err)
+		return nil, err
+	}
+	config.LogLevel = pgx.LogLevelWarn
+	config.Logger = logrusadapter.NewLogger(log.StandardLogger())
+	usePreparedStatements := InitUsePreparedStatements()
+	if !usePreparedStatements {
+		config.BuildStatementCache = nil
+		config.PreferSimpleProtocol = true
+	}
+
+	conn, err := pgx.Connect(ctx, connectionURL)
+	if err != nil {
+		log.WithField("connection", connectionURL).Error(err)
+		return nil, err
+	}
+
+	err = conn.Ping(ctx)
+	if err != nil {
+		log.WithField("connection", connectionURL).Error(err)
+		return nil, err
+	}
+
+	log.Info("Connected to database")
+
+	return conn, nil
+}
+
 func CreateDatabasePool() (_ DB, err error) {
 	dbOnce.Do(func() {
 		db, err = createDatabasePool()
