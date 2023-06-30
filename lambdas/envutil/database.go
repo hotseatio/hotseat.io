@@ -2,7 +2,6 @@ package envutil
 
 import (
 	"context"
-	"fmt"
 	"os"
 	"sync"
 
@@ -21,27 +20,8 @@ var (
 	dbOnce sync.Once
 )
 
-func createDatabaseURL() (psqlInfo string) {
-	host := os.Getenv("DB_HOST")
-	port := os.Getenv("DB_PORT")
-	user := os.Getenv("DB_USER")
-	password := os.Getenv("DB_PASS")
-	dbname := os.Getenv("DB_NAME")
-	dbSSLMode := os.Getenv("DB_SSL_MODE")
-
-	if password != "" {
-		psqlInfo = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s",
-			host, port, user, password, dbname, dbSSLMode)
-	} else {
-		psqlInfo = fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=%s",
-			host, port, user, dbname, dbSSLMode)
-	}
-
-	return psqlInfo
-}
-
 func CreateDatabaseConnection(ctx context.Context) (*pgx.Conn, error) {
-	connectionURL := createDatabaseURL()
+	connectionURL := os.Getenv("DATABASE_URL")
 	config, err := pgx.ParseConfig(connectionURL)
 	if err != nil {
 		log.WithField("connection", connectionURL).Error(err)
@@ -49,11 +29,6 @@ func CreateDatabaseConnection(ctx context.Context) (*pgx.Conn, error) {
 	}
 	config.LogLevel = pgx.LogLevelWarn
 	config.Logger = logrusadapter.NewLogger(log.StandardLogger())
-	usePreparedStatements := InitUsePreparedStatements()
-	if !usePreparedStatements {
-		config.BuildStatementCache = nil
-		config.PreferSimpleProtocol = true
-	}
 
 	conn, err := pgx.Connect(ctx, connectionURL)
 	if err != nil {
@@ -80,7 +55,7 @@ func CreateDatabasePool() (_ DB, err error) {
 }
 
 func createDatabasePool() (DB, error) {
-	connectionURL := createDatabaseURL()
+	connectionURL := os.Getenv("DATABASE_URL")
 	config, err := pgxpool.ParseConfig(connectionURL)
 	if err != nil {
 		log.WithField("connection", connectionURL).Error(err)
@@ -89,11 +64,6 @@ func createDatabasePool() (DB, error) {
 	config.ConnConfig.LogLevel = pgx.LogLevelWarn
 	config.ConnConfig.Logger = logrusadapter.NewLogger(log.StandardLogger())
 	config.MaxConns = 15
-	usePreparedStatements := InitUsePreparedStatements()
-	if !usePreparedStatements {
-		config.ConnConfig.BuildStatementCache = nil
-		config.ConnConfig.PreferSimpleProtocol = true
-	}
 
 	db, err := pgxtrace.ConnectPoolConfig(context.Background(), config, pgxtrace.WithServiceName("lambda-pgx"))
 	if err != nil {

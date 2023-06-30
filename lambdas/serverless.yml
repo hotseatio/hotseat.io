@@ -22,12 +22,7 @@ provider:
   environment:
     LOGGING: ${env:LOGGING, ''}
     LOG_LEVEL: ${env:LOG_LEVEL, 'warn'}
-    DB_USER: ${env:DB_USER, 'postgres'}
-    DB_PASS: ${env:DB_PASS, ''}
-    DB_HOST: ${env:DB_HOST, ''}
-    DB_NAME: ${env:DB_NAME, 'hotseat_dev'}
-    DB_PORT: ${env:DB_PORT, 5432}
-    DB_SSL_MODE: ${env:DB_SSL_MODE, 'disable'}
+    DATABASE_URL: ${env:DATABASE_URL, ''}
     BATCH_SIZE: ${env:BATCH_SIZE, 200}
     MAX_GOROUTINES: ${env:MAX_GOROUTINES, 20}
     DD_FLUSH_TO_LOG: ${env:DD_FLUSH_TO_LOG, false}
