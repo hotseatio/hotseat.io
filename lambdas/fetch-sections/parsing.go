@@ -342,9 +342,9 @@ const longTimeForm = "1/2/2006 3:04pm"
 var location, _ = time.LoadLocation("America/Los_Angeles")
 
 func ParseFinalTimes(logger log.FieldLogger, doc *goquery.Document) (start, end time.Time, err error) {
-	content := doc.Find(".final_exam_content .data-row")
-	rawDate := content.Find(".span1.hide-small").Text()
-	rawTime := content.Find(".span3").Text()
+	content := doc.Find(".final_exam_content tbody tr.final_exam")
+	rawDate := content.Find("td:nth-child(1) .hide-small").Text()
+	rawTime := content.Find("td:nth-child(3)").Text()
 
 	if rawDate == "None listed" ||
 		!finalTimeRegex.MatchString(rawTime) {

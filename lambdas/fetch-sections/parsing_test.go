@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"os"
 	"testing"
 	"time"
@@ -240,8 +239,6 @@ func TestParseFinalTimes_CS143_1(t *testing.T) {
 
 	expectedStart := time.Date(2021, time.March, 17, 11, 30, 0, 0, location)
 	expectedEnd := time.Date(2021, time.March, 17, 14, 30, 0, 0, location)
-	fmt.Printf("%v\n", start)
-	fmt.Printf("%v\n", expectedStart)
 
 	require.NoError(t, err)
 	assert.True(t, expectedStart.Equal(start))
