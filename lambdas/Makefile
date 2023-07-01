@@ -88,8 +88,27 @@ fetch-courses/testdata/fixtures/fall2020-comsci.html:
 	$(CURL) -o $@ 'https://sa.ucla.edu/ro/Public/SOC/Results?t=20F&sBy=subject&subj=COM+SCI'
 fetch-courses/testdata/fixtures/no-results.html:
 	$(CURL) -o $@ 'https://sa.ucla.edu/ro/Public/SOC/Results?t=20F&sBy=subject&subj=blah'
+
+# fetch-sections fixtures
+.PHONY: clean-fetch-section-fixtures
+clean-fetch-section-fixtures:
+	rm -f fetch-sections/testdata/fixtures/*
+
+.PHONY: fetch-sections-fixtures
+fetch-sections-fixtures: clean-fetch-section-fixtures fetch-sections/testdata/fixtures/spring2021-law-205-details.html fetch-sections/testdata/fixtures/spring2021-law-212-details.html fetch-sections/testdata/fixtures/summer2021-annea-10W.html fetch-sections/testdata/fixtures/winter2021-comsci-143-details.html fetch-sections/testdata/fixtures/winter2021-comsci-32.html fetch-sections/testdata/fixtures/winter2021-comsci-m146-details.html fetch-sections/testdata/fixtures/winter2021-music-185H.html
+
+fetch-sections/testdata/fixtures/spring2021-law-205-details.html:
+	$(CURL) -o $@ 'https://sa.ucla.edu/ro/public/soc/Results/ClassDetailTooltip?term_cd=21S&subj_area_cd=LAW++++&crs_catlg_no=0205%20%20%20%20&class_id=880205101&class_no=%20001' -H 'X-Requested-With: XMLHttpRequest'
+fetch-sections/testdata/fixtures/spring2021-law-212-details.html:
+	$(CURL) -o $@ 'https://sa.ucla.edu/ro/public/soc/Results/ClassDetailTooltip?term_cd=21S&subj_area_cd=LAW++++&crs_catlg_no=0212%20%20%20%20&class_id=880212101&class_no=%20001' -H 'X-Requested-With: XMLHttpRequest'
+fetch-sections/testdata/fixtures/summer2021-annea-10W.html:
+	$(CURL) -o $@ 'https://sa.ucla.edu/ro/public/soc/Results/GetCourseSummary?model=%7B%22Term%22%3A%22211%22%2C%22SubjectAreaCode%22%3A%22AN+N+EA%22%2C%22CatalogNumber%22%3A%220010W+++%22%2C%22IsRoot%22%3Atrue%2C%22SessionGroup%22%3A%22%25%22%2C%22ClassNumber%22%3A%22%25%22%2C%22SequenceNumber%22%3Anull%2C%22Path%22%3A%22ANNEA0010W%22%2C%22MultiListedClassFlag%22%3A%22n%22%2C%22Token%22%3A%22MDAxMFcgICBBTk5FQTAwMTBX%22%7D&FilterFlags=%7B%22enrollment_status%22%3A%22O%2CW%2CC%2CX%2CT%2CS%22%2C%22advanced%22%3A%22y%22%2C%22meet_days%22%3A%22M%2CT%2CW%2CR%22%2C%22start_time%22%3A%229%3A30+am%22%2C%22end_time%22%3A%224%3A30+pm%22%2C%22meet_locations%22%3Anull%2C%22meet_units%22%3Anull%2C%22instructor%22%3Anull%2C%22class_career%22%3Anull%2C%22impacted%22%3Anull%2C%22enrollment_restrictions%22%3A%22y%22%2C%22enforced_requisites%22%3Anull%2C%22individual_studies%22%3Anull%2C%22summer_session%22%3A%22A06%2CC06%22%7D&_=1688227975494' -H 'X-Requested-With: XMLHttpRequest'
+fetch-sections/testdata/fixtures/winter2021-comsci-143-details.html:
+	$(CURL) -o $@ 'https://sa.ucla.edu/ro/public/soc/Results/ClassDetailTooltip?term_cd=21W&subj_area_cd=COM+SCI&crs_catlg_no=0143%20%20%20%20&class_id=187590200&class_no=%20001' -H 'X-Requested-With: XMLHttpRequest'
 fetch-sections/testdata/fixtures/winter2021-comsci-32.html:
 	$(CURL) -o $@ 'https://sa.ucla.edu/ro/Public/SOC/Results/GetCourseSummary?model=%7B%22Term%22%3A%2221W%22%2C%22SubjectAreaCode%22%3A%22COM+SCI%22%2C%22CatalogNumber%22%3A%220032++++%22%2C%22IsRoot%22%3Atrue%2C%22SessionGroup%22%3A%22%25%22%2C%22ClassNumber%22%3A%22%25%22%2C%22SequenceNumber%22%3Anull%2C%22Path%22%3A%22COMSCI0032%22%2C%22MultiListedClassFlag%22%3A%22n%22%2C%22Token%22%3A%22MDAzMiAgICBDT01TQ0kwMDMy%22%7D&FilterFlags=%7B%22enrollment_status%22%3A%22O%2CW%2CC%2CX%2CT%2CS%22%2C%22advanced%22%3A%22y%22%2C%22meet_days%22%3A%22M%2CT%2CW%2CR%2CF%22%2C%22start_time%22%3A%228%3A00+am%22%2C%22end_time%22%3A%228%3A00+pm%22%2C%22meet_locations%22%3Anull%2C%22meet_units%22%3Anull%2C%22instructor%22%3Anull%2C%22class_career%22%3Anull%2C%22impacted%22%3Anull%2C%22enrollment_restrictions%22%3Anull%2C%22enforced_requisites%22%3Anull%2C%22individual_studies%22%3Anull%2C%22summer_session%22%3Anull%7D' -H 'X-Requested-With: XMLHttpRequest'
+fetch-sections/testdata/fixtures/winter2021-comsci-m146-details.html:
+	$(CURL) -o $@ 'https://sa.ucla.edu/ro/public/soc/Results/ClassDetailTooltip?term_cd=21W&subj_area_cd=COM+SCI&crs_catlg_no=0146%20%20M%20&class_id=187576200&class_no=%20001' -H 'X-Requested-With: XMLHttpRequest'
 fetch-sections/testdata/fixtures/winter2021-music-185H.html:
 	$(CURL) -o $@ 'https://sa.ucla.edu/ro/Public/SOC/Results/GetCourseSummary?model=%7B%22Term%22%3A%2221W%22%2C%22SubjectAreaCode%22%3A%22MUSC+++%22%2C%22CatalogNumber%22%3A%220185H+++%22%2C%22IsRoot%22%3Atrue%2C%22SessionGroup%22%3A%22%25%22%2C%22ClassNumber%22%3A%22%25%22%2C%22SequenceNumber%22%3Anull%2C%22Path%22%3A%22MUSC0185H%22%2C%22MultiListedClassFlag%22%3A%22n%22%2C%22Token%22%3A%22MDE4NUggICBNVVNDMDE4NUg%3D%22%7D&FilterFlags=%7B%22enrollment_status%22%3A%22O%2CW%2CC%2CX%2CT%2CS%22%2C%22advanced%22%3A%22y%22%2C%22meet_days%22%3A%22M%2CT%2CW%2CR%2CF%22%2C%22start_time%22%3A%229%3A00+am%22%2C%22end_time%22%3A%2210%3A00+pm%22%2C%22meet_locations%22%3Anull%2C%22meet_units%22%3Anull%2C%22instructor%22%3Anull%2C%22class_career%22%3Anull%2C%22impacted%22%3A%22N%22%2C%22enrollment_restrictions%22%3Anull%2C%22enforced_requisites%22%3Anull%2C%22individual_studies%22%3Anull%2C%22summer_session%22%3Anull%7D&_=1605849646690' -H 'X-Requested-With: XMLHttpRequest'
 
