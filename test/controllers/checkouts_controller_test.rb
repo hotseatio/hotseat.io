@@ -6,6 +6,7 @@ require "test_helper"
 class CheckoutsControllerTest < ActionDispatch::IntegrationTest
   describe "GET /checkout" do
     before do
+      Stripe.api_key = "sk_test_123"
       WebMock.stub_request(:post, "https://api.stripe.com/v1/customers")
              .with(
                body: { "email" => "nathan@g.ucla.edu", "name" => "Nathan Smith" },
