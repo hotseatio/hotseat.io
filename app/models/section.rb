@@ -161,6 +161,6 @@ class Section < ApplicationRecord
 
   sig { returns(T::Boolean) }
   def enrollable?
-    term.first_two_weeks?
+    Time.zone.now.between?(term.enrollment_start, term.end_of_week_two_time)
   end
 end
