@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"io/ioutil"
 	"net/http"
 	"os"
 
@@ -12,6 +13,11 @@ import (
 	"github.com/nathunsmitty/hotseat.io/lambdas/registrar"
 	log "github.com/sirupsen/logrus"
 )
+
+type NotificationResponse struct {
+	NotificationsSent int  `json:"notifications_sent,omitempty"`
+	NotEnrollable     bool `json:"not_enrollable,omitempty"`
+}
 
 func NotifySubscribedUsers(
 	ctx context.Context,
@@ -51,6 +57,24 @@ func NotifySubscribedUsers(
 		return fetchutil.ErrStatusCode
 	}
 	defer response.Body.Close()
+
+	body, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		return err
+	}
+
+	parsedResponse := NotificationResponse{}
+	err = json.Unmarshal(body, &response)
+	if err != nil {
+		logger.WithError(err).Error("Error parsing json response")
+	}
+
+	if parsedResponse.NotEnrollable {
+		logger.WithField("section", section.ID).Error("Section is not enrollable")
+		return nil
+	}
+
+	logger.WithFields(log.Fields{"section": section.ID, "count": parsedResponse.NotificationsSent}).Info("Sent notifications to users")
 
 	return nil
 }
