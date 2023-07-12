@@ -39,7 +39,7 @@ class EnrollmentNotificationsController < ApplicationController
       return
     end
 
-    if !section.enrollable?
+    unless Term.current_and_upcoming.pluck(:id).contains(section.term.id)
       render(json: { not_enrollable: true, notifications_sent: 0 })
       return
     end
