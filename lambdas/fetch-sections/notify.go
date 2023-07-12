@@ -15,8 +15,9 @@ import (
 )
 
 type NotificationResponse struct {
-	NotificationsSent int  `json:"notifications_sent,omitempty"`
-	NotEnrollable     bool `json:"not_enrollable,omitempty"`
+	NotificationsSent int    `json:"notifications_sent,omitempty"`
+	NotEnrollable     bool   `json:"not_enrollable,omitempty"`
+	Error             string `json:"error,omitempty"`
 }
 
 func NotifySubscribedUsers(
@@ -47,16 +48,17 @@ func NotifySubscribedUsers(
 	req.Header.Add("Accept", "application/json")
 	req.Header.Add("Content-Type", "application/json")
 
-	logger.WithFields(log.Fields{"endpoint": endpoint, "section": section.ID}).Info("Making request to Hotseat to send notification")
+	logger.WithField("endpoint", endpoint).Warn("Making request to Hotseat to send notification")
 	response, err := fetchutil.Client.Do(req)
-
 	if err != nil {
 		return err
 	}
+	defer response.Body.Close()
+
 	if response.StatusCode != http.StatusOK {
+		logger.WithFields(log.Fields{"endpoint": endpoint, "status code": response.StatusCode}).Error("Received a non-200 response from Hotseat")
 		return fetchutil.ErrStatusCode
 	}
-	defer response.Body.Close()
 
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
@@ -70,11 +72,11 @@ func NotifySubscribedUsers(
 	}
 
 	if parsedResponse.NotEnrollable {
-		logger.WithField("section", section.ID).Error("Section is not enrollable")
+		logger.Error("Section is not enrollable")
 		return nil
 	}
 
-	logger.WithFields(log.Fields{"section": section.ID, "count": parsedResponse.NotificationsSent}).Info("Sent notifications to users")
+	logger.WithFields(log.Fields{"section": section.ID, "count": parsedResponse.NotificationsSent}).Warn("Sent notifications to users")
 
 	return nil
 }
