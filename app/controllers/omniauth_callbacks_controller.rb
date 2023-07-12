@@ -10,8 +10,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   sig { void }
   def google_oauth2
-    auth = request.env["omniauth.auth"]
-    user = User.from_omniauth(auth, referral_code: cookies[:referral_code])
+    payload = User::AuthenticationPayload.from_omniauth(request.env["omniauth.auth"])
+    user = User.from_auth_payload(payload, referral_code: cookies[:referral_code])
 
     remember_me(user)
 
