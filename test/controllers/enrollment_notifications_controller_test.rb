@@ -9,10 +9,7 @@ class CoursesTest < ActionDispatch::IntegrationTest
       @token = T.let("test-token", String)
       ENV["ENROLLMENT_NOTIFICATION_API_TOKEN"] = @token
 
-      @term = T.let(create(:term, term: "21S",
-                                  start_date: Date.new(2021, 3, 29),
-                                  end_date: Date.new(2021, 6, 11)), Term)
-      travel_to(Time.zone.local(2021, 4, 1))
+      @term = T.let(create_current_term, Term)
     end
 
     it "returns a 400 if an incorrect auth token is given" do
@@ -95,10 +92,9 @@ class CoursesTest < ActionDispatch::IntegrationTest
       assert_performed_jobs 0
     end
 
-    it "does not send any notifications if enrollment has ended -- i.e., is past EOD Friday week 2" do
-      travel_to(Time.zone.local(2021, 5, 14))
-
-      section = create(:section, term: @term, enrollment_status: "Open")
+    it "does not send any notifications for a section if the term is not current or upcoming" do
+      not_current_term = create(:term)
+      section = create(:section, term: not_current_term, enrollment_status: "Open")
 
       perform_enqueued_jobs do
         post "/enrollment_notifications",
