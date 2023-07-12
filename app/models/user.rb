@@ -66,14 +66,31 @@ class User < ApplicationRecord
     T.must(referred_by).add_notification_token
   end
 
-  sig { params(auth: T.untyped, referral_code: T.nilable(String)).returns(User) }
-  def self.from_omniauth(auth, referral_code:)
-    user = find_by(provider: auth.provider, uid: auth.uid)
+  # Type of the values we get from a Google Auth payload.
+  # Non-exhaustive, but feel free to modify this as we need additional fields!
+  # See an example payload here: https://github.com/zquestz/omniauth-google-oauth2#auth-hash
+  class AuthenticationPayload < T::Struct
+    extend T::Sig
+
+    const :provider, String
+    const :uid, String
+    const :name, String
+    const :email, String
+
+    sig { params(auth: T.untyped).returns(AuthenticationPayload) }
+    def self.from_omniauth(auth)
+      new(provider: auth.provider, uid: auth.uid, name: auth.info.name, email: auth.info.email)
+    end
+  end
+
+  sig { params(payload: AuthenticationPayload, referral_code: T.nilable(String)).returns(User) }
+  def self.from_auth_payload(payload, referral_code:)
+    user = find_by(provider: payload.provider, uid: payload.uid)
 
     if user.nil?
       user = new(
-        provider: auth.provider,
-        uid: auth.uid,
+        provider: payload.provider,
+        uid: payload.uid,
       )
 
       if referral_code.present?
@@ -81,14 +98,15 @@ class User < ApplicationRecord
         user.referred_by = referring_user if referring_user.present?
       end
 
-      user.email = auth.info.email
-      user.name = auth.info.name
+      user.email = payload.email
+      user.name = payload.name
+      user.save
       user.subscribe("announcements")
     else
-      user.email = auth.info.email
-      user.name = auth.info.name
+      user.email = payload.email
+      user.name = payload.name
+      user.save
     end
-    user.save
 
     user
   end

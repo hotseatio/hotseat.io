@@ -128,19 +128,88 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  describe "#set_referral_code" do
-    it "generates a unique referral code" do
-      user = build(:user)
-      user.set_referral_code
-      assert_not_nil user.referral_code
-    end
+  describe "referral codes" do
+    describe "#set_referral_code" do
+      it "generates a unique referral code" do
+        user = build(:user)
+        user.set_referral_code
+        assert_not_nil user.referral_code
+      end
 
-    it "raises an error if it cannot generate a referral code for some reason" do
-      referral_code = "test-code"
-      T.unsafe(SecureRandom).stubs(:hex).returns(referral_code)
-      create(:user, referral_code:)
-      user = build(:user)
-      assert_raises(ActiveRecord::ActiveRecordError) { user.set_referral_code }
+      it "raises an error if it cannot generate a referral code for some reason" do
+        referral_code = "test-code"
+        T.unsafe(SecureRandom).stubs(:hex).returns(referral_code)
+        create(:user, referral_code:)
+        user = build(:user)
+        assert_raises(ActiveRecord::ActiveRecordError) { user.set_referral_code }
+      end
+    end
+  end
+
+  describe "login/out functionality" do
+    describe "#from_omniauth" do
+      it "creates a new user if one does not exist" do
+        payload = User::AuthenticationPayload.new(
+          provider: "google_oauth2",
+          uid: "100000000000000000000",
+          name: "Nathan Smith",
+          email: "nathan@g.ucla.edu",
+        )
+        user = User.from_auth_payload(payload, referral_code: nil)
+
+        assert_not_nil(user)
+        assert_equal(payload.provider, user.provider)
+        assert_equal(payload.uid, user.uid)
+        assert_equal(payload.name, user.name)
+        assert_equal(payload.email, user.email)
+        assert_nil(user.referred_by)
+        assert(user.subscribed?("announcements"))
+      end
+
+      it "logs a user in if a user does exist" do
+        payload = User::AuthenticationPayload.new(
+          provider: "google_oauth2",
+          uid: "100000000000000000000",
+          name: "Nathan Smith",
+          email: "nathan@g.ucla.edu",
+        )
+        user = create(
+          :user,
+          email: payload.email,
+          name: payload.name,
+          provider: payload.provider,
+          uid: payload.uid,
+        )
+        user_from_payload = User.from_auth_payload(payload, referral_code: nil)
+
+        assert_not_nil(user_from_payload)
+        assert_equal(payload.provider, user.provider)
+        assert_equal(payload.uid, user.uid)
+        assert_equal(payload.name, user.name)
+        assert_equal(payload.email, user.email)
+        assert_equal(user.id, user_from_payload.id)
+        assert_nil(user.referred_by)
+        assert_not(user.subscribed?("announcements"))
+      end
+
+      it "sets the referred by code if a user was referred" do
+        referring_user = create(:user)
+        payload = User::AuthenticationPayload.new(
+          provider: "google_oauth2",
+          uid: "100000000000000000000",
+          name: "Nathan Smith",
+          email: "nathan@g.ucla.edu",
+        )
+        user = User.from_auth_payload(payload, referral_code: referring_user.referral_code)
+
+        assert_not_nil(user)
+        assert_equal(payload.provider, user.provider)
+        assert_equal(payload.uid, user.uid)
+        assert_equal(payload.name, user.name)
+        assert_equal(payload.email, user.email)
+        assert_equal(referring_user, user.referred_by)
+        assert(user.subscribed?("announcements"))
+      end
     end
   end
 
