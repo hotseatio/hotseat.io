@@ -49,7 +49,8 @@ func NotifySubscribedUsers(
 	req.Header.Add("Content-Type", "application/json")
 
 	logger.WithField("endpoint", endpoint).Warn("Making request to Hotseat to send notification")
-	response, err := fetchutil.Client.Do(req)
+	// TODO: False positive from bodyclose here, maybe we can disable later.
+	response, err := fetchutil.Client.Do(req) //nolint:bodyclose
 	if err != nil {
 		return err
 	}
