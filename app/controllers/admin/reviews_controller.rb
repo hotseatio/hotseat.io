@@ -17,7 +17,7 @@ class Admin::ReviewsController < AdminController
   # GET /admin/reviews
   sig { void }
   def index
-    typed_params = TypedParams[IndexParams].new.extract!(params)
+    typed_params = TypedParams.extract!(IndexParams, params)
     page = typed_params.page
 
     @reviews = Review.all.where(status: :pending).order(updated_at: :desc).page(page)
@@ -30,7 +30,7 @@ class Admin::ReviewsController < AdminController
   # GET /admin/review/:id
   sig { void }
   def show
-    typed_params = TypedParams[ShowParams].new.extract!(params)
+    typed_params = TypedParams.extract!(ShowParams, params)
     @review = Review.find(typed_params.id)
     @author = @review.user
   end
@@ -43,7 +43,7 @@ class Admin::ReviewsController < AdminController
   # PATCH/PUT /admin/review/:id
   sig { void }
   def update
-    typed_params = TypedParams[UpdateParams].new.extract!(params)
+    typed_params = TypedParams.extract!(UpdateParams, params)
     status = typed_params.status
     @review = Review.find(typed_params.id)
 

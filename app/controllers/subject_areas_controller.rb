@@ -28,7 +28,7 @@ class SubjectAreasController < ApplicationController
 
   sig { void }
   def index
-    typed_params = TypedParams[IndexParams].new.extract!(params)
+    typed_params = TypedParams.extract!(IndexParams, params)
     page = typed_params.page
 
     @term = Term.current
@@ -37,7 +37,7 @@ class SubjectAreasController < ApplicationController
 
   sig { void }
   def show
-    typed_params = TypedParams[ShowParams].new.extract!(params)
+    typed_params = TypedParams.extract!(ShowParams, params)
     page = typed_params.page
 
     @term = Term.current

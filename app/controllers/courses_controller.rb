@@ -43,7 +43,7 @@ class CoursesController < ApplicationController
   # GET /courses
   sig { void }
   def index
-    typed_params = TypedParams[IndexParams].new.extract!(params)
+    typed_params = TypedParams.extract!(IndexParams, params)
     page = typed_params.page
     query = typed_params.q
     @term = Term.current
@@ -61,7 +61,7 @@ class CoursesController < ApplicationController
   # GET /courses/:id
   sig { void }
   def show
-    typed_params = TypedParams[ShowParams].new.extract!(params)
+    typed_params = TypedParams.extract!(ShowParams, params)
     setup_instructors_tab_variables(typed_params.id)
     return if @instructors_and_latest_term.blank?
 
@@ -79,7 +79,7 @@ class CoursesController < ApplicationController
   # GET /courses/:course_id/instructors/:id
   sig { void }
   def show_instructor
-    typed_params = TypedParams[ShowInstructorParams].new.extract!(params)
+    typed_params = TypedParams.extract!(ShowInstructorParams, params)
     setup_instructors_tab_variables(typed_params.course_id)
 
     @instructor = Instructor.find(typed_params.id)

@@ -13,7 +13,7 @@ class RelationshipsController < ApplicationController
 
   sig { void }
   def create
-    typed_params = TypedParams[CreateParams].new.extract!(params)
+    typed_params = TypedParams.extract!(CreateParams, params)
     section = Section.find(typed_params.section_id)
     user = T.must(current_user)
 
@@ -33,7 +33,7 @@ class RelationshipsController < ApplicationController
 
   sig { void }
   def destroy
-    typed_params = TypedParams[DestroyParams].new.extract!(params)
+    typed_params = TypedParams.extract!(DestroyParams, params)
     user = T.must(current_user)
 
     relationship = user.relationships.find_by!(section_id: typed_params.section_id)
@@ -57,7 +57,7 @@ class RelationshipsController < ApplicationController
 
   sig { void }
   def unsubscribe
-    typed_params = TypedParams[UnsubscribeParams].new.extract!(params)
+    typed_params = TypedParams.extract!(UnsubscribeParams, params)
     user = T.must(current_user)
     section = Section.find(typed_params.id)
     course = section.course

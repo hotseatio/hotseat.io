@@ -31,7 +31,7 @@ class WebpushDevicesController < ApplicationController
   # POST /webpush_devices
   sig { void }
   def create
-    typed_params = TypedParams[CreateParams].new.extract!(params)
+    typed_params = TypedParams.extract!(CreateParams, params)
 
     @device = WebpushDevice.create_or_find_by(
       user: current_user,
@@ -50,7 +50,7 @@ class WebpushDevicesController < ApplicationController
   # DELETE /webpush_devices/:id
   sig { void }
   def destroy
-    typed_params = TypedParams[DestroyParams].new.extract!(params)
+    typed_params = TypedParams.extract!(DestroyParams, params)
     id = typed_params.id
 
     device = WebpushDevice.find(id)

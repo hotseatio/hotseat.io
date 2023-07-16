@@ -22,7 +22,7 @@ class EnrollmentNotificationsController < ApplicationController
 
   sig { void }
   def create
-    typed_params = TypedParams[CreateParams].new.extract!(params)
+    typed_params = TypedParams.extract!(CreateParams, params)
     section = Section.find(typed_params.section_id)
 
     # Send a test notification to an admin
