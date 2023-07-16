@@ -678,6 +678,7 @@ DEPENDENCIES
   simplecov-cobertura
   sitemap_generator
   sorbet
+  sorbet-coerce
   sorbet-rails
   sorbet-runtime
   spoom

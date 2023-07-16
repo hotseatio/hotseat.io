@@ -29,6 +29,7 @@ gem "jbuilder"
 # Use Postgres as database
 gem "pg"
 # Sorbet
+gem "sorbet-coerce"
 gem "sorbet-rails"
 gem "sorbet-runtime"
 
