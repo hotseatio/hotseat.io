@@ -362,7 +362,7 @@ class TermTest < ActiveSupport::TestCase
 
       travel_to Time.zone.local(2021, 10, 4)
       assert_equal(1, Term.upcoming.length)
-      assert_equal(upcoming.term, T.must(Term.upcoming.first).term)
+      assert_equal(upcoming.term, Term.upcoming.first.term)
     end
 
     it "returns spring and summer when the current term is winter" do
@@ -378,8 +378,8 @@ class TermTest < ActiveSupport::TestCase
 
       travel_to Time.zone.local(2022, 2, 4)
       assert_equal(2, Term.upcoming.length)
-      assert_equal(spring.term, T.must(Term.upcoming.first).term)
-      assert_equal(summer.term, T.must(Term.upcoming.second).term)
+      assert_equal(spring.term, Term.upcoming.first.term)
+      assert_equal(summer.term, Term.upcoming.second.term)
     end
 
     it "returns summer and fall when the current term is spring" do
@@ -395,8 +395,8 @@ class TermTest < ActiveSupport::TestCase
 
       travel_to Time.zone.local(2022, 5, 4)
       assert_equal(2, Term.upcoming.length)
-      assert_equal(summer.term, T.must(Term.upcoming.first).term)
-      assert_equal(fall.term, T.must(Term.upcoming.second).term)
+      assert_equal(summer.term, Term.upcoming.first.term)
+      assert_equal(fall.term, Term.upcoming.second.term)
     end
 
     it "returns fall when the current term is summer" do
@@ -409,7 +409,7 @@ class TermTest < ActiveSupport::TestCase
 
       travel_to Time.zone.local(2022, 8, 4)
       assert_equal(1, Term.upcoming.length)
-      assert_equal(fall.term, T.must(Term.upcoming.first).term)
+      assert_equal(fall.term, Term.upcoming.first.term)
     end
   end
 end
