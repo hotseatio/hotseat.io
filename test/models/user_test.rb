@@ -43,8 +43,8 @@ class UserTest < ActiveSupport::TestCase
       @term = T.let(create(:term), Term)
       @user = T.let(create(:user), User)
       @sections = T.let(create_list(:section, 2, term: @term), T::Array[Section])
-      create :relationship, :with_review, user: @user, section: @sections.first
-      create :relationship, user: @user, section: @sections.second
+      create(:relationship, :with_review, user: @user, section: @sections.first)
+      create(:relationship, user: @user, section: @sections.second)
     end
 
     it "removes a relationship" do
