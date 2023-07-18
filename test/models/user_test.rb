@@ -72,7 +72,7 @@ class UserTest < ActiveSupport::TestCase
   describe "use_notification_token" do
     it "removes a single notification token from a user and returns true" do
       user = build(:user, notification_token_count: 3)
-      assert  user.use_notification_token
+      assert user.use_notification_token
       assert_equal 2, user.notification_token_count
     end
 
