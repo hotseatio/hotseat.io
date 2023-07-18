@@ -5,7 +5,7 @@ class Admin::ReviewsController < AdminController
   sig { void }
   def initialize
     super
-    @reviews = T.let(nil, T.nilable(Review::RelationType))
+    @reviews = T.let(nil, T.nilable(ActiveRecord::Relation))
     @review = T.let(nil, T.nilable(Review))
     @author = T.let(nil, T.nilable(User))
   end

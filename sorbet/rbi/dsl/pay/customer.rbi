@@ -1375,6 +1375,9 @@ class Pay::Customer
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
     def paddle(*args, &blk); end
 
+    sig { params(num: T.nilable(Integer)).returns(ActiveRecord::Relation) }
+    def page(num = nil); end
+
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
     def preload(*args, &blk); end
 
