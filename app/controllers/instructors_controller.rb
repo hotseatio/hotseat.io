@@ -16,7 +16,7 @@ class InstructorsController < ApplicationController
   sig { void }
   def initialize
     super
-    @instructors = T.let(Instructor.none, Instructor::PrivateRelation)
+    @instructors = T.let(Instructor.none, ActiveRecord::Relation)
     @instructor = T.let(nil, T.nilable(Instructor))
     @courses = T.let(nil, T.nilable(ActiveRecord::Relation))
     @term = T.let(nil, T.nilable(Term))

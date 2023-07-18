@@ -37,7 +37,7 @@ class Admin::ReviewsController < AdminController
 
   class UpdateParams < T::Struct
     const :id, Integer
-    const :status, Review::Status
+    const :status, String
   end
 
   # PATCH/PUT /admin/review/:id
@@ -45,17 +45,18 @@ class Admin::ReviewsController < AdminController
   def update
     typed_params = TypedParams.extract!(UpdateParams, params)
     status = typed_params.status
+
     @review = Review.find(typed_params.id)
 
     case status
-    when Review::Status::Approved
+    when "approved"
       @review.approve!
-    when Review::Status::Rejected
+    when "rejected"
       @review.reject!
-    when Review::Status::Pending
+    when "pending"
       @review.set_pending!
     else
-      T.absurd(status)
+      raise "Unknown status: #{status} (should be 'approved', 'rejected', 'pending')"
     end
 
     redirect_to(admin_review_path(@review))
