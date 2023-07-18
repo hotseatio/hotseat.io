@@ -62,7 +62,7 @@ class ReviewsController < ApplicationController
     @course = T.let(nil, T.nilable(Course))
     @term = T.let(nil, T.nilable(Term))
     @section = T.let(nil, T.nilable(Section))
-    @sections = T.let(Section.none, T.any(Section::ActiveRecord_Relation, Section::ActiveRecord_AssociationRelation))
+    @sections = T.let(Section.none, ActiveRecord::Relation)
     @results = T.let(nil, T.untyped)
   end
 
@@ -97,7 +97,7 @@ class ReviewsController < ApplicationController
       redirect_back_or_to(my_courses_path)
     end
 
-    @section = T.must(@review.section)
+    @section = @review.section
     @initial_suggestion_type = "section"
     @course = @section.course
     @term = @section.term

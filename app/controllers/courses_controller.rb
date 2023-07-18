@@ -142,7 +142,7 @@ class CoursesController < ApplicationController
       .transform_values { |a| a.map(&:term).max }
       .filter { |i, t| i.present? && t.present? }
       # Shouldn't have any nil instructors or terms, they're filtered out
-      .sort_by { |_i, t| T.must(t) }
+      .sort_by { |_i, t| t }
       .reverse, T::Array[[Instructor, Term]])
     @instructors_and_latest_term = tmp
   end

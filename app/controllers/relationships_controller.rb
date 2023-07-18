@@ -37,7 +37,7 @@ class RelationshipsController < ApplicationController
     user = T.must(current_user)
 
     relationship = user.relationships.find_by!(section_id: typed_params.section_id)
-    section = relationship.section
+    section = T.must(relationship.section)
     if typed_params.subscription_only
       user.unsubscribe_to_section(section)
       render(json: { msg: "Unsubscribed" })

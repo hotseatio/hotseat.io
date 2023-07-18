@@ -11,10 +11,10 @@ class UsersController < ApplicationController
   def initialize
     super
     @term = T.let(nil, T.nilable(Term))
-    @current_sections = T.let(nil, T.nilable(Section::RelationType))
-    @previous_sections = T.let(nil, T.nilable(Section::RelationType))
-    @subject_areas = T.let(nil, T.nilable(SubjectArea::ActiveRecord_Relation))
-    @webpush_devices = T.let(nil, T.nilable(WebpushDevice::RelationType))
+    @current_sections = T.let(nil, T.nilable(ActiveRecord::Relation))
+    @previous_sections = T.let(nil, T.nilable(ActiveRecord::Relation))
+    @subject_areas = T.let(nil, T.nilable(ActiveRecord::Relation))
+    @webpush_devices = T.let(nil, T.nilable(ActiveRecord::Relation))
   end
 
   # GET /my-courses

@@ -9,7 +9,7 @@ class WebpushDevicesController < ApplicationController
   sig { void }
   def initialize
     super
-    @webpush_devices = T.let(nil, T.nilable(WebpushDevice::RelationType))
+    @webpush_devices = T.let(nil, T.nilable(ActiveRecord::Relation))
     @device = T.let(nil, T.nilable(WebpushDevice))
   end
 

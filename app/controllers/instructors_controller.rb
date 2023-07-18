@@ -18,7 +18,7 @@ class InstructorsController < ApplicationController
     super
     @instructors = T.let(Instructor.none, Instructor::PrivateRelation)
     @instructor = T.let(nil, T.nilable(Instructor))
-    @courses = T.let(nil, T.nilable(Course::ActiveRecord_Relation))
+    @courses = T.let(nil, T.nilable(ActiveRecord::Relation))
     @term = T.let(nil, T.nilable(Term))
   end
 

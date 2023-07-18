@@ -14,10 +14,10 @@ class HomePageController < ApplicationController
   sig { void }
   def initialize
     super
-    @subject_areas = T.let(nil, T.nilable(SubjectArea::ActiveRecord_Relation))
+    @subject_areas = T.let(nil, T.nilable(ActiveRecord::Relation))
     @term = T.let(nil, T.nilable(Term))
     @course = T.let(nil, T.nilable(Course))
-    @reviews = T.let(nil, T.nilable(Review::RelationType))
+    @reviews = T.let(nil, T.nilable(ActiveRecord::Relation))
     @sections_by_term = T.let(nil, T.nilable(T::Array[[Term, T::Array[Section]]]))
   end
 
@@ -35,7 +35,7 @@ class HomePageController < ApplicationController
                                                    term: :enrollment_appointments)
                                 .where(course_id: @course.id)
     @reviews = instructor.reviews.viewable.merge(course_sections)
-    @sections_by_term = course_sections.group_by(&:term).sort_by(&:first).reverse
+    @sections_by_term = course_sections.group_by { |section| T.must(section.term) }.sort_by(&:first).reverse
   end
 
   private

@@ -11,7 +11,7 @@ module SubjectAreaHelper
     end
   end
 
-  sig { params(subject_area: SubjectArea, current_option: T.any(FilterOption, Term), options: Term::RelationType).returns(T::Array[{ key: String, label: String, url: String, selected: T::Boolean }]) }
+  sig { params(subject_area: SubjectArea, current_option: T.any(FilterOption, Term), options: ActiveRecord::Relation).returns(T::Array[{ key: String, label: String, url: String, selected: T::Boolean }]) }
   def self.filter_links(subject_area, current_option, options)
     links = FilterOption.values.map do |value|
       serialized_value = T.cast(value.serialize, String)
