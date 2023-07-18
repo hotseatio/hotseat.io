@@ -111,71 +111,85 @@ end
 
 # source://msgpack//lib/msgpack/factory.rb#2
 class MessagePack::Factory
-  # source://msgpack//lib/msgpack/factory.rb#74
+  # source://msgpack//lib/msgpack/factory.rb#113
   def dump(v, *rest); end
 
-  # source://msgpack//lib/msgpack/factory.rb#60
+  # source://msgpack//lib/msgpack/factory.rb#99
   def load(src, param = T.unsafe(nil)); end
 
-  # source://msgpack//lib/msgpack/factory.rb#74
+  # source://msgpack//lib/msgpack/factory.rb#113
   def pack(v, *rest); end
 
-  # source://msgpack//lib/msgpack/factory.rb#81
+  # source://msgpack//lib/msgpack/factory.rb#120
   def pool(size = T.unsafe(nil), **options); end
+
+  # see ext for other methods
+  #
+  # @raise [FrozenError]
+  #
+  # source://msgpack//lib/msgpack/factory.rb#5
+  def register_type(type, klass, options = T.unsafe(nil)); end
 
   # [ {type: id, class: Class(or nil), packer: arg, unpacker: arg}, ... ]
   #
-  # source://msgpack//lib/msgpack/factory.rb#6
+  # source://msgpack//lib/msgpack/factory.rb#41
   def registered_types(selector = T.unsafe(nil)); end
 
   # @return [Boolean]
   #
-  # source://msgpack//lib/msgpack/factory.rb#47
+  # source://msgpack//lib/msgpack/factory.rb#86
   def type_registered?(klass_or_type, selector = T.unsafe(nil)); end
 
-  # source://msgpack//lib/msgpack/factory.rb#60
+  # source://msgpack//lib/msgpack/factory.rb#99
   def unpack(src, param = T.unsafe(nil)); end
 end
 
-# source://msgpack//lib/msgpack/factory.rb#89
+# source://msgpack//lib/msgpack/factory.rb#128
 class MessagePack::Factory::Pool
   # @return [Pool] a new instance of Pool
   #
-  # source://msgpack//lib/msgpack/factory.rb#142
+  # source://msgpack//lib/msgpack/factory.rb#181
   def initialize(factory, size, options = T.unsafe(nil)); end
 
-  # source://msgpack//lib/msgpack/factory.rb#156
+  # source://msgpack//lib/msgpack/factory.rb#195
   def dump(object); end
 
-  # source://msgpack//lib/msgpack/factory.rb#149
+  # source://msgpack//lib/msgpack/factory.rb#188
   def load(data); end
 
-  # source://msgpack//lib/msgpack/factory.rb#167
+  # source://msgpack//lib/msgpack/factory.rb#206
   def packer(&block); end
 
-  # source://msgpack//lib/msgpack/factory.rb#163
+  # source://msgpack//lib/msgpack/factory.rb#202
   def unpacker(&block); end
 end
 
-# source://msgpack//lib/msgpack/factory.rb#91
+# source://msgpack//lib/msgpack/factory.rb#130
 class MessagePack::Factory::Pool::MemberPool
   # @return [MemberPool] a new instance of MemberPool
   #
-  # source://msgpack//lib/msgpack/factory.rb#92
+  # source://msgpack//lib/msgpack/factory.rb#131
   def initialize(size, &block); end
 
-  # source://msgpack//lib/msgpack/factory.rb#98
+  # source://msgpack//lib/msgpack/factory.rb#137
   def with; end
 end
 
+class MessagePack::HeldBuffer < ::BasicObject; end
+
 # source://msgpack//lib/msgpack/packer.rb#2
 class MessagePack::Packer
+  # @raise [ArgumentError]
+  #
   # source://msgpack//lib/msgpack/packer.rb#9
+  def register_type(type, klass, method_name = T.unsafe(nil), &block); end
+
+  # source://msgpack//lib/msgpack/packer.rb#14
   def registered_types; end
 
   # @return [Boolean]
   #
-  # source://msgpack//lib/msgpack/packer.rb#19
+  # source://msgpack//lib/msgpack/packer.rb#24
   def type_registered?(klass_or_type); end
 end
 
@@ -248,11 +262,14 @@ end
 # source://msgpack//lib/msgpack/unpacker.rb#2
 class MessagePack::Unpacker
   # source://msgpack//lib/msgpack/unpacker.rb#9
+  def register_type(type, klass = T.unsafe(nil), method_name = T.unsafe(nil), &block); end
+
+  # source://msgpack//lib/msgpack/unpacker.rb#18
   def registered_types; end
 
   # @return [Boolean]
   #
-  # source://msgpack//lib/msgpack/unpacker.rb#19
+  # source://msgpack//lib/msgpack/unpacker.rb#28
   def type_registered?(klass_or_type); end
 end
 
