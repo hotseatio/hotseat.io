@@ -17,13 +17,13 @@ class SubjectAreasController < ApplicationController
   sig { void }
   def initialize
     super
-    @subject_areas = T.let(nil, T.nilable(SubjectArea::RelationType))
+    @subject_areas = T.let(nil, T.nilable(ActiveRecord::Relation))
     @subject_area = T.let(nil, T.nilable(SubjectArea))
-    @courses = T.let(nil, T.nilable(Course::RelationType))
+    @courses = T.let(nil, T.nilable(ActiveRecord::Relation))
     @term = T.let(nil, T.nilable(Term))
     @upcoming_terms = T.let(nil, T.nilable(T::Array[Term]))
     @filter_option = T.let(nil, T.nilable(T.any(SubjectAreaHelper::FilterOption, Term)))
-    @filter_options = T.let(nil, T.nilable(Term::RelationType))
+    @filter_options = T.let(nil, T.nilable(ActiveRecord::Relation))
   end
 
   sig { void }
