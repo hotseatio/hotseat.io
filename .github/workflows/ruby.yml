@@ -101,6 +101,12 @@ jobs:
       - name: Run erblint
         run: bundle exec erblint --lint-all
 
+      - name: Verify Tapioca gems
+        run: bin/tapioca gems --verify
+
+      - name: Verify Tapioca DSLs
+        run: bin/tapioca dsl --verify
+
       - name: Run Sorbet
         run: bundle exec srb tc
 
