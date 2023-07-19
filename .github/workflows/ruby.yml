@@ -95,8 +95,11 @@ jobs:
         run: |
           yarn install --pure-lockfile
 
-      - name: Run migrations
-        run: bin/rails db:migrate
+      - name: Create database
+        run: bin/rails db:create
+
+      - name: Set up database schema
+        run: bin/rails db:schema:load
 
       - name: Run RuboCop
         run: bundle exec rubocop --parallel
