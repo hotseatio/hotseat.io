@@ -4,6 +4,7 @@ require:
   - rubocop-performance
   - rubocop-minitest
   - rubocop-sorbet
+  - rubocop-factory_bot
 
 AllCops:
   NewCops: enable

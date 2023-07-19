@@ -179,15 +179,15 @@ class TermTest < ActiveSupport::TestCase
 
   describe "current" do
     it "returns the latest term" do
-      create :term, term: "21W",
+      create(:term, term: "21W",
                     start_date: Date.new(2021, 1, 4),
-                    end_date: Date.new(2021, 3, 19)
-      create :term, term: "21S",
+                    end_date: Date.new(2021, 3, 19))
+      create(:term, term: "21S",
                     start_date: Date.new(2021, 3, 29),
-                    end_date: Date.new(2021, 6, 11)
-      create :term, term: "211",
+                    end_date: Date.new(2021, 6, 11))
+      create(:term, term: "211",
                     start_date: Date.new(2021, 6, 21),
-                    end_date: Date.new(2021, 9, 10)
+                    end_date: Date.new(2021, 9, 10))
       travel_to Time.zone.local(2021, 6, 14)
       assert_equal("21S", Term.current.term)
     end
@@ -353,9 +353,9 @@ class TermTest < ActiveSupport::TestCase
 
   describe "upcoming" do
     it "returns winter of the next year when the current term is fall" do
-      create :term, term: "21F",
+      create(:term, term: "21F",
                     start_date: Date.new(2021, 9, 20),
-                    end_date: Date.new(2021, 12, 10)
+                    end_date: Date.new(2021, 12, 10))
       upcoming = create(:term, term: "22W",
                                start_date: Date.new(2022, 1, 3),
                                end_date: Date.new(2022, 3, 18))
@@ -366,9 +366,9 @@ class TermTest < ActiveSupport::TestCase
     end
 
     it "returns spring and summer when the current term is winter" do
-      create :term, term: "22W",
+      create(:term, term: "22W",
                     start_date: Date.new(2022, 1, 3),
-                    end_date: Date.new(2022, 3, 18)
+                    end_date: Date.new(2022, 3, 18))
       spring = create(:term, term: "22S",
                              start_date: Date.new(2022, 3, 23),
                              end_date: Date.new(2022, 6, 10))
@@ -383,9 +383,9 @@ class TermTest < ActiveSupport::TestCase
     end
 
     it "returns summer and fall when the current term is spring" do
-      create :term, term: "22S",
+      create(:term, term: "22S",
                     start_date: Date.new(2022, 3, 23),
-                    end_date: Date.new(2022, 6, 10)
+                    end_date: Date.new(2022, 6, 10))
       summer = create(:term, term: "221",
                              start_date: Date.new(2022, 6, 20),
                              end_date: Date.new(2022, 9, 9))
@@ -400,9 +400,9 @@ class TermTest < ActiveSupport::TestCase
     end
 
     it "returns fall when the current term is summer" do
-      create :term, term: "221",
+      create(:term, term: "221",
                     start_date: Date.new(2022, 6, 20),
-                    end_date: Date.new(2022, 9, 9)
+                    end_date: Date.new(2022, 9, 9))
       fall = create(:term, term: "22F",
                            start_date: Date.new(2022, 9, 19),
                            end_date: Date.new(2022, 12, 9))

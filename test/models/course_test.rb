@@ -5,7 +5,7 @@ require "test_helper"
 
 class CourseTest < ActiveSupport::TestCase
   before do
-    create :term
+    create(:term)
   end
 
   describe "offered for term" do
