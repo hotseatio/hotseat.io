@@ -7,19 +7,19 @@
 # source://omniauth-google-oauth2//lib/omniauth/strategies/google_oauth2.rb#8
 module OmniAuth
   class << self
-    # source://omniauth/2.1.0/lib/omniauth.rb#130
+    # source://omniauth/2.1.1/lib/omniauth.rb#130
     def config; end
 
-    # source://omniauth/2.1.0/lib/omniauth.rb#134
+    # source://omniauth/2.1.1/lib/omniauth.rb#134
     def configure; end
 
-    # source://omniauth/2.1.0/lib/omniauth.rb#138
+    # source://omniauth/2.1.1/lib/omniauth.rb#138
     def logger; end
 
-    # source://omniauth/2.1.0/lib/omniauth.rb#142
+    # source://omniauth/2.1.1/lib/omniauth.rb#142
     def mock_auth_for(provider); end
 
-    # source://omniauth/2.1.0/lib/omniauth.rb#20
+    # source://omniauth/2.1.1/lib/omniauth.rb#20
     def strategies; end
   end
 end

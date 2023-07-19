@@ -1,4 +1,4 @@
 --dir
 .
---allowed-extension
-.rb,.rbi,.rake,.jbuilder
+--ignore=tmp/
+--ignore=vendor/

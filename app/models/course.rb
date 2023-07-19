@@ -51,7 +51,7 @@ class Course < ApplicationRecord
                                                     { terms: current_term.id }
                                                   end,
                                                 ])
-    select_columns(sanitized_sql)
+    select(sanitized_sql)
   }
 
   scope :with_only_offered_section_counts, lambda { |term|
@@ -71,12 +71,12 @@ class Course < ApplicationRecord
 
   sig { returns(String) }
   def short_title
-    "#{subject_area.code} #{number}"
+    "#{T.must(subject_area).code} #{number}"
   end
 
   sig { returns(T::Hash[Symbol, String]) }
   def search_data
-    search_text = "#{subject_area.code} #{subject_area.name} #{number} #{title}" if superseding_course_with_subject.nil?
+    search_text = "#{T.must(subject_area).code} #{T.must(subject_area).name} #{number} #{title}" if superseding_course_with_subject.nil?
     {
       search_text:,
     }
@@ -84,14 +84,14 @@ class Course < ApplicationRecord
 
   sig { returns(String) }
   def long_title
-    "#{subject_area.name} #{number}: #{title}"
+    "#{T.must(subject_area).name} #{number}: #{title}"
   end
 
   # All the text that is searchable
   # Keep this in sync with lambdas/registrar/storage.go.
   sig { returns(String) }
   def searchable_title
-    "#{subject_area.code} #{number} #{subject_area.name} #{title}"
+    "#{T.must(subject_area).code} #{number} #{T.must(subject_area).name} #{title}"
   end
 
   # Whether a course is offered for a given term.
@@ -125,7 +125,7 @@ class Course < ApplicationRecord
     return superseding_course if superseding_course.present?
 
     course = nil
-    new_subject_area = subject_area.superseding_subject_area
+    new_subject_area = T.must(subject_area).superseding_subject_area
     if new_subject_area.present?
       course = new_subject_area.courses.find_by(title:, number:)
       course = new_subject_area.courses.find_by(number:) if course.nil?
@@ -138,7 +138,7 @@ class Course < ApplicationRecord
     return preceding_course if preceding_course.present?
 
     course = nil
-    prev_subject_area = subject_area.preceding_subject_area
+    prev_subject_area = T.must(subject_area).preceding_subject_area
     if prev_subject_area.present?
       course = prev_subject_area.courses.find_by(title:, number:)
       course = prev_subject_area.courses.find_by(number:) if course.nil?

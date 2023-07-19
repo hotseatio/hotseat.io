@@ -130,43 +130,6 @@ CREATE TYPE public.weekly_time_type AS ENUM (
 );
 
 
---
--- Name: is_graduate(character varying); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.is_graduate(num character varying) RETURNS boolean
-    LANGUAGE plpgsql IMMUTABLE STRICT
-    AS $$
-    BEGIN
-        RETURN (num SIMILAR TO '%[2-9][0-9][0-9]%');
-    END
-$$;
-
-
---
--- Name: strposrev(text, text); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.strposrev(instring text, insubstring text) RETURNS integer
-    LANGUAGE plpgsql IMMUTABLE STRICT COST 4
-    AS $$
-DECLARE result INTEGER;
-BEGIN
-    IF strpos(instring, insubstring) = 0 THEN
-        -- no match
-        result:=0;
-    ELSEIF length(insubstring)=1 THEN
-        -- add one to get the correct position from the left.
-        result:= 1 + length(instring) - strpos(reverse(instring), insubstring);
-    ELSE
-        -- add two minus the legth of the search string
-        result:= 2 + length(instring)- length(insubstring) - strpos(reverse(instring), reverse(insubstring));
-    END IF;
-    RETURN result;
-END;
-$$;
-
-
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -1007,9 +970,9 @@ CREATE TABLE public.reviews (
     updated_at timestamp(6) without time zone NOT NULL,
     has_group_project boolean,
     requires_attendance boolean,
+    reccomend_textbook boolean,
     midterm_count integer,
     final public.final_type,
-    reccomend_textbook boolean,
     grade public.grade_type,
     weekly_time public.weekly_time_type,
     offers_extra_credit boolean,
@@ -1279,7 +1242,7 @@ CREATE TABLE public.users (
     beta_tester boolean DEFAULT false NOT NULL,
     referral_code character varying NOT NULL,
     referred_by_id integer,
-    referral_completed_at timestamp without time zone,
+    referral_completed_at timestamp(6) without time zone,
     phone_verification_otp_secret character varying(32),
     CONSTRAINT notification_tokens_positive_count CHECK ((notification_token_count >= 0))
 );
@@ -2513,6 +2476,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20230228014101'),
 ('20230421233948'),
 ('20230430161016'),
-('20230511033013');
+('20230511033013'),
+('20230718192047');
 
 

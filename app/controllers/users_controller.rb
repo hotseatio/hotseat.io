@@ -11,10 +11,10 @@ class UsersController < ApplicationController
   def initialize
     super
     @term = T.let(nil, T.nilable(Term))
-    @current_sections = T.let(nil, T.nilable(Section::RelationType))
-    @previous_sections = T.let(nil, T.nilable(Section::RelationType))
-    @subject_areas = T.let(nil, T.nilable(SubjectArea::ActiveRecord_Relation))
-    @webpush_devices = T.let(nil, T.nilable(WebpushDevice::RelationType))
+    @current_sections = T.let(nil, T.nilable(ActiveRecord::Relation))
+    @previous_sections = T.let(nil, T.nilable(ActiveRecord::Relation))
+    @subject_areas = T.let(nil, T.nilable(ActiveRecord::Relation))
+    @webpush_devices = T.let(nil, T.nilable(ActiveRecord::Relation))
   end
 
   # GET /my-courses
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
   # PUT /users/:id
   sig { void }
   def update
-    typed_params = TypedParams[UpdateParams].new.extract!(params)
+    typed_params = TypedParams.extract!(UpdateParams, params)
     new_beta_status = typed_params.beta_tester
     user = T.must(current_user)
     user.beta_tester = new_beta_status unless new_beta_status.nil?
@@ -77,7 +77,7 @@ class UsersController < ApplicationController
 
   sig { void }
   def verify_phone
-    typed_params = TypedParams[VerifyPhoneParams].new.extract!(params)
+    typed_params = TypedParams.extract!(VerifyPhoneParams, params)
     normalized_phone = User.normalize_phone(typed_params.phone)
     formatted_phone = User.format_phone(normalized_phone)
 
@@ -112,7 +112,7 @@ class UsersController < ApplicationController
 
   sig { void }
   def confirm_verify_phone
-    typed_params = TypedParams[ConfirmVerifyPhoneParams].new.extract!(params)
+    typed_params = TypedParams.extract!(ConfirmVerifyPhoneParams, params)
     normalized_phone = User.normalize_phone(typed_params.phone)
     logger.info(normalized_phone)
     user = T.must(current_user)

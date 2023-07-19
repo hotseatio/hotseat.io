@@ -83,6 +83,7 @@ OpenSSL::BN::CONSTTIME = T.let(T.unsafe(nil), Integer)
 # source://openssl//lib/openssl/buffering.rb#22
 module OpenSSL::Buffering
   include ::Enumerable
+  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
 
   # Creates an instance of OpenSSL's buffering IO module.
   #

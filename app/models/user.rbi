@@ -2,6 +2,8 @@
 # frozen_string_literal: true
 
 class User
+  extend Devise::Models
+
   sig { params(list: String).void }
   def subscribe(list); end
 

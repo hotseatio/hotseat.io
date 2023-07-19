@@ -252,7 +252,6 @@ DomainName::VERSION = T.let(T.unsafe(nil), String)
 class Object < ::BasicObject
   include ::Kernel
   include ::PP::ObjectMixin
-  include ::MakeMakefile
 
   private
 

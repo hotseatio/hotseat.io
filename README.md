@@ -118,7 +118,15 @@ bundle exec erd
 
 ![](docs/entity-relationship-diagram.png)
 
-### The Sorbet Dance
+### Typechecking with Sorbet
+
+Ruby is a dynamically typed language. Static type-checking is not something built-in by default. We use a library called [Sorbet](https://sorbet.org) to typecheck our code. Sorbet has a number of editor integrations, you can also typecheck with:
+
+```sh
+rake sorbet:typecheck
+```
+
+If you update a model, install a new gem, run a migration, or update a route, you'll also have to update the types.
 
 ```sh
 rake sorbet:update:all
@@ -128,24 +136,14 @@ rake sorbet:update:all
 
 #### Ruby
 
-We use Rspec and FactoryBot for our testing. Our general testing philosophy is:
+We use Minitest and FactoryBot for our testing.
 
-- Test model functionality though model specs.
-- Test mail tests through mailer specs.
-- Test helpers through helper specs.
-- Prefer request specs for integration testing, unless interactivity is required in which case go for the heavier system spec.
-- Avoid view specs, as it's easy for them to go out of date and give a false sense of security. Prefer request or system specs instead.
-- Avoid controller specs, as they're [no longer recommended](https://rspec.info/blog/2016/07/rspec-3-5-has-been-released/#rails-support-for-rails-5) by the RSpec and Rails teams (in favor of request and system specs).
-- Avoid feature specs, as they're [no longer recommended](https://rspec.info/blog/2017/10/rspec-3-7-has-been-released/#rails-actiondispatchsystemtest-integration-system-specs) (in favor of system specs).
+You can run tests with the following:
 
-`spec_helper.rb` is for specs which don't depend on Rails (such as specs for classes in the lib directory). `rails_helper.rb` is for specs which do depend on Rails (in a Rails project, most or all of them). When in doubt, go with `rails_helper.rb`
-
-Custom matchers go in `spec/support/matchers`. Custom helper functions go in `spec/support/helpers`.
-
-You can run all tests with:
-
-```
-rspec
+```sh
+bin/rails test # run all tests (excluding system tests)
+bin/rails test:system # run system tests
+bin/rails test:all # run all tests (including system tests)
 ```
 
 #### JavaScript/React

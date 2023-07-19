@@ -91,11 +91,11 @@ module SectionHelper
     if display_type == SectionListType::MyCoursesPagePrevious
       time_label = nil
       location_label = nil
-      term_label = section.term.readable
+      term_label = T.must(section.term).readable
     end
 
     SectionListItem.new(
-      id: section.id,
+      id: T.must(section.id),
       title: display_type.my_courses? ? section.course_title : section.title,
       instructorCount: display_type.my_courses? ? section.instructor_count : nil,
       instructorLabel: display_type.my_courses? ? section.instructors_label : nil,

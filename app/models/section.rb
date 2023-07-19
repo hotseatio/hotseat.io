@@ -31,7 +31,7 @@ class Section < ApplicationRecord
 
   sig { returns(String) }
   def course_title
-    "#{course.short_title}: #{course.title}"
+    "#{T.must(course).short_title}: #{T.must(course).title}"
   end
 
   sig { returns(String) }
@@ -70,9 +70,9 @@ class Section < ApplicationRecord
   sig { returns(String) }
   def registrar_link
     query_params = {
-      term_cd: term.term,
-      subj_area_cd: course.subject_area_code.ljust(7),
-      crs_catlg_no: course.catalog_number.ljust(7),
+      term_cd: T.must(term).term,
+      subj_area_cd: T.must(course).subject_area_code.ljust(7),
+      crs_catlg_no: T.must(course).catalog_number.ljust(7),
       class_id: registrar_id,
       class_no: Kernel.format(" %03d  ", index),
     }
@@ -82,11 +82,11 @@ class Section < ApplicationRecord
   sig { returns(String) }
   def enroll_link
     query_params = {
-      t: term.term,
+      t: T.must(term).term,
       sBy: "subject",
-      subj: course.subject_area_code,
-      crsCatlg: "#{course.number} - #{course.title}",
-      catlg: course.catalog_number,
+      subj: T.must(course).subject_area_code,
+      crsCatlg: "#{T.must(course).number} - #{T.must(course).title}",
+      catlg: T.must(course).catalog_number,
       cls_no: "%",
     }
     "https://sa.ucla.edu/ro/ClassSearch/Results?#{query_params.to_query}"
@@ -107,18 +107,18 @@ class Section < ApplicationRecord
   # The formatted data for a section's enrollment during the term's enrollment period.
   sig { returns(T.nilable(T::Array[T::Hash[String, T.any(Integer, String)]])) }
   def enrollment_period_data_props
-    enrollment_start = term.enrollment_start
-    enrollment_end = term.enrollment_end
+    enrollment_start = T.must(term).enrollment_start
+    enrollment_end = T.must(term).enrollment_end
     enrollment_data.where(created_at: enrollment_start..enrollment_end).order(:created_at).as_json.map { |datum| datum.transform_keys! { |k| k.camelcase(:lower) } } if enrollment_start.present? && enrollment_end.present?
   end
 
   # The formatted data for a section's enrollment during the first few weeks of the term.
   sig { returns(T.nilable(T::Array[T::Hash[String, T.any(Integer, String)]])) }
   def quarter_start_enrollment_data_props
-    enrollment_start = term.start_time
+    enrollment_start = T.must(term).start_time
     return if enrollment_start.nil?
 
-    enrollment_end = term.end_of_week_two_time
+    enrollment_end = T.must(term).end_of_week_two_time
 
     data_props = enrollment_data
                  .where(created_at: enrollment_start..enrollment_end)
@@ -161,6 +161,6 @@ class Section < ApplicationRecord
 
   sig { returns(T::Boolean) }
   def enrollable?
-    Time.zone.now.between?(term.enrollment_start, term.end_of_week_two_time)
+    Time.zone.now.between?(T.must(term).enrollment_start, T.must(term).end_of_week_two_time)
   end
 end

@@ -62,14 +62,14 @@ class ReviewsController < ApplicationController
     @course = T.let(nil, T.nilable(Course))
     @term = T.let(nil, T.nilable(Term))
     @section = T.let(nil, T.nilable(Section))
-    @sections = T.let(Section.none, T.any(Section::ActiveRecord_Relation, Section::ActiveRecord_AssociationRelation))
+    @sections = T.let(Section.none, ActiveRecord::Relation)
     @results = T.let(nil, T.untyped)
   end
 
   # GET /reviews/new
   sig { void }
   def new
-    typed_params = TypedParams[NewParams].new.extract!(params)
+    typed_params = TypedParams.extract!(NewParams, params)
     @review = Review.new
 
     if typed_params.section.present?
@@ -89,7 +89,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/:id/edit
   sig { void }
   def edit
-    typed_params = TypedParams[EditParams].new.extract!(params)
+    typed_params = TypedParams.extract!(EditParams, params)
     @review = Review.find(typed_params.id)
 
     if current_user != @review.user
@@ -97,7 +97,7 @@ class ReviewsController < ApplicationController
       redirect_back_or_to(my_courses_path)
     end
 
-    @section = T.must(@review.section)
+    @section = @review.section
     @initial_suggestion_type = "section"
     @course = @section.course
     @term = @section.term
@@ -109,7 +109,7 @@ class ReviewsController < ApplicationController
   # POST /reviews
   sig { void }
   def create
-    typed_params = TypedParams[CreateParams].new.extract!(params)
+    typed_params = TypedParams.extract!(CreateParams, params)
     review_params = typed_params.review
     # This action requires authentication, so we're guaranteed a user
     user = T.must(current_user)
@@ -159,7 +159,7 @@ class ReviewsController < ApplicationController
   # PUT/PATCH /reviews/:id
   sig { void }
   def update
-    typed_params = TypedParams[UpdateParams].new.extract!(params)
+    typed_params = TypedParams.extract!(UpdateParams, params)
     @review = Review.find(typed_params.id)
     review_params = typed_params.review
     # This action requires authentication, so we're guaranteed a user
@@ -204,7 +204,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/term-suggestions
   sig { void }
   def course_suggestions
-    typed_params = TypedParams[CourseSuggestionsParams].new.extract!(params)
+    typed_params = TypedParams.extract!(CourseSuggestionsParams, params)
     @results = Course.search(typed_params.q, limit: 8, track: true)
     render(formats: :json)
   end
@@ -212,7 +212,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/term-suggestions
   sig { void }
   def term_suggestions
-    typed_params = TypedParams[TermSuggestionsParams].new.extract!(params)
+    typed_params = TypedParams.extract!(TermSuggestionsParams, params)
     @course = Course.find(typed_params.course_id)
     render(formats: :json)
   end
@@ -220,7 +220,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/section-suggestions
   sig { void }
   def section_suggestions
-    typed_params = TypedParams[SectionSuggestionsParams].new.extract!(params)
+    typed_params = TypedParams.extract!(SectionSuggestionsParams, params)
     @term = Term.find_by(term: typed_params.term)
     return unless @term
 

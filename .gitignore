@@ -92,3 +92,6 @@ public/sitemap*.xml.gz
 # secrets we need for dev and test, so
 # we really don't want this in version control
 .env.*.local
+
+spoom_data/
+spoom_report.html

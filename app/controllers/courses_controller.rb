@@ -7,17 +7,17 @@ class CoursesController < ApplicationController
   sig { void }
   def initialize
     super
-    @courses = T.let(nil, T.nilable(Course::RelationType))
+    @courses = T.let(nil, T.nilable(ActiveRecord::Relation))
     @course = T.let(nil, T.nilable(Course))
     @superseding_course = T.let(nil, T.nilable(Course))
     @preceding_course = T.let(nil, T.nilable(Course))
     @subject_area = T.let(nil, T.nilable(SubjectArea))
     @term = T.let(nil, T.nilable(Term))
-    @sections = T.let(Section.none, Section::RelationType)
+    @sections = T.let(Section.none, ActiveRecord::Relation)
     @instructor = T.let(nil, T.nilable(Instructor))
     @instructors_and_latest_term = T.let(nil, T.nilable(T::Array[[Instructor, Term]]))
-    @reviews = T.let(nil, T.nilable(Review::RelationType))
-    @comments = T.let(nil, T.nilable(Review::RelationType))
+    @reviews = T.let(nil, T.nilable(ActiveRecord::Relation))
+    @comments = T.let(nil, T.nilable(ActiveRecord::Relation))
 
     @upcoming_terms = T.let(nil, T.nilable(T::Array[Term]))
     @sections_by_term = T.let(nil, T.nilable(T::Hash[Term, T::Array[Section]]))
@@ -32,7 +32,7 @@ class CoursesController < ApplicationController
                                                      enrollmentPeriod: String,
                                                      sections: T::Array[SectionHelper::SectionListItem],
                                                    }]]))
-    @textbooks = T.let(nil, T.nilable(Textbook::RelationType))
+    @textbooks = T.let(nil, T.nilable(ActiveRecord::Relation))
   end
 
   class IndexParams < T::Struct
@@ -43,7 +43,7 @@ class CoursesController < ApplicationController
   # GET /courses
   sig { void }
   def index
-    typed_params = TypedParams[IndexParams].new.extract!(params)
+    typed_params = TypedParams.extract!(IndexParams, params)
     page = typed_params.page
     query = typed_params.q
     @term = Term.current
@@ -61,7 +61,7 @@ class CoursesController < ApplicationController
   # GET /courses/:id
   sig { void }
   def show
-    typed_params = TypedParams[ShowParams].new.extract!(params)
+    typed_params = TypedParams.extract!(ShowParams, params)
     setup_instructors_tab_variables(typed_params.id)
     return if @instructors_and_latest_term.blank?
 
@@ -79,7 +79,7 @@ class CoursesController < ApplicationController
   # GET /courses/:course_id/instructors/:id
   sig { void }
   def show_instructor
-    typed_params = TypedParams[ShowInstructorParams].new.extract!(params)
+    typed_params = TypedParams.extract!(ShowInstructorParams, params)
     setup_instructors_tab_variables(typed_params.course_id)
 
     @instructor = Instructor.find(typed_params.id)
@@ -97,7 +97,7 @@ class CoursesController < ApplicationController
     sorted_sections_by_term = @sections_by_term.sort_by(&:first).reverse
     @most_recent_term = sorted_sections_by_term.first&.first
 
-    @textbooks = T.must(@sections_by_term[T.must(@most_recent_term)]).first&.textbooks
+    @textbooks = @sections_by_term[@most_recent_term].first&.textbooks
 
     @previous_terms = @sections_by_term.keys.sort.reverse
 
@@ -142,7 +142,7 @@ class CoursesController < ApplicationController
       .transform_values { |a| a.map(&:term).max }
       .filter { |i, t| i.present? && t.present? }
       # Shouldn't have any nil instructors or terms, they're filtered out
-      .sort_by { |_i, t| T.must(t) }
+      .sort_by { |_i, t| t }
       .reverse, T::Array[[Instructor, Term]])
     @instructors_and_latest_term = tmp
   end

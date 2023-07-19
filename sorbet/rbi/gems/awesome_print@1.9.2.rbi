@@ -996,9 +996,3 @@ class String
   # source://awesome_print//lib/awesome_print/core_ext/string.rb#23
   def yellowish(*html); end
 end
-
-# source://activesupport/7.0.4/lib/active_support/core_ext/object/blank.rb#104
-String::BLANK_RE = T.let(T.unsafe(nil), Regexp)
-
-# source://activesupport/7.0.4/lib/active_support/core_ext/object/blank.rb#105
-String::ENCODED_BLANKS = T.let(T.unsafe(nil), Concurrent::Map)

@@ -5,94 +5,186 @@
 # Please instead update this file by running `bin/tapioca gem stripe`.
 
 # File generated from our OpenAPI spec
+#
+# source://stripe//lib/stripe/version.rb#3
 module Stripe
   class << self
-    def api_base(*args, &block); end
-    def api_base=(*args, &block); end
-    def api_key(*args, &block); end
-    def api_key=(*args, &block); end
-    def api_version(*args, &block); end
-    def api_version=(*args, &block); end
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def api_base(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def api_base=(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def api_key(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def api_key=(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def api_version(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def api_version=(*args, **_arg1, &block); end
 
     # Gets the application for a plugin that's identified some. See
     # #set_app_info.
+    #
+    # source://stripe//lib/stripe.rb#97
     def app_info; end
 
+    # source://stripe//lib/stripe.rb#101
     def app_info=(info); end
-    def ca_bundle_path(*args, &block); end
-    def ca_bundle_path=(*args, &block); end
-    def ca_store(*args, &block); end
-    def client_id(*args, &block); end
-    def client_id=(*args, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def ca_bundle_path(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def ca_bundle_path=(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def ca_store(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def client_id(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def client_id=(*args, **_arg1, &block); end
 
     # Returns the value of attribute config.
+    #
+    # source://stripe//lib/stripe.rb#68
     def config; end
 
-    def connect_base(*args, &block); end
-    def connect_base=(*args, &block); end
-    def enable_telemetry=(*args, &block); end
-    def enable_telemetry?(*args, &block); end
-    def initial_network_retry_delay(*args, &block); end
-    def log_level(*args, &block); end
-    def log_level=(*args, &block); end
-    def logger(*args, &block); end
-    def logger=(*args, &block); end
-    def max_network_retries(*args, &block); end
-    def max_network_retries=(*args, &block); end
-    def max_network_retry_delay(*args, &block); end
-    def open_timeout(*args, &block); end
-    def open_timeout=(*args, &block); end
-    def proxy(*args, &block); end
-    def proxy=(*args, &block); end
-    def read_timeout(*args, &block); end
-    def read_timeout=(*args, &block); end
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def connect_base(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def connect_base=(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def enable_telemetry=(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def enable_telemetry?(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def initial_network_retry_delay(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def log_level(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def log_level=(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def logger(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def logger=(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def max_network_retries(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def max_network_retries=(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def max_network_retry_delay(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def open_timeout(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def open_timeout=(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def proxy(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def proxy=(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def read_timeout(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def read_timeout=(*args, **_arg1, &block); end
 
     # Sets some basic information about the running application that's sent along
     # with API requests. Useful for plugin authors to identify their plugin when
     # communicating with Stripe.
     #
     # Takes a name and optional partner program ID, plugin URL, and version.
+    #
+    # source://stripe//lib/stripe.rb#110
     def set_app_info(name, partner_id: T.unsafe(nil), url: T.unsafe(nil), version: T.unsafe(nil)); end
 
-    def stripe_account(*args, &block); end
-    def stripe_account=(*args, &block); end
-    def uploads_base(*args, &block); end
-    def uploads_base=(*args, &block); end
-    def verify_ssl_certs(*args, &block); end
-    def verify_ssl_certs=(*args, &block); end
-    def write_timeout(*args, &block); end
-    def write_timeout=(*args, &block); end
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def stripe_account(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def stripe_account=(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def uploads_base(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def uploads_base=(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def verify_ssl_certs(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def verify_ssl_certs=(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def write_timeout(*args, **_arg1, &block); end
+
+    # source://forwardable/1.3.2/forwardable.rb#229
+    def write_timeout=(*args, **_arg1, &block); end
   end
 end
 
 # APIConnectionError is raised in the event that the SDK can't connect to
 # Stripe's servers. That can be for a variety of different reasons from a
 # downed network to a bad TLS certificate.
+#
+# source://stripe//lib/stripe/errors.rb#63
 class Stripe::APIConnectionError < ::Stripe::StripeError; end
 
 # APIError is a generic error that may be raised in cases where none of the
 # other named errors cover the problem. It could also be raised in the case
 # that a new error has been introduced in the API, but this version of the
 # Ruby SDK doesn't know how to handle it.
+#
+# source://stripe//lib/stripe/errors.rb#70
 class Stripe::APIError < ::Stripe::StripeError; end
 
+# source://stripe//lib/stripe/api_operations/create.rb#4
 module Stripe::APIOperations; end
 
+# source://stripe//lib/stripe/api_operations/create.rb#5
 module Stripe::APIOperations::Create
+  # source://stripe//lib/stripe/api_operations/create.rb#6
   def create(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 end
 
+# source://stripe//lib/stripe/api_operations/delete.rb#5
 module Stripe::APIOperations::Delete
   mixes_in_class_methods ::Stripe::APIOperations::Delete::ClassMethods
 
+  # source://stripe//lib/stripe/api_operations/delete.rb#28
   def delete(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
     # @private
+    #
+    # source://stripe//lib/stripe/api_operations/delete.rb#34
     def included(base); end
   end
 end
 
+# source://stripe//lib/stripe/api_operations/delete.rb#6
 module Stripe::APIOperations::Delete::ClassMethods
   # Deletes an API resource
   #
@@ -107,10 +199,14 @@ module Stripe::APIOperations::Delete::ClassMethods
   #   idempotency_key to be passed in the request headers, or for the
   #   api_key to be overwritten. See
   #   {APIOperations::Request.execute_resource_request}.
+  #
+  # source://stripe//lib/stripe/api_operations/delete.rb#20
   def delete(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
 end
 
+# source://stripe//lib/stripe/api_operations/list.rb#5
 module Stripe::APIOperations::List
+  # source://stripe//lib/stripe/api_operations/list.rb#6
   def list(filters = T.unsafe(nil), opts = T.unsafe(nil)); end
 end
 
@@ -121,30 +217,46 @@ end
 # For example, a transfer gains the static methods for reversals so that the
 # methods `.create_reversal`, `.retrieve_reversal`, `.update_reversal`,
 # etc. all become available.
+#
+# source://stripe//lib/stripe/api_operations/nested_resource.rb#12
 module Stripe::APIOperations::NestedResource
   # @raise [ArgumentError]
+  #
+  # source://stripe//lib/stripe/api_operations/nested_resource.rb#13
   def nested_resource_class_methods(resource, path: T.unsafe(nil), operations: T.unsafe(nil), resource_plural: T.unsafe(nil)); end
 end
 
+# source://stripe//lib/stripe/api_operations/request.rb#5
 module Stripe::APIOperations::Request
   mixes_in_class_methods ::Stripe::APIOperations::Request::ClassMethods
 
   protected
 
+  # source://stripe//lib/stripe/api_operations/request.rb#110
   def execute_resource_request(method, url, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/api_operations/request.rb#116
   def execute_resource_request_stream(method, url, params = T.unsafe(nil), opts = T.unsafe(nil), &read_body_chunk_block); end
 
   # See notes on `alias` above.
+  #
+  # source://stripe//lib/stripe/api_operations/request.rb#110
   def request(method, url, params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
     # @private
+    #
+    # source://stripe//lib/stripe/api_operations/request.rb#106
     def included(base); end
   end
 end
 
+# source://stripe//lib/stripe/api_operations/request.rb#6
 module Stripe::APIOperations::Request::ClassMethods
+  # source://stripe//lib/stripe/api_operations/request.rb#7
   def execute_resource_request(method, url, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/api_operations/request.rb#14
   def execute_resource_request_stream(method, url, params = T.unsafe(nil), opts = T.unsafe(nil), &read_body_chunk_block); end
 
   # This method used to be called `request`, but it's such a short name
@@ -156,18 +268,28 @@ module Stripe::APIOperations::Request::ClassMethods
   # although all internal uses have been renamed, I've left this alias in
   # place for backwards compatibility. Consider removing it on the next
   # major.
+  #
+  # source://stripe//lib/stripe/api_operations/request.rb#7
   def request(method, url, params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   private
 
   # @raise [ArgumentError]
+  #
+  # source://stripe//lib/stripe/api_operations/request.rb#89
   def error_on_invalid_params(params); end
 
+  # source://stripe//lib/stripe/api_operations/request.rb#75
   def error_on_non_string_user_opts(opts); end
+
+  # source://stripe//lib/stripe/api_operations/request.rb#27
   def execute_resource_request_internal(client_request_method_sym, method, url, params, opts, &read_body_chunk_block); end
+
+  # source://stripe//lib/stripe/api_operations/request.rb#97
   def warn_on_opts_in_params(params); end
 end
 
+# source://stripe//lib/stripe/api_operations/save.rb#5
 module Stripe::APIOperations::Save
   mixes_in_class_methods ::Stripe::APIOperations::Save::ClassMethods
 
@@ -188,18 +310,24 @@ module Stripe::APIOperations::Save
   #   idempotency_key to be passed in the request headers, or for the
   #   api_key to be overwritten. See
   #   {APIOperations::Request.execute_resource_request}.
+  #
+  # source://stripe//lib/stripe/api_operations/save.rb#50
   def save(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   private
 
+  # source://stripe//lib/stripe/api_operations/save.rb#82
   def save_url; end
 
   class << self
     # @private
+    #
+    # source://stripe//lib/stripe/api_operations/save.rb#69
     def included(base); end
   end
 end
 
+# source://stripe//lib/stripe/api_operations/save.rb#6
 module Stripe::APIOperations::Save::ClassMethods
   # Updates an API resource
   #
@@ -214,19 +342,29 @@ module Stripe::APIOperations::Save::ClassMethods
   #   idempotency_key to be passed in the request headers, or for the
   #   api_key to be overwritten. See
   #   {APIOperations::Request.execute_resource_request}.
+  #
+  # source://stripe//lib/stripe/api_operations/save.rb#20
   def update(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
 end
 
+# source://stripe//lib/stripe/api_operations/search.rb#5
 module Stripe::APIOperations::Search
+  # source://stripe//lib/stripe/api_operations/search.rb#6
   def _search(search_url, filters = T.unsafe(nil), opts = T.unsafe(nil)); end
 end
 
+# source://stripe//lib/stripe/api_resource.rb#4
 class Stripe::APIResource < ::Stripe::StripeObject
   include ::Stripe::APIOperations::Request
   extend ::Stripe::APIOperations::Request::ClassMethods
 
+  # source://stripe//lib/stripe/api_resource.rb#80
   def refresh; end
+
+  # source://stripe//lib/stripe/api_resource.rb#93
   def request_stripe_object(method:, path:, params:, opts: T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/api_resource.rb#69
   def resource_url; end
 
   # A flag that can be set a behavior that will cause this resource to be
@@ -234,6 +372,8 @@ class Stripe::APIResource < ::Stripe::StripeObject
   # usually not desirable because resources are updated individually on their
   # own endpoints, but there are certain cases, replacing a customer's source
   # for example, where this is allowed.
+  #
+  # source://stripe//lib/stripe/api_resource.rb#12
   def save_with_parent; end
 
   # A flag that can be set a behavior that will cause this resource to be
@@ -241,13 +381,17 @@ class Stripe::APIResource < ::Stripe::StripeObject
   # usually not desirable because resources are updated individually on their
   # own endpoints, but there are certain cases, replacing a customer's source
   # for example, where this is allowed.
+  #
+  # source://stripe//lib/stripe/api_resource.rb#12
   def save_with_parent=(_arg0); end
 
   protected
 
+  # source://stripe//lib/stripe/api_resource.rb#104
   def request_stream(method:, path:, params:, opts: T.unsafe(nil), &read_body_chunk_block); end
 
   class << self
+    # source://stripe//lib/stripe/api_resource.rb#14
     def class_name; end
 
     # Adds a custom method to a resource class. This is used to add support for
@@ -262,9 +406,14 @@ class Stripe::APIResource < ::Stripe::StripeObject
     #     custom_method :capture, http_verb: post
     # adds a `capture` class method to the resource class that, when called,
     # will send a POST request to `/v1/<object_name>/capture`.
+    #
+    # source://stripe//lib/stripe/api_resource.rb#65
     def custom_method(name, http_verb:, http_path: T.unsafe(nil)); end
 
+    # source://stripe//lib/stripe/api_resource.rb#18
     def resource_url; end
+
+    # source://stripe//lib/stripe/api_resource.rb#86
     def retrieve(id, opts = T.unsafe(nil)); end
 
     # A metaprogramming call that specifies that a field of a resource can be
@@ -273,6 +422,8 @@ class Stripe::APIResource < ::Stripe::StripeObject
     # API on a create or update. Doing so is not the default behavior because
     # API resources should normally be persisted on their own RESTful
     # endpoints.
+    #
+    # source://stripe//lib/stripe/api_resource.rb#35
     def save_nested_resource(name); end
   end
 end
@@ -283,10 +434,15 @@ end
 #
 #  class MyAPIResource < APIResource
 #    class TestHelpers < APIResourceTestHelpers
+#
+# source://stripe//lib/stripe/api_resource_test_helpers.rb#10
 class Stripe::APIResourceTestHelpers
   # @return [APIResourceTestHelpers] a new instance of APIResourceTestHelpers
+  #
+  # source://stripe//lib/stripe/api_resource_test_helpers.rb#11
   def initialize(resource); end
 
+  # source://stripe//lib/stripe/api_resource_test_helpers.rb#36
   def resource_url; end
 
   class << self
@@ -302,12 +458,16 @@ class Stripe::APIResourceTestHelpers
     #     custom_method :capture, http_verb: post
     # adds a `capture` class method to the resource class that, when called,
     # will send a POST request to `/v1/<object_name>/capture`.
+    #
+    # source://stripe//lib/stripe/api_resource_test_helpers.rb#27
     def custom_method(name, http_verb:, http_path: T.unsafe(nil)); end
 
+    # source://stripe//lib/stripe/api_resource_test_helpers.rb#31
     def resource_url; end
   end
 end
 
+# source://stripe//lib/stripe/resources/account.rb#5
 class Stripe::Account < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -318,15 +478,27 @@ class Stripe::Account < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
   extend ::Stripe::APIOperations::NestedResource
 
+  # source://stripe//lib/stripe/resources/account.rb#130
   def deauthorize(client_id = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/api_resource.rb#36
   def external_account=(value); end
+
+  # source://stripe//lib/stripe/resources/account.rb#119
   def legal_entity; end
 
   # @raise [NoMethodError]
+  #
+  # source://stripe//lib/stripe/resources/account.rb#123
   def legal_entity=(_legal_entity); end
 
+  # source://stripe//lib/stripe/resources/account.rb#63
   def persons(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/account.rb#23
   def reject(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/account.rb#39
   def resource_url; end
 
   # Somewhat unfortunately, we attempt to do a special encoding trick when
@@ -352,67 +524,124 @@ class Stripe::Account < ::Stripe::APIResource
   #
   # We're trying to get this overturned on the server side, but for now,
   # patch in a special allowance.
+  #
+  # source://stripe//lib/stripe/resources/account.rb#95
   def serialize_params(options = T.unsafe(nil)); end
 
+  # source://stripe//lib/stripe/resources/account.rb#99
   def serialize_params_account(_obj, update_hash, options = T.unsafe(nil)); end
 
   private
 
+  # source://stripe//lib/stripe/resources/account.rb#139
   def serialize_additional_owners(legal_entity, additional_owners); end
 
   class << self
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#22
     def capabilitys_url(id, nested_id = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#32
     def create_external_account(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#32
     def create_login_link(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#32
     def create_person(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#53
     def delete_external_account(id, nested_id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#53
     def delete_person(id, nested_id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#22
     def external_accounts_url(id, nested_id = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#61
     def list_capabilities(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#61
     def list_external_accounts(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#61
     def list_persons(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#22
     def login_links_url(id, nested_id = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#22
     def persons_url(id, nested_id = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/account.rb#115
     def protected_fields; end
+
+    # source://stripe//lib/stripe/util.rb#76
     def reject(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/account.rb#48
     def retrieve(id = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#39
     def retrieve_capability(id, nested_id, opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#39
     def retrieve_external_account(id, nested_id, opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#39
     def retrieve_person(id, nested_id, opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#46
     def update_capability(id, nested_id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#46
     def update_external_account(id, nested_id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#46
     def update_person(id, nested_id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/account.rb#13
 Stripe::Account::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/account_link.rb#5
 class Stripe::AccountLink < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Create
 end
 
+# source://stripe//lib/stripe/resources/account_link.rb#8
 Stripe::AccountLink::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/alipay_account.rb#4
 class Stripe::AlipayAccount < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   include ::Stripe::APIOperations::Delete
   extend ::Stripe::APIOperations::Save::ClassMethods
   extend ::Stripe::APIOperations::Delete::ClassMethods
 
+  # source://stripe//lib/stripe/resources/alipay_account.rb#10
   def resource_url; end
 
   class << self
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/alipay_account.rb#27
     def retrieve(_id, _opts = T.unsafe(nil)); end
 
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/alipay_account.rb#20
     def update(_id, _params = T.unsafe(nil), _opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/alipay_account.rb#8
 Stripe::AlipayAccount::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
 # Domains registered for Apple Pay on the Web
+#
+# source://stripe//lib/stripe/resources/apple_pay_domain.rb#6
 class Stripe::ApplePayDomain < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   extend ::Stripe::APIOperations::Create
@@ -420,58 +649,86 @@ class Stripe::ApplePayDomain < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
 
   class << self
+    # source://stripe//lib/stripe/resources/apple_pay_domain.rb#13
     def resource_url; end
   end
 end
 
+# source://stripe//lib/stripe/resources/apple_pay_domain.rb#11
 Stripe::ApplePayDomain::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/application_fee.rb#5
 class Stripe::ApplicationFee < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::NestedResource
 
   class << self
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#32
     def create_refund(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#61
     def list_refunds(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#22
     def refunds_url(id, nested_id = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#39
     def retrieve_refund(id, nested_id, opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#46
     def update_refund(id, nested_id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/application_fee.rb#9
 Stripe::ApplicationFee::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/application_fee_refund.rb#5
 class Stripe::ApplicationFeeRefund < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/application_fee_refund.rb#11
   def resource_url; end
 
   class << self
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/application_fee_refund.rb#24
     def retrieve(_id, _api_key = T.unsafe(nil)); end
 
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/application_fee_refund.rb#16
     def update(_id, _params = T.unsafe(nil), _opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/application_fee_refund.rb#9
 Stripe::ApplicationFeeRefund::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
 # AuthenticationError is raised when invalid credentials are used to connect
 # to Stripe's servers.
+#
+# source://stripe//lib/stripe/errors.rb#57
 class Stripe::AuthenticationError < ::Stripe::StripeError; end
 
+# source://stripe//lib/stripe/resources/balance.rb#5
 class Stripe::Balance < ::Stripe::SingletonAPIResource; end
+
+# source://stripe//lib/stripe/resources/balance.rb#6
 Stripe::Balance::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/balance_transaction.rb#5
 class Stripe::BalanceTransaction < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
 end
 
+# source://stripe//lib/stripe/resources/balance_transaction.rb#8
 Stripe::BalanceTransaction::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/bank_account.rb#5
 class Stripe::BankAccount < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -479,21 +736,32 @@ class Stripe::BankAccount < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/bank_account.rb#17
   def resource_url; end
+
+  # source://stripe//lib/stripe/resources/bank_account.rb#12
   def verify(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/bank_account.rb#34
     def retrieve(_id, _opts = T.unsafe(nil)); end
 
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/bank_account.rb#25
     def update(_id, _params = T.unsafe(nil), _opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/bank_account.rb#10
 Stripe::BankAccount::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/billing_portal/configuration.rb#5
 module Stripe::BillingPortal; end
 
+# source://stripe//lib/stripe/resources/billing_portal/configuration.rb#6
 class Stripe::BillingPortal::Configuration < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
@@ -501,58 +769,78 @@ class Stripe::BillingPortal::Configuration < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 end
 
+# source://stripe//lib/stripe/resources/billing_portal/configuration.rb#11
 Stripe::BillingPortal::Configuration::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/billing_portal/session.rb#6
 class Stripe::BillingPortal::Session < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Create
 end
 
+# source://stripe//lib/stripe/resources/billing_portal/session.rb#9
 Stripe::BillingPortal::Session::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
 # Directly creating or retrieving BitcoinReceivers is deprecated. Please use
 # the Sources API instead: https://stripe.com/docs/sources/bitcoin
+#
+# source://stripe//lib/stripe/resources/bitcoin_receiver.rb#7
 class Stripe::BitcoinReceiver < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
 
+  # source://stripe//lib/stripe/resources/bitcoin_receiver.rb#16
   def resource_url; end
 
   class << self
+    # source://stripe//lib/stripe/resources/bitcoin_receiver.rb#12
     def resource_url; end
   end
 end
 
+# source://stripe//lib/stripe/resources/bitcoin_receiver.rb#10
 Stripe::BitcoinReceiver::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
 # Directly retrieving BitcoinTransactions is deprecated. Please use
 # the Sources API instead: https://stripe.com/docs/sources/bitcoin
+#
+# source://stripe//lib/stripe/resources/bitcoin_transaction.rb#7
 class Stripe::BitcoinTransaction < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
 
   class << self
+    # source://stripe//lib/stripe/resources/bitcoin_transaction.rb#12
     def resource_url; end
   end
 end
 
+# source://stripe//lib/stripe/resources/bitcoin_transaction.rb#10
 Stripe::BitcoinTransaction::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/capability.rb#5
 class Stripe::Capability < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/capability.rb#11
   def resource_url; end
 
   class << self
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/capability.rb#20
     def retrieve(_id, _opts = T.unsafe(nil)); end
 
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/capability.rb#27
     def update(_id, _params = T.unsafe(nil), _opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/capability.rb#9
 Stripe::Capability::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/card.rb#5
 class Stripe::Card < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -560,40 +848,58 @@ class Stripe::Card < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/card.rb#12
   def resource_url; end
 
   class << self
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/card.rb#30
     def retrieve(_id, _opts = T.unsafe(nil)); end
 
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/card.rb#22
     def update(_id, _params = T.unsafe(nil), _opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/card.rb#10
 Stripe::Card::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
 # CardError is raised when a user enters a card that can't be charged for
 # some reason.
+#
+# source://stripe//lib/stripe/errors.rb#75
 class Stripe::CardError < ::Stripe::StripeError
   # @return [CardError] a new instance of CardError
+  #
+  # source://stripe//lib/stripe/errors.rb#78
   def initialize(message, param, code: T.unsafe(nil), http_status: T.unsafe(nil), http_body: T.unsafe(nil), json_body: T.unsafe(nil), http_headers: T.unsafe(nil)); end
 
   # Returns the value of attribute param.
+  #
+  # source://stripe//lib/stripe/errors.rb#76
   def param; end
 end
 
+# source://stripe//lib/stripe/resources/cash_balance.rb#5
 class Stripe::CashBalance < ::Stripe::APIResource
+  # source://stripe//lib/stripe/resources/cash_balance.rb#8
   def resource_url; end
 
   class << self
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/cash_balance.rb#16
     def retrieve(_id, _opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/cash_balance.rb#6
 Stripe::CashBalance::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/charge.rb#5
 class Stripe::Charge < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
@@ -601,32 +907,49 @@ class Stripe::Charge < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Search
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/charge.rb#15
   def capture(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def capture(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/charge.rb#24
     def search(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/charge.rb#28
     def search_auto_paging_each(params = T.unsafe(nil), opts = T.unsafe(nil), &blk); end
   end
 end
 
+# source://stripe//lib/stripe/resources/charge.rb#11
 Stripe::Charge::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/checkout/session.rb#5
 module Stripe::Checkout; end
 
+# source://stripe//lib/stripe/resources/checkout/session.rb#6
 class Stripe::Checkout::Session < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::NestedResource
 
+  # source://stripe//lib/stripe/resources/checkout/session.rb#17
   def expire(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def expire(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#22
     def line_items_url(id, nested_id = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#61
     def list_line_items(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/checkout/session.rb#11
 Stripe::Checkout::Session::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
 # Manages connections across multiple hosts which is useful because the
@@ -637,15 +960,23 @@ Stripe::Checkout::Session::OBJECT_NAME = T.let(T.unsafe(nil), String)
 #
 # Note that this class in itself is *not* thread safe. We expect it to be
 # instantiated once per thread.
+#
+# source://stripe//lib/stripe/connection_manager.rb#12
 class Stripe::ConnectionManager
   # @return [ConnectionManager] a new instance of ConnectionManager
+  #
+  # source://stripe//lib/stripe/connection_manager.rb#20
   def initialize(config = T.unsafe(nil)); end
 
   # Finishes any active connections by closing their TCP connection and
   # clears them from internal tracking.
+  #
+  # source://stripe//lib/stripe/connection_manager.rb#37
   def clear; end
 
   # Returns the value of attribute config.
+  #
+  # source://stripe//lib/stripe/connection_manager.rb#18
   def config; end
 
   # Gets a connection for a given URI. This is for internal use only as it's
@@ -653,40 +984,54 @@ class Stripe::ConnectionManager
   # and may do it again).
   #
   # `uri` is expected to be a string.
+  #
+  # source://stripe//lib/stripe/connection_manager.rb#51
   def connection_for(uri); end
 
   # Executes an HTTP request to the given URI with the given method. Also
   # allows a request body, headers, and query string to be specified.
   #
   # @raise [ArgumentError]
+  #
+  # source://stripe//lib/stripe/connection_manager.rb#69
   def execute_request(method, uri, body: T.unsafe(nil), headers: T.unsafe(nil), query: T.unsafe(nil), &block); end
 
   # Timestamp (in seconds procured from the system's monotonic clock)
   # indicating when the connection manager last made a request. This is used
   # by `StripeClient` to determine whether a connection manager should be
   # garbage collected or not.
+  #
+  # source://stripe//lib/stripe/connection_manager.rb#17
   def last_used; end
 
   private
 
   # `uri` should be a parsed `URI` object.
+  #
+  # source://stripe//lib/stripe/connection_manager.rb#141
   def create_connection(uri); end
 
   # `Net::HTTP` somewhat awkwardly requires each component of a proxy URI
   # (host, port, etc.) rather than the URI itself. This method simply parses
   # out those pieces to make passing them into a new connection a little less
   # ugly.
+  #
+  # source://stripe//lib/stripe/connection_manager.rb#181
   def proxy_parts; end
 
+  # source://stripe//lib/stripe/connection_manager.rb#190
   def warn_ssl_verify_none; end
 end
 
+# source://stripe//lib/stripe/resources/country_spec.rb#5
 class Stripe::CountrySpec < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
 end
 
+# source://stripe//lib/stripe/resources/country_spec.rb#8
 Stripe::CountrySpec::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/coupon.rb#5
 class Stripe::Coupon < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -696,27 +1041,41 @@ class Stripe::Coupon < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 end
 
+# source://stripe//lib/stripe/resources/coupon.rb#11
 Stripe::Coupon::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/credit_note.rb#5
 class Stripe::CreditNote < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/credit_note.rb#14
   def void_credit_note(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/resources/credit_note.rb#28
     def list_preview_line_items(params, opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/credit_note.rb#23
     def preview(params, opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def void_credit_note(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/credit_note.rb#10
 Stripe::CreditNote::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/credit_note_line_item.rb#5
 class Stripe::CreditNoteLineItem < ::Stripe::StripeObject; end
+
+# source://stripe//lib/stripe/resources/credit_note_line_item.rb#6
 Stripe::CreditNoteLineItem::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/customer.rb#5
 class Stripe::Customer < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -727,6 +1086,7 @@ class Stripe::Customer < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
   extend ::Stripe::APIOperations::NestedResource
 
+  # source://stripe//lib/stripe/resources/customer.rb#26
   def create_funding_instructions(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   # Deletes a discount associated with the customer.
@@ -734,166 +1094,277 @@ class Stripe::Customer < ::Stripe::APIResource
   # Returns the deleted discount. The customer object is not updated,
   # so you must call `refresh` on it to get a new version with the
   # discount removed.
+  #
+  # source://stripe//lib/stripe/resources/customer.rb#61
   def delete_discount; end
 
+  # source://stripe//lib/stripe/resources/customer.rb#35
   def list_payment_methods(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/api_resource.rb#36
   def source=(value); end
 
   class << self
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#22
     def balance_transactions_url(id, nested_id = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#22
     def cash_balances_url(id, nested_id = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#32
     def create_balance_transaction(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def create_funding_instructions(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#32
     def create_source(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#32
     def create_tax_id(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def delete_discount(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#53
     def delete_source(id, nested_id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#53
     def delete_tax_id(id, nested_id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#53
     def detach_source(id, nested_id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#61
     def list_balance_transactions(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def list_payment_methods(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#61
     def list_sources(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#61
     def list_tax_ids(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#39
     def retrieve_balance_transaction(id, nested_id, opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#39
     def retrieve_cash_balance(id, nested_id, opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#39
     def retrieve_source(id, nested_id, opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#39
     def retrieve_tax_id(id, nested_id, opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/customer.rb#66
     def search(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/customer.rb#70
     def search_auto_paging_each(params = T.unsafe(nil), opts = T.unsafe(nil), &blk); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#22
     def sources_url(id, nested_id = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#22
     def tax_ids_url(id, nested_id = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#46
     def update_balance_transaction(id, nested_id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#46
     def update_cash_balance(id, nested_id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#46
     def update_source(id, nested_id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/customer.rb#13
 Stripe::Customer::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/customer_balance_transaction.rb#5
 class Stripe::CustomerBalanceTransaction < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/customer_balance_transaction.rb#11
   def resource_url; end
 
   class << self
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/customer_balance_transaction.rb#19
     def retrieve(_id, _opts = T.unsafe(nil)); end
 
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/customer_balance_transaction.rb#25
     def update(_id, _params = T.unsafe(nil), _opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/customer_balance_transaction.rb#9
 Stripe::CustomerBalanceTransaction::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe.rb#54
 Stripe::DEFAULT_CA_BUNDLE_PATH = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/discount.rb#5
 class Stripe::Discount < ::Stripe::StripeObject; end
+
+# source://stripe//lib/stripe/resources/discount.rb#6
 Stripe::Discount::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/dispute.rb#5
 class Stripe::Dispute < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/dispute.rb#13
   def close(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def close(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/dispute.rb#9
 Stripe::Dispute::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/ephemeral_key.rb#5
 class Stripe::EphemeralKey < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::Delete::ClassMethods
 
   class << self
+    # source://stripe//lib/stripe/resources/ephemeral_key.rb#11
     def create(params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/ephemeral_key.rb#9
 Stripe::EphemeralKey::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
 # Represents an error object as returned by the API.
 #
 # @see https://stripe.com/docs/api/errors
+#
+# source://stripe//lib/stripe/error_object.rb#12
 class Stripe::ErrorObject < ::Stripe::StripeObject
   # For card errors, the ID of the failed charge.
+  #
+  # source://stripe//lib/stripe/error_object.rb#15
   def charge; end
 
   # For some errors that could be handled programmatically, a short string
   # indicating the error code reported.
+  #
+  # source://stripe//lib/stripe/error_object.rb#21
   def code; end
 
   # For card errors resulting from a card issuer decline, a short string
   # indicating the card issuer's reason for the decline if they provide one.
+  #
+  # source://stripe//lib/stripe/error_object.rb#27
   def decline_code; end
 
   # A URL to more information about the error code reported.
+  #
+  # source://stripe//lib/stripe/error_object.rb#32
   def doc_url; end
 
   # A human-readable message providing more details about the error. For card
   # errors, these messages can be shown to your users.
+  #
+  # source://stripe//lib/stripe/error_object.rb#38
   def message; end
 
   # If the error is parameter-specific, the parameter related to the error.
   # For example, you can use this to display a message near the correct form
   # field.
+  #
+  # source://stripe//lib/stripe/error_object.rb#45
   def param; end
 
   # The PaymentIntent object for errors returned on a request involving a
   # PaymentIntent.
+  #
+  # source://stripe//lib/stripe/error_object.rb#51
   def payment_intent; end
 
   # The PaymentMethod object for errors returned on a request involving a
   # PaymentMethod.
+  #
+  # source://stripe//lib/stripe/error_object.rb#57
   def payment_method; end
 
   # The SetupIntent object for errors returned on a request involving a
   # SetupIntent.
+  #
+  # source://stripe//lib/stripe/error_object.rb#63
   def setup_intent; end
 
   # The source object for errors returned on a request involving a source.
+  #
+  # source://stripe//lib/stripe/error_object.rb#68
   def source; end
 
   # The type of error returned. One of `api_error`, `card_error`,
   # `idempotency_error`, or `invalid_request_error`.
+  #
+  # source://stripe//lib/stripe/error_object.rb#74
   def type; end
 end
 
+# source://stripe//lib/stripe/resources/event.rb#5
 class Stripe::Event < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
 end
 
+# source://stripe//lib/stripe/resources/event.rb#8
 Stripe::Event::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/exchange_rate.rb#5
 class Stripe::ExchangeRate < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
 end
 
+# source://stripe//lib/stripe/resources/exchange_rate.rb#8
 Stripe::ExchangeRate::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/file.rb#5
 class Stripe::File < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
 
   class << self
+    # source://stripe//lib/stripe/resources/file.rb#21
     def create(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/file.rb#17
     def resource_url; end
   end
 end
 
+# source://stripe//lib/stripe/resources/file.rb#9
 Stripe::File::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
 # This resource can have two different object names. In latter API
 # versions, only `file` is used, but since stripe-ruby may be used with
 # any API version, we need to support deserializing the older
 # `file_upload` object into the same class.
+#
+# source://stripe//lib/stripe/resources/file.rb#15
 Stripe::File::OBJECT_NAME_ALT = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/file_link.rb#5
 class Stripe::FileLink < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
@@ -901,93 +1372,147 @@ class Stripe::FileLink < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 end
 
+# source://stripe//lib/stripe/resources/file_link.rb#10
 Stripe::FileLink::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/financial_connections/account.rb#5
 module Stripe::FinancialConnections; end
 
+# source://stripe//lib/stripe/resources/financial_connections/account.rb#6
 class Stripe::FinancialConnections::Account < ::Stripe::APIResource
+  # source://stripe//lib/stripe/resources/financial_connections/account.rb#12
   def disconnect(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/financial_connections/account.rb#21
   def refresh(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def disconnect(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def refresh(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/financial_connections/account.rb#7
 Stripe::FinancialConnections::Account::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/financial_connections/account_owner.rb#6
 class Stripe::FinancialConnections::AccountOwner < ::Stripe::StripeObject; end
+
+# source://stripe//lib/stripe/resources/financial_connections/account_owner.rb#7
 Stripe::FinancialConnections::AccountOwner::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/financial_connections/account_ownership.rb#6
 class Stripe::FinancialConnections::AccountOwnership < ::Stripe::StripeObject; end
+
+# source://stripe//lib/stripe/resources/financial_connections/account_ownership.rb#7
 Stripe::FinancialConnections::AccountOwnership::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/financial_connections/session.rb#6
 class Stripe::FinancialConnections::Session < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Create
 end
 
+# source://stripe//lib/stripe/resources/financial_connections/session.rb#9
 Stripe::FinancialConnections::Session::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/funding_instructions.rb#5
 class Stripe::FundingInstructions < ::Stripe::APIResource
+  # source://stripe//lib/stripe/resources/funding_instructions.rb#8
   def resource_url; end
 end
 
+# source://stripe//lib/stripe/resources/funding_instructions.rb#6
 Stripe::FundingInstructions::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
 # IdempotencyError is raised in cases where an idempotency key was used
 # improperly.
+#
+# source://stripe//lib/stripe/errors.rb#89
 class Stripe::IdempotencyError < ::Stripe::StripeError; end
 
+# source://stripe//lib/stripe/resources/identity/verification_report.rb#5
 module Stripe::Identity; end
 
+# source://stripe//lib/stripe/resources/identity/verification_report.rb#6
 class Stripe::Identity::VerificationReport < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
 end
 
+# source://stripe//lib/stripe/resources/identity/verification_report.rb#9
 Stripe::Identity::VerificationReport::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/identity/verification_session.rb#6
 class Stripe::Identity::VerificationSession < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/identity/verification_session.rb#16
   def cancel(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/identity/verification_session.rb#25
   def redact(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def cancel(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def redact(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/identity/verification_session.rb#11
 Stripe::Identity::VerificationSession::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/instrumentation.rb#4
 class Stripe::Instrumentation
   class << self
     # Returns true if there are a non-zero number of subscribers on the given
     # topic, and false otherwise.
     #
     # @return [Boolean]
+    #
+    # source://stripe//lib/stripe/instrumentation.rb#62
     def any_subscribers?(topic); end
 
+    # source://stripe//lib/stripe/instrumentation.rb#75
     def notify(topic, event); end
+
+    # source://stripe//lib/stripe/instrumentation.rb#66
     def subscribe(topic, name = T.unsafe(nil), &block); end
+
+    # source://stripe//lib/stripe/instrumentation.rb#71
     def unsubscribe(topic, name); end
 
     private
 
+    # source://stripe//lib/stripe/instrumentation.rb#79
     def subscribers; end
   end
 end
 
 # Event emitted on `request_begin` callback.
+#
+# source://stripe//lib/stripe/instrumentation.rb#6
 class Stripe::Instrumentation::RequestBeginEvent
   # @return [RequestBeginEvent] a new instance of RequestBeginEvent
+  #
+  # source://stripe//lib/stripe/instrumentation.rb#20
   def initialize(method:, path:, user_data:); end
 
   # Returns the value of attribute method.
+  #
+  # source://stripe//lib/stripe/instrumentation.rb#7
   def method; end
 
   # Returns the value of attribute path.
+  #
+  # source://stripe//lib/stripe/instrumentation.rb#8
   def path; end
 
   # Arbitrary user-provided data in the form of a Ruby hash that's passed
@@ -998,58 +1523,89 @@ class Stripe::Instrumentation::RequestBeginEvent
   # Note that all subscribers of `request_begin` share the same object, so
   # they must be careful to set unique keys so as to not conflict with data
   # set by other subscribers.
+  #
+  # source://stripe//lib/stripe/instrumentation.rb#18
   def user_data; end
 end
 
 # Event emitted on `request_end` callback.
+#
+# source://stripe//lib/stripe/instrumentation.rb#29
 class Stripe::Instrumentation::RequestEndEvent
   # @return [RequestEndEvent] a new instance of RequestEndEvent
+  #
+  # source://stripe//lib/stripe/instrumentation.rb#43
   def initialize(duration:, http_status:, method:, num_retries:, path:, request_id:, user_data: T.unsafe(nil)); end
 
   # Returns the value of attribute duration.
+  #
+  # source://stripe//lib/stripe/instrumentation.rb#30
   def duration; end
 
   # Returns the value of attribute http_status.
+  #
+  # source://stripe//lib/stripe/instrumentation.rb#31
   def http_status; end
 
   # Returns the value of attribute method.
+  #
+  # source://stripe//lib/stripe/instrumentation.rb#32
   def method; end
 
   # Returns the value of attribute num_retries.
+  #
+  # source://stripe//lib/stripe/instrumentation.rb#33
   def num_retries; end
 
   # Returns the value of attribute path.
+  #
+  # source://stripe//lib/stripe/instrumentation.rb#34
   def path; end
 
   # Returns the value of attribute request_id.
+  #
+  # source://stripe//lib/stripe/instrumentation.rb#35
   def request_id; end
 
   # Arbitrary user-provided data in the form of a Ruby hash that's passed
   # from subscribers on `request_begin` to subscribers on `request_end`.
   # `request_begin` subscribers can set keys which will then be available
   # in `request_end`.
+  #
+  # source://stripe//lib/stripe/instrumentation.rb#41
   def user_data; end
 end
 
 # This class was renamed for consistency. This alias is here for backwards
 # compatibility.
+#
+# source://stripe//lib/stripe/instrumentation.rb#58
 Stripe::Instrumentation::RequestEvent = Stripe::Instrumentation::RequestEndEvent
 
 # InvalidRequestError is raised when a request is initiated with invalid
 # parameters.
+#
+# source://stripe//lib/stripe/errors.rb#94
 class Stripe::InvalidRequestError < ::Stripe::StripeError
   # @return [InvalidRequestError] a new instance of InvalidRequestError
+  #
+  # source://stripe//lib/stripe/errors.rb#97
   def initialize(message, param, http_status: T.unsafe(nil), http_body: T.unsafe(nil), json_body: T.unsafe(nil), http_headers: T.unsafe(nil), code: T.unsafe(nil)); end
 
   # Returns the value of attribute param.
+  #
+  # source://stripe//lib/stripe/errors.rb#95
   def param; end
 
   # Sets the attribute param
   #
   # @param value the value to set the attribute param to.
+  #
+  # source://stripe//lib/stripe/errors.rb#95
   def param=(_arg0); end
 end
 
+# source://stripe//lib/stripe/resources/invoice.rb#5
 class Stripe::Invoice < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -1059,27 +1615,55 @@ class Stripe::Invoice < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Search
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/invoice.rb#20
   def finalize_invoice(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/invoice.rb#29
   def mark_uncollectible(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/invoice.rb#38
   def pay(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/invoice.rb#47
   def send_invoice(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/invoice.rb#56
   def void_invoice(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def finalize_invoice(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/invoice.rb#70
     def list_upcoming_line_items(params, opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def mark_uncollectible(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def pay(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/invoice.rb#75
     def search(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/invoice.rb#79
     def search_auto_paging_each(params = T.unsafe(nil), opts = T.unsafe(nil), &blk); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def send_invoice(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/invoice.rb#65
     def upcoming(params, opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def void_invoice(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/invoice.rb#12
 Stripe::Invoice::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/invoice_item.rb#5
 class Stripe::InvoiceItem < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -1089,44 +1673,68 @@ class Stripe::InvoiceItem < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 end
 
+# source://stripe//lib/stripe/resources/invoice_item.rb#11
 Stripe::InvoiceItem::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/invoice_line_item.rb#5
 class Stripe::InvoiceLineItem < ::Stripe::StripeObject; end
+
+# source://stripe//lib/stripe/resources/invoice_line_item.rb#6
 Stripe::InvoiceLineItem::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/issuing/authorization.rb#5
 module Stripe::Issuing; end
 
+# source://stripe//lib/stripe/resources/issuing/authorization.rb#6
 class Stripe::Issuing::Authorization < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/issuing/authorization.rb#15
   def approve(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/issuing/authorization.rb#24
   def decline(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def approve(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def decline(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/issuing/authorization.rb#10
 Stripe::Issuing::Authorization::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/issuing/card.rb#6
 class Stripe::Issuing::Card < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/issuing/card.rb#15
   def details(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def details(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/issuing/card.rb#11
 Stripe::Issuing::Card::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/issuing/card_details.rb#6
 class Stripe::Issuing::CardDetails < ::Stripe::StripeObject; end
+
+# source://stripe//lib/stripe/resources/issuing/card_details.rb#7
 Stripe::Issuing::CardDetails::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/issuing/cardholder.rb#6
 class Stripe::Issuing::Cardholder < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
@@ -1134,39 +1742,56 @@ class Stripe::Issuing::Cardholder < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 end
 
+# source://stripe//lib/stripe/resources/issuing/cardholder.rb#11
 Stripe::Issuing::Cardholder::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/issuing/dispute.rb#6
 class Stripe::Issuing::Dispute < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/issuing/dispute.rb#15
   def submit(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def submit(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/issuing/dispute.rb#11
 Stripe::Issuing::Dispute::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/issuing/transaction.rb#6
 class Stripe::Issuing::Transaction < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 end
 
+# source://stripe//lib/stripe/resources/issuing/transaction.rb#10
 Stripe::Issuing::Transaction::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
 # map to the same values as the standard library's logger
+#
+# source://stripe//lib/stripe.rb#57
 Stripe::LEVEL_DEBUG = T.let(T.unsafe(nil), Integer)
 
+# source://stripe//lib/stripe.rb#58
 Stripe::LEVEL_ERROR = T.let(T.unsafe(nil), Integer)
+
+# source://stripe//lib/stripe.rb#59
 Stripe::LEVEL_INFO = T.let(T.unsafe(nil), Integer)
+
+# source://stripe//lib/stripe/resources/line_item.rb#5
 class Stripe::LineItem < ::Stripe::APIResource; end
+
+# source://stripe//lib/stripe/resources/line_item.rb#6
 Stripe::LineItem::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/list_object.rb#4
 class Stripe::ListObject < ::Stripe::StripeObject
   include ::Stripe::APIOperations::List
   include ::Stripe::APIOperations::Request
@@ -1174,8 +1799,11 @@ class Stripe::ListObject < ::Stripe::StripeObject
   extend ::Stripe::APIOperations::Request::ClassMethods
 
   # @return [ListObject] a new instance of ListObject
+  #
+  # source://stripe//lib/stripe/list_object.rb#24
   def initialize(*args); end
 
+  # source://stripe//lib/stripe/list_object.rb#29
   def [](key); end
 
   # Iterates through each resource in all pages, making additional fetches to
@@ -1194,6 +1822,8 @@ class Stripe::ListObject < ::Stripe::StripeObject
   # Note that this method will make as many API calls as necessary to fetch
   # all resources. For more granular control, please see +each+ and
   # +next_page+.
+  #
+  # source://stripe//lib/stripe/list_object.rb#67
   def auto_paging_each(&blk); end
 
   # Iterates through each resource in the page represented by the current
@@ -1201,61 +1831,89 @@ class Stripe::ListObject < ::Stripe::StripeObject
   #
   # Note that this method makes no effort to fetch a new page when it gets to
   # the end of the current page's resources. See also +auto_paging_each+.
+  #
+  # source://stripe//lib/stripe/list_object.rb#47
   def each(&blk); end
 
   # Returns true if the page object contains no elements.
   #
   # @return [Boolean]
+  #
+  # source://stripe//lib/stripe/list_object.rb#89
   def empty?; end
 
   # This accessor allows a `ListObject` to inherit various filters that were
   # given to a predecessor. This allows for things like consistent limits,
   # expansions, and predicates as a user pages through resources.
+  #
+  # source://stripe//lib/stripe/list_object.rb#15
   def filters; end
 
   # This accessor allows a `ListObject` to inherit various filters that were
   # given to a predecessor. This allows for things like consistent limits,
   # expansions, and predicates as a user pages through resources.
+  #
+  # source://stripe//lib/stripe/list_object.rb#15
   def filters=(_arg0); end
 
   # Fetches the next page in the resource list (if there is one).
   #
   # This method will try to respect the limit of the current page. If none
   # was given, the default limit will be fetched again.
+  #
+  # source://stripe//lib/stripe/list_object.rb#104
   def next_page(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   # Fetches the previous page in the resource list (if there is one).
   #
   # This method will try to respect the limit of the current page. If none
   # was given, the default limit will be fetched again.
+  #
+  # source://stripe//lib/stripe/list_object.rb#118
   def previous_page(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
+  # source://stripe//lib/stripe/list_object.rb#128
   def resource_url; end
+
+  # source://stripe//lib/stripe/list_object.rb#93
   def retrieve(id, opts = T.unsafe(nil)); end
 
   # Iterates through each resource in the page represented by the current
   # `ListObject` in reverse.
+  #
+  # source://stripe//lib/stripe/list_object.rb#135
   def reverse_each(&blk); end
 
   class << self
     # An empty list object. This is returned from +next+ when we know that
     # there isn't a next page in order to replicate the behavior of the API
     # when it attempts to return a page beyond the last.
+    #
+    # source://stripe//lib/stripe/list_object.rb#20
     def empty_list(opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/list_object.rb#10
 Stripe::ListObject::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/login_link.rb#5
 class Stripe::LoginLink < ::Stripe::APIResource
   class << self
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/login_link.rb#8
     def retrieve(_id, _opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/login_link.rb#6
 Stripe::LoginLink::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/mandate.rb#5
 class Stripe::Mandate < ::Stripe::APIResource; end
+
+# source://stripe//lib/stripe/resources/mandate.rb#6
 Stripe::Mandate::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
 # Encodes parameters into a `multipart/form-data` payload as described by RFC
@@ -1269,23 +1927,35 @@ Stripe::Mandate::OBJECT_NAME = T.let(T.unsafe(nil), String)
 # the encoded result and `#content_type` to get the value that should be
 # placed in the `Content-Type` header of a subsequent request (which includes
 # a boundary value).
+#
+# source://stripe//lib/stripe/multipart_encoder.rb#18
 class Stripe::MultipartEncoder
   # Initializes a new multipart encoder.
   #
   # @return [MultipartEncoder] a new instance of MultipartEncoder
+  #
+  # source://stripe//lib/stripe/multipart_encoder.rb#37
   def initialize; end
 
   # Gets the encoded body. `#close` must be called first.
+  #
+  # source://stripe//lib/stripe/multipart_encoder.rb#52
   def body; end
 
   # Gets the object's randomly generated boundary string.
+  #
+  # source://stripe//lib/stripe/multipart_encoder.rb#34
   def boundary; end
 
   # Finalizes the object by writing the final boundary.
+  #
+  # source://stripe//lib/stripe/multipart_encoder.rb#59
   def close; end
 
   # Gets the value including boundary that should be put into a multipart
   # request's `Content-Type`.
+  #
+  # source://stripe//lib/stripe/multipart_encoder.rb#72
   def content_type; end
 
   # Encodes a set of parameters to the body.
@@ -1294,14 +1964,19 @@ class Stripe::MultipartEncoder
   # that complex substructures like hashes and arrays have already been
   # appropriately Stripe-encoded. Pass a complex structure through
   # `Util.flatten_params` first before handing it off to this method.
+  #
+  # source://stripe//lib/stripe/multipart_encoder.rb#82
   def encode(params); end
 
   private
 
   # Escapes double quotes so that the given value can be used in a
   # double-quoted string and replaces any linebreak characters with spaces.
+  #
+  # source://stripe//lib/stripe/multipart_encoder.rb#104
   def escape(str); end
 
+  # source://stripe//lib/stripe/multipart_encoder.rb#108
   def write_field(name, data, filename:); end
 
   class << self
@@ -1310,17 +1985,28 @@ class Stripe::MultipartEncoder
     #
     # Returns an encoded body and the value that should be set in the content
     # type header of a subsequent request.
+    #
+    # source://stripe//lib/stripe/multipart_encoder.rb#26
     def encode(params); end
   end
 end
 
+# source://stripe//lib/stripe/multipart_encoder.rb#19
 Stripe::MultipartEncoder::MULTIPART_FORM_DATA = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/errors.rb#128
 module Stripe::OAuth
   class << self
+    # source://stripe//lib/stripe/oauth.rb#31
     def authorize_url(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/oauth.rb#55
     def deauthorize(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/oauth.rb#17
     def get_client_id(params = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/oauth.rb#45
     def token(params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
@@ -1328,85 +2014,123 @@ end
 # InvalidClientError is raised when the client doesn't belong to you, or
 # the API key mode (live or test) doesn't match the client mode. Or the
 # stripe_user_id doesn't exist or isn't connected to your application.
+#
+# source://stripe//lib/stripe/errors.rb#148
 class Stripe::OAuth::InvalidClientError < ::Stripe::OAuth::OAuthError; end
 
 # InvalidGrantError is raised when a specified code doesn't exist, is
 # expired, has been used, or doesn't belong to you; a refresh token doesn't
 # exist, or doesn't belong to you; or if an API key's mode (live or test)
 # doesn't match the mode of a code or refresh token.
+#
+# source://stripe//lib/stripe/errors.rb#155
 class Stripe::OAuth::InvalidGrantError < ::Stripe::OAuth::OAuthError; end
 
 # InvalidRequestError is raised when a code, refresh token, or grant type
 # parameter is not provided, but was required.
+#
+# source://stripe//lib/stripe/errors.rb#160
 class Stripe::OAuth::InvalidRequestError < ::Stripe::OAuth::OAuthError; end
 
 # InvalidScopeError is raised when an invalid scope parameter is provided.
+#
+# source://stripe//lib/stripe/errors.rb#164
 class Stripe::OAuth::InvalidScopeError < ::Stripe::OAuth::OAuthError; end
 
 # OAuthError is raised when the OAuth API returns an error.
+#
+# source://stripe//lib/stripe/errors.rb#130
 class Stripe::OAuth::OAuthError < ::Stripe::StripeError
   # @return [OAuthError] a new instance of OAuthError
+  #
+  # source://stripe//lib/stripe/errors.rb#131
   def initialize(code, description, http_status: T.unsafe(nil), http_body: T.unsafe(nil), json_body: T.unsafe(nil), http_headers: T.unsafe(nil)); end
 
+  # source://stripe//lib/stripe/errors.rb#138
   def construct_error_object; end
 end
 
+# source://stripe//lib/stripe/oauth.rb#5
 module Stripe::OAuth::OAuthOperations
   extend ::Stripe::APIOperations::Request::ClassMethods
 
   class << self
+    # source://stripe//lib/stripe/oauth.rb#8
     def execute_resource_request(method, url, params, opts); end
   end
 end
 
 # UnsupportedGrantTypeError is raised when an unuspported grant type
 # parameter is specified.
+#
+# source://stripe//lib/stripe/errors.rb#169
 class Stripe::OAuth::UnsupportedGrantTypeError < ::Stripe::OAuth::OAuthError; end
 
 # UnsupportedResponseTypeError is raised when an unsupported response type
 # parameter is specified.
+#
+# source://stripe//lib/stripe/errors.rb#174
 class Stripe::OAuth::UnsupportedResponseTypeError < ::Stripe::OAuth::OAuthError; end
 
 # Represents on OAuth error returned by the OAuth API.
 #
 # @see https://stripe.com/docs/connect/oauth-reference#post-token-errors
+#
+# source://stripe//lib/stripe/error_object.rb#83
 class Stripe::OAuthErrorObject < ::Stripe::StripeObject
   # A unique error code per error type.
+  #
+  # source://stripe//lib/stripe/error_object.rb#84
   def error; end
 
   # A human readable description of the error.
+  #
+  # source://stripe//lib/stripe/error_object.rb#89
   def error_description; end
 end
 
+# source://stripe//lib/stripe/object_types.rb#7
 module Stripe::ObjectTypes
   class << self
+    # source://stripe//lib/stripe/object_types.rb#8
     def object_names_to_classes; end
   end
 end
 
+# source://stripe//lib/stripe/resources/order.rb#5
 class Stripe::Order < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/order.rb#15
   def pay(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/order.rb#24
   def return_order(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def pay(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def return_order(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/order.rb#10
 Stripe::Order::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/order_return.rb#5
 class Stripe::OrderReturn < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
 end
 
+# source://stripe//lib/stripe/resources/order_return.rb#8
 Stripe::OrderReturn::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/payment_intent.rb#5
 class Stripe::PaymentIntent < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
@@ -1414,98 +2138,155 @@ class Stripe::PaymentIntent < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Search
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/payment_intent.rb#20
   def apply_customer_balance(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/payment_intent.rb#29
   def cancel(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/payment_intent.rb#38
   def capture(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/payment_intent.rb#47
   def confirm(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/payment_intent.rb#56
   def increment_authorization(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/payment_intent.rb#65
   def verify_microdeposits(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def apply_customer_balance(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def cancel(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def capture(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def confirm(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def increment_authorization(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/payment_intent.rb#74
     def search(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/payment_intent.rb#78
     def search_auto_paging_each(params = T.unsafe(nil), opts = T.unsafe(nil), &blk); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def verify_microdeposits(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/payment_intent.rb#11
 Stripe::PaymentIntent::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/payment_link.rb#5
 class Stripe::PaymentLink < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/payment_link.rb#14
   def list_line_items(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def list_line_items(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/payment_link.rb#10
 Stripe::PaymentLink::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/payment_method.rb#5
 class Stripe::PaymentMethod < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/payment_method.rb#15
   def attach(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/payment_method.rb#24
   def detach(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def attach(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def detach(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/payment_method.rb#10
 Stripe::PaymentMethod::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/payout.rb#5
 class Stripe::Payout < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/payout.rb#15
   def cancel(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/payout.rb#24
   def reverse(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def cancel(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def reverse(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/payout.rb#10
 Stripe::Payout::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
 # PermissionError is raised in cases where access was attempted on a resource
 # that wasn't allowed.
+#
+# source://stripe//lib/stripe/errors.rb#108
 class Stripe::PermissionError < ::Stripe::StripeError; end
 
+# source://stripe//lib/stripe/resources/person.rb#5
 class Stripe::Person < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/person.rb#11
   def resource_url; end
 
   class << self
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/person.rb#19
     def retrieve(_id, _opts = T.unsafe(nil)); end
 
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/person.rb#25
     def update(_id, _params = T.unsafe(nil), _opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/person.rb#9
 Stripe::Person::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/plan.rb#5
 class Stripe::Plan < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -1515,8 +2296,10 @@ class Stripe::Plan < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 end
 
+# source://stripe//lib/stripe/resources/plan.rb#11
 Stripe::Plan::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/price.rb#5
 class Stripe::Price < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
@@ -1525,13 +2308,18 @@ class Stripe::Price < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 
   class << self
+    # source://stripe//lib/stripe/resources/price.rb#13
     def search(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/price.rb#17
     def search_auto_paging_each(params = T.unsafe(nil), opts = T.unsafe(nil), &blk); end
   end
 end
 
+# source://stripe//lib/stripe/resources/price.rb#11
 Stripe::Price::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/product.rb#5
 class Stripe::Product < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -1542,13 +2330,18 @@ class Stripe::Product < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 
   class << self
+    # source://stripe//lib/stripe/resources/product.rb#14
     def search(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/product.rb#18
     def search_auto_paging_each(params = T.unsafe(nil), opts = T.unsafe(nil), &blk); end
   end
 end
 
+# source://stripe//lib/stripe/resources/product.rb#12
 Stripe::Product::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/promotion_code.rb#5
 class Stripe::PromotionCode < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
@@ -1556,40 +2349,70 @@ class Stripe::PromotionCode < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 end
 
+# source://stripe//lib/stripe/resources/promotion_code.rb#10
 Stripe::PromotionCode::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/quote.rb#5
 class Stripe::Quote < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/quote.rb#18
   def accept(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/quote.rb#27
   def cancel(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/quote.rb#36
   def finalize_quote(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/quote.rb#45
   def list_computed_upfront_line_items(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/quote.rb#54
   def list_line_items(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/quote.rb#63
   def pdf(params = T.unsafe(nil), opts = T.unsafe(nil), &read_body_chunk_block); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def accept(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def cancel(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def finalize_quote(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def list_computed_upfront_line_items(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def list_line_items(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/quote.rb#81
     def pdf(id, params = T.unsafe(nil), opts = T.unsafe(nil), &read_body_chunk_block); end
   end
 end
 
+# source://stripe//lib/stripe/resources/quote.rb#10
 Stripe::Quote::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/radar/early_fraud_warning.rb#5
 module Stripe::Radar; end
 
+# source://stripe//lib/stripe/resources/radar/early_fraud_warning.rb#6
 class Stripe::Radar::EarlyFraudWarning < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
 end
 
+# source://stripe//lib/stripe/resources/radar/early_fraud_warning.rb#9
 Stripe::Radar::EarlyFraudWarning::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/radar/value_list.rb#6
 class Stripe::Radar::ValueList < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -1599,8 +2422,10 @@ class Stripe::Radar::ValueList < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 end
 
+# source://stripe//lib/stripe/resources/radar/value_list.rb#12
 Stripe::Radar::ValueList::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/radar/value_list_item.rb#6
 class Stripe::Radar::ValueListItem < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   extend ::Stripe::APIOperations::Create
@@ -1608,14 +2433,19 @@ class Stripe::Radar::ValueListItem < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
 end
 
+# source://stripe//lib/stripe/resources/radar/value_list_item.rb#11
 Stripe::Radar::ValueListItem::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
 # RateLimitError is raised in cases where an account is putting too much load
 # on Stripe's API servers (usually by performing too many requests). Please
 # back off on request rate.
+#
+# source://stripe//lib/stripe/errors.rb#114
 class Stripe::RateLimitError < ::Stripe::StripeError; end
 
 # Recipients objects are deprecated. Please use Stripe Connect instead.
+#
+# source://stripe//lib/stripe/resources/recipient.rb#6
 class Stripe::Recipient < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -1625,81 +2455,114 @@ class Stripe::Recipient < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 end
 
+# source://stripe//lib/stripe/resources/recipient.rb#12
 Stripe::Recipient::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/recipient_transfer.rb#4
 class Stripe::RecipientTransfer < ::Stripe::StripeObject; end
+
+# source://stripe//lib/stripe/resources/recipient_transfer.rb#5
 Stripe::RecipientTransfer::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/refund.rb#5
 class Stripe::Refund < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/refund.rb#14
   def cancel(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/refund.rb#23
   def test_helpers; end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def cancel(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/refund.rb#10
 Stripe::Refund::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/refund.rb#27
 class Stripe::Refund::TestHelpers < ::Stripe::APIResourceTestHelpers
+  # source://stripe//lib/stripe/resources/refund.rb#32
   def expire(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def expire(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/refund.rb#28
 Stripe::Refund::TestHelpers::RESOURCE_CLASS = Stripe::Refund
+
+# source://stripe//lib/stripe/resources/reporting/report_run.rb#5
 module Stripe::Reporting; end
 
+# source://stripe//lib/stripe/resources/reporting/report_run.rb#6
 class Stripe::Reporting::ReportRun < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
 end
 
+# source://stripe//lib/stripe/resources/reporting/report_run.rb#10
 Stripe::Reporting::ReportRun::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/reporting/report_type.rb#6
 class Stripe::Reporting::ReportType < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
 end
 
+# source://stripe//lib/stripe/resources/reporting/report_type.rb#10
 Stripe::Reporting::ReportType::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/reversal.rb#5
 class Stripe::Reversal < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/reversal.rb#11
   def resource_url; end
 
   class << self
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/reversal.rb#23
     def retrieve(_id, _opts = T.unsafe(nil)); end
 
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/reversal.rb#16
     def update(_id, _params = T.unsafe(nil), _opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/reversal.rb#9
 Stripe::Reversal::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/review.rb#5
 class Stripe::Review < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
 
+  # source://stripe//lib/stripe/resources/review.rb#12
   def approve(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def approve(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/review.rb#8
 Stripe::Review::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/sku.rb#5
 class Stripe::SKU < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -1709,16 +2572,21 @@ class Stripe::SKU < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 end
 
+# source://stripe//lib/stripe/resources/sku.rb#11
 Stripe::SKU::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/search_result_object.rb#4
 class Stripe::SearchResultObject < ::Stripe::StripeObject
   include ::Stripe::APIOperations::Search
   include ::Stripe::APIOperations::Request
   extend ::Stripe::APIOperations::Request::ClassMethods
 
   # @return [SearchResultObject] a new instance of SearchResultObject
+  #
+  # source://stripe//lib/stripe/search_result_object.rb#23
   def initialize(*args); end
 
+  # source://stripe//lib/stripe/search_result_object.rb#28
   def [](key); end
 
   # Iterates through each resource in all pages, making additional fetches to
@@ -1727,6 +2595,8 @@ class Stripe::SearchResultObject < ::Stripe::StripeObject
   # Note that this method will make as many API calls as necessary to fetch
   # all resources. For more granular control, please see +each+ and
   # +next_search_result_page+.
+  #
+  # source://stripe//lib/stripe/search_result_object.rb#61
   def auto_paging_each(&blk); end
 
   # Iterates through each resource in the page represented by the current
@@ -1734,64 +2604,92 @@ class Stripe::SearchResultObject < ::Stripe::StripeObject
   #
   # Note that this method makes no effort to fetch a new page when it gets to
   # the end of the current page's resources. See also +auto_paging_each+.
+  #
+  # source://stripe//lib/stripe/search_result_object.rb#46
   def each(&blk); end
 
   # Returns true if the page object contains no elements.
   #
   # @return [Boolean]
+  #
+  # source://stripe//lib/stripe/search_result_object.rb#51
   def empty?; end
 
   # This accessor allows a `SearchResultObject` to inherit various filters
   # that were given to a predecessor. This allows for things like consistent
   # limits, expansions, and predicates as a user pages through resources.
+  #
+  # source://stripe//lib/stripe/search_result_object.rb#14
   def filters; end
 
   # This accessor allows a `SearchResultObject` to inherit various filters
   # that were given to a predecessor. This allows for things like consistent
   # limits, expansions, and predicates as a user pages through resources.
+  #
+  # source://stripe//lib/stripe/search_result_object.rb#14
   def filters=(_arg0); end
 
   # Fetches the next page in the resource list (if there is one).
   #
   # This method will try to respect the limit of the current page. If none
   # was given, the default limit will be fetched again.
+  #
+  # source://stripe//lib/stripe/search_result_object.rb#78
   def next_search_result_page(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
     # An empty search result object. This is returned from +next+ when we know
     # that there isn't a next page in order to replicate the behavior of the API
     # when it attempts to return a page beyond the last.
+    #
+    # source://stripe//lib/stripe/search_result_object.rb#19
     def empty_search_result(opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/search_result_object.rb#9
 Stripe::SearchResultObject::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/setup_attempt.rb#5
 class Stripe::SetupAttempt < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
 end
 
+# source://stripe//lib/stripe/resources/setup_attempt.rb#8
 Stripe::SetupAttempt::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/setup_intent.rb#5
 class Stripe::SetupIntent < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/setup_intent.rb#16
   def cancel(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/setup_intent.rb#25
   def confirm(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/setup_intent.rb#34
   def verify_microdeposits(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def cancel(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def confirm(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def verify_microdeposits(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/setup_intent.rb#10
 Stripe::SetupIntent::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/shipping_rate.rb#5
 class Stripe::ShippingRate < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
@@ -1799,43 +2697,63 @@ class Stripe::ShippingRate < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 end
 
+# source://stripe//lib/stripe/resources/shipping_rate.rb#10
 Stripe::ShippingRate::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/sigma/scheduled_query_run.rb#5
 module Stripe::Sigma; end
 
+# source://stripe//lib/stripe/resources/sigma/scheduled_query_run.rb#6
 class Stripe::Sigma::ScheduledQueryRun < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
 
   class << self
+    # source://stripe//lib/stripe/resources/sigma/scheduled_query_run.rb#11
     def resource_url; end
   end
 end
 
+# source://stripe//lib/stripe/resources/sigma/scheduled_query_run.rb#9
 Stripe::Sigma::ScheduledQueryRun::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
 # SignatureVerificationError is raised when the signature verification for a
 # webhook fails
+#
+# source://stripe//lib/stripe/errors.rb#119
 class Stripe::SignatureVerificationError < ::Stripe::StripeError
   # @return [SignatureVerificationError] a new instance of SignatureVerificationError
+  #
+  # source://stripe//lib/stripe/errors.rb#122
   def initialize(message, sig_header, http_body: T.unsafe(nil)); end
 
   # Returns the value of attribute sig_header.
+  #
+  # source://stripe//lib/stripe/errors.rb#120
   def sig_header; end
 
   # Sets the attribute sig_header
   #
   # @param value the value to set the attribute sig_header to.
+  #
+  # source://stripe//lib/stripe/errors.rb#120
   def sig_header=(_arg0); end
 end
 
+# source://stripe//lib/stripe/singleton_api_resource.rb#4
 class Stripe::SingletonAPIResource < ::Stripe::APIResource
+  # source://stripe//lib/stripe/singleton_api_resource.rb#16
   def resource_url; end
 
   class << self
+    # source://stripe//lib/stripe/singleton_api_resource.rb#5
     def resource_url; end
+
+    # source://stripe//lib/stripe/singleton_api_resource.rb#20
     def retrieve(opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/source.rb#5
 class Stripe::Source < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
@@ -1843,44 +2761,70 @@ class Stripe::Source < ::Stripe::APIResource
   extend ::Stripe::APIOperations::NestedResource
   extend ::Gem::Deprecate
 
+  # source://stripe//lib/stripe/resources/source.rb#39
   def _deprecated_source_transactions(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/source.rb#26
   def detach(params = T.unsafe(nil), opts = T.unsafe(nil)); end
-  def source_transactions(*args, &block); end
+
+  def source_transactions(*args, **_arg1, &block); end
+
+  # source://stripe//lib/stripe/resources/source.rb#17
   def verify(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#61
     def list_source_transactions(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#39
     def retrieve_source_transaction(id, nested_id, opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#22
     def source_transactions_url(id, nested_id = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def verify(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/source.rb#10
 Stripe::Source::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/source_transaction.rb#5
 class Stripe::SourceTransaction < ::Stripe::StripeObject; end
+
+# source://stripe//lib/stripe/resources/source_transaction.rb#6
 Stripe::SourceTransaction::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
 # StripeClient executes requests against the Stripe API and allows a user to
 # recover both a resource a call returns as well as a response object that
 # contains information on the HTTP call.
+#
+# source://stripe//lib/stripe/stripe_client.rb#9
 class Stripe::StripeClient
   extend ::Gem::Deprecate
 
   # Initializes a new StripeClient
   #
   # @return [StripeClient] a new instance of StripeClient
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#17
   def initialize(config_arg = T.unsafe(nil)); end
 
+  # source://stripe//lib/stripe/stripe_client.rb#183
   def _deprecated_connection_manager; end
 
   # Returns the value of attribute config.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#39
   def config; end
 
   # Gets the connection manager in use for the current `StripeClient`.
   #
   # This method is DEPRECATED and for backwards compatibility only.
-  def connection_manager(*args, &block); end
+  def connection_manager(*args, **_arg1, &block); end
 
+  # source://stripe//lib/stripe/stripe_client.rb#214
   def execute_request(method, path, api_base: T.unsafe(nil), api_key: T.unsafe(nil), headers: T.unsafe(nil), params: T.unsafe(nil)); end
 
   # Executes a request and returns the body as a stream instead of converting
@@ -1894,53 +2838,82 @@ class Stripe::StripeClient
   # block is expected to do all the necessary body processing. If no block is
   # passed, then a StripeStreamResponse is returned containing an IO stream
   # with the response body.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#245
   def execute_request_stream(method, path, api_base: T.unsafe(nil), api_key: T.unsafe(nil), headers: T.unsafe(nil), params: T.unsafe(nil), &read_body_chunk_block); end
 
   # @return [Boolean]
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#272
   def last_response_has_key?(object_id); end
 
   # Returns the value of attribute options.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#40
   def options; end
 
   # Executes the API call within the given block. Usage looks like:
   #
   #     client = StripeClient.new
   #     charge, resp = client.request { Charge.create }
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#194
   def request; end
 
+  # source://stripe//lib/stripe/stripe_client.rb#266
   def store_last_response(object_id, resp); end
 
   private
 
+  # source://stripe//lib/stripe/stripe_client.rb#510
   def api_url(url = T.unsafe(nil), api_base = T.unsafe(nil)); end
 
   # @raise [AuthenticationError]
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#514
   def check_api_key!(api_key); end
 
   # Encodes a set of body parameters using multipart if `Content-Type` is set
   # for that, or standard form-encoding otherwise. Returns the encoded body
   # and a version of the encoded body that's safe to be logged.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#534
   def encode_body(body_params, headers); end
 
   # @raise [ArgumentError]
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#433
   def execute_request_internal(method, path, api_base, api_key, headers, params, &read_body_chunk_block); end
 
+  # source://stripe//lib/stripe/stripe_client.rb#567
   def execute_request_with_rescues(method, api_base, context); end
 
   # Formats a plugin "app info" hash into a string that we can tack onto the
   # end of a User-Agent string where it'll be fairly prominent in places like
   # the Dashboard. Note that this formatting has been implemented to match
   # other libraries, and shouldn't be changed without universal consensus.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#690
   def format_app_info(info); end
 
+  # source://stripe//lib/stripe/stripe_client.rb#680
   def general_api_error(status, body); end
+
+  # source://stripe//lib/stripe/stripe_client.rb#697
   def handle_error_response(http_resp, context); end
 
   # @raise [APIConnectionError]
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#825
   def handle_network_error(error, context, num_retries, api_base = T.unsafe(nil)); end
 
+  # source://stripe//lib/stripe/stripe_client.rb#893
   def log_request(context, num_retries); end
+
+  # source://stripe//lib/stripe/stripe_client.rb#912
   def log_response(context, request_start, status, body, resp); end
+
+  # source://stripe//lib/stripe/stripe_client.rb#943
   def log_response_error(context, request_start, error); end
 
   # Works around an edge case where we end up with both query parameters from
@@ -1950,16 +2923,29 @@ class Stripe::StripeClient
   # Decode any parameters that were added onto the end of a path and add them
   # to a unified query parameter hash so that all parameters end up in one
   # place and all of them are correctly included in the final request.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#724
   def merge_query_params(query_params, path); end
 
+  # source://stripe//lib/stripe/stripe_client.rb#644
   def notify_request_begin(context); end
+
+  # source://stripe//lib/stripe/stripe_client.rb#659
   def notify_request_end(context, duration, http_status, num_retries, user_data); end
+
+  # source://stripe//lib/stripe/stripe_client.rb#851
   def request_headers(api_key, method); end
+
+  # source://stripe//lib/stripe/stripe_client.rb#563
   def should_handle_as_error(http_status); end
+
+  # source://stripe//lib/stripe/stripe_client.rb#739
   def specific_api_error(resp, error_data, context); end
 
   # Attempts to look at a response's error code and return an OAuth error if
   # one matches. Will return `nil` if the code isn't recognized.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#789
   def specific_oauth_error(resp, error_code, context); end
 
   class << self
@@ -1970,6 +2956,8 @@ class Stripe::StripeClient
     #
     # For internal use only. Does not provide a stable API and may be broken
     # with future non-major changes.
+    #
+    # source://stripe//lib/stripe/stripe_client.rb#49
     def active_client; end
 
     # Finishes any active connections by closing their TCP connection and
@@ -1981,6 +2969,8 @@ class Stripe::StripeClient
     #
     # For internal use only. Does not provide a stable API and may be broken
     # with future non-major changes.
+    #
+    # source://stripe//lib/stripe/stripe_client.rb#62
     def clear_all_connection_managers(config: T.unsafe(nil)); end
 
     # Access data stored for `StripeClient` within the thread's current
@@ -1988,13 +2978,19 @@ class Stripe::StripeClient
     #
     # For internal use only. Does not provide a stable API and may be broken
     # with future non-major changes.
+    #
+    # source://stripe//lib/stripe/stripe_client.rb#381
     def current_thread_context; end
 
     # A default client for the current thread.
+    #
+    # source://stripe//lib/stripe/stripe_client.rb#93
     def default_client; end
 
     # A default connection manager for the current thread scoped to the
     # configuration object that may be provided.
+    #
+    # source://stripe//lib/stripe/stripe_client.rb#99
     def default_connection_manager(config = T.unsafe(nil)); end
 
     # Garbage collects connection managers that haven't been used in some time,
@@ -2014,6 +3010,8 @@ class Stripe::StripeClient
     #
     # For internal use only. Does not provide a stable API and may be broken
     # with future non-major changes.
+    #
+    # source://stripe//lib/stripe/stripe_client.rb#402
     def maybe_gc_connection_managers; end
 
     # Checks if an error is a problem that we should retry on. This includes
@@ -2021,68 +3019,104 @@ class Stripe::StripeClient
     # special HTTP statuses.
     #
     # @return [Boolean]
+    #
+    # source://stripe//lib/stripe/stripe_client.rb#115
     def should_retry?(error, method:, num_retries:, config: T.unsafe(nil)); end
 
+    # source://stripe//lib/stripe/stripe_client.rb#163
     def sleep_time(num_retries, config: T.unsafe(nil)); end
   end
 end
 
 # Time (in seconds) that a connection manager has not been used before it's
 # eligible for garbage collection.
+#
+# source://stripe//lib/stripe/stripe_client.rb#282
 Stripe::StripeClient::CONNECTION_MANAGER_GC_LAST_USED_EXPIRY = T.let(T.unsafe(nil), Integer)
 
 # How often to check (in seconds) for connection managers that haven't been
 # used in a long time and which should be garbage collected.
+#
+# source://stripe//lib/stripe/stripe_client.rb#286
 Stripe::StripeClient::CONNECTION_MANAGER_GC_PERIOD = T.let(T.unsafe(nil), Integer)
 
+# source://stripe//lib/stripe/stripe_client.rb#288
 Stripe::StripeClient::ERROR_MESSAGE_CONNECTION = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/stripe_client.rb#293
 Stripe::StripeClient::ERROR_MESSAGE_SSL = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/stripe_client.rb#306
 Stripe::StripeClient::ERROR_MESSAGE_TIMEOUT_CONNECT = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/stripe_client.rb#311
 Stripe::StripeClient::ERROR_MESSAGE_TIMEOUT_READ = T.let(T.unsafe(nil), String)
 
 # Common error suffix sared by both connect and read timeout messages.
+#
+# source://stripe//lib/stripe/stripe_client.rb#300
 Stripe::StripeClient::ERROR_MESSAGE_TIMEOUT_SUFFIX = T.let(T.unsafe(nil), String)
 
 # Maps types of exceptions that we're likely to see during a network
 # request to more user-friendly messages that we put in front of people.
 # The original error message is also appended onto the final exception for
 # full transparency.
+#
+# source://stripe//lib/stripe/stripe_client.rb#320
 Stripe::StripeClient::NETWORK_ERROR_MESSAGES_MAP = T.let(T.unsafe(nil), Hash)
 
 # RequestLogContext stores information about a request that's begin made so
 # that we can log certain information. It's useful because it means that we
 # don't have to pass around as many parameters.
+#
+# source://stripe//lib/stripe/stripe_client.rb#957
 class Stripe::StripeClient::RequestLogContext
   # Returns the value of attribute account.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#959
   def account; end
 
   # Sets the attribute account
   #
   # @param value the value to set the attribute account to.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#959
   def account=(_arg0); end
 
   # Returns the value of attribute api_key.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#960
   def api_key; end
 
   # Sets the attribute api_key
   #
   # @param value the value to set the attribute api_key to.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#960
   def api_key=(_arg0); end
 
   # Returns the value of attribute api_version.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#961
   def api_version; end
 
   # Sets the attribute api_version
   #
   # @param value the value to set the attribute api_version to.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#961
   def api_version=(_arg0); end
 
   # Returns the value of attribute body.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#958
   def body; end
 
   # Sets the attribute body
   #
   # @param value the value to set the attribute body to.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#958
   def body=(_arg0); end
 
   # The idea with this method is that we might want to update some of
@@ -2091,82 +3125,127 @@ class Stripe::StripeClient::RequestLogContext
   # with for a request. For example, we should trust whatever came back in
   # a `Stripe-Version` header beyond what configuration information that we
   # might have had available.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#974
   def dup_from_response_headers(headers); end
 
   # Returns the value of attribute idempotency_key.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#962
   def idempotency_key; end
 
   # Sets the attribute idempotency_key
   #
   # @param value the value to set the attribute idempotency_key to.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#962
   def idempotency_key=(_arg0); end
 
   # Returns the value of attribute method.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#963
   def method; end
 
   # Sets the attribute method
   #
   # @param value the value to set the attribute method to.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#963
   def method=(_arg0); end
 
   # Returns the value of attribute path.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#964
   def path; end
 
   # Sets the attribute path
   #
   # @param value the value to set the attribute path to.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#964
   def path=(_arg0); end
 
   # Returns the value of attribute query.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#965
   def query; end
 
   # Sets the attribute query
   #
   # @param value the value to set the attribute query to.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#965
   def query=(_arg0); end
 
   # Returns the value of attribute request_id.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#966
   def request_id; end
 
   # Sets the attribute request_id
   #
   # @param value the value to set the attribute request_id to.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#966
   def request_id=(_arg0); end
 end
 
 # StripeRequestMetrics tracks metadata to be reported to stripe for metrics
 # collection
+#
+# source://stripe//lib/stripe/stripe_client.rb#1043
 class Stripe::StripeClient::StripeRequestMetrics
   # @return [StripeRequestMetrics] a new instance of StripeRequestMetrics
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#1050
   def initialize(request_id, request_duration_ms); end
 
+  # source://stripe//lib/stripe/stripe_client.rb#1055
   def payload; end
 
   # Request duration in milliseconds
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#1048
   def request_duration_ms; end
 
   # Request duration in milliseconds
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#1048
   def request_duration_ms=(_arg0); end
 
   # The Stripe request ID of the response.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#1045
   def request_id; end
 
   # The Stripe request ID of the response.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#1045
   def request_id=(_arg0); end
 end
 
 # SystemProfiler extracts information about the system that we're running
 # in so that we can generate a rich user agent header to help debug
 # integrations.
+#
+# source://stripe//lib/stripe/stripe_client.rb#987
 class Stripe::StripeClient::SystemProfiler
   # @return [SystemProfiler] a new instance of SystemProfiler
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#1019
   def initialize; end
 
+  # source://stripe//lib/stripe/stripe_client.rb#1023
   def user_agent; end
 
   class << self
+    # source://stripe//lib/stripe/stripe_client.rb#988
     def uname; end
+
+    # source://stripe//lib/stripe/stripe_client.rb#1003
     def uname_from_system; end
+
+    # source://stripe//lib/stripe/stripe_client.rb#1011
     def uname_from_system_ver; end
   end
 end
@@ -2177,28 +3256,40 @@ end
 #
 # For internal use only. Does not provide a stable API and may be broken
 # with future non-major changes.
+#
+# source://stripe//lib/stripe/stripe_client.rb#341
 class Stripe::StripeClient::ThreadContext
   # A `StripeClient` that's been flagged as currently active within a
   # thread by `StripeClient#request`. A client stays active until the
   # completion of the request block.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#345
   def active_client; end
 
   # A `StripeClient` that's been flagged as currently active within a
   # thread by `StripeClient#request`. A client stays active until the
   # completion of the request block.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#345
   def active_client=(_arg0); end
 
   # A default `StripeClient` object for the thread. Used in all cases where
   # the user hasn't specified their own.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#349
   def default_client; end
 
   # A default `StripeClient` object for the thread. Used in all cases where
   # the user hasn't specified their own.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#349
   def default_client=(_arg0); end
 
   # A map of connection mangers for the thread. Normally shared between
   # all `StripeClient` objects on a particular thread, and created so as to
   # minimize the number of open connections that an application needs.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#367
   def default_connection_managers; end
 
   # A temporary map of object IDs to responses from last executed API
@@ -2212,6 +3303,8 @@ class Stripe::StripeClient::ThreadContext
   # they're removed as soon as a call leaves `StripeClient#request`, and
   # because that's wrapped in an `ensure` block, they should never leave
   # garbage in `Thread.current`.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#362
   def last_responses; end
 
   # A temporary map of object IDs to responses from last executed API
@@ -2225,8 +3318,11 @@ class Stripe::StripeClient::ThreadContext
   # they're removed as soon as a call leaves `StripeClient#request`, and
   # because that's wrapped in an `ensure` block, they should never leave
   # garbage in `Thread.current`.
+  #
+  # source://stripe//lib/stripe/stripe_client.rb#362
   def last_responses=(_arg0); end
 
+  # source://stripe//lib/stripe/stripe_client.rb#371
   def reset_connection_managers; end
 end
 
@@ -2253,34 +3349,52 @@ end
 #
 # If `.logger` is set, the value of `.log_level` is ignored. The decision on
 # what levels to print is entirely deferred to the logger.
+#
+# source://stripe//lib/stripe/stripe_configuration.rb#27
 class Stripe::StripeConfiguration
   # @return [StripeConfiguration] a new instance of StripeConfiguration
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#65
   def initialize; end
 
   # Returns the value of attribute api_base.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#35
   def api_base; end
 
+  # source://stripe//lib/stripe/stripe_configuration.rb#151
   def api_base=(api_base); end
 
   # Returns the value of attribute api_key.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#28
   def api_key; end
 
   # Sets the attribute api_key
   #
   # @param value the value to set the attribute api_key to.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#28
   def api_key=(_arg0); end
 
   # Returns the value of attribute api_version.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#29
   def api_version; end
 
   # Sets the attribute api_version
   #
   # @param value the value to set the attribute api_version to.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#29
   def api_version=(_arg0); end
 
   # Returns the value of attribute ca_bundle_path.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#38
   def ca_bundle_path; end
 
+  # source://stripe//lib/stripe/stripe_configuration.rb#156
   def ca_bundle_path=(path); end
 
   # A certificate store initialized from the the bundle in #ca_bundle_path and
@@ -2292,134 +3406,207 @@ class Stripe::StripeConfiguration
   # to leverage this pseudo safety should make a call to this method (i.e.
   # `Stripe.ca_store`) in their initialization code because it marshals lazily
   # and is itself not thread safe.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#174
   def ca_store; end
 
   # Returns the value of attribute client_id.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#30
   def client_id; end
 
   # Sets the attribute client_id
   #
   # @param value the value to set the attribute client_id to.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#30
   def client_id=(_arg0); end
 
   # Returns the value of attribute connect_base.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#37
   def connect_base; end
 
+  # source://stripe//lib/stripe/stripe_configuration.rb#146
   def connect_base=(connect_base); end
 
   # Returns the value of attribute enable_telemetry.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#31
   def enable_telemetry; end
 
   # Sets the attribute enable_telemetry
   #
   # @param value the value to set the attribute enable_telemetry to.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#31
   def enable_telemetry=(_arg0); end
 
   # @return [Boolean]
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#182
   def enable_telemetry?; end
 
   # Returns the value of attribute initial_network_retry_delay.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#40
   def initial_network_retry_delay; end
 
+  # source://stripe//lib/stripe/stripe_configuration.rb#108
   def initial_network_retry_delay=(val); end
 
   # Generates a deterministic key to identify configuration objects with
   # identical configuration values.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#188
   def key; end
 
   # Returns the value of attribute log_level.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#39
   def log_level; end
 
+  # source://stripe//lib/stripe/stripe_configuration.rb#83
   def log_level=(val); end
 
   # Returns the value of attribute logger.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#32
   def logger; end
 
   # Sets the attribute logger
   #
   # @param value the value to set the attribute logger to.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#32
   def logger=(_arg0); end
 
   # Returns the value of attribute max_network_retries.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#41
   def max_network_retries; end
 
+  # source://stripe//lib/stripe/stripe_configuration.rb#100
   def max_network_retries=(val); end
 
   # Returns the value of attribute max_network_retry_delay.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#42
   def max_network_retry_delay; end
 
+  # source://stripe//lib/stripe/stripe_configuration.rb#104
   def max_network_retry_delay=(val); end
 
   # Returns the value of attribute open_timeout.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#43
   def open_timeout; end
 
+  # source://stripe//lib/stripe/stripe_configuration.rb#112
   def open_timeout=(open_timeout); end
 
   # Returns the value of attribute proxy.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#46
   def proxy; end
 
+  # source://stripe//lib/stripe/stripe_configuration.rb#131
   def proxy=(proxy); end
 
   # Returns the value of attribute read_timeout.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#44
   def read_timeout; end
 
+  # source://stripe//lib/stripe/stripe_configuration.rb#117
   def read_timeout=(read_timeout); end
 
   # Create a new config based off an existing one. This is useful when the
   # caller wants to override the global configuration
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#57
   def reverse_duplicate_merge(hash); end
 
   # Returns the value of attribute stripe_account.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#33
   def stripe_account; end
 
   # Sets the attribute stripe_account
   #
   # @param value the value to set the attribute stripe_account to.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#33
   def stripe_account=(_arg0); end
 
   # Returns the value of attribute uploads_base.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#36
   def uploads_base; end
 
+  # source://stripe//lib/stripe/stripe_configuration.rb#141
   def uploads_base=(uploads_base); end
 
   # Returns the value of attribute verify_ssl_certs.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#47
   def verify_ssl_certs; end
 
+  # source://stripe//lib/stripe/stripe_configuration.rb#136
   def verify_ssl_certs=(verify_ssl_certs); end
 
   # Returns the value of attribute write_timeout.
+  #
+  # source://stripe//lib/stripe/stripe_configuration.rb#45
   def write_timeout; end
 
+  # source://stripe//lib/stripe/stripe_configuration.rb#122
   def write_timeout=(write_timeout); end
 
   class << self
+    # source://stripe//lib/stripe/stripe_configuration.rb#49
     def setup; end
   end
 end
 
 # StripeError is the base error from which all other more specific Stripe
 # errors derive.
+#
+# source://stripe//lib/stripe/errors.rb#6
 class Stripe::StripeError < ::StandardError
   # Initializes a StripeError.
   #
   # @return [StripeError] a new instance of StripeError
+  #
+  # source://stripe//lib/stripe/errors.rb#22
   def initialize(message = T.unsafe(nil), http_status: T.unsafe(nil), http_body: T.unsafe(nil), json_body: T.unsafe(nil), http_headers: T.unsafe(nil), code: T.unsafe(nil)); end
 
   # Returns the value of attribute code.
+  #
+  # source://stripe//lib/stripe/errors.rb#13
   def code; end
 
+  # source://stripe//lib/stripe/errors.rb#35
   def construct_error_object; end
 
   # Returns the value of attribute error.
+  #
+  # source://stripe//lib/stripe/errors.rb#14
   def error; end
 
   # Returns the value of attribute http_body.
+  #
+  # source://stripe//lib/stripe/errors.rb#15
   def http_body; end
 
   # Returns the value of attribute http_headers.
+  #
+  # source://stripe//lib/stripe/errors.rb#16
   def http_headers; end
 
   # Returns the value of attribute http_status.
+  #
+  # source://stripe//lib/stripe/errors.rb#17
   def http_status; end
 
   # Whether the error was the result of an idempotent replay, meaning that it
@@ -2427,25 +3614,38 @@ class Stripe::StripeError < ::StandardError
   # because the user sent the same idempotency key for this one.
   #
   # @return [Boolean]
+  #
+  # source://stripe//lib/stripe/errors.rb#44
   def idempotent_replayed?; end
 
   # equivalent to #data
+  #
+  # source://stripe//lib/stripe/errors.rb#18
   def json_body; end
 
   # Returns the value of attribute message.
+  #
+  # source://stripe//lib/stripe/errors.rb#7
   def message; end
 
   # Returns the value of attribute request_id.
+  #
+  # source://stripe//lib/stripe/errors.rb#19
   def request_id; end
 
   # Response contains a StripeResponse object that has some basic information
   # about the response that conveyed the error.
+  #
+  # source://stripe//lib/stripe/errors.rb#11
   def response; end
 
   # Response contains a StripeResponse object that has some basic information
   # about the response that conveyed the error.
+  #
+  # source://stripe//lib/stripe/errors.rb#11
   def response=(_arg0); end
 
+  # source://stripe//lib/stripe/errors.rb#48
   def to_s; end
 end
 
@@ -2453,29 +3653,43 @@ end
 # response. This is used for streaming requests where the response was read
 # directly in a block and we explicitly don't want to store the body of the
 # response in memory.
+#
+# source://stripe//lib/stripe/stripe_response.rb#99
 class Stripe::StripeHeadersOnlyResponse
   include ::Stripe::StripeResponseBase
 
   class << self
     # Initializes a StripeHeadersOnlyResponse object from a
     # Net::HTTP::HTTPResponse object.
+    #
+    # source://stripe//lib/stripe/stripe_response.rb#104
     def from_net_http(http_resp); end
   end
 end
 
+# source://stripe//lib/stripe/stripe_object.rb#4
 class Stripe::StripeObject
   include ::Enumerable
 
   # @return [StripeObject] a new instance of StripeObject
+  #
+  # source://stripe//lib/stripe/stripe_object.rb#73
   def initialize(id = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   # Determines the equality of two Stripe objects. Stripe objects are
   # considered to be equal if they have the same set of values and each one
   # of those values is the same.
+  #
+  # source://stripe//lib/stripe/stripe_object.rb#95
   def ==(other); end
 
+  # source://stripe//lib/stripe/stripe_object.rb#157
   def [](key); end
+
+  # source://stripe//lib/stripe/stripe_object.rb#161
   def []=(key, value); end
+
+  # source://stripe//lib/stripe/stripe_object.rb#178
   def as_json(*opts); end
 
   # Indicates whether or not the resource has been deleted on the server.
@@ -2483,27 +3697,39 @@ class Stripe::StripeObject
   # been deleted.
   #
   # @return [Boolean]
+  #
+  # source://stripe//lib/stripe/stripe_object.rb#116
   def deleted?; end
 
   # Sets all keys within the StripeObject as unsaved so that they will be
   # included with an update when #serialize_params is called. This method is
   # also recursive, so any StripeObjects contained as values or which are
   # values in a tenant array are also marked as dirty.
+  #
+  # source://stripe//lib/stripe/stripe_object.rb#207
   def dirty!; end
 
+  # source://stripe//lib/stripe/stripe_object.rb#199
   def each(&blk); end
 
   # Hash equality. As with `#==`, we consider two equivalent Stripe objects
   # equal.
   #
   # @return [Boolean]
+  #
+  # source://stripe//lib/stripe/stripe_object.rb#102
   def eql?(other); end
 
   # As with equality in `#==` and `#eql?`, we hash two Stripe objects to the
   # same value if they're equivalent objects.
+  #
+  # source://stripe//lib/stripe/stripe_object.rb#109
   def hash; end
 
+  # source://stripe//lib/stripe/stripe_object.rb#124
   def inspect; end
+
+  # source://stripe//lib/stripe/stripe_object.rb#165
   def keys; end
 
   # Implements custom encoding for Ruby's Marshal. The data produced by this
@@ -2511,15 +3737,26 @@ class Stripe::StripeObject
   #
   # This allows us to remove certain features that cannot or should not be
   # serialized.
+  #
+  # source://stripe//lib/stripe/stripe_object.rb#219
   def marshal_dump; end
 
   # Implements custom decoding for Ruby's Marshal. Consumes data that's
   # produced by #marshal_dump.
+  #
+  # source://stripe//lib/stripe/stripe_object.rb#230
   def marshal_load(data); end
 
+  # source://stripe//lib/stripe/stripe_object.rb#236
   def serialize_params(options = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/stripe_object.rb#182
   def to_hash; end
+
+  # source://stripe//lib/stripe/stripe_object.rb#173
   def to_json(*_opts); end
+
+  # source://stripe//lib/stripe/stripe_object.rb#120
   def to_s(*_args); end
 
   # Mass assigns attributes on the model.
@@ -2540,12 +3777,16 @@ class Stripe::StripeObject
   # * +:dirty+ - Whether values should be initiated as "dirty" (unsaved) and
   #   which applies only to new StripeObjects being initiated under this
   #   StripeObject. Defaults to true.
+  #
+  # source://stripe//lib/stripe/stripe_object.rb#148
   def update_attributes(values, opts = T.unsafe(nil), dirty: T.unsafe(nil)); end
 
+  # source://stripe//lib/stripe/stripe_object.rb#169
   def values; end
 
   protected
 
+  # source://stripe//lib/stripe/stripe_object.rb#331
   def add_accessors(keys, values); end
 
   # Re-initializes the object based on a hash of values (usually one that's
@@ -2560,28 +3801,40 @@ class Stripe::StripeObject
   # * +:opts:+ Options for StripeObject like an API key.
   # * +:partial:+ Indicates that the re-initialization should not attempt to
   #   remove accessors.
+  #
+  # source://stripe//lib/stripe/stripe_object.rb#432
   def initialize_from(values, opts, partial = T.unsafe(nil)); end
 
+  # source://stripe//lib/stripe/stripe_object.rb#291
   def metaclass; end
 
   # Disabling the cop because it's confused by the fact that the methods are
   # protected, but we do define `#respond_to_missing?` just below. Hopefully
   # this is fixed in more recent Rubocop versions.
+  #
+  # source://stripe//lib/stripe/stripe_object.rb#373
   def method_missing(name, *args); end
 
+  # source://stripe//lib/stripe/stripe_object.rb#295
   def remove_accessors(keys); end
 
   # @return [Boolean]
+  #
+  # source://stripe//lib/stripe/stripe_object.rb#416
   def respond_to_missing?(symbol, include_private = T.unsafe(nil)); end
 
+  # source://stripe//lib/stripe/stripe_object.rb#463
   def serialize_params_value(value, original, unsaved, force, key: T.unsafe(nil)); end
 
   private
 
+  # source://stripe//lib/stripe/stripe_object.rb#562
   def dirty_value!(value); end
 
   # Returns a hash of empty values for all the values that are in the given
   # StripeObject.
+  #
+  # source://stripe//lib/stripe/stripe_object.rb#573
   def empty_values(obj); end
 
   class << self
@@ -2634,25 +3887,34 @@ class Stripe::StripeObject
     # This method allows us to track which parameters are considered additive,
     # and lets us behave correctly where appropriate when serializing
     # parameters to be sent.
+    #
+    # source://stripe//lib/stripe/stripe_object.rb#61
     def additive_object_param(name); end
 
     # Returns whether the given name is an additive object parameter. See
     # `.additive_object_param` for details.
     #
     # @return [Boolean]
+    #
+    # source://stripe//lib/stripe/stripe_object.rb#68
     def additive_object_param?(name); end
 
+    # source://stripe//lib/stripe/stripe_object.rb#85
     def construct_from(values, opts = T.unsafe(nil)); end
 
     # A protected field is one that doesn't get an accessor assigned to it
     # (i.e. `obj.public = ...`) and one which is not allowed to be updated via
     # the class level `Model.update(id, { ... })`.
+    #
+    # source://stripe//lib/stripe/stripe_object.rb#266
     def protected_fields; end
 
     private
 
     # Produces a deep copy of the given object including support for arrays,
     # hashes, and StripeObjects.
+    #
+    # source://stripe//lib/stripe/stripe_object.rb#541
     def deep_copy(obj); end
   end
 end
@@ -2674,30 +3936,44 @@ end
 # In a future major version we should consider leaving `metadata` as a hash
 # and forcing people to access it with `obj.metadata[:my_field]` because
 # the potential for trouble is just too high. For now, reserve names.
+#
+# source://stripe//lib/stripe/stripe_object.rb#287
 Stripe::StripeObject::RESERVED_FIELD_NAMES = T.let(T.unsafe(nil), Array)
 
 # StripeResponse encapsulates some vitals of a response that came back from
 # the Stripe API.
+#
+# source://stripe//lib/stripe/stripe_response.rb#70
 class Stripe::StripeResponse
   include ::Stripe::StripeResponseBase
 
   # The data contained by the HTTP body of the response deserialized from
   # JSON.
+  #
+  # source://stripe//lib/stripe/stripe_response.rb#74
   def data; end
 
   # The data contained by the HTTP body of the response deserialized from
   # JSON.
+  #
+  # source://stripe//lib/stripe/stripe_response.rb#74
   def data=(_arg0); end
 
   # The raw HTTP body of the response.
+  #
+  # source://stripe//lib/stripe/stripe_response.rb#77
   def http_body; end
 
   # The raw HTTP body of the response.
+  #
+  # source://stripe//lib/stripe/stripe_response.rb#77
   def http_body=(_arg0); end
 
   class << self
     # Initializes a StripeResponse object from a Net::HTTP::HTTPResponse
     # object.
+    #
+    # source://stripe//lib/stripe/stripe_response.rb#81
     def from_net_http(http_resp); end
   end
 end
@@ -2705,28 +3981,44 @@ end
 # We have to alias StripeResponseHeaders to StripeResponse::Headers, as this
 # class used to be embedded within StripeResponse and we want to be backwards
 # compatible.
+#
+# source://stripe//lib/stripe/stripe_response.rb#93
 Stripe::StripeResponse::Headers = Stripe::StripeResponseHeaders
 
+# source://stripe//lib/stripe/stripe_response.rb#51
 module Stripe::StripeResponseBase
   # A Hash of the HTTP headers of the response.
+  #
+  # source://stripe//lib/stripe/stripe_response.rb#53
   def http_headers; end
 
   # A Hash of the HTTP headers of the response.
+  #
+  # source://stripe//lib/stripe/stripe_response.rb#53
   def http_headers=(_arg0); end
 
   # The integer HTTP status code of the response.
+  #
+  # source://stripe//lib/stripe/stripe_response.rb#56
   def http_status; end
 
   # The integer HTTP status code of the response.
+  #
+  # source://stripe//lib/stripe/stripe_response.rb#56
   def http_status=(_arg0); end
 
   # The Stripe request ID of the response.
+  #
+  # source://stripe//lib/stripe/stripe_response.rb#59
   def request_id; end
 
   # The Stripe request ID of the response.
+  #
+  # source://stripe//lib/stripe/stripe_response.rb#59
   def request_id=(_arg0); end
 
   class << self
+    # source://stripe//lib/stripe/stripe_response.rb#61
     def populate_for_net_http(resp, http_resp); end
   end
 end
@@ -2735,6 +4027,8 @@ end
 # mainly exists so that we don't need to expose the entire
 # `Net::HTTPResponse` object while still getting some of its benefits like
 # case-insensitive access to header names and flattening of header values.
+#
+# source://stripe//lib/stripe/stripe_response.rb#8
 class Stripe::StripeResponseHeaders
   # `hash` is expected to be a hash mapping header names to arrays of
   # header values. This is the default format generated by calling
@@ -2743,16 +4037,22 @@ class Stripe::StripeResponseHeaders
   # the first.
   #
   # @return [StripeResponseHeaders] a new instance of StripeResponseHeaders
+  #
+  # source://stripe//lib/stripe/stripe_response.rb#19
   def initialize(hash); end
 
+  # source://stripe//lib/stripe/stripe_response.rb#42
   def [](name); end
 
   class << self
     # Initializes a Headers object from a Net::HTTP::HTTPResponse object.
+    #
+    # source://stripe//lib/stripe/stripe_response.rb#10
     def from_net_http(resp); end
   end
 end
 
+# source://stripe//lib/stripe/resources/subscription.rb#5
 class Stripe::Subscription < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -2762,18 +4062,28 @@ class Stripe::Subscription < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Search
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/subscription.rb#16
   def delete_discount(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/api_resource.rb#36
   def source=(value); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def delete_discount(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/subscription.rb#27
     def search(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/resources/subscription.rb#31
     def search_auto_paging_each(params = T.unsafe(nil), opts = T.unsafe(nil), &blk); end
   end
 end
 
+# source://stripe//lib/stripe/resources/subscription.rb#12
 Stripe::Subscription::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/subscription_item.rb#5
 class Stripe::SubscriptionItem < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -2784,57 +4094,83 @@ class Stripe::SubscriptionItem < ::Stripe::APIResource
   extend ::Stripe::APIOperations::NestedResource
   extend ::Gem::Deprecate
 
+  # source://stripe//lib/stripe/resources/subscription_item.rb#19
   def _deprecated_usage_record_summaries(params = T.unsafe(nil), opts = T.unsafe(nil)); end
-  def usage_record_summaries(*args, &block); end
+
+  def usage_record_summaries(*args, **_arg1, &block); end
 
   class << self
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#32
     def create_usage_record(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#61
     def list_usage_record_summaries(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#22
     def usage_record_summarys_url(id, nested_id = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#22
     def usage_records_url(id, nested_id = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/subscription_item.rb#12
 Stripe::SubscriptionItem::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/subscription_schedule.rb#5
 class Stripe::SubscriptionSchedule < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/subscription_schedule.rb#15
   def cancel(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/subscription_schedule.rb#24
   def release(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def cancel(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def release(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/subscription_schedule.rb#10
 Stripe::SubscriptionSchedule::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/tax_code.rb#5
 class Stripe::TaxCode < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
 end
 
+# source://stripe//lib/stripe/resources/tax_code.rb#8
 Stripe::TaxCode::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/tax_id.rb#5
 class Stripe::TaxId < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   extend ::Stripe::APIOperations::Delete::ClassMethods
   extend ::Stripe::APIOperations::List
 
+  # source://stripe//lib/stripe/resources/tax_id.rb#11
   def resource_url; end
 
   class << self
     # @raise [NotImplementedError]
+    #
+    # source://stripe//lib/stripe/resources/tax_id.rb#20
     def retrieve(_id, _opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/tax_id.rb#9
 Stripe::TaxId::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/tax_rate.rb#5
 class Stripe::TaxRate < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
@@ -2842,9 +4178,13 @@ class Stripe::TaxRate < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 end
 
+# source://stripe//lib/stripe/resources/tax_rate.rb#10
 Stripe::TaxRate::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/terminal/configuration.rb#5
 module Stripe::Terminal; end
 
+# source://stripe//lib/stripe/resources/terminal/configuration.rb#6
 class Stripe::Terminal::Configuration < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -2854,14 +4194,18 @@ class Stripe::Terminal::Configuration < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 end
 
+# source://stripe//lib/stripe/resources/terminal/configuration.rb#12
 Stripe::Terminal::Configuration::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/terminal/connection_token.rb#6
 class Stripe::Terminal::ConnectionToken < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Create
 end
 
+# source://stripe//lib/stripe/resources/terminal/connection_token.rb#9
 Stripe::Terminal::ConnectionToken::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/terminal/location.rb#6
 class Stripe::Terminal::Location < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -2871,8 +4215,10 @@ class Stripe::Terminal::Location < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 end
 
+# source://stripe//lib/stripe/resources/terminal/location.rb#12
 Stripe::Terminal::Location::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/terminal/reader.rb#6
 class Stripe::Terminal::Reader < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -2881,79 +4227,116 @@ class Stripe::Terminal::Reader < ::Stripe::APIResource
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/terminal/reader.rb#19
   def cancel_action(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/terminal/reader.rb#28
   def process_payment_intent(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/terminal/reader.rb#37
   def process_setup_intent(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/terminal/reader.rb#46
   def set_reader_display(params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+  # source://stripe//lib/stripe/resources/terminal/reader.rb#55
   def test_helpers; end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def cancel_action(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def process_payment_intent(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def process_setup_intent(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#76
     def set_reader_display(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/terminal/reader.rb#12
 Stripe::Terminal::Reader::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/terminal/reader.rb#59
 class Stripe::Terminal::Reader::TestHelpers < ::Stripe::APIResourceTestHelpers
+  # source://stripe//lib/stripe/resources/terminal/reader.rb#64
   def present_payment_method(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def present_payment_method(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/terminal/reader.rb#60
 Stripe::Terminal::Reader::TestHelpers::RESOURCE_CLASS = Stripe::Terminal::Reader
+
+# source://stripe//lib/stripe/resources/test_helpers/test_clock.rb#5
 module Stripe::TestHelpers; end
 
+# source://stripe//lib/stripe/resources/test_helpers/test_clock.rb#6
 class Stripe::TestHelpers::TestClock < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::Delete::ClassMethods
   extend ::Stripe::APIOperations::List
 
+  # source://stripe//lib/stripe/resources/test_helpers/test_clock.rb#15
   def advance(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def advance(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/test_helpers/test_clock.rb#11
 Stripe::TestHelpers::TestClock::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/three_d_secure.rb#5
 class Stripe::ThreeDSecure < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Create
 
   class << self
+    # source://stripe//lib/stripe/resources/three_d_secure.rb#10
     def resource_url; end
   end
 end
 
+# source://stripe//lib/stripe/resources/three_d_secure.rb#8
 Stripe::ThreeDSecure::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/token.rb#5
 class Stripe::Token < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Create
 end
 
+# source://stripe//lib/stripe/resources/token.rb#8
 Stripe::Token::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/topup.rb#5
 class Stripe::Topup < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
   extend ::Stripe::APIOperations::List
   extend ::Stripe::APIOperations::Save::ClassMethods
 
+  # source://stripe//lib/stripe/resources/topup.rb#14
   def cancel(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def cancel(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/topup.rb#10
 Stripe::Topup::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/transfer.rb#5
 class Stripe::Transfer < ::Stripe::APIResource
   include ::Stripe::APIOperations::Save
   extend ::Stripe::APIOperations::Create
@@ -2961,30 +4344,56 @@ class Stripe::Transfer < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
   extend ::Stripe::APIOperations::NestedResource
 
+  # source://stripe//lib/stripe/resources/transfer.rb#18
   def cancel(params = T.unsafe(nil), opts = T.unsafe(nil)); end
 
   class << self
+    # source://stripe//lib/stripe/util.rb#76
     def cancel(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#32
     def create_reversal(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#61
     def list_reversals(id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#39
     def retrieve_reversal(id, nested_id, opts = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#22
     def reversals_url(id, nested_id = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/api_operations/nested_resource.rb#46
     def update_reversal(id, nested_id, params = T.unsafe(nil), opts = T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/resources/transfer.rb#11
 Stripe::Transfer::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/usage_record.rb#5
 class Stripe::UsageRecord < ::Stripe::APIResource; end
+
+# source://stripe//lib/stripe/resources/usage_record.rb#6
 Stripe::UsageRecord::OBJECT_NAME = T.let(T.unsafe(nil), String)
+
+# source://stripe//lib/stripe/resources/usage_record_summary.rb#5
 class Stripe::UsageRecordSummary < ::Stripe::StripeObject; end
+
+# source://stripe//lib/stripe/resources/usage_record_summary.rb#6
 Stripe::UsageRecordSummary::OBJECT_NAME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/util.rb#6
 module Stripe::Util
   class << self
     # @raise [TypeError]
+    #
+    # source://stripe//lib/stripe/util.rb#272
     def check_api_key!(key); end
 
     # @raise [TypeError]
+    #
+    # source://stripe//lib/stripe/util.rb#266
     def check_string_argument!(key); end
 
     # Converts a hash of fields or an array of hashes into a +StripeObject+ or
@@ -2999,6 +4408,8 @@ module Stripe::Util
     # * +data+ - Hash of fields and values to be converted into a StripeObject.
     # * +opts+ - Options for +StripeObject+ like an API key that will be reused
     #   on subsequent API calls.
+    #
+    # source://stripe//lib/stripe/util.rb#109
     def convert_to_stripe_object(data, opts = T.unsafe(nil)); end
 
     # Adds a custom method to a resource class. This is used to add support for
@@ -3015,18 +4426,31 @@ module Stripe::Util
     #     custom_method :capture, http_verb: post
     # adds a `capture` class method to the resource class that, when called,
     # will send a POST request to `/v1/<object_name>/capture`.
+    #
+    # source://stripe//lib/stripe/util.rb#64
     def custom_method(resource, target, name, http_verb, http_path); end
 
     # Encodes a hash of parameters in a way that's suitable for use as query
     # parameters in a URI or as form parameters in a request body. This mainly
     # involves escaping special characters from parameter keys and values (e.g.
     # `&`).
+    #
+    # source://stripe//lib/stripe/util.rb#179
     def encode_parameters(params); end
 
+    # source://stripe//lib/stripe/util.rb#195
     def flatten_params(params, parent_key = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#214
     def flatten_params_array(value, calculated_key); end
+
+    # source://stripe//lib/stripe/util.rb#145
     def log_debug(message, data = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#125
     def log_error(message, data = T.unsafe(nil)); end
+
+    # source://stripe//lib/stripe/util.rb#135
     def log_info(message, data = T.unsafe(nil)); end
 
     # `Time.now` can be unstable in cases like an administrator manually
@@ -3037,6 +4461,8 @@ module Stripe::Util
     # Shortcut for getting monotonic time, mostly for purposes of line length
     # and test stubbing. Returns time in seconds since the event used for
     # monotonic reference purposes by the platform (e.g. system boot time).
+    #
+    # source://stripe//lib/stripe/util.rb#236
     def monotonic_time; end
 
     # Normalizes header keys so that they're all lower case and each
@@ -3044,88 +4470,127 @@ module Stripe::Util
     # example, `request-id` becomes `Request-Id`. This is useful for extracting
     # certain key values when the user could have set them with a variety of
     # diffent naming schemes.
+    #
+    # source://stripe//lib/stripe/util.rb#283
     def normalize_headers(headers); end
 
+    # source://stripe//lib/stripe/util.rb#240
     def normalize_id(id); end
 
     # The secondary opts argument can either be a string or hash
     # Turn this value into an api_key and a set of headers
+    #
+    # source://stripe//lib/stripe/util.rb#252
     def normalize_opts(opts); end
 
+    # source://stripe//lib/stripe/util.rb#42
     def object_classes; end
 
     # @return [Boolean]
+    #
+    # source://stripe//lib/stripe/util.rb#46
     def object_name_matches_class?(object_name, klass); end
 
+    # source://stripe//lib/stripe/util.rb#27
     def objects_to_ids(obj); end
 
     # Generates a Dashboard link to inspect a request ID based off of a request
     # ID value and an API key, which is used to attempt to extract whether the
     # environment is livemode or testmode.
+    #
+    # source://stripe//lib/stripe/util.rb#295
     def request_id_dashboard_url(request_id, api_key); end
 
     # Constant time string comparison to prevent timing attacks
     # Code borrowed from ActiveSupport
+    #
+    # source://stripe//lib/stripe/util.rb#302
     def secure_compare(str_a, str_b); end
 
+    # source://stripe//lib/stripe/util.rb#155
     def symbolize_names(object); end
 
     # Encodes a string in a way that makes it suitable for use in a set of
     # query parameters in a URI or in a set of form parameters in a request
     # body.
+    #
+    # source://stripe//lib/stripe/util.rb#187
     def url_encode(key); end
 
     private
 
     # Uses an ANSI escape code to colorize text if it's going to be sent to a
     # TTY.
+    #
+    # source://stripe//lib/stripe/util.rb#331
     def colorize(val, color, isatty); end
 
     # Turns an integer log level into a printable name.
+    #
+    # source://stripe//lib/stripe/util.rb#343
     def level_name(level); end
 
+    # source://stripe//lib/stripe/util.rb#353
     def log_internal(message, data = T.unsafe(nil), color:, level:, logger:, out:); end
 
     # Wraps a value in double quotes if it looks sufficiently complex so that
     # it can be read by logfmt parsers.
+    #
+    # source://stripe//lib/stripe/util.rb#385
     def wrap_logfmt_value(val); end
   end
 end
 
 # private
+#
+# source://stripe//lib/stripe/util.rb#316
 Stripe::Util::COLOR_CODES = T.let(T.unsafe(nil), Hash)
 
 # Options that should be copyable from one StripeObject to another
 # including options that may be internal.
+#
+# source://stripe//lib/stripe/util.rb#17
 Stripe::Util::OPTS_COPYABLE = T.let(T.unsafe(nil), Set)
 
 # Options that should be persisted between API requests. This includes
 # client, which is an object containing an HTTP client to reuse.
+#
+# source://stripe//lib/stripe/util.rb#23
 Stripe::Util::OPTS_PERSISTABLE = T.let(T.unsafe(nil), Set)
 
 # Options that a user is allowed to specify.
+#
+# source://stripe//lib/stripe/util.rb#8
 Stripe::Util::OPTS_USER_SPECIFIED = T.let(T.unsafe(nil), Set)
 
+# source://stripe//lib/stripe/version.rb#4
 Stripe::VERSION = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/webhook.rb#4
 module Stripe::Webhook
   class << self
     # Initializes an Event object from a JSON payload.
     #
     # This may raise JSON::ParserError if the payload is not valid JSON, or
     # SignatureVerificationError if the signature verification fails.
+    #
+    # source://stripe//lib/stripe/webhook.rb#11
     def construct_event(payload, sig_header, secret, tolerance: T.unsafe(nil)); end
   end
 end
 
+# source://stripe//lib/stripe/webhook.rb#5
 Stripe::Webhook::DEFAULT_TOLERANCE = T.let(T.unsafe(nil), Integer)
 
+# source://stripe//lib/stripe/webhook.rb#24
 module Stripe::Webhook::Signature
   class << self
     # Computes a webhook signature given a time (probably the current time),
     # a payload, and a signing secret.
     #
     # @raise [ArgumentError]
+    #
+    # source://stripe//lib/stripe/webhook.rb#29
     def compute_signature(timestamp, payload, secret); end
 
     # Generates a value that would be added to a `Stripe-Signature` for a
@@ -3136,6 +4601,8 @@ module Stripe::Webhook::Signature
     # project and without).
     #
     # @raise [ArgumentError]
+    #
+    # source://stripe//lib/stripe/webhook.rb#48
     def generate_header(timestamp, signature, scheme: T.unsafe(nil)); end
 
     # Verifies the signature header for a given payload.
@@ -3148,18 +4615,24 @@ module Stripe::Webhook::Signature
     #   tolerance
     #
     # Returns true otherwise
+    #
+    # source://stripe//lib/stripe/webhook.rb#79
     def verify_header(payload, header, secret, tolerance: T.unsafe(nil)); end
 
     private
 
     # Extracts the timestamp and the signature(s) with the desired scheme
     # from the header
+    #
+    # source://stripe//lib/stripe/webhook.rb#61
     def get_timestamp_and_signatures(header, scheme); end
   end
 end
 
+# source://stripe//lib/stripe/webhook.rb#25
 Stripe::Webhook::Signature::EXPECTED_SCHEME = T.let(T.unsafe(nil), String)
 
+# source://stripe//lib/stripe/resources/webhook_endpoint.rb#5
 class Stripe::WebhookEndpoint < ::Stripe::APIResource
   include ::Stripe::APIOperations::Delete
   include ::Stripe::APIOperations::Save
@@ -3169,4 +4642,5 @@ class Stripe::WebhookEndpoint < ::Stripe::APIResource
   extend ::Stripe::APIOperations::Save::ClassMethods
 end
 
+# source://stripe//lib/stripe/resources/webhook_endpoint.rb#11
 Stripe::WebhookEndpoint::OBJECT_NAME = T.let(T.unsafe(nil), String)

@@ -24,8 +24,8 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     env:
+      RAILS_ENV: test
       DD_TRACE_ENABLED: false
-      DISABLE_SPRING: true
       TEST_COVERAGE: true
       DATABASE_URL: 'postgres://postgres:test-password@localhost:5432/hotseat_test'
       SEARCH_CLIENT: 'elasticsearch'
@@ -95,11 +95,23 @@ jobs:
         run: |
           yarn install --pure-lockfile
 
+      - name: Create database
+        run: bin/rails db:create
+
+      - name: Set up database schema
+        run: bin/rails db:schema:load
+
       - name: Run RuboCop
         run: bundle exec rubocop --parallel
 
       - name: Run erblint
         run: bundle exec erblint --lint-all
+
+      - name: Verify Tapioca gems
+        run: bin/tapioca gems --verify
+
+      - name: Verify Tapioca DSLs
+        run: bin/tapioca dsl --verify
 
       - name: Run Sorbet
         run: bundle exec srb tc

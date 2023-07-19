@@ -29,6 +29,7 @@ gem "jbuilder"
 # Use Postgres as database
 gem "pg"
 # Sorbet
+gem "sorbet-coerce"
 gem "sorbet-rails"
 gem "sorbet-runtime"
 
@@ -145,6 +146,7 @@ group :development do
   gem "erb_lint", require: false
   # Sorbet
   gem "sorbet"
+  gem "spoom", require: false
   gem "tapioca", require: false
   # Diagrams
   gem "rails-erd"

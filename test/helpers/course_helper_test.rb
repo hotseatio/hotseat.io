@@ -12,7 +12,7 @@ class CourseHelperTest < ActionView::TestCase
       course = create(:course, subject_area: create(:subject_area))
       create_list(:section, 4, course:, term:, instructor: create(:instructor))
 
-      assert_equal("4 sections", course_badge_label(T.must(Course.with_section_counts.first)))
+      assert_equal("4 sections", course_badge_label(Course.with_section_counts.first))
     end
 
     it "returns 'Not Offered' if the course is not offered" do
@@ -20,7 +20,7 @@ class CourseHelperTest < ActionView::TestCase
       course = create(:course, subject_area: create(:subject_area))
       create_list(:section, 4, course:, term: create(:term, term: "20F"), instructor: create(:instructor))
 
-      assert_equal("Not offered", course_badge_label(T.must(Course.with_section_counts.first)))
+      assert_equal("Not offered", course_badge_label(Course.with_section_counts.first))
     end
 
     it "returns nil if the course does not have a section count" do

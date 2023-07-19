@@ -24,7 +24,6 @@ end
 class Object < ::BasicObject
   include ::Kernel
   include ::PP::ObjectMixin
-  include ::MakeMakefile
 
   # Return a binding object for the receiver.
   #

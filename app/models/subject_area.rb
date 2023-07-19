@@ -22,7 +22,7 @@ class SubjectArea < ApplicationRecord
   scope :order_by_name, -> { order("name ASC") }
   scope :active, -> { where(superseding_subject_area: nil) }
 
-  sig { returns(SubjectArea::ActiveRecord_Relation) }
+  sig { returns(ActiveRecord::Relation) }
   def self.most_popular
     most_popular_names = [
       "Art History",

@@ -45,10 +45,10 @@ class Term < ApplicationRecord
 
   sig { returns(Term) }
   def self.current
-    T.must(where("start_date < ?", Time.zone.today).order("start_date DESC").limit(1).first)
+    where("start_date < ?", Time.zone.today).order("start_date DESC").limit(1).first
   end
 
-  sig { returns(Term::RelationType) }
+  sig { returns(ActiveRecord::Relation) }
   def self.upcoming
     current_term = current
     short_year = current_term.short_year
@@ -148,7 +148,7 @@ class Term < ApplicationRecord
   sig { returns(T.nilable(T::Boolean)) }
   def after_week_four?
     week = current_week
-    return nil if week.nil?
+    return false if week.nil?
 
     week > 4
   end

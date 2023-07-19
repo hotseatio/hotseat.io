@@ -61,7 +61,7 @@ class Review < ApplicationRecord
   scope :has_comment, -> { where.not(comments: "") }
 
   sig do
-    params(reviews: Review::RelationType)
+    params(reviews: ActiveRecord::Relation)
       .returns(T::Array[T::Hash[Symbol, T.any(String, Integer, Float)]])
   end
   def self.course_details(reviews)
@@ -115,7 +115,7 @@ class Review < ApplicationRecord
   end
 
   sig do
-    params(reviews: Review::RelationType)
+    params(reviews: ActiveRecord::Relation)
       .returns(T::Array[T::Hash[Symbol, T.any(String, Integer, Float)]])
   end
   def self.average_ratings(reviews)

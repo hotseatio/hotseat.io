@@ -5,7 +5,7 @@ class Admin::ReviewsController < AdminController
   sig { void }
   def initialize
     super
-    @reviews = T.let(nil, T.nilable(Review::RelationType))
+    @reviews = T.let(nil, T.nilable(ActiveRecord::Relation))
     @review = T.let(nil, T.nilable(Review))
     @author = T.let(nil, T.nilable(User))
   end
@@ -17,7 +17,7 @@ class Admin::ReviewsController < AdminController
   # GET /admin/reviews
   sig { void }
   def index
-    typed_params = TypedParams[IndexParams].new.extract!(params)
+    typed_params = TypedParams.extract!(IndexParams, params)
     page = typed_params.page
 
     @reviews = Review.all.where(status: :pending).order(updated_at: :desc).page(page)
@@ -30,32 +30,33 @@ class Admin::ReviewsController < AdminController
   # GET /admin/review/:id
   sig { void }
   def show
-    typed_params = TypedParams[ShowParams].new.extract!(params)
+    typed_params = TypedParams.extract!(ShowParams, params)
     @review = Review.find(typed_params.id)
     @author = @review.user
   end
 
   class UpdateParams < T::Struct
     const :id, Integer
-    const :status, Review::Status
+    const :status, String
   end
 
   # PATCH/PUT /admin/review/:id
   sig { void }
   def update
-    typed_params = TypedParams[UpdateParams].new.extract!(params)
+    typed_params = TypedParams.extract!(UpdateParams, params)
     status = typed_params.status
+
     @review = Review.find(typed_params.id)
 
     case status
-    when Review::Status::Approved
+    when "approved"
       @review.approve!
-    when Review::Status::Rejected
+    when "rejected"
       @review.reject!
-    when Review::Status::Pending
+    when "pending"
       @review.set_pending!
     else
-      T.absurd(status)
+      raise "Unknown status: #{status} (should be 'approved', 'rejected', 'pending')"
     end
 
     redirect_to(admin_review_path(@review))
