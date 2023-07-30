@@ -51,6 +51,11 @@ class Admin::ReviewsControllerTest < ActionDispatch::IntegrationTest
       reviewer = create(:user, notification_token_count: 0, phone:)
       review = create(:review, user: reviewer)
 
+      message = <<~MESSAGE
+        Your Hotseat review for #{review.section.course_title} was approved. You now have #{reviewer.notification_token_count + 1} notification tokens.
+      MESSAGE
+      stub_text_message_send(phone:, message:)
+
       sign_in create(:user, admin: true)
       perform_enqueued_jobs do
         patch "/admin/reviews/#{review.id}", params: {
@@ -65,6 +70,7 @@ class Admin::ReviewsControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to(admin_review_path(review))
       assert_predicate review, :approved?
       assert_equal 1, reviewer.notification_token_count
+      assert_text_message_send(phone:, message:)
     end
 
     it "approves a referred review" do
@@ -75,7 +81,7 @@ class Admin::ReviewsControllerTest < ActionDispatch::IntegrationTest
       review = create(:review, user: reviewer)
 
       message = <<~MESSAGE
-        Your Hotseat review for #{review.section.course_title} was not approved. No worries! You can update and resubmit your review at #{edit_review_url(review)} or reach out to reviews@hotseat.io.
+        Your Hotseat review for #{review.section.course_title} was approved. You now have #{reviewer.notification_token_count + 2} notification tokens.
       MESSAGE
       stub_text_message_send(phone:, message:)
 
@@ -96,6 +102,7 @@ class Admin::ReviewsControllerTest < ActionDispatch::IntegrationTest
       assert_equal 2, reviewer.notification_token_count
       assert_equal 1, admin.notification_token_count
       assert_not_nil reviewer.referral_completed_at
+      assert_text_message_send(phone:, message:)
     end
 
     it "rejects a review" do
@@ -123,6 +130,7 @@ class Admin::ReviewsControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to(admin_review_path(review))
       assert_predicate review, :rejected?
       assert_equal 0, reviewer.notification_token_count
+      assert_text_message_send(phone:, message:)
     end
 
     it "rejects a review with a rejection reason" do
@@ -154,6 +162,7 @@ class Admin::ReviewsControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to(admin_review_path(review))
       assert_predicate review, :rejected?
       assert_equal 0, reviewer.notification_token_count
+      assert_text_message_send(phone:, message:)
     end
   end
 end

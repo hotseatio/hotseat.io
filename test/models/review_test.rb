@@ -152,7 +152,7 @@ class ReviewTest < ActiveSupport::TestCase
       it "is idempotent; it returns false for an approved review" do
         reviewer = create(:user, notification_token_count: 0)
         review = create(:review, user: reviewer, status: "approved")
-        expect_notification_to_be_sent(ReviewApprovedNotification, reviewer, review:)
+        expect_notification_not_to_be_sent(ReviewApprovedNotification)
 
         assert_predicate(review, :approved?)
         assert_equal(0, reviewer.notification_token_count)
@@ -184,10 +184,10 @@ class ReviewTest < ActiveSupport::TestCase
       end
 
       it "gives one notification token to a referred reviewer for the second time" do
-        expect_notification_not_to_be_sent(ReviewApprovedNotification)
         referrer = create(:user, notification_token_count: 0)
         reviewer = create(:user, notification_token_count: 0, referred_by: referrer, referral_completed_at: Time.zone.now)
         review = create(:review, user: reviewer, status: "pending")
+        expect_notification_to_be_sent(ReviewApprovedNotification, reviewer, review:)
 
         assert_predicate(review, :pending?)
         assert_equal(0, reviewer.notification_token_count)
