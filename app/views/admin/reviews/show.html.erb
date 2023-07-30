@@ -2,14 +2,14 @@
 
 <%= render "shared/page_header", title: "Admin: Review #{@review.id}", breadcrumbs: [{ name: "Home", link: "/" }, { name: "Admin: Reviews", link: admin_reviews_path }, { name: "Review #{@review.id}", link: admin_review_path(@review) }] %>
 
-<div class="overflow-hidden bg-white shadow sm:rounded-lg">
+<div class="overflow-hidden bg-white dark:bg-gray-900 shadow sm:rounded-lg">
   <div class="px-4 py-5 sm:px-6">
-    <h3 class="text-base font-semibold leading-6 text-gray-900">
+    <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-gray-50">
       <%= link_to course_instructor_path(@review.course, @review.instructor) do %>
         <%= @review.course.long_title %>
       <% end %>
     </h3>
-    <p class="mt-1 max-w-2xl text-sm text-gray-500">
+    <p class="mt-1 max-w-2xl text-sm text-gray-500 dark:text-gray-400">
       <%= link_to instructor_path(@review.instructor) do %>
         <%= @review.section.instructor.full_label %>
       <% end %>
@@ -86,10 +86,22 @@
   </div>
 <% end %>
 
-<div class="flex w-full justify-center">
-  <%= button_to "Reject", [:admin, @review], method: :patch, params: { status: "rejected" }, class: "inline-flex items-center rounded-md border border-transparent bg-red-100 px-6 py-3 text-base font-medium text-red-700 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 mr-4" %>
-  <%= button_to "Approve", [:admin, @review], method: :patch, params: { status: "approved" }, class: "inline-flex items-center rounded-md border border-transparent bg-red-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2" %>
+<div class="flex flex-col w-full">
+  <%= form_with url: [:admin, @review], method: :patch do |form| %>
+    <%= form.label(:rejection_reason, "Rejection reason (sent to reviewer)") %>
+    <%= form.text_area(:rejection_reason, class: "block w-full rounded-md shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900") %>
+
+    <div class="flex justify-center mt-4">
+      <%= form.button("Reject", value: "rejected", class: "inline-flex items-center rounded-md border border-transparent bg-red-100 px-6 py-3 text-base font-medium text-red-700 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 mr-4") %>
+      <%= form.button("Approve", value: "approved", class: "inline-flex items-center rounded-md border border-transparent bg-red-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2") %>
+    </div>
+  <% end %>
 </div>
+
+    <%# <%= button_to "Reject", [:admin, @review], method: :patch, params: { status: "rejected" }, class: "inline-flex items-center rounded-md border border-transparent bg-red-100 px-6 py-3 text-base font-medium text-red-700 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 mr-4" %1> %>
+    <%# <%= button_to "Approve", [:admin, @review], method: :patch, params: { status: "approved" }, class: "inline-flex items-center rounded-md border border-transparent bg-red-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2" %1> %>
+  <%# </div> %>
+<%# </div> %>
 
 <div class="flex w-full justify-center">
   <p class="py-1 text-base text-gray-500 dark:text-gray-400">

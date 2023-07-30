@@ -37,14 +37,16 @@ class Admin::ReviewsController < AdminController
 
   class UpdateParams < T::Struct
     const :id, Integer
-    const :status, String
+    const :button, String
+    const :rejection_reason, T.nilable(String)
   end
 
   # PATCH/PUT /admin/review/:id
   sig { void }
   def update
     typed_params = TypedParams.extract!(UpdateParams, params)
-    status = typed_params.status
+    status = typed_params.button
+    rejection_reason = typed_params.rejection_reason
 
     @review = Review.find(typed_params.id)
 
@@ -52,7 +54,7 @@ class Admin::ReviewsController < AdminController
     when "approved"
       @review.approve!
     when "rejected"
-      @review.reject!
+      @review.reject!(rejection_reason)
     when "pending"
       @review.set_pending!
     else

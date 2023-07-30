@@ -23,8 +23,11 @@ require "rails/test_help"
 require "mocha/minitest"
 require "webmock/minitest"
 
+require "test_helpers/mock"
 require "test_helpers/text_message_helper"
 require "test_helpers/term_helper"
+require "test_helpers/notification_helper"
+require "test_helpers/webpush_helper"
 
 WebMock.disable_net_connect!(
   allow_localhost: true,
@@ -38,6 +41,9 @@ module ActiveSupport
     include FactoryBot::Syntax::Methods
     include WebMock::API
     include TermHelper
+    include TextMessageHelper
+    include WebpushHelper
+    include NotificationHelper
 
     parallelize(workers: :number_of_processors)
     parallelize_setup do |worker|

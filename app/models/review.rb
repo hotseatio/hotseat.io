@@ -235,24 +235,25 @@ class Review < ApplicationRecord
       T.must(user).complete_referral!
       T.must(user).add_notification_token
       update(first_approved_at: Time.zone.now)
-      NotifyUserAboutApprovedReviewJob.perform_later(self)
+      ReviewApprovedNotification.with(review: self).deliver_later(user)
     end
 
     approved!
+    save!
 
     true
   end
 
   # Reject the review.
   # This method is idempotent.
-  sig { returns(T::Boolean) }
-  def reject!
+  sig { params(rejection_reason: T.nilable(String)).returns(T::Boolean) }
+  def reject!(rejection_reason = nil)
     # Can't reject after a review is approved
     return false if approved?
     # No point in rejecting if already rejected
     return false if rejected?
 
-    NotifyUserAboutRejectedReviewJob.perform_later(self)
+    ReviewRejectedNotification.with(review: self, rejection_reason:).deliver_later(user)
     rejected!
     save!
 
