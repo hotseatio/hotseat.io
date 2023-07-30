@@ -24,6 +24,8 @@ class CheckoutsController < ApplicationController
       line_items: @price,
       success_url: my_courses_url(payment_success: true),
       cancel_url: my_courses_url,
+      automatic_tax: { enabled: true },
+      customer_update: { address: "auto" },
     )
     logger.info("Created checkout session url=#{@checkout_session.url}")
 
