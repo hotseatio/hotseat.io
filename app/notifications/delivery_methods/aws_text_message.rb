@@ -10,7 +10,7 @@ class DeliveryMethods::AwsTextMessage < Noticed::DeliveryMethods::Base
   sig { returns(User) }
   attr_reader :recipient
 
-  sig { returns(EnrollmentNotification) }
+  sig { returns(T.any(EnrollmentNotification, ReviewApprovedNotification, ReviewRejectedNotification)) }
   attr_reader :notification
 
   sig { void }

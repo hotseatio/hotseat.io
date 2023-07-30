@@ -13,16 +13,17 @@ class ReviewRejectedNotification < Noticed::Base
 
   sig { returns(String) }
   def full_message
-    review = params[:review]
-    rejection_reason = params[:rejection_reason]
+    review = T.let(params[:review], Review)
+    rejection_reason = T.let(params[:rejection_reason], T.nilable(String))
+    section = T.must(review.section)
 
     message = if rejection_reason.blank?
                 <<~MESSAGE
-                  Your Hotseat review for #{review.section.course_title} was not approved. No worries! You can update and resubmit your review here: #{edit_review_url(review)}
+                  Your Hotseat review for #{section.course_title} was not approved. No worries! You can update and resubmit your review at #{edit_review_url(review)} or reach out to reviews@hotseat.io.
                 MESSAGE
               else
                 <<~MESSAGE
-                  Your Hotseat review for #{review.section.course_title} was not approved for the following reason: #{rejection_reason}
+                  Your Hotseat review for #{section.course_title} was not approved for the following reason: #{rejection_reason}
 
                   No worries! You can update and resubmit your review at #{edit_review_url(review)} or reach out to reviews@hotseat.io.
                 MESSAGE

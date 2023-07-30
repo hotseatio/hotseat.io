@@ -47,15 +47,16 @@ class Admin::ReviewsControllerTest < ActionDispatch::IntegrationTest
   describe "PATCH/PUT /admin/review/:id" do
     it "approves a review" do
       create_current_term
-      reviewer = create(:user, notification_token_count: 0)
+      phone = T.must(User.normalize_phone(Faker::PhoneNumber.cell_phone))
+      reviewer = create(:user, notification_token_count: 0, phone:)
       review = create(:review, user: reviewer)
-      T.unsafe(NotifyUserAboutApprovedReviewJob).expects(:perform_later).once
-      T.unsafe(NotifyUserAboutRejectedReviewJob).expects(:perform_later).never
 
       sign_in create(:user, admin: true)
-      patch "/admin/reviews/#{review.id}", params: {
-        status: "approved",
-      }
+      perform_enqueued_jobs do
+        patch "/admin/reviews/#{review.id}", params: {
+          button: "approved",
+        }
+      end
 
       review.reload
       reviewer.reload
@@ -68,16 +69,22 @@ class Admin::ReviewsControllerTest < ActionDispatch::IntegrationTest
 
     it "approves a referred review" do
       create_current_term
+      phone = T.must(User.normalize_phone(Faker::PhoneNumber.cell_phone))
       admin = create(:user, admin: true, notification_token_count: 0)
-      reviewer = create(:user, notification_token_count: 0, referred_by: admin)
+      reviewer = create(:user, notification_token_count: 0, referred_by: admin, phone:)
       review = create(:review, user: reviewer)
-      T.unsafe(NotifyUserAboutApprovedReviewJob).expects(:perform_later).once
-      T.unsafe(NotifyUserAboutRejectedReviewJob).expects(:perform_later).never
+
+      message = <<~MESSAGE
+        Your Hotseat review for #{review.section.course_title} was not approved. No worries! You can update and resubmit your review at #{edit_review_url(review)} or reach out to reviews@hotseat.io.
+      MESSAGE
+      stub_text_message_send(phone:, message:)
 
       sign_in admin
-      patch "/admin/reviews/#{review.id}", params: {
-        status: "approved",
-      }
+      perform_enqueued_jobs do
+        patch "/admin/reviews/#{review.id}", params: {
+          button: "approved",
+        }
+      end
 
       review.reload
       reviewer.reload
@@ -93,15 +100,52 @@ class Admin::ReviewsControllerTest < ActionDispatch::IntegrationTest
 
     it "rejects a review" do
       create_current_term
-      reviewer = create(:user, notification_token_count: 0)
+      phone = T.must(User.normalize_phone(Faker::PhoneNumber.cell_phone))
+      reviewer = create(:user, notification_token_count: 0, phone:)
       review = create(:review, user: reviewer)
-      T.unsafe(NotifyUserAboutApprovedReviewJob).expects(:perform_later).never
-      T.unsafe(NotifyUserAboutRejectedReviewJob).expects(:perform_later).once
+
+      message = <<~MESSAGE
+        Your Hotseat review for #{review.section.course_title} was not approved. No worries! You can update and resubmit your review at #{edit_review_url(review)} or reach out to reviews@hotseat.io.
+      MESSAGE
+      stub_text_message_send(phone:, message:)
 
       sign_in create(:user, admin: true)
-      patch "/admin/reviews/#{review.id}", params: {
-        status: "rejected",
-      }
+      perform_enqueued_jobs do
+        patch "/admin/reviews/#{review.id}", params: {
+          button: "rejected",
+        }
+      end
+
+      review.reload
+      reviewer.reload
+
+      assert_response :found
+      assert_redirected_to(admin_review_path(review))
+      assert_predicate review, :rejected?
+      assert_equal 0, reviewer.notification_token_count
+    end
+
+    it "rejects a review with a rejection reason" do
+      create_current_term
+      phone = T.must(User.normalize_phone(Faker::PhoneNumber.cell_phone))
+      reviewer = create(:user, notification_token_count: 0, phone:)
+      review = create(:review, user: reviewer)
+      rejection_reason = "Wrong professor for course"
+
+      message = <<~MESSAGE
+        Your Hotseat review for #{review.section.course_title} was not approved for the following reason: #{rejection_reason}
+
+        No worries! You can update and resubmit your review at #{edit_review_url(review)} or reach out to reviews@hotseat.io.
+      MESSAGE
+      stub_text_message_send(phone:, message:)
+
+      sign_in create(:user, admin: true)
+      perform_enqueued_jobs do
+        patch "/admin/reviews/#{review.id}", params: {
+          button: "rejected",
+          rejection_reason:,
+        }
+      end
 
       review.reload
       reviewer.reload

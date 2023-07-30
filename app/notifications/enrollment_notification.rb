@@ -8,9 +8,6 @@
 
 class EnrollmentNotification < Noticed::Base
   extend T::Sig
-  # include GeneratedUrlHelpers
-  # include Rails.application.routes.url_helpers
-  # include GeneratedUrlHelpers
 
   deliver_by :database
   # deliver_by :email, mailer: "UserMailer"
@@ -24,7 +21,7 @@ class EnrollmentNotification < Noticed::Base
 
   sig { returns(String) }
   def full_message
-    old_enrollment_status = params[:previous_enrollment_numbers]["enrollment_status"]
+    old_enrollment_status = params[:previous_enrollment_numbers][:enrollment_status]
     section = params[:section]
     new_enrollment_status = section.enrollment_status
 
@@ -43,7 +40,7 @@ class EnrollmentNotification < Noticed::Base
 
   sig { returns(String) }
   def body
-    old_enrollment_status = params[:previous_enrollment_numbers]["enrollment_status"]
+    old_enrollment_status = params[:previous_enrollment_numbers][:enrollment_status]
     section = params[:section]
     new_enrollment_status = section.enrollment_status
 
@@ -82,7 +79,7 @@ class EnrollmentNotification < Noticed::Base
 
   sig { returns(T::Boolean) }
   def webpush_notifications?
-    recipient.admin?
+    recipient.beta_tester
   end
 
   sig { returns(T::Boolean) }

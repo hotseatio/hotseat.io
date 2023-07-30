@@ -134,9 +134,9 @@ class ReviewTest < ActiveSupport::TestCase
       end
 
       it "gives a notification token to the reviewer" do
-        T.unsafe(NotifyUserAboutApprovedReviewJob).expects(:perform_later).once
         reviewer = create(:user, notification_token_count: 0)
         review = create(:review, user: reviewer, status: "pending")
+        expect_notification_to_be_sent(ReviewApprovedNotification, reviewer, review:)
 
         assert_predicate(review, :pending?)
         assert_not(review.first_approved_at)
@@ -150,9 +150,9 @@ class ReviewTest < ActiveSupport::TestCase
       end
 
       it "is idempotent; it returns false for an approved review" do
-        T.unsafe(NotifyUserAboutApprovedReviewJob).expects(:perform_later).never
         reviewer = create(:user, notification_token_count: 0)
         review = create(:review, user: reviewer, status: "approved")
+        expect_notification_to_be_sent(ReviewApprovedNotification, reviewer, review:)
 
         assert_predicate(review, :approved?)
         assert_equal(0, reviewer.notification_token_count)
@@ -166,10 +166,10 @@ class ReviewTest < ActiveSupport::TestCase
       end
 
       it "gives two notification tokens to a referred reviewer for the first time" do
-        T.unsafe(NotifyUserAboutApprovedReviewJob).expects(:perform_later).once
         referrer = create(:user, notification_token_count: 0)
         reviewer = create(:user, notification_token_count: 0, referred_by: referrer)
         review = create(:review, user: reviewer, status: "pending")
+        expect_notification_to_be_sent(ReviewApprovedNotification, reviewer, review:)
 
         assert_predicate(review, :pending?)
         assert_equal(0, reviewer.notification_token_count)
@@ -184,7 +184,7 @@ class ReviewTest < ActiveSupport::TestCase
       end
 
       it "gives one notification token to a referred reviewer for the second time" do
-        T.unsafe(NotifyUserAboutApprovedReviewJob).expects(:perform_later).once
+        expect_notification_not_to_be_sent(ReviewApprovedNotification)
         referrer = create(:user, notification_token_count: 0)
         reviewer = create(:user, notification_token_count: 0, referred_by: referrer, referral_completed_at: Time.zone.now)
         review = create(:review, user: reviewer, status: "pending")
@@ -203,7 +203,7 @@ class ReviewTest < ActiveSupport::TestCase
 
       it "does not give a notification token to a review that's been edited" do
         first_approved_at = Time.zone.now
-        T.unsafe(NotifyUserAboutApprovedReviewJob).expects(:perform_later).never
+        expect_notification_not_to_be_sent(ReviewApprovedNotification)
         reviewer = create(:user, notification_token_count: 0)
         review = create(:review, user: reviewer, status: "pending", first_approved_at:)
 
@@ -255,8 +255,6 @@ class ReviewTest < ActiveSupport::TestCase
       end
 
       it "does not reject the review if the review is approved" do
-        T.unsafe(NotifyUserAboutRejectedReviewJob).expects(:perform_later).never
-
         reviewer = create(:user, notification_token_count: 0)
         review = create(:review, user: reviewer, status: "approved")
         expect_notification_not_to_be_sent(ReviewRejectedNotification)

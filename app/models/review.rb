@@ -235,10 +235,11 @@ class Review < ApplicationRecord
       T.must(user).complete_referral!
       T.must(user).add_notification_token
       update(first_approved_at: Time.zone.now)
-      NotifyUserAboutApprovedReviewJob.perform_later(self)
+      ReviewApprovedNotification.with(review: self).deliver_later(user)
     end
 
     approved!
+    save!
 
     true
   end
