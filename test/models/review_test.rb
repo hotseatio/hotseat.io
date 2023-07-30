@@ -217,11 +217,10 @@ class ReviewTest < ActiveSupport::TestCase
     end
 
     describe "#reject!" do
-      it "rejects the review" do
-        T.unsafe(NotifyUserAboutRejectedReviewJob).expects(:perform_later).once
-
+      it "rejects the review and sends a notification to the user" do
         reviewer = create(:user, notification_token_count: 0)
         review = create(:review, user: reviewer, status: "pending")
+        expect_notification_to_be_sent(ReviewRejectedNotification, reviewer, review:, rejection_reason: nil)
 
         assert(review.reject!)
         review.reload
@@ -230,11 +229,23 @@ class ReviewTest < ActiveSupport::TestCase
         assert_equal(0, reviewer.notification_token_count)
       end
 
-      it "does not reject the review if the review is rejected" do
-        T.unsafe(NotifyUserAboutRejectedReviewJob).expects(:perform_later).never
+      it "sends a rejection reason if provided" do
+        reviewer = create(:user, notification_token_count: 0)
+        review = create(:review, user: reviewer, status: "pending")
+        rejection_reason = "Review is for the wrong professor"
+        expect_notification_to_be_sent(ReviewRejectedNotification, reviewer, review:, rejection_reason:)
 
+        assert(review.reject!(rejection_reason))
+        review.reload
+
+        assert_predicate(review, :rejected?)
+        assert_equal(0, reviewer.notification_token_count)
+      end
+
+      it "does not reject the review if the review is rejected" do
         reviewer = create(:user, notification_token_count: 0)
         review = create(:review, user: reviewer, status: "rejected")
+        expect_notification_not_to_be_sent(ReviewRejectedNotification)
 
         assert_not(review.reject!)
         review.reload
@@ -248,6 +259,7 @@ class ReviewTest < ActiveSupport::TestCase
 
         reviewer = create(:user, notification_token_count: 0)
         review = create(:review, user: reviewer, status: "approved")
+        expect_notification_not_to_be_sent(ReviewRejectedNotification)
 
         assert_not(review.reject!)
         review.reload
