@@ -41,3 +41,4 @@ jobs:
         with:
           git_remote_url: ${{ secrets.SSH_HOST }}
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          branch: main
