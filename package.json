@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "lint": "eslint spec/javascript/ app/javascript/",
+    "types": "tsc --noEmit -p tsconfig.json",
     "test": "jest",
     "build:css": "./rails-env postcss ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css",
     "build": "./rails-env node esbuild.js app/javascript/*.*",
@@ -44,7 +45,6 @@
     "@types/ahoy.js": "^0.4.0",
     "@types/d3": "^7.4.0",
     "@types/jest": "^29.2.4",
-    "@types/jquery": "^3.5.14",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.11.17",
     "@types/rails__activestorage": "^7.0.1",
