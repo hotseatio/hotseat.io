@@ -2001,10 +2001,10 @@ commander@7, commander@^7.2.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
   integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
 
-compute-scroll-into-view@^1.0.17:
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/compute-scroll-into-view/-/compute-scroll-into-view-1.0.17.tgz#6a88f18acd9d42e9cf4baa6bec7e0522607ab7ab"
-  integrity sha512-j4dx+Fb0URmzbwwMUrhqWM2BEWHdFGx+qZ9qqASHRPqvTYdqvWnHg0H1hIbcyLnvgnoNAVMlwkepyqM3DaIFUg==
+compute-scroll-into-view@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/compute-scroll-into-view/-/compute-scroll-into-view-2.0.4.tgz#2b444b2b9e4724819d2531efacb7ac094155fdf6"
+  integrity sha512-y/ZA3BGnxoM/QHHQ2Uy49CLtnWPbt4tTPpEEZiEmmiWBFKjej7nEyH8Ryz54jH0MLXflUYA3Er2zUxPSJu5R+g==
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -2612,13 +2612,13 @@ domutils@^3.0.1:
     domelementtype "^2.3.0"
     domhandler "^5.0.3"
 
-downshift@^7.0.5:
-  version "7.0.5"
-  resolved "https://registry.yarnpkg.com/downshift/-/downshift-7.0.5.tgz#78e5e5d4a63a401869c01bbeb785431e7a5740ce"
-  integrity sha512-q52vBjtRkt4PLD0xQDUf3lM+uaUOpc5m0L8YfE9oPtn4RJLu5YITB/G4mr9OyPYwWIBe/h9g3RX6mggMVaBIDw==
+downshift@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/downshift/-/downshift-8.1.0.tgz#72023513256134723fe807a54168ebc64f9ddf6c"
+  integrity sha512-e9EBBLZvB2G73qT272x3hExttGCH1q1usbjirm+1aMcFXuzSWhgBdbnAHPlFI2rEq61cU/kDrEIMrY+ozMhvmg==
   dependencies:
     "@babel/runtime" "^7.14.8"
-    compute-scroll-into-view "^1.0.17"
+    compute-scroll-into-view "^2.0.4"
     prop-types "^15.7.2"
     react-is "^17.0.2"
     tslib "^2.3.0"
