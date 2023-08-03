@@ -54,7 +54,7 @@
     "@types/resize-observer-browser": "^0.1.7",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
-    "cssnano": "^5.1.14",
+    "cssnano": "^6.0.1",
     "esbuild": "^0.16.9",
     "eslint": "^8.30.0",
     "eslint-config-prettier": "^8.5.0",
