@@ -3,8 +3,7 @@
     <div class="flex justify-between items-center h-16">
       <!-- Header -->
       <%= link_to "/", class: "block flex px-2 lg:px-0 items-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-500" do %>
-        <%= render "icons/fire", classes: "h-8" %>
-        <h1 class="ml-1 text-lg font-extrabold hidden lg:block">hotseat.io</h1>
+        <%= render "icons/hotseatlogored", classes: "h-8" %>
       <% end %>
 
       <% unless current_page?(root_path) %>
@@ -18,7 +17,7 @@
                                             suggestionUrl: search_suggestions_url,
                                             initialValue: @query || "",
                                             magnifyingGlass: true,
-                                            placeholder: "Search",
+                                            placeholder: "Search for classes, instructors, etc...",
                                           },
                                           html_options: {
                                             class: "w-full",
