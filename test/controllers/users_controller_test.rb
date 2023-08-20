@@ -128,4 +128,88 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       end
     end
   end
+
+  describe "PUT /users/:id" do
+    before do
+      @user = T.let(
+        create(:user,
+               beta_tester: false,
+               enrollment_sms_notifications: true,
+               enrollment_web_push_notifications: true),
+        User,
+      )
+      @user.subscribe("announcements")
+    end
+
+    it "updates the best tester status of a user" do
+      sign_in(@user)
+
+      put "/users/#{@user.id}", params: {
+        beta_tester: true,
+      }
+      assert_response :ok
+      assert_equal "Settings updated!", response.parsed_body["title"]
+      assert @user.beta_tester
+      assert @user.enrollment_web_push_notifications
+      assert @user.enrollment_sms_notifications
+      assert @user.subscribed?("announcements")
+    end
+
+    it "updates the enrollment notification push status" do
+      sign_in @user
+
+      put "/users/#{@user.id}", params: {
+        beta_tester: nil,
+        notification_preferences: {
+          enrollment_notifications: {
+            sms: false,
+          },
+        },
+      }
+      assert_response :ok
+      assert_equal "Settings updated!", response.parsed_body["title"]
+      assert_not @user.beta_tester
+      assert @user.enrollment_web_push_notifications
+      assert_not @user.enrollment_sms_notifications
+      assert @user.subscribed?("announcements")
+    end
+
+    it "updates the enrollment notification sms status" do
+      sign_in @user
+
+      put "/users/#{@user.id}", params: {
+        beta_tester: nil,
+        notification_preferences: {
+          enrollment_notifications: {
+            push: false,
+          },
+        },
+      }
+      assert_response :ok
+      assert_equal "Settings updated!", response.parsed_body["title"]
+      assert_not @user.beta_tester
+      assert_not @user.enrollment_web_push_notifications
+      assert @user.enrollment_sms_notifications
+      assert @user.subscribed?("announcements")
+    end
+
+    it "updates the announcements email status" do
+      sign_in @user
+
+      put "/users/#{@user.id}", params: {
+        beta_tester: nil,
+        notification_preferences: {
+          announcements: {
+            email: false,
+          },
+        },
+      }
+      assert_response :ok
+      assert_equal "Settings updated!", response.parsed_body["title"]
+      assert_not @user.beta_tester
+      assert @user.enrollment_web_push_notifications
+      assert @user.enrollment_sms_notifications
+      assert_not @user.subscribed?("announcements")
+    end
+  end
 end
