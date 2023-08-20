@@ -24,7 +24,7 @@ function getColors(type: AlertType) {
   }
 }
 
-function getIcon(type: AlertType): (props: React.SVGProps<SVGSVGElement>) => JSX.Element {
+function getIcon(type: AlertType): (props: React.SVGProps<SVGSVGElement>) => React.ReactNode {
   switch (type) {
     case 'error':
       return XCircleIcon

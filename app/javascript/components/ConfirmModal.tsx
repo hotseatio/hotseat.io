@@ -8,7 +8,7 @@ type Props = {
   isOpen: boolean
   title: string
   description?: string
-  Icon: (props: React.ComponentProps<'svg'>) => JSX.Element
+  Icon: (props: React.ComponentProps<'svg'>) => React.ReactNode
   confirmLabel?: string
   cancelLabel?: string
   onConfirm?: (payload: any) => void // eslint-disable-line @typescript-eslint/no-explicit-any
