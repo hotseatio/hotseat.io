@@ -7,8 +7,7 @@ import {FireIcon} from '@heroicons/react/24/outline'
 import CopyToClipboardInput from './CopyToClipboardInput'
 import PhoneInput from './PhoneInput'
 import DevicesTable from './DevicesTable'
-// TODO: come back and polish up notification preferences
-// import NotificationPreferences from './NotificationPreferences'
+import NotificationPreferences from './NotificationPreferences'
 
 import LoadingCircle from 'components/icons/LoadingCircle'
 import Alert from 'components/Alert'
@@ -121,8 +120,8 @@ export default function SettingsForm({updateUrl, phoneNumber, devices, ...props}
               <CopyToClipboardInput value={props.referralLink} name="referral_input" id="referral_input" />
             </div>
 
-            {betaTester && <DevicesTable devices={devices} />}
-            {/* <NotificationPreferences /> */}
+            <NotificationPreferences />
+            <DevicesTable devices={devices} />
 
             <Switch.Group as="div" className="flex items-center justify-between" id="beta_tester">
               <Switch.Label<'span'> as="span" className="flex-grow flex flex-col" passive>

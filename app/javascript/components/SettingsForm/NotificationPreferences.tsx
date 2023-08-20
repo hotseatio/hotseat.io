@@ -3,10 +3,10 @@ import * as React from 'react'
 const settings = [
   {
     title: 'Hotseat News',
-    description: 'Get updates about new features.',
+    description: 'Get the latest on new features.',
     email: true,
     sms: null,
-    push: false,
+    push: null,
   },
   {
     title: 'Enrollment updates',
@@ -29,7 +29,7 @@ export default function NotificationPreferences() {
                   Notification Preferences
                 </th>
                 <th scope="col" className="px-3 py-3.5 text-center text-sm font-medium text-gray-500">
-                  Web Push
+                  Push Alerts
                 </th>
                 <th scope="col" className="px-3 py-3.5 text-center text-sm font-medium text-gray-500">
                   SMS
@@ -47,28 +47,34 @@ export default function NotificationPreferences() {
                     <div className="font-light text-gray-500">{setting.description}</div>
                   </td>
                   <td className="px-3 py-4 text-sm text-gray-500">
-                    <div className="flex items-center justify-center">
-                      <input
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-600"
-                      />
-                    </div>
+                    {setting.push !== null && (
+                      <div className="flex items-center justify-center">
+                        <input
+                          type="checkbox"
+                          className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-600"
+                        />
+                      </div>
+                    )}
                   </td>
                   <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                    <div className="flex items-center justify-center">
-                      <input
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-600"
-                      />
-                    </div>
+                    {setting.sms !== null && (
+                      <div className="flex items-center justify-center">
+                        <input
+                          type="checkbox"
+                          className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-600"
+                        />
+                      </div>
+                    )}
                   </td>
                   <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                    <div className="flex items-center justify-center">
-                      <input
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-600"
-                      />
-                    </div>
+                    {setting.email !== null && (
+                      <div className="flex items-center justify-center">
+                        <input
+                          type="checkbox"
+                          className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-600"
+                        />
+                      </div>
+                    )}
                   </td>
                 </tr>
               ))}
