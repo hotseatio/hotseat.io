@@ -1,23 +1,53 @@
 import * as React from 'react'
 
-const settings = [
-  {
+export interface NotificationPreference {
+  id: string
+  email: boolean | null
+  sms: boolean | null
+  push: boolean | null
+}
+
+const labels = {
+  announcements: {
     title: 'Hotseat News',
     description: 'Get the latest on new features.',
-    email: true,
-    sms: null,
-    push: null,
   },
-  {
+  enrollment_notifications: {
     title: 'Enrollment updates',
     description: 'Get notified about changes in subscribed classes.',
-    email: null,
-    sms: true,
-    push: true,
   },
-]
+}
 
-export default function NotificationPreferences() {
+interface NotificationPreferenceCheckboxProps {
+  // Hides the checkbox if null
+  checked: boolean | null
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+function NotificationPreferenceCheckbox({checked, onChange}: NotificationPreferenceCheckboxProps) {
+  return (
+    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+      {checked !== null && (
+        <div className="flex items-center justify-center">
+          <input
+            type="checkbox"
+            className="h-4 w-4 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-800 text-red-600 focus:ring-red-600"
+            checked={checked}
+            onChange={onChange}
+          />
+        </div>
+      )}
+    </td>
+  )
+}
+
+interface Props {
+  preferences: NotificationPreference[]
+  onPreferenceChange: (index: number, notificationType: string, value: boolean) => void
+}
+
+export default function NotificationPreferences({preferences, onPreferenceChange}: Props) {
+  console.log('preferences: ', preferences)
   return (
     <div>
       <div className="mt-8">
@@ -25,57 +55,53 @@ export default function NotificationPreferences() {
           <table className="min-w-full divide-y divide-gray-300">
             <thead>
               <tr>
-                <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
+                <th
+                  scope="col"
+                  className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 dark:text-gray-50 sm:pl-0"
+                >
                   Notification Preferences
                 </th>
-                <th scope="col" className="px-3 py-3.5 text-center text-sm font-medium text-gray-500">
+                <th
+                  scope="col"
+                  className="px-3 py-3.5 text-center text-sm font-medium text-gray-500 dark:text-gray-400"
+                >
                   Push Alerts
                 </th>
-                <th scope="col" className="px-3 py-3.5 text-center text-sm font-medium text-gray-500">
+                <th
+                  scope="col"
+                  className="px-3 py-3.5 text-center text-sm font-medium text-gray-500 dark:text-gray-400"
+                >
                   SMS
                 </th>
-                <th scope="col" className="px-3 py-3.5 text-center text-sm font-medium text-gray-500">
+                <th
+                  scope="col"
+                  className="px-3 py-3.5 text-center text-sm font-medium text-gray-500 dark:text-gray-400"
+                >
                   Email
                 </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {settings.map((setting) => (
-                <tr key={setting.title}>
-                  <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                    <div className="font-medium text-gray-900">{setting.title}</div>
-                    <div className="font-light text-gray-500">{setting.description}</div>
+              {preferences.map((preference, i) => (
+                <tr key={preference.id}>
+                  <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-50 sm:pl-0">
+                    <div className="font-medium text-gray-900 dark:text-gray-50">{labels[preference.id].title}</div>
+                    <div className="font-light text-gray-500 dark:text-gray-400">
+                      {labels[preference.id].description}
+                    </div>
                   </td>
-                  <td className="px-3 py-4 text-sm text-gray-500">
-                    {setting.push !== null && (
-                      <div className="flex items-center justify-center">
-                        <input
-                          type="checkbox"
-                          className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-600"
-                        />
-                      </div>
-                    )}
-                  </td>
-                  <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                    {setting.sms !== null && (
-                      <div className="flex items-center justify-center">
-                        <input
-                          type="checkbox"
-                          className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-600"
-                        />
-                      </div>
-                    )}
-                  </td>
-                  <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                    {setting.email !== null && (
-                      <div className="flex items-center justify-center">
-                        <input
-                          type="checkbox"
-                          className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-600"
-                        />
-                      </div>
-                    )}
-                  </td>
+                  <NotificationPreferenceCheckbox
+                    checked={preference.push}
+                    onChange={(e) => onPreferenceChange(i, 'push', e.target.checked)}
+                  />
+                  <NotificationPreferenceCheckbox
+                    checked={preference.sms}
+                    onChange={(e) => onPreferenceChange(i, 'sms', e.target.checked)}
+                  />
+                  <NotificationPreferenceCheckbox
+                    checked={preference.email}
+                    onChange={(e) => onPreferenceChange(i, 'email', e.target.checked)}
+                  />
                 </tr>
               ))}
             </tbody>

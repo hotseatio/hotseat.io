@@ -8,6 +8,7 @@ import CopyToClipboardInput from './CopyToClipboardInput'
 import PhoneInput from './PhoneInput'
 import DevicesTable from './DevicesTable'
 import NotificationPreferences from './NotificationPreferences'
+import type {NotificationPreference} from './NotificationPreferences'
 
 import LoadingCircle from 'components/icons/LoadingCircle'
 import Alert from 'components/Alert'
@@ -23,6 +24,7 @@ type Props = {
   betaTester: boolean
   referralLink: string
   devices: Device[]
+  notificationPreferences: NotificationPreference[]
 }
 
 type Response = {
@@ -36,6 +38,12 @@ export default function SettingsForm({updateUrl, phoneNumber, devices, ...props}
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [betaTester, setBetaTester] = useState(props.betaTester)
+  const [notificationPreferences, setNotificationPreferences] = useState(props.notificationPreferences)
+  const onPreferenceChange = (index: number, notificationType: string, value: boolean) => {
+    const newPreferences = [...notificationPreferences]
+    newPreferences[index][notificationType] = value
+    setNotificationPreferences(newPreferences)
+  }
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -120,7 +128,7 @@ export default function SettingsForm({updateUrl, phoneNumber, devices, ...props}
               <CopyToClipboardInput value={props.referralLink} name="referral_input" id="referral_input" />
             </div>
 
-            <NotificationPreferences />
+            <NotificationPreferences preferences={notificationPreferences} onPreferenceChange={onPreferenceChange} />
             <DevicesTable devices={devices} />
 
             <Switch.Group as="div" className="flex items-center justify-between" id="beta_tester">
