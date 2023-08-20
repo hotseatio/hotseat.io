@@ -1281,8 +1281,8 @@ CREATE TABLE public.users (
     referred_by_id integer,
     referral_completed_at timestamp without time zone,
     phone_verification_otp_secret character varying(32),
-    send_enrollment_sms boolean DEFAULT true NOT NULL,
-    send_enrollment_web_push boolean DEFAULT true NOT NULL,
+    enrollment_sms_notifications boolean DEFAULT true NOT NULL,
+    enrollment_web_push_notifications boolean DEFAULT true NOT NULL,
     CONSTRAINT notification_tokens_positive_count CHECK ((notification_token_count >= 0))
 );
 

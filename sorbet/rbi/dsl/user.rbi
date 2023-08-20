@@ -864,6 +864,96 @@ class User
     sig { void }
     def email_will_change!; end
 
+    sig { returns(T::Boolean) }
+    def enrollment_sms_notifications; end
+
+    sig { params(value: T::Boolean).returns(T::Boolean) }
+    def enrollment_sms_notifications=(value); end
+
+    sig { returns(T::Boolean) }
+    def enrollment_sms_notifications?; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def enrollment_sms_notifications_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def enrollment_sms_notifications_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def enrollment_sms_notifications_came_from_user?; end
+
+    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
+    def enrollment_sms_notifications_change; end
+
+    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
+    def enrollment_sms_notifications_change_to_be_saved; end
+
+    sig { returns(T::Boolean) }
+    def enrollment_sms_notifications_changed?; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def enrollment_sms_notifications_in_database; end
+
+    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
+    def enrollment_sms_notifications_previous_change; end
+
+    sig { returns(T::Boolean) }
+    def enrollment_sms_notifications_previously_changed?; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def enrollment_sms_notifications_previously_was; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def enrollment_sms_notifications_was; end
+
+    sig { void }
+    def enrollment_sms_notifications_will_change!; end
+
+    sig { returns(T::Boolean) }
+    def enrollment_web_push_notifications; end
+
+    sig { params(value: T::Boolean).returns(T::Boolean) }
+    def enrollment_web_push_notifications=(value); end
+
+    sig { returns(T::Boolean) }
+    def enrollment_web_push_notifications?; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def enrollment_web_push_notifications_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def enrollment_web_push_notifications_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def enrollment_web_push_notifications_came_from_user?; end
+
+    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
+    def enrollment_web_push_notifications_change; end
+
+    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
+    def enrollment_web_push_notifications_change_to_be_saved; end
+
+    sig { returns(T::Boolean) }
+    def enrollment_web_push_notifications_changed?; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def enrollment_web_push_notifications_in_database; end
+
+    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
+    def enrollment_web_push_notifications_previous_change; end
+
+    sig { returns(T::Boolean) }
+    def enrollment_web_push_notifications_previously_changed?; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def enrollment_web_push_notifications_previously_was; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def enrollment_web_push_notifications_was; end
+
+    sig { void }
+    def enrollment_web_push_notifications_will_change!; end
+
     sig { returns(T.nilable(::Integer)) }
     def id; end
 
@@ -1468,6 +1558,12 @@ class User
     def restore_email!; end
 
     sig { void }
+    def restore_enrollment_sms_notifications!; end
+
+    sig { void }
+    def restore_enrollment_web_push_notifications!; end
+
+    sig { void }
     def restore_id!; end
 
     sig { void }
@@ -1505,12 +1601,6 @@ class User
 
     sig { void }
     def restore_remember_token!; end
-
-    sig { void }
-    def restore_send_enrollment_sms!; end
-
-    sig { void }
-    def restore_send_enrollment_web_push!; end
 
     sig { void }
     def restore_sign_in_count!; end
@@ -1556,6 +1646,18 @@ class User
 
     sig { returns(T::Boolean) }
     def saved_change_to_email?; end
+
+    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
+    def saved_change_to_enrollment_sms_notifications; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_enrollment_sms_notifications?; end
+
+    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
+    def saved_change_to_enrollment_web_push_notifications; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_enrollment_web_push_notifications?; end
 
     sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
     def saved_change_to_id; end
@@ -1635,18 +1737,6 @@ class User
     sig { returns(T::Boolean) }
     def saved_change_to_remember_token?; end
 
-    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
-    def saved_change_to_send_enrollment_sms; end
-
-    sig { returns(T::Boolean) }
-    def saved_change_to_send_enrollment_sms?; end
-
-    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
-    def saved_change_to_send_enrollment_web_push; end
-
-    sig { returns(T::Boolean) }
-    def saved_change_to_send_enrollment_web_push?; end
-
     sig { returns(T.nilable([::Integer, ::Integer])) }
     def saved_change_to_sign_in_count; end
 
@@ -1664,96 +1754,6 @@ class User
 
     sig { returns(T::Boolean) }
     def saved_change_to_updated_at?; end
-
-    sig { returns(T::Boolean) }
-    def send_enrollment_sms; end
-
-    sig { params(value: T::Boolean).returns(T::Boolean) }
-    def send_enrollment_sms=(value); end
-
-    sig { returns(T::Boolean) }
-    def send_enrollment_sms?; end
-
-    sig { returns(T.nilable(T::Boolean)) }
-    def send_enrollment_sms_before_last_save; end
-
-    sig { returns(T.untyped) }
-    def send_enrollment_sms_before_type_cast; end
-
-    sig { returns(T::Boolean) }
-    def send_enrollment_sms_came_from_user?; end
-
-    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
-    def send_enrollment_sms_change; end
-
-    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
-    def send_enrollment_sms_change_to_be_saved; end
-
-    sig { returns(T::Boolean) }
-    def send_enrollment_sms_changed?; end
-
-    sig { returns(T.nilable(T::Boolean)) }
-    def send_enrollment_sms_in_database; end
-
-    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
-    def send_enrollment_sms_previous_change; end
-
-    sig { returns(T::Boolean) }
-    def send_enrollment_sms_previously_changed?; end
-
-    sig { returns(T.nilable(T::Boolean)) }
-    def send_enrollment_sms_previously_was; end
-
-    sig { returns(T.nilable(T::Boolean)) }
-    def send_enrollment_sms_was; end
-
-    sig { void }
-    def send_enrollment_sms_will_change!; end
-
-    sig { returns(T::Boolean) }
-    def send_enrollment_web_push; end
-
-    sig { params(value: T::Boolean).returns(T::Boolean) }
-    def send_enrollment_web_push=(value); end
-
-    sig { returns(T::Boolean) }
-    def send_enrollment_web_push?; end
-
-    sig { returns(T.nilable(T::Boolean)) }
-    def send_enrollment_web_push_before_last_save; end
-
-    sig { returns(T.untyped) }
-    def send_enrollment_web_push_before_type_cast; end
-
-    sig { returns(T::Boolean) }
-    def send_enrollment_web_push_came_from_user?; end
-
-    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
-    def send_enrollment_web_push_change; end
-
-    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
-    def send_enrollment_web_push_change_to_be_saved; end
-
-    sig { returns(T::Boolean) }
-    def send_enrollment_web_push_changed?; end
-
-    sig { returns(T.nilable(T::Boolean)) }
-    def send_enrollment_web_push_in_database; end
-
-    sig { returns(T.nilable([T::Boolean, T::Boolean])) }
-    def send_enrollment_web_push_previous_change; end
-
-    sig { returns(T::Boolean) }
-    def send_enrollment_web_push_previously_changed?; end
-
-    sig { returns(T.nilable(T::Boolean)) }
-    def send_enrollment_web_push_previously_was; end
-
-    sig { returns(T.nilable(T::Boolean)) }
-    def send_enrollment_web_push_was; end
-
-    sig { void }
-    def send_enrollment_web_push_will_change!; end
 
     sig { returns(::Integer) }
     def sign_in_count; end
@@ -1909,6 +1909,12 @@ class User
     def will_save_change_to_email?; end
 
     sig { returns(T::Boolean) }
+    def will_save_change_to_enrollment_sms_notifications?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_enrollment_web_push_notifications?; end
+
+    sig { returns(T::Boolean) }
     def will_save_change_to_id?; end
 
     sig { returns(T::Boolean) }
@@ -1946,12 +1952,6 @@ class User
 
     sig { returns(T::Boolean) }
     def will_save_change_to_remember_token?; end
-
-    sig { returns(T::Boolean) }
-    def will_save_change_to_send_enrollment_sms?; end
-
-    sig { returns(T::Boolean) }
-    def will_save_change_to_send_enrollment_web_push?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_sign_in_count?; end
