@@ -7,12 +7,17 @@ export interface NotificationPreference {
   push: boolean | null
 }
 
+export interface NotificationPreferences {
+  announcements: NotificationPreference
+  enrollmentNotifications: NotificationPreference
+}
+
 const labels = {
   announcements: {
     title: 'Hotseat News',
     description: 'Get the latest on new features.',
   },
-  enrollment_notifications: {
+  enrollmentNotifications: {
     title: 'Enrollment updates',
     description: 'Get notified about changes in subscribed classes.',
   },
@@ -42,11 +47,11 @@ function NotificationPreferenceCheckbox({checked, onChange}: NotificationPrefere
 }
 
 interface Props {
-  preferences: NotificationPreference[]
-  onPreferenceChange: (index: number, notificationType: string, value: boolean) => void
+  preferences: NotificationPreferences
+  onPreferenceChange: (id: string, notificationType: string, value: boolean) => void
 }
 
-export default function NotificationPreferences({preferences, onPreferenceChange}: Props) {
+export default function NotificationPreferencesTable({preferences, onPreferenceChange}: Props) {
   console.log('preferences: ', preferences)
   return (
     <div>
@@ -82,7 +87,7 @@ export default function NotificationPreferences({preferences, onPreferenceChange
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {preferences.map((preference, i) => (
+              {[preferences.announcements, preferences.enrollmentNotifications].map((preference, i) => (
                 <tr key={preference.id}>
                   <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-50 sm:pl-0">
                     <div className="font-medium text-gray-900 dark:text-gray-50">{labels[preference.id].title}</div>
@@ -92,15 +97,15 @@ export default function NotificationPreferences({preferences, onPreferenceChange
                   </td>
                   <NotificationPreferenceCheckbox
                     checked={preference.push}
-                    onChange={(e) => onPreferenceChange(i, 'push', e.target.checked)}
+                    onChange={(e) => onPreferenceChange(preference.id, 'push', e.target.checked)}
                   />
                   <NotificationPreferenceCheckbox
                     checked={preference.sms}
-                    onChange={(e) => onPreferenceChange(i, 'sms', e.target.checked)}
+                    onChange={(e) => onPreferenceChange(preference.id, 'sms', e.target.checked)}
                   />
                   <NotificationPreferenceCheckbox
                     checked={preference.email}
-                    onChange={(e) => onPreferenceChange(i, 'email', e.target.checked)}
+                    onChange={(e) => onPreferenceChange(preference.id, 'email', e.target.checked)}
                   />
                 </tr>
               ))}

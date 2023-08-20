@@ -7,12 +7,13 @@ import {FireIcon} from '@heroicons/react/24/outline'
 import CopyToClipboardInput from './CopyToClipboardInput'
 import PhoneInput from './PhoneInput'
 import DevicesTable from './DevicesTable'
-import NotificationPreferences from './NotificationPreferences'
-import type {NotificationPreference} from './NotificationPreferences'
+import NotificationPreferencesTable from './NotificationPreferencesTable'
+import type {NotificationPreferences} from './NotificationPreferencesTable'
 
 import LoadingCircle from 'components/icons/LoadingCircle'
 import Alert from 'components/Alert'
 import type {AlertType} from 'components/Alert'
+import snakecaseObject from 'utilities/snakecaseObject'
 import {authenticityHeaders} from 'utilities/authenticityHeaders'
 import type {Device} from 'utilities/webpushNotifications'
 
@@ -24,7 +25,7 @@ type Props = {
   betaTester: boolean
   referralLink: string
   devices: Device[]
-  notificationPreferences: NotificationPreference[]
+  notificationPreferences: NotificationPreferences
 }
 
 type Response = {
@@ -39,16 +40,16 @@ export default function SettingsForm({updateUrl, phoneNumber, devices, ...props}
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [betaTester, setBetaTester] = useState(props.betaTester)
   const [notificationPreferences, setNotificationPreferences] = useState(props.notificationPreferences)
-  const onPreferenceChange = (index: number, notificationType: string, value: boolean) => {
-    const newPreferences = [...notificationPreferences]
-    newPreferences[index][notificationType] = value
+  const onPreferenceChange = (id: string, notificationType: string, value: boolean) => {
+    const newPreferences = {...notificationPreferences}
+    newPreferences[id][notificationType] = value
     setNotificationPreferences(newPreferences)
   }
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
-    const body = {beta_tester: betaTester, phone: phoneNumber}
+    const body = {beta_tester: betaTester, notification_preferences: snakecaseObject(notificationPreferences)}
     const response = await fetch(updateUrl, {
       method: 'PUT',
       headers: authenticityHeaders({'Content-Type': 'application/json'}),
@@ -128,7 +129,10 @@ export default function SettingsForm({updateUrl, phoneNumber, devices, ...props}
               <CopyToClipboardInput value={props.referralLink} name="referral_input" id="referral_input" />
             </div>
 
-            <NotificationPreferences preferences={notificationPreferences} onPreferenceChange={onPreferenceChange} />
+            <NotificationPreferencesTable
+              preferences={notificationPreferences}
+              onPreferenceChange={onPreferenceChange}
+            />
             <DevicesTable devices={devices} />
 
             <Switch.Group as="div" className="flex items-center justify-between" id="beta_tester">
@@ -160,7 +164,7 @@ export default function SettingsForm({updateUrl, phoneNumber, devices, ...props}
 
             {response !== null && (
               <Alert type={response.type} title={response.title}>
-                <p>{response.msg}</p>
+                {response.msg && <p>{response.msg}</p>}
               </Alert>
             )}
 
