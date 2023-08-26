@@ -31,7 +31,12 @@ export default function PhoneInput({initialPhoneNumber}: Props): JSX.Element {
       </button>
     </div>
   ) : (
-    <button type="button" id="user_phone" className="button-background" onClick={() => setIsModalOpen('new')}>
+    <button
+      type="button"
+      id="user_phone"
+      className="rounded-md px-3 py-2 text-sm font-semibold text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800"
+      onClick={() => setIsModalOpen('new')}
+    >
       Add
     </button>
   )

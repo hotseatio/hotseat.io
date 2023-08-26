@@ -59,8 +59,8 @@ export default function DevicesTable({devices: initialDevices}: Props) {
           <h2 className="text-base font-semibold leading-6 text-gray-900 dark:text-white">Devices</h2>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
             {hasNoDevicesRegisted
-              ? 'Devices that will receive web notifications from Hotseat. Try registering your current device!'
-              : 'Your devices that will receive web notifications from Hotseat.'}
+              ? 'Devices that will receive push alerts from Hotseat. Try registering your current device!'
+              : 'Your devices that will receive push alerts from Hotseat.'}
           </p>
         </div>
         <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">

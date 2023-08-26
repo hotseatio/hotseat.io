@@ -1281,6 +1281,8 @@ CREATE TABLE public.users (
     referred_by_id integer,
     referral_completed_at timestamp without time zone,
     phone_verification_otp_secret character varying(32),
+    enrollment_sms_notifications boolean DEFAULT true NOT NULL,
+    enrollment_web_push_notifications boolean DEFAULT true NOT NULL,
     CONSTRAINT notification_tokens_positive_count CHECK ((notification_token_count >= 0))
 );
 
@@ -2514,6 +2516,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20230421233948'),
 ('20230430161016'),
 ('20230511033013'),
-('20230718192047');
+('20230718192047'),
+('20230820174337');
 
 

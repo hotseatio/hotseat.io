@@ -14,3 +14,17 @@ json.phone_number(user.formatted_phone)
 json.beta_tester(user.beta_tester)
 json.referral_link(referral_url(user))
 json.devices(user.webpush_devices.order(:id), partial: "webpush_devices/device", as: :device)
+json.notification_preferences do
+  json.announcements do
+    json.id("announcements")
+    json.email(user.subscribed?("announcements"))
+    json.sms(nil)
+    json.push(nil)
+  end
+  json.enrollment_notifications do
+    json.id("enrollmentNotifications")
+    json.email(nil)
+    json.sms(user.enrollment_sms_notifications)
+    json.push(user.enrollment_web_push_notifications)
+  end
+end

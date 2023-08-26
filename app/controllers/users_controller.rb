@@ -51,19 +51,46 @@ class UsersController < ApplicationController
     @webpush_devices = T.must(current_user).webpush_devices
   end
 
+  class NotificationPreference < T::Struct
+    const :email, T.nilable(T::Boolean)
+    const :sms, T.nilable(T::Boolean)
+    const :push, T.nilable(T::Boolean)
+  end
+
+  class NotificationPreferences < T::Struct
+    const :announcements, T.nilable(NotificationPreference)
+    const :enrollment_notifications, T.nilable(NotificationPreference)
+  end
+
   class UpdateParams < T::Struct
     const :id, Integer
     const :beta_tester, T.nilable(T::Boolean)
+    const :notification_preferences, T.nilable(NotificationPreferences)
   end
 
   # PUT /users/:id
   sig { void }
   def update
-    typed_params = TypedParams.extract!(UpdateParams, params)
-    new_beta_status = typed_params.beta_tester
     user = T.must(current_user)
+    typed_params = TypedParams.extract!(UpdateParams, params)
+
+    new_beta_status = typed_params.beta_tester
+    new_sms_notifications = typed_params.notification_preferences&.enrollment_notifications&.sms
+    new_push_notifications = typed_params.notification_preferences&.enrollment_notifications&.push
+    new_announcement_email_notifications = typed_params.notification_preferences&.announcements&.email
+
     user.beta_tester = new_beta_status unless new_beta_status.nil?
+    user.enrollment_sms_notifications = new_sms_notifications unless new_sms_notifications.nil?
+    user.enrollment_web_push_notifications = new_push_notifications unless new_push_notifications.nil?
     user.save!
+
+    unless new_announcement_email_notifications.nil?
+      if new_announcement_email_notifications
+        user.subscribe("announcements")
+      else
+        user.unsubscribe("announcements")
+      end
+    end
 
     render(json: { title: "Settings updated!" }, status: :ok)
   rescue ActiveRecord::RecordInvalid => e
