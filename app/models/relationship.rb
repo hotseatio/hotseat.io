@@ -48,4 +48,9 @@ class Relationship < ApplicationRecord
   def completed?
     section&.term&.enrollment_period == Term::EnrollmentPeriod::Post
   end
+
+  sig { returns(T::Boolean) }
+  def reviewed_or_completed?
+    reviewed? || completed?
+  end
 end

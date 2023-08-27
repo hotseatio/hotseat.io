@@ -113,7 +113,7 @@ class User < ApplicationRecord
 
   # Marks a section as being followed by the given user.
   sig { params(section: Section).void }
-  def follow(section)
+  def follow_section(section)
     sections << section unless following?(section)
   end
 
@@ -121,15 +121,19 @@ class User < ApplicationRecord
   sig { params(section: Section).void }
   def subscribe_to_section(section)
     follow(section)
-    relationship = relationships.find_by(section:)
-    relationship&.update(notify: true) if use_notification_token
+    relationship = relationships.find_by!(section:)
+    if relationship.reviewed_or_completed?
+      # error
+    end
+
+    relationship.subscribed! if use_notification_token
   end
 
   # Whether a user is subscribed to a given section.
   sig { params(section: Section).returns(T::Boolean) }
   def subscribed_to_section?(section)
     relationship = relationships.find_by(section:)
-    relationship&.notify? || false
+    !!relationship&.subscribed?
   end
 
   # Whether a user is following a given section.
@@ -142,7 +146,7 @@ class User < ApplicationRecord
   sig { params(section: Section).void }
   def unfollow(section)
     relationship = relationships.find_by(section:)
-    raise ActiveRecord::RecordNotDestroyed, "Section is reviewed by user, cannot unfollow." if relationship&.review?
+    raise ActiveRecord::RecordNotDestroyed, "Section is reviewed by user, cannot unfollow." if relationship&.reviewed?
 
     sections.delete(section)
   end

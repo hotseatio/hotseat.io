@@ -38,6 +38,65 @@ class UserTest < ActiveSupport::TestCase
     assert_not invalid_user.valid?
   end
 
+  describe "#follow_section" do
+    it "adds a section to a user's sections" do
+      user = T.let(create(:user), User)
+      section = T.let(create(:section), Section)
+
+      assert_not_includes(user.sections, section)
+      user.follow_section(section)
+      assert_includes(user.sections, section)
+    end
+
+    it "does nothing if a section is already followed" do
+      user = T.let(create(:user), User)
+      section = T.let(create(:section), Section)
+      create(:relationship, section:, user:)
+
+      assert_includes(user.sections, section)
+      user.follow_section(section)
+      assert_includes(user.sections, section)
+    end
+  end
+
+  describe "#subscribe_to_section" do
+    it "subscribes a user to a section they follow" do
+      # TODO: implement
+    end
+
+    it "follows a section (if not followed) and sets the status to subscribed" do
+      # TODO: implement
+    end
+
+    it "can move an enrolled section by to subscribed" do
+      # TODO: implement
+    end
+  end
+
+  describe "#enroll_in_section" do
+    it "marks a subscription a user is following to enrolled" do
+      # TODO: implement
+    end
+
+    it "marks a subscription a user has subscribed to as enrolled" do
+      # TODO: implement
+    end
+
+    it "follows and enrolls in a section a user does not follow" do
+      # TODO: implement
+    end
+  end
+
+  describe "#subscribed_to_section?" do
+    it "returns true when a user is subscribed to the section" do
+      # TODO: implement
+    end
+
+    it "returns false if the user is not subscribed to the section" do
+      # TODO: implement
+    end
+  end
+
   describe "#unfollow" do
     before do
       @term = T.let(create(:term), Term)
