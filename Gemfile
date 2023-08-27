@@ -122,6 +122,9 @@ gem "dalli"
 # Alerts
 gem "noticed"
 
+# Data Migrations
+gem "data_migrate"
+
 group :production, :test do
   gem "elasticsearch", "8.7.0"
 end
