@@ -18,7 +18,8 @@ class TrackRelationshipStatus < ActiveRecord::Migration[7.0]
     end
 
     change_table(:relationships, bulk: true) do |t|
-      t.column(:status, :relationship_status, null: false)
+      # Will make this non-null in a future migration
+      t.column(:status, :relationship_status)
     end
   end
 end

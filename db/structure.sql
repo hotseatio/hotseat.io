@@ -75,6 +75,17 @@ CREATE TYPE public.grade_type AS ENUM (
 
 
 --
+-- Name: relationship_status; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE public.relationship_status AS ENUM (
+    'planned',
+    'subscribed',
+    'enrolled'
+);
+
+
+--
 -- Name: review_status; Type: TYPE; Schema: public; Owner: -
 --
 
@@ -970,7 +981,8 @@ CREATE TABLE public.relationships (
     section_id bigint NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    notify boolean DEFAULT false NOT NULL
+    notify boolean DEFAULT false NOT NULL,
+    status public.relationship_status
 );
 
 
@@ -2517,6 +2529,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20230430161016'),
 ('20230511033013'),
 ('20230718192047'),
-('20230820174337');
+('20230820174337'),
+('20230827154404');
 
 
