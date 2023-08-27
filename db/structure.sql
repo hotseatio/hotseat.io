@@ -982,7 +982,7 @@ CREATE TABLE public.relationships (
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     notify boolean DEFAULT false NOT NULL,
-    status public.relationship_status
+    stored_status public.relationship_status
 );
 
 
