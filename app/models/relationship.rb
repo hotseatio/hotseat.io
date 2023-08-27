@@ -8,9 +8,6 @@ class Relationship < ApplicationRecord
   belongs_to :section
   has_one :review, dependent: :restrict_with_exception
 
-  #
-  # enum current_status
-
   class Status < T::Enum
     enums do
       Planned = new
@@ -24,12 +21,13 @@ class Relationship < ApplicationRecord
 
   sig { returns(Status) }
   def status
-    # if review
-    #   Reviewed
-    # elsif section.term in the past
-    #   Completed
-    # else
-    #   current_status
+    if reviewed?
+      Status::Reviewed
+    elsif completed?
+      Status::Completed
+      # else
+      # current_status
+    end
   end
 
   sig { returns(T::Boolean) }
@@ -39,6 +37,6 @@ class Relationship < ApplicationRecord
 
   sig { returns(T::Boolean) }
   def completed?
-    section.term.enrollment_period == Term::EnrollmentPeriod::Post
+    section&.term&.enrollment_period == Term::EnrollmentPeriod::Post
   end
 end
