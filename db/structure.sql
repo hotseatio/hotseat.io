@@ -75,6 +75,17 @@ CREATE TYPE public.grade_type AS ENUM (
 
 
 --
+-- Name: relationship_status; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE public.relationship_status AS ENUM (
+    'planned',
+    'subscribed',
+    'enrolled'
+);
+
+
+--
 -- Name: review_status; Type: TYPE; Schema: public; Owner: -
 --
 
@@ -518,6 +529,15 @@ ALTER SEQUENCE public.courses_id_seq OWNED BY public.courses.id;
 CREATE TABLE public.courses_terms (
     course_id bigint NOT NULL,
     term_id bigint NOT NULL
+);
+
+
+--
+-- Name: data_migrations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.data_migrations (
+    version character varying NOT NULL
 );
 
 
@@ -970,7 +990,8 @@ CREATE TABLE public.relationships (
     section_id bigint NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    notify boolean DEFAULT false NOT NULL
+    notify boolean DEFAULT false NOT NULL,
+    stored_status public.relationship_status DEFAULT 'planned'::public.relationship_status
 );
 
 
@@ -1631,6 +1652,14 @@ ALTER TABLE ONLY public.course_section_indices
 
 ALTER TABLE ONLY public.courses
     ADD CONSTRAINT courses_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: data_migrations data_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.data_migrations
+    ADD CONSTRAINT data_migrations_pkey PRIMARY KEY (version);
 
 
 --
@@ -2517,6 +2546,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20230430161016'),
 ('20230511033013'),
 ('20230718192047'),
-('20230820174337');
+('20230820174337'),
+('20230827154404');
 
 
