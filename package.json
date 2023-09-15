@@ -10,9 +10,6 @@
     "clean": "rm -f ./app/assets/builds/application.js && rm -f ./app/assets/builds/application.js.map",
     "dev": "tsc-watch --noClear -p tsconfig.json --onSuccess \"yarn build\" --onFailure \"yarn clean\""
   },
-  "engines": {
-    "node": "^18.0.0"
-  },
   "dependencies": {
     "@headlessui/react": "^1.7.16",
     "@heroicons/react": "^2.0.18",
@@ -72,3 +69,4 @@
     "tsc-watch": "6.0.4"
   }
 }
+
