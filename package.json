@@ -6,7 +6,7 @@
     "types": "tsc --noEmit -p tsconfig.json",
     "test": "jest",
     "build:css": "./rails-env postcss ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css",
-    "build": "./rails-env node esbuild.js app/javascript/*.*",
+    "build": "bun bun.config.js",
     "clean": "rm -f ./app/assets/builds/application.js && rm -f ./app/assets/builds/application.js.map",
     "dev": "tsc-watch --noClear -p tsconfig.json --onSuccess \"yarn build\" --onFailure \"yarn clean\""
   },

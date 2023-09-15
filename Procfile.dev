@@ -1,6 +1,6 @@
 # You can run these commands in separate shells
 web: rails s -p 3000
-js: yarn dev
+js: bun run build --watch
 css: yarn build:css --watch --verbose
 
 # Uncomment if you've set up the Stripe CLI!
