@@ -19,7 +19,7 @@ class TrackRelationshipStatus < ActiveRecord::Migration[7.0]
 
     change_table(:relationships, bulk: true) do |t|
       # Will make this non-null in a future migration
-      t.column(:stored_status, :relationship_status)
+      t.column(:stored_status, :relationship_status, default: "planned")
     end
   end
 end

@@ -4,86 +4,134 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  it "always has a name" do
-    valid_user = build(:user, name: "Nathan Smith")
-    assert_predicate valid_user, :valid?
+  describe "validations" do
+    it "always has a name" do
+      valid_user = build(:user, name: "Nathan Smith")
+      assert_predicate valid_user, :valid?
 
-    invalid_user = build(:user, name: "")
-    assert_not invalid_user.valid?
-  end
-
-  it "always has an email" do
-    valid_user = build(:user, email: "natedub@g.ucla.edu")
-    assert_predicate valid_user, :valid?
-
-    invalid_user = build(:user, name: "")
-    assert_not invalid_user.valid?
-  end
-
-  it "has a name that is not too long" do
-    user = build(:user, name: "Nathan" * 10)
-    assert_not user.valid?
-  end
-
-  it "has an email that is not too long" do
-    user = build(:user, email: "nathan.smith@ucla.edu" * 1500)
-    assert_not user.valid?
-  end
-
-  it "can only have a ucla email" do
-    valid_user = build(:user, email: "nathansmith@g.ucla.edu")
-    assert_predicate valid_user, :valid?
-
-    invalid_user = build(:user, email: "nathansmith@gmail.com")
-    assert_not invalid_user.valid?
-  end
-
-  describe "#follow_section" do
-    it "adds a section to a user's sections" do
-      user = T.let(create(:user), User)
-      section = T.let(create(:section), Section)
-
-      assert_not_includes(user.sections, section)
-      user.follow_section(section)
-      assert_includes(user.sections, section)
+      invalid_user = build(:user, name: "")
+      assert_not invalid_user.valid?
     end
 
-    it "does nothing if a section is already followed" do
-      user = T.let(create(:user), User)
-      section = T.let(create(:section), Section)
-      create(:relationship, section:, user:)
+    it "always has an email" do
+      valid_user = build(:user, email: "natedub@g.ucla.edu")
+      assert_predicate valid_user, :valid?
 
-      assert_includes(user.sections, section)
-      user.follow_section(section)
-      assert_includes(user.sections, section)
+      invalid_user = build(:user, name: "")
+      assert_not invalid_user.valid?
+    end
+
+    it "has a name that is not too long" do
+      user = build(:user, name: "Nathan" * 10)
+      assert_not user.valid?
+    end
+
+    it "has an email that is not too long" do
+      user = build(:user, email: "nathan.smith@ucla.edu" * 1500)
+      assert_not user.valid?
+    end
+
+    it "can only have a ucla email" do
+      valid_user = build(:user, email: "nathansmith@g.ucla.edu")
+      assert_predicate valid_user, :valid?
+
+      invalid_user = build(:user, email: "nathansmith@gmail.com")
+      assert_not invalid_user.valid?
     end
   end
 
-  describe "#subscribe_to_section" do
-    it "subscribes a user to a section they follow" do
-      # TODO: implement
+  describe "relationships" do
+    before do
+      @term = T.let(create_current_term, Term)
+      travel_to_active_enrollment
     end
 
-    it "follows a section (if not followed) and sets the status to subscribed" do
-      # TODO: implement
+    describe "#follow_section" do
+      it "adds a section to a user's sections" do
+        user = T.let(create(:user), User)
+        section = T.let(create(:section, term: @term), Section)
+
+        assert_not_includes(user.sections, section)
+
+        user.follow_section(section)
+        assert_includes(user.sections, section)
+      end
+
+      it "does nothing if a section is already followed" do
+        user = T.let(create(:user), User)
+        section = T.let(create(:section, term: @term), Section)
+        create(:relationship, section:, user:)
+
+        assert_includes(user.sections, section)
+
+        user.follow_section(section)
+        assert_includes(user.sections, section)
+      end
     end
 
-    it "can move an enrolled section by to subscribed" do
-      # TODO: implement
-    end
-  end
+    describe "#subscribe_to_section" do
+      it "subscribes a user to a section they follow and takes a token" do
+        user = T.let(create(:user, notification_token_count: 1), User)
+        section = T.let(create(:section, term: @term), Section)
+        create(:relationship, section:, user:)
 
-  describe "#enroll_in_section" do
-    it "marks a subscription a user is following to enrolled" do
-      # TODO: implement
+        assert_includes(user.sections, section)
+
+        user.subscribe_to_section(section)
+        assert_includes(user.sections, section)
+        assert_equal(user.section_status(section), Relationship::Status::Subscribed)
+        assert_equal(0, user.notification_token_count)
+      end
+
+      it "follows a section (if not followed), sets the status to subscribed, and takes a token" do
+        user = T.let(create(:user, notification_token_count: 1), User)
+        section = T.let(create(:section, term: @term), Section)
+
+        assert_not_includes(user.sections, section)
+
+        user.subscribe_to_section(section)
+        assert_includes(user.sections, section)
+        assert_equal(user.section_status(section), Relationship::Status::Subscribed)
+        assert_equal(0, user.notification_token_count)
+      end
+
+      it "can move an enrolled section to subscribed and takes a token" do
+        user = T.let(create(:user, notification_token_count: 1), User)
+        section = T.let(create(:section, term: @term), Section)
+        create(:relationship, :enrolled, section:, user:)
+
+        assert_includes(user.sections, section)
+
+        user.subscribe_to_section(section)
+        assert_includes(user.sections, section)
+        assert_equal(user.section_status(section), Relationship::Status::Subscribed)
+        assert_equal(0, user.notification_token_count)
+      end
+
+      it "throws an error if the section is completed" do
+        travel_to_post_enrollment
+        user = T.let(create(:user, notification_token_count: 1), User)
+        section = T.let(create(:section, term: @term), Section)
+        create(:relationship, :enrolled, section:, user:)
+
+        assert_includes(user.sections, section)
+
+        assert_raises(ArgumentError) { user.subscribe_to_section(section) }
+      end
     end
 
-    it "marks a subscription a user has subscribed to as enrolled" do
-      # TODO: implement
-    end
+    describe "#enroll_in_section" do
+      it "marks a subscription a user is following to enrolled" do
+        # TODO: implement
+      end
 
-    it "follows and enrolls in a section a user does not follow" do
-      # TODO: implement
+      it "marks a subscription a user has subscribed to as enrolled" do
+        # TODO: implement
+      end
+
+      it "follows and enrolls in a section a user does not follow" do
+        # TODO: implement
+      end
     end
   end
 

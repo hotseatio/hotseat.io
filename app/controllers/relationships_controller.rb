@@ -21,7 +21,7 @@ class RelationshipsController < ApplicationController
       user.subscribe_to_section(section)
       render(json: { msg: "Subscribed" })
     else
-      user.follow(section)
+      user.follow_section(section)
       render(json: { msg: "Followed" })
     end
   end

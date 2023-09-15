@@ -120,11 +120,9 @@ class User < ApplicationRecord
   # Marks a section as being followed with notifications by the given user.
   sig { params(section: Section).void }
   def subscribe_to_section(section)
-    follow(section)
+    follow_section(section)
     relationship = relationships.find_by!(section:)
-    if relationship.reviewed_or_completed?
-      # error
-    end
+    raise ArgumentError, "Section cannot be subscribed to, it's past enrollment" if relationship.completed?
 
     relationship.subscribed! if use_notification_token
   end
@@ -140,6 +138,12 @@ class User < ApplicationRecord
   sig { params(section: Section).returns(T::Boolean) }
   def following?(section)
     sections.include?(section)
+  end
+
+  sig { params(section: Section).returns(Relationship::Status) }
+  def section_status(section)
+    relationship = relationships.find_by!(section:)
+    relationship.status
   end
 
   # Stops following a section the user was following.

@@ -80,15 +80,6 @@ FactoryBot.define do
     end
   end
 
-  factory :relationship do
-    user
-    section
-
-    trait :with_review do
-      review
-    end
-  end
-
   factory :review do
     relationship
     user
