@@ -20,7 +20,7 @@ enrollment_appointments_map = T.let(
     "2020" => "lib/scrapedata/enrollment_appointments/Fall 2020-Spring 2021.html",
     "2021" => "lib/scrapedata/enrollment_appointments/Fall 2021-Spring 2022.html",
     "2022" => "lib/scrapedata/enrollment_appointments/Fall 2022-Spring 2023.html",
-    "2023" => "lib/scrapedata/enrollment_appointments/Fall 2023.html",
+    "2023" => "lib/scrapedata/enrollment_appointments/Fall 2023-Winter 2024.html",
   },
   T::Hash[String, String],
 )
