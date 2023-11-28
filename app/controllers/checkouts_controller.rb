@@ -11,7 +11,7 @@ class CheckoutsController < ApplicationController
     super
     @checkout_session = T.let(nil, T.untyped)
     # Use Stripe livemode price in production, testmode for all other data
-    @price = T.let(T.unsafe(Rails.env).production? ? "price_1KXuuBBclLivpoJujRNSkGJ4" : "price_1KXuv2BclLivpoJuWavz9GPj", String)
+    @price = T.let(ENV.fetch("NOTIFICATION_TOKENS_PRICE"), String)
   end
 
   sig { void }

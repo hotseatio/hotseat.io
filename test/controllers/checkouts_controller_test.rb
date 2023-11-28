@@ -23,7 +23,7 @@ class CheckoutsControllerTest < ActionDispatch::IntegrationTest
                  "cancel_url" => "http://www.example.com/my-courses?session_id={CHECKOUT_SESSION_ID}",
                  "customer" => "cus_9s6XBnVi5gbXub",
                  "line_items" => [
-                   { "price" => "price_1KXuv2BclLivpoJuWavz9GPj", "quantity" => "1" },
+              { "price" => ENV.fetch("NOTIFICATION_TOKENS_PRICE"), "quantity" => "1" },
                  ],
                  "mode" => "payment",
                  "payment_method_types" => ["card"],
