@@ -3,7 +3,6 @@ module github.com/nathunsmitty/hotseat.io/lambdas
 go 1.12
 
 require (
-	github.com/DataDog/datadog-lambda-go v0.10.0
 	github.com/Microsoft/go-winio v0.4.16 // indirect
 	github.com/PuerkitoBio/goquery v1.6.0
 	github.com/andybalholm/cascadia v1.2.0 // indirect
@@ -19,6 +18,7 @@ require (
 	github.com/stretchr/testify v1.6.1
 	golang.org/x/sys v0.0.0-20220808155132-1c4a2a72c664 // indirect
 	golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba // indirect
+	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	gopkg.in/DataDog/dd-trace-go.v1 v1.29.1
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 )
