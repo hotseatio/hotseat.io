@@ -13,7 +13,7 @@ namespace :data_migration do
     Rails.logger.level = :info
 
     ActiveRecord::Base.transaction do
-      User.all.find_each do |user|
+      User.find_each do |user|
         user.subscribe("announcements") unless user.subscribed?("announcements")
         user.save
       end
