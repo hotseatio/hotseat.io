@@ -3,7 +3,8 @@ useDotenv: true
 
 provider:
   name: aws
-  runtime: go1.x
+  runtime: provided.al2
+  architecture: arm64
   timeout: 120
   region: 'us-west-1'
   versionFunctions: false
@@ -35,6 +36,7 @@ provider:
     NOTIFICATION_ENDPOINT_TOKEN: ${env:NOTIFICATION_ENDPOINT_TOKEN, ''}
 
 package:
+  individually: true
   patterns:
     - '!./**'
     - './bin/**'
@@ -55,7 +57,9 @@ custom:
 functions:
   FetchSubjectAreas:
     name: fetch-subject-areas
-    handler: bin/fetch-subject-areas
+    handler: bootstrap
+    package:
+      artifact: bin/fetch-subject-areas.zip
     events:
       # Top of every month at 11:15pm UTC
       - schedule:
@@ -67,7 +71,9 @@ functions:
 
   FetchCourses:
     name: fetch-courses
-    handler: bin/fetch-courses
+    handler: bootstrap
+    package:
+      artifact: bin/fetch-courses.zip
     events:
       # Every day at 11:45pm UTC
       - schedule:
@@ -80,7 +86,9 @@ functions:
 
   FetchSections:
     name: fetch-sections
-    handler: bin/fetch-sections
+    handler: bootstrap
+    package:
+      artifact: bin/fetch-sections.zip
     timeout: 420 # 7 minutes
     events:
       # Every hour at XX:25
@@ -94,7 +102,9 @@ functions:
 
   FetchCourseDescriptions:
     name: fetch-course-descriptions
-    handler: bin/fetch-course-descriptions
+    handler: bootstrap
+    package:
+      artifact: bin/fetch-course-descriptions.zip
     events:
       # Top of every month at 11:40pm UTC
       - schedule:
