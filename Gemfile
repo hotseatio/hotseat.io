@@ -3,15 +3,15 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "~> 3.1"
+ruby "~> 3.3"
 
 # dotenv has to come first so other gems can use the env vars
 # https://github.com/bkeepers/dotenv
 gem "dotenv-rails", groups: %i[development test]
 
-gem "rails", "~> 7.0"
+gem "rails", "< 7.1"
 # Use Puma as the app server
-gem "puma", "~> 5.0"
+gem "puma", "< 7"
 
 # Handle malicious requests
 gem "rack-attack"
