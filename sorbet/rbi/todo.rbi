@@ -5,7 +5,7 @@
 # typed: false
 
 module Mocha::Mock; end
-module PDF::Reader::OverlappingRunsFilter::EventPoint; end
+module Noticed::Model; end
 module Sidekiq::Process; end
 module Sidekiq::SortedEntry; end
 module T::Private::Methods::Signature; end
