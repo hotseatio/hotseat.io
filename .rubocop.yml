@@ -73,3 +73,6 @@ Minitest/EmptyLineBeforeAssertionMethods:
   Enabled: false
 Minitest/MultipleAssertions:
   Enabled: false
+
+FactoryBot/ExcessiveCreateList:
+  Enabled: false
