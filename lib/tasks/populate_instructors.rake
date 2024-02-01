@@ -17,7 +17,7 @@ namespace :populate do
     end
     Rails.logger.info("Using term #{term.readable}")
 
-    SubjectArea.all.find_each do |subject_area|
+    SubjectArea.find_each do |subject_area|
       Rails.logger.info("Subject Area: #{subject_area.name}")
       sections = Section.joins(:instructor, :course).where("courses.subject_area_id": subject_area)
       Section.joins(:course).where(term:, "courses.subject_area_id": subject_area).find_each do |section|
