@@ -46,6 +46,8 @@ Style/MethodCallWithArgsParentheses:
     - '/**/Gemfile'
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+Style/ArgumentsForwarding:
+  UseAnonymousForwarding: false
 
 Naming/VariableNumber:
   Enabled: false
