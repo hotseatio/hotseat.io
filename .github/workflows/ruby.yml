@@ -26,6 +26,7 @@ jobs:
       TEST_COVERAGE: true
       DATABASE_URL: 'postgres://postgres:test-password@localhost:5432/hotseat_test'
       SEARCH_CLIENT: 'elasticsearch'
+      NOTIFICATION_TOKENS_PRICE: "price_12345"
     services:
       postgres:
         image: postgres
