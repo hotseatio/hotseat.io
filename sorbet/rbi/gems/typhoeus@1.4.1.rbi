@@ -330,7 +330,7 @@ module Typhoeus::Config
   # @see Typhoeus::Hydra::Cacheable
   # @see Typhoeus::Request::Cacheable
   #
-  # source://typhoeus//lib/typhoeus/config.rb#53
+  # source://typhoeus//lib/typhoeus/config.rb#69
   def cache; end
 
   # Defines whether requests are cached.
@@ -339,8 +339,26 @@ module Typhoeus::Config
   # @see Typhoeus::Hydra::Cacheable
   # @see Typhoeus::Request::Cacheable
   #
-  # source://typhoeus//lib/typhoeus/config.rb#53
+  # source://typhoeus//lib/typhoeus/config.rb#69
   def cache=(_arg0); end
+
+  # Defines the default HTTP timeout for the connection phase in seconds
+  # See README for more details about timeouts
+  #
+  # @return [Integer, Float]
+  # @see https://curl.haxx.se/libcurl/c/curl_easy_setopt.html#CURLOPTCONNECTTIMEOUT
+  #
+  # source://typhoeus//lib/typhoeus/config.rb#61
+  def connecttimeout; end
+
+  # Defines the default HTTP timeout for the connection phase in seconds
+  # See README for more details about timeouts
+  #
+  # @return [Integer, Float]
+  # @see https://curl.haxx.se/libcurl/c/curl_easy_setopt.html#CURLOPTCONNECTTIMEOUT
+  #
+  # source://typhoeus//lib/typhoeus/config.rb#61
+  def connecttimeout=(_arg0); end
 
   # Defines whether GET requests are memoized when using the {Typhoeus::Hydra}.
   #
@@ -365,7 +383,7 @@ module Typhoeus::Config
   # @return [String]
   # @see Typhoeus::Request#set_defaults
   #
-  # source://typhoeus//lib/typhoeus/config.rb#67
+  # source://typhoeus//lib/typhoeus/config.rb#83
   def proxy; end
 
   # Defines wether to use a proxy server for every request.
@@ -373,15 +391,33 @@ module Typhoeus::Config
   # @return [String]
   # @see Typhoeus::Request#set_defaults
   #
-  # source://typhoeus//lib/typhoeus/config.rb#67
+  # source://typhoeus//lib/typhoeus/config.rb#83
   def proxy=(_arg0); end
+
+  # Defines the default HTTP timeout for the entire request in seconds
+  # See README for more details about timeouts
+  #
+  # @return [Integer, Float]
+  # @see https://curl.haxx.se/libcurl/c/curl_easy_setopt#CURLOPTTIMEOUT
+  #
+  # source://typhoeus//lib/typhoeus/config.rb#53
+  def timeout; end
+
+  # Defines the default HTTP timeout for the entire request in seconds
+  # See README for more details about timeouts
+  #
+  # @return [Integer, Float]
+  # @see https://curl.haxx.se/libcurl/c/curl_easy_setopt#CURLOPTTIMEOUT
+  #
+  # source://typhoeus//lib/typhoeus/config.rb#53
+  def timeout=(_arg0); end
 
   # Defines whether to use a default user agent.
   #
   # @return [String]
   # @see Typhoeus::Request#set_defaults
   #
-  # source://typhoeus//lib/typhoeus/config.rb#60
+  # source://typhoeus//lib/typhoeus/config.rb#76
   def user_agent; end
 
   # Defines whether to use a default user agent.
@@ -389,7 +425,7 @@ module Typhoeus::Config
   # @return [String]
   # @see Typhoeus::Request#set_defaults
   #
-  # source://typhoeus//lib/typhoeus/config.rb#60
+  # source://typhoeus//lib/typhoeus/config.rb#76
   def user_agent=(_arg0); end
 
   # Defines whether curls debug output is shown.
@@ -472,17 +508,17 @@ class Typhoeus::EasyFactory
 
   # @api private
   #
-  # source://typhoeus//lib/typhoeus/easy_factory.rb#172
+  # source://typhoeus//lib/typhoeus/easy_factory.rb#198
   def provide_help(option); end
 
   # @api private
   #
-  # source://typhoeus//lib/typhoeus/easy_factory.rb#96
+  # source://typhoeus//lib/typhoeus/easy_factory.rb#102
   def sanitize(options); end
 
   # @api private
   #
-  # source://typhoeus//lib/typhoeus/easy_factory.rb#123
+  # source://typhoeus//lib/typhoeus/easy_factory.rb#129
   def sanitize_timeout!(options, timeout); end
 
   # Sets on_complete callback on easy in order to be able to
@@ -493,8 +529,18 @@ class Typhoeus::EasyFactory
   #   easy_factory.set_callback
   # @return [Ethon::Easy] The easy.
   #
-  # source://typhoeus//lib/typhoeus/easy_factory.rb#141
+  # source://typhoeus//lib/typhoeus/easy_factory.rb#147
   def set_callback; end
+
+  # Sets up an easy upload with CURLOPT_READFUNCTION
+  # along with CURLOPT_INFILESIZE_LARGE and CURLOPT_UPLOAD
+  #
+  # @api private
+  # @param body [String/File] The body read by the readfunction.
+  # @return [Ethon::Easy] The easy.
+  #
+  # source://typhoeus//lib/typhoeus/easy_factory.rb#184
+  def set_read_callback(body); end
 end
 
 # @api private
@@ -2021,7 +2067,7 @@ module Typhoeus::Response::Informations
   # source://typhoeus//lib/typhoeus/response/informations.rb#151
   def connect_time; end
 
-  # source://typhoeus//lib/typhoeus/response/informations.rb#217
+  # source://typhoeus//lib/typhoeus/response/informations.rb#274
   def debug_info; end
 
   # Return the last used effective url.
@@ -2039,7 +2085,7 @@ module Typhoeus::Response::Informations
   #   response.headers
   # @return [Typhoeus::Header] The response header.
   #
-  # source://typhoeus//lib/typhoeus/response/informations.rb#227
+  # source://typhoeus//lib/typhoeus/response/informations.rb#284
   def headers; end
 
   # Returns the response header.
@@ -2048,7 +2094,7 @@ module Typhoeus::Response::Informations
   #   response.headers
   # @return [Typhoeus::Header] The response header.
   #
-  # source://typhoeus//lib/typhoeus/response/informations.rb#227
+  # source://typhoeus//lib/typhoeus/response/informations.rb#284
   def headers_hash; end
 
   # Return the available http auth methods.
@@ -2129,6 +2175,15 @@ module Typhoeus::Response::Informations
   # source://typhoeus//lib/typhoeus/response/informations.rb#176
   def redirect_time; end
 
+  # Return the URL a redirect would take you to, had you enabled redirects.
+  #
+  # @example Get redirect_url.
+  #   response.redirect_url
+  # @return [String] The redirect_url.
+  #
+  # source://typhoeus//lib/typhoeus/response/informations.rb#219
+  def redirect_url; end
+
   # Return all redirections in between as multiple
   # responses with header.
   #
@@ -2136,10 +2191,10 @@ module Typhoeus::Response::Informations
   #   response.redirections
   # @return [Array<Typhoeus::Response>] The redirections
   #
-  # source://typhoeus//lib/typhoeus/response/informations.rb#241
+  # source://typhoeus//lib/typhoeus/response/informations.rb#298
   def redirections; end
 
-  # source://typhoeus//lib/typhoeus/response/informations.rb#213
+  # source://typhoeus//lib/typhoeus/response/informations.rb#223
   def request_size; end
 
   # Return the http response body.
@@ -2190,6 +2245,48 @@ module Typhoeus::Response::Informations
   #
   # source://typhoeus//lib/typhoeus/response/informations.rb#26
   def return_message; end
+
+  # Return the bytes, the total amount of bytes that were downloaded.
+  # The amount is only for the latest transfer and will be reset again
+  # for each new transfer. This counts actual payload data, what's
+  # also commonly called body. All meta and header data are excluded
+  # and will not be counted in this number.
+  #
+  # @example Get size_download
+  #   response.size_download
+  # @return [Float] The size_download.
+  #
+  # source://typhoeus//lib/typhoeus/response/informations.rb#248
+  def size_download; end
+
+  # Return the bytes, the total amount of bytes that were uploaded
+  #
+  # @example Get size_upload.
+  #   response.size_upload
+  # @return [Float] The size_upload.
+  #
+  # source://typhoeus//lib/typhoeus/response/informations.rb#233
+  def size_upload; end
+
+  # Return the bytes/second, the average download speed that curl
+  # measured for the complete download
+  #
+  # @example Get speed_download.
+  #   response.speed_download
+  # @return [Float] The speed_download.
+  #
+  # source://typhoeus//lib/typhoeus/response/informations.rb#270
+  def speed_download; end
+
+  # Return the bytes/second, the average upload speed that curl
+  # measured for the complete upload
+  #
+  # @example Get speed_upload.
+  #   response.speed_upload
+  # @return [Float] The speed_upload.
+  #
+  # source://typhoeus//lib/typhoeus/response/informations.rb#259
+  def speed_upload; end
 
   # Return the time, in seconds, it took from the start
   # until the first byte is received by libcurl. This

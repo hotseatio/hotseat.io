@@ -46,6 +46,8 @@ Style/MethodCallWithArgsParentheses:
     - '/**/Gemfile'
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+Style/ArgumentsForwarding:
+  UseAnonymousForwarding: false
 
 Naming/VariableNumber:
   Enabled: false
@@ -72,4 +74,7 @@ Rails/ActionControllerFlashBeforeRender:
 Minitest/EmptyLineBeforeAssertionMethods:
   Enabled: false
 Minitest/MultipleAssertions:
+  Enabled: false
+
+FactoryBot/ExcessiveCreateList:
   Enabled: false

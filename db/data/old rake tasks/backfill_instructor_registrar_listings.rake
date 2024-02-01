@@ -14,7 +14,7 @@ namespace :data_migration do
 
     Searchkick.disable_callbacks
 
-    Section.all.find_each do |section|
+    Section.find_each do |section|
       Rails.logger.info("Section: #{section.id}, Section instructors: #{section.registrar_instructors}, Section instructor id: #{section.instructor_id}")
       if (section.registrar_instructors == ["No instructor"]) || (section.registrar_instructors == ["No instructors"]) || (section.registrar_instructors == ["The Staff"])
         Rails.logger.info("Section has no instructor")
@@ -45,7 +45,7 @@ namespace :data_migration do
       end
     end
 
-    orphaned_instructors = Instructor.all.where(registrar_listing: nil)
+    orphaned_instructors = Instructor.where(registrar_listing: nil)
     Rails.logger.info("Orphaned instructors: #{orphaned_instructors.size}, deleting")
     orphaned_instructors.destroy_all
 

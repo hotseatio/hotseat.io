@@ -20,7 +20,7 @@ class Admin::ReviewsController < AdminController
     typed_params = TypedParams.extract!(IndexParams, params)
     page = typed_params.page
 
-    @reviews = Review.all.where(status: :pending).order(updated_at: :desc).page(page)
+    @reviews = Review.where(status: :pending).order(updated_at: :desc).page(page)
   end
 
   class ShowParams < T::Struct
