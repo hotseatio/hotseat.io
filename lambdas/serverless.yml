@@ -45,8 +45,8 @@ custom:
   # Payloads
   currentTerm:
     term:
-      term: '24W'
-      id: 76
+      term: '24S'
+      id: 77
     shouldInsertEnrollmentData: true
   summerTerm:
     term:
