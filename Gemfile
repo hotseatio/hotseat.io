@@ -11,7 +11,7 @@ gem "dotenv-rails", groups: %i[development test]
 
 gem "rails", "~> 7.0"
 # Use Puma as the app server
-gem "puma", "~> 5.0"
+gem "puma", "< 7"
 
 # Handle malicious requests
 gem "rack-attack"
