@@ -1,0 +1,47 @@
+<div class="pt-8 overflow-hidden sm:pt-12 lg:relative">
+  <div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24">
+    <div>
+      <div class="flex items-center">
+        <%= render "icons/fire", classes: "h-14 w-14" %>
+        <h1 class="ml-1 text-3xl font-extrabold hidden lg:block">hotseat.io</h1>
+      </div>
+      <div class="mt-6">
+        <div class="mt-6 sm:max-w-xl">
+          <h1 class="text-4xl font-extrabold text-gray-900 dark:text-gray-50 tracking-tight sm:text-5xl">
+            Welcome to Hotseat.io
+          </h1>
+          <p class="mt-6 text-xl text-gray-500 dark:text-gray-400">
+          Before we get started, tell us a little more about you. You'll be able to change these later.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+  <div class="relative mx-auto max-w-md px-4 pt-6 sm:max-w-3xl sm:px-6 lg:px-0">
+    <h2 class="text-3xl text-gray-900 dark:text-gray-50 font-extrabold tracking-tight sm:text-4xl">
+      What are you studying?
+    </h2>
+    <div class="mt-6 space-y-6">
+      <p class="text-lg text-gray-500 dark:text-gray-400">
+        This can be what your official major is according to your degree audit, or what you want to switch your major to.
+      </p>
+    </div>
+    <div class="mt-6 space-y-6">
+      <%= react_component_transparent("AddMajorMinor") %>
+    </div>
+  </div>
+</div>
+
+<div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+  <div class="relative max-w-md px-4 pt-6 sm:max-w-3xl sm:px-6 lg:px-0">
+    <h2 class="text-3xl text-gray-900 dark:text-gray-50 font-extrabold tracking-tight sm:text-4xl">
+      What year are you?
+    </h2>
+    <div class="mt-6 space-y-6 w-1/4">
+      <%= react_component_transparent("SelectYear") %>
+    </div>
+  </div>
+</div>
