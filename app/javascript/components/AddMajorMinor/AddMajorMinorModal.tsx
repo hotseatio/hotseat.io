@@ -9,9 +9,11 @@ import CloseButton from 'components/GetTokensButton/CloseButton'
 type Props = {
   open: boolean
   setOpen: (open: boolean) => void
+  addType: string
 }
 
-export default function AddMajorMinorModal({open, setOpen}: Props) {
+export default function AddMajorMinorModal({open, setOpen, addType}: Props) {
+  const placeholder = 'Search for your ' + addType
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog className="fixed z-10 inset-0 overflow-y-auto" onClose={setOpen}>
@@ -45,15 +47,15 @@ export default function AddMajorMinorModal({open, setOpen}: Props) {
               <CloseButton onClick={() => setOpen(false)} />
 
               <div className="text-center max-w-7xl mx-auto px-4 sm:px-6 h-5/6 lg:h-2/3 mt-8 sm:mt-0">
-                <h1 className="mt-2 text-lg font-bold text-gray-900 dark:text-white">Select your major(s)</h1>
+                <h1 className="mt-2 text-lg font-bold text-gray-900 dark:text-white">Select your {addType}(s)</h1>
               </div>
-              <h2 className="mt-2 text-sm font-medium text-gray-900 dark:text-white">Selected majors</h2>
+              <h2 className="mt-2 text-sm font-medium text-gray-900 dark:text-white">Selected {addType}s</h2>
               <div className="flex-1 flex items-center justify-center px-2 py-4">
                 <SearchMajorMinor
                   searchUrl="invalidSearchUrl"
                   suggestionUrl="invalidSuggestionUrl"
                   magnifyingGlass={true}
-                  placeholder="Search for your major"
+                  placeholder={placeholder}
                   isShrinkable={false}
                   label="Search"
                 />

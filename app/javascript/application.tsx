@@ -12,6 +12,7 @@ import FilterButton from 'components/FilterButton'
 import {SectionListCard, CurrentCoursesListCard, PreviousCoursesListCard} from 'components/ListCard'
 import AddMajorMinor from 'components/AddMajorMinor'
 import SelectYear from 'components/SelectYear'
+import MobileNumber from 'components/MobileNumber'
 import {registerServiceWorker} from 'utilities/webpushNotifications'
 
 const components = {
@@ -26,6 +27,7 @@ const components = {
   PreviousCoursesListCard,
   AddMajorMinor,
   SelectYear,
+  MobileNumber,
 }
 
 document.addEventListener('turbo:load', () => {

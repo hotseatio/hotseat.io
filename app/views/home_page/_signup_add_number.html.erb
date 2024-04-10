@@ -1,0 +1,35 @@
+<div class="pt-8 overflow-hidden sm:pt-12 lg:relative">
+  <div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24">
+    <div>
+      <div class="flex items-center">
+        <%= render "icons/fire", classes: "h-14 w-14" %>
+        <h1 class="ml-1 text-3xl font-extrabold hidden lg:block">hotseat.io</h1>
+      </div>
+      <div class="mt-6">
+        <div class="mt-6 sm:max-w-xl">
+          <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-50 tracking-tight sm:text-4xl">
+            What is your phone number?
+          </h1>
+          <p class="mt-6 text-xl text-gray-500 dark:text-gray-400">
+            In order to experience all of Hotseat's features, including getting real-time notifications when seats open up for classes, we'll need your phone number.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+  <div class="relative mx-auto lg:m-0 max-w-md px-4 pt-6 sm:max-w-3xl sm:px-6 lg:px-0">
+    <%= react_component_transparent("MobileNumber") %>
+  </div>
+</div>
+
+<div class="mt-6 lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+  <div class="relative mx-auto lg:m-0 max-w-md px-4 pt-6 sm:max-w-3xl sm:px-6 lg:px-0">
+    <div class="flex justify-end space-x-3 items-center">
+      <%= link_to "Skip this step", new_review_path, class: "button-secondary" %>
+      <%= link_to "Continue", new_review_path, class: "button-primary" %>
+    </div>
+  </div>
+</div>

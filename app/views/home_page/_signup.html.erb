@@ -29,19 +29,26 @@
         This can be what your official major is according to your degree audit, or what you want to switch your major to.
       </p>
     </div>
-    <div class="mt-6 space-y-6">
-      <%= react_component_transparent("AddMajorMinor") %>
-    </div>
+    <%= react_component_transparent("AddMajorMinor") %>
   </div>
 </div>
 
 <div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
-  <div class="relative max-w-md px-4 pt-6 sm:max-w-3xl sm:px-6 lg:px-0">
+  <div class="relative mx-auto lg:m-0 max-w-md px-4 pt-6 sm:max-w-3xl sm:px-6 lg:px-0">
     <h2 class="text-3xl text-gray-900 dark:text-gray-50 font-extrabold tracking-tight sm:text-4xl">
       What year are you?
     </h2>
     <div class="mt-6 space-y-6 w-1/4">
       <%= react_component_transparent("SelectYear") %>
+    </div>
+  </div>
+</div>
+
+<div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+  <div class="relative mx-auto lg:m-0 max-w-md px-4 pt-6 sm:max-w-3xl sm:px-6 lg:px-0">
+    <div class="flex justify-end space-x-3 items-center">
+      <%= link_to "Skip this step", new_review_path, class: "button-secondary" %>
+      <%= link_to "Continue", new_review_path, class: "button-primary" %>
     </div>
   </div>
 </div>
