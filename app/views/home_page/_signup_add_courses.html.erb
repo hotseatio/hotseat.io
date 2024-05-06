@@ -1,0 +1,60 @@
+<div class="pt-8 overflow-hidden sm:pt-12 lg:relative">
+  <div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24">
+    <div>
+      <div class="flex items-center">
+        <%= render "icons/fire", classes: "h-14 w-14" %>
+        <h1 class="ml-1 text-3xl font-extrabold hidden lg:block">hotseat.io</h1>
+      </div>
+      <div class="mt-6">
+        <div class="mt-6 sm:max-w-xl">
+          <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-50 tracking-tight sm:text-4xl">
+            What courses have you previously taken?
+          </h1>
+          <p class="mt-6 text-xl text-gray-500 dark:text-gray-400">
+            When you input the courses you've already taken, our Hotseat.io algorithm can better recommend you courses based off of your major track and year.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+  <div class="relative mx-auto lg:m-0 max-w-md px-4 pt-6 sm:max-w-3xl sm:px-6 lg:px-0">
+    <%= react_component_transparent("Search",
+                                    props: {
+                                      id: "registration_class_search",
+                                      searchUrl: search_url,
+                                      suggestionUrl: search_suggestions_url,
+                                      initialValue: @query || "",
+                                      magnifyingGlass: true,
+                                      placeholder: "Search for classes, instructors, etc...",
+                                    },
+                                    html_options: {
+                                      class: "w-full",
+                                    }) %>
+  </div>
+</div>
+
+<div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:items-start">
+  <div class="relative mx-auto lg:m-0 max-w-md px-4 pt-6 sm:max-w-3xl sm:px-6 lg:px-0">
+    <%= react_component_transparent("RegistrationSelectedCourses",
+                                    props: {
+                                      notificationTokenCount: 2,
+                                      isBetaTester: false,
+                                      sections: [],
+                                      subjectAreas: [],
+                                      # sections: @current_sections.map { |section| to_section_list_props(section, current_user, display_type: SectionHelper::SectionListType::MyCoursesPageCurrent) },
+                                      # subjectAreas: @subject_areas,
+                                    }) %>
+  </div>
+</div>
+
+<div class="mt-6 lg:mx-auto lg:max-w-7xl lg:px-8 lg:items-start">
+  <div class="relative mx-auto lg:m-0 max-w-md px-4 pt-6 sm:max-w-3xl sm:px-6 lg:px-0">
+    <div class="flex justify-end space-x-3 items-center">
+      <%= link_to "Skip this step", new_review_path, class: "button-secondary" %>
+      <%= link_to "Let's go!", new_review_path, class: "button-primary" %>
+    </div>
+  </div>
+</div>

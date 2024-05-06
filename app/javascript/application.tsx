@@ -9,7 +9,12 @@ import GradeCard from 'components/GradeCard'
 import ReviewForm from 'components/ReviewForm'
 import SettingsForm from 'components/SettingsForm'
 import FilterButton from 'components/FilterButton'
-import {SectionListCard, CurrentCoursesListCard, PreviousCoursesListCard} from 'components/ListCard'
+import {
+  SectionListCard,
+  CurrentCoursesListCard,
+  PreviousCoursesListCard,
+  RegistrationSelectedCourses,
+} from 'components/ListCard'
 import AddMajorMinor from 'components/AddMajorMinor'
 import SelectYear from 'components/SelectYear'
 import MobileNumber from 'components/MobileNumber'
@@ -25,6 +30,7 @@ const components = {
   SectionListCard,
   CurrentCoursesListCard,
   PreviousCoursesListCard,
+  RegistrationSelectedCourses,
   AddMajorMinor,
   SelectYear,
   MobileNumber,

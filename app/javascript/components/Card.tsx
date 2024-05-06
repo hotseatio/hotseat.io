@@ -84,3 +84,49 @@ export function TermSelectCard({id, title, children, onTermSelect, terms}: TermS
     </Card>
   )
 }
+
+type TableCardProps = {
+  id: string
+  title: string
+  children: ReactNode
+  rightContent?: ReactNode
+  tableHeader?: ReactNode
+}
+
+export function TableCard({id, children, title, rightContent, tableHeader}: TableCardProps): JSX.Element {
+  if (Array.isArray(rightContent)) {
+    rightContent = React.Children.map(rightContent, (item, i) => (
+      <div className={clsx(i === 0 && 'ml-auto', 'flex-shrink-0')} role="presentation">
+        {item}
+      </div>
+    ))
+  } else {
+    if (typeof rightContent === 'string' || typeof rightContent === 'number') {
+      rightContent = <p className="text-sm text-gray-500 dark:text-gray-400">{rightContent}</p>
+    }
+    rightContent = (
+      <div className="ml-auto flex-shrink-0" role="presentation">
+        {rightContent}
+      </div>
+    )
+  }
+
+  const titleID = id + '-title'
+
+  return (
+    <section id={id} aria-labelledby={titleID} className="bg-white dark:bg-gray-900 shadow rounded-lg my-4">
+      <header className="px-4 py-5 border-b border-gray-200 dark:border-gray-700 sm:px-6">
+        <div className="grid grid-rows-2 gap-4">
+          <div>
+            <h3 id={titleID} className="text-base font-medium text-gray-700 dark:text-gray-200">
+              {title}
+            </h3>
+            {rightContent}
+          </div>
+          <div>{tableHeader}</div>
+        </div>
+      </header>
+      {children}
+    </section>
+  )
+}
