@@ -45,14 +45,14 @@ custom:
   # Payloads
   currentTerm:
     term:
-      term: '24S'
-      id: 77
+      term: '24F'
+      id: 78
     shouldInsertEnrollmentData: true
-  summerTerm:
-    term:
-      term: '231'
-      id: 112
-    shouldInsertEnrollmentData: true
+  # summerTerm:
+  #   term:
+  #     term: '231'
+  #     id: 112
+  #   shouldInsertEnrollmentData: true
 
 functions:
   FetchSubjectAreas:
