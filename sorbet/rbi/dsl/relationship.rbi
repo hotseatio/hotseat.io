@@ -7,6 +7,7 @@
 class Relationship
   include GeneratedAssociationMethods
   include GeneratedAttributeMethods
+  include EnumMethodsModule
   extend CommonRelationMethods
   extend GeneratedRelationMethods
 
@@ -14,6 +15,11 @@ class Relationship
 
   sig { returns(NilClass) }
   def to_ary; end
+
+  class << self
+    sig { returns(T::Hash[T.any(String, Symbol), String]) }
+    def stored_statuses; end
+  end
 
   module CommonRelationMethods
     sig { params(block: T.nilable(T.proc.params(record: ::Relationship).returns(T.untyped))).returns(T::Boolean) }
@@ -263,6 +269,26 @@ class Relationship
     def third_to_last!; end
   end
 
+  module EnumMethodsModule
+    sig { void }
+    def enrolled!; end
+
+    sig { returns(T::Boolean) }
+    def enrolled?; end
+
+    sig { void }
+    def planned!; end
+
+    sig { returns(T::Boolean) }
+    def planned?; end
+
+    sig { void }
+    def subscribed!; end
+
+    sig { returns(T::Boolean) }
+    def subscribed?; end
+  end
+
   module GeneratedAssociationMethods
     sig { params(args: T.untyped, blk: T.untyped).returns(::Review) }
     def build_review(*args, &blk); end
@@ -337,6 +363,9 @@ class Relationship
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
     def eager_load(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
+    def enrolled(*args, &blk); end
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
     def except(*args, &blk); end
@@ -424,6 +453,15 @@ class Relationship
     def none(*args, &blk); end
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
+    def not_enrolled(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
+    def not_planned(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
+    def not_subscribed(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
     def offset(*args, &blk); end
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
@@ -437,6 +475,9 @@ class Relationship
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
     def order(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
+    def planned(*args, &blk); end
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
     def preload(*args, &blk); end
@@ -467,6 +508,9 @@ class Relationship
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
     def structurally_compatible?(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
+    def subscribed(*args, &blk); end
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
     def uniq!(*args, &blk); end
@@ -648,6 +692,9 @@ class Relationship
     def restore_section_id!; end
 
     sig { void }
+    def restore_stored_status!; end
+
+    sig { void }
     def restore_updated_at!; end
 
     sig { void }
@@ -676,6 +723,12 @@ class Relationship
 
     sig { returns(T::Boolean) }
     def saved_change_to_section_id?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def saved_change_to_stored_status; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_stored_status?; end
 
     sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
     def saved_change_to_updated_at; end
@@ -733,6 +786,51 @@ class Relationship
 
     sig { void }
     def section_id_will_change!; end
+
+    sig { returns(T.nilable(::String)) }
+    def stored_status; end
+
+    sig { params(value: T.nilable(T.any(::String, ::Symbol))).returns(T.nilable(T.any(::String, ::Symbol))) }
+    def stored_status=(value); end
+
+    sig { returns(T::Boolean) }
+    def stored_status?; end
+
+    sig { returns(T.nilable(::String)) }
+    def stored_status_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def stored_status_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def stored_status_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def stored_status_change; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def stored_status_change_to_be_saved; end
+
+    sig { returns(T::Boolean) }
+    def stored_status_changed?; end
+
+    sig { returns(T.nilable(::String)) }
+    def stored_status_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def stored_status_previous_change; end
+
+    sig { returns(T::Boolean) }
+    def stored_status_previously_changed?; end
+
+    sig { returns(T.nilable(::String)) }
+    def stored_status_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def stored_status_was; end
+
+    sig { void }
+    def stored_status_will_change!; end
 
     sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def updated_at; end
@@ -837,6 +935,9 @@ class Relationship
     def will_save_change_to_section_id?; end
 
     sig { returns(T::Boolean) }
+    def will_save_change_to_stored_status?; end
+
+    sig { returns(T::Boolean) }
     def will_save_change_to_updated_at?; end
 
     sig { returns(T::Boolean) }
@@ -861,6 +962,9 @@ class Relationship
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
     def eager_load(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
+    def enrolled(*args, &blk); end
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
     def except(*args, &blk); end
@@ -914,6 +1018,15 @@ class Relationship
     def none(*args, &blk); end
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
+    def not_enrolled(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
+    def not_planned(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
+    def not_subscribed(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
     def offset(*args, &blk); end
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
@@ -930,6 +1043,9 @@ class Relationship
 
     sig { params(num: T.nilable(Integer)).returns(ActiveRecord::Relation) }
     def page(num = nil); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
+    def planned(*args, &blk); end
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
     def preload(*args, &blk); end
@@ -960,6 +1076,9 @@ class Relationship
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
     def structurally_compatible?(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
+    def subscribed(*args, &blk); end
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateRelation) }
     def uniq!(*args, &blk); end
