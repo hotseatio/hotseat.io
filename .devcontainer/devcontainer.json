@@ -1,0 +1,6 @@
+{
+  "name": "Ruby",
+  "image": "mcr.microsoft.com/devcontainers/ruby:1-3.3-bullseye",
+  "forwardPorts": [3000],
+  "postCreateCommand": "./bin/setup"
+}
