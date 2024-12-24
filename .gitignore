@@ -95,3 +95,8 @@ public/sitemap*.xml.gz
 
 spoom_data/
 spoom_report.html
+
+
+# Hide DS.Store and package.lock.json
+.DS_Store
+.package-lock.json
